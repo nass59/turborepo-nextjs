@@ -5,12 +5,12 @@ interface User {
   email: string;
 }
 
-const fetcher: Fetcher<User, string> = (...args: any) =>
+const fetcher: Fetcher<any> = (...args: Parameters<typeof fetch>) =>
   fetch(...args).then(res => res.json());
 
 export default function Profile() {
-  const { data, error } = useSWR(
-    "https://jsonplaceholder.typicode.com/users/4",
+  const { data, error } = useSWR<User>(
+    "https://jsonplaceholder.typicode.com/users/1",
     fetcher
   );
 
