@@ -12,16 +12,17 @@
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "swr": "^1.3.0",
     "ui": "workspace:*"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "eslint-config-custom": "workspace:*",
-    "eslint": "7.32.0",
-    "next-transpile-modules": "9.0.0",
-    "tsconfig": "workspace:*",
     "@types/node": "^17.0.12",
     "@types/react": "18.0.17",
+    "eslint": "7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "next-transpile-modules": "9.0.0",
+    "tsconfig": "workspace:*",
     "typescript": "^4.5.3"
   }
 }
