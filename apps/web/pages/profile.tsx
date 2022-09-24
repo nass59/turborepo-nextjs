@@ -1,4 +1,5 @@
 import useSWR, { Fetcher } from "swr";
+import { Button } from "ui";
 
 interface User {
   name: string;
@@ -21,6 +22,7 @@ export default function Profile() {
     <div>
       <h1>{data.name}</h1>
       <h1>{data.email}</h1>
+      <Button />
     </div>
   );
 }

@@ -1,0 +1,23 @@
+.btn {
+  background-color: white;
+  border: 2px solid rgb(128, 20, 175);
+  padding: 20px 50px;
+  font-weight: bold;
+  font-size: 1.4rem;
+  position: relative;
+  color: rgb(128, 20, 175);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.btn:after {
+  content: "";
+  position: absolute;
+  background-color: rgb(128, 20, 175);
+  top: 8px;
+  left: 8px;
+  right: -8px;
+  bottom: -8px;
+  z-index: -1;
+  border-radius: 0.5rem;
+}
