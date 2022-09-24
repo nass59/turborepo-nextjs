@@ -8,7 +8,7 @@ interface Post {
 export default function Blog({ posts }: { posts: Post[] }) {
   return (
     <ul>
-      {posts.map(post => (
+      {posts.map((post) => (
         <li key={post.id}>{post.title}</li>
       ))}
     </ul>
