@@ -5,3 +5,7 @@ body {
   max-width: 80vw;
   margin: 0 auto;
 }
+
+img {
+  position: relative !important;
+}
