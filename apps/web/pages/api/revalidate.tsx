@@ -1,6 +1,11 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiResponse } from "next";
 
-export default async function handler(res: NextApiResponse) {
+type Data = {
+  revalidated?: boolean;
+  details?: string;
+};
+
+export default async function handler(res: NextApiResponse<Data>) {
   try {
     // this should be the actual path not a rewritten path
     // e.g. for "/blog/[slug]" this should be "/blog/post-1"
@@ -9,6 +14,6 @@ export default async function handler(res: NextApiResponse) {
   } catch (err) {
     // If there was an error, Next.js will continue
     // to show the last successfully generated page
-    return res.status(500).send("Error revalidating");
+    return res.status(500).send({ details: "Error revalidating" });
   }
 }
