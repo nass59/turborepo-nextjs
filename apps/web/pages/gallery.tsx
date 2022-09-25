@@ -9,12 +9,12 @@ import pic6 from "../public/images/pic6.jpg";
 const Gallery = () => {
   return (
     <div style={{ position: "relative", display: "grid", gap: "1rem" }}>
-      <Image src={pic1} alt="Pic 1" fill={true} priority />
-      <Image src={pic2} alt="Pic 2" fill={true} />
-      <Image src={pic3} alt="Pic 3" fill={true} />
-      <Image src={pic4} alt="Pic 4" fill={true} />
-      <Image src={pic5} alt="Pic 5" fill={true} />
-      <Image src={pic6} alt="Pic 6" fill={true} />
+      <Image src={pic1} alt="Pic 1" width={800} priority />
+      <Image src={pic2} alt="Pic 2" width={800} />
+      <Image src={pic3} alt="Pic 3" width={800} priority />
+      <Image src={pic4} alt="Pic 4" width={800} />
+      <Image src={pic5} alt="Pic 5" width={800} />
+      <Image src={pic6} alt="Pic 6" width={800} />
     </div>
   );
 };

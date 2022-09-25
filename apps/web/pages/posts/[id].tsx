@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths } from "next";
 
 interface Post {
   id: number;
@@ -15,16 +15,6 @@ export default function Post({ post }: { post: Post }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // When this is true (in preview environments) don't
-  // prerender any static pages
-  // (faster builds, but slower initial page load)
-  if (process.env.NEXT_PUBLIC_SKIP_BUILD_STATIC_GENERATION) {
-    return {
-      paths: [],
-      fallback: "blocking",
-    };
-  }
-
   // Call an external API endpoint to get posts
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   const posts = await res.json();
