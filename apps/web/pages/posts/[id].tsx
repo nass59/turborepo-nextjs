@@ -1,15 +1,20 @@
 import { GetStaticPaths } from "next";
+import { useRouter } from "next/router";
 
 interface Post {
   id: number;
   title: string;
 }
 
-export default function Post({ post }: { post: Post }) {
+export default function Posts({ post }: { post: Post }) {
+  const router = useRouter();
+  const { id } = router.query;
+
   return (
     <div>
       <h1>{post.title}</h1>
       <h2>{post.id}</h2>
+      <h2>{id}</h2>
     </div>
   );
 }
