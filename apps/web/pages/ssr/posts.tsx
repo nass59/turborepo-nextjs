@@ -5,13 +5,22 @@ interface Post {
   title: string;
 }
 
-export default function Posts({ posts }: { posts: Post[] }) {
+export default function Posts({
+  posts,
+  time,
+}: {
+  posts: Post[];
+  time: string;
+}) {
   return (
-    <ul>
-      {posts.map((post: Post) => (
-        <li key={post.id}>{post.title}</li>
-      ))}
-    </ul>
+    <div>
+      <time dateTime={time}>{time}</time>
+      <ul>
+        {posts.map((post: Post) => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -37,6 +46,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   return {
     props: {
       posts,
+      time: new Date().toISOString(),
     },
   };
 };
