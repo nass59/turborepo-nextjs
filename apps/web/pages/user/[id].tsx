@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { User } from "../../interfaces";
 
-const fetcher = (url: string) => fetch(url).then(res => res.json());
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function UserPage() {
   const router = useRouter();

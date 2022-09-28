@@ -1,20 +1,21 @@
-import { AppProps } from "next/app";
+import { SessionProvider } from "next-auth/react";
 import "../styles/styles.css";
-import { ReactElement, ReactNode } from "react";
-import { NextPage } from "next";
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: ReactElement) => ReactNode;
-};
+import type { AppProps } from "next/app";
+import type { Session } from "next-auth";
+import Layout from "./components/layout";
 
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
-
-// This default export is required in a new `pages/_app.js` file.
-export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  // Use the layout defined at the page level, if available
-  const getLayout = Component.getLayout ?? ((page) => page);
-
-  return getLayout(<Component {...pageProps} />);
+// Use of the <SessionProvider> is mandatory to allow components that call
+// `useSession()` anywhere in your application to access the `session` object.
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps<{ session: Session }>) {
+  return (
+    <SessionProvider session={session}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SessionProvider>
+  );
 }

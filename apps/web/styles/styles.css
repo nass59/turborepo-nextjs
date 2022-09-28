@@ -1,11 +1,35 @@
 body {
   font-family: "Inter", "SF Pro Text", "SF Pro Icons", "Helvetica Neue",
     "Helvetica", "Arial", sans-serif;
-  padding: 5rem;
-  max-width: 80vw;
+  padding: 0 1rem 1rem 1rem;
+  max-width: 680px;
   margin: 0 auto;
+  background: #fff;
+  color: #333;
 }
 
 img {
   position: relative !important;
+}
+
+li,
+p {
+  line-height: 1.5rem;
+}
+
+a {
+  font-weight: 500;
+}
+
+hr {
+  border: 1px solid #ddd;
+}
+
+iframe {
+  background: #ccc;
+  border: 1px solid #ccc;
+  height: 10rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  filter: invert(1);
 }
