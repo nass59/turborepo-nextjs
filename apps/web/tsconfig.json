@@ -1,5 +1,5 @@
 {
   "extends": "tsconfig/nextjs.json",
-  "include": ["process.d.ts", "next-env.d.ts", "next-auth.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": ["process.d.ts", "next-env.d.ts", "next-auth.d.ts", "**/*.ts", "**/*.tsx", "__tests__/index.test.jsx"],
+  "exclude": ["node_modules", "cypress", "__tests__"]
 }
