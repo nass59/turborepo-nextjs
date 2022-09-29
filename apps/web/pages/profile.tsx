@@ -7,7 +7,7 @@ interface User {
 }
 
 const fetcher: Fetcher<any> = (...args: Parameters<typeof fetch>) =>
-  fetch(...args).then(res => res.json());
+  fetch(...args).then((res) => res.json());
 
 export default function Profile() {
   const { data, error } = useSWR<User>(

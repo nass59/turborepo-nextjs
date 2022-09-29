@@ -12,6 +12,11 @@ export default function Web() {
         </Link>
       </div>
       <div style={{ marginTop: "1rem" }}>
+        <Link href="/about">
+          <a>About</a>
+        </Link>
+      </div>
+      <div style={{ marginTop: "1rem" }}>
         {/* encodeURIComponent is used in the example to keep the path utf-8 compatible. */}
         <Link href={`/posts/${encodeURIComponent(1)}`}>
           <a>Post 1</a>
