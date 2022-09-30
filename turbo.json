@@ -1,6 +1,6 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "globalDependencies": ["$GITHUB_ID", "$GITHUB_SECRET"],
+  "globalDependencies": ["$GITHUB_ID", "$GITHUB_SECRET", "$PREVIEW_URL_SECRET"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
