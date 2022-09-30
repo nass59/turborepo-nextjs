@@ -19,17 +19,15 @@ export default function Posts({ post }: { post: Post }) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  // Call an external API endpoint to get posts
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const posts = await res.json();
-
-  // Get the paths we want to prerender based on posts
-  // In production environments, prerender all pages
-  // (slower builds, but faster initial page load)
-  const paths = posts.map((post: Post) => ({
-    params: { id: post.id.toString() },
-  }));
+export const getStaticPaths: GetStaticPaths = () => {
+  const paths = [
+    {
+      params: { id: "1" },
+    },
+    {
+      params: { id: "2" },
+    },
+  ];
 
   return { paths, fallback: false };
 };
