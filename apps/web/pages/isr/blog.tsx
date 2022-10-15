@@ -1,17 +1,41 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
+import { ChangeEvent, useState } from "react";
 
 interface Post {
   id: number;
   title: string;
 }
 
+interface SearchData {
+  item: string;
+  refIndex: number;
+}
+
+const names = ["Tim", "Joe", "Bel", "Lee"];
+
 export default function Blog({ posts }: { posts: Post[] }) {
+  const [results, setResults] = useState<SearchData[]>([]);
+
+  const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.currentTarget;
+
+    // Dynamically load fuse.js
+    const Fuse = (await import("fuse.js")).default;
+    const fuse = new Fuse(names);
+
+    setResults(fuse.search(value));
+  };
+
   return (
-    <ul>
-      {posts.map((post) => (
-        <li key={post.id}>{post.title}</li>
-      ))}
-    </ul>
+    <div>
+      <input type="text" placeholder="Search" onChange={onChange} />
+      <pre>Results: {JSON.stringify(results, null, 2)}</pre>
+      <ul>
+        {posts.map(post => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

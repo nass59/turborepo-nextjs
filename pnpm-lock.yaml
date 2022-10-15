@@ -55,6 +55,7 @@ importers:
       cypress: ^10.9.0
       eslint: 7.32.0
       eslint-config-custom: workspace:*
+      fuse.js: ^6.6.2
       jest: ^29.1.1
       jest-environment-jsdom: ^29.1.1
       next: 12.3.0
@@ -70,6 +71,7 @@ importers:
     dependencies:
       cookie: 0.5.0
       cors: 2.8.5
+      fuse.js: 6.6.2
       next: 12.3.0_ir3quccc6i62x6qn6jjhyjjiey
       next-auth: 4.12.1_c3hne4hwj64hb7tofigd3bvkji
       react: 18.2.0
@@ -2755,6 +2757,11 @@ packages:
 
   /functions-have-names/1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
+    dev: false
+
+  /fuse.js/6.6.2:
+    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+    engines: {node: '>=10'}
     dev: false
 
   /gensync/1.0.0-beta.2:

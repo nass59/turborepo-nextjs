@@ -16,6 +16,7 @@
   "dependencies": {
     "cookie": "^0.5.0",
     "cors": "^2.8.5",
+    "fuse.js": "^6.6.2",
     "next": "12.3.0",
     "next-auth": "^4.12.1",
     "react": "18.2.0",
