@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticPathsContext } from "next";
+import { GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 
 interface Post {
