@@ -1,5 +1,9 @@
-const withTM = require("next-transpile-modules")(["ui"]);
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    appDir: true,
+    transpilePackages: ["ui"],
+  },
+};
 
-module.exports = withTM({
-  reactStrictMode: true,
-});
+module.exports = nextConfig;
