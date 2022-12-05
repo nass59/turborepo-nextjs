@@ -23,7 +23,7 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
-  const getLayout = Component.getLayout ?? (page => <Layout>{page}</Layout>);
+  const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>);
 
   return (
     <SessionProvider session={session}>

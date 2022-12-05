@@ -31,7 +31,7 @@ export default function Blog({ posts }: { posts: Post[] }) {
       <input type="text" placeholder="Search" onChange={onChange} />
       <pre>Results: {JSON.stringify(results, null, 2)}</pre>
       <ul>
-        {posts.map(post => (
+        {posts.map((post) => (
           <li key={post.id}>{post.title}</li>
         ))}
       </ul>
