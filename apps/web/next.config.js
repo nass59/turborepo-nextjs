@@ -5,7 +5,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
     transpilePackages: ["ui"],
-    runtime: "experimental-edge", // 'node.js' (default) | 'experimental-edge'
+    runtime: "experimental-edge",
   },
 };
 

@@ -4,6 +4,7 @@ export type Post = {
   id: number;
   slug: string;
   title: string;
+  body: string;
 };
 
 const posts: Post[] = [
@@ -11,6 +12,7 @@ const posts: Post[] = [
     id: 1,
     slug: "post-1",
     title: "Post 1",
+    body: "Post 1",
   },
 ];
 
