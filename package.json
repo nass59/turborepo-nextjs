@@ -13,8 +13,11 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.13",
     "eslint-config-custom": "workspace:0.0.0",
+    "postcss": "^8.4.19",
     "prettier": "latest",
+    "tailwindcss": "^3.2.4",
     "turbo": "latest"
   },
   "engines": {

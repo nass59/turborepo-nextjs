@@ -1,3 +1,4 @@
+import "ui/global.css";
 import ThemeProvider from "./theme-provider";
 
 export default function RootLayout({
@@ -9,16 +10,7 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body style={{ border: "1px solid #df5e2f", padding: "5px" }}>
-        <span
-          style={{
-            backgroundColor: "#df5e2f",
-            padding: "0 5px",
-            marginBottom: "5px",
-            display: "inline-block",
-          }}
-        >
-          Root Layout
-        </span>
+        <span className="text-3xl underline">Root Layout</span>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
