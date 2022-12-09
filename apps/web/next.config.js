@@ -8,9 +8,15 @@ const nextConfig = {
     transpilePackages: ["ui"],
     runtime: "experimental-edge",
   },
-  // images: {
-  //   formats: ["image/avif", "image/webp"],
-  // },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "turborepo-nextjs.vercel.app",
+      },
+    ],
+    //formats: ["image/avif", "image/webp"],
+  },
 };
 
 module.exports = nextConfig;

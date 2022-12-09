@@ -8,7 +8,7 @@ type PageProps = {
 export default function PostList({ posts }: PageProps) {
   return (
     <ul>
-      {posts.map(post => (
+      {posts.map((post) => (
         <li key={post.id}>
           <Link href={`/blog/${post.id}`}>{post.title}</Link>
         </li>

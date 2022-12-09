@@ -25,7 +25,7 @@ export default function Todo(todo: Todo) {
       <input
         type="checkbox"
         checked={todo.completed}
-        onChange={e => update(todo.id, !todo.completed, router.refresh)}
+        onChange={(e) => update(todo.id, !todo.completed, router.refresh)}
       />
       {todo.title}
     </li>
