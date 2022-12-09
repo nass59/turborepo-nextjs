@@ -18,8 +18,7 @@ interface Todo {
 
 async function getData() {
   const res = await fetch(
-    "https://jsonplaceholder.typicode.com/posts?userId=1",
-    { next: { revalidate: 100 } }
+    "https://jsonplaceholder.typicode.com/posts?userId=1"
   );
 
   // The return value is *not* serialized
