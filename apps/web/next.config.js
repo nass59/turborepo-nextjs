@@ -6,7 +6,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
     transpilePackages: ["ui"],
-    runtime: "experimental-edge",
+    // runtime: "experimental-edge",
   },
   images: {
     remotePatterns: [
