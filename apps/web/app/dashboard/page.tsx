@@ -10,6 +10,8 @@ import pic5 from "../../public/images/pic5.jpg";
 import pic6 from "../../public/images/pic6.jpg";
 import Image from "next/image";
 
+export const revalidate = 300;
+
 interface Todo {
   id: number;
   title: string;
@@ -87,7 +89,7 @@ export default async function Page() {
       </div>
       <PostList posts={data} />
       <ul className="flex flex-col space-y-2">
-        {todos.map((todo) => (
+        {todos.map(todo => (
           <Todo key={todo.id} {...todo} />
         ))}
       </ul>

@@ -3,7 +3,8 @@
 
 import type { Post } from "../page";
 
-export const revalidate = 120; // revalidate this page every 60 seconds
+// @see https://beta.nextjs.org/docs/api-reference/segment-config
+export const revalidate = 120; // revalidate this page every 120 seconds
 
 type PageProps = {
   params: { slug: string; body: string };

@@ -1,3 +1,5 @@
+import Breadcrumb from "./blog/Breadcrumb";
+
 export default function RootLayout({
   children,
 }: {
@@ -15,6 +17,7 @@ export default function RootLayout({
       >
         Marketing Layout
       </span>
+      <Breadcrumb />
       <div>{children}</div>
     </div>
   );
