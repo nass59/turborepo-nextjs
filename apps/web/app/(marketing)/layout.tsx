@@ -1,12 +1,14 @@
+import { Header } from "ui";
 import Breadcrumb from "./blog/Breadcrumb";
 
-export default function RootLayout({
-  children,
-}: {
+interface MarketingLayoutProps {
   children: React.ReactNode;
-}) {
+}
+
+export default function RootLayout({ children }: MarketingLayoutProps) {
   return (
-    <div style={{ border: "1px solid #99df2f", padding: "5px" }}>
+    <div className="flex flex-col min-h-screen">
+      <Header />
       <span
         style={{
           backgroundColor: "#99df2f",

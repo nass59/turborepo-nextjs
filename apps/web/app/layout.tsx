@@ -1,26 +1,29 @@
-import "ui/global.css";
-import ThemeProvider from "./theme-provider";
-import { Inter } from "@next/font/google";
-import ExampleClientComponent from "./dashboard/ExampleClientComponent";
+import { Inter as FontSans } from "@next/font/google";
 
-const inter = Inter({
+import "ui/global.css";
+
+import { cn } from "@lib/utils";
+
+const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-inter",
 });
 
-export default function RootLayout({
-  children,
-}: {
+interface RootLayoutProps {
   children: React.ReactNode;
-}) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html
+      lang="en"
+      className={cn(
+        "bg-white font-sans text-slate-900 antialiased",
+        fontSans.variable
+      )}
+    >
       <head />
-      <body style={{ border: "1px solid #df5e2f", padding: "5px" }}>
-        <span className="text-3xl underline">Root Layout</span>
-        <ExampleClientComponent />
-        <ThemeProvider>{children}</ThemeProvider>
-      </body>
+      <body className="min-h-screen">{children}</body>
     </html>
   );
 }

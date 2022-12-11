@@ -89,7 +89,7 @@ export default async function Page() {
       </div>
       <PostList posts={data} />
       <ul className="flex flex-col space-y-2">
-        {todos.map(todo => (
+        {todos.map((todo) => (
           <Todo key={todo.id} {...todo} />
         ))}
       </ul>
