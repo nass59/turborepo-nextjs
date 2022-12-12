@@ -1,4 +1,4 @@
-import { Header } from "ui";
+import { Header } from "@components/Header";
 import Breadcrumb from "./blog/Breadcrumb";
 
 interface MarketingLayoutProps {

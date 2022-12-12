@@ -22,8 +22,7 @@
     "next-auth": "^4.16.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "swr": "^1.3.0",
-    "ui": "workspace:0.0.0"
+    "swr": "^1.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",

@@ -9,5 +9,5 @@ export const Button = ({
   label = "Boop",
   size = "small",
 }: Props) => {
-  return <button className="font-sans text-lg text-blue-500">{label}</button>;
+  return <button className="font-sans text-lg text-green-500">{label}</button>;
 };
