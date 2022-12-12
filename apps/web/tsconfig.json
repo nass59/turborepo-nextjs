@@ -5,6 +5,7 @@
     "paths": {
       "@lib/*": ["lib/*"],
       "@components/*": ["components/*"],
+      "@config/*": ["config/*"],
     },
     "plugins": [
       {

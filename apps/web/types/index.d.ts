@@ -5,3 +5,11 @@ export type NavItem = {
 };
 
 export type MainNavItem = NavItem;
+
+export type SiteConfig = {
+  name: string;
+};
+
+export type MarketingConfig = {
+  mainNav: MainNavItem[];
+};

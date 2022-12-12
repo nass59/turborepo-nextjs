@@ -16,11 +16,13 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const LoggedIn: Story = {
-  args: {
-    user: {
-      name: "Jane Doe",
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+      navigation: {
+        segment: "blog",
+        pathname: "/blog",
+      },
     },
   },
 };
-
-export const LoggedOut: Story = {};
