@@ -1,11 +1,10 @@
-import { Inter as FontSans } from "@next/font/google";
+import { Inter } from "@next/font/google";
 
 import "tailwindcss/tailwind.css";
 
 import { cn } from "@lib/utils";
 
-const fontSans = FontSans({
-  subsets: ["latin"],
+const fontSans = Inter({
   variable: "--font-inter",
 });
 
