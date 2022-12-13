@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 import { Header } from "components/Header";
 
 const meta: Meta<typeof Header> = {
@@ -20,8 +21,15 @@ export const LoggedIn: Story = {
     nextjs: {
       appDirectory: true,
       navigation: {
-        segment: "blog",
         pathname: "/blog",
+        push(...args: any) {
+          action("nextNavigation.push")(...args);
+          return Promise.resolve(true);
+        },
+        prefetch(...args: any) {
+          action("nextNavigation.prefetch")(...args);
+          return Promise.resolve(true);
+        },
       },
     },
   },

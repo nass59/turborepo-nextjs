@@ -1,12 +1,15 @@
 "use client";
 
-import { cn } from "@lib/utils";
-import { siteConfig } from "config/site";
+import { useState } from "react";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
-import { useState } from "react";
+
 import { MainNavItem } from "types";
-import { Icons } from "./icons";
+
+import { cn } from "@lib/utils";
+import { siteConfig } from "@config/site";
+import { Icons } from "@components/icons";
+import { MobileNav } from "@components/MobileNav";
 
 interface MainNavProps {
   items?: MainNavItem[];
@@ -23,6 +26,7 @@ export const MainNav = ({ items, children }: MainNavProps) => {
         <Icons.logo />
         <span className="font-bold inline-block">{siteConfig.name}</span>
       </Link>
+
       {items?.length ? (
         <nav className="hidden md:flex gap-6">
           {items.map((item, index) => (
@@ -45,11 +49,10 @@ export const MainNav = ({ items, children }: MainNavProps) => {
         className="flex items-center space-x-2 md:hidden"
         onClick={() => setShowMobileMenu(!showMobileMenu)}
       >
-        {showMobileMenu ? <Icons.close /> : <Icons.logo />}
         <span className="font-bold">Menu</span>
       </button>
 
-      {showMobileMenu && <div>Menu mobile (todo)</div>}
+      {showMobileMenu && <MobileNav items={items}>{children}</MobileNav>}
     </div>
   );
 };

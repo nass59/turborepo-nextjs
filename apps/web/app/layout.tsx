@@ -1,6 +1,6 @@
 import { Inter as FontSans } from "@next/font/google";
 
-import "ui/global.css";
+import "tailwindcss/tailwind.css";
 
 import { cn } from "@lib/utils";
 

@@ -1,19 +1,16 @@
-const path = require('path');
+const path = require("path");
 module.exports = {
-  "stories": [
-    "../stories/**/*.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)"
-  ],
-  "addons": [
+  stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx)"],
+  addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions"
+    "@storybook/addon-interactions",
   ],
-  "framework": {
-    "name": "@storybook/nextjs",
-    "options": {}
+  framework: {
+    name: "@storybook/nextjs",
+    options: {},
   },
-  "docs": {
-    "docsPage": true
-  }
-}
+  docs: {
+    docsPage: true,
+  },
+};
