@@ -1,7 +1,49 @@
+import { Hero } from "@components/Hero";
+import { siteConfig } from "@config/site";
+import Link from "next/link";
+
 export default function Page() {
   return (
-    <div className="container py-10">
-      <h1 className="text-3xl">Hello World 🥳 !</h1>
-    </div>
+    <>
+      <section className="container grid items-center justify-center gap-6 pt-3 pb-8 md:pb-12 lg:pb-24">
+        <Hero />
+
+        <div className="mx-auto flex flex-col items-start gap-4 lg:w-[52rem]">
+          <h1 className="text-3xl font-bold items-start leading-[1.1] tracking-tighter sm:text-5xl md:text-6xl text-slate-800">
+            Hello World 🥳 !
+          </h1>
+          <p className="max-w-[42rem] leading-normal text-slate-700 sm:text-xl sm:leading-8">
+            I&apos;m building a web app with Next.js 13 and open sourcing
+            everything. Follow along as we figure this out together.
+          </p>
+        </div>
+
+        <div className="flex gap-4">
+          <Link
+            href={siteConfig.links.github}
+            target="_blank"
+            rel="noreferrer"
+            className="relative inline-flex items-center h-11 border border-transparent rounded-md border-slate-200 bg-slate-800 px-8 py-2 text-white font-medium hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:ring-offset-2"
+          >
+            Github
+          </Link>
+        </div>
+      </section>
+
+      <hr className="border-slate-200" />
+
+      <section className="container grid justify-center gap-6 py-8 md:py-12 lg:py-24">
+        <div className="mx-auto flex flex-col gap-4 md:max-w-[52rem]">
+          <h2 className="text-3xl font-bold leading-[1.1] tracking-tighter sm:text-3xl md:text-6xl text-slate-800">
+            Tech
+          </h2>
+          <p className="max-w-[85%] leading-normal text-slate-700 sm:text-lg sm:leading-7">
+            This project is an experiment to see how a modern app, with features
+            like auth, subscriptions, API routes, and static pages would work in
+            Next.js 13 app dir.
+          </p>
+        </div>
+      </section>
+    </>
   );
 }

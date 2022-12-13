@@ -8,6 +8,10 @@ export type MainNavItem = NavItem;
 
 export type SiteConfig = {
   name: string;
+  links: {
+    twitter: string;
+    github: string;
+  };
 };
 
 export type MarketingConfig = {
