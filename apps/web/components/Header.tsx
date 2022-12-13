@@ -10,7 +10,7 @@ export const Header = () => {
         <nav>
           <Link
             href="/login"
-            className="relative inline-flex h-8 bg-blue-600 border border-transparent rounded-md px-6 py-1 text-sm text-white font-semibold hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
+            className="relative inline-flex h-8 bg-yellow-400 border border-transparent rounded-md px-6 py-1 text-sm text-slate-800 font-semibold hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2"
           >
             Login
           </Link>
