@@ -1,11 +1,18 @@
 import Link from "next/link";
 import { siteConfig } from "@config/site";
 import { Space3 } from "@components/icons/space3";
+import { NextJS } from "@components/logos/nextjs";
+import { ReactJS } from "@components/logos/reactjs";
+import { MongoDB } from "@components/logos/mongodb";
+import { TailwindCSS } from "@components/logos/tailwindcss";
+import { Auth } from "@components/logos/auth";
+import { Storybook } from "@components/logos/storybook";
+import { FeatureItem } from "@components/FeatureItem";
 
 export default function Page() {
   return (
     <>
-      <section className="container grid items-center justify-center gap-6 pt-3 pb-8 md:pb-12 lg:pb-24">
+      <section className="container grid items-center justify-center gap-6 pt-6 pb-8 md:pt-10 md:pb-12 lg:pt-16 lg:pb-24">
         <div className="mx-auto flex flex-col items-center gap-4 lg:w-[52rem]">
           <h1 className="text-3xl font-bold items-start leading-[1.1] tracking-tighter sm:text-5xl md:text-6xl text-slate-800 pt-10">
             Hello World !
@@ -23,16 +30,66 @@ export default function Page() {
       <hr className="border-slate-200" />
 
       <section className="container grid justify-center gap-6 py-8 md:py-12 lg:py-24">
-        <div className="mx-auto flex flex-col gap-4 md:max-w-[43rem]">
+        <div className="mx-auto flex flex-col gap-4 md:max-w-[56rem]">
           <h2 className="text-3xl font-bold leading-[1.1] tracking-tighter sm:text-3xl md:text-6xl text-slate-800">
-            Tech
+            Features
           </h2>
           <p className="leading-normal text-slate-700 sm:text-lg sm:leading-7">
             This project is an experiment to see how a modern app, with features
-            like auth, subscriptions, API routes, and static pages would work in
-            Next.js 13 app dir.
+            like auth, API routes, and static pages would work in Next.js 13 app
+            dir.
           </p>
-          <div className="flex gap-4">
+        </div>
+
+        <div className="grid justify-center gap-4 sm:grid-cols-2 md:max-w-[56rem] md:grid-cols-3">
+          <FeatureItem
+            logo={<NextJS />}
+            title="Next.js 13"
+            description="App dir, Routing, Layouts UI and API Routes."
+          />
+          <FeatureItem
+            logo={<ReactJS />}
+            title="React 18"
+            description="Server and Client Components. Use hooks."
+          />
+          <FeatureItem
+            logo={<MongoDB />}
+            title="Database"
+            description="MongoDB and deployed on Atlas Cluster"
+          />
+          <FeatureItem
+            logo={<Auth />}
+            title="Authentication"
+            description="Authentication using NextAuth.js and middlewares."
+          />
+          <FeatureItem
+            logo={<TailwindCSS />}
+            title="Components"
+            description="UI components built using Radix UI and styled with Tailwind
+            CSS."
+          />
+          <FeatureItem
+            logo={<Storybook />}
+            title="Storybook"
+            description="Components Library with Storybook."
+          />
+        </div>
+      </section>
+
+      <hr className="border-slate-200" />
+
+      <section className="container grid justify-center gap-6 py-8 md:py-12 lg:py-24">
+        <div className="mx-auto flex flex-col gap-4 md:max-w-[56rem]">
+          <h2 className="text-3xl font-bold leading-[1.1] tracking-tighter sm:text-3xl md:text-6xl">
+            Proudly Open Source
+          </h2>
+
+          <p className="max-w-[85%] leading-normal text-slate-700 sm:text-lg sm:leading-7">
+            This project is open source and powered by open source software. The
+            code is available on GitHub.
+          </p>
+
+          <p>
             <Link
               href={siteConfig.links.github}
               target="_blank"
@@ -41,7 +98,7 @@ export default function Page() {
             >
               Github
             </Link>
-          </div>
+          </p>
         </div>
       </section>
     </>
