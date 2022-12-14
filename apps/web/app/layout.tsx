@@ -3,6 +3,7 @@ import { Inter } from "@next/font/google";
 import "tailwindcss/tailwind.css";
 
 import { cn } from "@lib/utils";
+import { Help } from "@components/Help";
 
 const fontSans = Inter({
   variable: "--font-inter",
@@ -22,7 +23,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
       )}
     >
       <head />
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen">
+        {children}
+        <Help />
+      </body>
     </html>
   );
 }
