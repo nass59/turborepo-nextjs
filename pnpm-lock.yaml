@@ -55,6 +55,7 @@ importers:
       '@types/node': ^18.11.15
       '@types/react': 18.0.24
       '@types/react-dom': ^18.0.9
+      '@vercel/analytics': ^0.1.6
       '@vercel/og': ^0.0.21
       autoprefixer: ^10.4.13
       clsx: ^1.2.1
@@ -78,6 +79,7 @@ importers:
       zod: ^3.20.2
     dependencies:
       '@next/font': 13.0.4-canary.5
+      '@vercel/analytics': 0.1.6_react@18.2.0
       '@vercel/og': 0.0.21
       clsx: 1.2.1
       lucide-react: 0.104.1_sh5qlbywuemxd2y3xkrw2y2kr4
@@ -4224,6 +4226,14 @@ packages:
     dependencies:
       '@typescript-eslint/types': 5.46.1
       eslint-visitor-keys: 3.3.0
+
+  /@vercel/analytics/0.1.6_react@18.2.0:
+    resolution: {integrity: sha512-zNd5pj3iDvq8IMBQHa1YRcIteiw6ZiPB8AsONHd8ieFXlNpLqhXfIYnf4WvTfZ7S1NSJ++mIM14aJnNac/VMXQ==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@vercel/og/0.0.21:
     resolution: {integrity: sha512-WgMahG5c8UM7xtn/mT+ljUpDMSDnSlu8AXL52JtTwxb1odrd0GWqZg2N1X38wulPj+sCccNpDdFmmAuw0GLc+Q==}

@@ -4,6 +4,8 @@ import "tailwindcss/tailwind.css";
 
 import { cn } from "@lib/utils";
 import { Help } from "@components/Help";
+import { TailwindIndicator } from "@components/tailwind-indicator";
+import { Analytics } from "@components/analytics";
 
 const fontSans = Inter({
   variable: "--font-inter",
@@ -26,6 +28,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className="min-h-screen">
         {children}
         <Help />
+        <TailwindIndicator />
+        <Analytics />
       </body>
     </html>
   );

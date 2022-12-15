@@ -1,6 +1,29 @@
-# Turborepo starter
+# Next.js 13 with Turborepo
 
-This is an official pnpm starter turborepo.
+An open source application built using the new router, server components and everything new in Next.js 13.
+
+## Demo 👀
+
+> **Warning**
+> This app is a work in progress.
+> https://turborepo-nextjs.vercel.app/
+
+## Features 🌟
+
+- 🚀 Monorepo using **Turborepo**
+- 📁 New `/app` dir,
+- 🗂️ Routing, Layouts, Nested Layouts and Layout Groups
+- 🌎 Data Fetching, Caching and Mutation
+- ⏱️ Loading UI
+- 🛠️ Server and Client Components
+- 🚦 API Routes and Middlewares
+- 👮‍♂️ Authentication using **NextAuth.js**
+- 🌱 Database using **MongoDB**
+- 🧩 UI Components built using **Radix UI**
+- 🎨 Styled using **Tailwind CSS**
+- 👨‍🎨 Styleguide using **Storybook**
+- ⚡️ Validations using **Zod**
+- 👷🏼‍♂️ Written in **TypeScript**
 
 ## What's inside?
 
@@ -8,8 +31,8 @@ This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes th
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org) app
-- `web`: another [Next.js](https://nextjs.org) app
+- `docs`: a [Next.js 12](https://nextjs.org) app
+- `web`: another [Next.js 13](https://nextjs.org) app
 - `ui`: a stub React component library shared by both `web` and `docs` applications
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
@@ -18,7 +41,7 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Utilities
 
-This turborepo has some additional tools already setup for you:
+This turborepo has some additional tools already setup:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
