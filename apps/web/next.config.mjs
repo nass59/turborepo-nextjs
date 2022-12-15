@@ -1,6 +1,8 @@
 // @see https://beta.nextjs.org/docs/rendering/edge-and-nodejs-runtimes#global-runtime-option
 // @see https://beta.nextjs.org/docs/api-reference/next.config.js
 
+import { withContentlayer } from "next-contentlayer";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -20,4 +22,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default withContentlayer(nextConfig);

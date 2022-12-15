@@ -1,6 +1,5 @@
 // @see https://beta.nextjs.org/docs/api-reference/components/image
 
-import PostList from "../(marketing)/blog/PostList";
 import Todo from "./todo";
 import pic1 from "../../public/images/pic1.jpg";
 import pic2 from "../../public/images/pic2.jpg";
@@ -87,7 +86,7 @@ export default async function Page() {
           placeholder="blur"
         />
       </div>
-      <PostList posts={data} />
+
       <ul className="flex flex-col space-y-2">
         {todos.map((todo) => (
           <Todo key={todo.id} {...todo} />
