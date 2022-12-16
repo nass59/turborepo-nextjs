@@ -1,5 +1,17 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 
+/** @type {import('contentlayer/source-files').ComputedFields} */
+const computedFields = {
+  url: {
+    type: "string",
+    resolve: post => `/${post._raw.flattenedPath}`,
+  },
+  slug: {
+    type: "string",
+    resolve: post => post._raw.flattenedPath.split("/").slice(1).join(""),
+  },
+};
+
 export const Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: `blog/**/*.mdx`,
@@ -25,16 +37,44 @@ export const Post = defineDocumentType(() => ({
       description: "The date of the post",
       required: true,
     },
-  },
-  computedFields: {
-    url: {
-      type: "string",
-      resolve: post => `/${post._raw.flattenedPath}`,
+    authors: {
+      type: "list",
+      of: { type: "string" },
+      required: true,
     },
   },
+  computedFields,
+}));
+
+export const Author = defineDocumentType(() => ({
+  name: "Author",
+  filePathPattern: `authors/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    name: {
+      type: "string",
+      description: "The name of the author",
+      required: true,
+    },
+    description: {
+      type: "string",
+      description: "The description of the author",
+    },
+    avatar: {
+      type: "string",
+      description: "The avatar of the author",
+      required: true,
+    },
+    twitter: {
+      type: "string",
+      description: "The twitter account of the author",
+      required: true,
+    },
+  },
+  computedFields,
 }));
 
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Post],
+  documentTypes: [Post, Author],
 });

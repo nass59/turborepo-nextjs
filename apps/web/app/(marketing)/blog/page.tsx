@@ -35,8 +35,8 @@ export default async function Page() {
                 <Image
                   src={post.image}
                   alt={post.title}
-                  width={704}
-                  height={352}
+                  width={587}
+                  height={587}
                   priority={index <= 1}
                   className="border border-slate-200 rounded-md bg-slate-800 transition-colors group-hover:border-green-600"
                 />
