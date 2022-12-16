@@ -57,13 +57,13 @@ export default async function Page({ params }: PageProps) {
               >
                 <Image
                   src={author.avatar}
-                  alt={author.name}
+                  alt={author.title}
                   width={42}
                   height={42}
                   className="rounded-full"
                 />
                 <div className="flex-1 text-left leading-tight">
-                  <p className="font-medium text-slate-900">{author.name}</p>
+                  <p className="font-medium text-slate-900">{author.title}</p>
                   <p className="text-xs text-slate-600">@{author.twitter}</p>
                 </div>
               </Link>

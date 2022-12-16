@@ -1,6 +1,12 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "globalEnv": ["GITHUB_ID", "GITHUB_SECRET", "PREVIEW_URL_SECRET", "NODE_ENV"],
+  "globalEnv": [
+    "GITHUB_ID",
+    "GITHUB_SECRET",
+    "PREVIEW_URL_SECRET",
+    "NODE_ENV",
+    "NEXT_PUBLIC_APP_URL"
+  ],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],

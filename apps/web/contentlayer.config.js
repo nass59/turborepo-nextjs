@@ -51,9 +51,9 @@ export const Author = defineDocumentType(() => ({
   filePathPattern: `authors/**/*.mdx`,
   contentType: "mdx",
   fields: {
-    name: {
+    title: {
       type: "string",
-      description: "The name of the author",
+      description: "The title of the author",
       required: true,
     },
     description: {

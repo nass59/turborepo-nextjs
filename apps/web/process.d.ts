@@ -1,6 +1,7 @@
 declare namespace NodeJS {
   export interface ProcessEnv {
     PREVIEW_URL_SECRET: string;
+    NEXT_PUBLIC_APP_URL: string;
     NEXTAUTH_URL: string;
     NEXTAUTH_SECRET: string;
     GITHUB_ID: string;
