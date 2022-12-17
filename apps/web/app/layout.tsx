@@ -6,6 +6,7 @@ import { cn } from "@lib/utils";
 import { Help } from "@components/Help";
 import { TailwindIndicator } from "@components/tailwind-indicator";
 import { Analytics } from "@components/analytics";
+import { Toaster } from "@components/toast";
 
 const fontSans = Inter({
   variable: "--font-inter",
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className="min-h-screen">
         {children}
         <Help />
+        <Toaster position="bottom-right" />
         <TailwindIndicator />
         <Analytics />
       </body>

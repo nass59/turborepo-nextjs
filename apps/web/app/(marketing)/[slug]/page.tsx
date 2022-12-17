@@ -29,9 +29,10 @@ export default async function Page({ params }: PageProps) {
         {page.description && (
           <p className="text-xl text-slate-600">{page.description}</p>
         )}
-        <hr className="my-4 border-slate-200" />
-        <Mdx code={page.body.code} />
       </div>
+
+      <hr className="my-4 border-slate-200" />
+      <Mdx code={page.body.code} />
     </article>
   );
 }

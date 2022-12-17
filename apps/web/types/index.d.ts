@@ -6,6 +6,19 @@ export type NavItem = {
 
 export type MainNavItem = NavItem;
 
+export type SidebarNavItem = {
+  title: string;
+} & (
+  | {
+      href: string;
+      items?: never;
+    }
+  | {
+      href?: string;
+      items: NavLink[];
+    }
+);
+
 export type SiteConfig = {
   name: string;
   links: {
@@ -18,4 +31,9 @@ export type SiteConfig = {
 
 export type MarketingConfig = {
   mainNav: MainNavItem[];
+};
+
+export type DocsConfig = {
+  mainNav: MainNavItem[];
+  sidebarNav: SidebarNavItem[];
 };

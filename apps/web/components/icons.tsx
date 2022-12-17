@@ -1,4 +1,11 @@
-import { ArrowLeft, ChevronLeft, ConciergeBell, Rocket, X } from "lucide-react";
+import {
+  ArrowLeft,
+  ChevronLeft,
+  ConciergeBell,
+  Github,
+  Rocket,
+  X,
+} from "lucide-react";
 import type { Icon as LucideIcon } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -8,4 +15,5 @@ export const Icons = {
   close: X,
   bell: ConciergeBell,
   chevronLeft: ChevronLeft,
+  github: Github,
 };
