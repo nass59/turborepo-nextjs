@@ -12,6 +12,8 @@ export const Footer = () => {
             Built by{" "}
             <FooterLink href={siteConfig.links.twitter} title="@nass190" />.
             Hosted on <FooterLink href="https://vercel.com" title="Vercel" />.
+            See <FooterLink href={siteConfig.links.terms} title="terms" /> and{" "}
+            <FooterLink href={siteConfig.links.privacy} title="privacy" />.
           </p>
         </div>
 

@@ -4,11 +4,11 @@ import { defineDocumentType, makeSource } from "contentlayer/source-files";
 const computedFields = {
   url: {
     type: "string",
-    resolve: post => `/${post._raw.flattenedPath}`,
+    resolve: (post) => `/${post._raw.flattenedPath}`,
   },
   slug: {
     type: "string",
-    resolve: post => post._raw.flattenedPath.split("/").slice(1).join(""),
+    resolve: (post) => post._raw.flattenedPath.split("/").slice(1).join(""),
   },
 };
 
@@ -74,7 +74,25 @@ export const Author = defineDocumentType(() => ({
   computedFields,
 }));
 
+export const Page = defineDocumentType(() => ({
+  name: "Page",
+  filePathPattern: `pages/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      description: "The title of the page",
+      required: true,
+    },
+    description: {
+      type: "string",
+      description: "The description of the page",
+    },
+  },
+  computedFields,
+}));
+
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Post, Author],
+  documentTypes: [Post, Author, Page],
 });

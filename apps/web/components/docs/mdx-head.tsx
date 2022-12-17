@@ -7,7 +7,7 @@ interface MdxHeadProps {
   params: {
     slug: string;
   };
-  og: z.infer<typeof ogImageSchema>;
+  og?: z.infer<typeof ogImageSchema>;
 }
 
 export default function MdxHead({ params, og }: MdxHeadProps) {
