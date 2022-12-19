@@ -2,22 +2,15 @@ export type NavItem = {
   title: string;
   href: string;
   disabled?: boolean;
+  external?: boolean;
 };
 
 export type MainNavItem = NavItem;
 
 export type SidebarNavItem = {
   title: string;
-} & (
-  | {
-      href: string;
-      items?: never;
-    }
-  | {
-      href?: string;
-      items: NavLink[];
-    }
-);
+  items: NavItem[];
+};
 
 export type SiteConfig = {
   name: string;

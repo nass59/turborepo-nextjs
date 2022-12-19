@@ -10,15 +10,16 @@ import { Icons } from "@components/icons";
 interface MobileNavProps {
   items?: MainNavItem[];
   children?: React.ReactNode;
+  close: () => false | void;
 }
 
-export function MobileNav({ items, children }: MobileNavProps) {
+export function MobileNav({ items, children, close }: MobileNavProps) {
   useLockBody();
 
   return (
-    <div className="fixed inset-0 top-16 z-50 h-[calc(100vh-4rem)] overflow-auto p-6 pb-32 shadow-md md:hidden slide-in-from-bottom-80 animate-in">
+    <div className="fixed inset-0 top-16 z-50 grid h-[calc(100vh)] grid-flow-row auto-rows-max overflow-auto pb-20 border-t border-t-slate-200 shadow-md md:hidden slide-in-from-bottom-80 animate-in">
       <div className="relative z-20 grid gap-6 rounded-md bg-white p-4 shadow-md">
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2" onClick={close}>
           <Icons.logo />
           <span className="font-bold">{siteConfig.name}</span>
         </Link>
@@ -28,6 +29,7 @@ export function MobileNav({ items, children }: MobileNavProps) {
             <Link
               key={index}
               href={item.disabled ? "#" : item.href}
+              onClick={close}
               className={cn(
                 "flex items-center w-full p-2 text-sm font-medium hover:underline",
                 item.disabled && "cursor-not-allowed opacity-60"
