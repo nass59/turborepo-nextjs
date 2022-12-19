@@ -11,6 +11,10 @@ interface PageProps {
   };
 }
 
+export async function generateStaticParams() {
+  return allDocs.map((doc) => ({ slug: doc.slug.split("/") }));
+}
+
 export default async function Page({ params }: PageProps) {
   const slug = params?.slug?.join("/") || "";
   const doc = allDocs.find((doc) => doc.slug === slug);
