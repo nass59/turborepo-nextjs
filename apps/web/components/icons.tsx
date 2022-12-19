@@ -1,6 +1,7 @@
 import {
   ArrowLeft,
   ChevronLeft,
+  ChevronRight,
   ConciergeBell,
   Github,
   Rocket,
@@ -15,5 +16,6 @@ export const Icons = {
   close: X,
   bell: ConciergeBell,
   chevronLeft: ChevronLeft,
+  chevronRight: ChevronRight,
   github: Github,
 };

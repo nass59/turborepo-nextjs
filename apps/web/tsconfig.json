@@ -7,6 +7,7 @@
       "@components/*": ["components/*"],
       "@config/*": ["config/*"],
       "@hooks/*": ["hooks/*"],
+      "@styles/*": ["styles/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [

@@ -26,7 +26,7 @@ export const docsConfig: DocsConfig = {
         },
         {
           title: "Contentlayer",
-          href: "/docs/contentlayer",
+          href: "/docs/in-progress",
           disabled: true,
         },
         {
@@ -79,7 +79,7 @@ export const docsConfig: DocsConfig = {
           disabled: true,
         },
         {
-          title: "Database with Prisma",
+          title: "Database with MongoDB",
           href: "/docs/in-progress",
           disabled: true,
         },
