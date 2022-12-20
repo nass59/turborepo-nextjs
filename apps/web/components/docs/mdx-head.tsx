@@ -5,13 +5,13 @@ import { z } from "zod";
 
 interface MdxHeadProps {
   params: {
-    slug?: string[];
+    slug: string;
   };
   og?: z.infer<typeof ogImageSchema>;
 }
 
 export default function MdxHead({ params, og }: MdxHeadProps) {
-  const slug = params?.slug?.join("/") || "";
+  const { slug } = params;
   const mdxDoc = allDocuments.find((doc) => doc.slug === slug);
 
   if (!mdxDoc) {

@@ -17,7 +17,7 @@ export default function Head({ params }: HeadProps) {
 
   return (
     <MdxHead
-      params={params}
+      params={{ slug }}
       og={{
         heading: doc.description || "",
         type: "Documentation",
