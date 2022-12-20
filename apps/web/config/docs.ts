@@ -30,6 +30,14 @@ export const docsConfig: DocsConfig = {
           disabled: true,
         },
         {
+          title: "Components",
+          href: "/docs/documentation/components",
+        },
+        {
+          title: "Code Blocks",
+          href: "/docs/documentation/code-blocks",
+        },
+        {
           title: "Style Guide",
           href: "/docs/documentation/style-guide",
         },
