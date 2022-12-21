@@ -5,9 +5,9 @@ import { withContentlayer } from "next-contentlayer";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  transpilePackages: ["ui"],
   experimental: {
     appDir: true,
-    transpilePackages: ["ui"],
     fontLoaders: [
       { loader: "@next/font/google", options: { subsets: ["latin"] } },
     ],

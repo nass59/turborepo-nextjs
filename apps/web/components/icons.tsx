@@ -4,6 +4,7 @@ import {
   ChevronRight,
   ConciergeBell,
   Github,
+  Loader2,
   Rocket,
   X,
 } from "lucide-react";
@@ -18,4 +19,5 @@ export const Icons = {
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
   github: Github,
+  spinner: Loader2,
 };
