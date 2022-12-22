@@ -10,6 +10,7 @@ import { Toaster } from "@components/toast";
 
 const fontSans = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
 });
 
 interface RootLayoutProps {

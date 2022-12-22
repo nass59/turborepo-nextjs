@@ -1,3 +1,5 @@
+import { Icons } from "@components/icons";
+
 export type NavItem = {
   title: string;
   href: string;
@@ -9,7 +11,10 @@ export type MainNavItem = NavItem;
 
 export type SidebarNavItem = {
   title: string;
-  items: NavItem[];
+  items?: NavItem[];
+  href?: string;
+  icon?: keyof typeof Icons;
+  disabled?: boolean;
 };
 
 export type SiteConfig = {
@@ -27,6 +32,11 @@ export type MarketingConfig = {
 };
 
 export type DocsConfig = {
+  mainNav: MainNavItem[];
+  sidebarNav: SidebarNavItem[];
+};
+
+export type DashboardConfig = {
   mainNav: MainNavItem[];
   sidebarNav: SidebarNavItem[];
 };

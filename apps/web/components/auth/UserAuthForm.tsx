@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { userAuthSchema } from "@lib/validation/userAuthSchema";
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { z } from "zod";
 import { toast } from "@components/toast";
 import { signIn } from "next-auth/react";
@@ -25,15 +24,14 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const searchParams = useSearchParams();
 
   const onSubmit = async (data: FormData) => {
     setIsLoading(true);
 
     return toast({
-      title: "Check your email",
-      message: "We sent you a login link. Be sure to check your spam too.",
-      type: "success",
+      title: "Not Implemented yet!",
+      message: "Sorry my friend this feature is not mplemented yet.",
+      type: "error",
     });
   };
 
@@ -57,7 +55,7 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
               {...register("email")}
             />
             {errors?.email && (
-              <p className="px-1 text-xs text-red-600">
+              <p className="px-1 pb-2 text-xs text-red-600">
                 {errors.email.message}
               </p>
             )}

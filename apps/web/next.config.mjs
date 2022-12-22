@@ -5,7 +5,6 @@ import { withContentlayer } from "next-contentlayer";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["ui"],
   experimental: {
     appDir: true,
     fontLoaders: [
@@ -17,6 +16,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "turborepo-nextjs.vercel.app",
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
       },
     ],
   },

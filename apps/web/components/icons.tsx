@@ -1,11 +1,15 @@
 import {
-  ArrowLeft,
   ChevronLeft,
   ChevronRight,
   ConciergeBell,
+  File,
+  FileText,
   Github,
+  Image,
   Loader2,
   Rocket,
+  Settings,
+  User,
   X,
 } from "lucide-react";
 import type { Icon as LucideIcon } from "lucide-react";
@@ -20,4 +24,9 @@ export const Icons = {
   chevronRight: ChevronRight,
   github: Github,
   spinner: Loader2,
+  post: FileText,
+  page: File,
+  media: Image,
+  settings: Settings,
+  user: User,
 };

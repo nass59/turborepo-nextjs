@@ -19,7 +19,10 @@ export const DocsSidebarNav = ({ items }: DocsSidebarNavProps) => {
           <h4 className="mb-1 ml-1 px-2 py-1 text-sm font-medium">
             {item.title}
           </h4>
-          <DocsSidebarNavItem items={item.items} pathname={pathname || ""} />
+          <DocsSidebarNavItem
+            items={item.items || []}
+            pathname={pathname || ""}
+          />
         </div>
       ))}
     </div>
