@@ -7,6 +7,7 @@ import {
   Github,
   Image,
   Loader2,
+  Plus,
   Rocket,
   Settings,
   User,
@@ -29,4 +30,5 @@ export const Icons = {
   media: Image,
   settings: Settings,
   user: User,
+  add: Plus,
 };

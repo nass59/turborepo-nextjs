@@ -1,7 +1,61 @@
-export default function Page() {
+import { redirect } from "next/navigation";
+import { getCurrentUser } from "@lib/sessions";
+import { authOptions } from "@lib/auth";
+import { DashboardShell } from "@components/dashboard/shell";
+import { DashboardHeader } from "@components/dashboard/header";
+import { PostCreateButton } from "@components/dashboard/PostCreateButton";
+import { EmptyPlaceholder } from "@components/dashboard/EmptyPlaceholder";
+import { PostItem } from "@components/dashboard/PostItem";
+
+interface Post {
+  id: number;
+  title: string;
+  createdAt: string;
+}
+
+const posts: Post[] = [
+  // {
+  //   id: 1,
+  //   title: "Avatar 2, WOW!!!",
+  //   createdAt: "2022-12-15",
+  // },
+  // {
+  //   id: 2,
+  //   title: "Wednesday now on Netflix",
+  //   createdAt: "2022-02-08",
+  // },
+];
+
+export default async function Page() {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    redirect(authOptions.pages?.signIn || "/login");
+  }
+
   return (
-    <div>
-      <h1>Dashboard</h1>
-    </div>
+    <DashboardShell>
+      <DashboardHeader heading="Posts" text="Create and manage posts.">
+        <PostCreateButton />
+      </DashboardHeader>
+      <div>
+        {posts?.length ? (
+          <div className="border rounded-md border-slate-200 divide-y divide-neutral-200">
+            {posts.map((post) => (
+              <PostItem key={post.id} post={post} />
+            ))}
+          </div>
+        ) : (
+          <EmptyPlaceholder>
+            <EmptyPlaceholder.Icon name="post" />
+            <EmptyPlaceholder.Title>No posts created</EmptyPlaceholder.Title>
+            <EmptyPlaceholder.Description>
+              You don&apos;t have any posts yet. Start creating content.
+            </EmptyPlaceholder.Description>
+            <PostCreateButton className="border-slate-200 bg-white text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2" />
+          </EmptyPlaceholder>
+        )}
+      </div>
+    </DashboardShell>
   );
 }
