@@ -11,12 +11,12 @@ export const PostCreateButton = ({
   return (
     <button
       className={cn(
-        "relative inline-flex h-9 rounded-md border border-transparent bg-slate-900 text-white items-center mt-1 px-4 text-sm font-medium hover:bg-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2",
+        "relative mt-1 inline-flex h-9 items-center rounded-md border border-transparent bg-slate-900 px-4 text-sm font-medium text-white hover:bg-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2",
         className
       )}
       {...props}
     >
-      <Icons.add className="mr-2 w-4 h-4" />
+      <Icons.add className="mr-2 h-4 w-4" />
       New post
     </button>
   );

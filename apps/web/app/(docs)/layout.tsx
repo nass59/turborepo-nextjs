@@ -7,7 +7,7 @@ interface DocsLayoutProps {
 
 export default function DocsLayout({ children }: DocsLayoutProps) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <DocsHeader />
       <div className="container flex-1">{children}</div>
       <Footer />

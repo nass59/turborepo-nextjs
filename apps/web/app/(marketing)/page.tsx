@@ -14,7 +14,7 @@ export default function Page() {
     <>
       <section className="container grid items-center justify-center gap-6 pt-6 pb-8 md:pt-10 md:pb-12 lg:pt-16 lg:pb-24">
         <div className="mx-auto flex flex-col items-center gap-4 lg:w-[52rem]">
-          <h1 className="text-3xl font-bold items-start leading-[1.1] tracking-tighter sm:text-5xl md:text-6xl text-slate-800 pt-10">
+          <h1 className="items-start pt-10 text-3xl font-bold leading-[1.1] tracking-tighter text-slate-800 sm:text-5xl md:text-6xl">
             Hello World !
           </h1>
 
@@ -31,7 +31,7 @@ export default function Page() {
 
       <section className="container grid justify-center gap-6 py-8 md:py-12 lg:py-24">
         <div className="mx-auto flex flex-col gap-4 md:max-w-[56rem]">
-          <h2 className="text-3xl font-bold leading-[1.1] tracking-tighter sm:text-3xl md:text-6xl text-slate-800">
+          <h2 className="text-3xl font-bold leading-[1.1] tracking-tighter text-slate-800 sm:text-3xl md:text-6xl">
             Features
           </h2>
           <p className="leading-normal text-slate-700 sm:text-lg sm:leading-7">
@@ -94,7 +94,7 @@ export default function Page() {
               href={siteConfig.links.github}
               target="_blank"
               rel="noreferrer"
-              className="relative inline-flex items-center h-11 border border-transparent rounded-md border-slate-200 bg-slate-800 px-8 py-2 text-white font-medium hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:ring-offset-2"
+              className="relative inline-flex h-11 items-center rounded-md border border-transparent border-slate-200 bg-slate-800 px-8 py-2 font-medium text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:ring-offset-2"
             >
               Github
             </Link>

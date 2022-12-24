@@ -29,7 +29,7 @@ export const Card = ({
       {href && (
         <Link
           href={disabled ? "#" : href}
-          className="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2 rounded-lg"
+          className="absolute inset-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2"
         >
           <span className="sr-only">view</span>
         </Link>

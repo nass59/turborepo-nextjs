@@ -12,12 +12,12 @@ export const Help = () => {
       <div>
         <Popover>
           <Popover.Trigger className="fixed right-4 bottom-4 inline-flex h-10 w-10 items-center justify-center rounded-full border bg-slate-900 text-white">
-            <Icons.bell className="w-5 h-5" />
+            <Icons.bell className="h-5 w-5" />
             <span className="sr-only">Toggle</span>
           </Popover.Trigger>
           <Popover.Portal>
-            <Popover.Content className="bg-slate-900 p-4 mb-1 text-sm text-white">
-              <div className="grid gap-4 w-[300px]">
+            <Popover.Content className="mb-1 bg-slate-900 p-4 text-sm text-white">
+              <div className="grid w-[300px] gap-4">
                 <Image
                   src={OgImage}
                   alt="Screenshot"

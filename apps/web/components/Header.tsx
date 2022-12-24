@@ -11,7 +11,7 @@ export const Header = () => {
         <nav className="flex gap-2">
           <Link
             href="/login"
-            className="relative inline-flex h-8 bg-yellow-400 border border-transparent rounded-md px-6 py-1 text-sm text-slate-800 font-semibold hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2"
+            className="relative inline-flex h-8 rounded-md border border-transparent bg-yellow-400 px-6 py-1 text-sm font-semibold text-slate-800 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2"
           >
             Login
           </Link>
@@ -19,7 +19,7 @@ export const Header = () => {
             href={siteConfig.links.github}
             target="_blank"
             rel="noreferrer"
-            className="relative inline-flex h-8 bg-slate-800 border border-transparent rounded-md px-6 py-1 text-sm text-white font-semibold hover:bg-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2"
+            className="relative inline-flex h-8 rounded-md border border-transparent bg-slate-800 px-6 py-1 text-sm font-semibold text-white hover:bg-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2"
           >
             Github
           </Link>

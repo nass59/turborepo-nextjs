@@ -8,7 +8,7 @@ export const Avatar = ({ className, ...props }: AvatarProps) => {
   return (
     <AvatarPrimitive.Root
       className={cn(
-        "flex w-[32px] h-[32px] items-center justify-center overflow-hidden rounded-full bg-slate-100",
+        "flex h-[32px] w-[32px] items-center justify-center overflow-hidden rounded-full bg-slate-100",
         className
       )}
       {...props}

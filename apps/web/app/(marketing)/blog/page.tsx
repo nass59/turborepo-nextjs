@@ -38,7 +38,7 @@ export default async function Page() {
                   width={587}
                   height={587}
                   priority={index <= 1}
-                  className="border border-slate-200 rounded-md bg-slate-800 transition-colors group-hover:border-green-600"
+                  className="rounded-md border border-slate-200 bg-slate-800 transition-colors group-hover:border-green-600"
                 />
               )}
               <h2 className="text-2xl font-extrabold">{post.title}</h2>
@@ -52,7 +52,7 @@ export default async function Page() {
               )}
               <Link
                 href={post.url}
-                className="absolute inset-0 -top-2 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2 rounded-md"
+                className="absolute inset-0 -top-2 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2"
               >
                 <span className="sr-only">View Article</span>
               </Link>

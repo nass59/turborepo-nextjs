@@ -35,7 +35,7 @@ export default async function Page({ params }: PageProps) {
         href="/blog"
         className="absolute top-14 -left-[200px] hidden items-center justify-center text-sm font-medium text-slate-600 hover:text-slate-900 xl:inline-flex"
       >
-        <Icons.chevronLeft className="mr-2 w-4 h-4" />
+        <Icons.chevronLeft className="mr-2 h-4 w-4" />
         See all posts
       </Link>
       <div>

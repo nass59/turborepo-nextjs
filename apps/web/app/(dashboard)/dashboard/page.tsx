@@ -40,7 +40,7 @@ export default async function Page() {
       </DashboardHeader>
       <div>
         {posts?.length ? (
-          <div className="border rounded-md border-slate-200 divide-y divide-neutral-200">
+          <div className="divide-y divide-neutral-200 rounded-md border border-slate-200">
             {posts.map((post) => (
               <PostItem key={post.id} post={post} />
             ))}

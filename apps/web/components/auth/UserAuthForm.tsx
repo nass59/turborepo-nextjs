@@ -65,7 +65,7 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
             disabled={isLoading}
           >
             {isLoading && (
-              <Icons.spinner className="mr-2 w-4 h-4 animate-spin" />
+              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
             Sign In with Email
           </button>
@@ -85,7 +85,7 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
         disabled={isLoading}
         onClick={() => signIn("github")}
       >
-        <Icons.github className="mr-2 w-4 h-4 fill-black" />
+        <Icons.github className="mr-2 h-4 w-4 fill-black" />
         Github
       </button>
     </div>

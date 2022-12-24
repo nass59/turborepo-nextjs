@@ -14,7 +14,7 @@ interface UserAccountNavProps extends React.HTMLAttributes<HTMLElement> {
 export const UserAccountNav = ({ user }: UserAccountNavProps) => {
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger className="flex items-center gap-2 rounded-full  overflow-hidden focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 focus-visible:outline-none">
+      <DropdownMenu.Trigger className="flex items-center gap-2 overflow-hidden  rounded-full focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 focus-visible:outline-none">
         <UserAvatar user={{ name: user.name, image: user.image }} />
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>

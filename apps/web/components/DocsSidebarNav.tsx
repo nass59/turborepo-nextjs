@@ -39,7 +39,7 @@ export const DocsSidebarNavItem = ({
   pathname,
 }: DocsSidebarNavItemsProps) => {
   return items.length ? (
-    <div className="grid grid-flow-row auto-rows-max text-sm pl-1">
+    <div className="grid grid-flow-row auto-rows-max pl-1 text-sm">
       {items.map((item, index) => (
         <Link
           key={index}

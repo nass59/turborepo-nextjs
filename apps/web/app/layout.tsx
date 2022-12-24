@@ -22,7 +22,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html
       lang="en"
       className={cn(
-        "bg-white font-sans text-slate-900 antialiased scroll-smooth",
+        "scroll-smooth bg-white font-sans text-slate-900 antialiased",
         fontSans.variable
       )}
     >

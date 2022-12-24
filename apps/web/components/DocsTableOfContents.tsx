@@ -54,7 +54,7 @@ const Tree = ({ tree, level = 1, activeItem }: TreeProps) => {
               className={cn(
                 "inline-block no-underline",
                 item.url === `#${activeItem}`
-                  ? "text-slate-900 font-medium"
+                  ? "font-medium text-slate-900"
                   : "text-sm text-slate-600 hover:text-slate-900"
               )}
             >

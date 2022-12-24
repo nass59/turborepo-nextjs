@@ -17,7 +17,7 @@ export function MobileNav({ items, children, close }: MobileNavProps) {
   useLockBody();
 
   return (
-    <div className="fixed inset-0 top-16 z-50 grid h-[calc(100vh)] grid-flow-row auto-rows-max overflow-auto pb-20 border-t border-t-slate-200 shadow-md md:hidden slide-in-from-bottom-80 animate-in">
+    <div className="fixed inset-0 top-16 z-50 grid h-[calc(100vh)] grid-flow-row auto-rows-max overflow-auto border-t border-t-slate-200 pb-20 shadow-md animate-in slide-in-from-bottom-80 md:hidden">
       <div className="relative z-20 grid gap-6 rounded-md bg-white p-4 shadow-md">
         <Link href="/" className="flex items-center space-x-2" onClick={close}>
           <Icons.logo />
@@ -31,7 +31,7 @@ export function MobileNav({ items, children, close }: MobileNavProps) {
               href={item.disabled ? "#" : item.href}
               onClick={close}
               className={cn(
-                "flex items-center w-full p-2 text-sm font-medium hover:underline",
+                "flex w-full items-center p-2 text-sm font-medium hover:underline",
                 item.disabled && "cursor-not-allowed opacity-60"
               )}
             >
