@@ -13,7 +13,10 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
     "eslint-config-custom": "workspace:0.0.0",
+    "husky": "^8.0.2",
     "prettier": "latest",
     "prettier-plugin-tailwindcss": "^0.2.1",
     "turbo": "latest"
