@@ -1,6 +1,7 @@
 import { Skeleton } from "@components/Skeleton";
 import { formatDate } from "@lib/utils";
 import Link from "next/link";
+import { PostOperations } from "./PostOperations";
 
 interface PostItemProps {
   post: {
@@ -21,6 +22,7 @@ export const PostItem = ({ post }: PostItemProps) => {
           <p className="text-sm text-slate-600">{formatDate(post.createdAt)}</p>
         </div>
       </div>
+      <PostOperations post={{ id: post.id, title: post.title }} />
     </div>
   );
 };

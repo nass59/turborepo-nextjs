@@ -8,9 +8,11 @@ import {
   Github,
   Image,
   Loader2,
+  MoreVertical,
   Plus,
   Rocket,
   Settings,
+  Trash,
   User,
   X,
 } from "lucide-react";
@@ -33,4 +35,6 @@ export const Icons = {
   user: User,
   add: Plus,
   warning: AlertTriangle,
+  ellipsis: MoreVertical,
+  trash: Trash,
 };

@@ -14,16 +14,16 @@ interface Post {
 }
 
 const posts: Post[] = [
-  // {
-  //   id: 1,
-  //   title: "Avatar 2, WOW!!!",
-  //   createdAt: "2022-12-15",
-  // },
-  // {
-  //   id: 2,
-  //   title: "Wednesday now on Netflix",
-  //   createdAt: "2022-02-08",
-  // },
+  {
+    id: 1,
+    title: "Avatar 2, WOW!!!",
+    createdAt: "2022-12-15",
+  },
+  {
+    id: 2,
+    title: "Wednesday now on Netflix",
+    createdAt: "2022-02-08",
+  },
 ];
 
 export default async function Page() {

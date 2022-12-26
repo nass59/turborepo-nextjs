@@ -31,6 +31,14 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       return res.status(500).end();
     }
   }
+
+  if (req.method === "DELETE") {
+    try {
+      return res.status(204).end();
+    } catch (error) {
+      return res.status(500).end();
+    }
+  }
 }
 
-export default withMethods(["PATCH"], handler);
+export default withMethods(["PATCH", "DELETE"], handler);
