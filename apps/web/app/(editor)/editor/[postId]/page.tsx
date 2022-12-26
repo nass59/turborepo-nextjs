@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getCurrentUser } from "@lib/sessions";
 import { authOptions } from "@lib/auth";
 import { Editor } from "@components/dashboard/Editor";
@@ -19,6 +19,10 @@ export default async function Page({ params }: PageProps) {
     title: "My new post",
     content: {},
   };
+
+  if (!post) {
+    notFound();
+  }
 
   return <Editor post={post} />;
 }

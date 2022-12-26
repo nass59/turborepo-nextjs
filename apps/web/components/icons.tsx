@@ -1,4 +1,5 @@
 import {
+  AlertTriangle,
   ChevronLeft,
   ChevronRight,
   ConciergeBell,
@@ -31,4 +32,5 @@ export const Icons = {
   settings: Settings,
   user: User,
   add: Plus,
+  warning: AlertTriangle,
 };

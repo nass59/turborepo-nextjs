@@ -30,6 +30,7 @@ export const Editor = ({ post }: EditorProps) => {
   const ref = useRef<EditorJS>();
   const router = useRouter();
   const [isMounted, setIsMounted] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   const initEditor = async () => {
     const EditorJS = (await import("@editorjs/editorjs")).default;
@@ -88,7 +89,30 @@ export const Editor = ({ post }: EditorProps) => {
     }
   }, [isMounted]);
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
+    setIsSaving(true);
+
+    const blocks = await ref.current?.save();
+
+    const response = await fetch(`/api/posts/new-post`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: data.title,
+        content: blocks,
+      }),
+    });
+
+    setIsSaving(false);
+
+    if (!response?.ok) {
+      return toast({
+        title: "Something went wrong.",
+        message: "Your post was not saved. Please try again.",
+        type: "error",
+      });
+    }
+
     router.refresh();
 
     return toast({
@@ -115,11 +139,15 @@ export const Editor = ({ post }: EditorProps) => {
                 Back
               </>
             </Link>
+            <p className="text-sm text-slate-600">Draft</p>
           </div>
           <button
             type="submit"
             className="hover:bg-brand-400 focus:ring-brand-500 relative inline-flex h-9 items-center rounded-md border border-transparent bg-slate-900 px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2"
           >
+            {isSaving && (
+              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+            )}
             <span>Save</span>
           </button>
         </div>
