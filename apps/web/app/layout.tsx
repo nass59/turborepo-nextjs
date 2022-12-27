@@ -1,6 +1,6 @@
 import { Inter } from "@next/font/google";
 
-import "tailwindcss/tailwind.css";
+import "@styles/global.css";
 
 import { cn } from "@lib/utils";
 import { Help } from "@components/Help";

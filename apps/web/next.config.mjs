@@ -5,6 +5,7 @@ import { withContentlayer } from "next-contentlayer";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  swcMinify: true,
   experimental: {
     appDir: true,
     fontLoaders: [

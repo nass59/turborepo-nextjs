@@ -5,6 +5,7 @@ import {
   ConciergeBell,
   File,
   FileText,
+  FolderTree,
   Github,
   Image,
   Loader2,
@@ -37,4 +38,5 @@ export const Icons = {
   warning: AlertTriangle,
   ellipsis: MoreVertical,
   trash: Trash,
+  tree: FolderTree,
 };

@@ -1,5 +1,6 @@
 import { DocsSidebarNav } from "@components/DocsSidebarNav";
 import { docsConfig } from "@config/docs";
+import { Breadcrumb } from "@ui/Breadcrumb";
 
 interface DocsLayoutProps {
   children: React.ReactNode;
@@ -11,7 +12,12 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
       <aside className="fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full flex-shrink-0 overflow-y-auto border-r border-r-slate-100 py-6 pr-2 md:sticky md:block lg:py-10">
         <DocsSidebarNav items={docsConfig.sidebarNav} />
       </aside>
-      {children}
+      <div>
+        <div className="py-4">
+          <Breadcrumb />
+        </div>
+        {children}
+      </div>
     </div>
   );
 }
