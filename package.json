@@ -17,9 +17,9 @@
     "@commitlint/config-conventional": "^17.3.0",
     "eslint-config-custom": "workspace:0.0.0",
     "husky": "^8.0.2",
-    "prettier": "latest",
+    "prettier": "^2.8.1",
     "prettier-plugin-tailwindcss": "^0.2.1",
-    "turbo": "latest"
+    "turbo": "^1.6.3"
   },
   "engines": {
     "node": ">=16.0.0"
