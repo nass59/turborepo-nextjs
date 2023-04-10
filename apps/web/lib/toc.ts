@@ -1,6 +1,6 @@
 import { remark } from "remark";
 import { toc } from "mdast-util-toc";
-import { List, Node } from "mdast-util-toc/lib/contents";
+import { Node } from "mdast-util-toc/lib/contents";
 import { visit } from "unist-util-visit";
 
 interface Item {
