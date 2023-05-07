@@ -8,7 +8,7 @@ import { postSchema } from "@lib/validation/post";
 import Link from "next/link";
 import TextareaAutosize from "react-textarea-autosize";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -32,7 +32,7 @@ export const Editor = ({ post }: EditorProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
-  const initEditor = async () => {
+  const initEditor = useCallback(async () => {
     const EditorJS = (await import("@editorjs/editorjs")).default;
     const Header = (await import("@editorjs/header")).default;
     // @ts-ignore
@@ -70,7 +70,7 @@ export const Editor = ({ post }: EditorProps) => {
         },
       });
     }
-  };
+  }, [post]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -87,7 +87,7 @@ export const Editor = ({ post }: EditorProps) => {
         ref.current = undefined;
       };
     }
-  }, [isMounted]);
+  }, [isMounted, initEditor]);
 
   const onSubmit = async (data: FormData) => {
     setIsSaving(true);
