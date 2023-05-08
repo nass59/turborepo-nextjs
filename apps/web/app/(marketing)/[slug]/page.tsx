@@ -1,23 +1,23 @@
-import { allPages } from "contentlayer/generated";
-import { notFound } from "next/navigation";
-import { Mdx } from "@components/docs/mdx";
+import { allPages } from "contentlayer/generated"
+import { notFound } from "next/navigation"
+import { Mdx } from "@components/docs/mdx"
 
 interface PageProps {
   params: {
-    slug: string;
-  };
+    slug: string
+  }
 }
 
 export async function generateStaticParams() {
-  return allPages.map((page) => ({ slug: page.slug }));
+  return allPages.map((page) => ({ slug: page.slug }))
 }
 
 export default async function Page({ params }: PageProps) {
-  const { slug } = params;
-  const page = allPages.find((page) => page.slug === slug);
+  const { slug } = params
+  const page = allPages.find((page) => page.slug === slug)
 
   if (!page) {
-    notFound();
+    notFound()
   }
 
   return (
@@ -34,5 +34,5 @@ export default async function Page({ params }: PageProps) {
       <hr className="my-4 border-slate-200" />
       <Mdx code={page.body.code} />
     </article>
-  );
+  )
 }

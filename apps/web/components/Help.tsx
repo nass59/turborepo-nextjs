@@ -1,17 +1,17 @@
-"use client";
+"use client"
 
-import { Popover } from "@components/Popover";
-import { Icons } from "@components/icons";
-import { siteConfig } from "@config/site";
-import Image from "next/image";
-import OgImage from "public/og-light.jpg";
+import { Popover } from "@components/Popover"
+import { Icons } from "@components/icons"
+import { siteConfig } from "@config/site"
+import Image from "next/image"
+import OgImage from "public/og-light.jpg"
 
 export const Help = () => {
   return (
     <div>
       <div>
         <Popover>
-          <Popover.Trigger className="fixed right-4 bottom-4 inline-flex h-10 w-10 items-center justify-center rounded-full border bg-slate-900 text-white">
+          <Popover.Trigger className="fixed bottom-4 right-4 inline-flex h-10 w-10 items-center justify-center rounded-full border bg-slate-900 text-white">
             <Icons.bell className="h-5 w-5" />
             <span className="sr-only">Toggle</span>
           </Popover.Trigger>
@@ -45,5 +45,5 @@ export const Help = () => {
         </Popover>
       </div>
     </div>
-  );
-};
+  )
+}

@@ -1,11 +1,8 @@
-// @see https://beta.nextjs.org/docs/rendering/edge-and-nodejs-runtimes#global-runtime-option
-// @see https://beta.nextjs.org/docs/api-reference/next.config.js
-
-import { withContentlayer } from "next-contentlayer";
+import { withContentlayer } from "next-contentlayer"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  swcMinify: true,
+  reactStrictMode: true,
   experimental: {
     appDir: true,
     fontLoaders: [
@@ -24,6 +21,6 @@ const nextConfig = {
       },
     ],
   },
-};
+}
 
-export default withContentlayer(nextConfig);
+export default withContentlayer(nextConfig)

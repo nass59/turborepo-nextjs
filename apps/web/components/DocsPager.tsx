@@ -1,18 +1,17 @@
-import { docsConfig } from "@config/docs";
-import { Doc } from "contentlayer/generated";
-import Link from "next/link";
-import { NavItem, SidebarNavItem } from "types";
-import { Icons } from "./icons";
+import { docsConfig } from "@config/docs"
+import { Doc } from "contentlayer/generated"
+import Link from "next/link"
+import { Icons } from "./icons"
 
 interface DocsPagerProps {
-  doc: Doc;
+  doc: Doc
 }
 
 export const DocsPager = ({ doc }: DocsPagerProps) => {
-  const pager = getPagerForDoc(doc);
+  const pager = getPagerForDoc(doc)
 
   if (!pager) {
-    return null;
+    return null
   }
 
   return (
@@ -20,7 +19,7 @@ export const DocsPager = ({ doc }: DocsPagerProps) => {
       {pager?.prev && (
         <Link
           href={pager.prev.href}
-          className="inline-flex items-center justify-center rounded-lg border border-transparent bg-transparent py-2 px-3 text-center text-sm font-medium text-slate-900 hover:border-slate-200 hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-slate-200"
+          className="inline-flex items-center justify-center rounded-lg border border-transparent bg-transparent px-3 py-2 text-center text-sm font-medium text-slate-900 hover:border-slate-200 hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-slate-200"
         >
           <Icons.chevronLeft className="mr-2 h-4 w-4" />
           {pager.prev.title}
@@ -29,32 +28,32 @@ export const DocsPager = ({ doc }: DocsPagerProps) => {
       {pager?.next && (
         <Link
           href={pager.next.href}
-          className="ml-auto inline-flex items-center justify-center rounded-lg border border-transparent bg-transparent py-2 px-3 text-center text-sm font-medium text-slate-900 hover:border-slate-200 hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-slate-200"
+          className="ml-auto inline-flex items-center justify-center rounded-lg border border-transparent bg-transparent px-3 py-2 text-center text-sm font-medium text-slate-900 hover:border-slate-200 hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-slate-200"
         >
           {pager.next.title}
           <Icons.chevronRight className="ml-2 h-4 w-4" />
         </Link>
       )}
     </div>
-  );
-};
+  )
+}
 
 const getPagerForDoc = (doc: Doc) => {
-  const flattenLinks = [null, ...flatten(docsConfig.sidebarNav), null];
-  const activeIndex = flattenLinks.findIndex((link) => doc.url === link?.href);
+  const flattenLinks = [null, ...flatten(docsConfig.sidebarNav), null]
+  const activeIndex = flattenLinks.findIndex((link) => doc.url === link?.href)
 
-  const prev = activeIndex !== 0 ? flattenLinks[activeIndex - 1] : null;
+  const prev = activeIndex !== 0 ? flattenLinks[activeIndex - 1] : null
 
   const next =
     activeIndex !== flattenLinks.length - 1
       ? flattenLinks[activeIndex + 1]
-      : null;
+      : null
 
-  return { prev, next };
-};
+  return { prev, next }
+}
 
 const flatten = (links: { items?: any }[]): any => {
   return links.reduce((flat, link) => {
-    return flat.concat(link.items ? flatten(link.items) : link);
-  }, []);
-};
+    return flat.concat(link.items ? flatten(link.items) : link)
+  }, [])
+}

@@ -1,20 +1,21 @@
-import { Inter } from "@next/font/google";
+import { Inter } from "next/font/google"
 
-import "@styles/global.css";
+import "@styles/global.css"
 
-import { cn } from "@lib/utils";
-import { Help } from "@components/Help";
-import { TailwindIndicator } from "@components/tailwind-indicator";
-import { Analytics } from "@components/analytics";
-import { Toaster } from "@components/toast";
+import { Help } from "@components/Help"
+import { TailwindIndicator } from "@components/tailwind-indicator"
+import { Analytics } from "@components/analytics"
+import { Toaster } from "@components/toast"
+
+import { cn } from "@lib/utils"
 
 const fontSans = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-});
+})
 
 interface RootLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -35,5 +36,5 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Analytics />
       </body>
     </html>
-  );
+  )
 }

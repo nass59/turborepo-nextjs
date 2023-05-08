@@ -1,18 +1,18 @@
-import Link from "next/link";
-import { siteConfig } from "@config/site";
-import { Space3 } from "@components/icons/space3";
-import { NextJS } from "@components/logos/nextjs";
-import { ReactJS } from "@components/logos/reactjs";
-import { MongoDB } from "@components/logos/mongodb";
-import { TailwindCSS } from "@components/logos/tailwindcss";
-import { Auth } from "@components/logos/auth";
-import { Storybook } from "@components/logos/storybook";
-import { FeatureItem } from "@components/FeatureItem";
+import Link from "next/link"
+import { siteConfig } from "@config/site"
+import { Space3 } from "@components/icons/space3"
+import { NextJS } from "@components/logos/nextjs"
+import { ReactJS } from "@components/logos/reactjs"
+import { MongoDB } from "@components/logos/mongodb"
+import { TailwindCSS } from "@components/logos/tailwindcss"
+import { Auth } from "@components/logos/auth"
+import { Storybook } from "@components/logos/storybook"
+import { FeatureItem } from "@components/FeatureItem"
 
 export default function Page() {
   return (
     <>
-      <section className="container grid items-center justify-center gap-6 pt-6 pb-8 md:pt-10 md:pb-12 lg:pt-16 lg:pb-24">
+      <section className="container grid items-center justify-center gap-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:pb-24 lg:pt-16">
         <div className="mx-auto flex flex-col items-center gap-4 lg:w-[52rem]">
           <h1 className="items-start pt-10 text-3xl font-bold leading-[1.1] tracking-tighter text-slate-800 sm:text-5xl md:text-6xl">
             Hello World !
@@ -94,7 +94,7 @@ export default function Page() {
               href={siteConfig.links.github}
               target="_blank"
               rel="noreferrer"
-              className="relative inline-flex h-11 items-center rounded-md border border-transparent border-slate-200 bg-slate-800 px-8 py-2 font-medium text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:ring-offset-2"
+              className="relative inline-flex h-11 items-center rounded-md border border-slate-200 bg-slate-800 px-8 py-2 font-medium text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:ring-offset-2"
             >
               Github
             </Link>
@@ -102,5 +102,5 @@ export default function Page() {
         </div>
       </section>
     </>
-  );
+  )
 }

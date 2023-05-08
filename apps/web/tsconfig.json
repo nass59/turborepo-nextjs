@@ -3,27 +3,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@lib/*": [
-        "lib/*"
-      ],
-      "@components/*": [
-        "components/*"
-      ],
-      "@ui/*": [
-        "ui/*"
-      ],
-      "@config/*": [
-        "config/*"
-      ],
-      "@hooks/*": [
-        "hooks/*"
-      ],
-      "@styles/*": [
-        "styles/*"
-      ],
-      "contentlayer/generated": [
-        "./.contentlayer/generated"
-      ]
+      "@lib/*": ["lib/*"],
+      "@components/*": ["components/*"],
+      "@ui/*": ["ui/*"],
+      "@config/*": ["config/*"],
+      "@hooks/*": ["hooks/*"],
+      "@styles/*": ["styles/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [
       {
@@ -32,11 +18,6 @@
     ],
     "strictNullChecks": true
   },
-  "plugins": [
-    {
-      "name": "next"
-    }
-  ],
   "include": [
     "process.d.ts",
     "next-env.d.ts",
@@ -45,7 +26,5 @@
     ".next/types/**/*.ts",
     ".contentlayer/generated"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

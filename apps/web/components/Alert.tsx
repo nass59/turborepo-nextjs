@@ -1,21 +1,22 @@
-import { cn } from "@lib/utils";
-import * as AlertDialogPrimitives from "@radix-ui/react-alert-dialog";
-import { forwardRef } from "react";
+import { forwardRef } from "react"
+import * as AlertDialogPrimitives from "@radix-ui/react-alert-dialog"
 
-type AlertProps = AlertDialogPrimitives.AlertDialogProps;
+import { cn } from "@lib/utils"
+
+type AlertProps = AlertDialogPrimitives.AlertDialogProps
 
 export const Alert = ({ ...props }: AlertProps) => {
-  return <AlertDialogPrimitives.Root {...props} />;
-};
+  return <AlertDialogPrimitives.Root {...props} />
+}
 
 Alert.Trigger = forwardRef<
   HTMLButtonElement,
   AlertDialogPrimitives.AlertDialogTriggerProps
 >(function AlertTrigger({ ...props }, ref) {
-  return <AlertDialogPrimitives.Trigger {...props} ref={ref} />;
-});
+  return <AlertDialogPrimitives.Trigger {...props} ref={ref} />
+})
 
-Alert.Portal = AlertDialogPrimitives.Portal;
+Alert.Portal = AlertDialogPrimitives.Portal
 
 Alert.Content = forwardRef<
   HTMLDivElement,
@@ -27,7 +28,7 @@ Alert.Content = forwardRef<
         <div className="fixed inset-0 z-40 flex items-center justify-center">
           <AlertDialogPrimitives.Content
             className={cn(
-              "fixed z-50 grid w-[95vw] max-w-md scale-100 gap-4 rounded-lg bg-white p-6 opacity-100 animate-in fade-in-90 zoom-in-90 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 md:w-full",
+              "fixed z-50 grid w-[95vw] max-w-md scale-100 gap-4 rounded-lg bg-white p-6 opacity-100 animate-in fade-in-90 zoom-in-90 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75 md:w-full",
               className
             )}
             {...props}
@@ -36,14 +37,14 @@ Alert.Content = forwardRef<
         </div>
       </AlertDialogPrimitives.Overlay>
     </Alert.Portal>
-  );
-});
+  )
+})
 
-type AlertHeaderProps = React.HTMLAttributes<HTMLDivElement>;
+type AlertHeaderProps = React.HTMLAttributes<HTMLDivElement>
 
 Alert.Header = function AlertHeader({ className, ...props }: AlertHeaderProps) {
-  return <div className={cn("grid gap-1", className)} {...props} />;
-};
+  return <div className={cn("grid gap-1", className)} {...props} />
+}
 
 Alert.Title = forwardRef<
   HTMLHeadingElement,
@@ -55,8 +56,8 @@ Alert.Title = forwardRef<
       className={cn("text-lg font-semibold text-slate-900", className)}
       {...props}
     />
-  );
-});
+  )
+})
 
 Alert.Description = forwardRef<
   HTMLParagraphElement,
@@ -68,14 +69,14 @@ Alert.Description = forwardRef<
       className={cn("text-sm text-neutral-500", className)}
       {...props}
     />
-  );
-});
+  )
+})
 
 Alert.Footer = function AlertFooter({ className, ...props }: AlertHeaderProps) {
   return (
     <div className={cn("flex justify-end space-x-2", className)} {...props} />
-  );
-};
+  )
+}
 
 Alert.Cancel = forwardRef<
   HTMLButtonElement,
@@ -90,8 +91,8 @@ Alert.Cancel = forwardRef<
       )}
       {...props}
     />
-  );
-});
+  )
+})
 
 Alert.Action = forwardRef<
   HTMLButtonElement,
@@ -106,5 +107,5 @@ Alert.Action = forwardRef<
       )}
       {...props}
     />
-  );
-});
+  )
+})

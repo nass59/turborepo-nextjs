@@ -1,10 +1,10 @@
-import { docsConfig } from "@config/docs";
-import { siteConfig } from "@config/site";
-import Link from "next/link";
-import { DocsSidebarNav } from "@components/DocsSidebarNav";
-import { Icons } from "@components/icons";
-import { MainNav } from "@components/MainNav";
-import { DocsSearch } from "@components/DocsSearch";
+import { docsConfig } from "@config/docs"
+import { siteConfig } from "@config/site"
+import Link from "next/link"
+import { DocsSidebarNav } from "@components/DocsSidebarNav"
+import { Icons } from "@components/icons"
+import { MainNav } from "@components/MainNav"
+import { DocsSearch } from "@components/DocsSearch"
 
 export const DocsHeader = () => {
   return (
@@ -14,7 +14,7 @@ export const DocsHeader = () => {
           <DocsSidebarNav items={docsConfig.sidebarNav} />
         </MainNav>
         <div className="flex flex-1 items-center space-x-4 sm:justify-end">
-          <div className="flex-1 sm:flex-grow-0">
+          <div className="flex-1 sm:grow-0">
             <DocsSearch />
           </div>
           <nav className="flex space-x-4">
@@ -32,5 +32,5 @@ export const DocsHeader = () => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}

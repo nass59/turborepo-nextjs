@@ -1,39 +1,39 @@
-import { notFound } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
+import { notFound } from "next/navigation"
+import Image from "next/image"
+import Link from "next/link"
 
-import { allAuthors, allPosts } from "contentlayer/generated";
+import { allAuthors, allPosts } from "contentlayer/generated"
 
-import { formatDate } from "@lib/utils";
-import { Icons } from "@components/icons";
-import { Mdx } from "@components/docs/mdx";
+import { formatDate } from "@lib/utils"
+import { Icons } from "@components/icons"
+import { Mdx } from "@components/docs/mdx"
 
 interface PageProps {
   params: {
-    slug: string;
-  };
+    slug: string
+  }
 }
 
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({ slug: post.slug.toString() }));
+  return allPosts.map((post) => ({ slug: post.slug.toString() }))
 }
 
 export default async function Page({ params }: PageProps) {
-  const post = allPosts.find((post) => post.slug === params.slug);
+  const post = allPosts.find((post) => post.slug === params.slug)
 
   if (!post) {
-    notFound();
+    notFound()
   }
 
   const authors = post.authors.map((author) =>
     allAuthors.find(({ slug }) => slug === author)
-  );
+  )
 
   return (
     <article className="container relative max-w-3xl py-6 lg:py-10">
       <Link
         href="/blog"
-        className="absolute -left-[200px] top-14 hidden items-center justify-center text-sm font-medium text-slate-600 hover:text-slate-900 xl:inline-flex"
+        className="absolute left-[200px] top-14 hidden items-center justify-center text-sm font-medium text-slate-600 hover:text-slate-900 xl:inline-flex"
       >
         <Icons.chevronLeft className="mr-2 h-4 w-4" />
         See all posts
@@ -93,5 +93,5 @@ export default async function Page({ params }: PageProps) {
         </Link>
       </div>
     </article>
-  );
+  )
 }

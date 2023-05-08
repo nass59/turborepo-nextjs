@@ -1,13 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
-import { formatDate } from "@lib/utils";
-import { allPosts } from "contentlayer/generated";
-import { compareDesc } from "date-fns";
+import Image from "next/image"
+import Link from "next/link"
+import { formatDate } from "@lib/utils"
+import { allPosts } from "contentlayer/generated"
+import { compareDesc } from "date-fns"
 
 export default async function Page() {
   const posts = allPosts.sort((a, b) => {
-    return compareDesc(new Date(a.date), new Date(b.date));
-  });
+    return compareDesc(new Date(a.date), new Date(b.date))
+  })
 
   return (
     <div className="container max-w-4xl py-6 lg:py-10">
@@ -63,5 +63,5 @@ export default async function Page() {
         <p>No posts published</p>
       )}
     </div>
-  );
+  )
 }

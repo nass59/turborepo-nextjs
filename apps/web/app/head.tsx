@@ -1,4 +1,4 @@
-import { DefaultTags } from "@ui/DefaultTags";
+import { DefaultTags } from "@ui/DefaultTags"
 
 export default function Head() {
   return (
@@ -27,5 +27,5 @@ export default function Head() {
         content="https://turborepo-nextjs.vercel.app/og.jpg"
       />
     </>
-  );
+  )
 }

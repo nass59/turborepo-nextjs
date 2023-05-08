@@ -1,18 +1,18 @@
-"use client";
+"use client"
 
-import { Icons } from "@components/icons";
-import { cn } from "@lib/utils";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { userAuthSchema } from "@lib/validation/userAuthSchema";
-import { useState } from "react";
-import { z } from "zod";
-import { toast } from "@components/toast";
-import { signIn } from "next-auth/react";
+import { Icons } from "@components/icons"
+import { cn } from "@lib/utils"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { userAuthSchema } from "@lib/validation/userAuthSchema"
+import { useState } from "react"
+import { z } from "zod"
+import { toast } from "@components/toast"
+import { signIn } from "next-auth/react"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-type FormData = z.infer<typeof userAuthSchema>;
+type FormData = z.infer<typeof userAuthSchema>
 
 export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
   const {
@@ -21,19 +21,19 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(userAuthSchema),
-  });
+  })
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
   const onSubmit = async (data: FormData) => {
-    setIsLoading(true);
+    setIsLoading(true)
 
     return toast({
       title: "Not Implemented yet!",
       message: "Sorry my friend this feature is not mplemented yet.",
       type: "error",
-    });
-  };
+    })
+  }
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
@@ -50,7 +50,7 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
-              className="my-0 mb-2 block h-9 w-full rounded-md border border-slate-300 py-2 px-3 text-sm placeholder:text-slate-400 hover:border-slate-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-800 focus:ring-offset-1"
+              className="my-0 mb-2 block h-9 w-full rounded-md border border-slate-300 px-3 py-2 text-sm placeholder:text-slate-400 hover:border-slate-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-800 focus:ring-offset-1"
               disabled={isLoading}
               {...register("email")}
             />
@@ -89,5 +89,5 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
         Github
       </button>
     </div>
-  );
-};
+  )
+}
