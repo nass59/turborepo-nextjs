@@ -1,40 +1,41 @@
-"use client";
+"use client"
 
-import { Alert } from "@components/Alert";
-import { DropdownMenu } from "@components/DropdownMenu";
-import { Icons } from "@components/icons";
-import { toast } from "@components/toast";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState } from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+
+import { Alert } from "@components/Alert"
+import { DropdownMenu } from "@components/DropdownMenu"
+import { Icons } from "@components/icons"
+import { toast } from "@components/ui/toast"
 
 interface PostOperationsProps {
   post: {
-    id: number;
-    title: string;
-  };
+    id: number
+    title: string
+  }
 }
 
 async function deletePost(postId: string) {
   const response = await fetch(`/api/posts/${postId}`, {
     method: "DELETE",
-  });
+  })
 
   if (!response?.ok) {
     toast({
       title: "Something went wrong.",
       message: "Your post was not deleted. Please try again.",
       type: "error",
-    });
+    })
   }
 
-  return true;
+  return true
 }
 
 export const PostOperations = ({ post }: PostOperationsProps) => {
-  const router = useRouter();
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
-  const [isDeleteLoading, setIsDeleteLoading] = useState(false);
+  const router = useRouter()
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false)
+  const [isDeleteLoading, setIsDeleteLoading] = useState(false)
 
   return (
     <>
@@ -73,15 +74,15 @@ export const PostOperations = ({ post }: PostOperationsProps) => {
             <Alert.Action
               className="bg-red-600 focus:ring-red-600"
               onClick={async (event) => {
-                event.preventDefault();
-                setIsDeleteLoading(true);
+                event.preventDefault()
+                setIsDeleteLoading(true)
 
-                const deleted = await deletePost(post.id.toString());
+                const deleted = await deletePost(post.id.toString())
 
                 if (deleted) {
-                  setIsDeleteLoading(false);
-                  setShowDeleteAlert(false);
-                  router.refresh();
+                  setIsDeleteLoading(false)
+                  setShowDeleteAlert(false)
+                  router.refresh()
                 }
               }}
             >
@@ -96,5 +97,5 @@ export const PostOperations = ({ post }: PostOperationsProps) => {
         </Alert.Content>
       </Alert>
     </>
-  );
-};
+  )
+}

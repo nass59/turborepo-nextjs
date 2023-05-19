@@ -1,60 +1,61 @@
-"use client";
+"use client"
 
-import { Icons } from "@components/icons";
-import { toast } from "@components/toast";
-import EditorJS from "@editorjs/editorjs";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { postSchema } from "@lib/validation/post";
-import Link from "next/link";
-import TextareaAutosize from "react-textarea-autosize";
-import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { useCallback, useEffect, useRef, useState } from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import EditorJS from "@editorjs/editorjs"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import TextareaAutosize from "react-textarea-autosize"
+import { z } from "zod"
+
+import { postSchema } from "@lib/validation/post"
+import { Icons } from "@components/icons"
+import { toast } from "@components/ui/toast"
 
 interface EditorProps {
   post: {
-    id: number;
-    title: string;
-    content: any;
-  };
+    id: number
+    title: string
+    content: any
+  }
 }
 
-type FormData = z.infer<typeof postSchema>;
+type FormData = z.infer<typeof postSchema>
 
 export const Editor = ({ post }: EditorProps) => {
   const { register, handleSubmit } = useForm<FormData>({
     resolver: zodResolver(postSchema),
-  });
+  })
 
-  const ref = useRef<EditorJS>();
-  const router = useRouter();
-  const [isMounted, setIsMounted] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
+  const ref = useRef<EditorJS>()
+  const router = useRouter()
+  const [isMounted, setIsMounted] = useState(false)
+  const [isSaving, setIsSaving] = useState(false)
 
   const initEditor = useCallback(async () => {
-    const EditorJS = (await import("@editorjs/editorjs")).default;
-    const Header = (await import("@editorjs/header")).default;
+    const EditorJS = (await import("@editorjs/editorjs")).default
+    const Header = (await import("@editorjs/header")).default
     // @ts-ignore
-    const Embed = (await import("@editorjs/embed")).default;
+    const Embed = (await import("@editorjs/embed")).default
     // @ts-ignore
-    const Table = (await import("@editorjs/table")).default;
+    const Table = (await import("@editorjs/table")).default
     // @ts-ignore
-    const List = (await import("@editorjs/list")).default;
+    const List = (await import("@editorjs/list")).default
     // @ts-ignore
-    const Code = (await import("@editorjs/code")).default;
+    const Code = (await import("@editorjs/code")).default
     // @ts-ignore
-    const LinkTool = (await import("@editorjs/link")).default;
+    const LinkTool = (await import("@editorjs/link")).default
     // @ts-ignore
-    const InlineCode = (await import("@editorjs/inline-code")).default;
+    const InlineCode = (await import("@editorjs/inline-code")).default
 
-    const body = postSchema.parse(post);
+    const body = postSchema.parse(post)
 
     if (!ref.current) {
       const editor = new EditorJS({
         holder: "editor",
         onReady() {
-          ref.current = editor;
+          ref.current = editor
         },
         placeholder: "Type here to write your post...",
         data: body.content,
@@ -68,31 +69,31 @@ export const Editor = ({ post }: EditorProps) => {
           table: Table,
           embed: Embed,
         },
-      });
+      })
     }
-  }, [post]);
+  }, [post])
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setIsMounted(true);
+      setIsMounted(true)
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
     if (isMounted) {
-      initEditor();
+      initEditor()
 
       return () => {
-        ref.current?.destroy();
-        ref.current = undefined;
-      };
+        ref.current?.destroy()
+        ref.current = undefined
+      }
     }
-  }, [isMounted, initEditor]);
+  }, [isMounted, initEditor])
 
   const onSubmit = async (data: FormData) => {
-    setIsSaving(true);
+    setIsSaving(true)
 
-    const blocks = await ref.current?.save();
+    const blocks = await ref.current?.save()
 
     const response = await fetch(`/api/posts/new-post`, {
       method: "PATCH",
@@ -101,28 +102,28 @@ export const Editor = ({ post }: EditorProps) => {
         title: data.title,
         content: blocks,
       }),
-    });
+    })
 
-    setIsSaving(false);
+    setIsSaving(false)
 
     if (!response?.ok) {
       return toast({
         title: "Something went wrong.",
         message: "Your post was not saved. Please try again.",
         type: "error",
-      });
+      })
     }
 
-    router.refresh();
+    router.refresh()
 
     return toast({
       message: "Your post has been saved",
       type: "success",
-    });
-  };
+    })
+  }
 
   if (!isMounted) {
-    return null;
+    return null
   }
 
   return (
@@ -171,5 +172,5 @@ export const Editor = ({ post }: EditorProps) => {
         </div>
       </div>
     </form>
-  );
-};
+  )
+}

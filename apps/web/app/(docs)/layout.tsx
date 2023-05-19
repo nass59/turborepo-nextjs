@@ -1,8 +1,8 @@
-import { DocsHeader } from "@components/DocsHeader";
-import { Footer } from "@components/Footer";
+import { DocsHeader } from "@components/DocsHeader"
+import { SiteFooter } from "@components/site-footer"
 
 interface DocsLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export default function DocsLayout({ children }: DocsLayoutProps) {
@@ -10,7 +10,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
     <div className="flex min-h-screen flex-col">
       <DocsHeader />
       <div className="container flex-1">{children}</div>
-      <Footer />
+      <SiteFooter />
     </div>
-  );
+  )
 }

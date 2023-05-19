@@ -1,20 +1,19 @@
-import Link from "next/link";
+import Link from "next/link"
+import { useLockBody } from "@hooks/use-lock-body"
 
-import { MainNavItem } from "types";
-
-import { cn } from "@lib/utils";
-import { useLockBody } from "@hooks/use-lock-body";
-import { siteConfig } from "@config/site";
-import { Icons } from "@components/icons";
+import { MainNavItem } from "types"
+import { siteConfig } from "@config/site"
+import { cn } from "@lib/utils"
+import { Icons } from "@components/icons"
 
 interface MobileNavProps {
-  items?: MainNavItem[];
-  children?: React.ReactNode;
-  close: () => false | void;
+  items?: MainNavItem[]
+  children?: React.ReactNode
+  close: () => false | void
 }
 
 export function MobileNav({ items, children, close }: MobileNavProps) {
-  useLockBody();
+  useLockBody()
 
   return (
     <div className="fixed inset-0 top-16 z-50 grid h-[calc(100vh)] grid-flow-row auto-rows-max overflow-auto border-t border-t-slate-200 pb-20 shadow-md animate-in slide-in-from-bottom-80 md:hidden">
@@ -42,5 +41,5 @@ export function MobileNav({ items, children, close }: MobileNavProps) {
         {children}
       </div>
     </div>
-  );
+  )
 }

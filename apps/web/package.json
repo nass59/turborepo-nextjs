@@ -28,6 +28,7 @@
     "@radix-ui/react-popover": "^1.0.5",
     "@vercel/analytics": "^0.1.11",
     "@vercel/og": "^0.0.21",
+    "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "contentlayer": "^0.2.9",
     "date-fns": "^2.30.0",

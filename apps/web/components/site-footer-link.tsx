@@ -1,9 +1,9 @@
-interface FooterLinkProps {
-  href: string;
-  title: string;
+interface SiteFooterLinkProps {
+  href: string
+  title: string
 }
 
-export const FooterLink = ({ href, title }: FooterLinkProps) => {
+export const SiteFooterLink = ({ href, title }: SiteFooterLinkProps) => {
   return (
     <a
       href={href}
@@ -13,5 +13,5 @@ export const FooterLink = ({ href, title }: FooterLinkProps) => {
     >
       {title}
     </a>
-  );
-};
+  )
+}

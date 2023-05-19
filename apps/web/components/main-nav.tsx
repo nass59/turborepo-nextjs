@@ -1,35 +1,32 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Link from "next/link";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { useState } from "react"
+import Link from "next/link"
+import { useSelectedLayoutSegment } from "next/navigation"
 
-import { MainNavItem } from "types";
-
-import { cn } from "@lib/utils";
-import { siteConfig } from "@config/site";
-import { Icons } from "@components/icons";
-import { MobileNav } from "@components/MobileNav";
+import { MainNavItem } from "types"
+import { siteConfig } from "@config/site"
+import { cn } from "@lib/utils"
+import { Icons } from "@components/icons"
+import { MobileNav } from "@components/mobile-nav"
 
 interface MainNavProps {
-  items?: MainNavItem[];
-  children?: React.ReactNode;
+  items?: MainNavItem[]
+  children?: React.ReactNode
 }
 
 export const MainNav = ({ items, children }: MainNavProps) => {
-  const segment = useSelectedLayoutSegment();
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const close = () => setShowMobileMenu(false);
+  const segment = useSelectedLayoutSegment()
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
+  const close = () => setShowMobileMenu(false)
 
   return (
     <div className="flex gap-6 md:gap-10">
-      <Link
-        href="/"
-        className="hidden items-center space-x-2 md:flex"
-        onClick={close}
-      >
+      <Link href="/" className="hidden items-center space-x-2 md:flex">
         <Icons.logo />
-        <span className="inline-block font-bold">{siteConfig.name}</span>
+        <span className="inline-block font-bold sm:inline-block">
+          {siteConfig.name}
+        </span>
       </Link>
 
       {items?.length ? (
@@ -39,7 +36,7 @@ export const MainNav = ({ items, children }: MainNavProps) => {
               key={index}
               href={item.disabled ? "#" : item.href}
               className={cn(
-                "flex items-center text-sm font-semibold text-slate-600",
+                "flex items-center text-lg font-semibold text-slate-600 sm:text-sm",
                 item.href.startsWith(`/${segment}`) && "text-slate-900",
                 item.disabled && "cursor-not-allowed opacity-80"
               )}
@@ -58,11 +55,11 @@ export const MainNav = ({ items, children }: MainNavProps) => {
         <span className="font-bold">Menu</span>
       </button>
 
-      {showMobileMenu && (
+      {showMobileMenu && items && (
         <MobileNav items={items} close={close}>
           {children}
         </MobileNav>
       )}
     </div>
-  );
-};
+  )
+}

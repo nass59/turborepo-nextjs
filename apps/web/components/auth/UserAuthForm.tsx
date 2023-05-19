@@ -1,14 +1,15 @@
 "use client"
 
-import { Icons } from "@components/icons"
-import { cn } from "@lib/utils"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { userAuthSchema } from "@lib/validation/userAuthSchema"
 import { useState } from "react"
-import { z } from "zod"
-import { toast } from "@components/toast"
+import { zodResolver } from "@hookform/resolvers/zod"
 import { signIn } from "next-auth/react"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+
+import { cn } from "@lib/utils"
+import { userAuthSchema } from "@lib/validation/userAuthSchema"
+import { Icons } from "@components/icons"
+import { toast } from "@components/ui/toast"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 

@@ -8,11 +8,11 @@ module.exports = {
   plugins: ["tailwindcss"],
   rules: {
     "tailwindcss/no-custom-classname": "off",
-    "tailwindcss/classnames-order": "warn",
+    "tailwindcss/classnames-order": "off",
   },
   settings: {
     tailwindcss: {
-      callees: ["cn"],
+      callees: ["cn", "cva"],
     },
   },
 }

@@ -1,16 +1,16 @@
-import { Footer } from "@components/Footer";
-import { Header } from "@components/Header";
+import { MarketingHeader } from "@components/marketing-header"
+import { SiteFooter } from "@components/site-footer"
 
 interface MarketingLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
-export default function RootLayout({ children }: MarketingLayoutProps) {
+export default function MarketingLayout({ children }: MarketingLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <MarketingHeader />
       <main className="flex-1">{children}</main>
-      <Footer />
+      <SiteFooter />
     </div>
-  );
+  )
 }

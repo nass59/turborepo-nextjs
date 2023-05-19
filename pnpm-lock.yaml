@@ -82,6 +82,7 @@ importers:
       '@vercel/analytics': ^0.1.11
       '@vercel/og': ^0.0.21
       autoprefixer: ^10.4.14
+      class-variance-authority: ^0.6.0
       clsx: ^1.2.1
       contentlayer: ^0.2.9
       date-fns: ^2.30.0
@@ -137,6 +138,7 @@ importers:
       '@radix-ui/react-popover': 1.0.5_knhnagtyfncgg2hpin7s37uixq
       '@vercel/analytics': 0.1.11_react@18.2.0
       '@vercel/og': 0.0.21
+      class-variance-authority: 0.6.0_typescript@4.9.5
       clsx: 1.2.1
       contentlayer: 0.2.9_eyv24xthozbreumcs7kv7wlrge
       date-fns: 2.30.0
@@ -7577,6 +7579,18 @@ packages:
       isobject: 3.0.1
       static-extend: 0.1.2
     dev: true
+
+  /class-variance-authority/0.6.0_typescript@4.9.5:
+    resolution: {integrity: sha512-qdRDgfjx3GRb9fpwpSvn+YaidnT7IUJNe4wt5/SWwM+PmUwJUhQRk/8zAyNro0PmVfmen2635UboTjIBXXxy5A==}
+    peerDependencies:
+      typescript: '>= 4.5.5 < 6'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      clsx: 1.2.1
+      typescript: 4.9.5
+    dev: false
 
   /clean-css/5.3.2:
     resolution: {integrity: sha512-JVJbM+f3d3Q704rF4bqQ5UUyTtuJ0JRKNbTKVEeujCCBoMdkEi+V+e8oktO9qGQNSvHrFTM6JZRXrUvGR1czww==}

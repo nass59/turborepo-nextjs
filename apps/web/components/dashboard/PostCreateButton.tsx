@@ -1,10 +1,11 @@
-"use client";
+"use client"
 
-import { Icons } from "@components/icons";
-import { toast } from "@components/toast";
-import { cn } from "@lib/utils";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+
+import { cn } from "@lib/utils"
+import { Icons } from "@components/icons"
+import { toast } from "@components/ui/toast"
 
 interface PostCreateButtonProps
   extends React.HTMLAttributes<HTMLButtonElement> {}
@@ -13,11 +14,11 @@ export const PostCreateButton = ({
   className,
   ...props
 }: PostCreateButtonProps) => {
-  const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
 
   const onClick = async () => {
-    setIsLoading(true);
+    setIsLoading(true)
 
     const response = await fetch("/api/posts", {
       method: "POST",
@@ -25,25 +26,25 @@ export const PostCreateButton = ({
       body: JSON.stringify({
         title: "Untitled Post",
       }),
-    });
+    })
 
-    setIsLoading(false);
+    setIsLoading(false)
 
     if (!response?.ok) {
       return toast({
         title: "Something went wrong.",
         message: "Your post was not created. Please try again.",
         type: "error",
-      });
+      })
     }
 
-    const post = await response.json();
-    console.log("🚀 ~ file: PostCreateButton.tsx:41 ~ onClick ~ post", post);
+    const post = await response.json()
+    console.log("🚀 ~ file: PostCreateButton.tsx:41 ~ onClick ~ post", post)
 
     // force cache invalidation
-    router.refresh();
-    router.push(`/editor/new-post`);
-  };
+    router.refresh()
+    router.push(`/editor/new-post`)
+  }
 
   return (
     <button
@@ -62,5 +63,5 @@ export const PostCreateButton = ({
       )}
       New post
     </button>
-  );
-};
+  )
+}

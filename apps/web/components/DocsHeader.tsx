@@ -1,10 +1,11 @@
+import Link from "next/link"
+
 import { docsConfig } from "@config/docs"
 import { siteConfig } from "@config/site"
-import Link from "next/link"
+import { DocsSearch } from "@components/DocsSearch"
 import { DocsSidebarNav } from "@components/DocsSidebarNav"
 import { Icons } from "@components/icons"
-import { MainNav } from "@components/MainNav"
-import { DocsSearch } from "@components/DocsSearch"
+import { MainNav } from "@components/main-nav"
 
 export const DocsHeader = () => {
   return (
