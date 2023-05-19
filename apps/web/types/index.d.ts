@@ -1,42 +1,46 @@
-import { Icons } from "@components/icons";
+import { Icons } from "@components/icons"
 
 export type NavItem = {
-  title: string;
-  href: string;
-  disabled?: boolean;
-  external?: boolean;
-};
+  title: string
+  href: string
+  disabled?: boolean
+  external?: boolean
+}
 
-export type MainNavItem = NavItem;
+export type MainNavItem = NavItem
 
 export type SidebarNavItem = {
-  title: string;
-  items?: NavItem[];
-  href?: string;
-  icon?: keyof typeof Icons;
-  disabled?: boolean;
-};
+  title: string
+  items?: NavItem[]
+  href?: string
+  icon?: keyof typeof Icons
+  disabled?: boolean
+}
 
 export type SiteConfig = {
-  name: string;
+  name: string
+  description: string
+  url: string
+  ogImage: string
+  author: string
   links: {
-    twitter: string;
-    github: string;
-    terms: string;
-    privacy: string;
-  };
-};
+    twitter: string
+    github: string
+    terms: string
+    privacy: string
+  }
+}
 
 export type MarketingConfig = {
-  mainNav: MainNavItem[];
-};
+  mainNav: MainNavItem[]
+}
 
 export type DocsConfig = {
-  mainNav: MainNavItem[];
-  sidebarNav: SidebarNavItem[];
-};
+  mainNav: MainNavItem[]
+  sidebarNav: SidebarNavItem[]
+}
 
 export type DashboardConfig = {
-  mainNav: MainNavItem[];
-  sidebarNav: SidebarNavItem[];
-};
+  mainNav: MainNavItem[]
+  sidebarNav: SidebarNavItem[]
+}

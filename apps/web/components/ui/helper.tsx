@@ -1,10 +1,11 @@
 "use client"
 
-import { Popover } from "@components/Popover"
-import { Icons } from "@components/icons"
-import { siteConfig } from "@config/site"
 import Image from "next/image"
 import OgImage from "public/og-light.jpg"
+
+import { siteConfig } from "@config/site"
+import { Popover } from "@components/Popover"
+import { Icons } from "@components/icons"
 
 export const Help = () => {
   return (

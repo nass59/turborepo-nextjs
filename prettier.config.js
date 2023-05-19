@@ -18,7 +18,7 @@ module.exports = {
     "^@styles/(.*)$",
     "^[./]",
   ],
-  importOrderSeparation: true,
+  importOrderSeparation: false,
   importOrderSortSpecifiers: true,
   importOrderBuiltinModulesToTop: true,
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],

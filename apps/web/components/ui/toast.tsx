@@ -1,19 +1,20 @@
-"use client";
+"use client"
 
-import { cn } from "@lib/utils";
-import hotToast, { Toaster as HotToaster } from "react-hot-toast";
+import hotToast, { Toaster as HotToaster } from "react-hot-toast"
+
+import { cn } from "@lib/utils"
 
 interface ToastOptions {
-  title?: string;
-  message: string;
-  type?: "success" | "error" | "default";
-  duration?: number;
+  title?: string
+  message: string
+  type?: "success" | "error" | "default"
+  duration?: number
 }
 
-export const Toaster = HotToaster;
+export const Toaster = HotToaster
 
 interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
-  visible: boolean;
+  visible: boolean
 }
 
 export const Toast = ({ visible, className, ...props }: ToastProps) => {
@@ -26,14 +27,14 @@ export const Toast = ({ visible, className, ...props }: ToastProps) => {
       )}
       {...props}
     />
-  );
-};
+  )
+}
 
 interface ToastTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
 
 Toast.Title = function ToastTitle({ className, ...props }: ToastTitleProps) {
-  return <p className={cn("", className)} {...props} />;
-};
+  return <p className={cn("", className)} {...props} />
+}
 
 interface ToastDescriptionProps
   extends React.HTMLAttributes<HTMLParagraphElement> {}
@@ -42,11 +43,11 @@ Toast.Description = function ToastDescription({
   className,
   ...props
 }: ToastDescriptionProps) {
-  return <p className={cn("text-sm opacity-80", className)} {...props} />;
-};
+  return <p className={cn("text-sm opacity-80", className)} {...props} />
+}
 
 export const toast = (options: ToastOptions) => {
-  const { title, message, type = "default", duration = 3000 } = options;
+  const { title, message, type = "default", duration = 3000 } = options
 
   return hotToast.custom(
     ({ visible }) => (
@@ -62,5 +63,5 @@ export const toast = (options: ToastOptions) => {
       </Toast>
     ),
     { duration }
-  );
-};
+  )
+}

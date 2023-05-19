@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@lib/utils"
-import { toast } from "@components/toast"
+import { toast } from "@components/ui/toast"
 
 interface DocsSearchProps extends React.HTMLAttributes<HTMLFormElement> {}
 
