@@ -1,13 +1,20 @@
 import Image from "next/image"
 import Link from "next/link"
-import { formatDate } from "@lib/utils"
 import { allPosts } from "contentlayer/generated"
 import { compareDesc } from "date-fns"
 
+import { formatDate } from "@lib/utils"
+
+export const metadata = {
+  title: "Blog",
+}
+
 export default async function Page() {
-  const posts = allPosts.sort((a, b) => {
-    return compareDesc(new Date(a.date), new Date(b.date))
-  })
+  const posts = allPosts
+    .filter((post) => post.published)
+    .sort((a, b) => {
+      return compareDesc(new Date(a.date), new Date(b.date))
+    })
 
   return (
     <div className="container max-w-4xl py-6 lg:py-10">
@@ -41,20 +48,24 @@ export default async function Page() {
                   className="rounded-md border border-slate-200 bg-slate-800 transition-colors group-hover:border-green-600"
                 />
               )}
+
               <h2 className="text-2xl font-extrabold">{post.title}</h2>
+
               {post.description && (
                 <p className="text-slate-600">{post.description}</p>
               )}
+
               {post.date && (
                 <p className="text-sm text-slate-600">
                   {formatDate(post.date)}
                 </p>
               )}
+
               <Link
                 href={post.url}
                 className="absolute inset-0 -top-2 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2"
               >
-                <span className="sr-only">View Article</span>
+                <span className="sr-only">View Post</span>
               </Link>
             </article>
           ))}
