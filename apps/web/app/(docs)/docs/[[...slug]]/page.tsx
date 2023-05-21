@@ -1,31 +1,32 @@
-import { Mdx } from "@components/docs/mdx";
-import { DocsPageHeader } from "@components/DocsPageHeader";
-import { DocsPager } from "@components/DocsPager";
-import { allDocs } from "contentlayer/generated";
-import { notFound } from "next/navigation";
-import { getTableOfContents } from "@lib/toc";
-import { DocsTableOfContents } from "@components/DocsTableOfContents";
-import "@styles/mdx.css";
+import { notFound } from "next/navigation"
+import { allDocs } from "contentlayer/generated"
+
+import { getTableOfContents } from "@lib/toc"
+import { DocsPageHeader } from "@components/DocsPageHeader"
+import { DocsPager } from "@components/DocsPager"
+import { DocsTableOfContents } from "@components/DocsTableOfContents"
+import { Mdx } from "@components/mdx"
+import "@styles/mdx.css"
 
 interface PageProps {
   params: {
-    slug: string[];
-  };
+    slug: string[]
+  }
 }
 
 export async function generateStaticParams() {
-  return allDocs.map((doc) => ({ slug: doc.slug.split("/") }));
+  return allDocs.map((doc) => ({ slug: doc.slug.split("/") }))
 }
 
 export default async function Page({ params }: PageProps) {
-  const slug = params?.slug?.join("/") || "";
-  const doc = allDocs.find((doc) => doc.slug === slug);
+  const slug = params?.slug?.join("/") || ""
+  const doc = allDocs.find((doc) => doc.slug === slug)
 
   if (!doc) {
-    notFound();
+    notFound()
   }
 
-  const toc = await getTableOfContents(doc.body.raw);
+  const toc = await getTableOfContents(doc.body.raw)
 
   return (
     <main className="relative py-2 lg:gap-10 lg:py-2 xl:grid xl:grid-cols-[1fr_300px]">
@@ -41,5 +42,5 @@ export default async function Page({ params }: PageProps) {
         </div>
       </div>
     </main>
-  );
+  )
 }

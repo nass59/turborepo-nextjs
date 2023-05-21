@@ -3,8 +3,8 @@ import Image from "next/image"
 import { useMDXComponent } from "next-contentlayer/hooks"
 
 import { cn } from "@lib/utils"
-import { Callout } from "@components/docs/callout"
-import { Card } from "@components/docs/card"
+import { Callout } from "@components/callout"
+import { Card } from "@components/card"
 
 const mdxComponents = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (

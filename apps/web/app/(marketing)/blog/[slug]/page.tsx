@@ -5,8 +5,8 @@ import { notFound } from "next/navigation"
 import { allAuthors, allPosts } from "contentlayer/generated"
 
 import { absoluteUrl, formatDate } from "@lib/utils"
-import { Mdx } from "@components/docs/mdx"
 import { Icons } from "@components/icons"
+import { Mdx } from "@components/mdx"
 
 interface PageProps {
   params: {

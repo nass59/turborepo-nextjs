@@ -1,5 +1,6 @@
-import { cn } from "@lib/utils"
 import Link from "next/link"
+
+import { cn } from "@lib/utils"
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   href?: string
@@ -26,6 +27,7 @@ export const Card = ({
           {children}
         </div>
       </div>
+
       {href && (
         <Link
           href={disabled ? "#" : href}

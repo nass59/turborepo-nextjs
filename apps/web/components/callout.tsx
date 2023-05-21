@@ -1,9 +1,9 @@
-import { cn } from "@lib/utils";
+import { cn } from "@lib/utils"
 
 interface CalloutProps {
-  icon?: string;
-  children?: React.ReactNode;
-  type?: "default" | "info" | "warning" | "danger";
+  icon?: string
+  children?: React.ReactNode
+  type?: "default" | "info" | "warning" | "danger"
 }
 
 export const Callout = ({
@@ -25,5 +25,5 @@ export const Callout = ({
       {icon && <span className="mr-4 text-2xl">{icon}</span>}
       <div>{children}</div>
     </div>
-  );
-};
+  )
+}
