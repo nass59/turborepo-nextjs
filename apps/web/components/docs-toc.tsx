@@ -1,14 +1,16 @@
-"use client";
+"use client"
 
-import { useActiveItem } from "@hooks/use-active-item";
-import { useMounted } from "@hooks/use-mounted";
-import { TableOfContents } from "@lib/toc";
-import { cn } from "@lib/utils";
-import { useMemo } from "react";
+import { useMemo } from "react"
+import { useActiveItem } from "@hooks/use-active-item"
+import { useMounted } from "@hooks/use-mounted"
+
+import { TableOfContents } from "@lib/toc"
+import { cn } from "@lib/utils"
 
 interface DocsTableOfContentsProps {
-  toc: TableOfContents;
+  toc: TableOfContents
 }
+
 export const DocsTableOfContents = ({ toc }: DocsTableOfContentsProps) => {
   const itemIds = useMemo(
     () =>
@@ -20,13 +22,13 @@ export const DocsTableOfContents = ({ toc }: DocsTableOfContentsProps) => {
             .map((id) => id?.split("#")[1])
         : [],
     [toc]
-  );
+  )
 
-  const activeHeading = useActiveItem(itemIds);
-  const mounted = useMounted();
+  const activeHeading = useActiveItem(itemIds)
+  const mounted = useMounted()
 
   if (!toc?.items) {
-    return null;
+    return null
   }
 
   return mounted ? (
@@ -34,13 +36,13 @@ export const DocsTableOfContents = ({ toc }: DocsTableOfContentsProps) => {
       <p className="font-medium">On This Page</p>
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
-  ) : null;
-};
+  ) : null
+}
 
 interface TreeProps {
-  tree: TableOfContents;
-  level?: number;
-  activeItem?: string | null;
+  tree: TableOfContents
+  level?: number
+  activeItem?: string | null
 }
 
 const Tree = ({ tree, level = 1, activeItem }: TreeProps) => {
@@ -64,8 +66,8 @@ const Tree = ({ tree, level = 1, activeItem }: TreeProps) => {
               <Tree tree={item} level={level + 1} activeItem={activeItem} />
             ) : null}
           </li>
-        );
+        )
       })}
     </ul>
-  ) : null;
-};
+  ) : null
+}

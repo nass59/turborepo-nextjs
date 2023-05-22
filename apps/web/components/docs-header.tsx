@@ -2,8 +2,8 @@ import Link from "next/link"
 
 import { docsConfig } from "@config/docs"
 import { siteConfig } from "@config/site"
-import { DocsSearch } from "@components/DocsSearch"
-import { DocsSidebarNav } from "@components/DocsSidebarNav"
+import { DocsSearch } from "@components/docs-search"
+import { DocsSidebarNav } from "@components/docs-sidebar-nav"
 import { Icons } from "@components/icons"
 import { MainNav } from "@components/main-nav"
 
@@ -14,10 +14,12 @@ export const DocsHeader = () => {
         <MainNav items={docsConfig.mainNav}>
           <DocsSidebarNav items={docsConfig.sidebarNav} />
         </MainNav>
+
         <div className="flex flex-1 items-center space-x-4 sm:justify-end">
           <div className="flex-1 sm:grow-0">
             <DocsSearch />
           </div>
+
           <nav className="flex space-x-4">
             <Link
               href={siteConfig.links.github}

@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { toast } from "@hooks/use-toast"
 
 import { cn } from "@lib/utils"
 import { Icons } from "@components/icons"
-import { toast } from "@components/ui/toast"
 
 interface PostCreateButtonProps
   extends React.HTMLAttributes<HTMLButtonElement> {}
@@ -33,8 +33,7 @@ export const PostCreateButton = ({
     if (!response?.ok) {
       return toast({
         title: "Something went wrong.",
-        message: "Your post was not created. Please try again.",
-        type: "error",
+        description: "Your post was not created. Please try again.",
       })
     }
 

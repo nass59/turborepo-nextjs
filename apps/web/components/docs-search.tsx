@@ -1,7 +1,8 @@
 "use client"
 
+import { toast } from "@hooks/use-toast"
+
 import { cn } from "@lib/utils"
-import { toast } from "@components/ui/toast"
 
 interface DocsSearchProps extends React.HTMLAttributes<HTMLFormElement> {}
 
@@ -11,8 +12,7 @@ export const DocsSearch = ({ className, ...props }: DocsSearchProps) => {
 
     toast({
       title: "Not implemented",
-      message: "We're still working on the search.",
-      type: "error",
+      description: "We're still working on the search.",
     })
   }
 

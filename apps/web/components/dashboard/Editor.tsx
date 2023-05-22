@@ -5,13 +5,13 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import EditorJS from "@editorjs/editorjs"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { toast } from "@hooks/use-toast"
 import { useForm } from "react-hook-form"
 import TextareaAutosize from "react-textarea-autosize"
 import { z } from "zod"
 
 import { postSchema } from "@lib/validation/post"
 import { Icons } from "@components/icons"
-import { toast } from "@components/ui/toast"
 
 interface EditorProps {
   post: {
@@ -109,16 +109,14 @@ export const Editor = ({ post }: EditorProps) => {
     if (!response?.ok) {
       return toast({
         title: "Something went wrong.",
-        message: "Your post was not saved. Please try again.",
-        type: "error",
+        description: "Your post was not saved. Please try again.",
       })
     }
 
     router.refresh()
 
     return toast({
-      message: "Your post has been saved",
-      type: "success",
+      description: "Your post has been saved",
     })
   }
 

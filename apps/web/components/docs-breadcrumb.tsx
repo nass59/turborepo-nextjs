@@ -1,18 +1,19 @@
-"use client";
+"use client"
 
-import React from "react";
-import { Icons } from "@components/icons";
-import { usePathname } from "next/navigation";
+import React from "react"
+import { usePathname } from "next/navigation"
+
+import { Icons } from "@components/icons"
 
 export function Breadcrumb() {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
     <div className="flex h-9 items-center rounded-md bg-slate-50 px-5">
-      <Icons.tree className="h-4 w-4" />
       <div className="flex space-x-1 text-sm font-medium">
+        <Icons.tree className="h-4 w-4" />
         <div>
-          <span className="px-2 text-slate-400 opacity-60">TechShip</span>
+          <span className="px-2 text-slate-400">TechShip</span>
         </div>
         {pathname ? (
           <>
@@ -34,11 +35,11 @@ export function Breadcrumb() {
 
                     <span className="text-slate-600">/</span>
                   </React.Fragment>
-                );
+                )
               })}
           </>
         ) : null}
       </div>
     </div>
-  );
+  )
 }

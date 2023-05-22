@@ -1,6 +1,6 @@
-import { DocsSidebarNav } from "@components/DocsSidebarNav"
 import { docsConfig } from "@config/docs"
-import { Breadcrumb } from "@ui/Breadcrumb"
+import { Breadcrumb } from "@components/docs-breadcrumb"
+import { DocsSidebarNav } from "@components/docs-sidebar-nav"
 
 interface DocsLayoutProps {
   children: React.ReactNode

@@ -7,7 +7,7 @@ import { absoluteUrl, cn } from "@lib/utils"
 import { Analytics } from "@components/analytics"
 import { TailwindIndicator } from "@components/tailwind-indicator"
 import { Help } from "@components/ui/helper"
-import { Toaster } from "@components/ui/toast"
+import { Toaster } from "@components/ui/toaster"
 
 const fontSans = Inter({
   variable: "--font-inter",
@@ -95,8 +95,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         {children}
         <Analytics />
         <Help />
+        <Toaster />
         <TailwindIndicator />
-        <Toaster position="bottom-right" />
       </body>
     </html>
   )

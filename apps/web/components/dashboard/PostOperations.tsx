@@ -3,11 +3,11 @@
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { toast } from "@hooks/use-toast"
 
 import { Alert } from "@components/Alert"
 import { DropdownMenu } from "@components/DropdownMenu"
 import { Icons } from "@components/icons"
-import { toast } from "@components/ui/toast"
 
 interface PostOperationsProps {
   post: {
@@ -24,8 +24,7 @@ async function deletePost(postId: string) {
   if (!response?.ok) {
     toast({
       title: "Something went wrong.",
-      message: "Your post was not deleted. Please try again.",
-      type: "error",
+      description: "Your post was not deleted. Please try again.",
     })
   }
 

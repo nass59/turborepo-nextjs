@@ -5,6 +5,7 @@ import { allPages } from "contentlayer/generated"
 import { siteConfig } from "@config/site"
 import { absoluteUrl } from "@lib/utils"
 import { Mdx } from "@components/mdx"
+import "@styles/mdx.css"
 
 interface PageProps {
   params: {

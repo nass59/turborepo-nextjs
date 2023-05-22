@@ -1,4 +1,4 @@
-import { DocsHeader } from "@components/DocsHeader"
+import { DocsHeader } from "@components/docs-header"
 import { SiteFooter } from "@components/site-footer"
 
 interface DocsLayoutProps {

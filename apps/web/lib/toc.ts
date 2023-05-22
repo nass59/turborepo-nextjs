@@ -1,79 +1,79 @@
-import { remark } from "remark";
-import { toc } from "mdast-util-toc";
-import { Node } from "mdast-util-toc/lib/contents";
-import { visit } from "unist-util-visit";
+import { toc } from "mdast-util-toc"
+import { Node } from "mdast-util-toc/lib/contents"
+import { remark } from "remark"
+import { visit } from "unist-util-visit"
 
 interface Item {
-  title: string;
-  url: string;
-  items?: Item[];
+  title: string
+  url: string
+  items?: Item[]
 }
 
 interface Items {
-  items?: Item[];
+  items?: Item[]
 }
 
-export type TableOfContents = Items;
+export type TableOfContents = Items
 
-const textTypes = ["text", "emphasis", "strong", "inlineCode"];
+const textTypes = ["text", "emphasis", "strong", "inlineCode"]
 
 const flattenNode = (node: any) => {
-  const p: any = [];
+  const p: any = []
 
   visit(node, (node) => {
-    if (!textTypes.includes(node.type)) return;
-    p.push(node.value);
-  });
+    if (!textTypes.includes(node.type)) return
+    p.push(node.value)
+  })
 
-  return p.join(``);
-};
+  return p.join(``)
+}
 
 const getItems = (node: any, current: Item | any): Items => {
   if (!node) {
-    return {};
+    return {}
   }
 
   if (node.type === "paragraph") {
     visit(node, (item) => {
       if (item.type === "link") {
-        current.url = item.url;
-        current.title = flattenNode(node);
+        current.url = item.url
+        current.title = flattenNode(node)
       }
 
       if (item.type === "text") {
-        current.title = flattenNode(node);
+        current.title = flattenNode(node)
       }
-    });
+    })
 
-    return current;
+    return current
   }
 
   if (node.type === "list") {
-    current.items = node.children.map((i: any) => getItems(i, {}));
+    current.items = node.children.map((i: any) => getItems(i, {}))
 
-    return current;
+    return current
   }
 
   if (node.type === "listItem") {
-    const heading = getItems(node.children[0], {});
+    const heading = getItems(node.children[0], {})
 
     if (node.children.length > 1) {
-      getItems(node.children[1], heading);
+      getItems(node.children[1], heading)
     }
 
-    return heading;
+    return heading
   }
 
-  return {};
-};
+  return {}
+}
 
 const getToc = () => (node: Node, file: any) => {
-  const table = toc(node);
-  file.data = getItems(table.map, {});
-};
+  const table = toc(node)
+  file.data = getItems(table.map, {})
+}
 
 export async function getTableOfContents(content: string) {
-  const result = await remark().use(getToc).process(content);
+  const result = await remark().use(getToc).process(content)
 
-  return result.data;
+  return result.data
 }

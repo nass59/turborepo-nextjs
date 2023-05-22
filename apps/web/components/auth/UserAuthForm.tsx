@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { toast } from "@hooks/use-toast"
 import { signIn } from "next-auth/react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -9,7 +10,6 @@ import { z } from "zod"
 import { cn } from "@lib/utils"
 import { userAuthSchema } from "@lib/validation/userAuthSchema"
 import { Icons } from "@components/icons"
-import { toast } from "@components/ui/toast"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -31,8 +31,7 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
 
     return toast({
       title: "Not Implemented yet!",
-      message: "Sorry my friend this feature is not mplemented yet.",
-      type: "error",
+      description: "Sorry my friend this feature is not mplemented yet.",
     })
   }
 
