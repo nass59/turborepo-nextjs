@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useSearchParams } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { toast } from "@hooks/use-toast"
 import { signIn } from "next-auth/react"
@@ -10,6 +11,9 @@ import { z } from "zod"
 import { cn } from "@lib/utils"
 import { userAuthSchema } from "@lib/validation/userAuthSchema"
 import { Icons } from "@components/icons"
+import { buttonVariants } from "./ui/button"
+import { Input } from "./ui/input"
+import { Label } from "./ui/label"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -24,44 +28,64 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
     resolver: zodResolver(userAuthSchema),
   })
 
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isGithubLoading, setIsGithubLoading] = useState<boolean>(false)
+  const searchParams = useSearchParams()
 
   const onSubmit = async (data: FormData) => {
     setIsLoading(true)
 
+    const signInResult = await signIn("email", {
+      email: data.email.toLowerCase(),
+      redirect: false,
+      callbackUrl: searchParams?.get("from") || "/dashboard",
+    })
+
+    setIsLoading(false)
+
+    if (!signInResult?.ok) {
+      return toast({
+        title: "Something went wrong",
+        description: "Your sign in request failed. Please try again.",
+        variant: "destructive",
+      })
+    }
+
     return toast({
-      title: "Not Implemented yet!",
-      description: "Sorry my friend this feature is not mplemented yet.",
+      title: "Check your email",
+      description: "We sent you a login link. Be sure to check your spam too.",
     })
   }
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <div>
-            <label htmlFor="email" className="sr-only">
+        <div className="grid gap-2">
+          <div className="grid gap-1">
+            <Label htmlFor="email" className="sr-only">
               Email
-            </label>
-            <input
-              type="email"
+            </Label>
+
+            <Input
               id="email"
+              type="email"
               placeholder="name@example.com"
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
-              className="my-0 mb-2 block h-9 w-full rounded-md border border-slate-300 px-3 py-2 text-sm placeholder:text-slate-400 hover:border-slate-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-800 focus:ring-offset-1"
-              disabled={isLoading}
+              disabled={isLoading || isGithubLoading}
               {...register("email")}
             />
+
             {errors?.email && (
               <p className="px-1 pb-2 text-xs text-red-600">
                 {errors.email.message}
               </p>
             )}
           </div>
+
           <button
-            className="inline-flex w-full items-center justify-center rounded-lg bg-slate-800 px-5 py-2.5 text-sm font-medium text-white hover:bg-slate-800/90 focus:outline-none focus:ring-4 focus:ring-slate-800/50 disabled:opacity-50"
+            className={cn(buttonVariants({ variant: "black" }))}
             disabled={isLoading}
           >
             {isLoading && (
@@ -81,11 +105,18 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
 
       <button
         type="button"
-        className="inline-flex w-full items-center justify-center rounded-lg border bg-white px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-slate-100/90 focus:outline-none focus:ring-4 focus:ring-slate-800/50 disabled:opacity-50"
-        disabled={isLoading}
-        onClick={() => signIn("github")}
+        className={cn(buttonVariants({ variant: "outline" }))}
+        disabled={isLoading || isGithubLoading}
+        onClick={() => {
+          setIsGithubLoading(true)
+          signIn("github")
+        }}
       >
-        <Icons.github className="mr-2 h-4 w-4 fill-black" />
+        {isGithubLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.github className="mr-2 h-4 w-4" />
+        )}{" "}
         Github
       </button>
     </div>

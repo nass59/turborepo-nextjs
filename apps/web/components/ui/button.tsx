@@ -12,9 +12,10 @@ const buttonVariants = cva(
           "bg-slate-200 text-slate-800 hover:bg-slate-300 focus:ring-slate-400",
         destructive: "",
         outline:
-          "border-slate-200 bg-slate-800 text-white hover:bg-slate-700 focus:ring-slate-800",
+          "border-slate-200 bg-white text-black hover:bg-slate-100/90 focus:ring-slate-800/50",
         subtle: "",
-        ghost: "",
+        ghost:
+          "font-medium text-slate-900 hover:border-slate-200 hover:bg-slate-100 focus:ring-slate-200",
         link: "",
         yellow: "bg-yellow-400 hover:bg-yellow-500 focus:ring-yellow-600",
         black:
