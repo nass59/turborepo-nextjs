@@ -6,7 +6,8 @@
     "GITHUB_ACCESS_TOKEN",
     "PREVIEW_URL_SECRET",
     "NODE_ENV",
-    "NEXT_PUBLIC_APP_URL"
+    "NEXT_PUBLIC_APP_URL",
+    "MONGODB_URI"
   ],
   "pipeline": {
     "build": {
