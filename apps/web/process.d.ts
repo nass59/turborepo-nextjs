@@ -16,6 +16,11 @@ declare namespace NodeJS {
     AUTH0_ID: string
     AUTH0_SECRET: string
     MONGODB_URI: string
+    SMTP_HOST: string
+    SMTP_PORT: string
+    SMTP_USER: string
+    SMTP_PASSWORD: string
+    EMAIL_FROM: string
   }
 }
 

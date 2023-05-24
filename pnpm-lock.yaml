@@ -100,6 +100,7 @@ importers:
       next: 13.2.0
       next-auth: ^4.22.1
       next-contentlayer: ^0.2.9
+      nodemailer: ^6.9.2
       postcss: ^8.4.23
       postcss-loader: ^7.3.0
       react: 18.2.0
@@ -151,7 +152,7 @@ importers:
       markdown-wasm: 1.2.0
       mongodb: 4.16.0
       next: 13.2.0_r4uilpgbribp3ygxz6d4rcn5sy
-      next-auth: 4.22.1_f4d7icgk4i3oippbo5yzyh5rhq
+      next-auth: 4.22.1_gxn3jpns7ewsjmdpc7bzh7aypq
       next-contentlayer: 0.2.9_pyirinrxj4jijcj4ln4omsqtsm
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -183,6 +184,7 @@ importers:
       eslint-plugin-storybook: 0.6.12_jgkqkwom7vrxl4kyi454n2sy2i
       eslint-plugin-tailwindcss: 3.11.0_tailwindcss@3.3.2
       mdast-util-toc: 6.1.0
+      nodemailer: 6.9.2
       postcss: 8.4.23
       postcss-loader: 7.3.0_iote4pwjzexaf4xlvctilldtwq
       rehype: 12.0.1
@@ -3739,7 +3741,7 @@ packages:
       next-auth: ^4
     dependencies:
       mongodb: 4.16.0
-      next-auth: 4.22.1_f4d7icgk4i3oippbo5yzyh5rhq
+      next-auth: 4.22.1_gxn3jpns7ewsjmdpc7bzh7aypq
     dev: false
 
   /@next/env/12.3.0:
@@ -12174,7 +12176,7 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /next-auth/4.22.1_f4d7icgk4i3oippbo5yzyh5rhq:
+  /next-auth/4.22.1_gxn3jpns7ewsjmdpc7bzh7aypq:
     resolution: {integrity: sha512-NTR3f6W7/AWXKw8GSsgSyQcDW6jkslZLH8AiZa5PQ09w1kR8uHtR9rez/E9gAq/o17+p0JYHE8QjF3RoniiObA==}
     peerDependencies:
       next: ^12.2.5 || ^13
@@ -12190,6 +12192,7 @@ packages:
       cookie: 0.5.0
       jose: 4.14.4
       next: 13.2.0_r4uilpgbribp3ygxz6d4rcn5sy
+      nodemailer: 6.9.2
       oauth: 0.9.15
       openid-client: 5.4.2
       preact: 10.13.2
@@ -12385,6 +12388,10 @@ packages:
 
   /node-releases/2.0.8:
     resolution: {integrity: sha512-dFSmB8fFHEH/s81Xi+Y/15DQY6VHW81nXRj86EMSL3lmuTmK1e+aT4wrFCkTbm+gSwkw4KpX+rT/pMM2c1mF+A==}
+
+  /nodemailer/6.9.2:
+    resolution: {integrity: sha512-4+TYaa/e1nIxQfyw/WzNPYTEZ5OvHIDEnmjs4LPmIfccPQN+2CYKmGHjWixn/chzD3bmUTu5FMfpltizMxqzdg==}
+    engines: {node: '>=6.0.0'}
 
   /normalize-package-data/2.5.0:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}

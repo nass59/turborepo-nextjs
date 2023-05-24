@@ -1,5 +1,6 @@
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import { NextAuthOptions } from "next-auth"
+import EmailProvider from "next-auth/providers/email"
 import GitHubProvider from "next-auth/providers/github"
 
 import clientPromise from "./database/mongodb"
@@ -27,6 +28,17 @@ export const authOptions: NextAuthOptions = {
           verified: true,
         }
       },
+    }),
+    EmailProvider({
+      server: {
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT),
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASSWORD,
+        },
+      },
+      from: process.env.EMAIL_FROM,
     }),
   ],
   callbacks: {

@@ -7,6 +7,12 @@
     "PREVIEW_URL_SECRET",
     "NODE_ENV",
     "NEXT_PUBLIC_APP_URL",
+    "MONGODB_URI",
+    "SMTP_HOST",
+    "SMTP_PORT",
+    "SMTP_USER",
+    "SMTP_PASSWORD",
+    "EMAIL_FROM",
     "MONGODB_URI"
   ],
   "pipeline": {
