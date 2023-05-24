@@ -1,10 +1,15 @@
-import { DashboardConfig } from "types";
+import { DashboardConfig } from "types"
 
 export const dashboardConfig: DashboardConfig = {
   mainNav: [
     {
       title: "Documentation",
       href: "/docs",
+    },
+    {
+      title: "Support",
+      href: "/support",
+      disabled: true,
     },
   ],
   sidebarNav: [
@@ -26,10 +31,16 @@ export const dashboardConfig: DashboardConfig = {
       disabled: true,
     },
     {
+      title: "Billing",
+      href: "/dashboard/billing",
+      icon: "billing",
+      disabled: true,
+    },
+    {
       title: "Settings",
       href: "/dashboard/settings",
       icon: "settings",
       disabled: true,
     },
   ],
-};
+}

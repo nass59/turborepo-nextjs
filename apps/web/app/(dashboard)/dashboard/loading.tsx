@@ -1,7 +1,7 @@
-import { PostCreateButton } from "@components/dashboard/PostCreateButton";
-import { DashboardShell } from "@components/dashboard/shell";
-import { DashboardHeader } from "@components/dashboard/header";
-import { PostItem } from "@components/dashboard/PostItem";
+import { DashboardHeader } from "@components/dashboard-header-page"
+import { PostCreateButton } from "@components/dashboard-post-create-button"
+import { PostItem } from "@components/dashboard-post-item"
+import { DashboardShell } from "@components/dashboard-shell"
 
 export default function loading() {
   return (
@@ -17,5 +17,5 @@ export default function loading() {
         <PostItem.Skeleton />
       </div>
     </DashboardShell>
-  );
+  )
 }

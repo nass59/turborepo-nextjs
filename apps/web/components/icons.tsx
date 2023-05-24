@@ -3,6 +3,7 @@ import {
   ChevronLeft,
   ChevronRight,
   ConciergeBell,
+  CreditCard,
   File,
   FileText,
   FolderTree,
@@ -16,10 +17,10 @@ import {
   Trash,
   User,
   X,
-} from "lucide-react";
-import type { Icon as LucideIcon } from "lucide-react";
+  type Icon as LucideIcon,
+} from "lucide-react"
 
-export type Icon = LucideIcon;
+export type Icon = LucideIcon
 
 export const Icons = {
   logo: Rocket,
@@ -39,4 +40,5 @@ export const Icons = {
   ellipsis: MoreVertical,
   trash: Trash,
   tree: FolderTree,
-};
+  billing: CreditCard,
+}

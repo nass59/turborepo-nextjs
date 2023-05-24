@@ -1,4 +1,4 @@
-import { cn } from "@lib/utils";
+import { cn } from "@lib/utils"
 
 interface DashboardShellProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -11,5 +11,5 @@ export const DashboardShell = ({
     <div className={cn("grid items-start gap-8", className)} {...props}>
       {children}
     </div>
-  );
-};
+  )
+}

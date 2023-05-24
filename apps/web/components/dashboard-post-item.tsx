@@ -1,31 +1,37 @@
-import { Skeleton } from "@components/Skeleton";
-import { formatDate } from "@lib/utils";
-import Link from "next/link";
-import { PostOperations } from "./PostOperations";
+import Link from "next/link"
+
+import { formatDate } from "@lib/utils"
+import { Skeleton } from "@components/dashboard-skeleton"
+import { PostOperations } from "./dashboard-post-operations"
 
 interface PostItemProps {
   post: {
-    id: number;
-    title: string;
-    createdAt: string;
-  };
+    id: number
+    title: string
+    createdAt: string
+  }
 }
 
 export const PostItem = ({ post }: PostItemProps) => {
   return (
     <div className="flex items-center justify-between p-4">
       <div className="grid gap-1">
-        <Link href={""} className="font-semibold hover:underline">
+        <Link
+          href={`/editor/${post.id}`}
+          className="font-semibold hover:underline"
+        >
           {post.title}
         </Link>
+
         <div>
           <p className="text-sm text-slate-600">{formatDate(post.createdAt)}</p>
         </div>
       </div>
+
       <PostOperations post={{ id: post.id, title: post.title }} />
     </div>
-  );
-};
+  )
+}
 
 PostItem.Skeleton = function PostItemSkeleton() {
   return (
@@ -35,5 +41,5 @@ PostItem.Skeleton = function PostItemSkeleton() {
         <Skeleton className="h-4 w-4/5" />
       </div>
     </div>
-  );
-};
+  )
+}

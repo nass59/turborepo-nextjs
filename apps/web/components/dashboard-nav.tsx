@@ -1,26 +1,27 @@
-"use client";
+"use client"
 
-import { cn } from "@lib/utils";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { SidebarNavItem } from "types";
-import { Icons } from "./icons";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+
+import { SidebarNavItem } from "types"
+import { cn } from "@lib/utils"
+import { Icons } from "@components/icons"
 
 interface DashboardNavProps {
-  items: SidebarNavItem[];
+  items: SidebarNavItem[]
 }
 
 export const DashboardNav = ({ items }: DashboardNavProps) => {
-  const path = usePathname();
+  const path = usePathname()
 
   if (!items?.length) {
-    return null;
+    return null
   }
 
   return (
     <nav className="grid items-start gap-2">
       {items.map((item, index) => {
-        const Icon = Icons[item.icon || "post"];
+        const Icon = Icons[item.icon || "post"]
 
         return (
           <Link
@@ -35,8 +36,8 @@ export const DashboardNav = ({ items }: DashboardNavProps) => {
             <Icon className="mr-2 h-4 w-4" />
             <span>{item.title}</span>
           </Link>
-        );
+        )
       })}
     </nav>
-  );
-};
+  )
+}

@@ -6,6 +6,7 @@ import { toast } from "@hooks/use-toast"
 
 import { cn } from "@lib/utils"
 import { Icons } from "@components/icons"
+import { buttonVariants } from "@components/ui/button"
 
 interface PostCreateButtonProps
   extends React.HTMLAttributes<HTMLButtonElement> {}
@@ -17,7 +18,7 @@ export const PostCreateButton = ({
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
 
-  const onClick = async () => {
+  async function onClick() {
     setIsLoading(true)
 
     const response = await fetch("/api/posts", {
@@ -31,24 +32,33 @@ export const PostCreateButton = ({
     setIsLoading(false)
 
     if (!response?.ok) {
+      if (response.status === 402) {
+        return toast({
+          title: "Limit of 3 posts reached.",
+          description: "Please upgrade to the PRO plan.",
+          variant: "destructive",
+        })
+      }
+
       return toast({
         title: "Something went wrong.",
         description: "Your post was not created. Please try again.",
+        variant: "destructive",
       })
     }
 
     const post = await response.json()
-    console.log("🚀 ~ file: PostCreateButton.tsx:41 ~ onClick ~ post", post)
 
     // force cache invalidation
     router.refresh()
-    router.push(`/editor/new-post`)
+    router.push(`/editor/${post.id}`)
   }
 
   return (
     <button
       className={cn(
-        "relative mt-1 inline-flex h-9 items-center rounded-md border border-transparent bg-slate-900 px-4 text-sm font-medium text-white hover:bg-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2",
+        buttonVariants({ variant: "black" }),
+        { "cursor-not-allowed opacity-60": isLoading },
         className
       )}
       onClick={onClick}
