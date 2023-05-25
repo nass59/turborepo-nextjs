@@ -1,38 +1,24 @@
 import { redirect } from "next/navigation"
 
 import { authOptions } from "@lib/auth"
+import { findPostsForUser } from "@lib/database/post"
 import { getCurrentUser } from "@lib/sessions"
+import { cn } from "@lib/utils"
 import { EmptyPlaceholder } from "@components/dashboard-empty-placeholder"
 import { DashboardHeader } from "@components/dashboard-header-page"
 import { PostCreateButton } from "@components/dashboard-post-create-button"
 import { PostItem } from "@components/dashboard-post-item"
 import { DashboardShell } from "@components/dashboard-shell"
-
-interface Post {
-  id: number
-  title: string
-  createdAt: string
-}
-
-const posts: Post[] = [
-  // {
-  //   id: 1,
-  //   title: "Avatar 2, WOW!!!",
-  //   createdAt: "2022-12-15",
-  // },
-  // {
-  //   id: 2,
-  //   title: "Wednesday now on Netflix",
-  //   createdAt: "2022-02-08",
-  // },
-]
+import { buttonVariants } from "@components/ui/button"
 
 export default async function Page() {
   const user = await getCurrentUser()
 
-  if (!user) {
+  if (!user || !user.email) {
     redirect(authOptions.pages?.signIn || "/login")
   }
+
+  const posts = await findPostsForUser(user.email)
 
   return (
     <DashboardShell>
@@ -44,7 +30,7 @@ export default async function Page() {
         {posts?.length ? (
           <div className="divide-y divide-neutral-200 rounded-md border border-slate-200">
             {posts.map((post) => (
-              <PostItem key={post.id} post={post} />
+              <PostItem key={post._id.toString()} post={post} />
             ))}
           </div>
         ) : (
@@ -54,7 +40,9 @@ export default async function Page() {
             <EmptyPlaceholder.Description>
               You don&apos;t have any posts yet. Start creating content.
             </EmptyPlaceholder.Description>
-            <PostCreateButton className="border-slate-200 bg-white text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2" />
+            <PostCreateButton
+              className={cn(buttonVariants({ variant: "outline" }))}
+            />
           </EmptyPlaceholder>
         )}
       </div>

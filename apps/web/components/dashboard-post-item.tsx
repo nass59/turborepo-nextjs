@@ -1,34 +1,29 @@
 import Link from "next/link"
 
+import { PostDocumentProps } from "@lib/database/post"
 import { formatDate } from "@lib/utils"
-import { Skeleton } from "@components/dashboard-skeleton"
+import { Skeleton } from "@components/ui/skeleton"
 import { PostOperations } from "./dashboard-post-operations"
 
-interface PostItemProps {
-  post: {
-    id: number
-    title: string
-    createdAt: string
-  }
-}
-
-export const PostItem = ({ post }: PostItemProps) => {
+export const PostItem = ({ post }: PostDocumentProps) => {
   return (
     <div className="flex items-center justify-between p-4">
       <div className="grid gap-1">
         <Link
-          href={`/editor/${post.id}`}
+          href={`/editor/${post._id}`}
           className="font-semibold hover:underline"
         >
           {post.title}
         </Link>
 
         <div>
-          <p className="text-sm text-slate-600">{formatDate(post.createdAt)}</p>
+          <p className="text-sm text-slate-600">
+            {formatDate(post.createdAt || "")}
+          </p>
         </div>
       </div>
 
-      <PostOperations post={{ id: post.id, title: post.title }} />
+      <PostOperations post={post} />
     </div>
   )
 }

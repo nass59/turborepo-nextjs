@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { toast } from "@hooks/use-toast"
 
+import { PostDocumentProps } from "@lib/database/post"
 import { Icons } from "@components/icons"
 import {
   AlertDialog,
@@ -24,13 +25,6 @@ import {
   DropdownMenuTrigger,
 } from "@components/ui/dropdown-menu"
 
-interface PostOperationsProps {
-  post: {
-    id: number
-    title: string
-  }
-}
-
 async function deletePost(postId: string) {
   const response = await fetch(`/api/posts/${postId}`, {
     method: "DELETE",
@@ -46,7 +40,7 @@ async function deletePost(postId: string) {
   return true
 }
 
-export const PostOperations = ({ post }: PostOperationsProps) => {
+export const PostOperations = ({ post }: PostDocumentProps) => {
   const router = useRouter()
   const [showDeleteAlert, setShowDeleteAlert] = useState(false)
   const [isDeleteLoading, setIsDeleteLoading] = useState(false)
@@ -60,7 +54,7 @@ export const PostOperations = ({ post }: PostOperationsProps) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem>
-            <Link href={`/editor/${post.id}`} className="flex w-full">
+            <Link href={`/editor/${post._id}`} className="flex w-full">
               Edit
             </Link>
           </DropdownMenuItem>
@@ -92,7 +86,7 @@ export const PostOperations = ({ post }: PostOperationsProps) => {
                 event.preventDefault()
                 setIsDeleteLoading(true)
 
-                const deleted = await deletePost(post.id.toString())
+                const deleted = await deletePost(post._id.toString())
 
                 if (deleted) {
                   setIsDeleteLoading(false)

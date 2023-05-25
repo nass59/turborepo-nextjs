@@ -127,7 +127,7 @@ export default async function Page() {
               href={siteConfig.links.github}
               target="_blank"
               rel="noreferrer"
-              className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+              className={cn(buttonVariants({ variant: "black", size: "lg" }))}
             >
               <Github />
               Github

@@ -10,20 +10,13 @@ import { useForm } from "react-hook-form"
 import TextareaAutosize from "react-textarea-autosize"
 import { z } from "zod"
 
+import { PostDocumentProps } from "@lib/database/post"
 import { postSchema } from "@lib/validation/post"
 import { Icons } from "@components/icons"
 
-interface EditorProps {
-  post: {
-    id: number
-    title: string
-    content: any
-  }
-}
-
 type FormData = z.infer<typeof postSchema>
 
-export const Editor = ({ post }: EditorProps) => {
+export const Editor = ({ post }: PostDocumentProps) => {
   const { register, handleSubmit } = useForm<FormData>({
     resolver: zodResolver(postSchema),
   })
@@ -156,7 +149,7 @@ export const Editor = ({ post }: EditorProps) => {
             id="title"
             defaultValue={post.title}
             placeholder="Post title"
-            className="w-full resize-none appearance-none overflow-hidden text-5xl font-bold focus:outline-none"
+            className="w-full resize-none appearance-none overflow-hidden bg-white text-5xl font-bold focus:outline-none"
             {...register("title")}
           />
           <div id="editor" className="min-h-[500px]"></div>

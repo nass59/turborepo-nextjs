@@ -13,7 +13,8 @@
     "SMTP_USER",
     "SMTP_PASSWORD",
     "EMAIL_FROM",
-    "MONGODB_URI"
+    "MONGODB_URI",
+    "MONGODB_DATABASE"
   ],
   "pipeline": {
     "build": {

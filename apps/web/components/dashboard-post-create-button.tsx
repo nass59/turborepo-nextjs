@@ -11,6 +11,22 @@ import { buttonVariants } from "@components/ui/button"
 interface PostCreateButtonProps
   extends React.HTMLAttributes<HTMLButtonElement> {}
 
+const toastReachedLimit = () => {
+  return toast({
+    title: "Limit of 3 posts reached.",
+    description: "Please upgrade to the PRO plan.",
+    variant: "destructive",
+  })
+}
+
+const toastError = () => {
+  return toast({
+    title: "Something went wrong.",
+    description: "Your post was not created. Please try again.",
+    variant: "destructive",
+  })
+}
+
 export const PostCreateButton = ({
   className,
   ...props
@@ -32,26 +48,19 @@ export const PostCreateButton = ({
     setIsLoading(false)
 
     if (!response?.ok) {
-      if (response.status === 402) {
-        return toast({
-          title: "Limit of 3 posts reached.",
-          description: "Please upgrade to the PRO plan.",
-          variant: "destructive",
-        })
-      }
-
-      return toast({
-        title: "Something went wrong.",
-        description: "Your post was not created. Please try again.",
-        variant: "destructive",
-      })
+      return response.status === 402 ? toastReachedLimit() : toastError()
     }
 
     const post = await response.json()
+    console.log(post)
+
+    if (!post) {
+      return toastError()
+    }
 
     // force cache invalidation
     router.refresh()
-    router.push(`/editor/${post.id}`)
+    router.push(`/editor/${post._id}`)
   }
 
   return (

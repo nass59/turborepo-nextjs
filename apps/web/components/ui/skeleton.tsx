@@ -1,4 +1,4 @@
-import { cn } from "@lib/utils";
+import { cn } from "@lib/utils"
 
 interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -11,5 +11,5 @@ export function Skeleton({ className, ...props }: SkeletonProps) {
       )}
       {...props}
     />
-  );
+  )
 }
