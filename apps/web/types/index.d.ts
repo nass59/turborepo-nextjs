@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb"
+
 import { Icons } from "@components/icons"
 
 export type NavItem = {
@@ -43,4 +45,15 @@ export type DocsConfig = {
 export type DashboardConfig = {
   mainNav: MainNavItem[]
   sidebarNav: SidebarNavItem[]
+}
+
+export type Post = {
+  _id: string | ObjectId
+  title?: string
+  content?: string
+  createdAt?: string
+}
+
+export interface PostProps {
+  post: Post
 }

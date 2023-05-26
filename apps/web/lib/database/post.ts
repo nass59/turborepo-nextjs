@@ -1,24 +1,14 @@
 import { ObjectId } from "mongodb"
 
-import clientPromise from "@lib/database/mongodb"
+import { type Post } from "types"
+import clientPromise, { DATABASE_NAME } from "@lib/database/mongodb"
 
-const DATABASE_NAME = process.env.MONGODB_DATABASE
-export interface PostProps {
+interface BodyPostProps {
   title?: string
   content?: string
-  createdAt?: string
 }
 
-export interface PostDocumentProps {
-  post: {
-    _id: string | ObjectId
-    title?: string
-    content?: string
-    createdAt?: string
-  }
-}
-
-export interface Query {
+interface Query {
   _id: ObjectId
   authorId?: string
 }
@@ -30,14 +20,53 @@ const projection = {
   createdAt: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
 }
 
-export async function createPost(
-  body: PostProps,
-  userId: string
-): Promise<PostDocumentProps["post"] | null> {
+async function getCollection() {
   const client = await clientPromise
   const database = client.db(DATABASE_NAME)
-  const collection = database.collection("posts")
 
+  return database.collection("posts")
+}
+
+async function findOne(query: Query): Promise<Post | null> {
+  const collection = await getCollection()
+
+  return await collection.findOne(query, { projection })
+}
+
+export async function findPost(postId: string): Promise<Post | null> {
+  return await findOne({ _id: new ObjectId(postId) })
+}
+
+export async function findPostsForUser(userId: string): Promise<Post[]> {
+  const collection = await getCollection()
+
+  return await collection.find({ authorId: userId }, { projection }).toArray()
+}
+
+export async function deletePostForUser(postId: string, userId: string) {
+  const collection = await getCollection()
+
+  await collection.deleteOne({
+    _id: new ObjectId(postId),
+    authorId: userId,
+  })
+}
+
+export async function findPostForUser(
+  postId: string,
+  userId: string
+): Promise<Post | null> {
+  return await findOne({
+    _id: new ObjectId(postId),
+    authorId: userId,
+  })
+}
+
+export async function createPost(
+  body: BodyPostProps,
+  userId: string
+): Promise<Post | null> {
+  const collection = await getCollection()
   const result = await collection.insertOne({
     title: body.title,
     content: body.content || "",
@@ -48,51 +77,28 @@ export async function createPost(
   return !result.insertedId ? null : findPost(result.insertedId.toString())
 }
 
-async function findOne(
-  query: Query
-): Promise<PostDocumentProps["post"] | null> {
-  const client = await clientPromise
-  const database = client.db(DATABASE_NAME)
-  const collection = database.collection("posts")
-
-  return await collection.findOne(query, {
-    projection,
-  })
-}
-
-export async function findPost(
-  postId: string
-): Promise<PostDocumentProps["post"] | null> {
-  return await findOne({
-    _id: new ObjectId(postId),
-  })
-}
-
-export async function findPostForUser(
+export async function updatePost(
   postId: string,
+  body: BodyPostProps,
   userId: string
-): Promise<PostDocumentProps["post"] | null> {
-  return await findOne({
-    _id: new ObjectId(postId),
-    authorId: userId,
-  })
-}
-
-export async function findPostsForUser(
-  userId: string
-): Promise<PostDocumentProps["post"][]> {
-  const client = await clientPromise
-  const database = client.db(DATABASE_NAME)
-  const collection = database.collection("posts")
-
-  return await collection
-    .find(
-      {
-        authorId: userId,
+) {
+  const collection = await getCollection()
+  const result = await collection.updateOne(
+    {
+      _id: new ObjectId(postId),
+      authorId: userId,
+    },
+    {
+      $set: {
+        title: body.title,
+        content: body.content || "",
+        updatedAt: new Date(),
       },
-      {
-        projection,
-      }
-    )
-    .toArray()
+    },
+    { upsert: false }
+  )
+
+  if (result.modifiedCount !== 1) {
+    throw new Error("Update failed")
+  }
 }

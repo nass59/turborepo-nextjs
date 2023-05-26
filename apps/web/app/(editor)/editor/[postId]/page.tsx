@@ -3,7 +3,7 @@ import { notFound, redirect } from "next/navigation"
 import { authOptions } from "@lib/auth"
 import { findPostForUser } from "@lib/database/post"
 import { getCurrentUser } from "@lib/sessions"
-import { Editor } from "@components/dashboard/Editor"
+import { Editor } from "@components/dashboard-editor"
 
 interface PageProps {
   params: { postId: string }

@@ -21,7 +21,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { user } = session
 
   if (!user.email) {
-    return res.status(403).end()
+    return res.status(401).end()
   }
 
   if (req.method === "GET") {

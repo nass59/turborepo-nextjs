@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { toast } from "@hooks/use-toast"
 
-import { PostDocumentProps } from "@lib/database/post"
+import { PostProps } from "types"
 import { Icons } from "@components/icons"
 import {
   AlertDialog,
@@ -40,7 +40,7 @@ async function deletePost(postId: string) {
   return true
 }
 
-export const PostOperations = ({ post }: PostDocumentProps) => {
+export const PostOperations = ({ post }: PostProps) => {
   const router = useRouter()
   const [showDeleteAlert, setShowDeleteAlert] = useState(false)
   const [isDeleteLoading, setIsDeleteLoading] = useState(false)
@@ -54,7 +54,10 @@ export const PostOperations = ({ post }: PostDocumentProps) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem>
-            <Link href={`/editor/${post._id}`} className="flex w-full">
+            <Link
+              href={`/editor/${post._id.toString()}`}
+              className="flex w-full"
+            >
               Edit
             </Link>
           </DropdownMenuItem>

@@ -10,21 +10,24 @@ import { useForm } from "react-hook-form"
 import TextareaAutosize from "react-textarea-autosize"
 import { z } from "zod"
 
-import { PostDocumentProps } from "@lib/database/post"
+import { PostProps } from "types"
+import { cn } from "@lib/utils"
 import { postSchema } from "@lib/validation/post"
 import { Icons } from "@components/icons"
+import { buttonVariants } from "./ui/button"
 
 type FormData = z.infer<typeof postSchema>
 
-export const Editor = ({ post }: PostDocumentProps) => {
+export const Editor = ({ post }: PostProps) => {
   const { register, handleSubmit } = useForm<FormData>({
     resolver: zodResolver(postSchema),
   })
 
   const ref = useRef<EditorJS>()
   const router = useRouter()
-  const [isMounted, setIsMounted] = useState(false)
-  const [isSaving, setIsSaving] = useState(false)
+
+  const [isMounted, setIsMounted] = useState<boolean>(false)
+  const [isSaving, setIsSaving] = useState<boolean>(false)
 
   const initEditor = useCallback(async () => {
     const EditorJS = (await import("@editorjs/editorjs")).default
@@ -88,7 +91,7 @@ export const Editor = ({ post }: PostDocumentProps) => {
 
     const blocks = await ref.current?.save()
 
-    const response = await fetch(`/api/posts/new-post`, {
+    const response = await fetch(`/api/posts/${post._id.toString()}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -124,7 +127,7 @@ export const Editor = ({ post }: PostDocumentProps) => {
           <div className="flex items-center space-x-10">
             <Link
               href="/dashboard"
-              className="inline-flex items-center rounded-lg border border-transparent bg-transparent py-2 pl-3 pr-5 text-sm font-medium text-slate-900 hover:border-slate-200 hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-slate-200"
+              className={cn(buttonVariants({ variant: "ghost" }))}
             >
               <>
                 <Icons.chevronLeft className="mr-2 h-4 w-4" />
@@ -135,7 +138,7 @@ export const Editor = ({ post }: PostDocumentProps) => {
           </div>
           <button
             type="submit"
-            className="hover:bg-brand-400 focus:ring-brand-500 relative inline-flex h-9 items-center rounded-md border border-transparent bg-slate-900 px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2"
+            className={cn(buttonVariants({ variant: "black" }))}
           >
             {isSaving && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />

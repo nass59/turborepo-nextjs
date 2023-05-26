@@ -52,7 +52,6 @@ export const PostCreateButton = ({
     }
 
     const post = await response.json()
-    console.log(post)
 
     if (!post) {
       return toastError()

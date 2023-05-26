@@ -1,16 +1,16 @@
 import Link from "next/link"
 
-import { PostDocumentProps } from "@lib/database/post"
+import { PostProps } from "types"
 import { formatDate } from "@lib/utils"
 import { Skeleton } from "@components/ui/skeleton"
 import { PostOperations } from "./dashboard-post-operations"
 
-export const PostItem = ({ post }: PostDocumentProps) => {
+export const PostItem = ({ post }: PostProps) => {
   return (
     <div className="flex items-center justify-between p-4">
       <div className="grid gap-1">
         <Link
-          href={`/editor/${post._id}`}
+          href={`/editor/${post._id.toString()}`}
           className="font-semibold hover:underline"
         >
           {post.title}

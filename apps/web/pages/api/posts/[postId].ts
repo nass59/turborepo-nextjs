@@ -4,6 +4,11 @@ import { z } from "zod"
 
 import { withMethods } from "@lib/api-middlewares/with-methods"
 import { authOptions } from "@lib/auth"
+import {
+  deletePostForUser,
+  findPostForUser,
+  updatePost,
+} from "@lib/database/post"
 import { postSchema } from "@lib/validation/post"
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -13,15 +18,23 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(403).end()
   }
 
+  const { user } = session
+
+  if (!user.email) {
+    return res.status(401).end()
+  }
+
   if (req.method === "PATCH") {
     try {
       const postId = req.query.postId as string
-      const post = {
-        title: "Test Title",
-        content: "Test content",
+      const post = await findPostForUser(postId, user.email)
+
+      if (!post) {
+        throw new Error("Post not found.")
       }
 
       const body = postSchema.parse(req.body)
+      await updatePost(postId, body, user.email)
 
       return res.end()
     } catch (error) {
@@ -35,6 +48,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   if (req.method === "DELETE") {
     try {
+      const postId = req.query.postId as string
+      await deletePostForUser(postId, user.email)
+
       return res.status(204).end()
     } catch (error) {
       return res.status(500).end()
