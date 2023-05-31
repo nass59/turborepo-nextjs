@@ -4,6 +4,7 @@ import EmailProvider from "next-auth/providers/email"
 import GitHubProvider from "next-auth/providers/github"
 
 import clientPromise from "./database/mongodb"
+import { findUser } from "./database/user"
 
 export const authOptions: NextAuthOptions = {
   pages: {
@@ -53,12 +54,23 @@ export const authOptions: NextAuthOptions = {
       return session
     },
 
-    async jwt({ token, account }) {
-      if (account) {
-        token.accessToken = account.access_token
+    async jwt({ token, user }) {
+      const dbUser = await findUser(token.email || "")
+
+      if (!dbUser) {
+        if (user) {
+          token.id = user?.id
+        }
+
+        return token
       }
 
-      return token
+      return {
+        id: dbUser._id.toString(),
+        name: dbUser.name,
+        email: dbUser.email,
+        picture: dbUser.image,
+      }
     },
   },
 }

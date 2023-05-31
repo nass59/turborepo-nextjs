@@ -42,8 +42,8 @@ export const UserAccountNav = ({ user }: UserAccountNavProps) => {
         <DropdownMenuItem asChild disabled>
           <Link href="/dashboard">Billing</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem asChild disabled>
-          <Link href="/dashboard">Settings</Link>
+        <DropdownMenuItem asChild>
+          <Link href="/dashboard/settings">Settings</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>

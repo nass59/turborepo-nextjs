@@ -98,7 +98,7 @@ export async function updatePost(
     { upsert: false }
   )
 
-  if (result.modifiedCount !== 1) {
+  if (result.matchedCount !== 1) {
     throw new Error("Update failed")
   }
 }

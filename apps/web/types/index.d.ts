@@ -57,3 +57,10 @@ export type Post = {
 export interface PostProps {
   post: Post
 }
+
+export type User = {
+  _id: string | ObjectId
+  email?: string
+  name?: string
+  image?: string
+}

@@ -1,0 +1,35 @@
+import { redirect } from "next/navigation"
+
+import { authOptions } from "@lib/auth"
+import { getCurrentUser } from "@lib/sessions"
+import { DashboardHeader } from "@components/dashboard-header-page"
+import { DashboardShell } from "@components/dashboard-shell"
+import { UserNameForm } from "@components/user-name-form"
+
+export const metadata = {
+  title: "Settings",
+  description: "Manage account and website settings.",
+}
+
+export default async function Page() {
+  const user = await getCurrentUser()
+
+  if (!user) {
+    redirect(authOptions.pages?.signIn || "/login")
+  }
+
+  return (
+    <DashboardShell>
+      <DashboardHeader
+        heading="Settings"
+        text="Manage account and website settings."
+      />
+
+      <div className="grid gap-10">
+        {user?.name ? (
+          <UserNameForm user={{ id: user.id, name: user.name }} />
+        ) : null}
+      </div>
+    </DashboardShell>
+  )
+}
