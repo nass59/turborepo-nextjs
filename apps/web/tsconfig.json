@@ -3,8 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "@/*": [
+        "./*"
+      ],
+      "contentlayer/generated": [
+        "./.contentlayer/generated"
+      ]
     },
     "plugins": [
       {
@@ -21,5 +25,7 @@
     ".next/types/**/*.ts",
     ".contentlayer/generated"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
