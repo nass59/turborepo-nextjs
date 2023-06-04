@@ -1,11 +1,11 @@
 "use client"
 
 import { useMemo } from "react"
-import { useActiveItem } from "@hooks/use-active-item"
-import { useMounted } from "@hooks/use-mounted"
+import { useActiveItem } from "@/hooks/use-active-item"
+import { useMounted } from "@/hooks/use-mounted"
 
-import { TableOfContents } from "@lib/toc"
-import { cn } from "@lib/utils"
+import { TableOfContents } from "@/lib/toc"
+import { cn } from "@/lib/utils"
 
 interface DocsTableOfContentsProps {
   toc: TableOfContents

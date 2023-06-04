@@ -8,5 +8,5 @@ export const ReactJS = () => {
         </g>
       </svg>
     </>
-  );
-};
+  )
+}

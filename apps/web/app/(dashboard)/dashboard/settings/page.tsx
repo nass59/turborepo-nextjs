@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation"
 
-import { authOptions } from "@lib/auth"
-import { getCurrentUser } from "@lib/sessions"
-import { DashboardHeader } from "@components/dashboard-header-page"
-import { DashboardShell } from "@components/dashboard-shell"
-import { UserNameForm } from "@components/user-name-form"
+import { authOptions } from "@/lib/auth"
+import { getCurrentUser } from "@/lib/sessions"
+import { DashboardHeader } from "@/components/dashboard/dashboard-header-page"
+import { DashboardShell } from "@/components/dashboard/dashboard-shell"
+import { UserNameForm } from "@/components/user/user-name-form"
 
 export const metadata = {
   title: "Settings",

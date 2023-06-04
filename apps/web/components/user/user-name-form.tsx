@@ -2,20 +2,23 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { toast } from "@/hooks/use-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { toast } from "@hooks/use-toast"
-import { User } from "interfaces"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { cn } from "@lib/utils"
-import { userNameSchema } from "@lib/validation/user"
-import { Card } from "@components/ui/card"
-import { Label } from "@components/ui/label"
-import { Icons } from "./icons"
-import { buttonVariants } from "./ui/button"
-import { Input } from "./ui/input"
+import { cn } from "@/lib/utils"
+import { userNameSchema } from "@/lib/validation/user"
+import { Icons } from "@/components/icons"
+import { buttonVariants } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
+type User = {
+  id: string
+  name?: string
+}
 interface UserNameProps extends React.HTMLAttributes<HTMLFormElement> {
   user: Pick<User, "id" | "name">
 }

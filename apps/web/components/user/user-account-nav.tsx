@@ -4,15 +4,15 @@ import Link from "next/link"
 import { User } from "next-auth"
 import { signOut } from "next-auth/react"
 
-import { siteConfig } from "@config/site"
+import { siteConfig } from "@/config/site"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@components/ui/dropdown-menu"
-import { UserAvatar } from "./user-avatar"
+} from "@/components/ui/dropdown-menu"
+import { UserAvatar } from "@/components/user/user-avatar"
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLElement> {
   user: Pick<User, "name" | "email" | "image">

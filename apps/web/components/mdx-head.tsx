@@ -1,38 +1,39 @@
-import { absoluteUrl } from "@lib/utils";
-import { ogImageSchema } from "@lib/validation/og";
-import { allDocuments } from "contentlayer/generated";
-import { z } from "zod";
+import { allDocuments } from "contentlayer/generated"
+import { z } from "zod"
+
+import { absoluteUrl } from "@/lib/utils"
+import { ogImageSchema } from "@/lib/validation/og"
 
 interface MdxHeadProps {
   params: {
-    slug: string;
-  };
-  og?: z.infer<typeof ogImageSchema>;
+    slug: string
+  }
+  og?: z.infer<typeof ogImageSchema>
 }
 
 export default function MdxHead({ params, og }: MdxHeadProps) {
-  const { slug } = params;
-  const mdxDoc = allDocuments.find((doc) => doc.slug === slug);
+  const { slug } = params
+  const mdxDoc = allDocuments.find((doc) => doc.slug === slug)
 
   if (!mdxDoc) {
-    return null;
+    return null
   }
 
-  const title = `${mdxDoc.title} - TechShip`;
-  const url = process.env.NEXT_PUBLIC_APP_URL;
-  let ogUrl = new URL(`${url}/og.jpg`);
+  const title = `${mdxDoc.title} - TechShip`
+  const url = process.env.NEXT_PUBLIC_APP_URL
+  let ogUrl = new URL(`${url}/og.jpg`)
 
-  const ogTitle = mdxDoc.title;
-  const ogDescription = mdxDoc.description;
+  const ogTitle = mdxDoc.title
+  const ogDescription = mdxDoc.description
 
   if (og?.type) {
-    ogUrl = new URL(`${url}/api/og`);
-    ogUrl.searchParams.set("heading", ogTitle);
-    ogUrl.searchParams.set("type", og.type);
-    ogUrl.searchParams.set("mode", og.mode || "dark");
+    ogUrl = new URL(`${url}/api/og`)
+    ogUrl.searchParams.set("heading", ogTitle)
+    ogUrl.searchParams.set("type", og.type)
+    ogUrl.searchParams.set("mode", og.mode || "dark")
   }
 
-  const fullUrl = absoluteUrl(mdxDoc.url);
+  const fullUrl = absoluteUrl(mdxDoc.url)
 
   return (
     <>
@@ -53,5 +54,5 @@ export default function MdxHead({ params, og }: MdxHeadProps) {
       <meta property="twitter:url" content={url} />
       <meta name="twitter:image" content={ogUrl.toString()} />
     </>
-  );
+  )
 }

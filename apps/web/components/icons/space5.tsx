@@ -208,5 +208,5 @@ export const Space5 = () => {
         ></path>
       </g>
     </svg>
-  );
-};
+  )
+}

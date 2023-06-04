@@ -1,6 +1,6 @@
-import { ObjectId } from "mongodb"
+import { type ObjectId } from "mongodb"
 
-import { Icons } from "@components/icons"
+import { Icons } from "@/components/icons"
 
 export type NavItem = {
   title: string

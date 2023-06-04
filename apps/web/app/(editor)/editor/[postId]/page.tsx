@@ -1,9 +1,9 @@
 import { notFound, redirect } from "next/navigation"
 
-import { authOptions } from "@lib/auth"
-import { findPostForUser } from "@lib/database/post"
-import { getCurrentUser } from "@lib/sessions"
-import { Editor } from "@components/dashboard-editor"
+import { authOptions } from "@/lib/auth"
+import { findPostForUser } from "@/lib/database/post"
+import { getCurrentUser } from "@/lib/sessions"
+import { Editor } from "@/components/dashboard/dashboard-editor"
 
 interface PageProps {
   params: { postId: string }

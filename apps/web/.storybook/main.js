@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("path")
 module.exports = {
   stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
@@ -13,4 +13,4 @@ module.exports = {
   docs: {
     docsPage: true,
   },
-};
+}

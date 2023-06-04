@@ -3,7 +3,7 @@
 import React from "react"
 import { usePathname } from "next/navigation"
 
-import { Icons } from "@components/icons"
+import { Icons } from "@/components/icons"
 
 export function Breadcrumb() {
   const pathname = usePathname()

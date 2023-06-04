@@ -2,11 +2,11 @@ import { NextApiRequest, NextApiResponse } from "next"
 import { getServerSession } from "next-auth"
 import { z } from "zod"
 
-import { withCurrentUser } from "@lib/api-middlewares/with-current-user"
-import { withMethods } from "@lib/api-middlewares/with-methods"
-import { authOptions } from "@lib/auth"
-import { updateUser } from "@lib/database/user"
-import { userNameSchema } from "@lib/validation/user"
+import { withCurrentUser } from "@/lib/api-middlewares/with-current-user"
+import { withMethods } from "@/lib/api-middlewares/with-methods"
+import { authOptions } from "@/lib/auth"
+import { updateUser } from "@/lib/database/user"
+import { userNameSchema } from "@/lib/validation/user"
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "PATCH") {

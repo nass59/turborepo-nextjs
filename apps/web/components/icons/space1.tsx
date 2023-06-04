@@ -885,5 +885,5 @@ export const Space1 = () => {
         </g>
       </g>
     </svg>
-  );
-};
+  )
+}

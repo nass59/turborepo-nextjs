@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb"
 
 import { type User } from "types"
-import clientPromise, { DATABASE_NAME } from "@lib/database/mongodb"
+import clientPromise, { DATABASE_NAME } from "@/lib/database/mongodb"
 
 interface Query {
   email: string

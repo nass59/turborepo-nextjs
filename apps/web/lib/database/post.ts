@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb"
 
 import { type Post } from "types"
-import clientPromise, { DATABASE_NAME } from "@lib/database/mongodb"
+import clientPromise, { DATABASE_NAME } from "@/lib/database/mongodb"
 
 interface BodyPostProps {
   title?: string

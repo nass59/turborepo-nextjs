@@ -4,9 +4,9 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { allAuthors, allPosts } from "contentlayer/generated"
 
-import { absoluteUrl, formatDate } from "@lib/utils"
-import { Icons } from "@components/icons"
-import { Mdx } from "@components/mdx"
+import { absoluteUrl, formatDate } from "@/lib/utils"
+import { Icons } from "@/components/icons"
+import { Mdx } from "@/components/mdx"
 
 interface PageProps {
   params: {

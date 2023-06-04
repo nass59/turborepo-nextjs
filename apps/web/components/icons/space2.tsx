@@ -400,5 +400,5 @@ export const Space2 = () => {
         ></ellipse>
       </g>
     </svg>
-  );
-};
+  )
+}

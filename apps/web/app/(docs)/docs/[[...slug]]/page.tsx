@@ -2,13 +2,13 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
 
-import { getTableOfContents } from "@lib/toc"
-import { absoluteUrl } from "@lib/utils"
-import { DocsPageHeader } from "@components/docs-page-header"
-import { DocsPager } from "@components/docs-pager"
-import { DocsTableOfContents } from "@components/docs-toc"
-import { Mdx } from "@components/mdx"
-import "@styles/mdx.css"
+import { getTableOfContents } from "@/lib/toc"
+import { absoluteUrl } from "@/lib/utils"
+import { DocsPageHeader } from "@/components/docs/docs-page-header"
+import { DocsPager } from "@/components/docs/docs-pager"
+import { DocsTableOfContents } from "@/components/docs/docs-toc"
+import { Mdx } from "@/components/mdx"
+import "@/styles/mdx.css"
 
 interface PageProps {
   params: {

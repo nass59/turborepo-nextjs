@@ -3,9 +3,9 @@
 import Image from "next/image"
 import OgImage from "public/og-light.jpg"
 
-import { siteConfig } from "@config/site"
-import { Popover } from "@components/Popover"
-import { Icons } from "@components/icons"
+import { siteConfig } from "@/config/site"
+import { Icons } from "@/components/icons"
+import { Popover } from "@/components/ui/popover"
 
 export const Help = () => {
   return (

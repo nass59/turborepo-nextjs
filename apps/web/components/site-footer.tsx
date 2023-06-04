@@ -1,6 +1,6 @@
-import { siteConfig } from "@config/site"
-import { Icons } from "@components/icons"
-import { SiteFooterLink } from "./site-footer-link"
+import { siteConfig } from "@/config/site"
+import { Icons } from "@/components/icons"
+import { SiteFooterLink } from "@/components/site-footer-link"
 
 export const SiteFooter = () => {
   return (

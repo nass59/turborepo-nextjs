@@ -1,23 +1,24 @@
-"use client";
+"use client"
 
-import { cn } from "@lib/utils";
-import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { forwardRef } from "react";
+import { forwardRef } from "react"
+import * as PopoverPrimitive from "@radix-ui/react-popover"
 
-type PopoverProps = PopoverPrimitive.PopoverProps;
+import { cn } from "@/lib/utils"
+
+type PopoverProps = PopoverPrimitive.PopoverProps
 
 export const Popover = ({ ...props }: PopoverProps) => {
-  return <PopoverPrimitive.Root {...props} />;
-};
+  return <PopoverPrimitive.Root {...props} />
+}
 
 Popover.Trigger = forwardRef<
   HTMLButtonElement,
   PopoverPrimitive.PopoverTriggerProps
 >(function PopoverTrigger({ ...props }, forwardedRef) {
-  return <PopoverPrimitive.Trigger {...props} ref={forwardedRef} />;
-});
+  return <PopoverPrimitive.Trigger {...props} ref={forwardedRef} />
+})
 
-Popover.Portal = PopoverPrimitive.Portal;
+Popover.Portal = PopoverPrimitive.Portal
 
 Popover.Content = forwardRef<
   HTMLDivElement,
@@ -33,5 +34,5 @@ Popover.Content = forwardRef<
       )}
       {...props}
     />
-  );
-});
+  )
+})

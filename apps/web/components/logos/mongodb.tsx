@@ -19,5 +19,5 @@ export const MongoDB = () => {
         ></path>
       </svg>
     </>
-  );
-};
+  )
+}

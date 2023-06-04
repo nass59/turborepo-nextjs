@@ -1,7 +1,7 @@
 import { action } from "@storybook/addon-actions"
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { MarketingHeader } from "@components/marketing-header"
+import { MarketingHeader } from "@/components/marketing/marketing-header"
 
 const meta: Meta<typeof MarketingHeader> = {
   title: "Example/Header",

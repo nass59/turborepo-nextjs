@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { NavItem } from "types"
-import { cn } from "@lib/utils"
+import { cn } from "@/lib/utils"
 
 interface DocsSidebarNavItemsProps {
   items: NavItem[]

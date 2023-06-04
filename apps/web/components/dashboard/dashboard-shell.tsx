@@ -1,4 +1,4 @@
-import { cn } from "@lib/utils"
+import { cn } from "@/lib/utils"
 
 interface DashboardShellProps extends React.HTMLAttributes<HTMLDivElement> {}
 

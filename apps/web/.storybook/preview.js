@@ -1,4 +1,4 @@
-import "./index.css";
+import "./index.css"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -11,4 +11,4 @@ export const parameters = {
   nextjs: {
     appDirectory: true,
   },
-};
+}

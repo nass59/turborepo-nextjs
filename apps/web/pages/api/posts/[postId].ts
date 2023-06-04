@@ -2,14 +2,14 @@ import { NextApiRequest, NextApiResponse } from "next"
 import { getServerSession } from "next-auth"
 import { z } from "zod"
 
-import { withMethods } from "@lib/api-middlewares/with-methods"
-import { authOptions } from "@lib/auth"
+import { withMethods } from "@/lib/api-middlewares/with-methods"
+import { authOptions } from "@/lib/auth"
 import {
   deletePostForUser,
   findPostForUser,
   updatePost,
-} from "@lib/database/post"
-import { postSchema } from "@lib/validation/post"
+} from "@/lib/database/post"
+import { postSchema } from "@/lib/validation/post"
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const session = await getServerSession(req, res, authOptions)

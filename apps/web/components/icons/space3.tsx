@@ -396,5 +396,5 @@ export const Space3 = () => {
         ></path>
       </g>
     </svg>
-  );
-};
+  )
+}

@@ -1,5 +1,5 @@
-import { DocsHeader } from "@components/docs-header"
-import { SiteFooter } from "@components/site-footer"
+import { DocsHeader } from "@/components/docs/docs-header"
+import { SiteFooter } from "@/components/site-footer"
 
 interface DocsLayoutProps {
   children: React.ReactNode

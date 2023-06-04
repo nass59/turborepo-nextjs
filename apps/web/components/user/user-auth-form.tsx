@@ -2,18 +2,18 @@
 
 import { useState } from "react"
 import { useSearchParams } from "next/navigation"
+import { toast } from "@/hooks/use-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { toast } from "@hooks/use-toast"
 import { signIn } from "next-auth/react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { cn } from "@lib/utils"
-import { userAuthSchema } from "@lib/validation/userAuthSchema"
-import { Icons } from "@components/icons"
-import { buttonVariants } from "./ui/button"
-import { Input } from "./ui/input"
-import { Label } from "./ui/label"
+import { cn } from "@/lib/utils"
+import { userAuthSchema } from "@/lib/validation/userAuthSchema"
+import { Icons } from "@/components/icons"
+import { buttonVariants } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 

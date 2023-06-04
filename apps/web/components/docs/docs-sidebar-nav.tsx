@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation"
 
 import { SidebarNavItem } from "types"
-import { DocsSidebarNavItems } from "./docs-sidebar-nav-items"
+import { DocsSidebarNavItems } from "@/components/docs/docs-sidebar-nav-items"
 
 interface DocsSidebarNavProps {
   items: SidebarNavItem[]

@@ -5,6 +5,7 @@ if (!process.env.MONGODB_URI) {
 }
 
 export const DATABASE_NAME = process.env.MONGODB_DATABASE as string
+
 const uri = process.env.MONGODB_URI as string
 const options = {}
 

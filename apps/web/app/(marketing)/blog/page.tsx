@@ -3,8 +3,8 @@ import Link from "next/link"
 import { allPosts } from "contentlayer/generated"
 import { compareDesc } from "date-fns"
 
-import { formatDate } from "@lib/utils"
-import "@styles/mdx.css"
+import { formatDate } from "@/lib/utils"
+import "@/styles/mdx.css"
 
 export const metadata = {
   title: "Blog",

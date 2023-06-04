@@ -2,11 +2,11 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { toast } from "@hooks/use-toast"
+import { toast } from "@/hooks/use-toast"
 
-import { cn } from "@lib/utils"
-import { Icons } from "@components/icons"
-import { buttonVariants } from "@components/ui/button"
+import { cn } from "@/lib/utils"
+import { Icons } from "@/components/icons"
+import { buttonVariants } from "@/components/ui/button"
 
 interface PostCreateButtonProps
   extends React.HTMLAttributes<HTMLButtonElement> {}

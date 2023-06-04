@@ -1,15 +1,15 @@
 import { redirect } from "next/navigation"
 
-import { authOptions } from "@lib/auth"
-import { findPostsForUser } from "@lib/database/post"
-import { getCurrentUser } from "@lib/sessions"
-import { cn } from "@lib/utils"
-import { EmptyPlaceholder } from "@components/dashboard-empty-placeholder"
-import { DashboardHeader } from "@components/dashboard-header-page"
-import { PostCreateButton } from "@components/dashboard-post-create-button"
-import { PostItem } from "@components/dashboard-post-item"
-import { DashboardShell } from "@components/dashboard-shell"
-import { buttonVariants } from "@components/ui/button"
+import { authOptions } from "@/lib/auth"
+import { findPostsForUser } from "@/lib/database/post"
+import { getCurrentUser } from "@/lib/sessions"
+import { cn } from "@/lib/utils"
+import { EmptyPlaceholder } from "@/components/dashboard/dashboard-empty-placeholder"
+import { DashboardHeader } from "@/components/dashboard/dashboard-header-page"
+import { PostCreateButton } from "@/components/dashboard/dashboard-post-create-button"
+import { PostItem } from "@/components/dashboard/dashboard-post-item"
+import { DashboardShell } from "@/components/dashboard/dashboard-shell"
+import { buttonVariants } from "@/components/ui/button"
 
 export default async function Page() {
   const user = await getCurrentUser()

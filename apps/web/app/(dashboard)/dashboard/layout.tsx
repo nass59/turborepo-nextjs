@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation"
 
-import { dashboardConfig } from "@config/dashboard"
-import { getCurrentUser } from "@lib/sessions"
-import { DashboardHeader } from "@components/dashboard-header"
-import { DashboardNav } from "@components/dashboard-nav"
+import { dashboardConfig } from "@/config/dashboard"
+import { getCurrentUser } from "@/lib/sessions"
+import { DashboardHeader } from "@/components/dashboard/dashboard-header"
+import { DashboardNav } from "@/components/dashboard/dashboard-nav"
 
 interface DashboardLayoutProps {
   children: React.ReactNode

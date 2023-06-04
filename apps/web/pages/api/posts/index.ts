@@ -2,9 +2,9 @@ import { NextApiRequest, NextApiResponse } from "next"
 import { getServerSession } from "next-auth"
 import { z } from "zod"
 
-import { withMethods } from "@lib/api-middlewares/with-methods"
-import { authOptions } from "@lib/auth"
-import { createPost } from "@lib/database/post"
+import { withMethods } from "@/lib/api-middlewares/with-methods"
+import { authOptions } from "@/lib/auth"
+import { createPost } from "@/lib/database/post"
 
 const postCreateSchema = z.object({
   title: z.string().optional(),

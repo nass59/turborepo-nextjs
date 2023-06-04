@@ -1,10 +1,10 @@
 import Link from "next/link"
 
-import { marketingConfig } from "@config/marketing"
-import { siteConfig } from "@config/site"
-import { cn } from "@lib/utils"
-import { MainNav } from "@components/main-nav"
-import { buttonVariants } from "./ui/button"
+import { marketingConfig } from "@/config/marketing"
+import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
+import { MainNav } from "@/components/main-nav"
+import { buttonVariants } from "@/components/ui/button"
 
 export const MarketingHeader = () => {
   return (

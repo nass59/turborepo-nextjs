@@ -3,8 +3,8 @@ import { NextAuthOptions } from "next-auth"
 import EmailProvider from "next-auth/providers/email"
 import GitHubProvider from "next-auth/providers/github"
 
-import clientPromise from "./database/mongodb"
-import { findUser } from "./database/user"
+import clientPromise from "@/lib/database/mongodb"
+import { findUser } from "@/lib/database/user"
 
 export const authOptions: NextAuthOptions = {
   pages: {
