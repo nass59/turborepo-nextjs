@@ -46,7 +46,7 @@
     "lucide-react": "^0.104.1",
     "markdown-wasm": "^1.2.0",
     "mongodb": "^4.16.0",
-    "next": "13.2.4",
+    "next": "13.3.0",
     "next-auth": "^4.22.1",
     "next-contentlayer": "^0.2.9",
     "react": "18.2.0",
