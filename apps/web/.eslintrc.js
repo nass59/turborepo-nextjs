@@ -13,6 +13,16 @@ module.exports = {
   settings: {
     tailwindcss: {
       callees: ["cn", "cva"],
+      config: "tailwind.config.js",
+    },
+    next: {
+      rootDir: true,
     },
   },
+  overrides: [
+    {
+      files: ["*.ts", "*.tsx"],
+      parser: "@typescript-eslint/parser",
+    },
+  ],
 }
