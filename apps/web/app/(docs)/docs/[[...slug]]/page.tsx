@@ -8,6 +8,7 @@ import { DocsPageHeader } from "@/components/docs/docs-page-header"
 import { DocsPager } from "@/components/docs/docs-pager"
 import { DocsTableOfContents } from "@/components/docs/docs-toc"
 import { Mdx } from "@/components/mdx"
+
 import "@/styles/mdx.css"
 
 interface PageProps {

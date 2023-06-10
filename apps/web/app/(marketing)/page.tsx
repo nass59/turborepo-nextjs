@@ -2,6 +2,8 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
+import { FeatureItem } from "@/components/ui/feature-item"
 import { Space3 } from "@/components/icons/space3"
 import { Auth } from "@/components/logos/auth"
 import { Github } from "@/components/logos/github"
@@ -10,8 +12,6 @@ import { NextJS } from "@/components/logos/nextjs"
 import { ReactJS } from "@/components/logos/reactjs"
 import { Storybook } from "@/components/logos/storybook"
 import { TailwindCSS } from "@/components/logos/tailwindcss"
-import { buttonVariants } from "@/components/ui/button"
-import { FeatureItem } from "@/components/ui/feature-item"
 
 async function getGithubStars(): Promise<string | null> {
   try {

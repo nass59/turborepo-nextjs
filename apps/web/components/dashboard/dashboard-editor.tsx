@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { toast } from "@/hooks/use-toast"
 import EditorJS from "@editorjs/editorjs"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -13,8 +12,9 @@ import { z } from "zod"
 import { PostProps } from "types"
 import { cn } from "@/lib/utils"
 import { postSchema } from "@/lib/validation/post"
-import { Icons } from "@/components/icons"
+import { toast } from "@/hooks/use-toast"
 import { buttonVariants } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
 
 type FormData = z.infer<typeof postSchema>
 

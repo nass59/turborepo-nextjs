@@ -3,8 +3,8 @@ import Link from "next/link"
 import { marketingConfig } from "@/config/marketing"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { MainNav } from "@/components/main-nav"
 import { buttonVariants } from "@/components/ui/button"
+import { MainNav } from "@/components/main-nav"
 
 export const MarketingHeader = () => {
   return (

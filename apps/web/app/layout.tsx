@@ -4,10 +4,10 @@ import { Inter } from "next/font/google"
 import "@/styles/global.css"
 import { siteConfig } from "@/config/site"
 import { absoluteUrl, cn } from "@/lib/utils"
-import { Analytics } from "@/components/analytics"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { Help } from "@/components/ui/helper"
 import { Toaster } from "@/components/ui/toaster"
+import { Analytics } from "@/components/analytics"
+import { TailwindIndicator } from "@/components/tailwind-indicator"
 
 const fontSans = Inter({
   variable: "--font-inter",

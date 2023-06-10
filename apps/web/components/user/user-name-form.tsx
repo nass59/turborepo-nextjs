@@ -2,18 +2,18 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { toast } from "@/hooks/use-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { cn } from "@/lib/utils"
 import { userNameSchema } from "@/lib/validation/user"
-import { Icons } from "@/components/icons"
+import { toast } from "@/hooks/use-toast"
 import { buttonVariants } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Icons } from "@/components/icons"
 
 type User = {
   id: string

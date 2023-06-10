@@ -2,8 +2,8 @@ import Link from "next/link"
 
 import { PostProps } from "types"
 import { formatDate } from "@/lib/utils"
-import { PostOperations } from "@/components/dashboard/dashboard-post-operations"
 import { Skeleton } from "@/components/ui/skeleton"
+import { PostOperations } from "@/components/dashboard/dashboard-post-operations"
 
 export const PostItem = ({ post }: PostProps) => {
   return (

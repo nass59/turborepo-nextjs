@@ -3,10 +3,9 @@
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { toast } from "@/hooks/use-toast"
 
 import { PostProps } from "types"
-import { Icons } from "@/components/icons"
+import { toast } from "@/hooks/use-toast"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,6 +23,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Icons } from "@/components/icons"
 
 async function deletePost(postId: string) {
   const response = await fetch(`/api/posts/${postId}`, {
