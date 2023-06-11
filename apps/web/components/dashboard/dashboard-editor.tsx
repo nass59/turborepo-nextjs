@@ -136,10 +136,7 @@ export const Editor = ({ post }: PostProps) => {
             </Link>
             <p className="text-sm text-slate-600">Draft</p>
           </div>
-          <button
-            type="submit"
-            className={cn(buttonVariants({ variant: "black" }))}
-          >
+          <button type="submit" className={cn(buttonVariants())}>
             {isSaving && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}

@@ -22,7 +22,7 @@ export const MarketingHeader = () => {
             href={siteConfig.links.github}
             target="_blank"
             rel="noreferrer"
-            className={cn(buttonVariants({ variant: "black", size: "sm" }))}
+            className={cn(buttonVariants({ size: "sm" }))}
           >
             Github
           </Link>

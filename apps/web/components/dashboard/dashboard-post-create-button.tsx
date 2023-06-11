@@ -65,7 +65,7 @@ export const PostCreateButton = ({
   return (
     <button
       className={cn(
-        buttonVariants({ variant: "black" }),
+        buttonVariants(),
         { "cursor-not-allowed opacity-60": isLoading },
         className
       )}

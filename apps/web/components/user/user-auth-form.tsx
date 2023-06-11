@@ -84,10 +84,7 @@ export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
             )}
           </div>
 
-          <button
-            className={cn(buttonVariants({ variant: "black" }))}
-            disabled={isLoading}
-          >
+          <button className={cn(buttonVariants())} disabled={isLoading}>
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}

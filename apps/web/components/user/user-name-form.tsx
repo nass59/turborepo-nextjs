@@ -104,7 +104,7 @@ export function UserNameForm({ user, className, ...props }: UserNameProps) {
         <Card.Footer>
           <button
             type="submit"
-            className={cn(buttonVariants({ variant: "black" }))}
+            className={cn(buttonVariants())}
             disabled={isSaving}
           >
             {isSaving && (
