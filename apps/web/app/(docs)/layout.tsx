@@ -10,7 +10,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
     <div className="flex min-h-screen flex-col">
       <DocsHeader />
       <div className="container flex-1">{children}</div>
-      <SiteFooter />
+      <SiteFooter className="border-t" />
     </div>
   )
 }

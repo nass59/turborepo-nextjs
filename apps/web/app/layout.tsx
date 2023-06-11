@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import localFont from "next/font/local"
 
 import "@/styles/global.css"
 import { siteConfig } from "@/config/site"
@@ -12,6 +13,11 @@ import { TailwindIndicator } from "@/components/tailwind-indicator"
 const fontSans = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+})
+
+const fontHeading = localFont({
+  src: "../assets/fonts/CalSans-SemiBold.woff2",
+  variable: "--font-heading",
 })
 interface RootLayoutProps {
   children: React.ReactNode
@@ -87,7 +93,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
       lang="en"
       className={cn(
         "scroll-smooth bg-white font-sans text-slate-900 antialiased",
-        fontSans.variable
+        fontSans.variable,
+        fontHeading.variable
       )}
     >
       <head />

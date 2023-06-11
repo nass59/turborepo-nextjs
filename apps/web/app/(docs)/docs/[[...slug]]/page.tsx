@@ -7,7 +7,7 @@ import { absoluteUrl } from "@/lib/utils"
 import { DocsPageHeader } from "@/components/docs/docs-page-header"
 import { DocsPager } from "@/components/docs/docs-pager"
 import { DocsTableOfContents } from "@/components/docs/docs-toc"
-import { Mdx } from "@/components/mdx"
+import { Mdx } from "@/components/mdx-components"
 
 import "@/styles/mdx.css"
 
@@ -84,7 +84,7 @@ export default async function Page({ params }: PageProps) {
       <div className="mx-auto w-full min-w-0">
         <DocsPageHeader heading={doc.title} text={doc.description} />
         <Mdx code={doc.body.code} />
-        <hr className="my-4 border-slate-200 md:my-6" />
+        <hr className="my-4 md:my-6" />
         <DocsPager doc={doc} />
       </div>
       <div className="hidden text-sm xl:block">

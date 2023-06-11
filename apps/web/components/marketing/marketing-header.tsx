@@ -8,8 +8,8 @@ import { MainNav } from "@/components/main-nav"
 
 export const MarketingHeader = () => {
   return (
-    <header className="container sticky top-0 z-40 bg-white">
-      <div className="flex h-16 items-center justify-between border-b border-b-slate-200 py-4">
+    <header className="container z-40 bg-background">
+      <div className="flex h-20 items-center justify-between border-b py-6">
         <MainNav items={marketingConfig.mainNav} />
         <nav className="flex gap-2">
           <Link

@@ -1,12 +1,12 @@
 interface FeatureItemProps {
-  logo: React.ReactNode;
-  title: string;
-  description: string;
+  logo: React.ReactNode
+  title: string
+  description: string
 }
 
 export const FeatureItem = ({ logo, title, description }: FeatureItemProps) => {
   return (
-    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white p-2 shadow-2xl">
+    <div className="relative overflow-hidden rounded-lg border bg-background p-2 shadow-2xl">
       <div className="flex h-[180px] flex-col justify-between rounded-md bg-slate-900 p-6 text-slate-200">
         {logo}
         <div className="space-y-2">
@@ -15,5 +15,5 @@ export const FeatureItem = ({ logo, title, description }: FeatureItemProps) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
