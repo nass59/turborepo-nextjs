@@ -9,7 +9,8 @@ export default function loading() {
       <DashboardHeader heading="Posts" text="Create and manage posts.">
         <PostCreateButton />
       </DashboardHeader>
-      <div className="divide-y divide-neutral-200 rounded-md border border-slate-200">
+
+      <div className="divide-border-200 divide-y rounded-md border">
         <PostItem.Skeleton />
         <PostItem.Skeleton />
         <PostItem.Skeleton />

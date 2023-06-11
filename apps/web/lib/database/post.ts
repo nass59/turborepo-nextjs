@@ -37,10 +37,12 @@ export async function findPost(postId: string): Promise<Post | null> {
   return await findOne({ _id: new ObjectId(postId) })
 }
 
-export async function findPostsForUser(userId: string): Promise<Post[]> {
+export async function findPostsForUser(userEmail: string): Promise<Post[]> {
   const collection = await getCollection()
 
-  return await collection.find({ authorId: userId }, { projection }).toArray()
+  return await collection
+    .find({ authorId: userEmail }, { projection })
+    .toArray()
 }
 
 export async function deletePostForUser(postId: string, userId: string) {

@@ -10,8 +10,8 @@ interface DashboardHeaderProps extends React.HTMLAttributes<HTMLElement> {
 
 export const DashboardHeader = ({ user }: DashboardHeaderProps) => {
   return (
-    <header className="container sticky top-0 z-40 bg-white">
-      <div className="flex h-16 items-center justify-between border-b border-b-slate-200 py-4">
+    <header className="sticky top-0 z-40 border-b bg-background">
+      <div className="container flex h-16 items-center justify-between py-4">
         <MainNav items={dashboardConfig.mainNav} />
         <UserAccountNav user={user} />
       </div>

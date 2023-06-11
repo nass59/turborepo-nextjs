@@ -33,14 +33,14 @@ export default function Page() {
             Welcome back
           </h1>
 
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-muted-foreground">
             Enter your email to sign in to your account
           </p>
         </div>
 
         <UserAuthForm />
 
-        <p className="px-8 text-center text-sm text-slate-500">
+        <p className="px-8 text-center text-sm text-muted-foreground">
           <Link
             href="/register"
             className="hover:text-brand underline underline-offset-4"

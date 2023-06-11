@@ -28,7 +28,7 @@ export default async function Page() {
 
       <div>
         {posts?.length ? (
-          <div className="divide-y divide-neutral-200 rounded-md border border-slate-200">
+          <div className="divide-y divide-border rounded-md border">
             {posts.map((post) => (
               <PostItem key={post._id.toString()} post={post} />
             ))}
@@ -40,9 +40,7 @@ export default async function Page() {
             <EmptyPlaceholder.Description>
               You don&apos;t have any posts yet. Start creating content.
             </EmptyPlaceholder.Description>
-            <PostCreateButton
-              className={cn(buttonVariants({ variant: "outline" }))}
-            />
+            <PostCreateButton variant="outline" />
           </EmptyPlaceholder>
         )}
       </div>

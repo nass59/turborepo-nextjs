@@ -5,11 +5,10 @@ import { useRouter } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { toast } from "@/hooks/use-toast"
-import { buttonVariants } from "@/components/ui/button"
+import { ButtonProps, buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
-interface PostCreateButtonProps
-  extends React.HTMLAttributes<HTMLButtonElement> {}
+interface PostCreateButtonProps extends ButtonProps {}
 
 const toastReachedLimit = () => {
   return toast({
@@ -29,6 +28,7 @@ const toastError = () => {
 
 export const PostCreateButton = ({
   className,
+  variant,
   ...props
 }: PostCreateButtonProps) => {
   const router = useRouter()
@@ -65,7 +65,7 @@ export const PostCreateButton = ({
   return (
     <button
       className={cn(
-        buttonVariants(),
+        buttonVariants({ variant }),
         { "cursor-not-allowed opacity-60": isLoading },
         className
       )}
