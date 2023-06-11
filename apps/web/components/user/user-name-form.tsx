@@ -10,7 +10,14 @@ import { cn } from "@/lib/utils"
 import { userNameSchema } from "@/lib/validation/user"
 import { toast } from "@/hooks/use-toast"
 import { buttonVariants } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Icons } from "@/components/icons"
@@ -75,14 +82,14 @@ export function UserNameForm({ user, className, ...props }: UserNameProps) {
       {...props}
     >
       <Card>
-        <Card.Header>
-          <Card.Title>Your Name</Card.Title>
-          <Card.Description>
+        <CardHeader>
+          <CardTitle>Your Name</CardTitle>
+          <CardDescription>
             Please enter your full name or display name you are comfortable
             with.
-          </Card.Description>
-        </Card.Header>
-        <Card.Content>
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="name">
               Name
@@ -99,9 +106,9 @@ export function UserNameForm({ user, className, ...props }: UserNameProps) {
               <p className="px-1 text-xs text-red-600">{errors.name.message}</p>
             )}
           </div>
-        </Card.Content>
+        </CardContent>
 
-        <Card.Footer>
+        <CardFooter>
           <button
             type="submit"
             className={cn(buttonVariants())}
@@ -112,7 +119,7 @@ export function UserNameForm({ user, className, ...props }: UserNameProps) {
             )}
             <span>Save</span>
           </button>
-        </Card.Footer>
+        </CardFooter>
       </Card>
     </form>
   )
