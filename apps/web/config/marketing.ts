@@ -11,10 +11,5 @@ export const marketingConfig: MarketingConfig = {
       href: "/docs",
       disabled: false,
     },
-    {
-      title: "Contact",
-      href: "/contact",
-      disabled: true,
-    },
   ],
 }
