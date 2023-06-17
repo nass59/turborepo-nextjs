@@ -76,7 +76,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <article className="container max-w-3xl py-6 lg:py-10">
       <div className="space-y-4">
-        <h1 className="inline-block font-heading text-4xl font-extrabold lg:text-5xl">
+        <h1 className="inline-block font-heading text-4xl lg:text-5xl">
           {page.title}
         </h1>
 

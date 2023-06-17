@@ -26,9 +26,7 @@ export default async function Page() {
       />
 
       <div className="grid gap-10">
-        {user?.name ? (
-          <UserNameForm user={{ id: user.id, name: user.name }} />
-        ) : null}
+        <UserNameForm user={{ id: user.id, name: user.name || "" }} />
       </div>
     </DashboardShell>
   )

@@ -106,7 +106,7 @@ export default async function Page({ params }: PageProps) {
           </time>
         )}
 
-        <h1 className="mt-2 inline-block font-heading font-extrabold leading-tight lg:text-5xl">
+        <h1 className="mt-2 inline-block font-heading leading-tight lg:text-5xl">
           {post.title}
         </h1>
 
