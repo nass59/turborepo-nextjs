@@ -97,6 +97,7 @@ importers:
       next: 13.3.1
       next-auth: ^4.22.1
       next-contentlayer: ^0.3.3
+      next-themes: ^0.2.1
       nodemailer: ^6.9.3
       postcss: ^8.4.24
       postcss-loader: ^7.3.3
@@ -153,6 +154,7 @@ importers:
       next: 13.3.1_756ubwvsgazzkcxtigvs4yqbci
       next-auth: 4.22.1_y4yhjuf6eff3zsigfyt3aiq5rq
       next-contentlayer: 0.3.3_mhv6bqagzmp4eo3juvq6vwo67u
+      next-themes: 0.2.1_ivamjty3az7dj3hhadhjniqtwe
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-hook-form: 7.44.3_react@18.2.0
@@ -7451,6 +7453,18 @@ packages:
       - esbuild
       - markdown-wasm
       - supports-color
+    dev: false
+
+  /next-themes/0.2.1_ivamjty3az7dj3hhadhjniqtwe:
+    resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
+    peerDependencies:
+      next: '*'
+      react: '*'
+      react-dom: '*'
+    dependencies:
+      next: 13.3.1_756ubwvsgazzkcxtigvs4yqbci
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /next-transpile-modules/9.0.0:

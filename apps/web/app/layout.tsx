@@ -9,6 +9,7 @@ import { Help } from "@/components/ui/helper"
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const fontSans = Inter({
   variable: "--font-inter",
@@ -54,14 +55,6 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
-    images: [
-      {
-        url: absoluteUrl("/og.jpg"),
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -89,21 +82,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html
-      lang="en"
-      className={cn(
-        "scroll-smooth bg-white font-sans text-slate-900 antialiased",
-        fontSans.variable,
-        fontHeading.variable
-      )}
-    >
+    <html lang="en" suppressHydrationWarning>
       <head />
-      <body className="min-h-screen">
-        {children}
-        <Analytics />
-        <Help />
-        <Toaster />
-        <TailwindIndicator />
+      <body
+        className={cn(
+          "min-h-screen scroll-smooth bg-background font-sans antialiased",
+          fontSans.variable,
+          fontHeading.variable
+        )}
+      >
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          {children}
+          <Analytics />
+          <Help />
+          <Toaster />
+          <TailwindIndicator />
+        </ThemeProvider>
       </body>
     </html>
   )
