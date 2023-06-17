@@ -45,12 +45,11 @@ export async function findPostsForUser(userEmail: string): Promise<Post[]> {
     .toArray()
 }
 
-export async function deletePostForUser(postId: string, userId: string) {
+export async function deletePost(postId: string) {
   const collection = await getCollection()
 
   await collection.deleteOne({
     _id: new ObjectId(postId),
-    authorId: userId,
   })
 }
 
@@ -79,16 +78,11 @@ export async function createPost(
   return !result.insertedId ? null : findPost(result.insertedId.toString())
 }
 
-export async function updatePost(
-  postId: string,
-  body: BodyPostProps,
-  userId: string
-) {
+export async function updatePost(postId: string, body: BodyPostProps) {
   const collection = await getCollection()
   const result = await collection.updateOne(
     {
       _id: new ObjectId(postId),
-      authorId: userId,
     },
     {
       $set: {
