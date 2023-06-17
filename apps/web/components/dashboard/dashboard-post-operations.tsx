@@ -48,7 +48,7 @@ export const PostOperations = ({ post }: PostProps) => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex h-8 w-8 items-center justify-center rounded-md border transition-colors hover:bg-slate-50">
+        <DropdownMenuTrigger className="flex h-8 w-8 items-center justify-center rounded-md border transition-colors hover:bg-muted">
           <Icons.ellipsis className="h-4 w-4" />
           <span className="sr-only">Open</span>
         </DropdownMenuTrigger>
@@ -63,7 +63,7 @@ export const PostOperations = ({ post }: PostProps) => {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
-            className="flex cursor-pointer items-center text-red-600 focus:bg-red-50"
+            className="flex cursor-pointer items-center text-destructive focus:text-destructive"
             onSelect={() => setShowDeleteAlert(true)}
           >
             Delete

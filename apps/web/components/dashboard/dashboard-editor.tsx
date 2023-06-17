@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form"
 import TextareaAutosize from "react-textarea-autosize"
 import { z } from "zod"
 
+import "@/styles/editor.css"
 import { PostProps } from "types"
 import { cn } from "@/lib/utils"
 import { postSchema } from "@/lib/validation/post"
@@ -134,7 +135,7 @@ export const Editor = ({ post }: PostProps) => {
                 Back
               </>
             </Link>
-            <p className="text-sm text-slate-600">Draft</p>
+            <p className="text-sm text-muted-foreground">Draft</p>
           </div>
           <button type="submit" className={cn(buttonVariants())}>
             {isSaving && (
@@ -149,13 +150,13 @@ export const Editor = ({ post }: PostProps) => {
             id="title"
             defaultValue={post.title}
             placeholder="Post title"
-            className="w-full resize-none appearance-none overflow-hidden bg-white text-5xl font-bold focus:outline-none"
+            className="w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold focus:outline-none"
             {...register("title")}
           />
           <div id="editor" className="min-h-[500px]"></div>
           <p className="text-sm text-gray-500">
             Use{" "}
-            <kbd className="rounded-md border bg-slate-50 px-1 text-xs uppercase">
+            <kbd className="rounded-md border bg-muted px-1 text-xs uppercase">
               Tab
             </kbd>{" "}
             to open the command menu.

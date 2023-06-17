@@ -17,7 +17,7 @@ export const PostItem = ({ post }: PostProps) => {
         </Link>
 
         <div>
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-muted-foreground">
             {formatDate(post.createdAt || "")}
           </p>
         </div>
