@@ -29,7 +29,10 @@ export const Post = defineDocumentType(() => ({
     description: {
       type: "string",
       description: "The description of the post",
-      required: true,
+    },
+    published: {
+      type: "boolean",
+      default: true,
     },
     image: {
       type: "string",
@@ -45,10 +48,6 @@ export const Post = defineDocumentType(() => ({
       type: "list",
       of: { type: "string" },
       required: true,
-    },
-    published: {
-      type: "boolean",
-      default: true,
     },
   },
   computedFields,
@@ -124,7 +123,7 @@ export const Doc = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Post, Author, Page, Doc],
+  documentTypes: [Page, Doc, Post, Author],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
@@ -132,7 +131,7 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: "material-darker",
+          theme: "github-dark",
           onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted
