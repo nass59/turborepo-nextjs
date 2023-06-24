@@ -26,6 +26,7 @@ interface RootLayoutProps {
 
 // @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-fields
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -64,11 +65,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon/favicon-16x16.png",
-    apple: "/favicon/apple-touch-icon.png",
+    shortcut: "/shortcut-icon.png",
+    apple: "/apple-icon.png",
   },
   manifest: absoluteUrl("/site.webmanifest"),
-  themeColor: "#000000",
+  themeColor: "black",
   colorScheme: "dark",
   applicationName: siteConfig.name,
   referrer: "origin-when-cross-origin",

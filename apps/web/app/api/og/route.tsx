@@ -1,4 +1,4 @@
-import { ImageResponse } from "@vercel/og"
+import { ImageResponse } from "next/server"
 
 import { ogImageSchema } from "@/lib/validation/og"
 import { Space2 } from "@/components/icons/space2"
@@ -14,6 +14,7 @@ const interBold = fetch(
   new URL("../../../assets/fonts/CalSans-SemiBold.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer())
 
+// @see https://nextjs.org/docs/app/building-your-application/routing/router-handlers
 export async function GET(req: Request) {
   try {
     const fontRegular = await interRegular
