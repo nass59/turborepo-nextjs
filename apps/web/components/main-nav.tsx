@@ -16,7 +16,9 @@ interface MainNavProps {
 }
 
 export const MainNav = ({ items, children }: MainNavProps) => {
+  // @see https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#useselectedlayoutsegments
   const segment = useSelectedLayoutSegment()
+
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const close = () => setShowMobileMenu(false)
 

@@ -79,6 +79,7 @@ export const metadata: Metadata = {
   },
 }
 
+// @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>

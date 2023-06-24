@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { Icons } from "@/components/icons"
 
 export function Breadcrumb() {
+  // @see https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#checking-active-links
   const pathname = usePathname()
 
   return (

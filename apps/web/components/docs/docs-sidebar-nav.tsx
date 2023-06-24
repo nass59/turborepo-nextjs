@@ -10,6 +10,7 @@ interface DocsSidebarNavProps {
 }
 
 export const DocsSidebarNav = ({ items }: DocsSidebarNavProps) => {
+  // @see https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#checking-active-links
   const pathname = usePathname()
 
   return items.length ? (

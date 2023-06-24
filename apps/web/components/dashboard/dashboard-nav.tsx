@@ -12,6 +12,7 @@ interface DashboardNavProps {
 }
 
 export const DashboardNav = ({ items }: DashboardNavProps) => {
+  // @see https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#checking-active-links
   const path = usePathname()
 
   if (!items?.length) {

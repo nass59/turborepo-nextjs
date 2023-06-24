@@ -1,5 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton"
 
+// @see https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming
 export default function Loading() {
   return (
     <div className="grid w-full gap-10">

@@ -62,6 +62,7 @@ export async function generateMetadata({
   }
 }
 
+// @see https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#generating-static-params
 export async function generateStaticParams(): Promise<PageProps["params"][]> {
   return allPages.map((page) => ({ slug: page.slug }))
 }

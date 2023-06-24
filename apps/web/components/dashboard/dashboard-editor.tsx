@@ -25,6 +25,8 @@ export const Editor = ({ post }: PostProps) => {
   })
 
   const ref = useRef<EditorJS>()
+  
+  // @see https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#userouter-hook
   const router = useRouter()
 
   const [isMounted, setIsMounted] = useState<boolean>(false)

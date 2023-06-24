@@ -41,7 +41,9 @@ async function deletePost(postId: string) {
 }
 
 export const PostOperations = ({ post }: PostProps) => {
+  // @see https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#userouter-hook
   const router = useRouter()
+
   const [showDeleteAlert, setShowDeleteAlert] = useState(false)
   const [isDeleteLoading, setIsDeleteLoading] = useState(false)
 

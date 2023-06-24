@@ -31,6 +31,7 @@ export const PostCreateButton = ({
   variant,
   ...props
 }: PostCreateButtonProps) => {
+  // @see https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#userouter-hook
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
 

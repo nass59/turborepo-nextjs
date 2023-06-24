@@ -33,7 +33,9 @@ interface UserNameProps extends React.HTMLAttributes<HTMLFormElement> {
 type FormData = z.infer<typeof userNameSchema>
 
 export function UserNameForm({ user, className, ...props }: UserNameProps) {
+  // @see https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#userouter-hook
   const router = useRouter()
+
   const {
     handleSubmit,
     register,
