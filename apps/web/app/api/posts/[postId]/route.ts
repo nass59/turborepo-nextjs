@@ -17,6 +17,7 @@ const routeContextSchema = z.object({
   }),
 })
 
+// @see https://nextjs.org/docs/app/building-your-application/routing/router-handlers
 export async function DELETE(
   req: Request,
   context: z.infer<typeof routeContextSchema>
@@ -39,6 +40,7 @@ export async function DELETE(
   }
 }
 
+// @see https://nextjs.org/docs/app/building-your-application/routing/router-handlers
 export async function PATCH(
   req: Request,
   context: z.infer<typeof routeContextSchema>

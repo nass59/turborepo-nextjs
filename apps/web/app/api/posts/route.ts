@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server"
 import { getServerSession } from "next-auth/next"
 import { z } from "zod"
 
@@ -13,6 +14,7 @@ const postCreateSchema = z.object({
   content: z.string().optional(),
 })
 
+// @see https://nextjs.org/docs/app/building-your-application/routing/router-handlers
 export async function GET() {
   try {
     const session = await getServerSession(authOptions)
@@ -29,12 +31,13 @@ export async function GET() {
 
     const posts = await findPostsForUser(user.email)
 
-    return new Response(JSON.stringify(posts))
+    return NextResponse.json(posts)
   } catch (error) {
     return errorResponse(error)
   }
 }
 
+// @see https://nextjs.org/docs/app/building-your-application/routing/router-handlers
 export async function POST(req: Request) {
   try {
     const session = await getServerSession(authOptions)
@@ -53,7 +56,7 @@ export async function POST(req: Request) {
     const body = postCreateSchema.parse(json)
     const post = await createPost(body, user.email)
 
-    return new Response(JSON.stringify(post))
+    return NextResponse.json(post)
   } catch (error) {
     return errorResponse(error)
   }
