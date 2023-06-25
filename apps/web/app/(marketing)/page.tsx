@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { env } from "@/env.mjs"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -20,7 +21,7 @@ async function getGithubStars(): Promise<string | null> {
       {
         headers: {
           Accept: "application/vnd.github+json",
-          Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
+          Authorization: `Bearer ${env.GITHUB_ACCESS_TOKEN}`,
         },
         next: {
           revalidate: 3600,

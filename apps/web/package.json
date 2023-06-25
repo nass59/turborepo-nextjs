@@ -37,6 +37,7 @@
     "@radix-ui/react-popover": "^1.0.6",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.4",
+    "@t3-oss/env-nextjs": "^0.4.1",
     "@typescript-eslint/parser": "^5.59.11",
     "@vercel/analytics": "^1.0.1",
     "@vercel/og": "^0.0.21",

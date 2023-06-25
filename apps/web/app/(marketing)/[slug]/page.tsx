@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { allPages } from "contentlayer/generated"
 
+import { env } from "@/env.mjs"
 import { siteConfig } from "@/config/site"
 import { absoluteUrl } from "@/lib/utils"
 import { Mdx } from "@/components/mdx-components"
@@ -29,7 +30,7 @@ export async function generateMetadata({
     return {}
   }
 
-  const url = process.env.NEXT_PUBLIC_APP_URL
+  const url = env.NEXT_PUBLIC_APP_URL
 
   const ogUrl = new URL(`${url}/api/og`)
   ogUrl.searchParams.set("heading", page.title)

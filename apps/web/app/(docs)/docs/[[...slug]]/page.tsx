@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
 
+import { env } from "@/env.mjs"
 import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl } from "@/lib/utils"
 import { DocsPageHeader } from "@/components/docs/docs-page-header"
@@ -33,7 +34,7 @@ export async function generateMetadata({
     return {}
   }
 
-  const url = process.env.NEXT_PUBLIC_APP_URL
+  const url = env.NEXT_PUBLIC_APP_URL
 
   const ogUrl = new URL(`${url}/api/og`)
   ogUrl.searchParams.set("heading", doc.description ?? doc.title)

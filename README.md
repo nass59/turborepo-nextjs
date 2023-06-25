@@ -23,6 +23,7 @@ An open source application built using the new router, server components and eve
 - 🎨 Styled using **Tailwind CSS**
 - 👨‍🎨 Styleguide using **Storybook**
 - ⚡️ Validations using **Zod**
+- 🛟 Validation for type-safe environment variables using **T3 Env**
 - 👷🏼‍♂️ Written in **TypeScript**
 
 ## What's inside?

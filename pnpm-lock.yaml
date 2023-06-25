@@ -70,6 +70,7 @@ importers:
       '@radix-ui/react-popover': ^1.0.6
       '@radix-ui/react-slot': ^1.0.2
       '@radix-ui/react-toast': ^1.1.4
+      '@t3-oss/env-nextjs': ^0.4.1
       '@tailwindcss/line-clamp': ^0.4.4
       '@tailwindcss/typography': ^0.5.9
       '@testing-library/react': ^13.4.0
@@ -141,6 +142,7 @@ importers:
       '@radix-ui/react-popover': 1.0.6_yocb3i3wnzgcjdkwlkavbjyyfy
       '@radix-ui/react-slot': 1.0.2_bbvjflvjoibwhtpmedigb26h6y
       '@radix-ui/react-toast': 1.1.4_yocb3i3wnzgcjdkwlkavbjyyfy
+      '@t3-oss/env-nextjs': 0.4.1_wnc3eutrhvkpx2b7oumqzgx5he
       '@typescript-eslint/parser': 5.59.11_2jcgcerbs6bi4debdtwega5q6u
       '@vercel/analytics': 1.0.1
       '@vercel/og': 0.0.21
@@ -3536,6 +3538,27 @@ packages:
     resolution: {integrity: sha512-sJ902EfIzn1Fa+qYmjdQqh8tPsoxyBz+8yBKC2HKUxyezKJFwPGOn7pv4WY6QuQW//ySQi5lJjA/ZT9sNWWNTg==}
     dependencies:
       tslib: 2.5.3
+    dev: false
+
+  /@t3-oss/env-core/0.4.1_wnc3eutrhvkpx2b7oumqzgx5he:
+    resolution: {integrity: sha512-JZI8vxlHwtiZO7OYS3qSX9Ngt7UcdqsugLwhBwx7UVi5wp1PtRo2tzMyNoBEGbfHdmkd2QU9IbvYjqtaLUA7TQ==}
+    peerDependencies:
+      typescript: '>=4.7.2'
+      zod: ^3.0.0
+    dependencies:
+      typescript: 4.9.5
+      zod: 3.21.4
+    dev: false
+
+  /@t3-oss/env-nextjs/0.4.1_wnc3eutrhvkpx2b7oumqzgx5he:
+    resolution: {integrity: sha512-lDbewJvZwOW7bFwHzdKtAH4+YcVTvGU7UEJfHwlb1RqVe9ejPrKn6ax2OGv/nFji1JXGKecKYHz3Xkpru6TFbw==}
+    peerDependencies:
+      typescript: '>=4.7.2'
+      zod: ^3.0.0
+    dependencies:
+      '@t3-oss/env-core': 0.4.1_wnc3eutrhvkpx2b7oumqzgx5he
+      typescript: 4.9.5
+      zod: 3.21.4
     dev: false
 
   /@tailwindcss/line-clamp/0.4.4_tailwindcss@3.3.2:

@@ -1,12 +1,14 @@
 import { MongoClient } from "mongodb"
 
-if (!process.env.MONGODB_URI) {
+import { env } from "@/env.mjs"
+
+if (!env.MONGODB_URI) {
   throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
 }
 
-export const DATABASE_NAME = process.env.MONGODB_DATABASE as string
+export const DATABASE_NAME = env.MONGODB_DATABASE as string
 
-const uri = process.env.MONGODB_URI as string
+const uri = env.MONGODB_URI as string
 const options = {}
 
 declare global {
@@ -22,7 +24,7 @@ class Singleton {
     this.client = new MongoClient(uri, options)
     this.clientPromise = this.client.connect()
 
-    if (process.env.NODE_ENV === "development") {
+    if (env.NODE_ENV === "development") {
       // In development mode, use a global variable so that the value
       // is preserved across module reloads caused by HMR (Hot Module Replacement).
       global._mongoClientPromise = this.clientPromise

@@ -3,6 +3,7 @@ import { NextAuthOptions } from "next-auth"
 import EmailProvider from "next-auth/providers/email"
 import GitHubProvider from "next-auth/providers/github"
 
+import { env } from "@/env.mjs"
 import clientPromise from "@/lib/database/mongodb"
 import { findUser } from "@/lib/database/user"
 
@@ -16,8 +17,8 @@ export const authOptions: NextAuthOptions = {
   adapter: MongoDBAdapter(clientPromise),
   providers: [
     GitHubProvider({
-      clientId: process.env.GITHUB_ID || "",
-      clientSecret: process.env.GITHUB_SECRET || "",
+      clientId: env.GITHUB_ID || "",
+      clientSecret: env.GITHUB_SECRET || "",
       profile(profile) {
         return {
           id: profile.id.toString(),
@@ -32,14 +33,14 @@ export const authOptions: NextAuthOptions = {
     }),
     EmailProvider({
       server: {
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT),
+        host: env.SMTP_HOST,
+        port: Number(env.SMTP_PORT),
         auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASSWORD,
+          user: env.SMTP_USER,
+          pass: env.SMTP_PASSWORD,
         },
       },
-      from: process.env.EMAIL_FROM,
+      from: env.EMAIL_FROM,
     }),
   ],
   callbacks: {
