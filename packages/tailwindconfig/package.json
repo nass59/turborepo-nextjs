@@ -1,0 +1,11 @@
+{
+  "name": "tailwindconfig",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "tailwindcss": "^3.3.2",
+    "tailwindcss-animate": "^1.0.6"
+  }
+}

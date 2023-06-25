@@ -6,6 +6,7 @@ import "./env.mjs"
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  transpilePackages: ["tailwindconfig"],
   images: {
     remotePatterns: [
       {

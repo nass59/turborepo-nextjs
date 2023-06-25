@@ -2,10 +2,6 @@ import { MongoClient } from "mongodb"
 
 import { env } from "@/env.mjs"
 
-if (!env.MONGODB_URI) {
-  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
-}
-
 export const DATABASE_NAME = env.MONGODB_DATABASE as string
 
 const uri = env.MONGODB_URI as string
