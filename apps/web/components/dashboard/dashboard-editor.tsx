@@ -10,11 +10,10 @@ import TextareaAutosize from "react-textarea-autosize"
 import { z } from "zod"
 
 import "@/styles/editor.css"
+import { buttonVariants, cn, toast } from "ui"
+
 import { PostProps } from "types"
-import { cn } from "@/lib/utils"
 import { postSchema } from "@/lib/validation/post"
-import { toast } from "@/hooks/use-toast"
-import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
 type FormData = z.infer<typeof postSchema>
@@ -25,7 +24,7 @@ export const Editor = ({ post }: PostProps) => {
   })
 
   const ref = useRef<EditorJS>()
-  
+
   // @see https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#userouter-hook
   const router = useRouter()
 

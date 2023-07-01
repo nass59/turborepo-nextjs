@@ -1,9 +1,8 @@
 module.exports = {
   root: true,
-  extends: ["custom", "next/core-web-vitals", "plugin:tailwindcss/recommended"],
+  extends: ["custom", "plugin:tailwindcss/recommended"],
   plugins: ["tailwindcss"],
   rules: {
-    "@next/next/no-html-link-for-pages": "off",
     "tailwindcss/no-custom-classname": "off",
     "tailwindcss/classnames-order": "off",
   },
@@ -11,9 +10,6 @@ module.exports = {
     tailwindcss: {
       callees: ["cn", "cva"],
       config: "tailwind.config.ts",
-    },
-    next: {
-      rootDir: true,
     },
   },
   overrides: [

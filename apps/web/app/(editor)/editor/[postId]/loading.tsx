@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/skeleton"
+import { Skeleton } from "ui"
 
 // @see https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming
 export default function Loading() {

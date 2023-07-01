@@ -1,10 +1,9 @@
 import Link from "next/link"
+import { buttonVariants, cn } from "ui"
 
 import { env } from "@/env.mjs"
 import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { FeatureItem } from "@/components/ui/feature-item"
+import { FeatureItem } from "@/components/feature-item"
 import { Space3 } from "@/components/icons/space3"
 import { Auth } from "@/components/logos/auth"
 import { Github } from "@/components/logos/github"

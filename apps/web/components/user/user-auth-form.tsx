@@ -5,14 +5,10 @@ import { useSearchParams } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { signIn } from "next-auth/react"
 import { useForm } from "react-hook-form"
+import { Input, Label, buttonVariants, cn, toast } from "ui"
 import { z } from "zod"
 
-import { cn } from "@/lib/utils"
 import { userAuthSchema } from "@/lib/validation/userAuthSchema"
-import { toast } from "@/hooks/use-toast"
-import { buttonVariants } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Icons } from "@/components/icons"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}

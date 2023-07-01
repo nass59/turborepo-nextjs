@@ -1,9 +1,9 @@
 "use client"
 
 import { useMemo } from "react"
+import { cn } from "ui"
 
 import { TableOfContents } from "@/lib/toc"
-import { cn } from "@/lib/utils"
 import { useActiveItem } from "@/hooks/use-active-item"
 import { useMounted } from "@/hooks/use-mounted"
 

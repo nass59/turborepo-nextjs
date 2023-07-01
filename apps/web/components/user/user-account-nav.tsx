@@ -3,14 +3,14 @@
 import Link from "next/link"
 import { User } from "next-auth"
 import { signOut } from "next-auth/react"
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "ui"
+
 import { UserAvatar } from "@/components/user/user-avatar"
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLElement> {

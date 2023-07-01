@@ -4,12 +4,6 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
-
-import { cn } from "@/lib/utils"
-import { userNameSchema } from "@/lib/validation/user"
-import { toast } from "@/hooks/use-toast"
-import { buttonVariants } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -17,9 +11,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+  Input,
+  Label,
+  buttonVariants,
+  cn,
+  toast,
+} from "ui"
+import { z } from "zod"
+
+import { userNameSchema } from "@/lib/validation/user"
 import { Icons } from "@/components/icons"
 
 type User = {

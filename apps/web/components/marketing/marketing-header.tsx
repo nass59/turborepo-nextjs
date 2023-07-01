@@ -1,9 +1,8 @@
 import Link from "next/link"
+import { buttonVariants, cn } from "ui"
 
 import { marketingConfig } from "@/config/marketing"
 import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
 import { MainNav } from "@/components/main-nav"
 
 export const MarketingHeader = () => {
@@ -14,7 +13,7 @@ export const MarketingHeader = () => {
         <nav className="flex gap-2">
           <Link
             href="/login"
-            className={cn(buttonVariants({ variant: "yellow", size: "sm" }))}
+            className={cn(buttonVariants({ variant: "brand", size: "sm" }))}
           >
             Login
           </Link>

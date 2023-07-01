@@ -5,6 +5,7 @@ const config = {
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./content/**/*.{md,mdx}",
+    "../../packages/ui/components/**/*.{ts,tsx}",
   ],
 } satisfies Config
 
