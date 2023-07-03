@@ -1,4 +1,4 @@
-import { User } from "next-auth"
+import { type User } from "next-auth"
 
 import { dashboardConfig } from "@/config/dashboard"
 import { MainNav } from "@/components/main-nav"

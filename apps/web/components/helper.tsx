@@ -2,9 +2,9 @@
 
 import Image from "next/image"
 import OgImage from "public/og-light.jpg"
-import { Popover, PopoverContent, PopoverTrigger } from "ui"
 
 import { siteConfig } from "@/config/site"
+import { Popover, PopoverContent, PopoverTrigger } from "@shared/ui"
 import { Icons } from "@/components/icons"
 
 export const Help = () => {

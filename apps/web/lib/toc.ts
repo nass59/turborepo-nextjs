@@ -1,5 +1,5 @@
 import { toc } from "mdast-util-toc"
-import { Node } from "mdast-util-toc/lib"
+import { type Node } from "mdast-util-toc/lib"
 import { remark } from "remark"
 import { visit } from "unist-util-visit"
 

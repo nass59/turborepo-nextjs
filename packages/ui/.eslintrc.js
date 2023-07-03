@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ["custom", "plugin:tailwindcss/recommended"],
+  extends: ["@shared/eslint-config", "plugin:tailwindcss/recommended"],
   plugins: ["tailwindcss"],
   rules: {
     "tailwindcss/no-custom-classname": "off",

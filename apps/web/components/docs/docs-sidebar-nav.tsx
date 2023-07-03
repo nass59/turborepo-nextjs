@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation"
 
-import { SidebarNavItem } from "types"
+import { type SidebarNavItem } from "types"
 import { DocsSidebarNavItems } from "@/components/docs/docs-sidebar-nav-items"
 
 interface DocsSidebarNavProps {

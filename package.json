@@ -17,7 +17,7 @@
     "@commitlint/config-conventional": "^17.6.6",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@turbo/gen": "^1.10.7",
-    "eslint-config-custom": "workspace:*",
+    "@shared/eslint-config": "workspace:*",
     "husky": "^8.0.3",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.2.8",

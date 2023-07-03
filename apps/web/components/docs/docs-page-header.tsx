@@ -1,4 +1,4 @@
-import { cn } from "ui"
+import { cn } from "@shared/ui"
 
 interface DocsPageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   heading: string

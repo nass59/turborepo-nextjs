@@ -3,10 +3,10 @@
 import { useState } from "react"
 import Link from "next/link"
 import { useSelectedLayoutSegment } from "next/navigation"
-import { cn } from "ui"
 
-import { MainNavItem } from "types"
+import { type MainNavItem } from "types"
 import { siteConfig } from "@/config/site"
+import { cn } from "@shared/ui"
 import { Icons } from "@/components/icons"
 import { MobileNav } from "@/components/mobile-nav"
 

@@ -5,17 +5,18 @@ import { useSearchParams } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { signIn } from "next-auth/react"
 import { useForm } from "react-hook-form"
-import { Input, Label, buttonVariants, cn, toast } from "ui"
-import { z } from "zod"
+import { type z } from "zod"
 
 import { userAuthSchema } from "@/lib/validation/userAuthSchema"
+import { Input, Label, buttonVariants, cn, toast } from "@shared/ui"
 import { Icons } from "@/components/icons"
-
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 type FormData = z.infer<typeof userAuthSchema>
 
-export const UserAuthForm = ({ className, ...props }: UserAuthFormProps) => {
+export const UserAuthForm = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
   const {
     register,
     handleSubmit,

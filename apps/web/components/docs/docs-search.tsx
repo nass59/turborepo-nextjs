@@ -1,10 +1,11 @@
 "use client"
 
-import { Input, cn, toast } from "ui"
+import { Input, cn, toast } from "@shared/ui"
 
-interface DocsSearchProps extends React.HTMLAttributes<HTMLFormElement> {}
-
-export const DocsSearch = ({ className, ...props }: DocsSearchProps) => {
+export const DocsSearch = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLFormElement>) => {
   const onSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault()
 

@@ -1,12 +1,12 @@
-import { Metadata } from "next"
+import { type Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { allAuthors, allPosts } from "contentlayer/generated"
-import { buttonVariants, cn } from "ui"
 
 import { env } from "@/env.mjs"
 import { absoluteUrl, formatDate } from "@/lib/utils"
+import { buttonVariants, cn } from "@shared/ui"
 import { Icons } from "@/components/icons"
 import { Mdx } from "@/components/mdx-components"
 

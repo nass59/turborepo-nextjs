@@ -1,8 +1,8 @@
 import Link from "next/link"
-import { Doc } from "contentlayer/generated"
-import { buttonVariants, cn } from "ui"
+import { type Doc } from "contentlayer/generated"
 
 import { docsConfig } from "@/config/docs"
+import { buttonVariants, cn } from "@shared/ui"
 import { Icons } from "@/components/icons"
 
 interface DocsPagerProps {

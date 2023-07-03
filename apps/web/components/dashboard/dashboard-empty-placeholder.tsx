@@ -1,14 +1,11 @@
-import { cn } from "ui"
-
+import { cn } from "@shared/ui"
 import { Icons } from "@/components/icons"
-
-interface EmptyPlaceholderProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const EmptyPlaceholder = ({
   className,
   children,
   ...props
-}: EmptyPlaceholderProps) => {
+}: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
       className={cn(
@@ -47,25 +44,19 @@ EmptyPlaceholder.Icon = function EmptyPlaceholderIcon({
   )
 }
 
-interface EmptyPlaceholderTitleProps
-  extends React.HTMLAttributes<HTMLHeadingElement> {}
-
 EmptyPlaceholder.Title = function EmptyPlaceholderTitle({
   className,
   ...props
-}: EmptyPlaceholderTitleProps) {
+}: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h2 className={cn("mt-6 text-xl font-semibold", className)} {...props} />
   )
 }
 
-interface EmptyPlaceholderDescriptionProps
-  extends React.HTMLAttributes<HTMLParagraphElement> {}
-
 EmptyPlaceholder.Description = function EmptyPlaceholderDescription({
   className,
   ...props
-}: EmptyPlaceholderDescriptionProps) {
+}: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
       className={cn(

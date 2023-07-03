@@ -1,6 +1,5 @@
-import { cn } from "ui"
-
 import { siteConfig } from "@/config/site"
+import { cn } from "@shared/ui"
 import { Icons } from "@/components/icons"
 import { SiteFooterLink } from "@/components/site-footer-link"
 

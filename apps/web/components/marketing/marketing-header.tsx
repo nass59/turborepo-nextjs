@@ -1,8 +1,8 @@
 import Link from "next/link"
-import { buttonVariants, cn } from "ui"
 
 import { marketingConfig } from "@/config/marketing"
 import { siteConfig } from "@/config/site"
+import { buttonVariants, cn } from "@shared/ui"
 import { MainNav } from "@/components/main-nav"
 
 export const MarketingHeader = () => {

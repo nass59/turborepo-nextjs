@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { buttonVariants } from "ui"
 
+import { buttonVariants } from "@shared/ui"
 import { EmptyPlaceholder } from "@/components/dashboard/dashboard-empty-placeholder"
 
 export default function NotFound() {

@@ -2,11 +2,9 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { ButtonProps, buttonVariants, cn, toast } from "ui"
 
+import { buttonVariants, cn, toast, type ButtonProps } from "@shared/ui"
 import { Icons } from "@/components/icons"
-
-interface PostCreateButtonProps extends ButtonProps {}
 
 const toastReachedLimit = () => {
   return toast({
@@ -28,7 +26,7 @@ export const PostCreateButton = ({
   className,
   variant,
   ...props
-}: PostCreateButtonProps) => {
+}: ButtonProps) => {
   // @see https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#userouter-hook
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)

@@ -1,6 +1,7 @@
-import sharedConfig from "tailwindconfig"
-import { shadcnPreset } from "tailwindconfig/lib/shadcn-preset"
 import type { Config } from "tailwindcss"
+
+import sharedConfig from "../tailwind-config"
+import { shadcnPreset } from "../tailwind-config/lib/shadcn-preset"
 
 const config = {
   ...sharedConfig,

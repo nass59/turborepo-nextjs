@@ -3,6 +3,8 @@
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+
+import { type PostProps } from "types"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,9 +20,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   toast,
-} from "ui"
-
-import { PostProps } from "types"
+} from "@shared/ui"
 import { Icons } from "@/components/icons"
 
 async function deletePost(postId: string) {

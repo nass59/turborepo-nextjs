@@ -1,6 +1,11 @@
-import { User } from "next-auth"
-import { Avatar, AvatarFallback, AvatarImage, AvatarProps } from "ui"
+import { type User } from "next-auth"
 
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  type AvatarProps,
+} from "@shared/ui"
 import { Icons } from "@/components/icons"
 
 interface UserAvatarProps extends AvatarProps {

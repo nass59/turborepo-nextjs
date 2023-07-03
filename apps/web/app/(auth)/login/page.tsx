@@ -1,7 +1,7 @@
-import { Metadata } from "next"
+import { type Metadata } from "next"
 import Link from "next/link"
-import { buttonVariants, cn } from "ui"
 
+import { buttonVariants, cn } from "@shared/ui"
 import { Icons } from "@/components/icons"
 import { UserAuthForm } from "@/components/user/user-auth-form"
 

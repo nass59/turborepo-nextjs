@@ -1,4 +1,4 @@
-import { Card, CardContent, CardFooter, CardHeader, Skeleton } from "ui"
+import { Card, CardContent, CardFooter, CardHeader, Skeleton } from "@shared/ui"
 
 export function CardSkeleton() {
   return (

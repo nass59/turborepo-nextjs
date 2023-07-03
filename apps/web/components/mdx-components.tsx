@@ -1,8 +1,8 @@
 import * as React from "react"
 import Image from "next/image"
 import { useMDXComponent } from "next-contentlayer/hooks"
-import { cn } from "ui"
 
+import { cn } from "@shared/ui"
 import { Callout } from "@/components/callout"
 import { MdxCard } from "@/components/mdx-card"
 
@@ -164,6 +164,7 @@ export function Mdx({ code }: MdxProps) {
 
   return (
     <div className="mdx">
+      {/* @ts-ignore */}
       <MDXContent components={mdxComponents} />
     </div>
   )

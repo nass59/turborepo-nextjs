@@ -1,11 +1,16 @@
 module.exports = {
   root: true,
-  extends: ["custom", "next/core-web-vitals", "plugin:tailwindcss/recommended"],
+  extends: [
+    "@shared/eslint-config",
+    "next/core-web-vitals",
+    "plugin:tailwindcss/recommended",
+  ],
   plugins: ["tailwindcss"],
   rules: {
     "@next/next/no-html-link-for-pages": "off",
     "tailwindcss/no-custom-classname": "off",
     "tailwindcss/classnames-order": "off",
+    "no-var": "off",
   },
   settings: {
     tailwindcss: {

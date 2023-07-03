@@ -3,17 +3,16 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import EditorJS from "@editorjs/editorjs"
+import type EditorJS from "@editorjs/editorjs"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import TextareaAutosize from "react-textarea-autosize"
-import { z } from "zod"
+import { type z } from "zod"
 
 import "@/styles/editor.css"
-import { buttonVariants, cn, toast } from "ui"
-
-import { PostProps } from "types"
+import { type PostProps } from "types"
 import { postSchema } from "@/lib/validation/post"
+import { buttonVariants, cn, toast } from "@shared/ui"
 import { Icons } from "@/components/icons"
 
 type FormData = z.infer<typeof postSchema>
@@ -34,17 +33,11 @@ export const Editor = ({ post }: PostProps) => {
   const initEditor = useCallback(async () => {
     const EditorJS = (await import("@editorjs/editorjs")).default
     const Header = (await import("@editorjs/header")).default
-    // @ts-ignore
     const Embed = (await import("@editorjs/embed")).default
-    // @ts-ignore
     const Table = (await import("@editorjs/table")).default
-    // @ts-ignore
     const List = (await import("@editorjs/list")).default
-    // @ts-ignore
     const Code = (await import("@editorjs/code")).default
-    // @ts-ignore
     const LinkTool = (await import("@editorjs/link")).default
-    // @ts-ignore
     const InlineCode = (await import("@editorjs/inline-code")).default
 
     const body = postSchema.parse(post)

@@ -16,5 +16,24 @@
       "cache": false,
       "persistent": true
     }
-  }
+  },
+  "globalEnv": [
+    "GITHUB_ID",
+    "GITHUB_SECRET",
+    "GITHUB_ACCESS_TOKEN",
+    "PREVIEW_URL_SECRET",
+    "NODE_ENV",
+    "NEXTAUTH_URL",
+    "NEXTAUTH_SECRET",
+    "NEXT_PUBLIC_APP_URL",
+    "MONGODB_URI",
+    "PREVIEW_URL_SECRET",
+    "SMTP_HOST",
+    "SMTP_PORT",
+    "SMTP_USER",
+    "SMTP_PASSWORD",
+    "EMAIL_FROM",
+    "MONGODB_URI",
+    "MONGODB_DATABASE"
+  ]
 }

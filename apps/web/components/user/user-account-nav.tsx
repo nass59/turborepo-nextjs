@@ -1,16 +1,16 @@
 "use client"
 
 import Link from "next/link"
-import { User } from "next-auth"
+import { type User } from "next-auth"
 import { signOut } from "next-auth/react"
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "ui"
-
+} from "@shared/ui"
 import { UserAvatar } from "@/components/user/user-avatar"
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLElement> {

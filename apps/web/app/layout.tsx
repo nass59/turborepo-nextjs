@@ -2,11 +2,10 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import localFont from "next/font/local"
 
-import "ui/styles/global.css"
-import { Toaster, cn } from "ui"
-
+import "@shared/ui/styles/global.css"
 import { siteConfig } from "@/config/site"
 import { absoluteUrl } from "@/lib/utils"
+import { Toaster, cn } from "@shared/ui"
 import { Analytics } from "@/components/analytics"
 import { Help } from "@/components/helper"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
