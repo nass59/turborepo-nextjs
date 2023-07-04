@@ -1,4 +1,5 @@
-import { Button } from "./Button"
+import { Button } from "@shared/ui"
+
 import "./header.css"
 
 type User = {
@@ -42,7 +43,7 @@ export const Header = ({
             />
           </g>
         </svg>
-        <h1>Acme</h1>
+        <h1>Techship</h1>
       </div>
       <div>
         {user ? (
@@ -50,17 +51,18 @@ export const Header = ({
             <span className="welcome">
               Welcome, <b>{user.name}</b>!
             </span>
-            <Button size="small" onClick={onLogout} label="Log out" />
+            <Button size="sm" variant="destructive" onClick={onLogout}>
+              Log out
+            </Button>
           </>
         ) : (
           <>
-            <Button size="small" onClick={onLogin} label="Log in" />
-            <Button
-              primary
-              size="small"
-              onClick={onCreateAccount}
-              label="Sign up"
-            />
+            <Button size="sm" variant="brand" onClick={onLogin}>
+              Log in
+            </Button>
+            <Button size="sm" variant="secondary" onClick={onCreateAccount}>
+              Sign up
+            </Button>
           </>
         )}
       </div>

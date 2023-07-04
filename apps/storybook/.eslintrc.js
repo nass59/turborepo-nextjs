@@ -10,6 +10,14 @@ module.exports = {
   plugins: ["react-refresh"],
   rules: {
     "react-refresh/only-export-components": "warn",
+    "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": "off",
+  },
+  settings: {
+    tailwindcss: {
+      callees: ["cn", "cva"],
+      config: "tailwind.config.ts",
+    },
   },
   overrides: [
     {
