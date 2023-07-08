@@ -15,16 +15,14 @@ interface PageProps {
   }
 }
 
-async function getPageFromParams(params: PageProps["params"]) {
+function getPageFromParams(params: PageProps["params"]) {
   const page = allPages.find((page) => page.slug === params.slug)
 
   return page || null
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const page = await getPageFromParams(params)
+export function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const page = getPageFromParams(params)
 
   if (!page) {
     return {}
@@ -64,12 +62,12 @@ export async function generateMetadata({
 }
 
 // @see https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#generating-static-params
-export async function generateStaticParams(): Promise<PageProps["params"][]> {
+export function generateStaticParams(): PageProps["params"][] {
   return allPages.map((page) => ({ slug: page.slug }))
 }
 
-export default async function Page({ params }: PageProps) {
-  const page = await getPageFromParams(params)
+export default function Page({ params }: PageProps) {
+  const page = getPageFromParams(params)
 
   if (!page) {
     notFound()

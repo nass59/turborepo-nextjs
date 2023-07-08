@@ -21,10 +21,4 @@ module.exports = {
       rootDir: true,
     },
   },
-  overrides: [
-    {
-      files: ["*.ts", "*.tsx"],
-      parser: "@typescript-eslint/parser",
-    },
-  ],
 }
