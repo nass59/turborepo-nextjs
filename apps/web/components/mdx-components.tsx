@@ -150,7 +150,15 @@ const mdxComponents = {
     />
   ),
   hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
-  Image,
+  Image: ({ ...props }) => (
+    <Image
+      src={props.src}
+      alt={props.alt}
+      width={props.width}
+      height={props.height}
+      {...props}
+    />
+  ),
   Callout,
   Card: MdxCard,
 }
@@ -164,7 +172,6 @@ export function Mdx({ code }: MdxProps) {
 
   return (
     <div className="mdx">
-      {/* @ts-ignore */}
       <MDXContent components={mdxComponents} />
     </div>
   )

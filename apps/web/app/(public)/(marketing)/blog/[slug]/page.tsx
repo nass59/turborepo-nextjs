@@ -69,8 +69,8 @@ export function generateMetadata({
   }
 }
 
-// @see https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#generating-static-params
-export function generateStaticParams(): ParamsProps[] {
+// // @see https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#generating-static-params
+export async function generateStaticParams(): Promise<ParamsProps[]> {
   return allPosts.map((post) => ({ slug: post.slug }))
 }
 

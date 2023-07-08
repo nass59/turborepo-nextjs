@@ -1,12 +1,7 @@
 import { NextResponse } from "next/server"
-import { getServerSession } from "next-auth/next"
 import { z } from "zod"
 
-import {
-  accessDeniedResponse,
-  errorResponse,
-} from "@/lib/api-response/api-responses"
-import { authOptions } from "@/lib/auth"
+import { errorResponse } from "@/lib/api-response/api-responses"
 import { createPost, findPostsForUser } from "@/lib/database/post"
 
 const postCreateSchema = z.object({
@@ -17,19 +12,19 @@ const postCreateSchema = z.object({
 // @see https://nextjs.org/docs/app/building-your-application/routing/router-handlers
 export async function GET() {
   try {
-    const session = await getServerSession(authOptions)
+    // const session = await getServerSession(authOptions)
 
-    if (!session) {
-      return accessDeniedResponse()
-    }
+    // if (!session) {
+    //   return accessDeniedResponse()
+    // }
 
-    const { user } = session
+    // const { user } = session
 
-    if (!user.email) {
-      return accessDeniedResponse()
-    }
+    // if (!user.email) {
+    //   return accessDeniedResponse()
+    // }
 
-    const posts = await findPostsForUser(user.email)
+    const posts = await findPostsForUser("test@email.com")
 
     return NextResponse.json(posts)
   } catch (error) {
@@ -40,21 +35,21 @@ export async function GET() {
 // @see https://nextjs.org/docs/app/building-your-application/routing/router-handlers
 export async function POST(req: Request) {
   try {
-    const session = await getServerSession(authOptions)
+    // const session = await getServerSession(authOptions)
 
-    if (!session) {
-      return accessDeniedResponse()
-    }
+    // if (!session) {
+    //   return accessDeniedResponse()
+    // }
 
-    const { user } = session
+    // const { user } = session
 
-    if (!user.email) {
-      return accessDeniedResponse()
-    }
+    // if (!user.email) {
+    //   return accessDeniedResponse()
+    // }
 
     const json = await req.json()
     const body = postCreateSchema.parse(json)
-    const post = await createPost(body, user.email)
+    const post = await createPost(body, "user.email")
 
     return NextResponse.json(post)
   } catch (error) {

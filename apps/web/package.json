@@ -29,6 +29,7 @@
     }
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.21.14",
     "@editorjs/code": "^2.8.0",
     "@editorjs/editorjs": "^2.27.2",
     "@editorjs/embed": "^2.5.3",
@@ -52,7 +53,7 @@
     "lucide-react": "^0.104.1",
     "markdown-wasm": "^1.2.0",
     "mongodb": "^4.16.0",
-    "next": "13.4.7",
+    "next": "13.4.9",
     "next-auth": "^4.22.1",
     "next-contentlayer": "0.3.1",
     "next-themes": "^0.2.1",
