@@ -33,7 +33,7 @@ export async function PATCH(
     }
 
     // Get the request body and validate it.
-    const body = await req.json()
+    const body = (await req.json()) as unknown
     const payload = userNameSchema.parse(body)
 
     await updateUser(session.user.id, payload.name)

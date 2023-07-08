@@ -31,7 +31,7 @@ export async function DELETE(
       return accessDeniedResponse()
     }
 
-    const postId = params.postId as string
+    const postId = String(params.postId)
     await deletePost(postId)
 
     return emptyResponse()
@@ -58,7 +58,7 @@ export async function PATCH(
     const json = await req.json()
     const body = postSchema.parse(json)
 
-    const postId = params.postId as string
+    const postId = params.postId
     await updatePost(postId, body)
 
     return successResponse()

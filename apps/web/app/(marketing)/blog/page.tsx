@@ -11,7 +11,7 @@ export const metadata = {
   title: "Blog",
 }
 
-export default async function Page() {
+export default function Page() {
   const posts = allPosts
     .filter((post) => post.published)
     .sort((a, b) => {

@@ -18,17 +18,17 @@ interface PageProps {
   }
 }
 
-async function getDocFromParams(params: PageProps["params"]) {
+function getDocFromParams(params: PageProps["params"]) {
   const slug = params?.slug?.join("/") || ""
   const doc = allDocs.find((doc) => doc.slug === slug)
 
   return doc || null
 }
 
-export async function generateMetadata({
+export function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
-  const doc = await getDocFromParams(params)
+}: PageProps): Promise<Metadata> | object {
+  const doc = getDocFromParams(params)
 
   if (!doc) {
     return {}
@@ -68,12 +68,12 @@ export async function generateMetadata({
 }
 
 // @see https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#generating-static-params
-export async function generateStaticParams(): Promise<PageProps["params"][]> {
+export function generateStaticParams(): PageProps["params"][] {
   return allDocs.map((doc) => ({ slug: doc.slug.split("/") }))
 }
 
 export default async function Page({ params }: PageProps) {
-  const doc = await getDocFromParams(params)
+  const doc = getDocFromParams(params)
 
   if (!doc) {
     notFound()
