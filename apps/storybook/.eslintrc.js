@@ -19,10 +19,4 @@ module.exports = {
       config: "tailwind.config.ts",
     },
   },
-  overrides: [
-    {
-      files: ["*.ts", "*.tsx"],
-      parser: "@typescript-eslint/parser",
-    },
-  ],
 }

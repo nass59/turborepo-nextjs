@@ -11,11 +11,5 @@ module.exports = {
       callees: ["cn", "cva"],
       config: "tailwind.config.ts",
     },
-  },
-  overrides: [
-    {
-      files: ["*.ts", "*.tsx"],
-      parser: "@typescript-eslint/parser",
-    },
-  ],
+  }
 }

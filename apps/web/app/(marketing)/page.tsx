@@ -13,6 +13,10 @@ import { ReactJS } from "@/components/logos/reactjs"
 import { Storybook } from "@/components/logos/storybook"
 import { TailwindCSS } from "@/components/logos/tailwindcss"
 
+type JsonResponse = {
+  stargazers_count: string
+}
+
 async function getGithubStars(): Promise<string | null> {
   try {
     const response = await fetch(
@@ -32,7 +36,7 @@ async function getGithubStars(): Promise<string | null> {
       return null
     }
 
-    const json = await response.json()
+    const json = (await response.json()) as JsonResponse
 
     return parseInt(json["stargazers_count"]).toLocaleString()
   } catch (error) {
