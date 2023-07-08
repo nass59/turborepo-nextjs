@@ -21,7 +21,9 @@ function getPageFromParams(params: PageProps["params"]) {
   return page || null
 }
 
-export function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> | object {
   const page = getPageFromParams(params)
 
   if (!page) {
