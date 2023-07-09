@@ -4,6 +4,8 @@ import localFont from "next/font/local"
 import { ClerkProvider } from "@clerk/nextjs"
 
 import "@shared/ui/styles/global.css"
+import { ModalProvider } from "@/providers/modal-provider"
+
 import { siteConfig } from "@/config/site"
 import { absoluteUrl } from "@/lib/utils"
 import { Toaster, cn } from "@shared/ui"
@@ -95,6 +97,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+            <ModalProvider />
             {children}
             <Analytics />
             <Toaster />

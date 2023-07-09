@@ -64,7 +64,8 @@
     "sharp": "^0.32.1",
     "shiki": "^0.12.1",
     "tailwindcss-animate": "^1.0.6",
-    "zod": "^3.21.4"
+    "zod": "^3.21.4",
+    "zustand": "^4.3.9"
   },
   "devDependencies": {
     "@shared/eslint-config": "workspace:*",
