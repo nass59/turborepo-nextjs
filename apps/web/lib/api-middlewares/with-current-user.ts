@@ -1,8 +1,8 @@
 import type { NextApiHandler, NextApiRequest, NextApiResponse } from "next"
-import { getServerSession } from "next-auth/next"
+// import { getServerSession } from "next-auth/next"
 import { z } from "zod"
 
-import { authOptions } from "@/lib/auth"
+// import { authOptions } from "@/lib/auth"
 
 export const schema = z.object({
   userId: z.string(),
@@ -11,14 +11,14 @@ export const schema = z.object({
 export function withCurrentUser(handler: NextApiHandler) {
   return async function (req: NextApiRequest, res: NextApiResponse) {
     try {
-      const query = await schema.parse(req.query)
+      // const query = await schema.parse(req.query)
 
       // Check if the user has access to this user.
-      const session = await getServerSession(req, res, authOptions)
+      // const session = await getServerSession(req, res, authOptions)
 
-      if (query.userId !== session?.user.id) {
-        return res.status(403).end()
-      }
+      // if (query.userId !== session?.user.id) {
+      //   return res.status(403).end()
+      // }
 
       return handler(req, res)
     } catch (error) {

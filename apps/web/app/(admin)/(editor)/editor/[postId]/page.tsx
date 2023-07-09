@@ -1,8 +1,8 @@
-import { notFound, redirect } from "next/navigation"
+import { notFound } from "next/navigation"
 
-import { authOptions } from "@/lib/auth"
+// import { authOptions } from "@/lib/auth"
 import { findPostForUser } from "@/lib/database/post"
-import { getCurrentUser } from "@/lib/sessions"
+// import { getCurrentUser } from "@/lib/sessions"
 import { Editor } from "@/components/dashboard/dashboard-editor"
 
 interface PageProps {
@@ -10,13 +10,13 @@ interface PageProps {
 }
 
 export default async function Page({ params }: PageProps) {
-  const user = await getCurrentUser()
+  // const user = await getCurrentUser()
 
-  if (!user || !user.email) {
-    redirect(authOptions.pages?.signIn || "/login")
-  }
+  // if (!user || !user.email) {
+  //   redirect(authOptions.pages?.signIn || "/login")
+  // }
 
-  const post = await findPostForUser(params.postId, user.email)
+  const post = await findPostForUser(params.postId, "test")
 
   if (!post) {
     notFound()
