@@ -1,6 +1,8 @@
 // import { redirect } from "next/navigation"
 
-import { UserButton } from "@clerk/nextjs"
+import { Modal } from "@shared/ui"
+
+// import { UserButton } from "@clerk/nextjs"
 
 // import { Button } from "@shared/ui"
 
@@ -48,7 +50,14 @@ export default function Page() {
     //   </div>
     // </DashboardShell>
     <div className="p-4">
-      <UserButton afterSignOutUrl="/" />
+      <Modal
+        title="Test"
+        description="Test description"
+        isOpen
+        onClose={() => null}
+      >
+        Children
+      </Modal>
     </div>
   )
 }
