@@ -1,5 +1,4 @@
 import { cn } from "@shared/ui"
-import { Icons } from "@/components/icons"
 
 export const EmptyPlaceholder = ({
   className,
@@ -17,29 +16,6 @@ export const EmptyPlaceholder = ({
       <div className="mx-auto flex max-w-[420px] flex-col items-center justify-center text-center">
         {children}
       </div>
-    </div>
-  )
-}
-
-interface EmptyPlaceholderIconProps
-  extends Partial<React.SVGProps<SVGSVGElement>> {
-  name: keyof typeof Icons
-}
-
-EmptyPlaceholder.Icon = function EmptyPlaceholderIcon({
-  name,
-  className,
-  ...props
-}: EmptyPlaceholderIconProps) {
-  const Icon = Icons[name]
-
-  if (!Icon) {
-    return null
-  }
-
-  return (
-    <div className="flex h-20 w-20 items-center justify-center rounded-full bg-muted">
-      <Icon className={cn("h-8 w-8", className)} {...props} />
     </div>
   )
 }

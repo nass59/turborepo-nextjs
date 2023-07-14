@@ -1,43 +1,49 @@
-import { MongoClient } from "mongodb"
+import { connect } from "mongoose"
 
 import { env } from "@/env.mjs"
 
-export const DATABASE_NAME = env.MONGODB_DATABASE as string
+const MONGODB_URI = env.MONGODB_URI as string
 
-const uri = env.MONGODB_URI as string
-const options = {}
-
-declare global {
-  var _mongoClientPromise: Promise<MongoClient>
+if (!MONGODB_URI) {
+  throw new Error(
+    "Please define the MONGODB_URI environment variable inside .env.local"
+  )
 }
 
-class Singleton {
-  private static _instance: Singleton
-  private client: MongoClient
-  private clientPromise: Promise<MongoClient>
+/**
+ * Global is used here to maintain a cached connection across hot reloads
+ * in development. This prevents connections from growing exponentially
+ * during API Route usage.
+ */
+let cached = global.mongoose
 
-  private constructor() {
-    this.client = new MongoClient(uri, options)
-    this.clientPromise = this.client.connect()
-
-    if (env.NODE_ENV === "development") {
-      // In development mode, use a global variable so that the value
-      // is preserved across module reloads caused by HMR (Hot Module Replacement).
-      global._mongoClientPromise = this.clientPromise
-    }
-  }
-
-  public static get instance() {
-    if (!this._instance) {
-      this._instance = new Singleton()
-    }
-
-    return this._instance.clientPromise
-  }
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null }
 }
 
-const clientPromise = Singleton.instance
+async function dbConnect() {
+  if (cached.conn) {
+    return cached.conn
+  }
 
-// Export a module-scoped MongoClient promise. By doing this in a
-// separate module, the client can be shared across functions.
-export default clientPromise
+  if (!cached.promise) {
+    const opts = {
+      bufferCommands: false,
+    }
+
+    cached.promise = connect(MONGODB_URI, opts).then((mongoose) => {
+      return mongoose
+    })
+  }
+
+  try {
+    cached.conn = await cached.promise
+  } catch (e) {
+    cached.promise = null
+    throw e
+  }
+
+  return cached.conn
+}
+
+export default dbConnect
