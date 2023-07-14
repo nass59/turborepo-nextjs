@@ -12,10 +12,10 @@ export const MarketingHeader = () => {
         <MainNav items={marketingConfig.mainNav} />
         <nav className="flex gap-2">
           <Link
-            href="/login"
+            href="/dashboard"
             className={cn(buttonVariants({ variant: "brand", size: "sm" }))}
           >
-            Login
+            Go to Dashboard
           </Link>
           <Link
             href={siteConfig.links.github}

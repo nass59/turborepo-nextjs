@@ -1,5 +1,7 @@
 import {
   AlertTriangle,
+  Check,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   ConciergeBell,
@@ -12,12 +14,14 @@ import {
   Loader2,
   MoreVertical,
   Plus,
+  PlusCircle,
   Rocket,
   Settings,
+  Store,
   Trash,
   User,
   X,
-  type Icon as LucideIcon,
+  type LucideIcon,
 } from "lucide-react"
 
 export type Icon = LucideIcon
@@ -28,6 +32,7 @@ export const Icons = {
   bell: ConciergeBell,
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
+  chevronDown: ChevronDown,
   github: Github,
   spinner: Loader2,
   post: FileText,
@@ -36,9 +41,12 @@ export const Icons = {
   settings: Settings,
   user: User,
   add: Plus,
+  plusCircle: PlusCircle,
   warning: AlertTriangle,
   ellipsis: MoreVertical,
   trash: Trash,
   tree: FolderTree,
   billing: CreditCard,
+  store: Store,
+  check: Check,
 }

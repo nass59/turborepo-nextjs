@@ -1,5 +1,6 @@
 import * as React from "react"
 import Image from "next/image"
+import { type MDXComponents } from "mdx/types"
 import { useMDXComponent } from "next-contentlayer/hooks"
 
 import { cn } from "@shared/ui"
@@ -150,10 +151,18 @@ const mdxComponents = {
     />
   ),
   hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
-  Image,
+  Image: ({ ...props }) => (
+    <Image
+      src={props.src}
+      alt={props.alt}
+      width={props.width}
+      height={props.height}
+      {...props}
+    />
+  ),
   Callout,
   Card: MdxCard,
-}
+} as MDXComponents
 
 interface MdxProps {
   code: string
@@ -164,7 +173,6 @@ export function Mdx({ code }: MdxProps) {
 
   return (
     <div className="mdx">
-      {/* @ts-ignore */}
       <MDXContent components={mdxComponents} />
     </div>
   )
