@@ -2,6 +2,7 @@ import { redirect } from "next/navigation"
 import { auth } from "@clerk/nextjs"
 
 import { findOne } from "@/lib/database/store"
+import Navbar from "@/components/admin/navbar"
 
 interface DashboardStoreLayoutProps {
   children: React.ReactNode
@@ -26,8 +27,8 @@ export default async function DashboardStoreLayout({
 
   return (
     <>
-      <div>
-        This will be a navbar
+      <div className="flex min-h-screen flex-col">
+        <Navbar />
         {children}
       </div>
     </>

@@ -5,10 +5,12 @@ import dbConnect from "@/lib/database/mongodb"
 
 type StoreModelProps = Pick<StoreModel, "name" | "userId">
 
-export async function findAll(): Promise<StoreModel[] | []> {
+export async function findAllByUserId(
+  userId: string
+): Promise<StoreModel[] | []> {
   await dbConnect()
 
-  return await Store.find({})
+  return await Store.find({ userId })
 }
 
 export async function create(

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { UpdateIcon } from "@radix-ui/react-icons"
 import axios from "axios"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -90,7 +91,10 @@ export const StoreModal = () => {
                   Cancel
                 </Button>
                 <Button disabled={isLoading} type="submit">
-                  Continue
+                  {isLoading && (
+                    <UpdateIcon className="mr-2 h-4 w-4 animate-spin" />
+                  )}
+                  <span>Continue</span>
                 </Button>
               </div>
             </form>

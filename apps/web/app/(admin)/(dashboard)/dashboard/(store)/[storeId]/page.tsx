@@ -7,5 +7,11 @@ interface DashboardStoreProps {
 export default async function Page({ params }: DashboardStoreProps) {
   const store = await findFirstByStoreId(params.storeId)
 
-  return <div>Active Store: {store?.name}</div>
+  return (
+    <div className="flex flex-col gap-4 p-4">
+      <div>
+        Active Store: <span className="font-semibold">{store?.name}</span>
+      </div>
+    </div>
+  )
 }
