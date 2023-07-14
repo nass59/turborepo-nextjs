@@ -1,5 +1,6 @@
 import * as React from "react"
 import Image from "next/image"
+import { type MDXComponents } from "mdx/types"
 import { useMDXComponent } from "next-contentlayer/hooks"
 
 import { cn } from "@shared/ui"
@@ -161,7 +162,7 @@ const mdxComponents = {
   ),
   Callout,
   Card: MdxCard,
-}
+} as MDXComponents
 
 interface MdxProps {
   code: string
