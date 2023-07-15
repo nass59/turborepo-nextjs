@@ -25,7 +25,7 @@ const formSchema = z.object({
   name: z.string().min(1),
 })
 
-export const StoreModal = () => {
+export const StoreModal: React.FC = () => {
   const storeModal = useStoreModal()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 

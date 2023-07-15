@@ -2,7 +2,7 @@ import { redirect } from "next/navigation"
 import { UserButton, auth } from "@clerk/nextjs"
 
 import { findAllByUserId } from "@/lib/database/store"
-import { MainNav } from "@/components/admin/main-nav"
+import MainNav from "@/components/admin/main-nav"
 import StoreSwitcher from "@/components/admin/store-switcher"
 
 const Navbar: React.FC = async () => {
