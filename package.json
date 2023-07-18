@@ -9,7 +9,8 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint && manypkg check",
+    "lint": "turbo run lint",
+    "lint:check": "manypkg check",
     "lint:fix": "turbo lint -- --fix && manypkg fix",
     "typecheck": "turbo typecheck",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
@@ -35,7 +36,7 @@
     "@commitlint/config-conventional": "^17.6.6",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@manypkg/cli": "^0.21.0",
-    "@shared/eslint-config": "0.1.0",
+    "@shared/eslint-config": "workspace:*",
     "@turbo/gen": "^1.10.8",
     "husky": "^8.0.3",
     "prettier": "^2.8.8",
