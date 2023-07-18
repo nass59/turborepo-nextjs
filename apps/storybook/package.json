@@ -11,14 +11,14 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@shared/ui": "0.1.0",
+    "@shared/ui": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@shared/eslint-config": "0.1.0",
-    "@shared/tailwind-config": "0.1.0",
-    "@shared/ts-config": "0.1.0",
+    "@shared/eslint-config": "workspace:*",
+    "@shared/tailwind-config": "workspace:*",
+    "@shared/ts-config": "workspace:*",
     "@storybook/addon-essentials": "^7.1.0",
     "@storybook/addon-interactions": "^7.1.0",
     "@storybook/addon-links": "^7.1.0",
