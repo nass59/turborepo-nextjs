@@ -30,7 +30,7 @@ importers:
         specifier: ^0.21.0
         version: 0.21.0
       '@shared/eslint-config':
-        specifier: 0.1.0
+        specifier: workspace:*
         version: link:packages/eslint-config
       '@turbo/gen':
         specifier: ^1.10.8
@@ -437,13 +437,13 @@ importers:
         version: 3.21.4
     devDependencies:
       '@shared/eslint-config':
-        specifier: 0.1.0
+        specifier: workspace:*
         version: link:../eslint-config
       '@shared/tailwind-config':
-        specifier: 0.1.0
+        specifier: workspace:*
         version: link:../tailwind-config
       '@shared/ts-config':
-        specifier: 0.1.0
+        specifier: workspace:*
         version: link:../ts-config
       '@types/react':
         specifier: ^18.2.15
@@ -9847,7 +9847,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.16.19
+      '@types/node': 20.4.2
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: true
