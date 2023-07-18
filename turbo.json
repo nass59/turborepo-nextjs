@@ -12,6 +12,7 @@
       ]
     },
     "lint": {},
+    "typecheck": {},
     "dev": {
       "cache": false,
       "persistent": true
