@@ -2,11 +2,11 @@
 
 import { useEffect } from "react"
 
-import { useStoreModal } from "@/hooks/use-store-modal"
+import { useSpaceModal } from "@/hooks/use-space-modal"
 
 export default function Page() {
-  const onOpen = useStoreModal((state) => state.onOpen)
-  const isOpen = useStoreModal((state) => state.isOpen)
+  const onOpen = useSpaceModal((state) => state.onOpen)
+  const isOpen = useSpaceModal((state) => state.isOpen)
 
   useEffect(() => {
     if (!isOpen) {

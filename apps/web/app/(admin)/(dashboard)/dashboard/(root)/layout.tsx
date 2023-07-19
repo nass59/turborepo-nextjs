@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import { auth } from "@clerk/nextjs"
 
-import { findFirstByUserId } from "@/lib/database/store"
+import { findFirstByUserId } from "@/lib/database/space"
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -16,10 +16,10 @@ export default async function DashboardLayout({
     return redirect("/sign-in")
   }
 
-  const store = await findFirstByUserId(userId)
+  const space = await findFirstByUserId(userId)
 
-  if (store) {
-    return redirect(`/dashboard/${store._id.toString()}`)
+  if (space) {
+    return redirect(`/dashboard/${space._id.toString()}`)
   }
 
   return (

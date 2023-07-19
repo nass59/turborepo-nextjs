@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-import { StoreModal } from "@/components/admin/modals/store-modal"
+import { SpaceModal } from "@/components/admin/modals/space-modal"
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false)
@@ -20,7 +20,7 @@ export const ModalProvider = () => {
   // Here we are in client side and we can display the modal
   return (
     <>
-      <StoreModal />
+      <SpaceModal />
     </>
   )
 }
