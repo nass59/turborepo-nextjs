@@ -1,6 +1,6 @@
 import { Schema, model, models, type Types } from "mongoose"
 
-export type StoreModel = {
+export type SpaceModel = {
   _id: Types.ObjectId
   name: string
   userId: string
@@ -8,15 +8,15 @@ export type StoreModel = {
   updatedAt: Date
 }
 
-const StoreSchema = new Schema<StoreModel>({
+const SpaceSchema = new Schema<SpaceModel>({
   name: {
     type: String,
-    required: [true, "Please provide a name for this store"],
+    required: [true, "Please provide a name for this space"],
     maxlength: [30, "Name cannot be more than 30 characters"],
   },
   userId: {
     type: String,
-    required: [true, "Please provide a userId for this store"],
+    required: [true, "Please provide a userId for this space"],
   },
   createdAt: {
     type: Date,
@@ -28,4 +28,4 @@ const StoreSchema = new Schema<StoreModel>({
   },
 })
 
-export default models.Store || model<StoreModel>("Store", StoreSchema)
+export default models.Space || model<SpaceModel>("Space", SpaceSchema)

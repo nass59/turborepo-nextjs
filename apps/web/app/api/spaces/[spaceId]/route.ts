@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server"
 import { auth } from "@clerk/nextjs"
 
-import { deleteOne, update } from "@/lib/database/store"
+import { deleteOne, update } from "@/lib/database/space"
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: { spaceId: string } }
 ) {
   try {
     const { userId } = auth()
@@ -21,22 +21,22 @@ export async function PATCH(
       return new NextResponse("Name is required", { status: 400 })
     }
 
-    if (!params.storeId) {
-      return new NextResponse("Store Id is required", { status: 400 })
+    if (!params.spaceId) {
+      return new NextResponse("Space Id is required", { status: 400 })
     }
 
-    const store = await update(params.storeId, userId, { name })
+    const space = await update(params.spaceId, userId, { name })
 
-    return NextResponse.json(store)
+    return NextResponse.json(space)
   } catch (error) {
-    console.log("[STORES_PATCH]", error)
+    console.log("[SPACES_PATCH]", error)
     return new NextResponse("Internal error", { status: 500 })
   }
 }
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: { spaceId: string } }
 ) {
   try {
     const { userId } = auth()
@@ -45,15 +45,15 @@ export async function DELETE(
       return new NextResponse("Unauthorized", { status: 401 })
     }
 
-    if (!params.storeId) {
-      return new NextResponse("Store Id is required", { status: 400 })
+    if (!params.spaceId) {
+      return new NextResponse("Space Id is required", { status: 400 })
     }
 
-    const store = await deleteOne(params.storeId, userId)
+    const space = await deleteOne(params.spaceId, userId)
 
-    return NextResponse.json(store)
+    return NextResponse.json(space)
   } catch (error) {
-    console.log("[STORES_PATCH]", error)
+    console.log("[SPACES_DELETE]", error)
     return new NextResponse("Internal error", { status: 500 })
   }
 }

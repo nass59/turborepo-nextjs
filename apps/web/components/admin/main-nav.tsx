@@ -12,14 +12,14 @@ export default function MainNav({
   const pathname = usePathname()
   const params = useParams()
 
-  const routeStore = `/dashboard/${params.storeId}`
-  const routeSetting = `/dashboard/${params.storeId}/settings`
+  const routeSpace = `/dashboard/${params.spaceId}`
+  const routeSetting = `${routeSpace}/settings`
 
   const routes = [
     {
-      href: routeStore,
+      href: routeSpace,
       label: "Overview",
-      active: pathname === routeStore,
+      active: pathname === routeSpace,
     },
     {
       href: routeSetting,

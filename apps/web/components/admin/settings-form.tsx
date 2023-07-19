@@ -7,7 +7,8 @@ import axios from "axios"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { type StoreModel } from "@/lib/database/models/Store"
+import { type SpaceModel } from "@/lib/database/models/Space"
+import { useOrigin } from "@/hooks/use-origin"
 import {
   Button,
   Form,
@@ -21,11 +22,12 @@ import {
   Separator,
   toast,
 } from "@shared/ui"
+import { ApiAlert } from "@/components/admin/api-alert"
 import { AlertModal } from "@/components/admin/modals/alert-modal"
 import { Icons } from "@/components/icons"
 
 interface SettingsFormProps {
-  initialData: StoreModel
+  initialData: SpaceModel
 }
 
 const formSchema = z.object({
@@ -40,6 +42,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
 
   const params = useParams()
   const router = useRouter()
+  const origin = useOrigin()
 
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(formSchema),
@@ -50,17 +53,17 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
     try {
       setLoading(true)
 
-      await axios.patch(`/api/stores/${params.storeId}`, data)
+      await axios.patch(`/api/spaces/${params.spaceId}`, data)
       router.refresh()
 
       toast({
-        title: "Store updated.",
+        title: "Space updated.",
       })
     } catch (error) {
       toast({
         title: "Something went wrong.",
         variant: "destructive",
-        description: "Your store was not updated. Please try again.",
+        description: "Your space was not updated. Please try again.",
       })
     } finally {
       setLoading(false)
@@ -71,18 +74,18 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
     try {
       setLoading(true)
 
-      await axios.delete(`/api/stores/${params.storeId}`)
+      await axios.delete(`/api/spaces/${params.spaceId}`)
       router.refresh()
       router.push("/dashboard")
 
       toast({
-        title: "Store deleted.",
+        title: "Space deleted.",
       })
     } catch (error) {
       toast({
         title: "Something went wrong.",
         variant: "destructive",
-        description: "Make sure you removed all products and categories first.",
+        description: "Make sure you removed all categories first.",
       })
     } finally {
       setLoading(false)
@@ -99,7 +102,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
         loading={loading}
       />
       <div className="flex items-center justify-between">
-        <Heading title="Settings" description="Manage store preferences" />
+        <Heading title="Settings" description="Manage space preferences" />
         <Button
           variant="destructive"
           size="icon"
@@ -125,7 +128,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Store name"
+                      placeholder="Space name"
                       {...field}
                     />
                   </FormControl>
@@ -139,6 +142,12 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
           </Button>
         </form>
       </Form>
+      <Separator />
+      <ApiAlert
+        title="NEXT_PUBLIC_API_URL"
+        description={`${origin}/api/spaces/${params.spaceId}`}
+        variant="public"
+      />
     </>
   )
 }
