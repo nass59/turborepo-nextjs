@@ -7,7 +7,7 @@ import axios from "axios"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { useStoreModal } from "@/hooks/use-store-modal"
+import { useSpaceModal } from "@/hooks/use-space-modal"
 import {
   Button,
   Form,
@@ -25,8 +25,8 @@ const formSchema = z.object({
   name: z.string().min(1),
 })
 
-export const StoreModal: React.FC = () => {
-  const storeModal = useStoreModal()
+export const SpaceModal: React.FC = () => {
+  const spaceModal = useSpaceModal()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -40,13 +40,13 @@ export const StoreModal: React.FC = () => {
     try {
       setIsLoading(true)
 
-      const response = await axios.post("/api/stores", values)
+      const response = await axios.post("/api/spaces", values)
       window.location.assign(`/dashboard/${response.data._id.toString()}`)
     } catch (error) {
       toast({
         title: "Something went wrong.",
         variant: "destructive",
-        description: "Your store was not saved. Please try again.",
+        description: "Your space was not saved. Please try again.",
       })
     } finally {
       setIsLoading(false)
@@ -55,10 +55,10 @@ export const StoreModal: React.FC = () => {
 
   return (
     <Modal
-      title="Create Store"
-      description="Add a new store to manage product and categories"
-      isOpen={storeModal.isOpen}
-      onClose={storeModal.onClose}
+      title="Create Space"
+      description="Add a new space to manage product and categories"
+      isOpen={spaceModal.isOpen}
+      onClose={spaceModal.onClose}
     >
       <div>
         <div className="space-y-4 py-2 pb-4">
@@ -73,7 +73,7 @@ export const StoreModal: React.FC = () => {
                     <FormControl>
                       <Input
                         disabled={isLoading}
-                        placeholder="E-commerce"
+                        placeholder="Gaming"
                         {...field}
                       />
                     </FormControl>
@@ -86,7 +86,7 @@ export const StoreModal: React.FC = () => {
                 <Button
                   disabled={isLoading}
                   variant="outline"
-                  onClick={storeModal.onClose}
+                  onClick={spaceModal.onClose}
                 >
                   Cancel
                 </Button>

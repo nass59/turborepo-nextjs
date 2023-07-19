@@ -3,8 +3,8 @@
 import { useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 
-import { type StoreModel } from "@/lib/database/models/Store"
-import { useStoreModal } from "@/hooks/use-store-modal"
+import { type SpaceModel } from "@/lib/database/models/Space"
+import { useSpaceModal } from "@/hooks/use-space-modal"
 import {
   Button,
   Command,
@@ -23,16 +23,16 @@ import { Icons } from "@/components/icons"
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 
-interface StoreSwitcherProps extends PopoverTriggerProps {
-  items: StoreModel[]
+interface SpaceSwitcherProps extends PopoverTriggerProps {
+  items: SpaceModel[]
 }
 
-export default function StoreSwitcher({
+export default function SpaceSwitcher({
   className,
   items = [],
-}: StoreSwitcherProps) {
+}: SpaceSwitcherProps) {
   const [open, setOpen] = useState<boolean>(false)
-  const storeModal = useStoreModal()
+  const spaceModal = useSpaceModal()
   const params = useParams()
   const router = useRouter()
 
@@ -41,13 +41,13 @@ export default function StoreSwitcher({
     value: item._id.toString(),
   }))
 
-  const currentStore = formattedItems.find(
-    (item) => item.value === params.storeId
+  const currentSpace = formattedItems.find(
+    (item) => item.value === params.spaceId
   )
 
-  const onStoreSelect = (store: { value: string; label: string }) => {
+  const onSpaceSelect = (space: { value: string; label: string }) => {
     setOpen(false)
-    router.push(`/dashboard/${store.value}`)
+    router.push(`/dashboard/${space.value}`)
   }
 
   return (
@@ -58,32 +58,32 @@ export default function StoreSwitcher({
           size="sm"
           role="combobox"
           aria-expanded={open}
-          aria-label="Select a store"
+          aria-label="Select a space"
           className={cn("w-[200px] justify-between", className)}
         >
-          <Icons.store className="mr-2 h-4 w-4" />
-          {currentStore?.label}
+          <Icons.space className="mr-2 h-4 w-4" />
+          {currentSpace?.label}
           <Icons.chevronDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandList>
-            <CommandInput placeholder="Search store..." />
-            <CommandEmpty>No store found.</CommandEmpty>
-            <CommandGroup heading="Stores">
-              {formattedItems.map((store) => (
+            <CommandInput placeholder="Search space..." />
+            <CommandEmpty>No space found.</CommandEmpty>
+            <CommandGroup heading="Spaces">
+              {formattedItems.map((space) => (
                 <CommandItem
-                  key={store.value}
-                  onSelect={() => onStoreSelect(store)}
+                  key={space.value}
+                  onSelect={() => onSpaceSelect(space)}
                   className="cursor-pointer text-sm"
                 >
-                  <Icons.store className="mr-2 h-4 w-4" />
-                  {store.label}
+                  <Icons.space className="mr-2 h-4 w-4" />
+                  {space.label}
                   <Icons.check
                     className={cn(
                       "ml-auto h-4 w-4",
-                      currentStore?.value === store.value
+                      currentSpace?.value === space.value
                         ? "opacity-100"
                         : "opacity-0"
                     )}
@@ -99,11 +99,11 @@ export default function StoreSwitcher({
                 className="cursor-pointer"
                 onSelect={() => {
                   setOpen(false)
-                  storeModal.onOpen()
+                  spaceModal.onOpen()
                 }}
               >
                 <Icons.plusCircle className="mr-2 h-5 w-5" />
-                Create Store
+                Create Space
               </CommandItem>
             </CommandGroup>
           </CommandList>
