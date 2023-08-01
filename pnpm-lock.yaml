@@ -225,6 +225,9 @@ importers:
       next-auth:
         specifier: ^4.22.3
         version: 4.22.3(next@13.4.13-canary.9)(nodemailer@6.9.4)(react-dom@18.2.0)(react@18.2.0)
+      next-cloudinary:
+        specifier: ^4.16.3
+        version: 4.16.3(next@13.4.13-canary.9)(react@18.2.0)
       next-contentlayer:
         specifier: ^0.3.4
         version: 0.3.4(contentlayer@0.3.4)(esbuild@0.18.17)(markdown-wasm@1.2.0)(next@13.4.13-canary.9)(react-dom@18.2.0)(react@18.2.0)
@@ -1878,6 +1881,29 @@ packages:
     engines: {node: '>=14'}
     dependencies:
       csstype: 3.1.1
+    dev: false
+
+  /@cloudinary-util/url-loader@3.10.0:
+    resolution: {integrity: sha512-RNp6WayU6e5ikA7yCRqNhp0lOwLl82vLco9EwpES2si6Hb+g9yEaeTYvobD44ISQeJUnPl6e1c/AEYVSjfzwrg==}
+    dependencies:
+      '@cloudinary-util/util': 2.2.1
+      '@cloudinary/url-gen': 1.11.1
+    dev: false
+
+  /@cloudinary-util/util@2.2.1:
+    resolution: {integrity: sha512-MEIqn5WtPP3mxSMTNNfpqlGS1UquAXcjmVdY/t/edD/ZWVjI85viBiOMIuF0W6n6UF5gTstLymfQNYx0YO/GZg==}
+    dev: false
+
+  /@cloudinary/transformation-builder-sdk@1.5.1:
+    resolution: {integrity: sha512-7pTKgyrX49T3Qk0+bE/RN7bijGVRPusDXjRHJyO5a7H6CnL1sZ/TvTMAKvXweFLTOpWzWFW6nS0Bah3kBvTb7w==}
+    dependencies:
+      '@cloudinary/url-gen': 1.11.1
+    dev: false
+
+  /@cloudinary/url-gen@1.11.1:
+    resolution: {integrity: sha512-j5nYZOMeB4Ht1W8C6RXEvVNJVME1sObxtdgtnJDiGcBQmwI1EsCedSQSzkJoely3jhx+yI6WGCLGniF/PE+Idw==}
+    dependencies:
+      '@cloudinary/transformation-builder-sdk': 1.5.1
     dev: false
 
   /@codexteam/icons@0.0.4:
@@ -11442,6 +11468,18 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       uuid: 8.3.2
+    dev: false
+
+  /next-cloudinary@4.16.3(next@13.4.13-canary.9)(react@18.2.0):
+    resolution: {integrity: sha512-dkwvSAFyOvSBd+gBeeI0UaQjnJcXDs1FQYrXIcrF0outdG//02VNXUA45ieOYKhT2/f9NTnHsyfRhizEb0hu/A==}
+    peerDependencies:
+      next: ^12 || ^13
+      react: ^17 || ^18
+    dependencies:
+      '@cloudinary-util/url-loader': 3.10.0
+      '@cloudinary-util/util': 2.2.1
+      next: 13.4.13-canary.9(@babel/core@7.22.9)(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
     dev: false
 
   /next-contentlayer@0.3.4(contentlayer@0.3.4)(esbuild@0.18.17)(markdown-wasm@1.2.0)(next@13.4.13-canary.9)(react-dom@18.2.0)(react@18.2.0):
