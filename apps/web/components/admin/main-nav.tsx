@@ -14,12 +14,18 @@ export default function MainNav({
 
   const routeSpace = `/dashboard/${params.spaceId}`
   const routeSetting = `${routeSpace}/settings`
+  const routeBillboard = `${routeSpace}/billboards`
 
   const routes = [
     {
       href: routeSpace,
       label: "Overview",
       active: pathname === routeSpace,
+    },
+    {
+      href: routeBillboard,
+      label: "Billboards",
+      active: pathname === routeBillboard,
     },
     {
       href: routeSetting,
