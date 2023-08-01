@@ -32,15 +32,15 @@
   },
   "packageManager": "pnpm@8.6.8",
   "dependencies": {
-    "@commitlint/cli": "^17.6.6",
-    "@commitlint/config-conventional": "^17.6.6",
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@manypkg/cli": "^0.21.0",
     "@shared/eslint-config": "workspace:*",
-    "@turbo/gen": "^1.10.8",
+    "@turbo/gen": "^1.10.12",
     "husky": "^8.0.3",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.2.8",
-    "turbo": "^1.10.8"
+    "turbo": "^1.10.12"
   }
 }
