@@ -2,10 +2,15 @@
 
 import { useParams, useRouter } from "next/navigation"
 
+import { type BillboardModel } from "@/lib/database/models/Billboard"
 import { Button, Heading, Separator } from "@shared/ui"
 import { Icons } from "@/components/icons"
 
-export const BillboardClient: React.FC = () => {
+interface BillboardClientProps {
+  data: BillboardModel[]
+}
+
+export const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
   const router = useRouter()
   const params = useParams()
 
@@ -13,7 +18,7 @@ export const BillboardClient: React.FC = () => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title="Billboards (0)"
+          title={`Billboards (${data.length})`}
           description="Manage billboards for your space"
         />
 
