@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { type BillboardModel } from "@/lib/database/models/Billboard"
-// import { useOrigin } from "@/hooks/use-origin"
 import {
   Button,
   Form,
@@ -23,7 +22,6 @@ import {
   toast,
 } from "@shared/ui"
 import ImageUpload from "@/components/admin/image-upload"
-// import { ApiAlert } from "@/components/admin/api-alert"
 import { AlertModal } from "@/components/admin/modals/alert-modal"
 import { Icons } from "@/components/icons"
 
@@ -44,12 +42,18 @@ const CONFIG_LABELS = {
     desscription: "Add a new billboard",
     toastMessage: "Billboard created.",
     action: "Create",
+    error: "Your billboard was not created. Please try again.",
   },
   edit: {
     title: "Edit billboard",
     desscription: "Edit a billboard",
     toastMessage: "Billboard updated.",
     action: "Save changes",
+    error: "Your billboard was not updated. Please try again.",
+  },
+  delete: {
+    toastMessage: "Billboard deleted.",
+    error: "Your billboard was not deleted. Please try again.",
   },
 }
 
@@ -77,17 +81,24 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
     try {
       setLoading(true)
 
-      await axios.patch(`/api/spaces/${params.spaceId}`, data)
-      router.refresh()
+      if (initialData) {
+        await axios.patch(
+          `/api/spaces/${params.spaceId}/billboards/${params.billboardId}`,
+          data
+        )
+      } else {
+        await axios.post(`/api/spaces/${params.spaceId}/billboards`, data)
+      }
 
-      toast({
-        title: "Space updated.",
-      })
+      router.refresh()
+      router.push(`/dashboard/${params.spaceId}/billboards`)
+
+      toast({ title: initialData ? labels.toastMessage : labels.toastMessage })
     } catch (error) {
       toast({
         title: "Something went wrong.",
         variant: "destructive",
-        description: "Your space was not updated. Please try again.",
+        description: initialData ? labels.error : labels.error,
       })
     } finally {
       setLoading(false)
@@ -98,18 +109,19 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
     try {
       setLoading(true)
 
-      await axios.delete(`/api/spaces/${params.spaceId}`)
+      await axios.delete(
+        `/api/spaces/${params.spaceId}/billboards/${params.billboardId}`
+      )
+
       router.refresh()
       router.push("/dashboard")
 
-      toast({
-        title: "Space deleted.",
-      })
+      toast({ title: CONFIG_LABELS.delete.toastMessage })
     } catch (error) {
       toast({
         title: "Something went wrong.",
         variant: "destructive",
-        description: "Make sure you removed all categories first.",
+        description: CONFIG_LABELS.delete.error,
       })
     } finally {
       setLoading(false)
@@ -150,7 +162,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
         >
           <FormField
             control={form.control}
-            name="label"
+            name="imageUrl"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Background Image</FormLabel>
