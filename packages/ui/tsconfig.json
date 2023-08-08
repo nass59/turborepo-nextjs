@@ -1,5 +1,5 @@
 {
   "extends": "@shared/ts-config/react-library.json",
-  "include": [".", "../../apps/web/components/admin/cell-action.tsx"],
+  "include": ["."],
   "exclude": ["node_modules"]
 }
