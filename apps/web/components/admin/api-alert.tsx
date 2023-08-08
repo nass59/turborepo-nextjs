@@ -37,6 +37,7 @@ export const ApiAlert: React.FC<ApiAlertProps> = ({
       title: "API route copied to the clipboard",
     })
   }
+
   return (
     <Alert>
       <Icons.server className="h-4 w-4" />

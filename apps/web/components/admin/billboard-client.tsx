@@ -2,12 +2,12 @@
 
 import { useParams, useRouter } from "next/navigation"
 
-import { type BillboardModel } from "@/lib/database/models/Billboard"
-import { Button, Heading, Separator } from "@shared/ui"
+import { Button, DataTable, Heading, Separator } from "@shared/ui"
+import { columns, type BillboardColumn } from "@/components/admin/columns"
 import { Icons } from "@/components/icons"
 
 interface BillboardClientProps {
-  data: BillboardModel[]
+  data: BillboardColumn[]
 }
 
 export const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
@@ -31,7 +31,10 @@ export const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
           Add new
         </Button>
       </div>
+
       <Separator />
+
+      <DataTable columns={columns} data={data} searchKey="label" />
     </>
   )
 }
