@@ -3,6 +3,7 @@
 import { useParams, useRouter } from "next/navigation"
 
 import { Button, DataTable, Heading, Separator } from "@shared/ui"
+import { ApiList } from "@/components/admin/api-list"
 import { columns, type BillboardColumn } from "@/components/admin/columns"
 import { Icons } from "@/components/icons"
 
@@ -35,6 +36,11 @@ export const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
       <Separator />
 
       <DataTable columns={columns} data={data} searchKey="label" />
+      <Heading title="API" description="API calls for Billboards" />
+
+      <Separator />
+
+      <ApiList entityName="billboards" entityIdName="billboardId" />
     </>
   )
 }
