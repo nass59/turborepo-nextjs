@@ -8,6 +8,7 @@ export default authMiddleware({
     "/terms",
     "/privacy",
     "/api/og(.*)",
+    "/api/:path*",
   ],
 })
 

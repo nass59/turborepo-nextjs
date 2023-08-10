@@ -13,7 +13,7 @@ export default async function Page({ params }: BillboardProps) {
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <BillboardForm initialData={billboard} />
+        <BillboardForm initialData={JSON.parse(JSON.stringify(billboard))} />
       </div>
     </div>
   )
