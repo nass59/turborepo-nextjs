@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useParams, useRouter } from "next/navigation"
+import { BILLBOARD_LABELS } from "@/constants/billboard"
 import { zodResolver } from "@hookform/resolvers/zod"
 import axios from "axios"
 import { useForm } from "react-hook-form"
@@ -36,27 +37,6 @@ interface BillboardFormProps {
   initialData: BillboardModel | null
 }
 
-const CONFIG_LABELS = {
-  create: {
-    title: "Create billboard",
-    desscription: "Add a new billboard",
-    toastMessage: "Billboard created.",
-    action: "Create",
-    error: "Your billboard was not created. Please try again.",
-  },
-  edit: {
-    title: "Edit billboard",
-    desscription: "Edit a billboard",
-    toastMessage: "Billboard updated.",
-    action: "Save changes",
-    error: "Your billboard was not updated. Please try again.",
-  },
-  delete: {
-    toastMessage: "Billboard deleted.",
-    error: "Your billboard was not deleted. Please try again.",
-  },
-}
-
 export const BillboardForm: React.FC<BillboardFormProps> = ({
   initialData,
 }) => {
@@ -65,9 +45,8 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
 
   const params = useParams()
   const router = useRouter()
-  // const origin = useOrigin()
 
-  const labels = initialData ? CONFIG_LABELS.edit : CONFIG_LABELS.create
+  const labels = initialData ? BILLBOARD_LABELS.edit : BILLBOARD_LABELS.create
 
   const form = useForm<BillboardFormValues>({
     resolver: zodResolver(formSchema),
@@ -114,14 +93,14 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       )
 
       router.refresh()
-      router.push("/dashboard")
+      router.push(`/dashboard/${params.spaceId}/billboards`)
 
-      toast({ title: CONFIG_LABELS.delete.toastMessage })
+      toast({ title: BILLBOARD_LABELS.delete.toastMessage })
     } catch (error) {
       toast({
         title: "Something went wrong.",
         variant: "destructive",
-        description: CONFIG_LABELS.delete.error,
+        description: BILLBOARD_LABELS.delete.error,
       })
     } finally {
       setLoading(false)
@@ -203,8 +182,6 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
           </Button>
         </form>
       </Form>
-
-      <Separator />
     </>
   )
 }

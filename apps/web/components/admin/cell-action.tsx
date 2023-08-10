@@ -1,5 +1,10 @@
 "use client"
 
+import { useState } from "react"
+import { useParams, useRouter } from "next/navigation"
+import { BILLBOARD_LABELS } from "@/constants/billboard"
+import axios from "axios"
+
 import {
   Button,
   DropdownMenu,
@@ -10,6 +15,7 @@ import {
   toast,
 } from "@shared/ui"
 import { type BillboardColumn } from "@/components/admin/columns"
+import { AlertModal } from "@/components/admin/modals/alert-modal"
 import { Icons } from "@/components/icons"
 
 interface CellActionProps {
@@ -17,6 +23,12 @@ interface CellActionProps {
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
+  const router = useRouter()
+  const params = useParams()
+
+  const [loading, setLoading] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false)
+
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id)
     toast({
@@ -24,29 +36,61 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
     })
   }
 
+  const onDelete = async () => {
+    try {
+      setLoading(true)
+
+      await axios.delete(`/api/spaces/${params.spaceId}/billboards/${data.id}`)
+      router.refresh()
+
+      toast({ title: BILLBOARD_LABELS.delete.toastMessage })
+    } catch (error) {
+      toast({
+        title: "Something went wrong.",
+        variant: "destructive",
+        description: BILLBOARD_LABELS.delete.error,
+      })
+    } finally {
+      setLoading(false)
+      setOpen(false)
+    }
+  }
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="h-8 w-8 p-0">
-          <span className="sr-only">Open menu</span>
-          <Icons.moreHorizontal className="h-4 w-4" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-        <DropdownMenuItem onClick={() => onCopy(data.id)}>
-          <Icons.copy className="mr-2 h-4 w-4" />
-          Copy Id
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Icons.edit className="mr-2 h-4 w-4" />
-          Update
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Icons.trash className="mr-2 h-4 w-4" />
-          Delete
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <>
+      <AlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onDelete}
+        loading={loading}
+      />
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" className="h-8 w-8 p-0">
+            <span className="sr-only">Open menu</span>
+            <Icons.moreHorizontal className="h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuItem onClick={() => onCopy(data.id)}>
+            <Icons.copy className="mr-2 h-4 w-4" />
+            Copy Id
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() =>
+              router.push(`/dashboard/${params.spaceId}/billboards/${data.id}`)
+            }
+          >
+            <Icons.edit className="mr-2 h-4 w-4" />
+            Update
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setOpen(true)}>
+            <Icons.trash className="mr-2 h-4 w-4" />
+            Delete
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </>
   )
 }
