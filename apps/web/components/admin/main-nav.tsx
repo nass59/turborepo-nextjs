@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useParams, usePathname } from "next/navigation"
+import { routes } from "@/constants/routes"
 
 import { cn } from "@shared/ui"
 
@@ -12,11 +13,12 @@ export default function MainNav({
   const pathname = usePathname()
   const params = useParams()
 
-  const routeSpace = `/dashboard/${params.spaceId}`
+  const routeSpace = `${routes.dashboard}/${params.spaceId}`
   const routeSetting = `${routeSpace}/settings`
   const routeBillboard = `${routeSpace}/billboards`
+  const routeCategory = `${routeSpace}/categories`
 
-  const routes = [
+  const navRoutes = [
     {
       href: routeSpace,
       label: "Overview",
@@ -26,6 +28,11 @@ export default function MainNav({
       href: routeBillboard,
       label: "Billboards",
       active: pathname === routeBillboard,
+    },
+    {
+      href: routeCategory,
+      label: "Categories",
+      active: pathname === routeCategory,
     },
     {
       href: routeSetting,
@@ -39,7 +46,7 @@ export default function MainNav({
       className={cn("flex items-center space-x-4 lg:space-x-6", className)}
       {...props}
     >
-      {routes.map((route) => (
+      {navRoutes.map((route) => (
         <Link
           key={route.href}
           href={route.href}

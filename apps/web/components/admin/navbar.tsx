@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import { UserButton, auth } from "@clerk/nextjs"
 
-import { findAllByUserId } from "@/lib/database/space"
+import { findAllSpacesByUserId } from "@/lib/database/space"
 import MainNav from "@/components/admin/main-nav"
 import SpaceSwitcher from "@/components/admin/space-switcher"
 
@@ -12,7 +12,7 @@ const Navbar: React.FC = async () => {
     redirect("/sign-in")
   }
 
-  const spaces = await findAllByUserId(userId)
+  const spaces = await findAllSpacesByUserId(userId)
 
   return (
     <div className="border-b">
