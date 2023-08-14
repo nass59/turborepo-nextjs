@@ -7,15 +7,15 @@ import { Button, DataTable, Heading, Separator } from "@shared/ui"
 import { ApiList } from "@/components/admin/api-list"
 import {
   columns,
-  type BillboardColumn,
-} from "@/components/admin/billboard-columns"
+  type CategoryColumn,
+} from "@/components/admin/category-columns"
 import { Icons } from "@/components/icons"
 
-interface BillboardClientProps {
-  data: BillboardColumn[]
+interface CategoryClientProps {
+  data: CategoryColumn[]
 }
 
-export const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
+export const CategoryClient: React.FC<CategoryClientProps> = ({ data }) => {
   const router = useRouter()
   const params = useParams()
 
@@ -23,13 +23,13 @@ export const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Billboards (${data.length})`}
-          description="Manage billboards for your space"
+          title={`Categories (${data.length})`}
+          description="Manage categories for your space"
         />
 
         <Button
           onClick={() =>
-            router.push(`${routes.dashboard}/${params.spaceId}/billboards/new`)
+            router.push(`${routes.dashboard}/${params.spaceId}/categories/new`)
           }
         >
           <Icons.add className="mr-2 h-4 w-4" />
@@ -39,12 +39,12 @@ export const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
 
       <Separator />
 
-      <DataTable columns={columns} data={data} searchKey="label" />
-      <Heading title="API" description="API calls for Billboards" />
+      <DataTable columns={columns} data={data} searchKey="name" />
+      <Heading title="API" description="API calls for Categories" />
 
       <Separator />
 
-      <ApiList entityName="billboards" entityIdName="billboardId" />
+      <ApiList entityName="categories" entityIdName="categoryId" />
     </>
   )
 }

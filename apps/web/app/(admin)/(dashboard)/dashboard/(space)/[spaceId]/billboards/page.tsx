@@ -2,7 +2,7 @@ import { format } from "date-fns"
 
 import { findAllBillboardsBySpaceId } from "@/lib/database/billboard"
 import { BillboardClient } from "@/components/admin/billboard-client"
-import { type BillboardColumn } from "@/components/admin/columns"
+import { type BillboardColumn } from "@/components/admin/billboard-columns"
 
 interface PageProps {
   params: {
