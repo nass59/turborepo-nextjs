@@ -1,4 +1,4 @@
-import { findFirstByBillboardId } from "@/lib/database/billboard"
+import { findOneBillboard } from "@/lib/database/billboard"
 import { BillboardForm } from "@/components/admin/billboard-form"
 
 interface BillboardProps {
@@ -8,7 +8,7 @@ interface BillboardProps {
 }
 
 export default async function Page({ params }: BillboardProps) {
-  const billboard = await findFirstByBillboardId(params.billboardId)
+  const billboard = await findOneBillboard(params.billboardId)
 
   return (
     <div className="flex-col">

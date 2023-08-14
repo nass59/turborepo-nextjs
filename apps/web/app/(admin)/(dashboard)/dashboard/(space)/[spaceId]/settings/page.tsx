@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import { auth } from "@clerk/nextjs"
 
-import { findOne } from "@/lib/database/space"
+import { findOneSpace } from "@/lib/database/space"
 import { SettingsForm } from "@/components/admin/settings-form"
 
 interface SettingsProps {
@@ -17,7 +17,7 @@ export default async function Page({ params }: SettingsProps) {
     return redirect("/sign-in")
   }
 
-  const space = await findOne(params.spaceId, userId)
+  const space = await findOneSpace(params.spaceId, userId)
 
   if (!space) {
     return redirect("/dashboard")

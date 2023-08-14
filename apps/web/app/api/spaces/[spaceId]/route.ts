@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { auth } from "@clerk/nextjs"
 
-import { deleteOne, update } from "@/lib/database/space"
+import { deleteOneSpace, updateOneSpace } from "@/lib/database/space"
 
 export async function PATCH(
   req: Request,
@@ -25,7 +25,7 @@ export async function PATCH(
       return new NextResponse("Space Id is required", { status: 400 })
     }
 
-    const space = await update(params.spaceId, userId, { name })
+    const space = await updateOneSpace(params.spaceId, userId, { name })
 
     return NextResponse.json(space)
   } catch (error) {
@@ -49,7 +49,7 @@ export async function DELETE(
       return new NextResponse("Space Id is required", { status: 400 })
     }
 
-    const space = await deleteOne(params.spaceId, userId)
+    const space = await deleteOneSpace(params.spaceId, userId)
 
     return NextResponse.json(space)
   } catch (error) {

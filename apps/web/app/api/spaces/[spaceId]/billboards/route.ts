@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server"
 import { auth } from "@clerk/nextjs"
 
-import { create, findAllBySpaceId } from "@/lib/database/billboard"
-import { findOne } from "@/lib/database/space"
+import {
+  createBillboard,
+  findAllBillboardsBySpaceId,
+} from "@/lib/database/billboard"
+import { findOneSpace } from "@/lib/database/space"
 
 type PostProps = {
   params: {
@@ -33,13 +36,17 @@ export async function POST(req: Request, { params }: PostProps) {
       return new NextResponse("Space ID is required", { status: 400 })
     }
 
-    const spaceByUserId = await findOne(params.spaceId, userId)
+    const spaceByUserId = await findOneSpace(params.spaceId, userId)
 
     if (!spaceByUserId) {
       return new NextResponse("Unauthorized", { status: 403 })
     }
 
-    const billboard = await create({ label, imageUrl, spaceId: params.spaceId })
+    const billboard = await createBillboard({
+      label,
+      imageUrl,
+      spaceId: params.spaceId,
+    })
 
     return NextResponse.json(billboard)
   } catch (error) {
@@ -54,7 +61,7 @@ export async function GET(req: Request, { params }: PostProps) {
       return new NextResponse("Space ID is required", { status: 400 })
     }
 
-    const billboards = await findAllBySpaceId(params.spaceId)
+    const billboards = await findAllBillboardsBySpaceId(params.spaceId)
 
     return NextResponse.json(billboards)
   } catch (error) {
