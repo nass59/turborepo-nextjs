@@ -1,6 +1,6 @@
 import { format } from "date-fns"
 
-import { findAllBySpaceId } from "@/lib/database/billboard"
+import { findAllBillboardsBySpaceId } from "@/lib/database/billboard"
 import { BillboardClient } from "@/components/admin/billboard-client"
 import { type BillboardColumn } from "@/components/admin/columns"
 
@@ -11,7 +11,7 @@ interface PageProps {
 }
 
 export default async function Page({ params }: PageProps) {
-  const billboards = await findAllBySpaceId(params.spaceId)
+  const billboards = await findAllBillboardsBySpaceId(params.spaceId)
 
   const formattedBillboards: BillboardColumn[] = billboards.map((item) => ({
     id: item._id.toString(),

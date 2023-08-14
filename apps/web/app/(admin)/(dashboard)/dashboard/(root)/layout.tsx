@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation"
+import { routes } from "@/constants/routes"
 import { auth } from "@clerk/nextjs"
 
 import { findFirstByUserId } from "@/lib/database/space"
@@ -13,13 +14,13 @@ export default async function DashboardLayout({
   const { userId } = auth()
 
   if (!userId) {
-    return redirect("/sign-in")
+    return redirect(routes.signIn)
   }
 
   const space = await findFirstByUserId(userId)
 
   if (space) {
-    return redirect(`/dashboard/${space._id.toString()}`)
+    return redirect(`${routes.dashboard}/${space._id.toString()}`)
   }
 
   return (
