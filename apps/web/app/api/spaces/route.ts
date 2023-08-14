@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { auth } from "@clerk/nextjs"
 
-import { create } from "@/lib/database/space"
+import { createSpace } from "@/lib/database/space"
 
 export async function POST(req: Request) {
   try {
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
       return new NextResponse("Name is required", { status: 400 })
     }
 
-    const space = await create({ name, userId })
+    const space = await createSpace({ name, userId })
 
     return NextResponse.json(space)
   } catch (error) {

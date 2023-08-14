@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server"
 import { auth } from "@clerk/nextjs"
 
-import { deleteOne, findOneBillboard, update } from "@/lib/database/billboard"
-import { findOne } from "@/lib/database/space"
+import {
+  deleteOneBillboard,
+  findOneBillboard,
+  updateOneBillboard,
+} from "@/lib/database/billboard"
+import { findOneSpace } from "@/lib/database/space"
 
 type ApiProps = {
   params: {
@@ -58,13 +62,16 @@ export async function PATCH(req: Request, { params }: PatchProps) {
       return new NextResponse("Billboard Id is required", { status: 400 })
     }
 
-    const spaceByUserId = await findOne(params.spaceId, userId)
+    const spaceByUserId = await findOneSpace(params.spaceId, userId)
 
     if (!spaceByUserId) {
       return new NextResponse("Unauthorized", { status: 403 })
     }
 
-    const billboard = await update(params.billboardId, { label, imageUrl })
+    const billboard = await updateOneBillboard(params.billboardId, {
+      label,
+      imageUrl,
+    })
 
     return NextResponse.json(billboard)
   } catch (error) {
@@ -85,13 +92,13 @@ export async function DELETE(req: Request, { params }: DeleteProps) {
       return new NextResponse("Billboard Id is required", { status: 400 })
     }
 
-    const spaceByUserId = await findOne(params.spaceId, userId)
+    const spaceByUserId = await findOneSpace(params.spaceId, userId)
 
     if (!spaceByUserId) {
       return new NextResponse("Unauthorized", { status: 403 })
     }
 
-    const billboard = await deleteOne(params.billboardId)
+    const billboard = await deleteOneBillboard(params.billboardId)
 
     return NextResponse.json(billboard)
   } catch (error) {
