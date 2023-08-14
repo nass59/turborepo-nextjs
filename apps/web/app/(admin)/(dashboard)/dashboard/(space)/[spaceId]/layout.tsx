@@ -1,7 +1,8 @@
 import { redirect } from "next/navigation"
+import { routes } from "@/constants/routes"
 import { auth } from "@clerk/nextjs"
 
-import { findOne } from "@/lib/database/space"
+import { findOneSpace } from "@/lib/database/space"
 import Navbar from "@/components/admin/navbar"
 
 interface DashboardSpaceLayoutProps {
@@ -16,13 +17,13 @@ export default async function DashboardSpaceLayout({
   const { userId } = auth()
 
   if (!userId) {
-    redirect("/sign-in")
+    redirect(routes.signIn)
   }
 
-  const space = await findOne(params.spaceId, userId)
+  const space = await findOneSpace(params.spaceId, userId)
 
   if (!space) {
-    redirect("/dashboard")
+    redirect(routes.dashboard)
   }
 
   return (

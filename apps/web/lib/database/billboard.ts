@@ -1,7 +1,11 @@
-import { Types, isValidObjectId } from "mongoose"
-
 import Billboard, { type BillboardModel } from "@/lib/database/models/Billboard"
-import dbConnect from "@/lib/database/mongodb"
+import {
+  createOne,
+  deleteOneById,
+  findAll,
+  findOneById,
+  updateOneById,
+} from "@/lib/database/queries"
 
 type BillboardModelProps = Pick<
   BillboardModel,
@@ -10,91 +14,33 @@ type BillboardModelProps = Pick<
 
 type BillboardModelUpdateProps = Pick<BillboardModel, "label" | "imageUrl">
 
-export async function findFirstByBillboardId(
-  billboardId: string
-): Promise<BillboardModel | null> {
-  if (!isValidObjectId(billboardId)) {
-    return null
-  }
-
-  await dbConnect()
-
-  try {
-    return await Billboard.findOne({ _id: new Types.ObjectId(billboardId) })
-  } catch (error) {
-    console.log("[BILLBOARDS_FIND_FIRST_BY_BILLBOARD_ID]", error)
-    return null
-  }
-}
-
-export async function create(
+export async function createBillboard(
   data: BillboardModelProps
 ): Promise<BillboardModel | null> {
-  await dbConnect()
-
-  try {
-    return await Billboard.create(data)
-  } catch (error) {
-    console.log("[BILLBOARDS_CREATE]", error)
-    return null
-  }
+  return createOne(Billboard, data)
 }
 
-export async function findAllBySpaceId(
-  spaceId: string
-): Promise<BillboardModel[] | []> {
-  await dbConnect()
-
-  return await Billboard.find({ spaceId })
-}
-
-export async function update(
-  billboardId: string,
-  data: BillboardModelUpdateProps
-): Promise<BillboardModel | null> {
-  await dbConnect()
-
-  try {
-    return await Billboard.findOneAndUpdate(
-      { _id: new Types.ObjectId(billboardId) },
-      data,
-      {
-        new: true,
-        runValidators: true,
-      }
-    )
-  } catch (error) {
-    console.log("[BILLBOARDS_FIND_ONE_AND_UPDATE]", error)
-    return null
-  }
-}
-
-export async function deleteOne(
+export async function deleteOneBillboard(
   billboardId: string
 ): Promise<BillboardModel | null> {
-  await dbConnect()
+  return deleteOneById(Billboard, billboardId)
+}
 
-  try {
-    return await Billboard.findOneAndRemove({
-      _id: new Types.ObjectId(billboardId),
-    })
-  } catch (error) {
-    console.log("[BILLBOARDS_DELETE_ONE]", error)
-    return null
-  }
+export async function findAllBillboardsBySpaceId(
+  spaceId: string
+): Promise<BillboardModel[] | []> {
+  return findAll(Billboard, { spaceId })
 }
 
 export async function findOneBillboard(
   billboardId: string
 ): Promise<BillboardModel | null> {
-  await dbConnect()
+  return findOneById(Billboard, billboardId)
+}
 
-  try {
-    return await Billboard.findOne({
-      _id: new Types.ObjectId(billboardId),
-    })
-  } catch (error) {
-    console.log("[BILLBOARDS_FIND_ONE]", error)
-    return null
-  }
+export async function updateOneBillboard(
+  billboardId: string,
+  data: BillboardModelUpdateProps
+): Promise<BillboardModel | null> {
+  return updateOneById(Billboard, billboardId, data)
 }

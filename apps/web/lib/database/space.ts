@@ -1,113 +1,72 @@
 import { Types } from "mongoose"
 
 import Space, { type SpaceModel } from "@/lib/database/models/Space"
-import dbConnect from "@/lib/database/mongodb"
+import {
+  createOne,
+  deleteOne,
+  findAll,
+  findOne,
+  updateOne,
+} from "@/lib/database/queries"
 
 type SpaceModelProps = Pick<SpaceModel, "name" | "userId">
 type SpaceModelUpdateProps = Pick<SpaceModel, "name">
 
-export async function findAllByUserId(
-  userId: string
-): Promise<SpaceModel[] | []> {
-  await dbConnect()
-
-  return await Space.find({ userId })
-}
-
-export async function create(
+export async function createSpace(
   data: SpaceModelProps
 ): Promise<SpaceModel | null> {
-  await dbConnect()
-
-  try {
-    return await Space.create(data)
-  } catch (error) {
-    console.log("[SPACES_CREATE]", error)
-    return null
-  }
+  return createOne(Space, data)
 }
 
-export async function update(
-  spaceId: string,
-  userId: string,
-  data: SpaceModelUpdateProps
-): Promise<SpaceModel | null> {
-  await dbConnect()
-
-  try {
-    return await Space.findOneAndUpdate(
-      {
-        _id: new Types.ObjectId(spaceId),
-        userId,
-      },
-      data,
-      {
-        new: true,
-        runValidators: true,
-      }
-    )
-  } catch (error) {
-    console.log("[SPACES_FIND_ONE_AND_UPDATE]", error)
-    return null
-  }
-}
-
-export async function deleteOne(
+export async function deleteOneSpace(
   spaceId: string,
   userId: string
 ): Promise<SpaceModel | null> {
-  await dbConnect()
-
-  try {
-    return await Space.findOneAndRemove({
-      _id: new Types.ObjectId(spaceId),
-      userId,
-    })
-  } catch (error) {
-    console.log("[SPACES_DELETE_ONE]", error)
-    return null
-  }
+  return deleteOne(Space, {
+    _id: new Types.ObjectId(spaceId),
+    userId,
+  })
 }
 
-export async function findOne(
-  spaceId: string,
+export async function findAllSpacesByUserId(
   userId: string
-): Promise<SpaceModel | null> {
-  await dbConnect()
-
-  try {
-    return await Space.findOne({
-      _id: new Types.ObjectId(spaceId),
-      userId,
-    })
-  } catch (error) {
-    console.log("[SPACES_FIND_ONE]", error)
-    return null
-  }
-}
-
-export async function findFirstByUserId(
-  userId: string
-): Promise<SpaceModel | null> {
-  await dbConnect()
-
-  try {
-    return await Space.findOne({ userId })
-  } catch (error) {
-    console.log("[SPACES_FIND_FIRST_BY_USER_ID]", error)
-    return null
-  }
+): Promise<SpaceModel[] | []> {
+  return findAll(Space, { userId })
 }
 
 export async function findFirstBySpaceId(
   spaceId: string
 ): Promise<SpaceModel | null> {
-  await dbConnect()
+  return findOne(Space, { _id: new Types.ObjectId(spaceId) })
+}
 
-  try {
-    return await Space.findOne({ _id: new Types.ObjectId(spaceId) })
-  } catch (error) {
-    console.log("[SPACES_FIND_FIRST_BY_SPACE_ID]", error)
-    return null
-  }
+export async function findFirstByUserId(
+  userId: string
+): Promise<SpaceModel | null> {
+  return findOne(Space, { userId })
+}
+
+export async function findOneSpace(
+  spaceId: string,
+  userId: string
+): Promise<SpaceModel | null> {
+  return findOne(Space, {
+    _id: new Types.ObjectId(spaceId),
+    userId,
+  })
+}
+
+export async function updateOneSpace(
+  spaceId: string,
+  userId: string,
+  data: SpaceModelUpdateProps
+): Promise<SpaceModel | null> {
+  return updateOne(
+    Space,
+    {
+      _id: new Types.ObjectId(spaceId),
+      userId,
+    },
+    data
+  )
 }
