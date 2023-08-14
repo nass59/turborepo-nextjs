@@ -17,7 +17,7 @@ const BillboardSchema = new Schema<BillboardModel>({
   label: {
     type: String,
     required: [true, "Please provide a label for this Billboard"],
-    maxlength: [70, "Name cannot be more than 70 characters"],
+    maxlength: [70, "Label cannot be more than 70 characters"],
   },
   imageUrl: {
     type: String,
