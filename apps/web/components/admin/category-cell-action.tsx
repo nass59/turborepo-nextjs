@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import { useParams, useRouter } from "next/navigation"
-import { BILLBOARD_LABELS } from "@/constants/billboard"
+import { CATEGORY_LABELS } from "@/constants/category"
+import { apiRoutes, routes } from "@/constants/routes"
 import axios from "axios"
 
 import {
@@ -14,12 +15,12 @@ import {
   DropdownMenuTrigger,
   toast,
 } from "@shared/ui"
-import { type BillboardColumn } from "@/components/admin/columns"
+import { type CategoryColumn } from "@/components/admin/category-columns"
 import { AlertModal } from "@/components/admin/modals/alert-modal"
 import { Icons } from "@/components/icons"
 
 interface CellActionProps {
-  data: BillboardColumn
+  data: CategoryColumn
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -32,7 +33,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id)
     toast({
-      title: "Billboard Id copied to the clipboard",
+      title: "Category Id copied to the clipboard",
     })
   }
 
@@ -40,15 +41,17 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
     try {
       setLoading(true)
 
-      await axios.delete(`/api/spaces/${params.spaceId}/billboards/${data.id}`)
+      await axios.delete(
+        `${apiRoutes.spaces}/${params.spaceId}/categories/${data.id}`
+      )
       router.refresh()
 
-      toast({ title: BILLBOARD_LABELS.delete.toastMessage })
+      toast({ title: CATEGORY_LABELS.delete.toastMessage })
     } catch (error) {
       toast({
         title: "Something went wrong.",
         variant: "destructive",
-        description: BILLBOARD_LABELS.delete.error,
+        description: CATEGORY_LABELS.delete.error,
       })
     } finally {
       setLoading(false)
@@ -79,7 +82,9 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() =>
-              router.push(`/dashboard/${params.spaceId}/billboards/${data.id}`)
+              router.push(
+                `${routes.dashboard}/${params.spaceId}/categories/${data.id}`
+              )
             }
           >
             <Icons.edit className="mr-2 h-4 w-4" />
