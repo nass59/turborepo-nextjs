@@ -20,7 +20,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   onChange,
   onRemove,
   value,
-  maxFiles = 1,
+  maxFiles,
 }) => {
   const [isMounted, setIsMounted] = useState(false)
 
