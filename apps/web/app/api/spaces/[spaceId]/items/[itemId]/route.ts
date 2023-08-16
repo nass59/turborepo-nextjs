@@ -1,17 +1,13 @@
 import { NextResponse } from "next/server"
 import { auth } from "@clerk/nextjs"
 
-import {
-  deleteOneBillboard,
-  findOneBillboard,
-  updateOneBillboard,
-} from "@/lib/database/billboard"
+import { deleteOneItem, findOneItem, updateOneItem } from "@/lib/database/items"
 import { findOneSpace } from "@/lib/database/space"
 
 type ApiProps = {
   params: {
     spaceId: string
-    billboardId: string
+    itemId: string
   }
 }
 
@@ -20,21 +16,21 @@ type DeleteProps = ApiProps
 
 type GetProps = {
   params: {
-    billboardId: string
+    itemId: string
   }
 }
 
 export async function GET(req: Request, { params }: GetProps) {
   try {
-    if (!params.billboardId) {
-      return new NextResponse("Billboard Id is required", { status: 400 })
+    if (!params.itemId) {
+      return new NextResponse("Item Id is required", { status: 400 })
     }
 
-    const billboard = await findOneBillboard(params.billboardId)
+    const item = await findOneItem(params.itemId)
 
-    return NextResponse.json(billboard)
+    return NextResponse.json(item)
   } catch (error) {
-    console.log("[BILLBOARDS_GET]", error)
+    console.log("[ITEMS_GET]", error)
     return new NextResponse("Internal error", { status: 500 })
   }
 }
@@ -48,18 +44,18 @@ export async function PATCH(req: Request, { params }: PatchProps) {
     }
 
     const body = await req.json()
-    const { label, imageUrl } = body
+    const { name, categoryId, images, isFeatured, isArchived } = body
 
-    if (!label) {
-      return new NextResponse("Label is required", { status: 400 })
+    if (!name) {
+      return new NextResponse("Name is required", { status: 400 })
     }
 
-    if (!imageUrl) {
-      return new NextResponse("Image URL is required", { status: 400 })
+    if (!images || !images.length) {
+      return new NextResponse("Images are required", { status: 400 })
     }
 
-    if (!params.billboardId) {
-      return new NextResponse("Billboard Id is required", { status: 400 })
+    if (!categoryId) {
+      return new NextResponse("Category Id URL is required", { status: 400 })
     }
 
     const spaceByUserId = await findOneSpace(params.spaceId, userId)
@@ -68,14 +64,17 @@ export async function PATCH(req: Request, { params }: PatchProps) {
       return new NextResponse("Unauthorized", { status: 403 })
     }
 
-    const billboard = await updateOneBillboard(params.billboardId, {
-      label,
-      imageUrl,
+    const item = await updateOneItem(params.itemId, {
+      name,
+      categoryId,
+      images,
+      isFeatured,
+      isArchived,
     })
 
-    return NextResponse.json(billboard)
+    return NextResponse.json(item)
   } catch (error) {
-    console.log("[BILLBOARDS_PATCH]", error)
+    console.log("[ITEMS_PATCH]", error)
     return new NextResponse("Internal error", { status: 500 })
   }
 }
@@ -88,8 +87,8 @@ export async function DELETE(req: Request, { params }: DeleteProps) {
       return new NextResponse("Unauthorized", { status: 401 })
     }
 
-    if (!params.billboardId) {
-      return new NextResponse("Billboard Id is required", { status: 400 })
+    if (!params.itemId) {
+      return new NextResponse("Item Id is required", { status: 400 })
     }
 
     const spaceByUserId = await findOneSpace(params.spaceId, userId)
@@ -98,11 +97,11 @@ export async function DELETE(req: Request, { params }: DeleteProps) {
       return new NextResponse("Unauthorized", { status: 403 })
     }
 
-    const billboard = await deleteOneBillboard(params.billboardId)
+    const item = await deleteOneItem(params.itemId)
 
-    return NextResponse.json(billboard)
+    return NextResponse.json(item)
   } catch (error) {
-    console.log("[BILLBOARDS_DELETE]", error)
+    console.log("[ITEMS_DELETE]", error)
     return new NextResponse("Internal error", { status: 500 })
   }
 }

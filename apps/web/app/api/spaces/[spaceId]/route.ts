@@ -1,12 +1,19 @@
 import { NextResponse } from "next/server"
 import { auth } from "@clerk/nextjs"
 
-import { deleteOneSpace, updateOneSpace } from "@/lib/database/space"
+import {
+  deleteOneSpace,
+  findFirstBySpaceId,
+  updateOneSpace,
+} from "@/lib/database/space"
 
-export async function PATCH(
-  req: Request,
-  { params }: { params: { spaceId: string } }
-) {
+type ApiProps = {
+  params: {
+    spaceId: string
+  }
+}
+
+export async function PATCH(req: Request, { params }: ApiProps) {
   try {
     const { userId } = auth()
 
@@ -34,10 +41,7 @@ export async function PATCH(
   }
 }
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { spaceId: string } }
-) {
+export async function DELETE(req: Request, { params }: ApiProps) {
   try {
     const { userId } = auth()
 
@@ -54,6 +58,21 @@ export async function DELETE(
     return NextResponse.json(space)
   } catch (error) {
     console.log("[SPACES_DELETE]", error)
+    return new NextResponse("Internal error", { status: 500 })
+  }
+}
+
+export async function GET(req: Request, { params }: ApiProps) {
+  try {
+    if (!params.spaceId) {
+      return new NextResponse("Space Id is required", { status: 400 })
+    }
+
+    const space = await findFirstBySpaceId(params.spaceId)
+
+    return NextResponse.json(space)
+  } catch (error) {
+    console.log("[SPACE_GET]", error)
     return new NextResponse("Internal error", { status: 500 })
   }
 }
