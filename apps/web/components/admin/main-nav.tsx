@@ -17,6 +17,7 @@ export default function MainNav({
   const routeSetting = `${routeSpace}/settings`
   const routeBillboard = `${routeSpace}/billboards`
   const routeCategory = `${routeSpace}/categories`
+  const routeItem = `${routeSpace}/items`
 
   const navRoutes = [
     {
@@ -33,6 +34,11 @@ export default function MainNav({
       href: routeCategory,
       label: "Categories",
       active: pathname === routeCategory,
+    },
+    {
+      href: routeItem,
+      label: "Items",
+      active: pathname === routeItem,
     },
     {
       href: routeSetting,
