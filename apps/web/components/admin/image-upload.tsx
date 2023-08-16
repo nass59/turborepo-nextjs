@@ -12,6 +12,7 @@ interface ImageUploadProps {
   onChange: (value: string) => void
   onRemove: (value: string) => void
   value: string[]
+  maxFiles: number
 }
 
 const ImageUpload: React.FC<ImageUploadProps> = ({
@@ -19,6 +20,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   onChange,
   onRemove,
   value,
+  maxFiles = 1,
 }) => {
   const [isMounted, setIsMounted] = useState(false)
 
@@ -40,7 +42,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         {value.map((url) => (
           <div
             key={url}
-            className="relative h-[200px] w-[200px] overflow-hidden rounded-md"
+            className="relative h-[280px] w-[280px] overflow-hidden rounded-md"
           >
             <div className="absolute right-2 top-2 z-10">
               <Button
@@ -58,7 +60,37 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         ))}
       </div>
 
-      <CldUploadWidget onUpload={onUpload} uploadPreset="x5ae8xs1">
+      <CldUploadWidget
+        onUpload={onUpload}
+        uploadPreset="x5ae8xs1"
+        options={{
+          sources: ["local", "unsplash"],
+          defaultSource: "local",
+          multiple: true,
+          maxFiles: maxFiles,
+          clientAllowedFormats: ["webp", "jpg", "jpeg", "png"],
+          maxFileSize: 1500000,
+          theme: "minimal",
+          showAdvancedOptions: false,
+          styles: {
+            palette: {
+              window: "#FFFFFF",
+              sourceBg: "#FFFFFF",
+              windowBorder: "#000000",
+              tabIcon: "#000000",
+              inactiveTabIcon: "#3E3E3E",
+              menuIcons: "#555a5f",
+              link: "#FFC904",
+              action: "#339933",
+              inProgress: "#7AFF04",
+              complete: "#339933",
+              error: "#cc0000",
+              textDark: "#000000",
+              textLight: "#fcfffd",
+            },
+          },
+        }}
+      >
         {({ open }) => {
           const onClick = () => {
             open()
