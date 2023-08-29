@@ -1,5 +1,7 @@
 import Item, { type ItemModel } from "@/lib/database/models/Item"
 import {
+  aggregate,
+  count,
   createOne,
   deleteOneById,
   findAll,
@@ -13,6 +15,8 @@ type ItemModelProps = Pick<
 >
 
 type ItemModelUpdateProps = Omit<ItemModelProps, "spaceId">
+
+type ItemsAggregated = ItemModel & { category: string }
 
 export async function createItem(
   data: ItemModelProps
@@ -28,10 +32,48 @@ export async function findAllItems(query: object): Promise<ItemModel[] | []> {
   return findAll(Item, query)
 }
 
+export async function countAllItems(query: object): Promise<number> {
+  return count(Item, query)
+}
+
 export async function findAllItemsBySpaceId(
   spaceId: string
-): Promise<ItemModel[] | []> {
-  return findAll(Item, { spaceId })
+): Promise<ItemsAggregated[] | []> {
+  return aggregate(Item, [
+    {
+      $match: {
+        spaceId: spaceId,
+      },
+    },
+    {
+      $addFields: {
+        category: {
+          $toObjectId: "$categoryId",
+        },
+      },
+    },
+    {
+      $lookup: {
+        from: "categories",
+        localField: "category",
+        foreignField: "_id",
+        as: "fromCategories",
+      },
+    },
+    {
+      $set: {
+        category: {
+          $arrayElemAt: ["$fromCategories.name", 0],
+        },
+      },
+    },
+    {
+      $project: {
+        categoryId: 0,
+        fromCategories: 0,
+      },
+    },
+  ])
 }
 
 export async function findOneItem(itemId: string): Promise<ItemModel | null> {
