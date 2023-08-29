@@ -15,6 +15,7 @@ export const CATEGORY_LABELS = {
   },
   delete: {
     toastMessage: "Category deleted.",
-    error: "Your category was not deleted. Please try again.",
+    error:
+      "Your category was not deleted. Make sure to delete all items before deleting this category.",
   },
 } as const

@@ -1,4 +1,9 @@
-import { Types, isValidObjectId, type Model } from "mongoose"
+import {
+  isValidObjectId,
+  Types,
+  type Model,
+  type PipelineStage,
+} from "mongoose"
 
 import dbConnect from "@/lib/database/mongodb"
 
@@ -149,4 +154,22 @@ export async function updateOneById<T>(
     log(collection.name, QUERY_LABELS.updateOneById, error)
     return null
   }
+}
+
+export async function aggregate<T>(
+  collection: Model<any>,
+  query: PipelineStage[]
+): Promise<T | never[]> {
+  await dbConnect()
+
+  return await collection.aggregate(query)
+}
+
+export async function count(
+  collection: Model<any>,
+  query: object
+): Promise<number> {
+  await dbConnect()
+
+  return await collection.count(query)
 }

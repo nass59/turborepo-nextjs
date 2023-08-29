@@ -16,7 +16,7 @@ export default async function Page({ params }: PageProps) {
   const formattedItems: ItemColumn[] = items.map((item) => ({
     id: item._id.toString(),
     name: item.name,
-    category: item.categoryId,
+    category: item.category,
     isFeatured: item.isFeatured,
     isArchived: item.isArchived,
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
