@@ -6,6 +6,7 @@ import {
   findOneCategory,
   updateOneCategory,
 } from "@/lib/database/category"
+import { countAllItems } from "@/lib/database/items"
 import { findOneSpace } from "@/lib/database/space"
 
 type ApiProps = {
@@ -96,6 +97,18 @@ export async function DELETE(req: Request, { params }: DeleteProps) {
 
     if (!spaceByUserId) {
       return new NextResponse("Unauthorized", { status: 403 })
+    }
+
+    const itemsByCategory = await countAllItems({
+      spaceId: params.spaceId,
+      categoryId: params.categoryId,
+    })
+
+    if (itemsByCategory > 0) {
+      return new NextResponse(
+        `You cannot delete this category. This category is attached to ${itemsByCategory} items. You must delete those items before.`,
+        { status: 402 }
+      )
     }
 
     const category = await deleteOneCategory(params.categoryId)

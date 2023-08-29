@@ -1,8 +1,8 @@
 import Category, { type CategoryModel } from "@/lib/database/models/Category"
 import {
+  aggregate,
   createOne,
   deleteOneById,
-  findAll,
   findOneById,
   updateOneById,
 } from "@/lib/database/queries"
@@ -13,6 +13,8 @@ type CategoryModelProps = Pick<
 >
 
 type CategoryModelUpdateProps = Pick<CategoryModel, "name" | "billboardId">
+
+type CategoriesAggregated = CategoryModel & { billboard: string }
 
 export async function createCategory(
   data: CategoryModelProps
@@ -28,8 +30,42 @@ export async function deleteOneCategory(
 
 export async function findAllCategoriesBySpaceId(
   spaceId: string
-): Promise<CategoryModel[] | []> {
-  return findAll(Category, { spaceId })
+): Promise<CategoriesAggregated[] | []> {
+  return aggregate(Category, [
+    {
+      $match: {
+        spaceId: spaceId,
+      },
+    },
+    {
+      $addFields: {
+        billboard: {
+          $toObjectId: "$billboardId",
+        },
+      },
+    },
+    {
+      $lookup: {
+        from: "billboards",
+        localField: "billboard",
+        foreignField: "_id",
+        as: "fromBillboards",
+      },
+    },
+    {
+      $set: {
+        billboard: {
+          $arrayElemAt: ["$fromBillboards.label", 0],
+        },
+      },
+    },
+    {
+      $project: {
+        billboardId: 0,
+        fromBillboards: 0,
+      },
+    },
+  ])
 }
 
 export async function findOneCategory(
