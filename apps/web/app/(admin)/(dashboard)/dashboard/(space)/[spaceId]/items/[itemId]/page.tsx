@@ -1,5 +1,6 @@
 import { findAllCategoriesBySpaceId } from "@/lib/database/category"
 import { findOneItem } from "@/lib/database/items"
+import { parseData } from "@/lib/utils"
 import { ItemForm } from "@/components/admin/item-form"
 
 interface ItemProps {
@@ -9,7 +10,11 @@ interface ItemProps {
   }
 }
 
-export default async function Page({ params }: ItemProps) {
+/**
+ * This component fetches an item and all categories associated with a given spaceId from the database.
+ * It then passes these data to the ItemForm component for display and manipulation.
+ */
+const Page = async ({ params }: ItemProps) => {
   const item = await findOneItem(params.itemId)
   const categories = await findAllCategoriesBySpaceId(params.spaceId)
 
@@ -17,10 +22,12 @@ export default async function Page({ params }: ItemProps) {
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
         <ItemForm
-          initialData={JSON.parse(JSON.stringify(item))}
-          categories={JSON.parse(JSON.stringify(categories))}
+          initialData={parseData(item)}
+          categories={parseData(categories)}
         />
       </div>
     </div>
   )
 }
+
+export default Page

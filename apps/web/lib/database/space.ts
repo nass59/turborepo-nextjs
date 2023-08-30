@@ -40,7 +40,7 @@ export async function findFirstBySpaceId(
   return findOne(Space, { _id: new Types.ObjectId(spaceId) })
 }
 
-export async function findFirstByUserId(
+export async function findFirstSpaceByUserId(
   userId: string
 ): Promise<SpaceModel | null> {
   return findOne(Space, { userId })

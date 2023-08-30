@@ -2,8 +2,10 @@
 
 import { useState } from "react"
 import { useParams, useRouter } from "next/navigation"
+import { apiRoutes, routes } from "@/constants/routes"
+import { SPACE_LABELS } from "@/constants/space"
 import { zodResolver } from "@hookform/resolvers/zod"
-import axios from "axios"
+import axios, { type AxiosError } from "axios"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
@@ -30,11 +32,26 @@ interface SettingsFormProps {
   initialData: SpaceModel
 }
 
+interface ErrorResponse {
+  message: string
+}
+
 const formSchema = z.object({
-  name: z.string().min(1),
+  name: z.string().min(1).max(50),
 })
 
 type SettingsFormValues = z.infer<typeof formSchema>
+
+const toastError = (error: unknown, defaultMessage: string) => {
+  const axiosError = error as AxiosError<ErrorResponse>
+  const errorMessage = axiosError.response?.data?.message || defaultMessage
+
+  toast({
+    title: "Something went wrong.",
+    variant: "destructive",
+    description: errorMessage,
+  })
+}
 
 export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
   const [open, setOpen] = useState<boolean>(false)
@@ -52,19 +69,11 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
   const onSubmit = async (data: SettingsFormValues) => {
     try {
       setLoading(true)
-
-      await axios.patch(`/api/spaces/${params.spaceId}`, data)
+      await axios.patch(`${apiRoutes.spaces}/${params.spaceId}`, data)
       router.refresh()
-
-      toast({
-        title: "Space updated.",
-      })
+      toast({ title: SPACE_LABELS.edit.toastMessage })
     } catch (error) {
-      toast({
-        title: "Something went wrong.",
-        variant: "destructive",
-        description: "Your space was not updated. Please try again.",
-      })
+      toastError(error, SPACE_LABELS.edit.error)
     } finally {
       setLoading(false)
     }
@@ -73,20 +82,12 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
   const onDelete = async () => {
     try {
       setLoading(true)
-
-      await axios.delete(`/api/spaces/${params.spaceId}`)
+      await axios.delete(`${apiRoutes.spaces}/${params.spaceId}`)
       router.refresh()
-      router.push("/dashboard")
-
-      toast({
-        title: "Space deleted.",
-      })
+      router.push(routes.dashboard)
+      toast({ title: SPACE_LABELS.delete.toastMessage })
     } catch (error) {
-      toast({
-        title: "Something went wrong.",
-        variant: "destructive",
-        description: "Make sure you removed all categories first.",
-      })
+      toastError(error, SPACE_LABELS.delete.error)
     } finally {
       setLoading(false)
       setOpen(false)
@@ -101,8 +102,13 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
         onConfirm={onDelete}
         loading={loading}
       />
+
       <div className="flex items-center justify-between">
-        <Heading title="Settings" description="Manage space preferences" />
+        <Heading
+          title={SPACE_LABELS.edit.title}
+          description={SPACE_LABELS.edit.desscription}
+        />
+
         <Button
           variant="destructive"
           size="icon"
@@ -112,7 +118,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
           <Icons.trash className="h-4 w-4" />
         </Button>
       </div>
+
       <Separator />
+
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -121,14 +129,14 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
           <div className="grid grid-cols-3 gap-8">
             <FormField
               control={form.control}
-              name="name"
+              name={SPACE_LABELS.form.name.name}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Space name"
+                      placeholder={SPACE_LABELS.form.name.placeholder}
                       {...field}
                     />
                   </FormControl>
@@ -137,15 +145,18 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
               )}
             />
           </div>
+
           <Button disabled={loading} className="ml-auto" type="submit">
-            Save changes
+            {SPACE_LABELS.edit.action}
           </Button>
         </form>
       </Form>
+
       <Separator />
+
       <ApiAlert
         title="NEXT_PUBLIC_API_URL"
-        description={`${origin}/api/spaces/${params.spaceId}`}
+        description={`${origin}${apiRoutes.spaces}/${params.spaceId}`}
         variant="public"
       />
     </>
