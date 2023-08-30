@@ -2,51 +2,40 @@
 
 import Link from "next/link"
 import { useParams, usePathname } from "next/navigation"
+import { NAVIGATION_LABELS } from "@/constants/navigation"
 import { routes } from "@/constants/routes"
 
 import { cn } from "@shared/ui"
 
-// MainNav component
-export default function MainNav({
+const MainNav: React.FC<React.HTMLAttributes<HTMLElement>> = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLElement>) {
+}) => {
   const pathname = usePathname()
   const { spaceId } = useParams()
 
-  // Define routes
-  const routeSpace = `${routes.dashboard}/${spaceId}`
-  const routeSetting = `${routeSpace}/settings`
-  const routeBillboard = `${routeSpace}/billboards`
-  const routeCategory = `${routeSpace}/categories`
-  const routeItem = `${routeSpace}/items`
-
   // Define navigation routes
+  const routeSpace = `${routes.dashboard}/${spaceId}`
   const navRoutes = [
     {
       href: routeSpace,
-      label: "Overview",
-      active: pathname === routeSpace,
+      label: NAVIGATION_LABELS.overview,
     },
     {
-      href: routeBillboard,
-      label: "Billboards",
-      active: pathname === routeBillboard,
+      href: `${routeSpace}/billboards`,
+      label: NAVIGATION_LABELS.billboards,
     },
     {
-      href: routeCategory,
-      label: "Categories",
-      active: pathname === routeCategory,
+      href: `${routeSpace}/categories`,
+      label: NAVIGATION_LABELS.categories,
     },
     {
-      href: routeItem,
-      label: "Items",
-      active: pathname === routeItem,
+      href: `${routeSpace}/items`,
+      label: NAVIGATION_LABELS.items,
     },
     {
-      href: routeSetting,
-      label: "Settings",
-      active: pathname === routeSetting,
+      href: `${routeSpace}/settings`,
+      label: NAVIGATION_LABELS.settings,
     },
   ]
 
@@ -55,13 +44,15 @@ export default function MainNav({
       className={cn("flex items-center space-x-4 lg:space-x-6", className)}
       {...props}
     >
-      {navRoutes.map(({ href, label, active }) => (
+      {navRoutes.map(({ href, label }) => (
         <Link
           key={href}
           href={href}
           className={cn(
             "text-sm font-medium transition-colors hover:text-primary",
-            active ? "text-black dark:text-white" : "text-muted-foreground"
+            pathname === href
+              ? "text-black dark:text-white"
+              : "text-muted-foreground"
           )}
         >
           {label}
@@ -70,3 +61,5 @@ export default function MainNav({
     </nav>
   )
 }
+
+export default MainNav

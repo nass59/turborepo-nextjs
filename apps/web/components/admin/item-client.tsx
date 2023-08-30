@@ -1,6 +1,7 @@
 "use client"
 
 import { useParams, useRouter } from "next/navigation"
+import { ITEM_LABELS } from "@/constants/item"
 import { routes } from "@/constants/routes"
 
 import { Button, DataTable, Heading, Separator } from "@shared/ui"
@@ -16,32 +17,38 @@ export const ItemClient: React.FC<ItemClientProps> = ({ data }) => {
   const router = useRouter()
   const params = useParams()
 
+  const listLabels = ITEM_LABELS.list
+  const apiLabels = ITEM_LABELS.api
+
+  const onClick = () => {
+    router.push(`${routes.dashboard}/${params.spaceId}/items/new`)
+  }
+
   return (
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Items (${data.length})`}
-          description="Manage items for your space"
+          title={`${listLabels.title} (${data.length})`}
+          description={listLabels.desscription}
         />
 
-        <Button
-          onClick={() =>
-            router.push(`${routes.dashboard}/${params.spaceId}/items/new`)
-          }
-        >
+        <Button onClick={() => onClick()}>
           <Icons.add className="mr-2 h-4 w-4" />
-          Add new
+          {listLabels.add}
         </Button>
       </div>
 
       <Separator />
 
       <DataTable columns={columns} data={data} searchKey="name" />
-      <Heading title="API" description="API calls for Items" />
+      <Heading title={apiLabels.title} description={apiLabels.desscription} />
 
       <Separator />
 
-      <ApiList entityName="items" entityIdName="itemId" />
+      <ApiList
+        entityName={apiLabels.entityName}
+        entityIdName={apiLabels.entityIdName}
+      />
     </>
   )
 }

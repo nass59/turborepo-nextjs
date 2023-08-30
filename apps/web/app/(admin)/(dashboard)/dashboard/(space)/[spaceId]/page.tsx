@@ -1,10 +1,16 @@
 import { findFirstBySpaceId } from "@/lib/database/space"
 
 interface DashboardSpaceProps {
-  params: { spaceId: string }
+  params: {
+    spaceId: string
+  }
 }
 
-export default async function Page({ params }: DashboardSpaceProps) {
+/**
+ * This component fetches the first space with the given spaceId from the database.
+ * It then displays the name of the active space.
+ */
+const Page = async ({ params }: DashboardSpaceProps) => {
   const space = await findFirstBySpaceId(params.spaceId)
 
   return (
@@ -15,3 +21,5 @@ export default async function Page({ params }: DashboardSpaceProps) {
     </div>
   )
 }
+
+export default Page
