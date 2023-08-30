@@ -46,7 +46,7 @@ const formSchema = z.object({
 type ItemFormValues = z.infer<typeof formSchema>
 
 interface ItemFormProps {
-  initialData: ItemModel
+  initialData: ItemModel | null
   categories: CategoryModel[]
 }
 
