@@ -20,6 +20,14 @@ type GetProps = {
   }
 }
 
+interface JsonResponse {
+  name: string | null
+  categoryId: string | null
+  images: []
+  isFeatured: boolean
+  isArchived: boolean
+}
+
 export async function GET(req: Request, { params }: GetProps) {
   try {
     if (!params.itemId) {
@@ -43,7 +51,7 @@ export async function PATCH(req: Request, { params }: PatchProps) {
       return new NextResponse("Unauthorized", { status: 401 })
     }
 
-    const body = await req.json()
+    const body = (await req.json()) as JsonResponse
     const { name, categoryId, images, isFeatured, isArchived } = body
 
     if (!name) {

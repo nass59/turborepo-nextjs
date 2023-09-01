@@ -7,10 +7,12 @@ import { apiRoutes, routes } from "@/constants/routes"
 import { zodResolver } from "@hookform/resolvers/zod"
 import axios from "axios"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { type z } from "zod"
 
+import { toastError } from "@/lib/api-response/api-responses"
 import { type BillboardModel } from "@/lib/database/models/Billboard"
 import { type CategoryModel } from "@/lib/database/models/Category"
+import { categorySchema } from "@/lib/validation/category"
 import {
   Button,
   Form,
@@ -32,17 +34,12 @@ import {
 import { AlertModal } from "@/components/admin/modals/alert-modal"
 import { Icons } from "@/components/icons"
 
-const formSchema = z.object({
-  name: z.string().min(1),
-  billboardId: z.string().min(1),
-})
-
-type CategoryFormValues = z.infer<typeof formSchema>
-
 interface CategoryFormProps {
   initialData: CategoryModel | null
   billboards: BillboardModel[]
 }
+
+type CategoryFormValues = z.infer<typeof categorySchema>
 
 export const CategoryForm: React.FC<CategoryFormProps> = ({
   initialData,
@@ -55,9 +52,10 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
   const router = useRouter()
 
   const labels = initialData ? CATEGORY_LABELS.edit : CATEGORY_LABELS.create
+  const formLabels = CATEGORY_LABELS.form
 
   const form = useForm<CategoryFormValues>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(categorySchema),
     defaultValues: initialData || {
       name: "",
       billboardId: "",
@@ -67,29 +65,20 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
   const onSubmit = async (data: CategoryFormValues) => {
     try {
       setLoading(true)
+      const baseUrl = `${apiRoutes.spaces}/${params.spaceId}/categories`
 
       if (initialData) {
-        await axios.patch(
-          `${apiRoutes.spaces}/${params.spaceId}/categories/${params.categoryId}`,
-          data
-        )
+        await axios.patch(`${baseUrl}/${params.categoryId}`, data)
       } else {
-        await axios.post(
-          `${apiRoutes.spaces}/${params.spaceId}/categories`,
-          data
-        )
+        await axios.post(`${baseUrl}`, data)
       }
 
       router.refresh()
       router.push(`${routes.dashboard}/${params.spaceId}/categories`)
 
-      toast({ title: initialData ? labels.toastMessage : labels.toastMessage })
+      toast({ title: labels.toastMessage })
     } catch (error) {
-      toast({
-        title: "Something went wrong.",
-        variant: "destructive",
-        description: initialData ? labels.error : labels.error,
-      })
+      toastError(error, labels.error)
     } finally {
       setLoading(false)
     }
@@ -98,21 +87,15 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
   const onDelete = async () => {
     try {
       setLoading(true)
-
-      await axios.delete(
-        `${apiRoutes.spaces}/${params.spaceId}/categories/${params.categoryId}`
-      )
+      const baseUrl = `${apiRoutes.spaces}/${params.spaceId}/categories`
+      await axios.delete(`${baseUrl}/${params.categoryId}`)
 
       router.refresh()
       router.push(`${routes.dashboard}/${params.spaceId}/categories`)
 
       toast({ title: CATEGORY_LABELS.delete.toastMessage })
     } catch (error) {
-      toast({
-        title: "Something went wrong.",
-        variant: "destructive",
-        description: CATEGORY_LABELS.delete.error,
-      })
+      toastError(error, CATEGORY_LABELS.delete.error)
     } finally {
       setLoading(false)
       setOpen(false)
@@ -153,14 +136,14 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
           <div className="grid grid-cols-3 gap-8">
             <FormField
               control={form.control}
-              name="name"
+              name={formLabels.name.name}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Label</FormLabel>
+                  <FormLabel>{formLabels.name.label}</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Category name"
+                      placeholder={formLabels.name.placeholder}
                       {...field}
                     />
                   </FormControl>
@@ -170,10 +153,10 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="billboardId"
+              name={formLabels.billboardId.name}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Billboard</FormLabel>
+                  <FormLabel>{formLabels.billboardId.label}</FormLabel>
                   <Select
                     disabled={loading}
                     onValueChange={field.onChange}
@@ -184,7 +167,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                       <SelectTrigger>
                         <SelectValue
                           defaultValue={field.value}
-                          placeholder="Select a Billboard"
+                          placeholder={formLabels.billboardId.placeholder}
                         />
                       </SelectTrigger>
                     </FormControl>

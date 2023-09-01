@@ -34,10 +34,10 @@ interface SpaceSwitcherProps extends PopoverTriggerProps {
  * It displays a list of spaces and allows users to select a space.
  * When a space is selected, the user is redirected to the dashboard of the selected space.
  */
-export default function SpaceSwitcher({
+const SpaceSwitcher: React.FC<SpaceSwitcherProps> = ({
   className,
   items = [],
-}: SpaceSwitcherProps) {
+}) => {
   const [open, setOpen] = useState<boolean>(false)
   const spaceModal = useSpaceModal()
 
@@ -122,3 +122,5 @@ export default function SpaceSwitcher({
     </Popover>
   )
 }
+
+export default SpaceSwitcher

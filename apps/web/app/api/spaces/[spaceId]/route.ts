@@ -7,10 +7,14 @@ import {
   updateOneSpace,
 } from "@/lib/database/space"
 
-type ApiProps = {
+interface ApiProps {
   params: {
     spaceId: string
   }
+}
+
+interface JsonResponse {
+  name: string | null
 }
 
 export async function PATCH(req: Request, { params }: ApiProps) {
@@ -21,7 +25,7 @@ export async function PATCH(req: Request, { params }: ApiProps) {
       return new NextResponse("Unauthorized", { status: 401 })
     }
 
-    const body = await req.json()
+    const body = (await req.json()) as JsonResponse
     const { name } = body
 
     if (!name) {

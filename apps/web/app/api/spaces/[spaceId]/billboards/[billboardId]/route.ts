@@ -24,6 +24,11 @@ type GetProps = {
   }
 }
 
+interface JsonResponse {
+  label: string | null
+  imageUrl: string | null
+}
+
 export async function GET(req: Request, { params }: GetProps) {
   try {
     if (!params.billboardId) {
@@ -47,7 +52,7 @@ export async function PATCH(req: Request, { params }: PatchProps) {
       return new NextResponse("Unauthorized", { status: 401 })
     }
 
-    const body = await req.json()
+    const body = (await req.json()) as JsonResponse
     const { label, imageUrl } = body
 
     if (!label) {
