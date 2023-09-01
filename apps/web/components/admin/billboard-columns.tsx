@@ -1,5 +1,6 @@
 "use client"
 
+import { BILLBOARD_LABELS } from "@/constants/billboard"
 import { type ColumnDef } from "@tanstack/react-table"
 
 import { CellAction } from "@/components/admin/billboard-cell-action"
@@ -10,15 +11,11 @@ export type BillboardColumn = {
   createdAt: string
 }
 
+const columnsLabels = BILLBOARD_LABELS.list.columns
+
 export const columns: ColumnDef<BillboardColumn>[] = [
-  {
-    accessorKey: "label",
-    header: "Label",
-  },
-  {
-    accessorKey: "createdAt",
-    header: "Date",
-  },
+  columnsLabels.label,
+  columnsLabels.createdAt,
   {
     id: "actions",
     cell: ({ row }) => <CellAction data={row.original} />,

@@ -7,10 +7,12 @@ import { apiRoutes, routes } from "@/constants/routes"
 import { zodResolver } from "@hookform/resolvers/zod"
 import axios from "axios"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { type z } from "zod"
 
+import { toastError } from "@/lib/api-response/api-responses"
 import { type CategoryModel } from "@/lib/database/models/Category"
 import { type ItemModel } from "@/lib/database/models/Item"
+import { itemSchema } from "@/lib/validation/item"
 import {
   Button,
   Checkbox,
@@ -35,20 +37,12 @@ import ImageUpload from "@/components/admin/image-upload"
 import { AlertModal } from "@/components/admin/modals/alert-modal"
 import { Icons } from "@/components/icons"
 
-const formSchema = z.object({
-  name: z.string().min(1),
-  images: z.array(z.string()),
-  categoryId: z.string().min(1),
-  isFeatured: z.boolean().default(false).optional(),
-  isArchived: z.boolean().default(false).optional(),
-})
-
-type ItemFormValues = z.infer<typeof formSchema>
-
 interface ItemFormProps {
   initialData: ItemModel | null
   categories: CategoryModel[]
 }
+
+type ItemFormValues = z.infer<typeof itemSchema>
 
 export const ItemForm: React.FC<ItemFormProps> = ({
   initialData,
@@ -61,9 +55,10 @@ export const ItemForm: React.FC<ItemFormProps> = ({
   const router = useRouter()
 
   const labels = initialData ? ITEM_LABELS.edit : ITEM_LABELS.create
+  const formLabels = ITEM_LABELS.form
 
   const form = useForm<ItemFormValues>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(itemSchema),
     defaultValues: initialData || {
       name: "",
       images: [],
@@ -76,26 +71,20 @@ export const ItemForm: React.FC<ItemFormProps> = ({
   const onSubmit = async (data: ItemFormValues) => {
     try {
       setLoading(true)
+      const baseUrl = `${apiRoutes.spaces}/${params.spaceId}/items`
 
       if (initialData) {
-        await axios.patch(
-          `${apiRoutes.spaces}/${params.spaceId}/items/${params.itemId}`,
-          data
-        )
+        await axios.patch(`${baseUrl}/${params.itemId}`, data)
       } else {
-        await axios.post(`${apiRoutes.spaces}/${params.spaceId}/items`, data)
+        await axios.post(`${baseUrl}`, data)
       }
 
       router.refresh()
       router.push(`${routes.dashboard}/${params.spaceId}/items`)
 
-      toast({ title: initialData ? labels.toastMessage : labels.toastMessage })
+      toast({ title: labels.toastMessage })
     } catch (error) {
-      toast({
-        title: "Something went wrong.",
-        variant: "destructive",
-        description: initialData ? labels.error : labels.error,
-      })
+      toastError(error, labels.error)
     } finally {
       setLoading(false)
     }
@@ -104,21 +93,15 @@ export const ItemForm: React.FC<ItemFormProps> = ({
   const onDelete = async () => {
     try {
       setLoading(true)
-
-      await axios.delete(
-        `${apiRoutes.spaces}/${params.spaceId}/items/${params.itemId}`
-      )
+      const baseUrl = `${apiRoutes.spaces}/${params.spaceId}/items`
+      await axios.delete(`${baseUrl}/${params.itemId}`)
 
       router.refresh()
       router.push(`${routes.dashboard}/${params.spaceId}/items`)
 
       toast({ title: ITEM_LABELS.delete.toastMessage })
     } catch (error) {
-      toast({
-        title: "Something went wrong.",
-        variant: "destructive",
-        description: ITEM_LABELS.delete.error,
-      })
+      toastError(error, ITEM_LABELS.delete.error)
     } finally {
       setLoading(false)
       setOpen(false)
@@ -158,11 +141,11 @@ export const ItemForm: React.FC<ItemFormProps> = ({
         >
           <FormField
             control={form.control}
-            name="images"
+            name={formLabels.images.name}
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel>Images</FormLabel>
+                  <FormLabel>{formLabels.images.label}</FormLabel>
                   <FormControl>
                     <ImageUpload
                       value={field.value.map((image) => image)}
@@ -187,14 +170,14 @@ export const ItemForm: React.FC<ItemFormProps> = ({
           <div className="grid grid-cols-3 gap-8">
             <FormField
               control={form.control}
-              name="name"
+              name={formLabels.name.name}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>{formLabels.name.label}</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Item name"
+                      placeholder={formLabels.name.placeholder}
                       {...field}
                     />
                   </FormControl>
@@ -204,10 +187,10 @@ export const ItemForm: React.FC<ItemFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="categoryId"
+              name={formLabels.categoryId.name}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>{formLabels.categoryId.label}</FormLabel>
                   <Select
                     disabled={loading}
                     onValueChange={field.onChange}
@@ -218,7 +201,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({
                       <SelectTrigger>
                         <SelectValue
                           defaultValue={field.value}
-                          placeholder="Select a category"
+                          placeholder={formLabels.categoryId.placeholder}
                         />
                       </SelectTrigger>
                     </FormControl>
@@ -244,7 +227,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({
           <div className="flex gap-5">
             <FormField
               control={form.control}
-              name="isFeatured"
+              name={formLabels.isFeatured.name}
               render={({ field }) => (
                 <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
                   <FormControl>
@@ -254,9 +237,9 @@ export const ItemForm: React.FC<ItemFormProps> = ({
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
-                    <FormLabel>Featured</FormLabel>
+                    <FormLabel>{formLabels.isFeatured.label}</FormLabel>
                     <FormDescription>
-                      This item will appear on the home page.
+                      {formLabels.isFeatured.description}
                     </FormDescription>
                   </div>
                 </FormItem>
@@ -264,7 +247,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="isArchived"
+              name={formLabels.isArchived.name}
               render={({ field }) => (
                 <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
                   <FormControl>
@@ -274,9 +257,9 @@ export const ItemForm: React.FC<ItemFormProps> = ({
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
-                    <FormLabel>Archived</FormLabel>
+                    <FormLabel>{formLabels.isArchived.label}</FormLabel>
                     <FormDescription>
-                      This item will not appear anywhere in the space.
+                      {formLabels.isArchived.description}
                     </FormDescription>
                   </div>
                 </FormItem>

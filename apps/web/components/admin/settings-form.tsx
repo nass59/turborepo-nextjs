@@ -5,11 +5,13 @@ import { useParams, useRouter } from "next/navigation"
 import { apiRoutes, routes } from "@/constants/routes"
 import { SPACE_LABELS } from "@/constants/space"
 import { zodResolver } from "@hookform/resolvers/zod"
-import axios, { type AxiosError } from "axios"
+import axios from "axios"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { type z } from "zod"
 
+import { toastError } from "@/lib/api-response/api-responses"
 import { type SpaceModel } from "@/lib/database/models/Space"
+import { settingSchema } from "@/lib/validation/setting"
 import { useOrigin } from "@/hooks/use-origin"
 import {
   Button,
@@ -32,26 +34,7 @@ interface SettingsFormProps {
   initialData: SpaceModel
 }
 
-interface ErrorResponse {
-  message: string
-}
-
-const formSchema = z.object({
-  name: z.string().min(1).max(50),
-})
-
-type SettingsFormValues = z.infer<typeof formSchema>
-
-const toastError = (error: unknown, defaultMessage: string) => {
-  const axiosError = error as AxiosError<ErrorResponse>
-  const errorMessage = axiosError.response?.data?.message || defaultMessage
-
-  toast({
-    title: "Something went wrong.",
-    variant: "destructive",
-    description: errorMessage,
-  })
-}
+type SettingsFormValues = z.infer<typeof settingSchema>
 
 export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
   const [open, setOpen] = useState<boolean>(false)
@@ -62,7 +45,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
   const origin = useOrigin()
 
   const form = useForm<SettingsFormValues>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(settingSchema),
     defaultValues: initialData,
   })
 

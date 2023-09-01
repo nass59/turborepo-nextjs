@@ -6,6 +6,10 @@ import { useRouter } from "next/navigation"
 import { buttonVariants, cn, toast, type ButtonProps } from "@shared/ui"
 import { Icons } from "@/components/icons"
 
+interface JsonResponse {
+  _id: string
+}
+
 const toastReachedLimit = () => {
   return toast({
     title: "Limit of 3 posts reached.",
@@ -48,7 +52,7 @@ export const PostCreateButton = ({
       return response.status === 402 ? toastReachedLimit() : toastError()
     }
 
-    const post = await response.json()
+    const post = (await response.json()) as JsonResponse
 
     if (!post) {
       return toastError()

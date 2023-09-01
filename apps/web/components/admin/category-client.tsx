@@ -1,6 +1,7 @@
 "use client"
 
 import { useParams, useRouter } from "next/navigation"
+import { CATEGORY_LABELS } from "@/constants/category"
 import { routes } from "@/constants/routes"
 
 import { Button, DataTable, Heading, Separator } from "@shared/ui"
@@ -19,32 +20,38 @@ export const CategoryClient: React.FC<CategoryClientProps> = ({ data }) => {
   const router = useRouter()
   const params = useParams()
 
+  const listLabels = CATEGORY_LABELS.list
+  const apiLabels = CATEGORY_LABELS.api
+
+  const onClick = () => {
+    router.push(`${routes.dashboard}/${params.spaceId}/categories/new`)
+  }
+
   return (
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Categories (${data.length})`}
-          description="Manage categories for your space"
+          title={`${listLabels.title} (${data.length})`}
+          description={listLabels.desscription}
         />
 
-        <Button
-          onClick={() =>
-            router.push(`${routes.dashboard}/${params.spaceId}/categories/new`)
-          }
-        >
+        <Button onClick={() => onClick()}>
           <Icons.add className="mr-2 h-4 w-4" />
-          Add new
+          {listLabels.add}
         </Button>
       </div>
 
       <Separator />
 
       <DataTable columns={columns} data={data} searchKey="name" />
-      <Heading title="API" description="API calls for Categories" />
+      <Heading title={apiLabels.title} description={apiLabels.desscription} />
 
       <Separator />
 
-      <ApiList entityName="categories" entityIdName="categoryId" />
+      <ApiList
+        entityName={apiLabels.entityName}
+        entityIdName={apiLabels.entityIdName}
+      />
     </>
   )
 }
