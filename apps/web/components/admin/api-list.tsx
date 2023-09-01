@@ -3,13 +3,25 @@
 import { useParams } from "next/navigation"
 
 import { useOrigin } from "@/hooks/use-origin"
-
-import { ApiAlert } from "./api-alert"
+import { ApiAlert } from "@/components/admin/api-alert"
 
 interface ApiListProps {
   entityName: string
   entityIdName: string
 }
+
+const METHODS = {
+  get: "GET",
+  post: "POST",
+  patch: "PATCH",
+  delete: "DELETE",
+} as const
+
+const VISIBILITY = {
+  public: "public",
+  admin: "admin",
+} as const
+
 export const ApiList: React.FC<ApiListProps> = ({
   entityName,
   entityIdName,
@@ -22,28 +34,28 @@ export const ApiList: React.FC<ApiListProps> = ({
   return (
     <>
       <ApiAlert
-        title="GET"
-        variant="public"
+        title={METHODS.get}
+        variant={VISIBILITY.public}
         description={`${baseUrl}/${entityName}`}
       />
       <ApiAlert
-        title="GET"
-        variant="public"
+        title={METHODS.get}
+        variant={VISIBILITY.public}
         description={`${baseUrl}/${entityName}/{${entityIdName}}`}
       />
       <ApiAlert
-        title="POST"
-        variant="admin"
+        title={METHODS.post}
+        variant={VISIBILITY.admin}
         description={`${baseUrl}/${entityName}`}
       />
       <ApiAlert
-        title="PATCH"
-        variant="admin"
+        title={METHODS.patch}
+        variant={VISIBILITY.admin}
         description={`${baseUrl}/${entityName}/{${entityIdName}}`}
       />
       <ApiAlert
-        title="DELETE"
-        variant="admin"
+        title={METHODS.delete}
+        variant={VISIBILITY.admin}
         description={`${baseUrl}/${entityName}/{${entityIdName}}`}
       />
     </>

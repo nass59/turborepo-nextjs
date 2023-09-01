@@ -13,6 +13,11 @@ type PostProps = {
   }
 }
 
+interface JsonResponse {
+  label: string | null
+  imageUrl: string | null
+}
+
 export async function POST(req: Request, { params }: PostProps) {
   try {
     const { userId } = auth()
@@ -21,7 +26,7 @@ export async function POST(req: Request, { params }: PostProps) {
       return new NextResponse("Unauthorized", { status: 401 })
     }
 
-    const body = await req.json()
+    const body = (await req.json()) as JsonResponse
     const { label, imageUrl } = body
 
     if (!label) {

@@ -4,10 +4,18 @@ import { auth } from "@clerk/nextjs"
 import { createItem, findAllItems } from "@/lib/database/items"
 import { findOneSpace } from "@/lib/database/space"
 
-type PostProps = {
+interface PostProps {
   params: {
     spaceId: string
   }
+}
+
+interface JsonResponse {
+  name: string | null
+  categoryId: string | null
+  images: []
+  isFeatured: boolean
+  isArchived: boolean
 }
 
 const removeUndefinedValuesFromObject = <T>(obj: any): T => {
@@ -23,7 +31,7 @@ export async function POST(req: Request, { params }: PostProps) {
       return new NextResponse("Unauthorized", { status: 401 })
     }
 
-    const body = await req.json()
+    const body = (await req.json()) as JsonResponse
     const { name, categoryId, images, isFeatured, isArchived } = body
 
     if (!name) {

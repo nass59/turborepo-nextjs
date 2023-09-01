@@ -1,12 +1,16 @@
 "use client"
 
 import { useState } from "react"
+import { apiRoutes, routes } from "@/constants/routes"
+import { SPACE_LABELS } from "@/constants/space"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { UpdateIcon } from "@radix-ui/react-icons"
 import axios from "axios"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { type z } from "zod"
 
+import { toastError } from "@/lib/api-response/api-responses"
+import { spaceSchema } from "@/lib/validation/space"
 import { useSpaceModal } from "@/hooks/use-space-modal"
 import {
   Button,
@@ -18,36 +22,31 @@ import {
   FormMessage,
   Input,
   Modal,
-  toast,
 } from "@shared/ui"
-
-const formSchema = z.object({
-  name: z.string().min(1),
-})
 
 export const SpaceModal: React.FC = () => {
   const spaceModal = useSpaceModal()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const labels = SPACE_LABELS.create
+  const formLabels = SPACE_LABELS.form
+
+  const form = useForm<z.infer<typeof spaceSchema>>({
+    resolver: zodResolver(spaceSchema),
     defaultValues: {
       name: "",
     },
   })
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof spaceSchema>) => {
     try {
       setIsLoading(true)
-
-      const response = await axios.post("/api/spaces", values)
-      window.location.assign(`/dashboard/${response.data._id.toString()}`)
+      const response = await axios.post(apiRoutes.spaces, values)
+      window.location.assign(
+        `${routes.dashboard}/${response.data._id.toString()}`
+      )
     } catch (error) {
-      toast({
-        title: "Something went wrong.",
-        variant: "destructive",
-        description: "Your space was not saved. Please try again.",
-      })
+      toastError(error, labels.error)
     } finally {
       setIsLoading(false)
     }
@@ -55,8 +54,8 @@ export const SpaceModal: React.FC = () => {
 
   return (
     <Modal
-      title="Create Space"
-      description="Add a new space to manage product and categories"
+      title={labels.title}
+      description={labels.desscription}
       isOpen={spaceModal.isOpen}
       onClose={spaceModal.onClose}
     >
@@ -66,14 +65,14 @@ export const SpaceModal: React.FC = () => {
             <form onSubmit={form.handleSubmit(onSubmit)}>
               <FormField
                 control={form.control}
-                name="name"
+                name={formLabels.name.name}
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Name</FormLabel>
                     <FormControl>
                       <Input
                         disabled={isLoading}
-                        placeholder="Gaming"
+                        placeholder={formLabels.name.placeholder}
                         {...field}
                       />
                     </FormControl>

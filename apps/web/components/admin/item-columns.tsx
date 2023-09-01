@@ -1,5 +1,6 @@
 "use client"
 
+import { ITEM_LABELS } from "@/constants/item"
 import { type ColumnDef } from "@tanstack/react-table"
 
 import { Badge } from "@shared/ui"
@@ -15,44 +16,41 @@ export type ItemColumn = {
   createdAt: string
 }
 
+const columnsLabels = ITEM_LABELS.list.columns
+
+const getIsArchivedIcon = (isArchived: boolean) => {
+  return isArchived ? (
+    <Icons.eyeDisabled className="h-4 w-4 fill-slate-300 text-slate-500" />
+  ) : (
+    <Icons.eye className="h-4 w-4 text-slate-500" />
+  )
+}
+
+const getIsFeaturedIcon = (isFeatured: boolean) => {
+  return isFeatured ? (
+    <Icons.star className="h-4 w-4 fill-yellow-300 text-yellow-500" />
+  ) : (
+    <Icons.starDisabled className="h-4 w-4 fill-slate-300 text-slate-500" />
+  )
+}
+
 export const columns: ColumnDef<ItemColumn>[] = [
+  columnsLabels.name,
   {
-    accessorKey: "name",
-    header: "Name",
+    ...columnsLabels.isArchived,
+    cell: ({ row }) => getIsArchivedIcon(row.original.isArchived),
   },
   {
-    accessorKey: "isArchived",
-    header: "Archived",
-    cell: ({ row }) => {
-      return row.original.isArchived ? (
-        <Icons.eyeDisabled className="h-4 w-4 fill-slate-300 text-slate-500" />
-      ) : (
-        <Icons.eye className="h-4 w-4 text-slate-500" />
-      )
-    },
+    ...columnsLabels.isFeatured,
+    cell: ({ row }) => getIsFeaturedIcon(row.original.isFeatured),
   },
   {
-    accessorKey: "isFeatured",
-    header: "Featured",
-    cell: ({ row }) => {
-      return row.original.isFeatured ? (
-        <Icons.star className="h-4 w-4 fill-yellow-300 text-yellow-500" />
-      ) : (
-        <Icons.starDisabled className="h-4 w-4 fill-slate-300 text-slate-500" />
-      )
-    },
-  },
-  {
-    accessorKey: "category",
-    header: "Category",
+    ...columnsLabels.category,
     cell: ({ row }) => (
       <Badge variant="secondary">{row.original.category}</Badge>
     ),
   },
-  {
-    accessorKey: "createdAt",
-    header: "Date",
-  },
+  columnsLabels.createdAt,
   {
     id: "actions",
     cell: ({ row }) => <CellAction data={row.original} />,
