@@ -16,7 +16,7 @@ interface PageProps {
  * It then formats these items and passes them to the ItemClient component for display.
  */
 const Page = async ({ params }: PageProps) => {
-  const items = await findAllItemsBySpaceId(params.spaceId)
+  const items = await findAllItemsBySpaceId({ spaceId: params.spaceId })
 
   const formattedItems: ItemColumn[] = items.map((item) => ({
     id: item._id.toString(),
