@@ -4,6 +4,7 @@ export default authMiddleware({
   publicRoutes: [
     "/",
     "/blog(.*)",
+    "/products(.*)",
     "/docs(.*)",
     "/terms",
     "/privacy",

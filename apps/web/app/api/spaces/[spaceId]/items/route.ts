@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { auth } from "@clerk/nextjs"
 
-import { createItem, findAllItems } from "@/lib/database/items"
+import { createItem, findAllItemsBySpaceId } from "@/lib/database/items"
 import { findOneSpace } from "@/lib/database/space"
 
 interface PostProps {
@@ -82,7 +82,7 @@ export async function GET(req: Request, { params }: PostProps) {
       return new NextResponse("Space ID is required", { status: 400 })
     }
 
-    const items = await findAllItems(
+    const items = await findAllItemsBySpaceId(
       removeUndefinedValuesFromObject({
         spaceId: params.spaceId,
         categoryId,
