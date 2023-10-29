@@ -37,13 +37,11 @@ export async function countAllItems(query: object): Promise<number> {
 }
 
 export async function findAllItemsBySpaceId(
-  spaceId: string
+  query: object
 ): Promise<ItemsAggregated[] | []> {
   return aggregate(Item, [
     {
-      $match: {
-        spaceId: spaceId,
-      },
+      $match: query,
     },
     {
       $addFields: {
