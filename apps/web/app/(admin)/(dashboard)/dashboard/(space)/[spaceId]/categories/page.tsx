@@ -1,6 +1,6 @@
 import { format } from "date-fns"
 
-import { findAllCategoriesBySpaceId } from "@/lib/database/category"
+import { findAllCategoriesWithDataBySpaceId } from "@/lib/database/category"
 import { parseData } from "@/lib/utils"
 import { CategoryClient } from "@/components/admin/category-client"
 import { type CategoryColumn } from "@/components/admin/category-columns"
@@ -16,7 +16,7 @@ interface PageProps {
  * It then passes these data to the CategoryClient component for display and manipulation.
  */
 const Page = async ({ params }: PageProps) => {
-  const categories = await findAllCategoriesBySpaceId(params.spaceId)
+  const categories = await findAllCategoriesWithDataBySpaceId(params.spaceId)
 
   const formattedCategories: CategoryColumn[] = categories.map((item) => ({
     id: item._id.toString(),
