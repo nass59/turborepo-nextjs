@@ -1,9 +1,9 @@
 import { type FC } from "react"
 
-import { type Billboard as BillboardType } from "@/config/product"
+import { type BillboardModel } from "@/lib/database/models/Billboard"
 
 interface BillboardProps {
-  data: BillboardType
+  data: BillboardModel
 }
 
 const Billboard: FC<BillboardProps> = ({ data }) => {

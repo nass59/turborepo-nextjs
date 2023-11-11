@@ -3,6 +3,7 @@ import {
   aggregate,
   createOne,
   deleteOneById,
+  findAll,
   findOneById,
   updateOneById,
 } from "@/lib/database/queries"
@@ -29,6 +30,12 @@ export async function deleteOneCategory(
 }
 
 export async function findAllCategoriesBySpaceId(
+  spaceId: string
+): Promise<CategoryModel[] | []> {
+  return findAll(Category, { spaceId })
+}
+
+export async function findAllCategoriesWithDataBySpaceId(
   spaceId: string
 ): Promise<CategoriesAggregated[] | []> {
   return aggregate(Category, [

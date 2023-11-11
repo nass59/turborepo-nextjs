@@ -1,10 +1,11 @@
-import { Schema, model, models, type Types } from "mongoose"
+import { model, models, Schema, type Types } from "mongoose"
 
 export type ItemModel = {
   _id: Types.ObjectId
   spaceId: string
   name: string
   categoryId: string
+  category: string
   images: string[]
   isFeatured: boolean
   isArchived: boolean

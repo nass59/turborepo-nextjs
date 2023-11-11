@@ -4,14 +4,14 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { type Category } from "@/config/product"
 import { siteConfig } from "@/config/site"
+import { type CategoryModel } from "@/lib/database/models/Category"
 import { cn } from "@shared/ui"
 import { Icons } from "@/components/icons"
 import { MobileNav } from "@/components/mobile-nav"
 
 interface ProductNavProps {
-  data: Category[]
+  data: CategoryModel[]
   children?: React.ReactNode
 }
 
@@ -27,7 +27,8 @@ export const ProductNav = ({ data, children }: ProductNavProps) => {
   const close = () => setShowMobileMenu(false)
 
   const routes: RoutesNavProps[] = data.map((route) => ({
-    href: `/products/category/${route._id}`,
+    href: `#${route._id}`,
+    // href: `/products/category/${route._id}`,
     title: route.name,
   }))
 

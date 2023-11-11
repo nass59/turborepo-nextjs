@@ -75,7 +75,7 @@ export async function findAll<T>(
 ): Promise<T[] | []> {
   await dbConnect()
 
-  return await collection.find(query)
+  return await collection.find(query).sort({ createdAt: -1 })
 }
 
 export async function findOne<T>(
@@ -85,7 +85,7 @@ export async function findOne<T>(
   await dbConnect()
 
   try {
-    return await collection.findOne(query)
+    return await collection.findOne(query).sort({ createdAt: -1 })
   } catch (error: unknown) {
     log(collection.name, QUERY_LABELS.findOne, error)
     return null

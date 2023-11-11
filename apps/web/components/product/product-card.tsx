@@ -2,12 +2,12 @@
 
 import Image from "next/image"
 
-import { type Item } from "@/config/product"
+import { type ItemModel } from "@/lib/database/models/Item"
 import { Icons } from "@/components/icons"
 import IconButton from "@/components/product/icon-button"
 
 interface ProductCardProps {
-  data: Item
+  data: ItemModel
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {

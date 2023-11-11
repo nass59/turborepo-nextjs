@@ -3,6 +3,7 @@ import {
   createOne,
   deleteOneById,
   findAll,
+  findOne,
   findOneById,
   updateOneById,
 } from "@/lib/database/queries"
@@ -24,6 +25,12 @@ export async function deleteOneBillboard(
   billboardId: string
 ): Promise<BillboardModel | null> {
   return deleteOneById(Billboard, billboardId)
+}
+
+export async function findFirstBillboardBySpaceId(
+  spaceId: string
+): Promise<BillboardModel | null> {
+  return findOne(Billboard, { spaceId })
 }
 
 export async function findAllBillboardsBySpaceId(
