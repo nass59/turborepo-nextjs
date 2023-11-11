@@ -1,4 +1,4 @@
-import { findAllCategoriesBySpaceId } from "@/lib/database/category"
+import { findAllCategoriesWithDataBySpaceId } from "@/lib/database/category"
 import { findOneItem } from "@/lib/database/items"
 import { parseData } from "@/lib/utils"
 import { ItemForm } from "@/components/admin/item-form"
@@ -16,7 +16,7 @@ interface ItemProps {
  */
 const Page = async ({ params }: ItemProps) => {
   const item = await findOneItem(params.itemId)
-  const categories = await findAllCategoriesBySpaceId(params.spaceId)
+  const categories = await findAllCategoriesWithDataBySpaceId(params.spaceId)
 
   return (
     <div className="flex-col">

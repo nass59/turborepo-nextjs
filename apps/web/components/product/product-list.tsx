@@ -1,10 +1,10 @@
-import { type Item } from "@/config/product"
+import { type ItemModel } from "@/lib/database/models/Item"
 import NoResults from "@/components/product/no-results"
 import ProductCard from "@/components/product/product-card"
 
 interface ProductListProps {
   title: string
-  items: Item[]
+  items: ItemModel[]
 }
 
 const ProductList: React.FC<ProductListProps> = ({ title, items }) => {
@@ -14,7 +14,7 @@ const ProductList: React.FC<ProductListProps> = ({ title, items }) => {
       {items.length === 0 && <NoResults />}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {items.map((item) => (
-          <ProductCard key={item._id} data={item} />
+          <ProductCard key={item._id.toString()} data={item} />
         ))}
       </div>
     </div>
