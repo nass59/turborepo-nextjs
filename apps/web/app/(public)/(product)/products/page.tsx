@@ -17,7 +17,6 @@ const Page: NextPage = async () => {
     isFeatured: true,
     isArchived: false,
   })
-  console.log("🚀 ~ file: page.tsx:20 ~ constPage:NextPage= ~ items:", items)
 
   return (
     <ProductContainer>
