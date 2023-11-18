@@ -8,7 +8,7 @@ interface BillboardProps {
 
 const Billboard: FC<BillboardProps> = ({ data }) => {
   return (
-    <div className="overflow-hidden rounded-xl">
+    <div className="mb-10 overflow-hidden rounded-xl">
       <div
         className="relative aspect-square overflow-hidden rounded-xl bg-cover md:aspect-[2.4/1]"
         style={{ backgroundImage: `url(${data?.imageUrl})` }}
