@@ -1,10 +1,10 @@
 import { type FC, type ReactNode } from "react"
 
-interface ProductContainerProps {
+interface ExploreContainerProps {
   children: ReactNode
 }
 
-const ProductContainer: FC<ProductContainerProps> = ({ children }) => {
+const ExploreContainer: FC<ExploreContainerProps> = ({ children }) => {
   return (
     <section className="space-y-2 py-10 pb-8 md:pb-12">
       <div className="container flex flex-col gap-4">{children}</div>
@@ -12,4 +12,4 @@ const ProductContainer: FC<ProductContainerProps> = ({ children }) => {
   )
 }
 
-export default ProductContainer
+export default ExploreContainer

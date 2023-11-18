@@ -10,7 +10,7 @@ import { cn } from "@shared/ui"
 import { Icons } from "@/components/icons"
 import { MobileNav } from "@/components/mobile-nav"
 
-interface ProductNavProps {
+interface ExploreNavProps {
   data: CategoryModel[]
   children?: React.ReactNode
 }
@@ -20,15 +20,14 @@ interface RoutesNavProps {
   title: string
 }
 
-export const ProductNav = ({ data, children }: ProductNavProps) => {
+export const ExploreNav = ({ data, children }: ExploreNavProps) => {
   const pathName = usePathname()
 
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const close = () => setShowMobileMenu(false)
 
   const routes: RoutesNavProps[] = data.map((route) => ({
-    href: `#${route._id}`,
-    // href: `/products/category/${route._id}`,
+    href: `/explore/category/${route._id}`,
     title: route.name,
   }))
 
