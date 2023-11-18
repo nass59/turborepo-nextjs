@@ -21,7 +21,7 @@ const Page = async ({ params }: PageProps) => {
   const formattedCategories: CategoryColumn[] = categories.map((item) => ({
     id: item._id.toString(),
     name: item.name,
-    billboardLabel: item.billboard,
+    billboardLabel: item.billboard.label,
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
   }))
 

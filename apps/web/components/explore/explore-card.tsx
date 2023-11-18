@@ -1,18 +1,27 @@
 "use client"
 
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 import { type ItemModel } from "@/lib/database/models/Item"
+import IconButton from "@/components/explore/icon-button"
 import { Icons } from "@/components/icons"
-import IconButton from "@/components/product/icon-button"
 
-interface ProductCardProps {
+interface ExploreCardProps {
   data: ItemModel
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+const ExploreCard: React.FC<ExploreCardProps> = ({ data }) => {
+  const router = useRouter()
+  const handleClick = () => {
+    router.push(`/explore/${data._id}`)
+  }
+
   return (
-    <div className="group cursor-pointer space-y-3 rounded-xl border bg-white">
+    <div
+      onClick={handleClick}
+      className="group cursor-pointer space-y-3 rounded-xl border bg-white"
+    >
       {/* Image */}
       <div className="relative aspect-square rounded-xl bg-gray-100">
         <Image
@@ -39,4 +48,4 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
   )
 }
 
-export default ProductCard
+export default ExploreCard

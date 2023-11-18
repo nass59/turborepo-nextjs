@@ -1,3 +1,5 @@
+import { Types } from "mongoose"
+
 import Item, { type ItemModel } from "@/lib/database/models/Item"
 import {
   aggregate,
@@ -36,6 +38,36 @@ export async function countAllItems(query: object): Promise<number> {
   return count(Item, query)
 }
 
+const addCategory = [
+  {
+    $addFields: {
+      category: {
+        $toObjectId: "$categoryId",
+      },
+    },
+  },
+  {
+    $lookup: {
+      from: "categories",
+      localField: "category",
+      foreignField: "_id",
+      as: "fromCategories",
+    },
+  },
+  {
+    $set: {
+      category: {
+        $arrayElemAt: ["$fromCategories.name", 0],
+      },
+    },
+  },
+  {
+    $project: {
+      fromCategories: 0,
+    },
+  },
+]
+
 export async function findAllItemsBySpaceId(
   query: object
 ): Promise<ItemsAggregated[] | []> {
@@ -43,39 +75,34 @@ export async function findAllItemsBySpaceId(
     {
       $match: query,
     },
-    {
-      $addFields: {
-        category: {
-          $toObjectId: "$categoryId",
-        },
-      },
-    },
-    {
-      $lookup: {
-        from: "categories",
-        localField: "category",
-        foreignField: "_id",
-        as: "fromCategories",
-      },
-    },
-    {
-      $set: {
-        category: {
-          $arrayElemAt: ["$fromCategories.name", 0],
-        },
-      },
-    },
-    {
-      $project: {
-        categoryId: 0,
-        fromCategories: 0,
-      },
-    },
+    ...addCategory,
   ])
 }
 
 export async function findOneItem(itemId: string): Promise<ItemModel | null> {
   return findOneById(Item, itemId)
+}
+
+export async function findOneItemWithCategory(
+  itemId: string,
+  spaceId: string,
+  query: object
+): Promise<ItemsAggregated | null> {
+  const result = await aggregate<ItemsAggregated[]>(Item, [
+    {
+      $match: {
+        _id: new Types.ObjectId(itemId),
+        spaceId: spaceId,
+        ...query,
+      },
+    },
+    ...addCategory,
+    {
+      $limit: 1,
+    },
+  ])
+
+  return result[0] || null
 }
 
 export async function updateOneItem(
