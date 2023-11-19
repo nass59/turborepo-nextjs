@@ -1,7 +1,10 @@
 import { Types } from "mongoose"
 
 import { env } from "@/env.mjs"
-import { findAllItems, findOneItemWithCategory } from "@/lib/database/items"
+import {
+  findAllItemsBySpaceId,
+  findOneItemWithCategory,
+} from "@/lib/database/items"
 import ExploreContainer from "@/components/explore/explore-container"
 import ExploreList from "@/components/explore/explore-list"
 import Gallery from "@/components/explore/gallery"
@@ -20,9 +23,11 @@ const ExploreItemPage: React.FC<ExploreItemPageProps> = async ({ params }) => {
 
   if (!item) return null
 
-  const suggestedItems = await findAllItems({
+  const suggestedItems = await findAllItemsBySpaceId({
+    spaceId: env.SPACE_ID,
     _id: { $ne: new Types.ObjectId(params.exploreId) },
     categoryId: item.categoryId,
+    isArchived: false,
   })
 
   return (
