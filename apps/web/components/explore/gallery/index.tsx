@@ -14,7 +14,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
     <Tab.Group as="div" className="flex flex-col-reverse">
       {images.length > 1 && (
         <div className="mt-6 hidden sm:block">
-          <Tab.List className="grid grid-cols-4 gap-6">
+          <Tab.List className="grid grid-cols-3 gap-6">
             {images.map((image) => (
               <GalleryTab key={image} image={image} />
             ))}
