@@ -1,6 +1,6 @@
 import { env } from "@/env.mjs"
 import { findOneCategoryWithData } from "@/lib/database/category"
-import { findAllItems } from "@/lib/database/items"
+import { findAllItemsBySpaceId } from "@/lib/database/items"
 import Billboard from "@/components/explore/billboard"
 import ExploreContainer from "@/components/explore/explore-container"
 import ExploreList from "@/components/explore/explore-list"
@@ -12,8 +12,10 @@ interface CategoryPageProps {
 }
 
 const CategoryPage: React.FC<CategoryPageProps> = async ({ params }) => {
-  const items = await findAllItems({
+  const items = await findAllItemsBySpaceId({
+    spaceId: env.SPACE_ID,
     categoryId: params.categoryId,
+    isArchived: false,
   })
 
   const category = await findOneCategoryWithData(

@@ -1,9 +1,11 @@
 "use client"
 
+import { type MouseEventHandler } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 
 import { type ItemModel } from "@/lib/database/models/Item"
+import usePreviewModal from "@/hooks/use-preview-modal"
 import IconButton from "@/components/explore/icon-button"
 import { Icons } from "@/components/icons"
 
@@ -12,9 +14,15 @@ interface ExploreCardProps {
 }
 
 const ExploreCard: React.FC<ExploreCardProps> = ({ data }) => {
+  const previewModal = usePreviewModal()
   const router = useRouter()
   const handleClick = () => {
     router.push(`/explore/${data._id}`)
+  }
+
+  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation()
+    previewModal.onOpen(data)
   }
 
   return (
@@ -33,7 +41,7 @@ const ExploreCard: React.FC<ExploreCardProps> = ({ data }) => {
         <div className="absolute bottom-5 w-full px-6 opacity-0 transition group-hover:opacity-100">
           <div className="flex justify-center gap-x-6">
             <IconButton
-              onClick={() => {}}
+              onClick={onPreview}
               icon={<Icons.expand className="h-4 w-4" />}
             />
           </div>
