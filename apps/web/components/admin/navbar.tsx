@@ -6,6 +6,7 @@ import { findAllSpacesByUserId } from "@/lib/database/space"
 import { parseData } from "@/lib/utils"
 import MainNav from "@/components/admin/main-nav"
 import SpaceSwitcher from "@/components/admin/space-switcher"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const Navbar: React.FC = async () => {
   const { userId } = auth()
@@ -22,6 +23,7 @@ const Navbar: React.FC = async () => {
         <SpaceSwitcher items={parseData(spaces)} />
         <MainNav className="mx-6" />
         <div className="ml-auto flex items-center space-x-4">
+          <ThemeToggle />
           <UserButton afterSignOutUrl={routes.home} />
         </div>
       </div>

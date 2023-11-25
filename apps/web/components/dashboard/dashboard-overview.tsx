@@ -1,13 +1,6 @@
 "use client"
 
-import {
-  Bar,
-  BarChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts"
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 
 interface OverviewProps {
   data: any[]
@@ -30,7 +23,6 @@ export const Overview: React.FC<OverviewProps> = ({ data }) => {
           tickLine={false}
           axisLine={false}
         />
-        <Tooltip />
         <Bar dataKey="total" fill="#3498db" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
