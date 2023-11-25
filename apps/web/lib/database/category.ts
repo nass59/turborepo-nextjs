@@ -3,6 +3,7 @@ import { Types } from "mongoose"
 import Category, { type CategoryModel } from "@/lib/database/models/Category"
 import {
   aggregate,
+  count,
   createOne,
   deleteOneById,
   findAll,
@@ -20,6 +21,12 @@ type CategoryModelProps = Pick<
 type CategoryModelUpdateProps = Pick<CategoryModel, "name" | "billboardId">
 
 type CategoriesAggregated = CategoryModel & { billboard: BillboardModel }
+
+export async function countAllCategoriesBySpaceId(
+  spaceId: string
+): Promise<number> {
+  return count(Category, { spaceId })
+}
 
 export async function createCategory(
   data: CategoryModelProps

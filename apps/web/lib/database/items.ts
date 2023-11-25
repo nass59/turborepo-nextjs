@@ -20,6 +20,10 @@ type ItemModelUpdateProps = Omit<ItemModelProps, "spaceId">
 
 type ItemsAggregated = ItemModel & { category: string }
 
+export async function countAllItemsBySpaceId(spaceId: string): Promise<number> {
+  return count(Item, { spaceId })
+}
+
 export async function createItem(
   data: ItemModelProps
 ): Promise<ItemModel | null> {
@@ -110,4 +114,122 @@ export async function updateOneItem(
   data: ItemModelUpdateProps
 ): Promise<ItemModel | null> {
   return updateOneById(Item, itemId, data)
+}
+
+const itemsByMonth = [
+  {
+    $addFields: {
+      createdAt: {
+        $cond: {
+          if: {
+            $eq: [
+              {
+                $type: "$createdAt",
+              },
+              "date",
+            ],
+          },
+          then: "$createdAt",
+          else: null,
+        },
+      },
+    },
+  },
+  {
+    $addFields: {
+      __alias_month: {
+        month: {
+          $subtract: [
+            {
+              $month: "$createdAt",
+            },
+            1,
+          ],
+        },
+      },
+    },
+  },
+  {
+    $group: {
+      _id: {
+        __alias_month: "$__alias_month",
+      },
+      __alias_count: {
+        $sum: 1,
+      },
+    },
+  },
+  {
+    $project: {
+      _id: 0,
+      __alias_month: "$_id.__alias_month",
+      __alias_count: 1,
+    },
+  },
+  {
+    $project: {
+      x: "$__alias_month",
+      y: "$__alias_count",
+      _id: 0,
+    },
+  },
+]
+
+type ItemsByMonth = {
+  x: {
+    month: number
+  }
+  y: number
+}
+
+type MonthlyItem = {
+  name: string
+  total: number
+}
+
+const monthlyItems: MonthlyItem[] = [
+  { name: "Jan", total: 0 },
+  { name: "Feb", total: 0 },
+  { name: "Mar", total: 0 },
+  { name: "Apr", total: 0 },
+  { name: "May", total: 0 },
+  { name: "Jun", total: 0 },
+  { name: "Jul", total: 0 },
+  { name: "Aug", total: 0 },
+  { name: "Sep", total: 0 },
+  { name: "Oct", total: 0 },
+  { name: "Nov", total: 0 },
+  { name: "Dec", total: 0 },
+]
+
+export async function countAllItemsByMonthBySpaceId(
+  spaceId: string
+): Promise<MonthlyItem[]> {
+  const result = await aggregate<ItemsByMonth[]>(Item, [
+    {
+      $match: {
+        spaceId: spaceId,
+      },
+    },
+    ...itemsByMonth,
+    {
+      $sort: {
+        "x.month": 1,
+      },
+    },
+    {
+      $limit: 5000,
+    },
+  ])
+
+  for (let i = 0; i < result.length; i++) {
+    const item = result[i]
+
+    if (item?.x.month) {
+      const entry = monthlyItems[item.x.month] as MonthlyItem
+      entry.total = item.y
+    }
+  }
+
+  return monthlyItems
 }

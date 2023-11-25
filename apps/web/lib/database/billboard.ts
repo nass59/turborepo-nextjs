@@ -1,5 +1,6 @@
 import Billboard, { type BillboardModel } from "@/lib/database/models/Billboard"
 import {
+  count,
   createOne,
   deleteOneById,
   findAll,
@@ -37,6 +38,12 @@ export async function findAllBillboardsBySpaceId(
   spaceId: string
 ): Promise<BillboardModel[] | []> {
   return findAll(Billboard, { spaceId })
+}
+
+export async function countAllBillboardsBySpaceId(
+  spaceId: string
+): Promise<number> {
+  return count(Billboard, { spaceId })
 }
 
 export async function findOneBillboard(
