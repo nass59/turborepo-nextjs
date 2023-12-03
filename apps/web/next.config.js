@@ -21,6 +21,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    optimizePackageImports: ["lucide-react", "date-fns", "@headlessui/react"],
+  },
 }
 
 module.exports = withContentlayer(nextConfig)

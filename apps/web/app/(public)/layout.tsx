@@ -1,10 +1,10 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import localFont from "next/font/local"
 
 import "@shared/ui/styles/global.css"
 
-import { baseMetadata } from "@/constants/metadata"
+import { baseMetadata, baseViewport } from "@/constants/metadata"
 
 import { cn, Toaster } from "@shared/ui"
 import { Analytics } from "@/components/analytics"
@@ -34,6 +34,12 @@ interface RootLayoutProps {
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-fields
  */
 export const metadata: Metadata = baseMetadata
+
+/**
+ * Define the viewport for the site
+ * @see https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ */
+export const viewport: Viewport = baseViewport
 
 // @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
 export default function RootLayout({ children }: RootLayoutProps) {
