@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 
 import { siteConfig } from "@/config/site"
 import { absoluteUrl } from "@/lib/utils"
@@ -57,8 +57,6 @@ export const baseMetadata: Metadata = {
     apple: "/apple-icon.png",
   },
   manifest: absoluteUrl("/site.webmanifest"),
-  themeColor: "black",
-  colorScheme: "dark",
   applicationName: siteName,
   referrer: "origin-when-cross-origin",
   formatDetection: {
@@ -66,4 +64,13 @@ export const baseMetadata: Metadata = {
     address: false,
     telephone: false,
   },
+}
+
+/**
+ * Define the viewport for the site
+ * @see https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ */
+export const baseViewport: Viewport = {
+  themeColor: "black",
+  colorScheme: "dark",
 }

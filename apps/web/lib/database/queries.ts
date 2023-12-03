@@ -42,7 +42,7 @@ export async function deleteOne<T>(
   await dbConnect()
 
   try {
-    return await collection.findOneAndRemove(query)
+    return (await collection.findOneAndDelete(query)) as T
   } catch (error: unknown) {
     log(collection.name, QUERY_LABELS.deleteOne, error)
     return null
@@ -60,9 +60,9 @@ export async function deleteOneById<T>(
   await dbConnect()
 
   try {
-    return await collection.findOneAndRemove({
+    return (await collection.findOneAndDelete({
       _id: new Types.ObjectId(id),
-    })
+    })) as T
   } catch (error: unknown) {
     log(collection.name, QUERY_LABELS.deleteOneById, error)
     return null
@@ -171,5 +171,5 @@ export async function count(
 ): Promise<number> {
   await dbConnect()
 
-  return await collection.count(query)
+  return await collection.countDocuments(query)
 }
