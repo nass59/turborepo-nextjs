@@ -1,6 +1,6 @@
-# Next.js 13 with Turborepo
+# Next.js 14 with Turborepo
 
-An open source application built using the new router, server components and everything new in Next.js 13.
+An open source application built using the new router, server components and everything new in Next.js 14.
 
 ## Demo 👀
 
@@ -32,7 +32,7 @@ This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes th
 
 ### Apps and Packages
 
-- `web`: another [Next.js 13](https://nextjs.org) app
+- `web`: another [Next.js 14](https://nextjs.org) app
 - `storybook`: a [Storybook](https://storybook.js.org/blog/in-app-tour-for-new-users/) app
 - `ui`: a stub React component library shared by both `web` and `docs` applications
 - `eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)

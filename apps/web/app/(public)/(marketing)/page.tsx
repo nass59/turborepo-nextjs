@@ -58,7 +58,7 @@ export default async function Page() {
           <Space3 />
 
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            I&apos;m building a web app with Next.js 13 and open sourcing
+            I&apos;m building a web app with Next.js 14 and open sourcing
             everything. Follow along as we figure this out together.
           </p>
         </div>
@@ -76,7 +76,7 @@ export default async function Page() {
           </h2>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
             This project is an experiment to see how a modern app, with features
-            like auth, API routes, and static pages would work in Next.js 13 app
+            like auth, API routes, and static pages would work in Next.js 14 app
             dir.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default async function Page() {
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[58rem] md:grid-cols-3">
           <FeatureItem
             logo={<NextJS />}
-            title="Next.js 13"
+            title="Next.js 14"
             description="App dir, Routing, Layouts UI and API Routes."
           />
           <FeatureItem
