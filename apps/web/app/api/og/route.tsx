@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/server"
+import { ImageResponse } from "next/og"
 
 import { ogImageSchema } from "@/lib/validation/og"
 import { Space2 } from "@/components/icons/space2"
