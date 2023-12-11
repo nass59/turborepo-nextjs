@@ -1,11 +1,11 @@
+import { type ComponentProps } from "react"
+
 import { siteConfig } from "@/config/site"
 import { cn } from "@shared/ui"
+import { FooterLink } from "@/components/footer/footer-link"
 import { Icons } from "@/components/icons"
-import { SiteFooterLink } from "@/components/site-footer-link"
 
-export const SiteFooter = ({
-  className,
-}: React.HTMLAttributes<HTMLElement>) => {
+export const Footer = ({ className }: ComponentProps<"footer">) => {
   return (
     <footer className={cn(className)}>
       <div className="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
@@ -13,17 +13,16 @@ export const SiteFooter = ({
           <Icons.logo />
           <p className="text-center text-sm leading-loose md:text-left">
             Built by{" "}
-            <SiteFooterLink href={siteConfig.links.twitter} title="@nass190" />.
-            Hosted on{" "}
-            <SiteFooterLink href="https://vercel.com" title="Vercel" />. See{" "}
-            <SiteFooterLink href={siteConfig.links.terms} title="terms" /> and{" "}
-            <SiteFooterLink href={siteConfig.links.privacy} title="privacy" />.
+            <FooterLink href={siteConfig.links.twitter} title="@nass190" />.
+            Hosted on <FooterLink href="https://vercel.com" title="Vercel" />.
+            See <FooterLink href={siteConfig.links.terms} title="terms" /> and{" "}
+            <FooterLink href={siteConfig.links.privacy} title="privacy" />.
           </p>
         </div>
 
         <p className="text-center text-sm md:text-left">
           The source code is available on{" "}
-          <SiteFooterLink href={siteConfig.links.github} title="Github" />.
+          <FooterLink href={siteConfig.links.github} title="Github" />.
         </p>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 import { ModalProvider } from "@/providers/modal-explore-provider"
 
 import { ExploreHeader } from "@/components/explore/explore-header"
-import { SiteFooter } from "@/components/site-footer"
+import { Footer } from "@/components/footer/footer"
 
 interface ExploreLayoutProps {
   children: React.ReactNode
@@ -13,7 +13,7 @@ export default function ExploreLayout({ children }: ExploreLayoutProps) {
       <ModalProvider />
       <ExploreHeader />
       <main className="flex-1">{children}</main>
-      <SiteFooter />
+      <Footer />
     </div>
   )
 }
