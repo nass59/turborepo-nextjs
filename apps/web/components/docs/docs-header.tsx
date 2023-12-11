@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site"
 import { DocsSearch } from "@/components/docs/docs-search"
 import { DocsSidebarNav } from "@/components/docs/docs-sidebar-nav"
 import { Icons } from "@/components/icons"
-import { MainNav } from "@/components/main-nav"
+import { MainNav } from "@/components/nav/main-nav"
 
 export const DocsHeader = () => {
   return (

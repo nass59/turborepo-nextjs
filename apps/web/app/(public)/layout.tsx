@@ -41,7 +41,11 @@ export const metadata: Metadata = baseMetadata
  */
 export const viewport: Viewport = baseViewport
 
-// @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
+/**
+ * Define the root layout for the site
+ * Only the root layout can contain <html> and <body> tags.
+ * @see https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layouts
+ */
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
