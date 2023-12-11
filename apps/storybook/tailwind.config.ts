@@ -1,9 +1,11 @@
-import sharedConfig from "@shared/tailwind-config"
 import { shadcnPreset } from "@shared/tailwind-config/lib/shadcn-preset"
 import type { Config } from "tailwindcss"
 
 const config = {
-  ...sharedConfig,
+  content: [
+    "./src/stories/**/*.{ts,tsx}",
+    "../../packages/ui/components/**/*.{ts,tsx}",
+  ],
   presets: [shadcnPreset],
 } satisfies Config
 

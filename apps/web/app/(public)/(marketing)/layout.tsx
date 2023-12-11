@@ -1,16 +1,18 @@
-import { MarketingHeader } from "@/components/marketing/marketing-header"
-import { SiteFooter } from "@/components/site-footer"
+import { type PropsWithChildren } from "react"
 
-interface MarketingLayoutProps {
-  children: React.ReactNode
-}
+import { Footer } from "@/components/footer/footer"
+import { Header } from "@/features/landing-page/ui/header"
 
-export default function MarketingLayout({ children }: MarketingLayoutProps) {
+/**
+ * Define the marketing layout for the segment of the site
+ * @see https://nextjs.org/docs/app/api-reference/file-conventions/layout
+ */
+export default function MarketingLayout({ children }: PropsWithChildren) {
   return (
     <div className="flex min-h-screen flex-col">
-      <MarketingHeader />
+      <Header />
       <main className="flex-1">{children}</main>
-      <SiteFooter />
+      <Footer />
     </div>
   )
 }

@@ -1,9 +1,9 @@
-interface SiteFooterLinkProps {
+interface Props {
   href: string
   title: string
 }
 
-export const SiteFooterLink = ({ href, title }: SiteFooterLinkProps) => {
+export const FooterLink = ({ href, title }: Props) => {
   return (
     <a
       href={href}

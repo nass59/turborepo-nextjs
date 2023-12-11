@@ -1,7 +1,7 @@
 import { type User } from "next-auth"
 
 import { dashboardConfig } from "@/config/dashboard"
-import { MainNav } from "@/components/main-nav"
+import { MainNav } from "@/components/nav/main-nav"
 import { UserAccountNav } from "@/components/user/user-account-nav"
 
 interface DashboardHeaderProps extends React.HTMLAttributes<HTMLElement> {

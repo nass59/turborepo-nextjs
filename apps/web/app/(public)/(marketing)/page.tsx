@@ -44,6 +44,9 @@ async function getGithubStars(): Promise<string | null> {
   }
 }
 
+/**
+ * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#pages
+ */
 export default async function Page() {
   const stars = await getGithubStars()
 

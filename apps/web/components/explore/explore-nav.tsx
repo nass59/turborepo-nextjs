@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site"
 import { type CategoryModel } from "@/lib/database/models/Category"
 import { cn } from "@shared/ui"
 import { Icons } from "@/components/icons"
-import { MobileNav } from "@/components/mobile-nav"
+import { MobileNav } from "@/components/nav/mobile-nav"
 
 interface ExploreNavProps {
   data: CategoryModel[]
