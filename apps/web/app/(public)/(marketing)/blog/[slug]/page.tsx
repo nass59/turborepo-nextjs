@@ -1,145 +1,46 @@
 import { type Metadata } from "next"
 import Image from "next/image"
-import Link from "next/link"
 import { notFound } from "next/navigation"
-import { allAuthors, allPosts } from "contentlayer/generated"
 
-import { env } from "@/env.mjs"
-import { absoluteUrl, formatDate } from "@/lib/utils"
-import { buttonVariants, cn } from "@shared/ui"
-import { Icons } from "@/components/icons"
 import { Mdx } from "@/components/mdx-components"
+import { getPostMetadata } from "@/features/blog/metadata/metadata"
+import { BackLink } from "@/features/blog/ui/back-link"
+import { PostHeader } from "@/features/blog/ui/post-header"
+import { getPostFromParams, getPostSlugs } from "@/features/blog/utilities/post"
 
-interface PageProps {
+type Props = {
   params: {
     slug: string
   }
 }
 
-type ParamsProps = PageProps["params"]
-
-function getPostFromParams(params: ParamsProps) {
-  const post = allPosts.find((post) => post.slug === params.slug)
-
-  return post || null
-}
-
+/**
+ * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function
+ */
 export function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> | object {
-  const post = getPostFromParams(params)
-
-  if (!post) {
-    return {}
-  }
-
-  const url = env.NEXT_PUBLIC_APP_URL
-
-  const ogUrl = new URL(`${url}/api/og`)
-  ogUrl.searchParams.set("heading", post.title)
-  ogUrl.searchParams.set("type", "Blog Post")
-  ogUrl.searchParams.set("mode", "dark")
-
-  return {
-    title: post.title,
-    description: post.description,
-    authors: post.authors.map((author) => ({
-      name: author,
-    })),
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: "article",
-      url: absoluteUrl(post.url),
-      images: [
-        {
-          url: ogUrl.toString(),
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.description,
-      images: [ogUrl.toString()],
-    },
-  }
+}: Props): Promise<Metadata> | object {
+  return getPostMetadata(params.slug) || {}
 }
 
-// // @see https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#generating-static-params
-export async function generateStaticParams(): Promise<ParamsProps[]> {
-  return allPosts.map((post) => ({ slug: post.slug }))
+/**
+ * @see https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#generating-static-params
+ */
+export async function generateStaticParams(): Promise<Props["params"][]> {
+  return getPostSlugs()
 }
 
-export default function Page({ params }: PageProps) {
-  const post = getPostFromParams(params)
+export default function Page({ params }: Props) {
+  const post = getPostFromParams(params.slug)
 
   if (!post) {
     notFound()
   }
 
-  const authors = post.authors.map((author) =>
-    allAuthors.find(({ slug }) => slug === author)
-  )
-
   return (
-    <article className="container relative max-w-3xl py-6 lg:py-10">
-      <Link
-        href="/blog"
-        className={cn(
-          buttonVariants({ variant: "ghost" }),
-          "absolute left-[-200px] top-14 hidden xl:inline-flex"
-        )}
-      >
-        <Icons.chevronLeft className="mr-2 h-4 w-4" />
-        See all posts
-      </Link>
-
-      <div>
-        {post.date && (
-          <time
-            dateTime={post.date}
-            className="block text-sm text-muted-foreground"
-          >
-            Published on {formatDate(post.date)}
-          </time>
-        )}
-
-        <h1 className="mt-2 inline-block font-heading leading-tight lg:text-5xl">
-          {post.title}
-        </h1>
-
-        {authors?.length ? (
-          <div className="mt-4 flex space-x-4">
-            {authors.map((author) =>
-              author ? (
-                <Link
-                  key={author._id}
-                  href={`https://twitter.com/${author.twitter}`}
-                  className="flex items-center space-x-2 text-sm"
-                >
-                  <Image
-                    src={author.avatar}
-                    alt={author.title}
-                    width={42}
-                    height={42}
-                    className="rounded-full bg-white"
-                  />
-                  <div className="flex-1 text-left leading-tight">
-                    <p className="font-medium">{author.title}</p>
-                    <p className="text-xs text-muted-foreground">
-                      @{author.twitter}
-                    </p>
-                  </div>
-                </Link>
-              ) : null
-            )}
-          </div>
-        ) : null}
-      </div>
+    <article className="container relative max-w-3xl space-y-8">
+      <BackLink className="absolute left-[-200px] top-14 hidden xl:inline-flex" />
+      <PostHeader post={post} />
 
       {post.image && (
         <Image
@@ -147,20 +48,17 @@ export default function Page({ params }: PageProps) {
           alt={post.title}
           width={720}
           height={720}
-          className="my-8 rounded-md border bg-slate-800 transition-colors"
+          className="rounded-md border bg-slate-800 transition-colors"
           priority
         />
       )}
 
       <Mdx code={post.body.code} />
 
-      <hr className="mt-12" />
+      <hr />
 
-      <div className="flex justify-center py-6 lg:py-10">
-        <Link href="/blog" className={cn(buttonVariants({ variant: "ghost" }))}>
-          <Icons.chevronLeft className="mr-2 h-4 w-4" />
-          See all posts
-        </Link>
+      <div className="flex justify-center">
+        <BackLink />
       </div>
     </article>
   )
