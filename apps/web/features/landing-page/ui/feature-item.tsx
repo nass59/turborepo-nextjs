@@ -1,10 +1,10 @@
-interface FeatureItemProps {
+type Props = {
   logo: React.ReactNode
   title: string
   description: string
 }
 
-export const FeatureItem = ({ logo, title, description }: FeatureItemProps) => {
+export const FeatureItem = ({ logo, title, description }: Props) => {
   return (
     <div className="relative overflow-hidden rounded-lg border bg-background p-2 shadow-2xl">
       <div className="flex h-[180px] flex-col justify-between rounded-md bg-slate-900 p-6 text-slate-200">

@@ -10,6 +10,7 @@ export const siteConfig: SiteConfig = {
   links: {
     twitter: "https://twitter.com/nass190",
     github: "https://github.com/nass59/turborepo-nextjs",
+    api_github: "https://api.github.com/repos/nass59/turborepo-nextjs",
     terms: "/terms",
     privacy: "/privacy",
   },

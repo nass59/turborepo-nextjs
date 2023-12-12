@@ -29,6 +29,7 @@ export type SiteConfig = {
   links: {
     twitter: string
     github: string
+    api_github: string
     terms: string
     privacy: string
   }
