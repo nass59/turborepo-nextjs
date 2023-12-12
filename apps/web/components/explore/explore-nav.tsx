@@ -68,7 +68,7 @@ export const ExploreNav = ({ data, children }: ExploreNavProps) => {
       </button>
 
       {showMobileMenu && routes && (
-        <MobileNav items={routes} close={close}>
+        <MobileNav items={routes} close={close} segment={pathName}>
           {children}
         </MobileNav>
       )}
