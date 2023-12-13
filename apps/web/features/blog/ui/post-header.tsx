@@ -20,7 +20,7 @@ export const PostHeader = ({ post }: Props) => {
         </time>
       )}
 
-      <h1 className="mt-2 inline-block font-heading leading-tight lg:text-5xl">
+      <h1 className="mt-2 inline-block font-heading text-3xl leading-tight lg:text-5xl">
         {post.title}
       </h1>
 

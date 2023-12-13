@@ -2,6 +2,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { type Post } from "@/.contentlayer/generated"
 
+import { Avatar, AvatarImage } from "@shared/ui"
+
 import { getAuthorsFromPost } from "../utilities/author"
 
 type Props = {
@@ -22,13 +24,10 @@ export const Authors = ({ post }: Props) => {
             href={`https://twitter.com/${author.twitter}`}
             className="flex items-center space-x-2 text-sm"
           >
-            <Image
-              src={author.avatar}
-              alt={author.title}
-              width={42}
-              height={42}
-              className="rounded-full bg-white"
-            />
+            <Avatar size="md">
+              <AvatarImage src={author.avatar} alt={author.title} />
+            </Avatar>
+
             <div className="flex-1 text-left leading-tight">
               <p className="font-medium">{author.title}</p>
               <p className="text-xs text-muted-foreground">@{author.twitter}</p>
