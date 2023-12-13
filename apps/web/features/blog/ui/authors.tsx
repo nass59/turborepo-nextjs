@@ -1,4 +1,3 @@
-import Image from "next/image"
 import Link from "next/link"
 import { type Post } from "@/.contentlayer/generated"
 
@@ -16,7 +15,7 @@ export const Authors = ({ post }: Props) => {
   if (!authors?.length) return null
 
   return (
-    <div className="mt-4 flex space-x-4">
+    <div className="flex space-x-4">
       {authors.map((author) =>
         author ? (
           <Link

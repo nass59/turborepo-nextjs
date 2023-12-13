@@ -38,28 +38,30 @@ export default function Page({ params }: Props) {
   }
 
   return (
-    <article className="container relative max-w-3xl space-y-8">
-      <BackLink className="absolute left-[-200px] top-8 hidden xl:inline-flex" />
-      <PostHeader post={post} />
+    <section>
+      <BackLink className="absolute left-[-150px] top-20 hidden xl:inline-flex" />
+      <article className="container max-w-3xl space-y-8">
+        <PostHeader post={post} />
 
-      {post.image && (
-        <Image
-          src={post.image}
-          alt={post.title}
-          width={720}
-          height={720}
-          className="rounded-md border bg-slate-800 transition-colors"
-          priority
-        />
-      )}
+        {post.image && (
+          <Image
+            src={post.image}
+            alt={post.title}
+            width={720}
+            height={720}
+            className="rounded-md border bg-slate-800 transition-colors"
+            priority
+          />
+        )}
 
-      <Mdx code={post.body.code} />
+        <Mdx code={post.body.code} />
 
-      <hr />
+        <hr />
 
-      <div className="flex justify-center">
-        <BackLink />
-      </div>
-    </article>
+        <div className="flex justify-center">
+          <BackLink />
+        </div>
+      </article>
+    </section>
   )
 }
