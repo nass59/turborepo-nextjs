@@ -11,7 +11,9 @@ export default function MarketingLayout({ children }: PropsWithChildren) {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <main className="flex-1">{children}</main>
+      <main className="container relative max-w-4xl flex-1 space-y-8 py-6 lg:py-10">
+        {children}
+      </main>
       <Footer />
     </div>
   )

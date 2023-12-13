@@ -5,7 +5,7 @@ export const Posts = () => {
   const posts = getPosts()
 
   if (!posts.length) {
-    return <p>No posts published</p>
+    return <div>No posts published</div>
   }
 
   return (
