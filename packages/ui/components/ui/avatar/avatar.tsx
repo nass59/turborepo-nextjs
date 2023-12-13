@@ -1,27 +1,37 @@
 "use client"
 
-import * as React from "react"
+import { forwardRef } from "react"
 import * as AvatarPrimitive from "@radix-ui/react-avatar"
 import { type AvatarProps } from "@radix-ui/react-avatar"
+import { cva, type VariantProps } from "class-variance-authority"
 
-import { cn } from "../../lib/utils"
+import { cn } from "../../../lib/utils"
+import { AvatarStyle } from "./style"
 
-const Avatar = React.forwardRef<
+const avatarVariants = cva(AvatarStyle.base, {
+  variants: {
+    size: AvatarStyle.sizes,
+  },
+  defaultVariants: {
+    size: "md",
+  },
+})
+
+const Avatar = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
->(({ className, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root> &
+    VariantProps<typeof avatarVariants>
+>(({ size, className, ...props }, ref) => (
   <AvatarPrimitive.Root
     ref={ref}
-    className={cn(
-      "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full",
-      className
-    )}
+    className={cn(avatarVariants({ size, className }))}
     {...props}
   />
 ))
+
 Avatar.displayName = AvatarPrimitive.Root.displayName
 
-const AvatarImage = React.forwardRef<
+const AvatarImage = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Image>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
 >(({ className, ...props }, ref) => (
@@ -31,9 +41,10 @@ const AvatarImage = React.forwardRef<
     {...props}
   />
 ))
+
 AvatarImage.displayName = AvatarPrimitive.Image.displayName
 
-const AvatarFallback = React.forwardRef<
+const AvatarFallback = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Fallback>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
 >(({ className, ...props }, ref) => (
@@ -46,6 +57,14 @@ const AvatarFallback = React.forwardRef<
     {...props}
   />
 ))
+
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
 
-export { Avatar, AvatarImage, AvatarFallback, AvatarProps }
+export {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+  AvatarProps,
+  avatarVariants,
+  AvatarStyle,
+}
