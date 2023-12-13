@@ -10,7 +10,7 @@ type Props = {
 
 export const PostHeader = ({ post }: Props) => {
   return (
-    <div>
+    <div className="space-y-2">
       {post.date && (
         <time
           dateTime={post.date}
@@ -20,7 +20,7 @@ export const PostHeader = ({ post }: Props) => {
         </time>
       )}
 
-      <h1 className="mt-2 inline-block font-heading text-3xl leading-tight lg:text-5xl">
+      <h1 className="font-heading text-3xl leading-tight lg:text-5xl">
         {post.title}
       </h1>
 
