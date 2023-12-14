@@ -63,7 +63,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           enableSystem
           forcedTheme="light"
         >
-          {children}
+          <div className="flex min-h-screen flex-col">{children}</div>
           <Analytics />
           <Help />
           <Toaster />
