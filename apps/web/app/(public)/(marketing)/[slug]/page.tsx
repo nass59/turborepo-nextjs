@@ -1,6 +1,7 @@
 import { type Metadata } from "next"
 import { notFound } from "next/navigation"
 
+import { ContentContainer } from "@/components/content-container"
 import { Mdx } from "@/components/mdx-components"
 import { getPageMetadata } from "@/features/blog/metadata/metadata"
 import { Heading } from "@/features/blog/ui/heading"
@@ -30,9 +31,9 @@ export default function Page({ params }: Props) {
   }
 
   return (
-    <>
+    <ContentContainer className="space-y-8">
       <Heading title={page.title} description={page.description} />
       <Mdx code={page.body.code} />
-    </>
+    </ContentContainer>
   )
 }

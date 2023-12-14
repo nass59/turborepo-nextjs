@@ -2,6 +2,7 @@ import { type Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 
+import { ContentContainer } from "@/components/content-container"
 import { Mdx } from "@/components/mdx-components"
 import { getPostMetadata } from "@/features/blog/metadata/metadata"
 import { BackLink } from "@/features/blog/ui/back-link"
@@ -38,7 +39,7 @@ export default function Page({ params }: Props) {
   }
 
   return (
-    <section>
+    <ContentContainer>
       <BackLink className="absolute left-[-150px] top-20 hidden xl:inline-flex" />
       <article className="container max-w-3xl space-y-8">
         <PostHeader post={post} />
@@ -62,6 +63,6 @@ export default function Page({ params }: Props) {
           <BackLink />
         </div>
       </article>
-    </section>
+    </ContentContainer>
   )
 }
