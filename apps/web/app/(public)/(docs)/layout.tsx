@@ -2,9 +2,9 @@ import { type PropsWithChildren } from "react"
 
 import { docsConfig } from "@/config/docs"
 import { marketingConfig } from "@/config/marketing"
-import { Breadcrumb } from "@/components/docs/docs-breadcrumb"
 import { Footer } from "@/components/footer/footer"
 import { Header } from "@/components/header"
+import { Breadcrumb } from "@/features/docs/ui/breadcrumb"
 import { Search } from "@/features/docs/ui/search"
 import { Sidebar } from "@/features/docs/ui/sidebar"
 

@@ -3,13 +3,13 @@ import { type Nodes } from "mdast-util-toc/lib"
 import { remark } from "remark"
 import { visit } from "unist-util-visit"
 
-interface Item {
+type Item = {
   title: string
   url: string
   items?: Item[]
 }
 
-interface Items {
+type Items = {
   items?: Item[]
 }
 
@@ -50,7 +50,6 @@ const getItems = (node: any, current: Item | any): Items => {
 
   if (node.type === "list") {
     current.items = node.children.map((i: any) => getItems(i, {}))
-
     return current
   }
 
