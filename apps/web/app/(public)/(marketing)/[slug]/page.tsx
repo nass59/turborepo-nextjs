@@ -1,10 +1,10 @@
 import { type Metadata } from "next"
 import { notFound } from "next/navigation"
 
+import { Heading } from "@shared/ui"
 import { ContentContainer } from "@/components/content-container"
 import { Mdx } from "@/components/mdx-components"
 import { getPageMetadata } from "@/features/blog/metadata/metadata"
-import { Heading } from "@/features/blog/ui/heading"
 import { getPageFromParams, getPageSlugs } from "@/features/blog/utilities/page"
 
 type Props = {

@@ -13,7 +13,7 @@ export const Search = () => {
   }
 
   return (
-    <div className="flex">
+    <div className="hidden lg:flex">
       <form onSubmit={onSubmit} className="relative w-full">
         <Input
           type="search"

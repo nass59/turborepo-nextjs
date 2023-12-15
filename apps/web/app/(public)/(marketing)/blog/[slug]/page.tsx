@@ -41,7 +41,7 @@ export default function Page({ params }: Props) {
   return (
     <ContentContainer>
       <BackLink className="absolute left-[-150px] top-20 hidden xl:inline-flex" />
-      <article className="container max-w-3xl space-y-8">
+      <article className="m-auto max-w-3xl space-y-8">
         <PostHeader post={post} />
 
         {post.image && (
