@@ -154,11 +154,15 @@ export const All: Story = {
     return (
       <>
         {variants.map((variant) => (
-          <div className="flex items-baseline space-x-2">
+          <div className="flex items-baseline space-x-2" key={variant}>
             <div className="w-[100px] text-sm text-slate-500">{variant}</div>
             <div className="mb-4 flex items-center space-x-2">
               {sizes.map((size) => (
-                <Button variant={variant} size={size}>
+                <Button
+                  variant={variant}
+                  size={size}
+                  key={`${variant}-${size}`}
+                >
                   {size === "icon" ? "🚀" : `Button (${size})`}
                 </Button>
               ))}

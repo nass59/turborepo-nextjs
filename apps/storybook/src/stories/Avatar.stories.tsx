@@ -76,7 +76,7 @@ export const All: Story = {
     return (
       <div className="mb-4 flex items-center space-x-2">
         {sizes.map((size) => (
-          <Avatar size={size}>
+          <Avatar size={size} key={size}>
             <AvatarImage
               src="https://xsgames.co/randomusers/avatar.php?g=female"
               alt="Picture of the author"
