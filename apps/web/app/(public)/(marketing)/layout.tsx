@@ -1,14 +1,12 @@
-import { type PropsWithChildren } from "react"
-
+import { type LayoutProps } from "@/types/common"
 import { marketingConfig } from "@/config/marketing"
 import { Footer } from "@/components/footer/footer"
 import { Header } from "@/components/header"
 
 /**
- * Define the marketing layout for the segment of the site
  * @see https://nextjs.org/docs/app/api-reference/file-conventions/layout
  */
-export default function MarketingLayout({ children }: PropsWithChildren) {
+export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <Header mainNavItems={marketingConfig.mainNav} />

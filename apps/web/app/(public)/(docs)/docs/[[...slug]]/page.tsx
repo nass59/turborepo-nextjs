@@ -1,6 +1,10 @@
-import { type Metadata } from "next"
 import { notFound } from "next/navigation"
 
+import {
+  type ArrayPageProps,
+  type PageMetadata,
+  type StaticArrayParams,
+} from "@/types/common"
 import { Heading } from "@shared/ui"
 import { Mdx } from "@/components/mdx-components"
 import { getDocMetadata } from "@/features/docs/metadata/metadata"
@@ -11,23 +15,15 @@ import { getTableOfContents } from "@/features/docs/utilities/toc"
 
 import "@/styles/mdx.css"
 
-type Props = {
-  params: {
-    slug: string[]
-  }
-}
-
-export function generateMetadata({
-  params,
-}: Props): Promise<Metadata> | object {
+export function generateMetadata({ params }: ArrayPageProps): PageMetadata {
   return getDocMetadata(params?.slug?.join("/") || "") || {}
 }
 
-export async function generateStaticParams(): Promise<Props["params"][]> {
+export async function generateStaticParams(): Promise<StaticArrayParams> {
   return getDocSlugs()
 }
 
-export default async function Page({ params }: Props) {
+export default async function Page({ params }: ArrayPageProps) {
   const doc = getDocFromParams(params?.slug?.join("/") || "")
 
   if (!doc) {

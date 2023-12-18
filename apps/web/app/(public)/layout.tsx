@@ -6,6 +6,7 @@ import "@shared/ui/styles/global.css"
 
 import { baseMetadata, baseViewport } from "@/constants/metadata"
 
+import { type LayoutProps } from "@/types/common"
 import { cn, Toaster } from "@shared/ui"
 import { Analytics } from "@/components/analytics"
 import { Help } from "@/components/helper"
@@ -24,11 +25,6 @@ const fontHeading = localFont({
   variable: "--font-heading",
 })
 
-// Define the props for the RootLayout component
-interface RootLayoutProps {
-  children: React.ReactNode
-}
-
 /**
  * Define the metadata for the site
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-fields
@@ -46,7 +42,7 @@ export const viewport: Viewport = baseViewport
  * Only the root layout can contain <html> and <body> tags.
  * @see https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layouts
  */
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
