@@ -8,11 +8,11 @@ import { MainNavItems } from "./main-nav-items"
 
 type Props = PropsWithChildren & {
   items?: MainNavItem[]
-  segment: string | null
+  pathName: string | null
   close: () => false | void
 }
 
-export function MobileNav({ items, segment, close, children }: Props) {
+export function MobileNav({ items, pathName, close, children }: Props) {
   useLockBody()
 
   return (
@@ -22,7 +22,7 @@ export function MobileNav({ items, segment, close, children }: Props) {
         <MainNavItems
           className="flex flex-col items-start gap-2"
           items={items}
-          segment={segment}
+          pathName={pathName}
         />
         {children}
       </div>

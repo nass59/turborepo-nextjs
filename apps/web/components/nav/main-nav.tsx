@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, type PropsWithChildren } from "react"
-import { useSelectedLayoutSegment } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 import { type MainNavItem as TypeMainNavItem } from "types"
 import { Button } from "@shared/ui"
@@ -16,7 +16,7 @@ type Props = PropsWithChildren & {
 }
 
 export const MainNav = ({ items, children }: Props) => {
-  const segment = useSelectedLayoutSegment()
+  const pathName = usePathname()
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
 
   const toggle = () => setShowMobileMenu(!showMobileMenu)
@@ -28,7 +28,7 @@ export const MainNav = ({ items, children }: Props) => {
 
       <MainNavItems
         items={items}
-        segment={segment}
+        pathName={pathName}
         className="hidden gap-2 md:flex"
       />
 
@@ -43,7 +43,7 @@ export const MainNav = ({ items, children }: Props) => {
       </Button>
 
       {showMobileMenu && items && (
-        <MobileNav items={items} close={close} segment={segment}>
+        <MobileNav items={items} close={close} pathName={pathName}>
           {children}
         </MobileNav>
       )}

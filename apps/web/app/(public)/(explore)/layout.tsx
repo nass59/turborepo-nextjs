@@ -1,19 +1,18 @@
-import { ModalProvider } from "@/providers/modal-explore-provider"
-
-import { ExploreHeader } from "@/components/explore/explore-header"
+import { type LayoutProps } from "@/types/common"
 import { Footer } from "@/components/footer/footer"
+import { Header } from "@/components/header"
+import { ModalProvider } from "@/features/explore/providers/modal-provider"
+import { getCategoryRoutes } from "@/features/explore/utilities/category"
 
-interface ExploreLayoutProps {
-  children: React.ReactNode
-}
+export default async function Layout({ children }: LayoutProps) {
+  const categories = await getCategoryRoutes()
 
-export default function ExploreLayout({ children }: ExploreLayoutProps) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <>
       <ModalProvider />
-      <ExploreHeader />
+      <Header mainNavItems={categories} />
       <main className="flex-1">{children}</main>
       <Footer />
-    </div>
+    </>
   )
 }

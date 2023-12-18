@@ -5,13 +5,13 @@ import { MainNavItem } from "./main-nav-item"
 
 type Props = PropsWithChildren & {
   items?: TypeMainNavItem[]
-  segment: string | null
+  pathName: string | null
   className?: string
 }
 
 export const MainNavItems = ({
   items,
-  segment,
+  pathName,
   className,
   ...props
 }: Props) => {
@@ -19,13 +19,15 @@ export const MainNavItems = ({
 
   return (
     <nav className={className} {...props}>
-      {items.map((item, index) => (
-        <MainNavItem
-          key={index}
-          item={item}
-          isActive={String(item.href).startsWith(`/${segment}`)}
-        />
-      ))}
+      {items.map((item, index) => {
+        const path = pathName?.split("/")
+        const isActive =
+          path && path.length === 1
+            ? item.href === pathName
+            : String(pathName).startsWith(String(item.href))
+
+        return <MainNavItem key={index} item={item} isActive={isActive} />
+      })}
     </nav>
   )
 }

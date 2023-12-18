@@ -1,31 +1,19 @@
-import { type NextPage } from "next"
+import { ContentContainer } from "@/components/content-container"
+import { Billboard } from "@/features/explore/ui/billboard"
+import { List } from "@/features/explore/ui/list"
+import { getBillboard } from "@/features/explore/utilities/billboard"
+import { getItems } from "@/features/explore/utilities/item"
 
-import { env } from "@/env.mjs"
-import { findFirstBillboardBySpaceId } from "@/lib/database/billboard"
-import { findAllItemsBySpaceId } from "@/lib/database/items"
-import { parseData } from "@/lib/utils"
-import Billboard from "@/components/explore/billboard"
-import ExploreContainer from "@/components/explore/explore-container"
-import ExploreList from "@/components/explore/explore-list"
-
-const Page: NextPage = async () => {
-  const billboard = await findFirstBillboardBySpaceId(env.SPACE_ID)
-  const items = await findAllItemsBySpaceId({
-    spaceId: env.SPACE_ID,
-    isFeatured: true,
-    isArchived: false,
-  })
+export default async function Page() {
+  const billboard = await getBillboard()
+  const items = await getItems()
 
   return (
-    <ExploreContainer>
-      <div className="space-y-10 pb-10">
-        {billboard && <Billboard data={billboard} />}
-        <div className="flex flex-col gap-y-8">
-          <ExploreList title="Featured items" items={parseData(items)} />
-        </div>
-      </div>
-    </ExploreContainer>
+    <>
+      {billboard && <Billboard data={billboard} />}
+      <ContentContainer>
+        <List title="Featured items" items={items} />
+      </ContentContainer>
+    </>
   )
 }
-
-export default Page
