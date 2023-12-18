@@ -13,7 +13,7 @@ type Props = PropsWithChildren & {
 
 export const Header = ({ mainNavItems, sidebarNavItems, children }: Props) => {
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
+    <header className="sticky top-0 z-10 w-full border-b bg-background">
       <div className="container flex h-16 items-center justify-between space-x-4">
         <MainNav items={mainNavItems}>
           {sidebarNavItems && <Sidebar items={sidebarNavItems} />}

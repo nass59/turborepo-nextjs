@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <ContentContainer className="space-y-8">
+    <ContentContainer centered>
       <Heading
         title="Blog"
         description="A blog built using ContentLayer. Posts are written in MDX."

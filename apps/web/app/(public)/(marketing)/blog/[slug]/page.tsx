@@ -35,7 +35,7 @@ export default function Page({ params }: PageProps) {
   }
 
   return (
-    <ContentContainer>
+    <ContentContainer centered withSpace={false}>
       <BackLink className="absolute left-[-150px] top-20 hidden xl:inline-flex" />
       <article className="m-auto max-w-3xl space-y-8">
         <PostHeader post={post} />
