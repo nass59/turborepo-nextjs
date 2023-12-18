@@ -1,5 +1,4 @@
-import { type PropsWithChildren } from "react"
-
+import { type LayoutProps } from "@/types/common"
 import { docsConfig } from "@/config/docs"
 import { marketingConfig } from "@/config/marketing"
 import { Footer } from "@/components/footer/footer"
@@ -8,7 +7,7 @@ import { Breadcrumb } from "@/features/docs/ui/breadcrumb"
 import { Search } from "@/features/docs/ui/search"
 import { Sidebar } from "@/features/docs/ui/sidebar"
 
-export default function DocsLayout({ children }: PropsWithChildren) {
+export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <Header

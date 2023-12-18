@@ -1,29 +1,25 @@
-import { type Metadata } from "next"
 import { notFound } from "next/navigation"
 
+import {
+  type PageMetadata,
+  type PageProps,
+  type StaticParams,
+} from "@/types/common"
 import { Heading } from "@shared/ui"
 import { ContentContainer } from "@/components/content-container"
 import { Mdx } from "@/components/mdx-components"
 import { getPageMetadata } from "@/features/blog/metadata/metadata"
 import { getPageFromParams, getPageSlugs } from "@/features/blog/utilities/page"
 
-type Props = {
-  params: {
-    slug: string
-  }
-}
-
-export function generateMetadata({
-  params,
-}: Props): Promise<Metadata> | object {
+export function generateMetadata({ params }: PageProps): PageMetadata {
   return getPageMetadata(params.slug) || {}
 }
 
-export function generateStaticParams(): Props["params"][] {
+export function generateStaticParams(): StaticParams {
   return getPageSlugs()
 }
 
-export default function Page({ params }: Props) {
+export default function Page({ params }: PageProps) {
   const page = getPageFromParams(params.slug)
 
   if (!page) {

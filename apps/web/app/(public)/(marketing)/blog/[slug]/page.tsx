@@ -1,7 +1,11 @@
-import { type Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 
+import {
+  type PageMetadata,
+  type PageProps,
+  type StaticParams,
+} from "@/types/common"
 import { ContentContainer } from "@/components/content-container"
 import { Mdx } from "@/components/mdx-components"
 import { getPostMetadata } from "@/features/blog/metadata/metadata"
@@ -9,29 +13,21 @@ import { BackLink } from "@/features/blog/ui/back-link"
 import { PostHeader } from "@/features/blog/ui/post-header"
 import { getPostFromParams, getPostSlugs } from "@/features/blog/utilities/post"
 
-type Props = {
-  params: {
-    slug: string
-  }
-}
-
 /**
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function
  */
-export function generateMetadata({
-  params,
-}: Props): Promise<Metadata> | object {
+export function generateMetadata({ params }: PageProps): PageMetadata {
   return getPostMetadata(params.slug) || {}
 }
 
 /**
  * @see https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#generating-static-params
  */
-export async function generateStaticParams(): Promise<Props["params"][]> {
+export async function generateStaticParams(): Promise<StaticParams> {
   return getPostSlugs()
 }
 
-export default function Page({ params }: Props) {
+export default function Page({ params }: PageProps) {
   const post = getPostFromParams(params.slug)
 
   if (!post) {
