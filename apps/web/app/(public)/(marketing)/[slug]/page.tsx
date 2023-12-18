@@ -27,7 +27,7 @@ export default function Page({ params }: PageProps) {
   }
 
   return (
-    <ContentContainer className="space-y-8">
+    <ContentContainer centered>
       <Heading title={page.title} description={page.description} />
       <Mdx code={page.body.code} />
     </ContentContainer>

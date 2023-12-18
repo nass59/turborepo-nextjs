@@ -9,11 +9,11 @@ import IconButton from "@/components/explore/icon-button"
 import { Icons } from "@/components/icons"
 import { usePreviewModal } from "@/features/explore/hooks/use-preview-modal"
 
-interface ExploreCardProps {
+type Props = {
   data: ItemModel
 }
 
-const ExploreCard: React.FC<ExploreCardProps> = ({ data }) => {
+export const Card = ({ data }: Props) => {
   const previewModal = usePreviewModal()
   const router = useRouter()
   const handleClick = () => {
@@ -55,5 +55,3 @@ const ExploreCard: React.FC<ExploreCardProps> = ({ data }) => {
     </div>
   )
 }
-
-export default ExploreCard
