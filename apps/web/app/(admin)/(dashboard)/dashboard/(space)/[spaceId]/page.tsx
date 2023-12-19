@@ -49,7 +49,7 @@ const Page = async ({ params }: DashboardSpaceProps) => {
               </CardTitle>
               <Icons.logo className="h-6 w-6" />
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6 pt-0">
               <div className="text-2xl font-bold">{totalBillboards}</div>
             </CardContent>
           </Card>
@@ -61,7 +61,7 @@ const Page = async ({ params }: DashboardSpaceProps) => {
               </CardTitle>
               <Icons.space className="h-6 w-6" />
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6 pt-0">
               <div className="text-2xl font-bold">{totalCategories}</div>
             </CardContent>
           </Card>
@@ -71,7 +71,7 @@ const Page = async ({ params }: DashboardSpaceProps) => {
               <CardTitle className="text-sm font-medium">Total Items</CardTitle>
               <Icons.media className="h-6 w-6" />
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6 pt-0">
               <div className="text-2xl font-bold">{totalItems}</div>
             </CardContent>
           </Card>
@@ -80,7 +80,7 @@ const Page = async ({ params }: DashboardSpaceProps) => {
             <CardHeader>
               <CardTitle>Overview (Items by month)</CardTitle>
             </CardHeader>
-            <CardContent className="pl-2">
+            <CardContent className="p-6 pl-2 pt-0">
               <Overview data={monthlyItems} />
             </CardContent>
           </Card>
