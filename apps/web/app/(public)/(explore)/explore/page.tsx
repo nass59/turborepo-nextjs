@@ -12,7 +12,7 @@ export default async function Page() {
     <>
       {billboard && <Billboard data={billboard} />}
       <ContentContainer>
-        <List title="Featured items" items={items} />
+        <List title="Featured News" items={items} />
       </ContentContainer>
     </>
   )
