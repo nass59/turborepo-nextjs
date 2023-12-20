@@ -1,8 +1,7 @@
 import { type ItemModel } from "@/lib/database/models/Item"
-import { parseData } from "@/lib/utils"
 
-import { ExploreCard } from "./card"
 import { NoResults } from "./no-results"
+import { PosterCard } from "./poster-card"
 
 type Props = {
   title: string
@@ -15,7 +14,7 @@ const Items = ({ items }: Pick<Props, "items">) => {
   return (
     <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {items.map((item) => (
-        <ExploreCard key={item._id.toString()} data={parseData(item)} />
+        <PosterCard key={item._id.toString()} data={item} />
       ))}
     </div>
   )
