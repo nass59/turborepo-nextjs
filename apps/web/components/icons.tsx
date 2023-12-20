@@ -23,6 +23,7 @@ import {
   Orbit,
   Plus,
   PlusCircle,
+  Popcorn,
   Rocket,
   Server,
   Settings,
@@ -71,4 +72,5 @@ export const Icons = {
   starDisabled: StarOffIcon,
   eye: EyeIcon,
   eyeDisabled: EyeOffIcon,
+  popcorn: Popcorn,
 }
