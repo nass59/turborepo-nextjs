@@ -5,7 +5,6 @@ import { Avatar, AvatarImage, AvatarStyle } from "@shared/ui"
 type AvatarSizes = keyof typeof AvatarStyle.sizes
 const sizes = Object.keys(AvatarStyle.sizes) as AvatarSizes[]
 
-// @see https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
   title: "UI/Avatar",
   component: Avatar,
