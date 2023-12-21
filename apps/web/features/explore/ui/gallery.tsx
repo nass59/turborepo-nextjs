@@ -11,21 +11,11 @@ type Props = {
 
 export const Gallery = ({ images }: Props) => {
   return (
-    <Tab.Group as="div" className="flex flex-col-reverse">
-      {images.length > 1 && (
-        <div className="mt-6 hidden sm:block">
-          <Tab.List className="grid grid-cols-3 gap-6">
-            {images.map((image) => (
-              <GalleryTab key={image} image={image} />
-            ))}
-          </Tab.List>
-        </div>
-      )}
-
+    <Tab.Group as="div" className="flex flex-col">
       <Tab.Panels>
         {images.map((image) => (
           <Tab.Panel key={image}>
-            <div className="relative aspect-square h-full w-full overflow-hidden rounded-lg">
+            <div className="relative aspect-poster h-full w-full overflow-hidden rounded-lg">
               <Image
                 src={image}
                 fill
@@ -36,6 +26,16 @@ export const Gallery = ({ images }: Props) => {
           </Tab.Panel>
         ))}
       </Tab.Panels>
+
+      {images.length > 1 && (
+        <div className="mt-3 hidden sm:block">
+          <Tab.List className="grid grid-cols-4 gap-2">
+            {images.map((image) => (
+              <GalleryTab key={image} image={image} />
+            ))}
+          </Tab.List>
+        </div>
+      )}
     </Tab.Group>
   )
 }

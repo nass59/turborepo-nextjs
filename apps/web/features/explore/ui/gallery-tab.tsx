@@ -9,10 +9,10 @@ type Props = {
 
 export const GalleryTab = ({ image }: Props) => {
   return (
-    <Tab className="relative flex aspect-square cursor-pointer items-center justify-center rounded-md bg-white">
+    <Tab className="relative flex aspect-poster cursor-pointer items-center justify-center rounded-md bg-white">
       {({ selected }) => (
         <div>
-          <span className="absolute inset-0 aspect-square h-full w-full overflow-hidden rounded-md">
+          <span className="h-full w-full overflow-hidden rounded-md">
             <Image
               src={image}
               fill
