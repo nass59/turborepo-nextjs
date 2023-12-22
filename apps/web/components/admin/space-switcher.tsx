@@ -6,7 +6,6 @@ import { routes } from "@/constants/routes"
 import { SPACE_LABELS } from "@/constants/space"
 
 import { type SpaceModel } from "@/lib/database/models/Space"
-import { useSpaceModal } from "@/hooks/use-space-modal"
 import {
   Button,
   cn,
@@ -22,6 +21,7 @@ import {
   PopoverTrigger,
 } from "@shared/ui"
 import { Icons } from "@/components/icons"
+import { useSpaceModal } from "@/features/dashboard/hooks/use-space-modal"
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 

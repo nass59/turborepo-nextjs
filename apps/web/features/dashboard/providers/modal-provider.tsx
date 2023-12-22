@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-import { SpaceModal } from "@/components/admin/modals/space-modal"
+import { SpaceModal } from "../ui/modal"
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false)
