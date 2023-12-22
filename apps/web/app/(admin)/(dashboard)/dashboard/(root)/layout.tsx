@@ -1,13 +1,9 @@
-import { type ReactNode } from "react"
 import { redirect } from "next/navigation"
 import { routes } from "@/constants/routes"
 import { auth } from "@clerk/nextjs"
 
+import { type LayoutProps } from "@/types/common"
 import { findFirstSpaceByUserId } from "@/lib/database/space"
-
-interface DashboardLayoutProps {
-  children: ReactNode
-}
 
 /**
  * DashboardLayout is a layout component for the dashboard.
@@ -16,9 +12,7 @@ interface DashboardLayoutProps {
  * If the user has spaces, it redirects to the first space.
  * Otherwise, it renders the children components inside a main layout.
  */
-export default async function DashboardLayout({
-  children,
-}: DashboardLayoutProps) {
+export default async function DashboardLayout({ children }: LayoutProps) {
   // Get the current user's ID
   const { userId } = auth()
 

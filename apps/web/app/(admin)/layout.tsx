@@ -1,22 +1,22 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import localFont from "next/font/local"
+import { baseMetadata, baseViewport } from "@/constants/metadata"
 import { ClerkProvider } from "@clerk/nextjs"
 
-import "@shared/ui/styles/global.css"
-
-import { baseMetadata } from "@/constants/metadata"
-import { ModalProvider } from "@/providers/modal-provider"
-
+import { type LayoutProps } from "@/types/common"
 import { cn, Toaster } from "@shared/ui"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import { ModalProvider } from "@/features/dashboard/providers/modal-provider"
 
-// Define the font styles
+import "@shared/ui/styles/global.css"
+
 const fontSans = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: "400",
 })
 
 const fontHeading = localFont({
@@ -24,23 +24,10 @@ const fontHeading = localFont({
   variable: "--font-heading",
 })
 
-// Define the props for the RootLayout component
-interface RootLayoutProps {
-  children: React.ReactNode
-}
-
-/**
- * Define the metadata for the site
- * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-fields
- */
 export const metadata: Metadata = baseMetadata
+export const viewport: Viewport = baseViewport
 
-/**
- * RootLayout is the root layout component for the admin pages.
- * It wraps its children with necessary providers and layout styles.
- * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
- */
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: LayoutProps) {
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
