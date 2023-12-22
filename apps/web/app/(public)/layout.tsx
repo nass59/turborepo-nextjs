@@ -1,9 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import localFont from "next/font/local"
-
-import "@shared/ui/styles/global.css"
-
 import { baseMetadata, baseViewport } from "@/constants/metadata"
 
 import { type LayoutProps } from "@/types/common"
@@ -12,6 +9,8 @@ import { Analytics } from "@/components/analytics"
 import { Help } from "@/components/helper"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+
+import "@shared/ui/styles/global.css"
 
 // Define the font styles
 const fontSans = Inter({

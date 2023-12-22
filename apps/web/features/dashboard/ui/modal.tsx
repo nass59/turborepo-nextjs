@@ -11,7 +11,6 @@ import { type z } from "zod"
 
 import { toastError } from "@/lib/api-response/api-responses"
 import { spaceSchema } from "@/lib/validation/space"
-import { useSpaceModal } from "@/hooks/use-space-modal"
 import {
   Button,
   Form,
@@ -24,7 +23,9 @@ import {
   Modal,
 } from "@shared/ui"
 
-export const SpaceModal: React.FC = () => {
+import { useSpaceModal } from "../hooks/use-space-modal"
+
+export const SpaceModal = () => {
   const spaceModal = useSpaceModal()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
