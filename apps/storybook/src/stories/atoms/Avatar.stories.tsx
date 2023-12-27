@@ -6,7 +6,7 @@ type AvatarSizes = keyof typeof AvatarStyle.sizes
 const sizes = Object.keys(AvatarStyle.sizes) as AvatarSizes[]
 
 const meta = {
-  title: "UI/Avatar",
+  title: "Atoms/Avatar",
   component: Avatar,
   argTypes: {
     size: {
