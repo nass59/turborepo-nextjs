@@ -10,7 +10,7 @@ const sizes = Object.keys(ButtonStyle.sizes) as ButtonSizes[]
 
 // @see https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "UI/Button",
+  title: "Atoms/Button",
   component: Button,
   argTypes: {
     variant: {

@@ -15,7 +15,7 @@ type CardVariants = keyof typeof CardStyle.variants
 const variants = Object.keys(CardStyle.variants) as CardVariants[]
 
 const meta = {
-  title: "UI/Card",
+  title: "Molecules/Card",
   component: Card,
   argTypes: {
     variant: {
