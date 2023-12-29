@@ -12,7 +12,8 @@
   "dependencies": {
     "@shared/ui": "workspace:*",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.48.2"
   },
   "devDependencies": {
     "@shared/eslint-config": "workspace:*",
