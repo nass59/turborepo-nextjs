@@ -26,7 +26,7 @@ export default async function DashboardLayout({ children }: LayoutProps) {
 
   // If the user has a space, redirect to the dashboard of the first space
   if (space) {
-    return redirect(`${routes.dashboard}/${space._id.toString()}`)
+    return redirect(`${routes.dashboard}/${String(space._id)}`)
   }
 
   return (

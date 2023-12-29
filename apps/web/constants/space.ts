@@ -8,13 +8,14 @@ export const SPACE_LABELS = {
   },
   form: {
     name: {
+      label: "Name",
       name: "name",
       placeholder: "Gaming",
     },
   },
   create: {
     title: "Create Space",
-    desscription: "Add a new space to manage items and categories",
+    description: "Add a new space to manage items and categories",
     toastMessage: "Space created.",
     action: "Create",
     error: "Your space was not created. Please try again.",
