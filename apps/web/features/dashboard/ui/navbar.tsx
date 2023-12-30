@@ -1,21 +1,17 @@
-import { redirect } from "next/navigation"
-import { auth, UserButton } from "@clerk/nextjs"
+import { UserButton } from "@clerk/nextjs"
 
 import { routes } from "@/constants/routes"
-import { findAllSpacesByUserId } from "@/lib/database/space"
 import { parseData } from "@/lib/utils"
 import MainNav from "@/components/admin/main-nav"
-import SpaceSwitcher from "@/components/admin/space-switcher"
 import { ThemeToggle } from "@/components/theme-toggle"
 
-const Navbar: React.FC = async () => {
-  const { userId } = auth()
+import { getAllSpaces } from "../utilities/space"
+import { getCurrentUserId } from "../utilities/user"
+import { SpaceSwitcher } from "./space-switcher"
 
-  if (!userId) {
-    redirect(routes.signIn)
-  }
-
-  const spaces = await findAllSpacesByUserId(userId)
+export const Navbar = async () => {
+  const userId = getCurrentUserId()
+  const spaces = await getAllSpaces(userId)
 
   return (
     <div className="border-b">
@@ -30,5 +26,3 @@ const Navbar: React.FC = async () => {
     </div>
   )
 }
-
-export default Navbar

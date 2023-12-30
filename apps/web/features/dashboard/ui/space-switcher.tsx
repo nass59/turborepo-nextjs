@@ -25,7 +25,7 @@ import { useSpaceModal } from "@/features/dashboard/hooks/use-space-modal"
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 
-interface SpaceSwitcherProps extends PopoverTriggerProps {
+type Props = PopoverTriggerProps & {
   items: SpaceModel[]
 }
 
@@ -34,21 +34,16 @@ interface SpaceSwitcherProps extends PopoverTriggerProps {
  * It displays a list of spaces and allows users to select a space.
  * When a space is selected, the user is redirected to the dashboard of the selected space.
  */
-const SpaceSwitcher: React.FC<SpaceSwitcherProps> = ({
-  className,
-  items = [],
-}) => {
-  const [open, setOpen] = useState<boolean>(false)
+export const SpaceSwitcher = ({ className, items = [] }: Props) => {
   const spaceModal = useSpaceModal()
+  const [open, setOpen] = useState<boolean>(false)
 
   const params = useParams()
   const router = useRouter()
 
-  const labels = SPACE_LABELS.switcher
-
   const formattedItems = items.map((item) => ({
     label: item.name,
-    value: item._id.toString(),
+    value: String(item._id),
   }))
 
   const currentSpace = formattedItems.find(
@@ -59,6 +54,8 @@ const SpaceSwitcher: React.FC<SpaceSwitcherProps> = ({
     setOpen(false)
     router.push(`${routes.dashboard}/${space.value}`)
   }
+
+  const labels = SPACE_LABELS.switcher
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -122,5 +119,3 @@ const SpaceSwitcher: React.FC<SpaceSwitcherProps> = ({
     </Popover>
   )
 }
-
-export default SpaceSwitcher

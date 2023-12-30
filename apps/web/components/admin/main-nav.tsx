@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 import { useParams, usePathname } from "next/navigation"
+
 import { NAVIGATION_LABELS } from "@/constants/navigation"
 import { routes } from "@/constants/routes"
-
 import { cn } from "@shared/ui"
 
 const MainNav: React.FC<React.HTMLAttributes<HTMLElement>> = ({

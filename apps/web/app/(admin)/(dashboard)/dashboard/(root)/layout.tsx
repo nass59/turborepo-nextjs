@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation"
-import { routes } from "@/constants/routes"
-import { auth } from "@clerk/nextjs"
 
 import { type LayoutProps } from "@/types/common"
-import { findFirstSpaceByUserId } from "@/lib/database/space"
+import { routes } from "@/constants/routes"
+import { getCurrentSpace } from "@/features/dashboard/utilities/space"
+import { getCurrentUserId } from "@/features/dashboard/utilities/user"
 
 /**
  * DashboardLayout is a layout component for the dashboard.
@@ -12,17 +12,12 @@ import { findFirstSpaceByUserId } from "@/lib/database/space"
  * If the user has spaces, it redirects to the first space.
  * Otherwise, it renders the children components inside a main layout.
  */
-export default async function DashboardLayout({ children }: LayoutProps) {
+export default async function Layout({ children }: LayoutProps) {
   // Get the current user's ID
-  const { userId } = auth()
-
-  // If the user is not authenticated, redirect to the sign in page
-  if (!userId) {
-    return redirect(routes.signIn)
-  }
+  const userId = getCurrentUserId()
 
   // Find the first space that belongs to the user
-  const space = await findFirstSpaceByUserId(userId)
+  const space = await getCurrentSpace(userId)
 
   // If the user has a space, redirect to the dashboard of the first space
   if (space) {
@@ -30,10 +25,8 @@ export default async function DashboardLayout({ children }: LayoutProps) {
   }
 
   return (
-    <div className="flex min-h-screen flex-col space-y-6">
-      <main className="flex w-full flex-1 flex-col overflow-hidden">
-        {children}
-      </main>
-    </div>
+    <main className="flex w-full flex-1 flex-col overflow-hidden">
+      {children}
+    </main>
   )
 }

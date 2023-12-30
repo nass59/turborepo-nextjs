@@ -1,8 +1,8 @@
 "use client"
 
-import { CATEGORY_LABELS } from "@/constants/category"
 import { type ColumnDef } from "@tanstack/react-table"
 
+import { CATEGORY_LABELS } from "@/constants/category"
 import { CellAction } from "@/components/admin/category-cell-action"
 
 export type CategoryColumn = {

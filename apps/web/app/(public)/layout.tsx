@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import localFont from "next/font/local"
-import { baseMetadata, baseViewport } from "@/constants/metadata"
 
 import { type LayoutProps } from "@/types/common"
+import { baseMetadata, baseViewport } from "@/constants/metadata"
 import { cn, Toaster } from "@shared/ui"
 import { Analytics } from "@/components/analytics"
 import { Help } from "@/components/helper"
