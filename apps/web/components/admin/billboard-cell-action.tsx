@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 import { useParams, useRouter } from "next/navigation"
-import { BILLBOARD_LABELS } from "@/constants/billboard"
-import { apiRoutes, routes } from "@/constants/routes"
 import axios from "axios"
 
+import { BILLBOARD_LABELS } from "@/constants/billboard"
+import { apiRoutes, routes } from "@/constants/routes"
 import { toastError } from "@/lib/api-response/api-responses"
 import {
   Button,

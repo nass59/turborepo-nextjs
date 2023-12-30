@@ -1,8 +1,8 @@
 "use client"
 
-import { ITEM_LABELS } from "@/constants/item"
 import { type ColumnDef } from "@tanstack/react-table"
 
+import { ITEM_LABELS } from "@/constants/item"
 import { Badge } from "@shared/ui"
 import { CellAction } from "@/components/admin/item-cell-action"
 import { Icons } from "@/components/icons"

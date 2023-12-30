@@ -1,9 +1,9 @@
 "use client"
 
 import { useParams, useRouter } from "next/navigation"
+
 import { CATEGORY_LABELS } from "@/constants/category"
 import { routes } from "@/constants/routes"
-
 import { Button, DataTable, Heading, Separator } from "@shared/ui"
 import { ApiList } from "@/components/admin/api-list"
 import {

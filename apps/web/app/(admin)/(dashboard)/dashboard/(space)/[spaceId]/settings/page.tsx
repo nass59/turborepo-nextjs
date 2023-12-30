@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
-import { routes } from "@/constants/routes"
 import { auth } from "@clerk/nextjs"
 
+import { routes } from "@/constants/routes"
 import { findOneSpace } from "@/lib/database/space"
 import { parseData } from "@/lib/utils"
 import { SettingsForm } from "@/components/admin/settings-form"

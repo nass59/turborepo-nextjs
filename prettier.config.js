@@ -14,6 +14,7 @@ module.exports = {
     "^@/env(.*)$",
     "^@/types/(.*)$",
     "^@/config/(.*)$",
+    "^@/constants/(.*)$",
     "^@/lib/(.*)$",
     "^@/hooks/(.*)$",
     "^@shared/ui$",

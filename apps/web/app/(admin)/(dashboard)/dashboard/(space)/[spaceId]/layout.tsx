@@ -1,34 +1,21 @@
-import { type ReactNode } from "react"
 import { redirect } from "next/navigation"
+
+import { type LayoutProps } from "@/types/common"
 import { routes } from "@/constants/routes"
-import { auth } from "@clerk/nextjs"
+import { Navbar } from "@/features/dashboard/ui/navbar"
+import { getSpace } from "@/features/dashboard/utilities/space"
+import { getCurrentUserId } from "@/features/dashboard/utilities/user"
 
-import { findOneSpace } from "@/lib/database/space"
-import Navbar from "@/components/admin/navbar"
-
-interface DashboardSpaceLayoutProps {
-  children: ReactNode
+type SpaceLayoutProps = LayoutProps & {
   params: {
     spaceId: string
   }
 }
 
-/**
- * This component checks if the user is authenticated. If not, it redirects to the sign-in page.
- * It then checks if the space with the given spaceId exists for the authenticated user.
- * If not, it redirects to the dashboard page.
- */
-export default async function DashboardSpaceLayout({
-  children,
-  params,
-}: DashboardSpaceLayoutProps) {
-  const { userId } = auth()
-
-  if (!userId) {
-    redirect(routes.signIn)
-  }
-
-  const space = await findOneSpace(params.spaceId, userId)
+export default async function Layout({ children, params }: SpaceLayoutProps) {
+  // Get the current user's ID.
+  const userId = getCurrentUserId()
+  const space = await getSpace(params.spaceId, userId)
 
   if (!space) {
     redirect(routes.dashboard)
@@ -36,10 +23,8 @@ export default async function DashboardSpaceLayout({
 
   return (
     <>
-      <div className="flex min-h-screen flex-col">
-        <Navbar />
-        {children}
-      </div>
+      <Navbar />
+      {children}
     </>
   )
 }
