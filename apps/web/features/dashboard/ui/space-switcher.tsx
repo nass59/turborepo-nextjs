@@ -1,27 +1,14 @@
 "use client"
 
 import { useState } from "react"
-import { useParams, useRouter } from "next/navigation"
+import { useParams } from "next/navigation"
 
-import { routes } from "@/constants/routes"
 import { SPACE_LABELS } from "@/constants/space"
 import { type SpaceModel } from "@/lib/database/models/Space"
-import {
-  Button,
-  cn,
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@shared/ui"
+import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@shared/ui"
 import { Icons } from "@/components/icons"
-import { useSpaceModal } from "@/features/dashboard/hooks/use-space-modal"
+
+import { SpaceCommand } from "./space-command"
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 
@@ -35,11 +22,8 @@ type Props = PopoverTriggerProps & {
  * When a space is selected, the user is redirected to the dashboard of the selected space.
  */
 export const SpaceSwitcher = ({ className, items = [] }: Props) => {
-  const spaceModal = useSpaceModal()
   const [open, setOpen] = useState<boolean>(false)
-
   const params = useParams()
-  const router = useRouter()
 
   const formattedItems = items.map((item) => ({
     label: item.name,
@@ -50,13 +34,6 @@ export const SpaceSwitcher = ({ className, items = [] }: Props) => {
     (item) => item.value === params.spaceId
   )
 
-  const onSpaceSelect = (space: { value: string; label: string }) => {
-    setOpen(false)
-    router.push(`${routes.dashboard}/${space.value}`)
-  }
-
-  const labels = SPACE_LABELS.switcher
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -65,7 +42,7 @@ export const SpaceSwitcher = ({ className, items = [] }: Props) => {
           size="sm"
           role="combobox"
           aria-expanded={open}
-          aria-label={labels.label}
+          aria-label={SPACE_LABELS.switcher.label}
           className={cn("w-[200px] justify-between", className)}
         >
           <Icons.space className="mr-2 h-4 w-4" />
@@ -74,47 +51,11 @@ export const SpaceSwitcher = ({ className, items = [] }: Props) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
-        <Command>
-          <CommandList>
-            <CommandInput placeholder={labels.placeholder} />
-            <CommandEmpty>{labels.noSpaceFound}</CommandEmpty>
-            <CommandGroup heading={labels.heading}>
-              {formattedItems.map((space) => (
-                <CommandItem
-                  key={space.value}
-                  onSelect={() => onSpaceSelect(space)}
-                  className="cursor-pointer text-sm"
-                >
-                  <Icons.space className="mr-2 h-4 w-4" />
-                  {space.label}
-                  <Icons.check
-                    className={cn(
-                      "ml-auto h-4 w-4",
-                      currentSpace?.value === space.value
-                        ? "opacity-100"
-                        : "opacity-0"
-                    )}
-                  />
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </CommandList>
-          <CommandSeparator />
-          <CommandList>
-            <CommandGroup>
-              <CommandItem
-                className="cursor-pointer"
-                onSelect={() => {
-                  setOpen(false)
-                  spaceModal.onOpen()
-                }}
-              >
-                <Icons.plusCircle className="mr-2 h-5 w-5" />
-                {labels.create}
-              </CommandItem>
-            </CommandGroup>
-          </CommandList>
-        </Command>
+        <SpaceCommand
+          items={formattedItems}
+          current={currentSpace}
+          setOpen={setOpen}
+        />
       </PopoverContent>
     </Popover>
   )

@@ -4,6 +4,7 @@ import {
   countAllItemsByMonthBySpaceId,
   countAllItemsBySpaceId,
 } from "@/lib/database/items"
+import { parseData } from "@/lib/utils"
 import {
   Card,
   CardContent,
@@ -12,7 +13,7 @@ import {
   Heading,
   Separator,
 } from "@shared/ui"
-import { Overview } from "@/components/dashboard/dashboard-overview"
+import { Overview } from "@/components/admin/dashboard-overview"
 import { Icons } from "@/components/icons"
 
 interface DashboardSpaceProps {
@@ -27,12 +28,15 @@ interface DashboardSpaceProps {
  */
 const Page = async ({ params }: DashboardSpaceProps) => {
   const { spaceId } = params
+  console.log("🚀 ~ file: page.tsx:30 ~ Page ~ spaceId:", spaceId)
 
   const totalBillboards = await countAllBillboardsBySpaceId(spaceId)
   const totalCategories = await countAllCategoriesBySpaceId(spaceId)
   const totalItems = await countAllItemsBySpaceId(spaceId)
 
   const monthlyItems = await countAllItemsByMonthBySpaceId(spaceId)
+  console.log("🚀 ~ file: page.tsx:37 ~ Page ~ spasceId:", spaceId)
+  console.log("🚀 ~ file: page.tsx:37 ~ Page ~ monthlyItems:", monthlyItems)
 
   return (
     <div className="flex flex-col">
@@ -81,7 +85,7 @@ const Page = async ({ params }: DashboardSpaceProps) => {
               <CardTitle>Overview (Items by month)</CardTitle>
             </CardHeader>
             <CardContent className="p-6 pl-2 pt-0">
-              <Overview data={monthlyItems} />
+              <Overview data={parseData(monthlyItems)} />
             </CardContent>
           </Card>
         </div>
