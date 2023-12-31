@@ -12,8 +12,9 @@ type SpaceLayoutProps = LayoutProps & {
   }
 }
 
+export const revalidate = 0
+
 export default async function Layout({ children, params }: SpaceLayoutProps) {
-  // Get the current user's ID.
   const userId = getCurrentUserId()
   const space = await getSpace(params.spaceId, userId)
 
