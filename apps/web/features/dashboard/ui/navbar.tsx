@@ -20,7 +20,7 @@ export const Navbar = async () => {
 
   return (
     <header className="sticky top-0 z-10 w-full border-b bg-background">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="flex h-16 items-center justify-between px-8">
         <NavbarSection>
           <SpaceSwitcher items={parseData(spaces)} />
           <MainNav />

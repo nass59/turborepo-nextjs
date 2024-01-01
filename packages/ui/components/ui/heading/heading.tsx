@@ -1,3 +1,5 @@
+import { Separator } from "../separator"
+
 type Props = {
   title: string
   description?: string
@@ -13,7 +15,8 @@ export const Heading = ({ title, description }: Props) => {
       {description && (
         <p className="text-xl text-muted-foreground">{description}</p>
       )}
-      <hr />
+
+      <Separator />
     </div>
   )
 }

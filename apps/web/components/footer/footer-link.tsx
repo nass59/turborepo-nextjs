@@ -1,4 +1,4 @@
-interface Props {
+type Props = {
   href: string
   title: string
 }

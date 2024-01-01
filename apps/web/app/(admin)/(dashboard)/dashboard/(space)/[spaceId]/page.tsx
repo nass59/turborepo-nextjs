@@ -1,97 +1,47 @@
-import { countAllBillboardsBySpaceId } from "@/lib/database/billboard"
-import { countAllCategoriesBySpaceId } from "@/lib/database/category"
-import {
-  countAllItemsByMonthBySpaceId,
-  countAllItemsBySpaceId,
-} from "@/lib/database/items"
 import { parseData } from "@/lib/utils"
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  Heading,
-  Separator,
-} from "@shared/ui"
-import { Overview } from "@/components/admin/dashboard-overview"
+import { Heading } from "@shared/ui"
 import { Icons } from "@/components/icons"
+import { CardOverview } from "@/features/dashboard/ui/card-overview"
+import { Chart } from "@/features/dashboard/ui/chart"
+import { getOverview } from "@/features/dashboard/utilities/overview"
 
-interface DashboardSpaceProps {
+type Props = {
   params: {
     spaceId: string
   }
 }
 
-/**
- * This component fetches the first space with the given spaceId from the database.
- * It then displays the name of the active space.
- */
-const Page = async ({ params }: DashboardSpaceProps) => {
+export default async function Page({ params }: Props) {
   const { spaceId } = params
-  console.log("🚀 ~ file: page.tsx:30 ~ Page ~ spaceId:", spaceId)
-
-  const totalBillboards = await countAllBillboardsBySpaceId(spaceId)
-  const totalCategories = await countAllCategoriesBySpaceId(spaceId)
-  const totalItems = await countAllItemsBySpaceId(spaceId)
-
-  const monthlyItems = await countAllItemsByMonthBySpaceId(spaceId)
-  console.log("🚀 ~ file: page.tsx:37 ~ Page ~ spasceId:", spaceId)
-  console.log("🚀 ~ file: page.tsx:37 ~ Page ~ monthlyItems:", monthlyItems)
+  const overview = await getOverview(spaceId)
 
   return (
-    <div className="flex flex-col">
-      <div className="flex-1 space-y-4 p-8 pt-6">
-        <Heading title="Dashboard" description="Overview of your space" />
+    <>
+      <Heading title="Dashboard" description="Overview of your space" />
 
-        <Separator />
+      <div className="grid grid-cols-3 gap-4">
+        <CardOverview
+          title="Total Billboards"
+          icon={<Icons.logo className="h-6 w-6" />}
+          value={overview.totalBillboards}
+        />
 
-        <div className="grid grid-cols-3 gap-4">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                Total Billboards
-              </CardTitle>
-              <Icons.logo className="h-6 w-6" />
-            </CardHeader>
-            <CardContent className="p-6 pt-0">
-              <div className="text-2xl font-bold">{totalBillboards}</div>
-            </CardContent>
-          </Card>
+        <CardOverview
+          title="Total Categories"
+          icon={<Icons.space className="h-6 w-6" />}
+          value={overview.totalCategories}
+        />
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                Total Categories
-              </CardTitle>
-              <Icons.space className="h-6 w-6" />
-            </CardHeader>
-            <CardContent className="p-6 pt-0">
-              <div className="text-2xl font-bold">{totalCategories}</div>
-            </CardContent>
-          </Card>
+        <CardOverview
+          title="Total Items"
+          icon={<Icons.media className="h-6 w-6" />}
+          value={overview.totalItems}
+        />
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Items</CardTitle>
-              <Icons.media className="h-6 w-6" />
-            </CardHeader>
-            <CardContent className="p-6 pt-0">
-              <div className="text-2xl font-bold">{totalItems}</div>
-            </CardContent>
-          </Card>
-
-          <Card className="col-span-3">
-            <CardHeader>
-              <CardTitle>Overview (Items by month)</CardTitle>
-            </CardHeader>
-            <CardContent className="p-6 pl-2 pt-0">
-              <Overview data={parseData(monthlyItems)} />
-            </CardContent>
-          </Card>
-        </div>
+        <CardOverview className="col-span-3" title="Overview (Items by month)">
+          <Chart data={parseData(overview.monthlyItems)} />
+        </CardOverview>
       </div>
-    </div>
+    </>
   )
 }
-
-export default Page
