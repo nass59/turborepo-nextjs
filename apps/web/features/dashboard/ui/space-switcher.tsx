@@ -8,6 +8,7 @@ import { type SpaceModel } from "@/lib/database/models/Space"
 import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@shared/ui"
 import { Icons } from "@/components/icons"
 
+import { type NavbarItem } from "../types/navbar"
 import { SpaceCommand } from "./space-command"
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
@@ -25,7 +26,7 @@ export const SpaceSwitcher = ({ className, items = [] }: Props) => {
   const [open, setOpen] = useState<boolean>(false)
   const params = useParams()
 
-  const formattedItems = items.map((item) => ({
+  const formattedItems: NavbarItem[] = items.map((item) => ({
     label: item.name,
     value: String(item._id),
   }))

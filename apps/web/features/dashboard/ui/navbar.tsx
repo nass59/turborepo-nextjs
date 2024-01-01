@@ -1,28 +1,36 @@
+import { type ComponentProps } from "react"
 import { UserButton } from "@clerk/nextjs"
 
 import { routes } from "@/constants/routes"
 import { parseData } from "@/lib/utils"
-import MainNav from "@/components/admin/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 import { getAllSpaces } from "../utilities/space"
 import { getCurrentUserId } from "../utilities/user"
+import { MainNav } from "./main-nav"
 import { SpaceSwitcher } from "./space-switcher"
+
+const NavbarSection = ({ children }: ComponentProps<"div">) => {
+  return <div className="flex items-center space-x-4">{children}</div>
+}
 
 export const Navbar = async () => {
   const userId = getCurrentUserId()
   const spaces = await getAllSpaces(userId)
 
   return (
-    <div className="border-b">
-      <div className="flex h-16 items-center px-4">
-        <SpaceSwitcher items={parseData(spaces)} />
-        <MainNav className="mx-6" />
-        <div className="ml-auto flex items-center space-x-4">
+    <header className="sticky top-0 z-10 w-full border-b bg-background">
+      <div className="container flex h-16 items-center justify-between">
+        <NavbarSection>
+          <SpaceSwitcher items={parseData(spaces)} />
+          <MainNav />
+        </NavbarSection>
+
+        <NavbarSection>
           <ThemeToggle />
           <UserButton afterSignOutUrl={routes.home} />
-        </div>
+        </NavbarSection>
       </div>
-    </div>
+    </header>
   )
 }
