@@ -2,11 +2,11 @@
 
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 
-interface OverviewProps {
+type Props = {
   data: any[]
 }
 
-export const Overview: React.FC<OverviewProps> = ({ data }) => {
+export const Chart = ({ data }: Props) => {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <BarChart data={data}>
