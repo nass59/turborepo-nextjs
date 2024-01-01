@@ -15,15 +15,11 @@ import {
 import { Icons } from "@/components/icons"
 
 import { useSpaceModal } from "../hooks/use-space-modal"
-
-type Item = {
-  label: string
-  value: string
-}
+import { type NavbarItem } from "../types/navbar"
 
 type Props = {
-  items: Item[]
-  current?: Item
+  items: NavbarItem[]
+  current?: NavbarItem
   setOpen: (open: boolean) => void
 }
 
@@ -31,7 +27,7 @@ export const SpaceCommand = ({ items, current, setOpen }: Props) => {
   const router = useRouter()
   const spaceModal = useSpaceModal()
 
-  const onSelect = (space: Item) => {
+  const onSelect = (space: NavbarItem) => {
     setOpen(false)
     router.push(`${routes.dashboard}/${space.value}`)
   }
