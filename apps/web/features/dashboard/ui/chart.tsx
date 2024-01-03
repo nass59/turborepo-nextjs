@@ -2,8 +2,10 @@
 
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 
+import { type MonthlyItem } from "../types/overview"
+
 type Props = {
-  data: any[]
+  data: MonthlyItem[]
 }
 
 export const Chart = ({ data }: Props) => {

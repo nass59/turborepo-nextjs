@@ -9,7 +9,7 @@ export const getCurrentUserId = () => {
 
   // If the user is not authenticated, redirect to the sign in page
   if (!userId) {
-    return redirect(routes.signIn)
+    redirect(routes.signIn)
   }
 
   return userId
