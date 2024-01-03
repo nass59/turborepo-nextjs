@@ -10,6 +10,7 @@ import {
   findOneById,
   updateOneById,
 } from "@/lib/database/queries"
+import { type MonthlyItem } from "@/features/dashboard/types/overview"
 
 type ItemModelProps = Pick<
   ItemModel,
@@ -180,11 +181,6 @@ type ItemsByMonth = {
     month: number
   }
   y: number
-}
-
-type MonthlyItem = {
-  name: string
-  total: number
 }
 
 const monthlyItems: MonthlyItem[] = [

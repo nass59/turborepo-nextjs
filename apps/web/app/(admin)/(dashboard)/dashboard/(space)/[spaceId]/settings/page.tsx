@@ -1,12 +1,14 @@
 import { redirect } from "next/navigation"
-import { auth } from "@clerk/nextjs"
 
 import { routes } from "@/constants/routes"
+import { SPACE_LABELS } from "@/constants/space"
 import { findOneSpace } from "@/lib/database/space"
 import { parseData } from "@/lib/utils"
-import { SettingsForm } from "@/components/admin/settings-form"
+import { Heading } from "@shared/ui"
+import { SettingsForm } from "@/features/dashboard/ui/form/setting"
+import { getCurrentUserId } from "@/features/dashboard/utilities/user"
 
-interface SettingsProps {
+interface Props {
   params: {
     spaceId: string
   }
@@ -16,13 +18,8 @@ interface SettingsProps {
  * This component fetches the first space with the given spaceId from the database for the user.
  * It then displays the settings form of the active space.
  */
-const Page = async ({ params }: SettingsProps) => {
-  const { userId } = auth()
-
-  if (!userId) {
-    return redirect(routes.signIn)
-  }
-
+export default async function Page({ params }: Props) {
+  const userId = getCurrentUserId()
   const space = await findOneSpace(params.spaceId, userId)
 
   if (!space) {
@@ -30,12 +27,13 @@ const Page = async ({ params }: SettingsProps) => {
   }
 
   return (
-    <div className="flex-col">
-      <div className="flex-1 space-y-4 p-8 pt-6">
-        <SettingsForm initialData={parseData(space)} />
-      </div>
-    </div>
+    <>
+      <Heading
+        title={SPACE_LABELS.edit.title}
+        description={SPACE_LABELS.edit.desscription}
+      />
+
+      <SettingsForm initialData={parseData(space)} />
+    </>
   )
 }
-
-export default Page
