@@ -1,5 +1,5 @@
 import { parseData } from "@/lib/utils"
-import { Heading } from "@shared/ui"
+import { Heading, HeadingDescription, HeadingTitle } from "@shared/ui"
 import { Icons } from "@/components/icons"
 import { CardOverview } from "@/features/dashboard/ui/card-overview"
 import { Chart } from "@/features/dashboard/ui/chart"
@@ -17,7 +17,10 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      <Heading title="Dashboard" description="Overview of your space" />
+      <Heading>
+        <HeadingTitle>Dashboard</HeadingTitle>
+        <HeadingDescription>Overview of your space</HeadingDescription>
+      </Heading>
 
       <div className="grid grid-cols-3 gap-4">
         <CardOverview

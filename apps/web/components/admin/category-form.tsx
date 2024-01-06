@@ -22,6 +22,8 @@ import {
   FormLabel,
   FormMessage,
   Heading,
+  HeadingDescription,
+  HeadingTitle,
   Input,
   Select,
   SelectContent,
@@ -112,7 +114,10 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       />
 
       <div className="flex items-center justify-between">
-        <Heading title={labels.title} description={labels.desscription} />
+        <Heading>
+          <HeadingTitle>{labels.title}</HeadingTitle>
+          <HeadingDescription>{labels.desscription}</HeadingDescription>
+        </Heading>
 
         {initialData && (
           <Button

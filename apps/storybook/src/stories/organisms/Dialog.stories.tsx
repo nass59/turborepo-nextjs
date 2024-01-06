@@ -13,7 +13,7 @@ import {
 } from "@shared/ui"
 
 const meta = {
-  title: "Molecules/Dialog",
+  title: "Organisms/Dialog",
   component: Dialog,
   argTypes: {
     defaultOpen: {

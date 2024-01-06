@@ -22,6 +22,8 @@ import {
   FormLabel,
   FormMessage,
   Heading,
+  HeadingDescription,
+  HeadingTitle,
   Input,
   Separator,
   toast,
@@ -87,10 +89,12 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       />
 
       <div className="flex items-center justify-between">
-        <Heading
-          title={SPACE_LABELS.edit.title}
-          description={SPACE_LABELS.edit.desscription}
-        />
+        <Heading>
+          <HeadingTitle>{SPACE_LABELS.edit.title}</HeadingTitle>
+          <HeadingDescription>
+            {SPACE_LABELS.edit.desscription}
+          </HeadingDescription>
+        </Heading>
 
         <Button
           variant="destructive"

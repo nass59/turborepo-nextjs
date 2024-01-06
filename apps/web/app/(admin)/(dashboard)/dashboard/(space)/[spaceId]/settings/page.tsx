@@ -1,10 +1,19 @@
 import { redirect } from "next/navigation"
 
-import { routes } from "@/constants/routes"
+import { env } from "@/env.mjs"
+import { apiRoutes, routes } from "@/constants/routes"
 import { SPACE_LABELS } from "@/constants/space"
 import { findOneSpace } from "@/lib/database/space"
 import { parseData } from "@/lib/utils"
-import { Heading } from "@shared/ui"
+import {
+  Heading,
+  HeadingAction,
+  HeadingDescription,
+  HeadingTitle,
+  Separator,
+} from "@shared/ui"
+import { Api } from "@/features/dashboard/ui/api"
+import { DeleteModal } from "@/features/dashboard/ui/delete-modal"
 import { SettingsForm } from "@/features/dashboard/ui/form/setting"
 import { getCurrentUserId } from "@/features/dashboard/utilities/user"
 
@@ -23,17 +32,30 @@ export default async function Page({ params }: Props) {
   const space = await findOneSpace(params.spaceId, userId)
 
   if (!space) {
-    return redirect(routes.dashboard)
+    redirect(routes.dashboard)
   }
 
   return (
     <>
-      <Heading
-        title={SPACE_LABELS.edit.title}
-        description={SPACE_LABELS.edit.desscription}
-      />
+      <Heading>
+        <HeadingTitle>{SPACE_LABELS.edit.title}</HeadingTitle>
+        <HeadingDescription>
+          {SPACE_LABELS.edit.desscription}
+        </HeadingDescription>
+        <HeadingAction>
+          <DeleteModal />
+        </HeadingAction>
+      </Heading>
 
       <SettingsForm initialData={parseData(space)} />
+
+      <Separator />
+
+      <Api
+        title="API - Space"
+        description={`${env.NEXT_PUBLIC_APP_URL}${apiRoutes.spaces}/${params.spaceId}`}
+        variant="public"
+      />
     </>
   )
 }

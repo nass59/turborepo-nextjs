@@ -5,7 +5,7 @@ import {
   type PageProps,
   type StaticParams,
 } from "@/types/common"
-import { Heading } from "@shared/ui"
+import { Heading, HeadingDescription, HeadingTitle } from "@shared/ui"
 import { ContentContainer } from "@/components/content-container"
 import { Mdx } from "@/components/mdx-components"
 import { getPageMetadata } from "@/features/blog/metadata/metadata"
@@ -28,7 +28,10 @@ export default function Page({ params }: PageProps) {
 
   return (
     <ContentContainer centered>
-      <Heading title={page.title} description={page.description} />
+      <Heading>
+        <HeadingTitle>{page.title}</HeadingTitle>
+        <HeadingDescription>{page.description}</HeadingDescription>
+      </Heading>
       <Mdx code={page.body.code} />
     </ContentContainer>
   )
