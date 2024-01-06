@@ -171,13 +171,22 @@ const FormMessage = forwardRef<
 
 FormMessage.displayName = "FormMessage"
 
+type FormFooterProps = React.HTMLAttributes<HTMLDivElement> & {
+  side?: "left" | "right"
+}
+
 const FormFooter = ({
   className,
+  side = "left",
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+}: FormFooterProps) => (
   <div
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+      {
+        "sm:justify-end": side === "right",
+        "sm:justify-start": side === "left",
+      },
       className
     )}
     {...props}

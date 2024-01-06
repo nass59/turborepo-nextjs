@@ -33,9 +33,6 @@ export const SpaceForm = () => {
     defaultValues: { name: "" },
   })
 
-  const labels = SPACE_LABELS.create
-  const formLabels = SPACE_LABELS.form
-
   // TODO: Refactor using Server Actions
   const onSubmit = async (values: SpaceFormData) => {
     try {
@@ -43,11 +40,13 @@ export const SpaceForm = () => {
       const response = await axios.post(apiRoutes.spaces, values)
       window.location.assign(`${routes.dashboard}/${String(response.data._id)}`)
     } catch (error) {
-      toastError(error, labels.error)
+      toastError(error, SPACE_LABELS.create.error)
     } finally {
       setIsLoading(false)
     }
   }
+
+  const formLabels = SPACE_LABELS.form
 
   return (
     <Form {...form}>
@@ -70,7 +69,7 @@ export const SpaceForm = () => {
           )}
         />
 
-        <FormFooter>
+        <FormFooter side="right">
           <Button
             disabled={isLoading}
             variant="outline"
