@@ -3,43 +3,40 @@ import { forwardRef } from "react"
 import { cn } from "../../../lib/utils"
 import { Separator } from "../separator"
 
-const Heading = forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => (
-  <div className={cn("relative space-y-4", className)} ref={ref} {...props}>
-    {children}
-    <Separator />
-  </div>
-))
+type HeadingProps = React.HTMLAttributes<HTMLDivElement> & {
+  title: string
+  suffixTitle?: string
+  description?: string
+}
+
+const Heading = forwardRef<HTMLDivElement, HeadingProps>(
+  ({ title, suffixTitle, description, className, children, ...props }, ref) => (
+    <div className={cn("relative space-y-4", className)} ref={ref} {...props}>
+      <h1
+        className="flex items-center gap-2 font-heading text-4xl lg:text-5xl"
+        ref={ref}
+        {...props}
+      >
+        {title}
+        {suffixTitle && (
+          <span className="mt-1 text-3xl text-muted-foreground">
+            {suffixTitle}
+          </span>
+        )}
+      </h1>
+
+      {description && (
+        <p className="text-xl text-muted-foreground">{description}</p>
+      )}
+
+      {children}
+
+      <Separator />
+    </div>
+  )
+)
 
 Heading.displayName = "Heading"
-
-const HeadingTitle = forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-  <h1
-    className={cn("inline-block font-heading text-4xl lg:text-5xl", className)}
-    ref={ref}
-    {...props}
-  />
-))
-
-HeadingTitle.displayName = "HeadingTitle"
-
-const HeadingDescription = forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <p
-    className={cn("text-xl text-muted-foreground", className)}
-    ref={ref}
-    {...props}
-  />
-))
-
-HeadingDescription.displayName = "HeadingDescription"
 
 const HeadingAction = forwardRef<
   HTMLDivElement,
@@ -54,4 +51,4 @@ const HeadingAction = forwardRef<
 
 HeadingAction.displayName = "HeadingAction"
 
-export { Heading, HeadingTitle, HeadingDescription, HeadingAction }
+export { Heading, HeadingAction }

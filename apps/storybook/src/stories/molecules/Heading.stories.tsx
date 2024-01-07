@@ -1,18 +1,28 @@
 import { Pencil1Icon } from "@radix-ui/react-icons"
 import type { Meta, StoryObj } from "@storybook/react"
 
-import {
-  Button,
-  Heading,
-  HeadingAction,
-  HeadingDescription,
-  HeadingTitle,
-} from "@shared/ui"
+import { Button, Heading, HeadingAction } from "@shared/ui"
 
 const meta = {
   title: "Molecules/Heading",
   component: Heading,
   argTypes: {
+    title: {
+      description: "Title of the Heading",
+      control: "text",
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "" },
+      },
+    },
+    description: {
+      description: "Description of the Heading",
+      control: "text",
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "" },
+      },
+    },
     className: {
       description: "Override or extend the styles applied to the component",
       control: "text",
@@ -37,13 +47,13 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => {
+  args: {
+    title: "Documentation",
+    description: " Welcome to the TechShip documentation.",
+  },
+  render: ({ ...args }) => {
     return (
-      <Heading>
-        <HeadingTitle>Documentation</HeadingTitle>
-        <HeadingDescription>
-          Welcome to the TechShip documentation.
-        </HeadingDescription>
+      <Heading {...args}>
         <HeadingAction>
           <Button size="icon">
             <Pencil1Icon />

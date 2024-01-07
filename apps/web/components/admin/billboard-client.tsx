@@ -4,14 +4,7 @@ import { useParams, useRouter } from "next/navigation"
 
 import { BILLBOARD_LABELS } from "@/constants/billboard"
 import { routes } from "@/constants/routes"
-import {
-  Button,
-  DataTable,
-  Heading,
-  HeadingDescription,
-  HeadingTitle,
-  Separator,
-} from "@shared/ui"
+import { Button, DataTable, Heading, Separator } from "@shared/ui"
 import { ApiList } from "@/components/admin/api-list"
 import {
   columns,
@@ -37,10 +30,10 @@ export const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
   return (
     <>
       <div className="flex items-center justify-between">
-        <Heading>
-          <HeadingTitle>{`${listLabels.title} (${data.length})`}</HeadingTitle>
-          <HeadingDescription>{listLabels.desscription}</HeadingDescription>
-        </Heading>
+        <Heading
+          title={`${listLabels.title} (${data.length})`}
+          description={listLabels.desscription}
+        />
 
         <Button onClick={() => onClick()}>
           <Icons.add className="mr-2 h-4 w-4" />
@@ -52,10 +45,7 @@ export const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
 
       <DataTable columns={columns} data={data} searchKey="label" />
 
-      <Heading>
-        <HeadingTitle>{apiLabels.title}</HeadingTitle>
-        <HeadingDescription>{apiLabels.desscription}</HeadingDescription>
-      </Heading>
+      <Heading title={apiLabels.title} description={apiLabels.desscription} />
 
       <Separator />
 
