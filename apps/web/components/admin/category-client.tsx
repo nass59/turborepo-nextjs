@@ -32,7 +32,7 @@ export const CategoryClient: React.FC<CategoryClientProps> = ({ data }) => {
       <div className="flex items-center justify-between">
         <Heading
           title={`${listLabels.title} (${data.length})`}
-          description={listLabels.desscription}
+          description={listLabels.description}
         />
 
         <Button onClick={() => onClick()}>
