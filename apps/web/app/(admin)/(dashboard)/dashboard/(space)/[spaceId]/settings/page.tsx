@@ -1,23 +1,16 @@
 import { redirect } from "next/navigation"
 
-import { env } from "@/env.mjs"
 import { apiRoutes, routes } from "@/constants/routes"
 import { SPACE_LABELS } from "@/constants/space"
-import { findOneSpace } from "@/lib/database/space"
 import { parseData } from "@/lib/utils"
-import {
-  Heading,
-  HeadingAction,
-  HeadingDescription,
-  HeadingTitle,
-  Separator,
-} from "@shared/ui"
+import { Separator } from "@shared/ui"
 import { Api } from "@/features/dashboard/ui/api"
-import { DeleteModal } from "@/features/dashboard/ui/delete-modal"
+import { FormHeading } from "@/features/dashboard/ui/form/form-heading"
 import { SettingsForm } from "@/features/dashboard/ui/form/setting"
+import { getSpace } from "@/features/dashboard/utilities/space"
 import { getCurrentUserId } from "@/features/dashboard/utilities/user"
 
-interface Props {
+type Props = {
   params: {
     spaceId: string
   }
@@ -29,7 +22,7 @@ interface Props {
  */
 export default async function Page({ params }: Props) {
   const userId = getCurrentUserId()
-  const space = await findOneSpace(params.spaceId, userId)
+  const space = await getSpace(params.spaceId, userId)
 
   if (!space) {
     redirect(routes.dashboard)
@@ -37,23 +30,12 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      <Heading>
-        <HeadingTitle>{SPACE_LABELS.edit.title}</HeadingTitle>
-        <HeadingDescription>
-          {SPACE_LABELS.edit.desscription}
-        </HeadingDescription>
-        <HeadingAction>
-          <DeleteModal />
-        </HeadingAction>
-      </Heading>
-
+      <FormHeading labels={SPACE_LABELS.edit} />
       <SettingsForm initialData={parseData(space)} />
-
       <Separator />
-
       <Api
         title="API - Space"
-        description={`${env.NEXT_PUBLIC_APP_URL}${apiRoutes.spaces}/${params.spaceId}`}
+        path={`${apiRoutes.spaces}/${params.spaceId}`}
         variant="public"
       />
     </>

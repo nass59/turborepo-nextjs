@@ -1,7 +1,7 @@
 export const CATEGORY_LABELS = {
   list: {
     title: "Categories",
-    desscription: "Manage categories for your space",
+    description: "Manage categories for your space",
     add: "Add new",
     columns: {
       name: {
@@ -9,7 +9,7 @@ export const CATEGORY_LABELS = {
         header: "Name",
       },
       billboard: {
-        accessorKey: "billboard",
+        accessorKey: "billboardLabel",
         header: "Billboard",
       },
       createdAt: {
@@ -58,6 +58,7 @@ export const CATEGORY_LABELS = {
     action: "Save changes",
     error: "Your category was not updated. Please try again.",
   },
+  // TODO: remove after refactoring
   delete: {
     toastMessage: "Category deleted.",
     error:

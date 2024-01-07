@@ -5,7 +5,7 @@ import {
   type PageMetadata,
   type StaticArrayParams,
 } from "@/types/common"
-import { Heading, HeadingDescription, HeadingTitle } from "@shared/ui"
+import { Heading } from "@shared/ui"
 import { Mdx } from "@/components/mdx-components"
 import { getDocMetadata } from "@/features/docs/metadata/metadata"
 import { Pager } from "@/features/docs/ui/pager"
@@ -35,13 +35,7 @@ export default async function Page({ params }: ArrayPageProps) {
   return (
     <main className="relative lg:gap-10 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0 space-y-6">
-        <Heading>
-          <HeadingTitle>{doc.title}</HeadingTitle>
-          {doc.description && (
-            <HeadingDescription>{doc.description}</HeadingDescription>
-          )}
-        </Heading>
-
+        <Heading title={doc.title} description={doc.description || ""} />
         <Mdx code={doc.body.code} />
         <hr />
         <Pager url={doc.url} />

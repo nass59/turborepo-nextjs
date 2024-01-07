@@ -21,8 +21,6 @@ import {
   FormLabel,
   FormMessage,
   Heading,
-  HeadingDescription,
-  HeadingTitle,
   Input,
   Separator,
   toast,
@@ -107,10 +105,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       />
 
       <div className="flex items-center justify-between">
-        <Heading>
-          <HeadingTitle>{labels.title}</HeadingTitle>
-          <HeadingDescription>{labels.desscription}</HeadingDescription>
-        </Heading>
+        <Heading title={labels.title} description={labels.desscription} />
 
         {initialData && (
           <Button

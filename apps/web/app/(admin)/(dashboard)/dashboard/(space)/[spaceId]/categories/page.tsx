@@ -1,11 +1,11 @@
-import { format } from "date-fns"
-
-import { findAllCategoriesWithDataBySpaceId } from "@/lib/database/category"
+import { CATEGORY_LABELS } from "@/constants/category"
 import { parseData } from "@/lib/utils"
-import { CategoryClient } from "@/components/admin/category-client"
-import { type CategoryColumn } from "@/components/admin/category-columns"
+import { DataTable } from "@shared/ui"
+import { ListHeading } from "@/features/dashboard/ui/list-heading"
+import { columns } from "@/features/dashboard/ui/list/categories"
+import { getAllCategories } from "@/features/dashboard/utilities/category"
 
-interface PageProps {
+type Props = {
   params: {
     spaceId: string
   }
@@ -15,23 +15,27 @@ interface PageProps {
  * This component fetches all categories associated with a given spaceId from the database.
  * It then passes these data to the CategoryClient component for display and manipulation.
  */
-const Page = async ({ params }: PageProps) => {
-  const categories = await findAllCategoriesWithDataBySpaceId(params.spaceId)
-
-  const formattedCategories: CategoryColumn[] = categories.map((item) => ({
-    id: item._id.toString(),
-    name: item.name,
-    billboardLabel: item.billboard.label,
-    createdAt: format(item.createdAt, "MMMM do, yyyy"),
-  }))
+export default async function Page({ params }: Props) {
+  const categories = await getAllCategories(params.spaceId)
 
   return (
-    <div className="flex-col">
-      <div className="flex-1 space-y-4 p-8 pt-6">
-        <CategoryClient data={parseData(formattedCategories)} />
-      </div>
-    </div>
+    // <div className="flex-col">
+    //   <div className="flex-1 space-y-4 p-8 pt-6">
+    //     <CategoryClient data={parseData(categories)} />
+    //   </div>
+    // </div>
+    <>
+      <ListHeading
+        labels={CATEGORY_LABELS.list}
+        value={categories.length}
+        path="/categories/new"
+      />
+
+      <DataTable
+        columns={columns}
+        data={parseData(categories)}
+        searchKey="name"
+      />
+    </>
   )
 }
-
-export default Page
