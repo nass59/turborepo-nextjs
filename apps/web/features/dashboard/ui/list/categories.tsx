@@ -6,7 +6,7 @@ import { CATEGORY_LABELS } from "@/constants/category"
 
 import { CellAction } from "./cell-action"
 
-type CategoryColumn = {
+export type CategoryColumn = {
   id: string
   name: string
   billboardLabel: string

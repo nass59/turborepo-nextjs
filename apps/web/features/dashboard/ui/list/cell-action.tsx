@@ -2,10 +2,8 @@
 
 import { useState } from "react"
 import { useParams, useRouter } from "next/navigation"
-import axios from "axios"
 
-import { apiRoutes, routes } from "@/constants/routes"
-import { toastError } from "@/lib/api-response/api-responses"
+import { routes } from "@/constants/routes"
 import {
   Button,
   DropdownMenu,
@@ -13,11 +11,12 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-  toast,
 } from "@shared/ui"
-import { type CategoryColumn } from "@/components/admin/category-columns"
-import { AlertModal } from "@/components/admin/modals/alert-modal"
 import { Icons } from "@/components/icons"
+
+import { onCopy } from "../../utilities/copy"
+import { type CategoryColumn } from "./categories"
+import { CellModal } from "./cell-modal"
 
 type Props = {
   data: CategoryColumn
@@ -36,41 +35,21 @@ export const CellAction = ({ data, resource, labels }: Props) => {
   const router = useRouter()
   const params = useParams()
 
-  const [loading, setLoading] = useState<boolean>(false)
   const [open, setOpen] = useState<boolean>(false)
-
-  const onCopy = (id: string) => {
-    navigator.clipboard.writeText(id)
-    toast({ title: labels.copied })
-  }
 
   const onClick = () => {
     router.push(`${routes.dashboard}/${params.spaceId}/${resource}/${data.id}`)
   }
 
-  const onDelete = async () => {
-    try {
-      setLoading(true)
-      const baseUrl = `${apiRoutes.spaces}/${params.spaceId}/${resource}`
-      await axios.delete(`${baseUrl}/${data.id}`)
-      router.refresh()
-      toast({ title: "This resource has been successfully deleted" })
-    } catch (error) {
-      toastError(error, "An error occurred while deleting the resource")
-    } finally {
-      setLoading(false)
-      setOpen(false)
-    }
-  }
-
   return (
     <>
-      <AlertModal
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        onConfirm={onDelete}
-        loading={loading}
+      <CellModal
+        resource={resource}
+        resourceId={data.id}
+        open={open}
+        setOpen={setOpen}
       />
+
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="h-8 w-8 p-0">
@@ -80,7 +59,7 @@ export const CellAction = ({ data, resource, labels }: Props) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>{labels.label}</DropdownMenuLabel>
-          <DropdownMenuItem onClick={() => onCopy(data.id)}>
+          <DropdownMenuItem onClick={() => onCopy(data.id, labels.copied)}>
             <Icons.copy className="mr-2 h-4 w-4" />
             {labels.copy}
           </DropdownMenuItem>
