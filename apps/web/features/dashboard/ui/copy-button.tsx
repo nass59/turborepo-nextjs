@@ -2,8 +2,10 @@
 
 import React from "react"
 
-import { Button, toast } from "@shared/ui"
+import { Button } from "@shared/ui"
 import { Icons } from "@/components/icons"
+
+import { onCopy } from "../utilities/copy"
 
 type Props = {
   description: string
@@ -11,13 +13,12 @@ type Props = {
 }
 
 export const CopyButton = ({ description, message }: Props) => {
-  const onCopy = () => {
-    navigator.clipboard.writeText(description)
-    toast({ title: message })
-  }
-
   return (
-    <Button variant="outline" size="icon" onClick={onCopy}>
+    <Button
+      variant="outline"
+      size="icon"
+      onClick={() => onCopy(description, message)}
+    >
       <Icons.copy className="h-4 w-4" />
     </Button>
   )
