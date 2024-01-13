@@ -63,7 +63,7 @@ export const Default: Story = {
   render: ({ ...args }) => {
     return (
       <Dialog {...args}>
-        <DialogTrigger>
+        <DialogTrigger asChild>
           <Button>Open the Dialog</Button>
         </DialogTrigger>
         <DialogContent>

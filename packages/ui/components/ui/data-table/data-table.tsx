@@ -11,8 +11,8 @@ import {
   type ColumnFiltersState,
 } from "@tanstack/react-table"
 
-import { Button } from "./button"
-import { Input } from "./input"
+import { Button } from "../button"
+import { Input } from "../input"
 import {
   Table,
   TableBody,
@@ -20,9 +20,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "./table"
+} from "../table"
 
-interface DataTableProps<TData, TValue> {
+type DataTableProps<TData, TValue> = {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
   searchKey: string
