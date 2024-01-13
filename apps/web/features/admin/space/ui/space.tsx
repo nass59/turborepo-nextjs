@@ -21,8 +21,8 @@ import {
   Input,
 } from "@shared/ui"
 
-import { useSpaceModal } from "../../hooks/use-space-modal"
-import { spaceSchema, type SpaceFormData } from "../../schemas/space"
+import { useSpaceModal } from "../hooks/use-space-modal"
+import { spaceSchema, type SpaceFormData } from "../schemas/space"
 
 export const SpaceForm = () => {
   const spaceModal = useSpaceModal()

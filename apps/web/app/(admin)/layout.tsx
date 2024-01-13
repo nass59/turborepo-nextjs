@@ -9,7 +9,7 @@ import { cn, Toaster } from "@shared/ui"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
-import { ModalProvider } from "@/features/dashboard/providers/modal-provider"
+import { ModalProvider } from "@/features/admin/common/providers/modal-provider"
 
 import "@shared/ui/styles/global.css"
 

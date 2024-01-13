@@ -24,7 +24,7 @@ import {
   toast,
 } from "@shared/ui"
 
-import { type SettingsFormData } from "../../schemas/setting"
+import { type SettingsFormData } from "../schemas/setting"
 
 type Props = {
   initialData: SpaceModel

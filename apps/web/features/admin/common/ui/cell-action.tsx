@@ -14,8 +14,8 @@ import {
 } from "@shared/ui"
 import { Icons } from "@/components/icons"
 
-import { onCopy } from "../../utilities/copy"
-import { type CategoryColumn } from "./categories"
+import { type CategoryColumn } from "../../category/ui/columns"
+import { onCopy } from "../utilities/copy"
 import { CellModal } from "./cell-modal"
 
 type Props = {

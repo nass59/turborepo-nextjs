@@ -1,8 +1,8 @@
 import { ContentContainer } from "@/components/content-container"
-import { Billboard } from "@/features/explore/ui/billboard"
-import { List } from "@/features/explore/ui/list"
-import { getBillboard } from "@/features/explore/utilities/billboard"
-import { getFeaturedItems } from "@/features/explore/utilities/item"
+import { Billboard } from "@/features/public/explore/ui/billboard"
+import { List } from "@/features/public/explore/ui/list"
+import { getBillboard } from "@/features/public/explore/utilities/billboard"
+import { getFeaturedItems } from "@/features/public/explore/utilities/item"
 
 export const metadata = {
   title: "Explore",

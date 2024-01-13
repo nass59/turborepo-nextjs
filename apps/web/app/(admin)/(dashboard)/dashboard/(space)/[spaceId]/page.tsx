@@ -1,9 +1,9 @@
 import { parseData } from "@/lib/utils"
 import { Heading } from "@shared/ui"
 import { Icons } from "@/components/icons"
-import { CardOverview } from "@/features/dashboard/ui/card-overview"
-import { Chart } from "@/features/dashboard/ui/chart"
-import { getOverview } from "@/features/dashboard/utilities/overview"
+import { getOverview } from "@/features/admin/common/utilities/overview"
+import { CardOverview } from "@/features/admin/home/ui/card-overview"
+import { Chart } from "@/features/admin/home/ui/chart"
 
 type Props = {
   params: {

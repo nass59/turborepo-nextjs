@@ -8,7 +8,7 @@ import { type SpaceModel } from "@/lib/database/models/Space"
 import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@shared/ui"
 import { Icons } from "@/components/icons"
 
-import { type NavbarItem } from "../types/navbar"
+import { type NavbarItem } from "../../common/types/navbar"
 import { SpaceCommand } from "./space-command"
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>

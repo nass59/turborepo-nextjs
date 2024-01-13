@@ -10,7 +10,7 @@ import {
 } from "@shared/ui"
 
 import { useSpaceModal } from "../hooks/use-space-modal"
-import { SpaceForm } from "./form/space"
+import { SpaceForm } from "./space"
 
 export const SpaceModal = () => {
   const spaceModal = useSpaceModal()

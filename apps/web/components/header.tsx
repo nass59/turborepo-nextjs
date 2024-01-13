@@ -1,7 +1,7 @@
 import { type PropsWithChildren } from "react"
 import { type MainNavItem, type SidebarNavItem } from "@/types"
 
-import { Sidebar } from "@/features/docs/ui/sidebar"
+import { Sidebar } from "@/features/public/docs/ui/sidebar"
 
 import { HeaderActions } from "./header-actions"
 import { MainNav } from "./nav/main-nav"

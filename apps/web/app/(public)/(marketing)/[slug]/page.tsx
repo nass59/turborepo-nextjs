@@ -8,8 +8,11 @@ import {
 import { Heading } from "@shared/ui"
 import { ContentContainer } from "@/components/content-container"
 import { Mdx } from "@/components/mdx-components"
-import { getPageMetadata } from "@/features/blog/metadata/metadata"
-import { getPageFromParams, getPageSlugs } from "@/features/blog/utilities/page"
+import { getPageMetadata } from "@/features/public/blog/metadata/metadata"
+import {
+  getPageFromParams,
+  getPageSlugs,
+} from "@/features/public/blog/utilities/page"
 
 export function generateMetadata({ params }: PageProps): PageMetadata {
   return getPageMetadata(params.slug) || {}
