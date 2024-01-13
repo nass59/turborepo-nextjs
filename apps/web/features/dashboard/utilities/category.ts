@@ -1,7 +1,8 @@
 import { format } from "date-fns"
 
 import { findAllCategoriesWithDataBySpaceId } from "@/lib/database/category"
-import { type CategoryColumn } from "@/components/admin/category-columns"
+
+import { type CategoryColumn } from "../ui/list/categories"
 
 export const getAllCategories = async (
   spaceId: string
