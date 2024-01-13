@@ -50,8 +50,13 @@ export const CellModal = ({ resource, resourceId, open, setOpen }: Props) => {
     <AlertDialog open={open}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Test</AlertDialogTitle>
-          <AlertDialogDescription>Testttt</AlertDialogDescription>
+          <AlertDialogTitle>
+            Are you absolutely sure to delete this resource?
+          </AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete this
+            resource.
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel onClick={() => setOpen(false)} disabled={loading}>

@@ -1,5 +1,6 @@
 export const CATEGORY_LABELS = {
   list: {
+    resource: "categories",
     title: "Categories",
     description: "Manage categories for your space",
     add: "Add new",
@@ -29,8 +30,8 @@ export const CATEGORY_LABELS = {
   api: {
     title: "API",
     desscription: "API calls for Categories",
-    entityName: "categories",
-    entityIdName: "categoryId",
+    resource: "categories",
+    resourceId: "categoryId",
   },
   form: {
     name: {

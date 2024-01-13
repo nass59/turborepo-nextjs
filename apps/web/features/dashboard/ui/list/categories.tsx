@@ -13,19 +13,19 @@ export type CategoryColumn = {
   createdAt: string
 }
 
-const columnsLabels = CATEGORY_LABELS.list.columns
+const { columns, resource } = CATEGORY_LABELS.list
 
-export const columns: ColumnDef<CategoryColumn>[] = [
-  columnsLabels.name,
-  columnsLabels.billboard,
-  columnsLabels.createdAt,
+export const columnsData: ColumnDef<CategoryColumn>[] = [
+  columns.name,
+  columns.billboard,
+  columns.createdAt,
   {
     id: "actions",
     cell: ({ row }) => (
       <CellAction
         data={row.original}
-        resource="categories"
-        labels={columnsLabels.actions}
+        resource={resource}
+        labels={columns.actions}
       />
     ),
   },
