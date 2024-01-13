@@ -7,11 +7,14 @@ import {
 } from "@/types/common"
 import { Heading } from "@shared/ui"
 import { Mdx } from "@/components/mdx-components"
-import { getDocMetadata } from "@/features/docs/metadata/metadata"
-import { Pager } from "@/features/docs/ui/pager"
-import { TOC } from "@/features/docs/ui/toc"
-import { getDocFromParams, getDocSlugs } from "@/features/docs/utilities/doc"
-import { getTableOfContents } from "@/features/docs/utilities/toc"
+import { getDocMetadata } from "@/features/public/docs/metadata/metadata"
+import { Pager } from "@/features/public/docs/ui/pager"
+import { TOC } from "@/features/public/docs/ui/toc"
+import {
+  getDocFromParams,
+  getDocSlugs,
+} from "@/features/public/docs/utilities/doc"
+import { getTableOfContents } from "@/features/public/docs/utilities/toc"
 
 import "@/styles/mdx.css"
 

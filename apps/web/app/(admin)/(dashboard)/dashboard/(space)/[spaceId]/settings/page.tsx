@@ -4,11 +4,11 @@ import { apiRoutes, routes } from "@/constants/routes"
 import { SPACE_LABELS } from "@/constants/space"
 import { parseData } from "@/lib/utils"
 import { Separator } from "@shared/ui"
-import { Api } from "@/features/dashboard/ui/api"
-import { FormHeading } from "@/features/dashboard/ui/form/form-heading"
-import { SettingsForm } from "@/features/dashboard/ui/form/setting"
-import { getSpace } from "@/features/dashboard/utilities/space"
-import { getCurrentUserId } from "@/features/dashboard/utilities/user"
+import { Api } from "@/features/admin/common/ui/api"
+import { FormHeading } from "@/features/admin/common/ui/form-heading"
+import { getCurrentUserId } from "@/features/admin/common/utilities/user"
+import { SettingsForm } from "@/features/admin/setting/ui/setting"
+import { getSpace } from "@/features/admin/space/utilities/space"
 
 type Props = {
   params: {

@@ -3,9 +3,9 @@ import { docsConfig } from "@/config/docs"
 import { marketingConfig } from "@/config/marketing"
 import { Footer } from "@/components/footer/footer"
 import { Header } from "@/components/header"
-import { Breadcrumb } from "@/features/docs/ui/breadcrumb"
-import { Search } from "@/features/docs/ui/search"
-import { Sidebar } from "@/features/docs/ui/sidebar"
+import { Breadcrumb } from "@/features/public/docs/ui/breadcrumb"
+import { Search } from "@/features/public/docs/ui/search"
+import { Sidebar } from "@/features/public/docs/ui/sidebar"
 
 export default function Layout({ children }: LayoutProps) {
   return (

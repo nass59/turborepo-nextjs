@@ -5,10 +5,10 @@ import { routes } from "@/constants/routes"
 import { parseData } from "@/lib/utils"
 import { ThemeToggle } from "@/components/theme-toggle"
 
-import { getAllSpaces } from "../utilities/space"
+import { SpaceSwitcher } from "../../space/ui/space-switcher"
+import { getAllSpaces } from "../../space/utilities/space"
 import { getCurrentUserId } from "../utilities/user"
 import { MainNav } from "./main-nav"
-import { SpaceSwitcher } from "./space-switcher"
 
 const NavbarSection = ({ children }: ComponentProps<"div">) => {
   return <div className="flex items-center space-x-4">{children}</div>

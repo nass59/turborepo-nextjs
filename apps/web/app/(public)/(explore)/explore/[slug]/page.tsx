@@ -6,14 +6,14 @@ import {
   type StaticParams,
 } from "@/types/common"
 import { ContentContainer } from "@/components/content-container"
-import { getItemPageMetadata } from "@/features/explore/metadata/metadata"
-import { Item } from "@/features/explore/ui/item"
-import { List } from "@/features/explore/ui/list"
+import { getItemPageMetadata } from "@/features/public/explore/metadata/metadata"
+import { Item } from "@/features/public/explore/ui/item"
+import { List } from "@/features/public/explore/ui/list"
 import {
   getItem,
   getPageSlugs,
   getSuggestedItems,
-} from "@/features/explore/utilities/item"
+} from "@/features/public/explore/utilities/item"
 
 export function generateMetadata({ params }: PageProps): PageMetadata {
   return getItemPageMetadata(params.slug) || {}

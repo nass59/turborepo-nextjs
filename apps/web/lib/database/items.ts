@@ -10,7 +10,7 @@ import {
   findOneById,
   updateOneById,
 } from "@/lib/database/queries"
-import { type MonthlyItem } from "@/features/dashboard/types/overview"
+import { type MonthlyItem } from "@/features/admin/home/types/overview"
 
 type ItemModelProps = Pick<
   ItemModel,

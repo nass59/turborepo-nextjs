@@ -2,7 +2,7 @@
 
 import { useEffect } from "react"
 
-import { useSpaceModal } from "@/features/dashboard/hooks/use-space-modal"
+import { useSpaceModal } from "@/features/admin/space/hooks/use-space-modal"
 
 /**
  * Page is a Next.js page component that triggers the space modal to open on mount.

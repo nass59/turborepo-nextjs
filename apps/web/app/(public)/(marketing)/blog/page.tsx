@@ -1,6 +1,6 @@
 import { Heading } from "@shared/ui"
 import { ContentContainer } from "@/components/content-container"
-import { Posts } from "@/features/blog/ui/posts"
+import { Posts } from "@/features/public/blog/ui/posts"
 
 export const metadata = {
   title: "Blog",

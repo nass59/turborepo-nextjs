@@ -1,6 +1,6 @@
 import { Heading, HeadingAction } from "@shared/ui"
 
-import { DeleteModal } from "../delete-modal"
+import { DeleteModal } from "../../space/ui/delete-modal"
 
 type Props = {
   labels: {

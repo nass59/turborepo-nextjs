@@ -14,8 +14,8 @@ import {
 } from "@shared/ui"
 import { Icons } from "@/components/icons"
 
+import { type NavbarItem } from "../../common/types/navbar"
 import { useSpaceModal } from "../hooks/use-space-modal"
-import { type NavbarItem } from "../types/navbar"
 
 type Props = {
   items: NavbarItem[]

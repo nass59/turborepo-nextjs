@@ -5,7 +5,7 @@ import { type MouseEventHandler } from "react"
 import { type ItemModel } from "@/lib/database/models/Item"
 import { Button } from "@shared/ui"
 import { Icons } from "@/components/icons"
-import { usePreviewModal } from "@/features/explore/hooks/use-preview-modal"
+import { usePreviewModal } from "@/features/public/explore/hooks/use-preview-modal"
 
 type Props = {
   data: ItemModel

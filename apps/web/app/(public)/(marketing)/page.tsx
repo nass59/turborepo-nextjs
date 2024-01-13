@@ -9,9 +9,9 @@ import {
   ReactJS,
   Storybook,
   TailwindCSS,
-} from "@/features/landing-page/assets/logos"
-import { FeatureItem } from "@/features/landing-page/ui/feature-item"
-import { getGithubStars } from "@/features/landing-page/utilities/github/stars"
+} from "@/features/public/landing-page/assets/logos"
+import { FeatureItem } from "@/features/public/landing-page/ui/feature-item"
+import { getGithubStars } from "@/features/public/landing-page/utilities/github/stars"
 
 /**
  * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#pages

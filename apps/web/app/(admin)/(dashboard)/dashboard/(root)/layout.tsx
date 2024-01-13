@@ -2,8 +2,8 @@ import { redirect } from "next/navigation"
 
 import { type LayoutProps } from "@/types/common"
 import { routes } from "@/constants/routes"
-import { getCurrentSpace } from "@/features/dashboard/utilities/space"
-import { getCurrentUserId } from "@/features/dashboard/utilities/user"
+import { getCurrentUserId } from "@/features/admin/common/utilities/user"
+import { getCurrentSpace } from "@/features/admin/space/utilities/space"
 
 /**
  * DashboardLayout is a layout component for the dashboard.
