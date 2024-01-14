@@ -1,6 +1,6 @@
 import { CATEGORY_LABELS } from "@/constants/category"
-import { findAllBillboardsBySpaceId } from "@/lib/database/billboard"
 import { parseData } from "@/lib/utils"
+import { getAllBillboards } from "@/features/admin/billboard/utilities/billboard"
 import { CategoryForm } from "@/features/admin/category/ui/form"
 import { getCategory } from "@/features/admin/category/utilities/category"
 import { FormContentHeading } from "@/features/admin/common/ui/form-content-heading"
@@ -14,7 +14,7 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const category = await getCategory(params.categoryId)
-  const billboards = await findAllBillboardsBySpaceId(params.spaceId)
+  const billboards = await getAllBillboards(params.spaceId)
 
   return (
     <>

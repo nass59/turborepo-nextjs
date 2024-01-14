@@ -1,6 +1,5 @@
 import { type Control } from "react-hook-form"
 
-import { type BillboardModel } from "@/lib/database/models/Billboard"
 import {
   FormControl,
   FormField,
@@ -13,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@shared/ui"
+import { type BillboardColumn } from "@/features/admin/billboard/ui/columns"
 
 type Props = {
   labels: {
@@ -22,7 +22,7 @@ type Props = {
   }
   loading?: boolean
   control: Control<any>
-  options: BillboardModel[]
+  options: BillboardColumn[]
 }
 
 export const SelectField = ({ labels, loading, control, options }: Props) => {
@@ -49,7 +49,7 @@ export const SelectField = ({ labels, loading, control, options }: Props) => {
             </FormControl>
             <SelectContent>
               {options.map((option) => (
-                <SelectItem key={String(option._id)} value={String(option._id)}>
+                <SelectItem key={option.id} value={option.id}>
                   {option.label}
                 </SelectItem>
               ))}

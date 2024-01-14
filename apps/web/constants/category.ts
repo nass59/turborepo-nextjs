@@ -31,7 +31,6 @@ export const CATEGORY_LABELS = {
   api: {
     title: "API",
     description: "API calls for Categories",
-    resource: "categories",
     resourceId: "categoryId",
   },
   form: {

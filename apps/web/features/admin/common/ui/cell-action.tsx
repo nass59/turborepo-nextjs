@@ -14,13 +14,14 @@ import {
 } from "@shared/ui"
 import { Icons } from "@/components/icons"
 
+import { type BillboardColumn } from "../../billboard/ui/columns"
 import { type CategoryColumn } from "../../category/ui/columns"
 import { onCopy } from "../utilities/copy"
 import { CellModal } from "./cell-modal"
 
 type Props = {
-  data: CategoryColumn
-  resource: "categories"
+  data: CategoryColumn | BillboardColumn
+  resource: "categories" | "billboards"
   labels: {
     copied: string
     open: string
