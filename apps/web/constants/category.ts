@@ -1,4 +1,5 @@
 export const CATEGORY_LABELS = {
+  resource: "categories",
   list: {
     resource: "categories",
     title: "Categories",
@@ -29,7 +30,7 @@ export const CATEGORY_LABELS = {
   },
   api: {
     title: "API",
-    desscription: "API calls for Categories",
+    description: "API calls for Categories",
     resource: "categories",
     resourceId: "categoryId",
   },
@@ -47,22 +48,10 @@ export const CATEGORY_LABELS = {
   },
   create: {
     title: "Create category",
-    desscription: "Add a new category",
-    toastMessage: "Category created.",
-    action: "Create",
-    error: "Your category was not created. Please try again.",
+    description: "Add a new category",
   },
   edit: {
-    title: "Edit category",
-    desscription: "Edit a category",
-    toastMessage: "Category updated.",
-    action: "Save changes",
-    error: "Your category was not updated. Please try again.",
-  },
-  // TODO: remove after refactoring
-  delete: {
-    toastMessage: "Category deleted.",
-    error:
-      "Your category was not deleted. Make sure to delete all items before deleting this category.",
+    title: "Edit the category",
+    description: "Edit a category",
   },
 } as const

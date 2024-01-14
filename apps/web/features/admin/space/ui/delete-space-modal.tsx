@@ -6,7 +6,6 @@ import { UpdateIcon } from "@radix-ui/react-icons"
 import axios from "axios"
 
 import { apiRoutes, routes } from "@/constants/routes"
-import { SPACE_LABELS } from "@/constants/space"
 import { toastError } from "@/lib/api-response/api-responses"
 import {
   AlertDialog,
@@ -23,7 +22,7 @@ import {
 } from "@shared/ui"
 import { Icons } from "@/components/icons"
 
-export const DeleteModal = () => {
+export const DeleteSpaceModal = () => {
   const [loading, setLoading] = useState<boolean>(false)
 
   const params = useParams()
@@ -36,9 +35,12 @@ export const DeleteModal = () => {
       await axios.delete(`${apiRoutes.spaces}/${params.spaceId}`)
       router.refresh()
       router.push(routes.dashboard)
-      toast({ title: SPACE_LABELS.delete.toastMessage })
+      toast({ title: "Space deleted." })
     } catch (error) {
-      toastError(error, SPACE_LABELS.delete.error)
+      toastError(
+        error,
+        "Your Space was not deleted. Make sure you removed all categories first."
+      )
     } finally {
       setLoading(false)
     }
@@ -53,9 +55,12 @@ export const DeleteModal = () => {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>{SPACE_LABELS.delete.modalTitle}</AlertDialogTitle>
+          <AlertDialogTitle>
+            Are you absolutely sure to delete this Space?
+          </AlertDialogTitle>
           <AlertDialogDescription>
-            {SPACE_LABELS.delete.modalDescription}
+            This action cannot be undone. This will permanently delete your
+            space and remove your data from our servers?
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
