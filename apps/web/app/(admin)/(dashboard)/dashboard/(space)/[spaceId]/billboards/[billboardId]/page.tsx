@@ -1,27 +1,26 @@
+import { BILLBOARD_LABELS } from "@/constants/billboard"
 import { findOneBillboard } from "@/lib/database/billboard"
 import { parseData } from "@/lib/utils"
-import { BillboardForm } from "@/components/admin/billboard-form"
+import { BillboardForm } from "@/features/admin/billboard/ui/form"
+import { FormContentHeading } from "@/features/admin/common/ui/form-content-heading"
 
-interface BillboardProps {
+type Props = {
   params: {
     billboardId: string
   }
 }
 
-/**
- * This component fetches a billboard associated with a given billboardId from the database.
- * It then passes these data to the BillboardForm component for display and manipulation.
- */
-const Page = async ({ params }: BillboardProps) => {
+export default async function Page({ params }: Props) {
   const billboard = await findOneBillboard(params.billboardId)
 
   return (
-    <div className="flex-col">
-      <div className="flex-1 space-y-4 p-8 pt-6">
-        <BillboardForm initialData={parseData(billboard)} />
-      </div>
-    </div>
+    <>
+      <FormContentHeading
+        labels={BILLBOARD_LABELS}
+        isEdit={Boolean(billboard)}
+      />
+
+      <BillboardForm initialData={parseData(billboard)} />
+    </>
   )
 }
-
-export default Page

@@ -1,18 +1,9 @@
 export const BILLBOARD_LABELS = {
-  form: {
-    imageUrl: {
-      name: "imageUrl",
-      label: "Background Image",
-    },
-    label: {
-      name: "label",
-      label: "Label",
-      placeholder: "Billboard label",
-    },
-  },
+  resource: "billboards",
   list: {
+    resource: "billboards",
     title: "Billboards",
-    desscription: "Manage billboards for your space",
+    description: "Manage billboards for your space",
     add: "Add new",
     columns: {
       label: {
@@ -35,26 +26,26 @@ export const BILLBOARD_LABELS = {
   },
   api: {
     title: "API",
-    desscription: "API calls for Billboards",
-    entityName: "billboards",
-    entityIdName: "billboardId",
+    description: "API calls for Billboards",
+    resourceId: "billboardId",
+  },
+  form: {
+    imageUrl: {
+      name: "imageUrl",
+      label: "Background Image",
+    },
+    label: {
+      name: "label",
+      label: "Label",
+      placeholder: "Billboard label",
+    },
   },
   create: {
     title: "Create billboard",
-    desscription: "Add a new billboard",
-    toastMessage: "Billboard created.",
-    action: "Create",
-    error: "Your billboard was not created. Please try again.",
+    description: "Add a new billboard",
   },
   edit: {
     title: "Edit billboard",
-    desscription: "Edit a billboard",
-    toastMessage: "Billboard updated.",
-    action: "Save changes",
-    error: "Your billboard was not updated. Please try again.",
-  },
-  delete: {
-    toastMessage: "Billboard deleted.",
-    error: "Your billboard was not deleted. Please try again.",
+    description: "Edit a billboard",
   },
 } as const

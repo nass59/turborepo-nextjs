@@ -1,36 +1,42 @@
-import { format } from "date-fns"
-
-import { findAllBillboardsBySpaceId } from "@/lib/database/billboard"
+import { BILLBOARD_LABELS } from "@/constants/billboard"
 import { parseData } from "@/lib/utils"
-import { BillboardClient } from "@/components/admin/billboard-client"
-import { type BillboardColumn } from "@/components/admin/billboard-columns"
+import { DataTable, Separator } from "@shared/ui"
+import { columnsData } from "@/features/admin/billboard/ui/columns"
+import { getAllBillboards } from "@/features/admin/billboard/utilities/billboard"
+import { ApiList } from "@/features/admin/common/ui/api-list"
+import { ListHeading } from "@/features/admin/common/ui/list-heading"
 
-interface PageProps {
+type Props = {
   params: {
     spaceId: string
   }
 }
 
-/**
- * This component fetches all billboards associated with a given spaceId from the database.
- * It then passes these data to the BillboardClient component for display and manipulation.
- */
-const Page = async ({ params }: PageProps) => {
-  const billboards = await findAllBillboardsBySpaceId(params.spaceId)
-
-  const formattedBillboards: BillboardColumn[] = billboards.map((item) => ({
-    id: item._id.toString(),
-    label: item.label,
-    createdAt: format(item.createdAt, "MMMM do, yyyy"),
-  }))
+export default async function Page({ params }: Props) {
+  const billboards = await getAllBillboards(params.spaceId)
+  const { list: listLabels, api: apiLabels, resource } = BILLBOARD_LABELS
 
   return (
-    <div className="flex-col">
-      <div className="flex-1 space-y-4 p-8 pt-6">
-        <BillboardClient data={parseData(formattedBillboards)} />
-      </div>
-    </div>
+    <>
+      <ListHeading
+        labels={listLabels}
+        value={billboards.length}
+        path={`/${resource}/new`}
+      />
+
+      <DataTable
+        columns={columnsData}
+        data={parseData(billboards)}
+        searchKey="label"
+      />
+
+      <Separator />
+
+      <ApiList
+        resource={resource}
+        resourceId={apiLabels.resourceId}
+        spaceId={params.spaceId}
+      />
+    </>
   )
 }
-
-export default Page

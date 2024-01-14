@@ -14,15 +14,14 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const categories = await getAllCategories(params.spaceId)
-  const labels = CATEGORY_LABELS.list
-  const apiLabels = CATEGORY_LABELS.api
+  const { list: listLabels, api: apiLabels, resource } = CATEGORY_LABELS
 
   return (
     <>
       <ListHeading
-        labels={labels}
+        labels={listLabels}
         value={categories.length}
-        path={`/${labels.resource}/new`}
+        path={`/${resource}/new`}
       />
 
       <DataTable
@@ -34,7 +33,7 @@ export default async function Page({ params }: Props) {
       <Separator />
 
       <ApiList
-        resource={apiLabels.resource}
+        resource={resource}
         resourceId={apiLabels.resourceId}
         spaceId={params.spaceId}
       />
