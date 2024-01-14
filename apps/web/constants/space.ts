@@ -22,17 +22,9 @@ export const SPACE_LABELS = {
   },
   edit: {
     title: "Settings",
-    desscription: "Manage space preferences",
+    description: "Manage space preferences",
     toastMessage: "Space updated.",
     action: "Save changes",
     error: "Your space was not updated. Please try again.",
-  },
-  delete: {
-    modalTitle: "Are you absolutely sure to delete this Space?",
-    modalDescription:
-      "This action cannot be undone. This will permanently delete your space and remove your data from our servers?",
-    toastMessage: "Space deleted.",
-    error:
-      "Your Space was not deleted. Make sure you removed all categories first.",
   },
 } as const
