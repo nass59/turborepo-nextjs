@@ -1,6 +1,6 @@
 import { siteConfig } from "@/config/site"
 import { buttonVariants, cn } from "@shared/ui"
-import { Space3 } from "@/components/icons/space3"
+import { Space3 } from "@/features/public/landing-page/assets/icons/space3"
 import {
   Auth,
   Github,

@@ -1,6 +1,10 @@
 import { format } from "date-fns"
 
-import { findAllBillboardsBySpaceId } from "@/lib/database/billboard"
+import {
+  findAllBillboardsBySpaceId,
+  findOneBillboard,
+} from "@/lib/database/billboard"
+import { type BillboardModel } from "@/lib/database/models/Billboard"
 
 import { type BillboardColumn } from "../ui/columns"
 
@@ -14,4 +18,10 @@ export const getAllBillboards = async (
     label: item.label,
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
   }))
+}
+
+export const getBillboard = async (
+  billboardId: string
+): Promise<BillboardModel | null> => {
+  return await findOneBillboard(billboardId)
 }

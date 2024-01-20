@@ -1,39 +1,42 @@
-import { format } from "date-fns"
-
-import { findAllItemsBySpaceId } from "@/lib/database/items"
+import { ITEM_LABELS } from "@/constants/item"
 import { parseData } from "@/lib/utils"
-import { ItemClient } from "@/components/admin/item-client"
-import { type ItemColumn } from "@/components/admin/item-columns"
+import { DataTable, Separator } from "@shared/ui"
+import { ApiList } from "@/features/admin/common/ui/api-list"
+import { ListHeading } from "@/features/admin/common/ui/list-heading"
+import { columnsData } from "@/features/admin/item/ui/columns"
+import { getAllItems } from "@/features/admin/item/utilities/item"
 
-interface PageProps {
+type Props = {
   params: {
     spaceId: string
   }
 }
 
-/**
- * This component fetches all items associated with a given spaceId from the database.
- * It then formats these items and passes them to the ItemClient component for display.
- */
-const Page = async ({ params }: PageProps) => {
-  const items = await findAllItemsBySpaceId({ spaceId: params.spaceId })
-
-  const formattedItems: ItemColumn[] = items.map((item) => ({
-    id: item._id.toString(),
-    name: item.name,
-    category: item.category,
-    isFeatured: item.isFeatured,
-    isArchived: item.isArchived,
-    createdAt: format(item.createdAt, "MMMM do, yyyy"),
-  }))
+export default async function Page({ params }: Props) {
+  const items = await getAllItems(params.spaceId)
+  const { list: listLabels, api: apiLabels, resource } = ITEM_LABELS
 
   return (
-    <div className="flex-col">
-      <div className="flex-1 space-y-4 p-8 pt-6">
-        <ItemClient data={parseData(formattedItems)} />
-      </div>
-    </div>
+    <>
+      <ListHeading
+        labels={listLabels}
+        value={items.length}
+        path={`/${resource}/new`}
+      />
+
+      <DataTable
+        columns={columnsData}
+        data={parseData(items)}
+        searchKey="name"
+      />
+
+      <Separator />
+
+      <ApiList
+        resource={resource}
+        resourceId={apiLabels.resourceId}
+        spaceId={params.spaceId}
+      />
+    </>
   )
 }
-
-export default Page

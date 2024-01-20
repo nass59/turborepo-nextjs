@@ -1,33 +1,9 @@
 export const ITEM_LABELS = {
-  form: {
-    images: {
-      name: "images",
-      label: "Images",
-    },
-    name: {
-      name: "name",
-      label: "Name",
-      placeholder: "Item name",
-    },
-    categoryId: {
-      name: "categoryId",
-      label: "Category",
-      placeholder: "Select a category",
-    },
-    isFeatured: {
-      name: "isFeatured",
-      label: "Featured",
-      description: "This item will appear on the home page.",
-    },
-    isArchived: {
-      name: "isArchived",
-      label: "Archived",
-      description: "This item will not appear anywhere in the space.",
-    },
-  },
+  resource: "items",
   list: {
+    resource: "items",
     title: "Items",
-    desscription: "Manage items for your space",
+    description: "Manage items for your space",
     add: "Add new",
     columns: {
       name: {
@@ -62,26 +38,41 @@ export const ITEM_LABELS = {
   },
   api: {
     title: "API",
-    desscription: "API calls for Items",
-    entityName: "items",
-    entityIdName: "itemId",
+    description: "API calls for Items",
+    resourceId: "itemId",
+  },
+  form: {
+    images: {
+      name: "images",
+      label: "Images",
+    },
+    name: {
+      name: "name",
+      label: "Name",
+      placeholder: "Item name",
+    },
+    categoryId: {
+      name: "categoryId",
+      label: "Category",
+      placeholder: "Select a category",
+    },
+    isFeatured: {
+      name: "isFeatured",
+      label: "Featured",
+      description: "This item will appear on the home page.",
+    },
+    isArchived: {
+      name: "isArchived",
+      label: "Archived",
+      description: "This item will not appear anywhere in the space.",
+    },
   },
   create: {
     title: "Create item",
-    desscription: "Add a new item",
-    toastMessage: "Item created.",
-    action: "Create",
-    error: "Your item was not created. Please try again.",
+    description: "Add a new item",
   },
   edit: {
     title: "Edit item",
-    desscription: "Edit a item",
-    toastMessage: "Item updated.",
-    action: "Save changes",
-    error: "Your item was not updated. Please try again.",
-  },
-  delete: {
-    toastMessage: "Item deleted.",
-    error: "Your item was not deleted. Please try again.",
+    description: "Edit a item",
   },
 } as const

@@ -13,15 +13,16 @@ import {
   DropdownMenuTrigger,
 } from "@shared/ui"
 import { Icons } from "@/components/icons"
+import { type BillboardColumn } from "@/features/admin/billboard/ui/columns"
+import { type CategoryColumn } from "@/features/admin/category/ui/columns"
+import { type ItemColumn } from "@/features/admin/item/ui/columns"
 
-import { type BillboardColumn } from "../../billboard/ui/columns"
-import { type CategoryColumn } from "../../category/ui/columns"
 import { onCopy } from "../utilities/copy"
 import { CellModal } from "./cell-modal"
 
 type Props = {
-  data: CategoryColumn | BillboardColumn
-  resource: "categories" | "billboards"
+  data: CategoryColumn | BillboardColumn | ItemColumn
+  resource: "categories" | "billboards" | "items"
   labels: {
     copied: string
     open: string
