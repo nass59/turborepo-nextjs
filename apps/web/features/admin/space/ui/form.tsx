@@ -9,24 +9,15 @@ import { useForm } from "react-hook-form"
 import { apiRoutes, routes } from "@/constants/routes"
 import { SPACE_LABELS } from "@/constants/space"
 import { toastError } from "@/lib/api-response/api-responses"
-import {
-  Button,
-  Form,
-  FormControl,
-  FormField,
-  FormFooter,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-} from "@shared/ui"
+import { Button, Form, FormFooter } from "@shared/ui"
+import { InputField } from "@/features/admin/common/ui/form/input-field"
 
 import { useSpaceModal } from "../hooks/use-space-modal"
 import { spaceSchema, type SpaceFormData } from "../schemas/space"
 
 export const SpaceForm = () => {
   const spaceModal = useSpaceModal()
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
 
   const form = useForm<SpaceFormData>({
     resolver: zodResolver(spaceSchema),
@@ -36,13 +27,13 @@ export const SpaceForm = () => {
   // TODO: Refactor using Server Actions
   const onSubmit = async (values: SpaceFormData) => {
     try {
-      setIsLoading(true)
+      setLoading(true)
       const response = await axios.post(apiRoutes.spaces, values)
       window.location.assign(`${routes.dashboard}/${String(response.data._id)}`)
     } catch (error) {
       toastError(error, SPACE_LABELS.create.error)
     } finally {
-      setIsLoading(false)
+      setLoading(false)
     }
   }
 
@@ -51,35 +42,24 @@ export const SpaceForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <FormField
+        {/* Name */}
+        <InputField
+          labels={formLabels.name}
           control={form.control}
-          name={formLabels.name.name}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>{formLabels.name.label}</FormLabel>
-              <FormControl>
-                <Input
-                  disabled={isLoading}
-                  placeholder={formLabels.name.placeholder}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          loading={loading}
         />
 
         <FormFooter side="right">
           <Button
-            disabled={isLoading}
+            disabled={loading}
             variant="outline"
             onClick={spaceModal.onClose}
             type="button"
           >
             Cancel
           </Button>
-          <Button disabled={isLoading} type="submit">
-            {isLoading && <UpdateIcon className="mr-2 h-4 w-4 animate-spin" />}
+          <Button disabled={loading} type="submit">
+            {loading && <UpdateIcon className="mr-2 h-4 w-4 animate-spin" />}
             <span>Continue</span>
           </Button>
         </FormFooter>

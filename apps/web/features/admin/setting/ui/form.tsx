@@ -12,9 +12,9 @@ import { toastError } from "@/lib/api-response/api-responses"
 import { type SpaceModel } from "@/lib/database/models/Space"
 import { settingSchema } from "@/lib/validation/setting"
 import { toast } from "@shared/ui"
+import { FormContainer } from "@/features/admin/common/ui/form/form-container"
+import { InputField } from "@/features/admin/common/ui/form/input-field"
 
-import { FormContainer } from "../../common/ui/form/form-container"
-import { InputField } from "../../common/ui/form/input-field"
 import { type SettingsFormData } from "../schemas/setting"
 
 type Props = {

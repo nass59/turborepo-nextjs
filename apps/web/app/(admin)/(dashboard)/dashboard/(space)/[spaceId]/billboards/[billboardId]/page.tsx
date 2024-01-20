@@ -1,7 +1,7 @@
 import { BILLBOARD_LABELS } from "@/constants/billboard"
-import { findOneBillboard } from "@/lib/database/billboard"
 import { parseData } from "@/lib/utils"
 import { BillboardForm } from "@/features/admin/billboard/ui/form"
+import { getBillboard } from "@/features/admin/billboard/utilities/billboard"
 import { FormContentHeading } from "@/features/admin/common/ui/form-content-heading"
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 }
 
 export default async function Page({ params }: Props) {
-  const billboard = await findOneBillboard(params.billboardId)
+  const billboard = await getBillboard(params.billboardId)
 
   return (
     <>

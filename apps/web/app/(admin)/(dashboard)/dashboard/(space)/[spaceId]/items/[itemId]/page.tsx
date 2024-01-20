@@ -1,33 +1,29 @@
-import { findAllCategoriesWithDataBySpaceId } from "@/lib/database/category"
-import { findOneItem } from "@/lib/database/items"
+import { ITEM_LABELS } from "@/constants/item"
 import { parseData } from "@/lib/utils"
-import { ItemForm } from "@/components/admin/item-form"
+import { getAllCategories } from "@/features/admin/category/utilities/category"
+import { FormContentHeading } from "@/features/admin/common/ui/form-content-heading"
+import { ItemForm } from "@/features/admin/item/ui/form"
+import { getItem } from "@/features/admin/item/utilities/item"
 
-interface ItemProps {
+type Props = {
   params: {
     spaceId: string
     itemId: string
   }
 }
 
-/**
- * This component fetches an item and all categories associated with a given spaceId from the database.
- * It then passes these data to the ItemForm component for display and manipulation.
- */
-const Page = async ({ params }: ItemProps) => {
-  const item = await findOneItem(params.itemId)
-  const categories = await findAllCategoriesWithDataBySpaceId(params.spaceId)
+export default async function Page({ params }: Props) {
+  const item = await getItem(params.itemId)
+  const categories = await getAllCategories(params.spaceId)
 
   return (
-    <div className="flex-col">
-      <div className="flex-1 space-y-4 p-8 pt-6">
-        <ItemForm
-          initialData={parseData(item)}
-          categories={parseData(categories)}
-        />
-      </div>
-    </div>
+    <>
+      <FormContentHeading labels={ITEM_LABELS} isEdit={Boolean(item)} />
+
+      <ItemForm
+        initialData={parseData(item)}
+        categories={parseData(categories)}
+      />
+    </>
   )
 }
-
-export default Page

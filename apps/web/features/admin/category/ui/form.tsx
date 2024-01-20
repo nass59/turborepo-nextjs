@@ -11,11 +11,11 @@ import { apiRoutes, routes } from "@/constants/routes"
 import { toastError } from "@/lib/api-response/api-responses"
 import { type CategoryModel } from "@/lib/database/models/Category"
 import { toast } from "@shared/ui"
+import { type BillboardColumn } from "@/features/admin/billboard/ui/columns"
+import { FormContainer } from "@/features/admin/common/ui/form/form-container"
+import { InputField } from "@/features/admin/common/ui/form/input-field"
+import { SelectField } from "@/features/admin/common/ui/form/select-field"
 
-import { type BillboardColumn } from "../../billboard/ui/columns"
-import { FormContainer } from "../../common/ui/form/form-container"
-import { InputField } from "../../common/ui/form/input-field"
-import { SelectField } from "../../common/ui/form/select-field"
 import {
   categorySchema,
   defaultData,
@@ -84,7 +84,10 @@ export const CategoryForm = ({ initialData, billboards }: Props) => {
         labels={formLabels.billboardId}
         control={form.control}
         loading={loading}
-        options={billboards}
+        options={billboards.map((billboard) => ({
+          label: billboard.label,
+          value: billboard.id,
+        }))}
       />
     </FormContainer>
   )

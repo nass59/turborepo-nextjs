@@ -4,9 +4,9 @@ import { UserButton } from "@clerk/nextjs"
 import { routes } from "@/constants/routes"
 import { parseData } from "@/lib/utils"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { SpaceSwitcher } from "@/features/admin/space/ui/space-switcher"
+import { getAllSpaces } from "@/features/admin/space/utilities/space"
 
-import { SpaceSwitcher } from "../../space/ui/space-switcher"
-import { getAllSpaces } from "../../space/utilities/space"
 import { getCurrentUserId } from "../utilities/user"
 import { MainNav } from "./main-nav"
 

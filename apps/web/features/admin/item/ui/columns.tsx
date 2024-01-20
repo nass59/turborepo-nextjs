@@ -4,8 +4,8 @@ import { type ColumnDef } from "@tanstack/react-table"
 
 import { ITEM_LABELS } from "@/constants/item"
 import { Badge } from "@shared/ui"
-import { CellAction } from "@/components/admin/item-cell-action"
 import { Icons } from "@/components/icons"
+import { CellAction } from "@/features/admin/common/ui/cell-action"
 
 export type ItemColumn = {
   id: string
@@ -16,7 +16,7 @@ export type ItemColumn = {
   createdAt: string
 }
 
-const columnsLabels = ITEM_LABELS.list.columns
+const { columns, resource } = ITEM_LABELS.list
 
 const getIsArchivedIcon = (isArchived: boolean) => {
   return isArchived ? (
@@ -34,25 +34,31 @@ const getIsFeaturedIcon = (isFeatured: boolean) => {
   )
 }
 
-export const columns: ColumnDef<ItemColumn>[] = [
-  columnsLabels.name,
+export const columnsData: ColumnDef<ItemColumn>[] = [
+  columns.name,
   {
-    ...columnsLabels.isArchived,
+    ...columns.isArchived,
     cell: ({ row }) => getIsArchivedIcon(row.original.isArchived),
   },
   {
-    ...columnsLabels.isFeatured,
+    ...columns.isFeatured,
     cell: ({ row }) => getIsFeaturedIcon(row.original.isFeatured),
   },
   {
-    ...columnsLabels.category,
+    ...columns.category,
     cell: ({ row }) => (
       <Badge variant="secondary">{row.original.category}</Badge>
     ),
   },
-  columnsLabels.createdAt,
+  columns.createdAt,
   {
     id: "actions",
-    cell: ({ row }) => <CellAction data={row.original} />,
+    cell: ({ row }) => (
+      <CellAction
+        data={row.original}
+        resource={resource}
+        labels={columns.actions}
+      />
+    ),
   },
 ]

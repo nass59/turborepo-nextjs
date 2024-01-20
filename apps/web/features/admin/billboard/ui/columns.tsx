@@ -3,8 +3,7 @@
 import { type ColumnDef } from "@tanstack/react-table"
 
 import { BILLBOARD_LABELS } from "@/constants/billboard"
-
-import { CellAction } from "../../common/ui/cell-action"
+import { CellAction } from "@/features/admin/common/ui/cell-action"
 
 export type BillboardColumn = {
   id: string

@@ -19,7 +19,7 @@ type Props = {
   control: Control<any>
 }
 
-export const ImageField = ({ labels, loading, control }: Props) => {
+export const MultiImagesField = ({ labels, loading, control }: Props) => {
   return (
     <FormField
       control={control}
@@ -29,11 +29,17 @@ export const ImageField = ({ labels, loading, control }: Props) => {
           <FormLabel>{labels.label}</FormLabel>
           <FormControl>
             <ImageUpload
-              value={field.value ? [field.value] : []}
+              value={field.value.map((image: string) => image)}
               disabled={loading}
-              onChange={(url) => field.onChange(url)}
-              onRemove={() => field.onChange("")}
-              maxFiles={1}
+              onChange={(url) => {
+                field.onChange([...field.value, url])
+              }}
+              onRemove={(url) =>
+                field.onChange([
+                  ...field.value.filter((current: string) => current !== url),
+                ])
+              }
+              maxFiles={3}
             />
           </FormControl>
           <FormMessage />

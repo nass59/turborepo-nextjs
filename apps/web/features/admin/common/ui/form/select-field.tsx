@@ -12,7 +12,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@shared/ui"
-import { type BillboardColumn } from "@/features/admin/billboard/ui/columns"
 
 type Props = {
   labels: {
@@ -22,7 +21,10 @@ type Props = {
   }
   loading?: boolean
   control: Control<any>
-  options: BillboardColumn[]
+  options: {
+    label: string
+    value: string
+  }[]
 }
 
 export const SelectField = ({ labels, loading, control, options }: Props) => {
@@ -49,7 +51,7 @@ export const SelectField = ({ labels, loading, control, options }: Props) => {
             </FormControl>
             <SelectContent>
               {options.map((option) => (
-                <SelectItem key={option.id} value={option.id}>
+                <SelectItem key={option.value} value={option.value}>
                   {option.label}
                 </SelectItem>
               ))}
