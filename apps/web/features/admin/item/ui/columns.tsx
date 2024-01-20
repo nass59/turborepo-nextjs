@@ -2,10 +2,11 @@
 
 import { type ColumnDef } from "@tanstack/react-table"
 
-import { ITEM_LABELS } from "@/constants/item"
 import { Badge } from "@shared/ui"
 import { Icons } from "@/components/icons"
 import { CellAction } from "@/features/admin/common/ui/cell-action"
+
+import { ITEM_LABELS } from "../constants/item"
 
 export type ItemColumn = {
   id: string

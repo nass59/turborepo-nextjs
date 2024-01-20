@@ -1,5 +1,5 @@
-import { BILLBOARD_LABELS } from "@/constants/billboard"
 import { parseData } from "@/lib/utils"
+import { BILLBOARD_LABELS } from "@/features/admin/billboard/constants/billboard"
 import { BillboardForm } from "@/features/admin/billboard/ui/form"
 import { getBillboard } from "@/features/admin/billboard/utilities/billboard"
 import { FormContentHeading } from "@/features/admin/common/ui/form-content-heading"

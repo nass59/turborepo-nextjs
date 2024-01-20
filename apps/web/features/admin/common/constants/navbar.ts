@@ -1,29 +1,27 @@
-import { NAVIGATION_LABELS } from "@/constants/navigation"
-
 export const navRoutes = [
   {
     path: "",
     key: "overview",
-    label: NAVIGATION_LABELS.overview,
+    label: "Overview",
   },
   {
     path: `/billboards`,
     key: "billboards",
-    label: NAVIGATION_LABELS.billboards,
+    label: "Billboards",
   },
   {
     path: `/categories`,
     key: "categories",
-    label: NAVIGATION_LABELS.categories,
+    label: "Categories",
   },
   {
     path: `/items`,
     key: "items",
-    label: NAVIGATION_LABELS.items,
+    label: "Items",
   },
   {
     path: `/settings`,
     key: "settings",
-    label: NAVIGATION_LABELS.settings,
+    label: "Settings",
   },
 ] as const

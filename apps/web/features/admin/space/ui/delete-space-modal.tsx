@@ -5,7 +5,7 @@ import { useParams, useRouter } from "next/navigation"
 import { UpdateIcon } from "@radix-ui/react-icons"
 import axios from "axios"
 
-import { apiRoutes, routes } from "@/constants/routes"
+import { routes } from "@/constants/routes"
 import { toastError } from "@/lib/api-response/api-responses"
 import {
   AlertDialog,
@@ -21,6 +21,7 @@ import {
   toast,
 } from "@shared/ui"
 import { Icons } from "@/components/icons"
+import { apiRoutes } from "@/features/admin/common/constants/routes"
 
 export const DeleteSpaceModal = () => {
   const [loading, setLoading] = useState<boolean>(false)

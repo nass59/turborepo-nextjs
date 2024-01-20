@@ -1,6 +1,5 @@
 "use client"
 
-import { SPACE_LABELS } from "@/constants/space"
 import {
   Dialog,
   DialogContent,
@@ -9,6 +8,7 @@ import {
   DialogTitle,
 } from "@shared/ui"
 
+import { SPACE_LABELS } from "../constants/space"
 import { useSpaceModal } from "../hooks/use-space-modal"
 import { SpaceForm } from "./form"
 

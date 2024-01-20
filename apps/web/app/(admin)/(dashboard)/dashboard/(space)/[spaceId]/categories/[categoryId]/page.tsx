@@ -1,6 +1,6 @@
-import { CATEGORY_LABELS } from "@/constants/category"
 import { parseData } from "@/lib/utils"
 import { getAllBillboards } from "@/features/admin/billboard/utilities/billboard"
+import { CATEGORY_LABELS } from "@/features/admin/category/constants/category"
 import { CategoryForm } from "@/features/admin/category/ui/form"
 import { getCategory } from "@/features/admin/category/utilities/category"
 import { FormContentHeading } from "@/features/admin/common/ui/form-content-heading"

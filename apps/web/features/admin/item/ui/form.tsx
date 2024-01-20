@@ -6,11 +6,11 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import axios from "axios"
 import { useForm } from "react-hook-form"
 
-import { ITEM_LABELS } from "@/constants/item"
-import { apiRoutes, routes } from "@/constants/routes"
+import { routes } from "@/constants/routes"
 import { toastError } from "@/lib/api-response/api-responses"
 import { type ItemModel } from "@/lib/database/models/Item"
 import { Separator, toast } from "@shared/ui"
+import { apiRoutes } from "@/features/admin/common/constants/routes"
 import { CheckboxField } from "@/features/admin/common/ui/form/checkbox-field"
 import { FormContainer } from "@/features/admin/common/ui/form/form-container"
 import { InputField } from "@/features/admin/common/ui/form/input-field"
@@ -18,6 +18,7 @@ import { MultiImagesField } from "@/features/admin/common/ui/form/multi-images-f
 import { SelectField } from "@/features/admin/common/ui/form/select-field"
 
 import { type CategoryColumn } from "../../category/ui/columns"
+import { ITEM_LABELS } from "../constants/item"
 import { defaultData, itemSchema, type ItemFormData } from "../schemas/item"
 
 type Props = {

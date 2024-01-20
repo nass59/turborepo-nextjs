@@ -1,6 +1,6 @@
-import { BILLBOARD_LABELS } from "@/constants/billboard"
 import { parseData } from "@/lib/utils"
 import { DataTable, Separator } from "@shared/ui"
+import { BILLBOARD_LABELS } from "@/features/admin/billboard/constants/billboard"
 import { columnsData } from "@/features/admin/billboard/ui/columns"
 import { getAllBillboards } from "@/features/admin/billboard/utilities/billboard"
 import { ApiList } from "@/features/admin/common/ui/api-list"

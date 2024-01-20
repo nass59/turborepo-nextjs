@@ -1,7 +1,6 @@
 import { useRouter } from "next/navigation"
 
 import { routes } from "@/constants/routes"
-import { SPACE_LABELS } from "@/constants/space"
 import {
   cn,
   Command,
@@ -15,6 +14,7 @@ import {
 import { Icons } from "@/components/icons"
 import { type NavbarItem } from "@/features/admin/common/types/navbar"
 
+import { SPACE_LABELS } from "../constants/space"
 import { useSpaceModal } from "../hooks/use-space-modal"
 
 type Props = {
