@@ -6,13 +6,13 @@ import {
   type StaticParams,
 } from "@/types/common"
 import { Heading } from "@shared/ui"
-import { ContentContainer } from "@/components/content-container"
-import { Mdx } from "@/components/mdx-components"
 import { getPageMetadata } from "@/features/public/blog/metadata/metadata"
 import {
   getPageFromParams,
   getPageSlugs,
 } from "@/features/public/blog/utilities/page"
+import { ContentContainer } from "@/features/public/common/ui/content-container"
+import { Mdx } from "@/features/public/common/ui/mdx-components"
 
 export function generateMetadata({ params }: PageProps): PageMetadata {
   return getPageMetadata(params.slug) || {}

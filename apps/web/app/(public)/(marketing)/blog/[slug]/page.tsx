@@ -6,8 +6,6 @@ import {
   type PageProps,
   type StaticParams,
 } from "@/types/common"
-import { ContentContainer } from "@/components/content-container"
-import { Mdx } from "@/components/mdx-components"
 import { getPostMetadata } from "@/features/public/blog/metadata/metadata"
 import { BackLink } from "@/features/public/blog/ui/back-link"
 import { PostHeader } from "@/features/public/blog/ui/post-header"
@@ -15,6 +13,8 @@ import {
   getPostFromParams,
   getPostSlugs,
 } from "@/features/public/blog/utilities/post"
+import { ContentContainer } from "@/features/public/common/ui/content-container"
+import { Mdx } from "@/features/public/common/ui/mdx-components"
 
 /**
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function

@@ -1,11 +1,8 @@
-import * as React from "react"
 import Image from "next/image"
 import { type MDXComponents } from "mdx/types"
 import { useMDXComponent } from "next-contentlayer/hooks"
 
-import { cn } from "@shared/ui"
-import { Callout } from "@/components/callout"
-import { MdxCard } from "@/components/mdx-card"
+import { Callout, Card, cn } from "@shared/ui"
 
 const mdxComponents = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -29,7 +26,7 @@ const mdxComponents = {
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
-        "mt-8 scroll-m-20 text-2xl font-semibold tracking-tight",
+        "scroll-m-20 text-2xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -38,7 +35,7 @@ const mdxComponents = {
   h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
       className={cn(
-        "mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "scroll-m-20 text-xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -161,7 +158,7 @@ const mdxComponents = {
     />
   ),
   Callout,
-  Card: MdxCard,
+  Card,
 } as MDXComponents
 
 interface MdxProps {

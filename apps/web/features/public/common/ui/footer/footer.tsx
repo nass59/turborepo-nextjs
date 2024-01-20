@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site"
-import { FooterLink } from "@/components/footer/footer-link"
 import { Icons } from "@/components/icons"
+
+import { FooterLink } from "./footer-link"
 
 export const Footer = () => {
   return (

@@ -5,7 +5,7 @@ import {
   type PageProps,
   type StaticParams,
 } from "@/types/common"
-import { ContentContainer } from "@/components/content-container"
+import { ContentContainer } from "@/features/public/common/ui/content-container"
 import { getCategoryPageMetadata } from "@/features/public/explore/metadata/metadata"
 import { Billboard } from "@/features/public/explore/ui/billboard"
 import { List } from "@/features/public/explore/ui/list"

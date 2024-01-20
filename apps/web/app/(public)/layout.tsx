@@ -6,9 +6,9 @@ import { type LayoutProps } from "@/types/common"
 import { baseMetadata, baseViewport } from "@/constants/metadata"
 import { cn, Toaster } from "@shared/ui"
 import { Analytics } from "@/components/analytics"
-import { Help } from "@/components/helper"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Help } from "@/features/public/common/ui/helper"
 
 import "@shared/ui/styles/global.css"
 

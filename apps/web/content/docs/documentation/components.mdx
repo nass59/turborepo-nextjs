@@ -12,7 +12,7 @@ If you'd like to build and add your own custom components, see the [Custom Compo
 ### 1. Callout
 
 ```mdx
-<Callout type=" default | info | warning | danger ">
+<Callout variant=" default | success | warning | destructive ">
   This is a default callout. You can embed **Markdown** inside a `callout`.
 </Callout>
 ```
@@ -21,25 +21,25 @@ If you'd like to build and add your own custom components, see the [Custom Compo
   This is a default callout. You can embed **Markdown** inside a `callout`.
 </Callout>
 
-<Callout type="info">
-  This is a warning callout. It uses the props `type="info"`.
+<Callout variant="success">
+  This is a warning callout. It uses the props `type="success"`.
 </Callout>
 
-<Callout type="warning">
+<Callout variant="warning">
   This is a warning callout. It uses the props `type="warning"`.
 </Callout>
 
-<Callout type="danger">
+<Callout variant="destructive">
   This is a danger callout. It uses the props `type="danger"`.
 </Callout>
 
 ### 2. Card
 
 ```mdx
-<Card href="#">
+<Card>
   #### Heading
   You can use **markdown** inside cards.
-</Card>
+</CardT>
 ```
 
 <Card href="#">
@@ -82,7 +82,7 @@ You can also use HTML to embed cards in a grid.
 You can add your own custom components using the `components` props from `useMDXComponent`.
 
 ```ts title="components/mdx.tsx" {2,6}
-import { Callout } from "@/components/Callout"
+import { Callout } from "@shared/ui"
 import { CustomComponent } from "@/components/Custom"
 
 const mdxComponents = {

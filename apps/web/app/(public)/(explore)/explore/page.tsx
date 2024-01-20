@@ -1,4 +1,4 @@
-import { ContentContainer } from "@/components/content-container"
+import { ContentContainer } from "@/features/public/common/ui/content-container"
 import { Billboard } from "@/features/public/explore/ui/billboard"
 import { List } from "@/features/public/explore/ui/list"
 import { getBillboard } from "@/features/public/explore/utilities/billboard"

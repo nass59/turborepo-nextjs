@@ -1,6 +1,6 @@
 import { type LayoutProps } from "@/types/common"
-import { Footer } from "@/components/footer/footer"
-import { Header } from "@/components/header"
+import { Footer } from "@/features/public/common/ui/footer/footer"
+import { Header } from "@/features/public/common/ui/header/header"
 import { ModalProvider } from "@/features/public/explore/providers/modal-provider"
 import { getCategoryRoutes } from "@/features/public/explore/utilities/category"
 
