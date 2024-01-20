@@ -6,7 +6,7 @@ import {
   type StaticArrayParams,
 } from "@/types/common"
 import { Heading } from "@shared/ui"
-import { Mdx } from "@/components/mdx-components"
+import { Mdx } from "@/features/public/common/ui/mdx-components"
 import { getDocMetadata } from "@/features/public/docs/metadata/metadata"
 import { Pager } from "@/features/public/docs/ui/pager"
 import { TOC } from "@/features/public/docs/ui/toc"

@@ -7,9 +7,9 @@ import { type MainNavItem as TypeMainNavItem } from "types"
 import { Button } from "@shared/ui"
 import { Icons } from "@/components/icons"
 import { Logo } from "@/components/logo"
-import { MobileNav } from "@/components/nav/mobile-nav"
 
 import { MainNavItems } from "./main-nav-items"
+import { MobileNav } from "./mobile-nav"
 
 type Props = PropsWithChildren & {
   items?: TypeMainNavItem[]

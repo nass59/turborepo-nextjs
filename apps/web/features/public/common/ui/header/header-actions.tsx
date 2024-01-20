@@ -2,8 +2,7 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { Button, buttonVariants, cn } from "@shared/ui"
-
-import { Icons } from "./icons"
+import { Icons } from "@/components/icons"
 
 export const HeaderActions = () => {
   return (
