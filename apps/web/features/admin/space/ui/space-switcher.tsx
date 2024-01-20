@@ -3,12 +3,12 @@
 import { useState } from "react"
 import { useParams } from "next/navigation"
 
-import { SPACE_LABELS } from "@/constants/space"
 import { type SpaceModel } from "@/lib/database/models/Space"
 import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@shared/ui"
 import { Icons } from "@/components/icons"
 import { type NavbarItem } from "@/features/admin/common/types/navbar"
 
+import { SPACE_LABELS } from "../constants/space"
 import { SpaceCommand } from "./space-command"
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>

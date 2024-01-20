@@ -6,14 +6,14 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import axios from "axios"
 import { useForm } from "react-hook-form"
 
-import { apiRoutes } from "@/constants/routes"
-import { SPACE_LABELS } from "@/constants/space"
 import { toastError } from "@/lib/api-response/api-responses"
 import { type SpaceModel } from "@/lib/database/models/Space"
 import { settingSchema } from "@/lib/validation/setting"
 import { toast } from "@shared/ui"
+import { apiRoutes } from "@/features/admin/common/constants/routes"
 import { FormContainer } from "@/features/admin/common/ui/form/form-container"
 import { InputField } from "@/features/admin/common/ui/form/input-field"
+import { SPACE_LABELS } from "@/features/admin/space/constants/space"
 
 import { type SettingsFormData } from "../schemas/setting"
 

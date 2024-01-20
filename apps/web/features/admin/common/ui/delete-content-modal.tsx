@@ -5,7 +5,7 @@ import { useParams, useRouter } from "next/navigation"
 import { UpdateIcon } from "@radix-ui/react-icons"
 import axios from "axios"
 
-import { apiRoutes, routes } from "@/constants/routes"
+import { routes } from "@/constants/routes"
 import { toastError } from "@/lib/api-response/api-responses"
 import {
   AlertDialog,
@@ -21,6 +21,8 @@ import {
   toast,
 } from "@shared/ui"
 import { Icons } from "@/components/icons"
+
+import { apiRoutes } from "../constants/routes"
 
 type Props = {
   resource: string
@@ -66,7 +68,7 @@ export const DeleteContentModal = ({ resource }: Props) => {
             Are you absolutely sure to delete this resource?
           </AlertDialogTitle>
           <AlertDialogDescription>
-            "This action cannot be undone. This will permanently delete your
+            This action cannot be undone. This will permanently delete your
             resource.
           </AlertDialogDescription>
         </AlertDialogHeader>

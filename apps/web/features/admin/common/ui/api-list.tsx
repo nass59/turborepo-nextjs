@@ -1,5 +1,4 @@
-import { apiRoutes } from "@/constants/routes"
-
+import { apiRoutes } from "../constants/routes"
 import { Api } from "./api"
 
 type Props = {

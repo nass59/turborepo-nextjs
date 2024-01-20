@@ -3,7 +3,6 @@ import { useParams, useRouter } from "next/navigation"
 import { UpdateIcon } from "@radix-ui/react-icons"
 import axios from "axios"
 
-import { apiRoutes } from "@/constants/routes"
 import { toastError } from "@/lib/api-response/api-responses"
 import {
   AlertDialog,
@@ -16,6 +15,8 @@ import {
   AlertDialogTitle,
   toast,
 } from "@shared/ui"
+
+import { apiRoutes } from "../constants/routes"
 
 type Props = {
   resource: string

@@ -2,8 +2,9 @@
 
 import { type ColumnDef } from "@tanstack/react-table"
 
-import { BILLBOARD_LABELS } from "@/constants/billboard"
 import { CellAction } from "@/features/admin/common/ui/cell-action"
+
+import { BILLBOARD_LABELS } from "../constants/billboard"
 
 export type BillboardColumn = {
   id: string

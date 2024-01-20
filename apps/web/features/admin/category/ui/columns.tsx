@@ -2,8 +2,9 @@
 
 import { type ColumnDef } from "@tanstack/react-table"
 
-import { CATEGORY_LABELS } from "@/constants/category"
 import { CellAction } from "@/features/admin/common/ui/cell-action"
+
+import { CATEGORY_LABELS } from "../constants/category"
 
 export type CategoryColumn = {
   id: string

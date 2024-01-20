@@ -1,6 +1,6 @@
-import { CATEGORY_LABELS } from "@/constants/category"
 import { parseData } from "@/lib/utils"
 import { DataTable, Separator } from "@shared/ui"
+import { CATEGORY_LABELS } from "@/features/admin/category/constants/category"
 import { columnsData } from "@/features/admin/category/ui/columns"
 import { getAllCategories } from "@/features/admin/category/utilities/category"
 import { ApiList } from "@/features/admin/common/ui/api-list"

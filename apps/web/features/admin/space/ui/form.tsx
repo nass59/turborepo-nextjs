@@ -6,12 +6,13 @@ import { UpdateIcon } from "@radix-ui/react-icons"
 import axios from "axios"
 import { useForm } from "react-hook-form"
 
-import { apiRoutes, routes } from "@/constants/routes"
-import { SPACE_LABELS } from "@/constants/space"
+import { routes } from "@/constants/routes"
 import { toastError } from "@/lib/api-response/api-responses"
 import { Button, Form, FormFooter } from "@shared/ui"
+import { apiRoutes } from "@/features/admin/common/constants/routes"
 import { InputField } from "@/features/admin/common/ui/form/input-field"
 
+import { SPACE_LABELS } from "../constants/space"
 import { useSpaceModal } from "../hooks/use-space-modal"
 import { spaceSchema, type SpaceFormData } from "../schemas/space"
 

@@ -6,16 +6,17 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import axios from "axios"
 import { useForm } from "react-hook-form"
 
-import { CATEGORY_LABELS } from "@/constants/category"
-import { apiRoutes, routes } from "@/constants/routes"
+import { routes } from "@/constants/routes"
 import { toastError } from "@/lib/api-response/api-responses"
 import { type CategoryModel } from "@/lib/database/models/Category"
 import { toast } from "@shared/ui"
 import { type BillboardColumn } from "@/features/admin/billboard/ui/columns"
+import { apiRoutes } from "@/features/admin/common/constants/routes"
 import { FormContainer } from "@/features/admin/common/ui/form/form-container"
 import { InputField } from "@/features/admin/common/ui/form/input-field"
 import { SelectField } from "@/features/admin/common/ui/form/select-field"
 
+import { CATEGORY_LABELS } from "../constants/category"
 import {
   categorySchema,
   defaultData,
