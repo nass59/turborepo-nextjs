@@ -21,19 +21,19 @@ export default async function Page({ params }: Props) {
       <div className="grid grid-cols-3 gap-4">
         <CardOverview
           title="Total Billboards"
-          icon={<Icons.logo className="h-6 w-6" />}
+          icon={<Icons.logo className="size-6" />}
           value={overview.totalBillboards}
         />
 
         <CardOverview
           title="Total Categories"
-          icon={<Icons.space className="h-6 w-6" />}
+          icon={<Icons.space className="size-6" />}
           value={overview.totalCategories}
         />
 
         <CardOverview
           title="Total Items"
-          icon={<Icons.media className="h-6 w-6" />}
+          icon={<Icons.media className="size-6" />}
           value={overview.totalItems}
         />
 

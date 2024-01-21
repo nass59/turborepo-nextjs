@@ -28,6 +28,13 @@ export async function countAllCategoriesBySpaceId(
   return count(Category, { spaceId })
 }
 
+export async function countAllCategoriesBySpaceIdAndBillboardId(
+  spaceId: string,
+  billboardId: string
+): Promise<number> {
+  return count(Category, { spaceId, billboardId })
+}
+
 export async function createCategory(
   data: CategoryModelProps
 ): Promise<CategoryModel | null> {
