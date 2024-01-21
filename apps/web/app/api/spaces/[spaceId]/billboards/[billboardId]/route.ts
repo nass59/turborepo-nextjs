@@ -6,6 +6,7 @@ import {
   findOneBillboard,
   updateOneBillboard,
 } from "@/lib/database/billboard"
+import { countAllCategoriesBySpaceIdAndBillboardId } from "@/lib/database/category"
 import { findOneSpace } from "@/lib/database/space"
 
 type ApiProps = {
@@ -101,6 +102,19 @@ export async function DELETE(req: Request, { params }: DeleteProps) {
 
     if (!spaceByUserId) {
       return new NextResponse("Unauthorized", { status: 403 })
+    }
+
+    const categoriesWithBillboard =
+      await countAllCategoriesBySpaceIdAndBillboardId(
+        params.spaceId,
+        params.billboardId
+      )
+
+    if (categoriesWithBillboard > 0) {
+      return new NextResponse(
+        `You cannot delete this billboard. This billboard is attached to ${categoriesWithBillboard} categories. You must delete those categories before.`,
+        { status: 402 }
+      )
     }
 
     const billboard = await deleteOneBillboard(params.billboardId)
