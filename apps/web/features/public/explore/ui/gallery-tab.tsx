@@ -12,7 +12,7 @@ export const GalleryTab = ({ image }: Props) => {
     <Tab className="relative flex aspect-poster cursor-pointer items-center justify-center rounded-md bg-white">
       {({ selected }) => (
         <div>
-          <span className="h-full w-full overflow-hidden rounded-md">
+          <span className="size-full overflow-hidden rounded-md">
             <Image
               src={image}
               fill

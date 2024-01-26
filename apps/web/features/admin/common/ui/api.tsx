@@ -31,7 +31,7 @@ export const Api = ({ title, path, variant }: Props) => {
 
   return (
     <Alert className="flex flex-col gap-1">
-      <Icons.server className="h-4 w-4" />
+      <Icons.server className="size-4" />
       <AlertTitle className="flex items-center gap-x-2">
         {title}
         <Badge variant={variantMap[variant]}>{textMap[variant]}</Badge>

@@ -24,7 +24,7 @@ export const HeaderActions = () => {
           className="rounded-full focus:ring-2 focus:ring-slate-600 focus:ring-offset-2"
         >
           <Button variant="default" size="icon" tabIndex={-1}>
-            <Icons.github className="h-4 w-4 fill-white" />
+            <Icons.github className="size-4 fill-white" />
             <span className="sr-only">Github</span>
           </Button>
         </Link>

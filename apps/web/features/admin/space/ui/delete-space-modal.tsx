@@ -51,7 +51,7 @@ export const DeleteSpaceModal = () => {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant="destructive" size="icon">
-          <Icons.trash className="h-4 w-4" />
+          <Icons.trash className="size-4" />
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
@@ -67,7 +67,7 @@ export const DeleteSpaceModal = () => {
         <AlertDialogFooter>
           <AlertDialogCancel disabled={loading}>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={onDelete} disabled={loading}>
-            {loading && <UpdateIcon className="mr-2 h-4 w-4 animate-spin" />}
+            {loading && <UpdateIcon className="mr-2 size-4 animate-spin" />}
             <span>Delete</span>
           </AlertDialogAction>
         </AlertDialogFooter>

@@ -24,7 +24,7 @@ export const Pager = ({ url }: Props) => {
           href={pager.prev.href}
           className={buttonVariants({ variant: "ghost" })}
         >
-          <Icons.chevronLeft className="mr-2 h-4 w-4" />
+          <Icons.chevronLeft className="mr-2 size-4" />
           {pager.prev.title}
         </Link>
       )}
@@ -36,7 +36,7 @@ export const Pager = ({ url }: Props) => {
           className={cn(buttonVariants({ variant: "ghost" }), "ml-auto")}
         >
           {pager.next.title}
-          <Icons.chevronRight className="ml-2 h-4 w-4" />
+          <Icons.chevronRight className="ml-2 size-4" />
         </Link>
       )}
     </div>

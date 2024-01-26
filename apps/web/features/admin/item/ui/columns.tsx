@@ -21,17 +21,17 @@ const { columns, resource } = ITEM_LABELS.list
 
 const getIsArchivedIcon = (isArchived: boolean) => {
   return isArchived ? (
-    <Icons.eyeDisabled className="h-4 w-4 fill-slate-300 text-slate-500" />
+    <Icons.eyeDisabled className="size-4 fill-slate-300 text-slate-500" />
   ) : (
-    <Icons.eye className="h-4 w-4 text-slate-500" />
+    <Icons.eye className="size-4 text-slate-500" />
   )
 }
 
 const getIsFeaturedIcon = (isFeatured: boolean) => {
   return isFeatured ? (
-    <Icons.star className="h-4 w-4 fill-yellow-300 text-yellow-500" />
+    <Icons.star className="size-4 fill-yellow-300 text-yellow-500" />
   ) : (
-    <Icons.starDisabled className="h-4 w-4 fill-slate-300 text-slate-500" />
+    <Icons.starDisabled className="size-4 fill-slate-300 text-slate-500" />
   )
 }
 

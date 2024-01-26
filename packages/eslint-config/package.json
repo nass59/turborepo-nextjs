@@ -5,8 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "@types/eslint": "^8.56.2",
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
-    "@typescript-eslint/parser": "^6.19.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-turbo": "^1.11.3",
     "eslint-plugin-react": "^7.33.2"

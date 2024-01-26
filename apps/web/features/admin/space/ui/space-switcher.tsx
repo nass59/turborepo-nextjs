@@ -46,9 +46,9 @@ export const SpaceSwitcher = ({ className, items = [] }: Props) => {
           aria-label={SPACE_LABELS.switcher.label}
           className={cn("w-[200px] justify-between", className)}
         >
-          <Icons.space className="mr-2 h-4 w-4" />
+          <Icons.space className="mr-2 size-4" />
           {currentSpace?.label}
-          <Icons.chevronDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
+          <Icons.chevronDown className="ml-auto size-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
