@@ -23,7 +23,7 @@ export const AddButton = ({ labels, path }: Props) => {
 
   return (
     <Button onClick={() => onClick()}>
-      <Icons.add className="mr-2 h-4 w-4" />
+      <Icons.add className="mr-2 size-4" />
       {labels.add}
     </Button>
   )

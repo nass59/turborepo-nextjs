@@ -18,7 +18,7 @@ export const Billboard = ({ data }: Props) => {
           </div>
         </div>
 
-        <figure className="absolute left-0 top-0 h-full w-full object-cover">
+        <figure className="absolute left-0 top-0 size-full object-cover">
           <Image
             src={data?.imageUrl}
             alt={data?.label}

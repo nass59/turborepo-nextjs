@@ -60,7 +60,7 @@ export const SpaceForm = () => {
             Cancel
           </Button>
           <Button disabled={loading} type="submit">
-            {loading && <UpdateIcon className="mr-2 h-4 w-4 animate-spin" />}
+            {loading && <UpdateIcon className="mr-2 size-4 animate-spin" />}
             <span>Continue</span>
           </Button>
         </FormFooter>

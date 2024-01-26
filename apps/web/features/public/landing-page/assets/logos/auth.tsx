@@ -5,7 +5,7 @@ export const Auth = () => {
         viewBox="0 0 24 24"
         stroke="#bd9a0f"
         strokeWidth="1"
-        className="h-12 w-12 fill-current"
+        className="size-12 fill-current"
       >
         <path
           fill="#facc15"

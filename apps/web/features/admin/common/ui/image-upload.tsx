@@ -38,7 +38,7 @@ export const ImageUpload = ({
         {value.map((url) => (
           <div
             key={url}
-            className="relative h-[280px] w-[280px] overflow-hidden rounded-md"
+            className="relative size-[280px] overflow-hidden rounded-md"
           >
             <div className="absolute right-2 top-2 z-10">
               <Button
@@ -47,7 +47,7 @@ export const ImageUpload = ({
                 variant="destructive"
                 size="icon"
               >
-                <Icons.trash className="h-4 w-4" />
+                <Icons.trash className="size-4" />
               </Button>
             </div>
 
@@ -99,7 +99,7 @@ export const ImageUpload = ({
               variant="secondary"
               onClick={onClick}
             >
-              <Icons.mediaPlus className="mr-2 h-4 w-4" />
+              <Icons.mediaPlus className="mr-2 size-4" />
               Upload an image
             </Button>
           )

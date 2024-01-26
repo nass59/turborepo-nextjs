@@ -35,7 +35,7 @@ export const Modal = ({ open, onClose, children }: Props) => {
                       size="icon"
                       className="transition hover:scale-110"
                     >
-                      <Icons.close className="h-4 w-4" />
+                      <Icons.close className="size-4" />
                     </Button>
                   </div>
                   {children}

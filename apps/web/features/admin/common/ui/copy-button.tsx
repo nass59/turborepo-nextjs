@@ -19,7 +19,7 @@ export const CopyButton = ({ description, message }: Props) => {
       size="icon"
       onClick={() => onCopy(description, message)}
     >
-      <Icons.copy className="h-4 w-4" />
+      <Icons.copy className="size-4" />
     </Button>
   )
 }

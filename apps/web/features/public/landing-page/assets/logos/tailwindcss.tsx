@@ -1,7 +1,7 @@
 export const TailwindCSS = () => {
   return (
     <>
-      <svg viewBox="0 0 256 153.6" className="h-12 w-12 fill-current">
+      <svg viewBox="0 0 256 153.6" className="size-12 fill-current">
         <linearGradient id="a" x1="-2.778%" y1="32%" y2="67.556%">
           <stop offset="0" stopColor="#2298bd"></stop>
           <stop offset="1" stopColor="#0ed7b5"></stop>

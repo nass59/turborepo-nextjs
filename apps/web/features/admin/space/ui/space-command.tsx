@@ -51,11 +51,11 @@ export const SpaceCommand = ({ items, current, setOpen }: Props) => {
               onSelect={() => onSelect(item)}
               className="cursor-pointer text-sm"
             >
-              <Icons.space className="mr-2 h-4 w-4" />
+              <Icons.space className="mr-2 size-4" />
               {item.label}
               <Icons.check
                 className={cn(
-                  "ml-auto h-4 w-4",
+                  "ml-auto size-4",
                   current?.value === item.value ? "opacity-100" : "opacity-0"
                 )}
               />
@@ -67,7 +67,7 @@ export const SpaceCommand = ({ items, current, setOpen }: Props) => {
       <CommandList>
         <CommandGroup>
           <CommandItem className="cursor-pointer" onSelect={() => onCreate()}>
-            <Icons.plusCircle className="mr-2 h-5 w-5" />
+            <Icons.plusCircle className="mr-2 size-5" />
             {labels.create}
           </CommandItem>
         </CommandGroup>
