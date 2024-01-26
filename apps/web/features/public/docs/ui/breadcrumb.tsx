@@ -7,7 +7,7 @@ export const Breadcrumb = () => {
     <div className="hidden rounded-md bg-slate-50 px-5 py-2 sm:flex">
       <div className="flex space-x-1 text-sm font-medium">
         <div className="flex items-center">
-          <Icons.tree className="h-4 w-4" />
+          <Icons.tree className="size-4" />
           <span className="px-2 text-slate-400">TechShip</span>
         </div>
 

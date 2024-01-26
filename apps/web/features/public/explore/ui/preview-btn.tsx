@@ -28,7 +28,7 @@ export const PreviewBtn = ({ data }: Props) => {
           size="icon"
           className="bg-white text-black transition hover:scale-110"
         >
-          <Icons.expand className="h-4 w-4" />
+          <Icons.expand className="size-4" />
         </Button>
       </div>
     </div>

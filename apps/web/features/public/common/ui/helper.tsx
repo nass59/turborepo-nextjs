@@ -12,8 +12,8 @@ export const Help = () => {
     <div>
       <div>
         <Popover>
-          <PopoverTrigger className="fixed bottom-4 right-8 inline-flex h-10 w-10 items-center justify-center rounded-full border bg-slate-900 text-white">
-            <Icons.bell className="h-5 w-5" />
+          <PopoverTrigger className="fixed bottom-4 right-8 inline-flex size-10 items-center justify-center rounded-full border bg-slate-900 text-white">
+            <Icons.bell className="size-5" />
             <span className="sr-only">Toggle</span>
           </PopoverTrigger>
           <PopoverContent className="mb-1 mr-8 w-[300px] bg-slate-900 p-4 text-sm text-white">

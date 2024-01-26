@@ -15,7 +15,7 @@ export const Gallery = ({ images }: Props) => {
       <Tab.Panels>
         {images.map((image) => (
           <Tab.Panel key={image}>
-            <div className="relative aspect-poster h-full w-full overflow-hidden rounded-lg">
+            <div className="relative aspect-poster size-full overflow-hidden rounded-lg">
               <Image
                 src={image}
                 fill
