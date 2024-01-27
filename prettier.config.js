@@ -20,7 +20,7 @@ module.exports = {
     "^@shared/ui$",
     "^@/components/(.*)$",
     "^@/features/(.*)$",
-    "^@/styles/(.*)$",
+    "^@/assets/styles/(.*)$",
     "^@/app/(.*)$",
     "",
     "^[./]",

@@ -16,7 +16,7 @@ import {
 } from "@/features/public/docs/utilities/doc"
 import { getTableOfContents } from "@/features/public/docs/utilities/toc"
 
-import "@/styles/mdx.css"
+import "@/assets/styles/mdx.css"
 
 export function generateMetadata({ params }: ArrayPageProps): PageMetadata {
   return getDocMetadata(params?.slug?.join("/") || "") || {}
