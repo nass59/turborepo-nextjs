@@ -1,9 +1,8 @@
 import Link from "next/link"
+import { RocketIcon } from "@radix-ui/react-icons"
 
 import { siteConfig } from "@/config/site"
 import { buttonVariants, cn } from "@shared/ui"
-
-import { Icons } from "./icons"
 
 export const Logo = ({ ...props }) => {
   return (
@@ -15,7 +14,7 @@ export const Logo = ({ ...props }) => {
       )}
       {...props}
     >
-      <Icons.logo />
+      <RocketIcon className="size-6" />
       <span className="font-bold">{siteConfig.name}</span>
     </Link>
   )
