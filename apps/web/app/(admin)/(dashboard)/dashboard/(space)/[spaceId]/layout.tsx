@@ -4,6 +4,7 @@ import { type LayoutProps } from "@/types/common"
 import { routes } from "@/constants/routes"
 import { Container } from "@/features/admin/common/ui/container"
 import { Navbar } from "@/features/admin/common/ui/navbar"
+import { Sidebar } from "@/features/admin/common/ui/sidebar"
 import { getCurrentUserId } from "@/features/admin/common/utilities/user"
 import { getSpace } from "@/features/admin/space/utilities/space"
 
@@ -26,6 +27,7 @@ export default async function Layout({ children, params }: SpaceLayoutProps) {
   return (
     <>
       <Navbar />
+      <Sidebar />
       <Container>{children}</Container>
     </>
   )
