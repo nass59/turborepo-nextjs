@@ -27,7 +27,9 @@ export default async function Layout({ children, params }: SpaceLayoutProps) {
   return (
     <>
       <Navbar />
-      <Sidebar />
+      <div className="fixed inset-y-0 z-50 hidden h-full w-56 flex-col md:flex">
+        <Sidebar />
+      </div>
       <Container>{children}</Container>
     </>
   )
