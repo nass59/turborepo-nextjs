@@ -13,19 +13,17 @@ export const Sidebar = async () => {
   const spaces = await getAllSpaces(userId)
 
   return (
-    <div className="fixed inset-y-0 z-50 hidden h-full w-56 flex-col md:flex">
-      <div className="flex h-full flex-col overflow-y-auto border-r bg-background shadow-sm">
-        <div className="text-md flex gap-2 px-8 py-5 font-semibold">
-          <RocketIcon className="size-6" />
-          <span className="font-bold">{siteConfig.name}</span>
-        </div>
-
-        <div className="mb-4 flex flex-col items-center justify-center gap-1 bg-slate-500/20 py-4">
-          <SpaceSwitcher items={parseData(spaces)} />
-        </div>
-
-        <MainNav />
+    <div className="flex h-full flex-col overflow-y-auto border-r bg-background shadow-sm">
+      <div className="text-md flex gap-2 px-8 py-5 font-semibold">
+        <RocketIcon className="size-6" />
+        <span className="font-bold">{siteConfig.name}</span>
       </div>
+
+      <div className="mb-4 flex flex-col items-center justify-center gap-1 bg-slate-500/20 py-4">
+        <SpaceSwitcher items={parseData(spaces)} />
+      </div>
+
+      <MainNav />
     </div>
   )
 }
