@@ -20,6 +20,16 @@ export const navRoutes = [
     label: "Items",
   },
   {
+    path: `/courses`,
+    key: "courses",
+    label: "Courses",
+  },
+  {
+    path: `/analytics`,
+    key: "analytics",
+    label: "Analytics",
+  },
+  {
     path: `/settings`,
     key: "settings",
     label: "Settings",
