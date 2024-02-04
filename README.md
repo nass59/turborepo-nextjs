@@ -17,7 +17,7 @@ An open source application built using the new router, server components and eve
 - ⏱️ Loading UI
 - 🛠️ Server and Client Components
 - 🚦 API Routes and Middlewares
-- 👮‍♂️ Authentication using **NextAuth.js**
+- 👮‍♂️ Authentication using **Clerk**
 - 🌱 Database using **MongoDB**
 - 🧩 UI Components built using **Radix UI**
 - 🎨 Styled using **Tailwind CSS**
