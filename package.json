@@ -9,6 +9,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
+    "dev:turbo": "turbo run dev:turbo --parallel",
     "lint": "turbo run lint",
     "lint:fix": "turbo lint -- --fix && manypkg fix",
     "manypkg:fix": "manypkg fix",
