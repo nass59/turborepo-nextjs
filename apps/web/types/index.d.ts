@@ -16,7 +16,6 @@ export type SidebarNavItem = {
   title: string
   items?: NavItem[]
   href?: string
-  icon?: keyof typeof Icons
   disabled?: boolean
 }
 
@@ -40,11 +39,6 @@ export type MarketingConfig = {
 }
 
 export type DocsConfig = {
-  sidebarNav: SidebarNavItem[]
-}
-
-export type DashboardConfig = {
-  mainNav: MainNavItem[]
   sidebarNav: SidebarNavItem[]
 }
 

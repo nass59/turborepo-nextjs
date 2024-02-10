@@ -1,8 +1,8 @@
 import { Fragment } from "react"
 import { Dialog, Transition } from "@headlessui/react"
+import { Cross2Icon } from "@radix-ui/react-icons"
 
 import { Button } from "@shared/ui"
-import { Icons } from "@/components/icons"
 
 type Props = {
   open: boolean
@@ -35,7 +35,7 @@ export const Modal = ({ open, onClose, children }: Props) => {
                       size="icon"
                       className="transition hover:scale-110"
                     >
-                      <Icons.close className="size-4" />
+                      <Cross2Icon className="size-4" />
                     </Button>
                   </div>
                   {children}

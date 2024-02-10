@@ -1,6 +1,13 @@
+import {
+  BadgeIcon,
+  BookmarkIcon,
+  ImageIcon,
+  MixIcon,
+  RocketIcon,
+} from "@radix-ui/react-icons"
+
 import { parseData } from "@/lib/utils"
 import { Heading } from "@shared/ui"
-import { Icons } from "@/components/icons"
 import { getOverview } from "@/features/admin/common/utilities/overview"
 import { CardOverview } from "@/features/admin/home/ui/card-overview"
 import { Chart } from "@/features/admin/home/ui/chart"
@@ -21,19 +28,19 @@ export default async function Page({ params }: Props) {
       <div className="grid grid-cols-3 gap-4">
         <CardOverview
           title="Total Billboards"
-          icon={<Icons.logo className="size-6" />}
+          icon={<RocketIcon className="size-6" />}
           value={overview.totalBillboards}
         />
 
         <CardOverview
           title="Total Categories"
-          icon={<Icons.space className="size-6" />}
+          icon={<BookmarkIcon className="size-6" />}
           value={overview.totalCategories}
         />
 
         <CardOverview
           title="Total Items"
-          icon={<Icons.media className="size-6" />}
+          icon={<ImageIcon className="size-6" />}
           value={overview.totalItems}
         />
 

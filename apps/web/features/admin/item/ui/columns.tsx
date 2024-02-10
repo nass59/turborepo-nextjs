@@ -1,9 +1,14 @@
 "use client"
 
+import {
+  EyeClosedIcon,
+  EyeOpenIcon,
+  StarFilledIcon,
+  StarIcon,
+} from "@radix-ui/react-icons"
 import { type ColumnDef } from "@tanstack/react-table"
 
 import { Badge } from "@shared/ui"
-import { Icons } from "@/components/icons"
 import { CellAction } from "@/features/admin/common/ui/cell-action"
 
 import { ITEM_LABELS } from "../constants/item"
@@ -21,17 +26,17 @@ const { columns, resource } = ITEM_LABELS.list
 
 const getIsArchivedIcon = (isArchived: boolean) => {
   return isArchived ? (
-    <Icons.eyeDisabled className="size-4 fill-slate-300 text-slate-500" />
+    <EyeClosedIcon className="size-4 fill-slate-300 text-slate-500" />
   ) : (
-    <Icons.eye className="size-4 text-slate-500" />
+    <EyeOpenIcon className="size-4 text-slate-500" />
   )
 }
 
 const getIsFeaturedIcon = (isFeatured: boolean) => {
   return isFeatured ? (
-    <Icons.star className="size-4 fill-yellow-300 text-yellow-500" />
+    <StarFilledIcon className="size-4 fill-yellow-300 text-yellow-500" />
   ) : (
-    <Icons.starDisabled className="size-4 fill-slate-300 text-slate-500" />
+    <StarIcon className="size-4 fill-slate-300 text-slate-500" />
   )
 }
 

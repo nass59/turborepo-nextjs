@@ -2,6 +2,12 @@
 
 import { useState } from "react"
 import { useParams, useRouter } from "next/navigation"
+import {
+  CopyIcon,
+  DotsHorizontalIcon,
+  Pencil2Icon,
+  TrashIcon,
+} from "@radix-ui/react-icons"
 
 import { routes } from "@/constants/routes"
 import {
@@ -12,7 +18,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@shared/ui"
-import { Icons } from "@/components/icons"
 import { type BillboardColumn } from "@/features/admin/billboard/ui/columns"
 import { type CategoryColumn } from "@/features/admin/category/ui/columns"
 import { type ItemColumn } from "@/features/admin/item/ui/columns"
@@ -56,21 +61,21 @@ export const CellAction = ({ data, resource, labels }: Props) => {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="size-8 p-0">
             <span className="sr-only">{labels.open}</span>
-            <Icons.moreHorizontal className="size-4" />
+            <DotsHorizontalIcon className="size-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>{labels.label}</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => onCopy(data.id, labels.copied)}>
-            <Icons.copy className="mr-2 size-4" />
+            <CopyIcon className="mr-2 size-4" />
             {labels.copy}
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => onClick()}>
-            <Icons.edit className="mr-2 size-4" />
+            <Pencil2Icon className="mr-2 size-4" />
             {labels.update}
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
-            <Icons.trash className="mr-2 size-4" />
+            <TrashIcon className="mr-2 size-4" />
             {labels.delete}
           </DropdownMenuItem>
         </DropdownMenuContent>

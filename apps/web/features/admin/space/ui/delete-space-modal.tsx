@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useParams, useRouter } from "next/navigation"
-import { UpdateIcon } from "@radix-ui/react-icons"
+import { TrashIcon, UpdateIcon } from "@radix-ui/react-icons"
 import axios from "axios"
 
 import { routes } from "@/constants/routes"
@@ -20,7 +20,6 @@ import {
   Button,
   toast,
 } from "@shared/ui"
-import { Icons } from "@/components/icons"
 import { apiRoutes } from "@/features/admin/common/constants/routes"
 
 export const DeleteSpaceModal = () => {
@@ -51,7 +50,7 @@ export const DeleteSpaceModal = () => {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant="destructive" size="icon">
-          <Icons.trash className="size-4" />
+          <TrashIcon className="size-4" />
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
