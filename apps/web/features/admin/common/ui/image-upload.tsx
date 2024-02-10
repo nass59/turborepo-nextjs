@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import { ImageIcon, TrashIcon } from "@radix-ui/react-icons"
 import { CldUploadWidget } from "next-cloudinary"
 
 import { Button } from "@shared/ui"
-import { Icons } from "@/components/icons"
 
 type Props = {
   disabled?: boolean
@@ -47,7 +47,7 @@ export const ImageUpload = ({
                 variant="destructive"
                 size="icon"
               >
-                <Icons.trash className="size-4" />
+                <TrashIcon className="size-4" />
               </Button>
             </div>
 
@@ -99,7 +99,7 @@ export const ImageUpload = ({
               variant="secondary"
               onClick={onClick}
             >
-              <Icons.mediaPlus className="mr-2 size-4" />
+              <ImageIcon className="mr-2 size-4" />
               Upload an image
             </Button>
           )

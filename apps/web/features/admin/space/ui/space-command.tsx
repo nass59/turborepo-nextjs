@@ -1,4 +1,9 @@
 import { useRouter } from "next/navigation"
+import {
+  CheckIcon,
+  PlusCircledIcon,
+  RadiobuttonIcon,
+} from "@radix-ui/react-icons"
 
 import { routes } from "@/constants/routes"
 import {
@@ -11,7 +16,6 @@ import {
   CommandList,
   CommandSeparator,
 } from "@shared/ui"
-import { Icons } from "@/components/icons"
 import { type NavbarItem } from "@/features/admin/common/types/navbar"
 
 import { SPACE_LABELS } from "../constants/space"
@@ -51,9 +55,9 @@ export const SpaceCommand = ({ items, current, setOpen }: Props) => {
               onSelect={() => onSelect(item)}
               className="cursor-pointer text-sm"
             >
-              <Icons.space className="mr-2 size-4" />
+              <RadiobuttonIcon className="mr-2 size-4" />
               {item.label}
-              <Icons.check
+              <CheckIcon
                 className={cn(
                   "ml-auto size-4",
                   current?.value === item.value ? "opacity-100" : "opacity-0"
@@ -67,7 +71,7 @@ export const SpaceCommand = ({ items, current, setOpen }: Props) => {
       <CommandList>
         <CommandGroup>
           <CommandItem className="cursor-pointer" onSelect={() => onCreate()}>
-            <Icons.plusCircle className="mr-2 size-5" />
+            <PlusCircledIcon className="mr-2 size-5" />
             {labels.create}
           </CommandItem>
         </CommandGroup>

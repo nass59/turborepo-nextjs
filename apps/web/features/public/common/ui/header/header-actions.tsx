@@ -1,8 +1,8 @@
 import Link from "next/link"
+import { GitHubLogoIcon } from "@radix-ui/react-icons"
 
 import { siteConfig } from "@/config/site"
 import { Button, buttonVariants, cn } from "@shared/ui"
-import { Icons } from "@/components/icons"
 
 export const HeaderActions = () => {
   return (
@@ -24,7 +24,7 @@ export const HeaderActions = () => {
           className="rounded-full focus:ring-2 focus:ring-slate-600 focus:ring-offset-2"
         >
           <Button variant="default" size="icon" tabIndex={-1}>
-            <Icons.github className="size-4 fill-white" />
+            <GitHubLogoIcon className="size-4" />
             <span className="sr-only">Github</span>
           </Button>
         </Link>

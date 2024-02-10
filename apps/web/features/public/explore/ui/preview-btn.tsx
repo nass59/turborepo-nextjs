@@ -1,10 +1,10 @@
 "use client"
 
 import { type MouseEventHandler } from "react"
+import { EnterFullScreenIcon } from "@radix-ui/react-icons"
 
 import { type ItemModel } from "@/lib/database/models/Item"
 import { Button } from "@shared/ui"
-import { Icons } from "@/components/icons"
 import { usePreviewModal } from "@/features/public/explore/hooks/use-preview-modal"
 
 type Props = {
@@ -28,7 +28,7 @@ export const PreviewBtn = ({ data }: Props) => {
           size="icon"
           className="bg-white text-black transition hover:scale-110"
         >
-          <Icons.expand className="size-4" />
+          <EnterFullScreenIcon className="size-4" />
         </Button>
       </div>
     </div>

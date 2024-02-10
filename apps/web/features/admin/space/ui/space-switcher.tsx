@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 import { useParams } from "next/navigation"
+import { ChevronDownIcon, MixIcon } from "@radix-ui/react-icons"
 
 import { type SpaceModel } from "@/lib/database/models/Space"
 import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@shared/ui"
-import { Icons } from "@/components/icons"
 import { type NavbarItem } from "@/features/admin/common/types/navbar"
 
 import { SPACE_LABELS } from "../constants/space"
@@ -46,9 +46,9 @@ export const SpaceSwitcher = ({ className, items = [] }: Props) => {
           aria-label={SPACE_LABELS.switcher.label}
           className={cn("w-[200px] justify-between", className)}
         >
-          <Icons.space className="mr-2 size-4" />
+          <MixIcon className="mr-2 size-4" />
           {currentSpace?.label}
-          <Icons.chevronDown className="ml-auto size-4 shrink-0 opacity-50" />
+          <ChevronDownIcon className="ml-auto size-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">

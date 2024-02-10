@@ -1,9 +1,9 @@
 "use client"
 
 import React from "react"
+import { CopyIcon } from "@radix-ui/react-icons"
 
 import { Button } from "@shared/ui"
-import { Icons } from "@/components/icons"
 
 import { onCopy } from "../utilities/copy"
 
@@ -19,7 +19,7 @@ export const CopyButton = ({ description, message }: Props) => {
       size="icon"
       onClick={() => onCopy(description, message)}
     >
-      <Icons.copy className="size-4" />
+      <CopyIcon className="size-4" />
     </Button>
   )
 }

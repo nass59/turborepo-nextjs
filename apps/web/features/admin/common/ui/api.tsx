@@ -1,3 +1,4 @@
+import { CodeIcon } from "@radix-ui/react-icons"
 import {
   Alert,
   AlertDescription,
@@ -6,7 +7,6 @@ import {
 
 import { env } from "@/env.mjs"
 import { Badge, type BadgeProps } from "@shared/ui"
-import { Icons } from "@/components/icons"
 
 import { CopyButton } from "./copy-button"
 
@@ -31,7 +31,7 @@ export const Api = ({ title, path, variant }: Props) => {
 
   return (
     <Alert className="flex flex-col gap-1">
-      <Icons.server className="size-4" />
+      <CodeIcon className="size-4" />
       <AlertTitle className="flex items-center gap-x-2">
         {title}
         <Badge variant={variantMap[variant]}>{textMap[variant]}</Badge>

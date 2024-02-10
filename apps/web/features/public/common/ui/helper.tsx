@@ -1,11 +1,11 @@
 "use client"
 
 import Image from "next/image"
+import { BellIcon } from "@radix-ui/react-icons"
 import OgImage from "public/og-light.jpg"
 
 import { siteConfig } from "@/config/site"
 import { Popover, PopoverContent, PopoverTrigger } from "@shared/ui"
-import { Icons } from "@/components/icons"
 
 export const Help = () => {
   return (
@@ -13,7 +13,7 @@ export const Help = () => {
       <div>
         <Popover>
           <PopoverTrigger className="fixed bottom-4 right-8 inline-flex size-10 items-center justify-center rounded-full border bg-slate-900 text-white">
-            <Icons.bell className="size-5" />
+            <BellIcon className="size-5" />
             <span className="sr-only">Toggle</span>
           </PopoverTrigger>
           <PopoverContent className="mb-1 mr-8 w-[300px] bg-slate-900 p-4 text-sm text-white">

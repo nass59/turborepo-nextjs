@@ -44,7 +44,7 @@ export const shadcnPlugin = plugin(
         "--secondary-foreground": "210 40% 98%",
         "--accent": "217.2 32.6% 17.5%",
         "--accent-foreground": "210 40% 98%",
-        "--destructive": "0 62.8% 30.6%",
+        "--destructive": "0 70% 50%",
         "--destructive-foreground": "0 85.7% 97.3%",
         "--ring": "217.2 32.6% 17.5%",
       },

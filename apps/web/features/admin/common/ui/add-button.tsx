@@ -1,10 +1,10 @@
 "use client"
 
 import { useParams, useRouter } from "next/navigation"
+import { PlusIcon } from "@radix-ui/react-icons"
 
 import { routes } from "@/constants/routes"
 import { Button } from "@shared/ui"
-import { Icons } from "@/components/icons"
 
 type Props = {
   labels: {
@@ -23,7 +23,7 @@ export const AddButton = ({ labels, path }: Props) => {
 
   return (
     <Button onClick={() => onClick()}>
-      <Icons.add className="mr-2 size-4" />
+      <PlusIcon className="mr-2 size-4" />
       {labels.add}
     </Button>
   )

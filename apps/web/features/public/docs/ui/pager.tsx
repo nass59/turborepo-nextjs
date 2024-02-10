@@ -1,7 +1,7 @@
 import Link from "next/link"
+import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons"
 
 import { buttonVariants, cn } from "@shared/ui"
-import { Icons } from "@/components/icons"
 
 import { getPagerForDoc } from "../utilities/pager"
 
@@ -24,7 +24,7 @@ export const Pager = ({ url }: Props) => {
           href={pager.prev.href}
           className={buttonVariants({ variant: "ghost" })}
         >
-          <Icons.chevronLeft className="mr-2 size-4" />
+          <ArrowLeftIcon className="mr-2 size-4" />
           {pager.prev.title}
         </Link>
       )}
@@ -36,7 +36,7 @@ export const Pager = ({ url }: Props) => {
           className={cn(buttonVariants({ variant: "ghost" }), "ml-auto")}
         >
           {pager.next.title}
-          <Icons.chevronRight className="ml-2 size-4" />
+          <ArrowRightIcon className="ml-2 size-4" />
         </Link>
       )}
     </div>
