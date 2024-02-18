@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { useForm } from "react-hook-form"

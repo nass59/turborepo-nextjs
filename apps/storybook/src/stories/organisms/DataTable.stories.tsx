@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useState } from "react"
 import { CaretSortIcon, ChevronDownIcon } from "@radix-ui/react-icons"
 import type { Meta, StoryObj } from "@storybook/react"
