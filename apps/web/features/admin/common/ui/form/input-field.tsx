@@ -2,6 +2,7 @@ import { type Control } from "react-hook-form"
 
 import {
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -14,6 +15,7 @@ type Props = {
     name: string
     label: string
     placeholder: string
+    description?: string
   }
   loading?: boolean
   control: Control<any>
@@ -34,6 +36,9 @@ export const InputField = ({ labels, loading, control }: Props) => {
               {...field}
             />
           </FormControl>
+          {labels.description && (
+            <FormDescription>{labels.description}</FormDescription>
+          )}
           <FormMessage />
         </FormItem>
       )}

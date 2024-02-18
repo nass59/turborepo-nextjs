@@ -30,10 +30,15 @@ export const COURSE_LABELS = {
     resourceId: "courseId",
   },
   form: {
-    name: {
-      name: "name",
-      label: "Label",
-      placeholder: "Course name",
+    imageUrl: {
+      name: "imageUrl",
+      label: "Course Image",
+    },
+    title: {
+      name: "title",
+      label: "Title",
+      placeholder: "Course title",
+      description: "What will you teach in this course?",
     },
   },
   create: {
