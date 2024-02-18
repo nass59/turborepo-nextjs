@@ -1,10 +1,4 @@
-import {
-  BadgeIcon,
-  BookmarkIcon,
-  ImageIcon,
-  MixIcon,
-  RocketIcon,
-} from "@radix-ui/react-icons"
+import { BookmarkIcon, ImageIcon, RocketIcon } from "@radix-ui/react-icons"
 
 import { parseData } from "@/lib/utils"
 import { Heading } from "@shared/ui"
