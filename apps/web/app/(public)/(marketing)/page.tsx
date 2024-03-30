@@ -22,14 +22,14 @@ export default async function Page() {
   return (
     <>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-20">
-        <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
+        <div className="container flex max-w-5xl flex-col items-center gap-4 text-center">
           <h1 className="font-heading text-5xl sm:text-5xl md:text-6xl lg:text-7xl">
             Hello World !
           </h1>
 
           <Space3 />
 
-          <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+          <p className="max-w-2xl leading-normal text-muted-foreground sm:text-xl sm:leading-8">
             I&apos;m building a web app with Next.js 14 and open sourcing
             everything. Follow along as we figure this out together.
           </p>
