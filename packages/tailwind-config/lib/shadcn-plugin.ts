@@ -86,8 +86,8 @@ export const shadcnPlugin = plugin(
             foreground: "hsl(var(--secondary-foreground))",
           },
           destructive: {
-            DEFAULT: "hsl(var(--destructive))",
-            foreground: "hsl(var(--destructive-foreground))",
+            DEFAULT: "hsl(var(--destructive) / <alpha-value>)",
+            foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
           },
           muted: {
             DEFAULT: "hsl(var(--muted))",
@@ -107,8 +107,9 @@ export const shadcnPlugin = plugin(
           },
         },
         borderRadius: {
-          lg: "var(--radius)",
-          md: "calc(var(--radius) - 2px)",
+          xl: `calc(var(--radius) + 4px)`,
+          lg: `var(--radius)`,
+          md: `calc(var(--radius) - 2px)`,
           sm: "calc(var(--radius) - 4px)",
         },
         fontFamily: {
@@ -124,10 +125,15 @@ export const shadcnPlugin = plugin(
             from: { height: "var(--radix-accordion-content-height)" },
             to: { height: "0" },
           },
+          "caret-blink": {
+            "0%,70%,100%": { opacity: "1" },
+            "20%,50%": { opacity: "0" },
+          },
         },
         animation: {
           "accordion-down": "accordion-down 0.2s ease-out",
           "accordion-up": "accordion-up 0.2s ease-out",
+          "caret-blink": "caret-blink 1.25s ease-out infinite",
         },
         aspectRatio: {
           poster: "3 / 4",
