@@ -1,6 +1,5 @@
 import { UserButton } from "@clerk/nextjs"
 
-import { routes } from "@/constants/routes"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 import { MobileNav } from "./mobile-nav"
@@ -15,7 +14,7 @@ export const Navbar = () => {
         <div className="ml-auto flex items-center space-x-4">
           <NavbarActions />
           <ThemeToggle />
-          <UserButton afterSignOutUrl={routes.home} />
+          <UserButton />
         </div>
       </div>
     </header>
