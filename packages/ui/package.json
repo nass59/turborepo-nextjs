@@ -12,16 +12,16 @@
     "@shared/eslint-config": "workspace:*",
     "@shared/tailwind-config": "workspace:*",
     "@shared/ts-config": "workspace:*",
-    "@types/react": "^18.2.73",
-    "@types/react-dom": "^18.2.23",
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
     "eslint": "^8.57.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.3",
-    "typescript": "5.4.3"
+    "typescript": "5.4.5"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.3.4",
+    "@hookform/resolvers": "^3.4.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-checkbox": "^1.0.4",
@@ -34,12 +34,12 @@
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.5",
-    "@tanstack/react-table": "^8.15.3",
+    "@tanstack/react-table": "^8.17.3",
     "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.0",
+    "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
-    "react-hook-form": "^7.51.2",
-    "tailwind-merge": "^2.2.2",
+    "react-hook-form": "^7.51.5",
+    "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   }
 }
