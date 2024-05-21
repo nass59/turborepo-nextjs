@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { auth } from "@clerk/nextjs"
+import { auth } from "@clerk/nextjs/server"
 
 import { deleteOneItem, findOneItem, updateOneItem } from "@/lib/database/items"
 import { findOneSpace } from "@/lib/database/space"
