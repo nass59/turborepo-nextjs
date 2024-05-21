@@ -4,12 +4,12 @@
   "main": "index.ts",
   "license": "MIT",
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.12",
+    "@tailwindcss/typography": "^0.5.13",
     "tailwindcss": "^3.4.3",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@shared/ts-config": "workspace:*",
-    "typescript": "5.4.3"
+    "typescript": "5.4.5"
   }
 }
