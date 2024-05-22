@@ -1,4 +1,7 @@
 import createMDX from "@next/mdx"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypePrettyCode from "rehype-pretty-code"
+import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 
 /** @type {import('next').NextConfig} */
@@ -24,7 +27,7 @@ const nextConfig = {
     ],
   },
   experimental: {
-    mdxRs: true,
+    mdxRs: false,
     optimizePackageImports: ["date-fns", "@headlessui/react"],
     typedRoutes: false,
   },
@@ -34,7 +37,24 @@ const withMDX = createMDX({
   // Add markdown plugins here, as desired
   options: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [],
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypePrettyCode,
+        {
+          theme: "github-dark-default",
+        },
+      ],
+      [
+        rehypeAutolinkHeadings,
+        {
+          properties: {
+            className: ["subheading-anchor"],
+            ariaLabel: "Link to section",
+          },
+        },
+      ],
+    ],
   },
 })
 

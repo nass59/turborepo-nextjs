@@ -1,0 +1,58 @@
+import { Heading } from "@shared/ui"
+import { Pager } from "@/features/public/docs/ui/pager"
+import { getMetadata } from "@/lib/metadata"
+import { getOgUrl } from "@/lib/og"
+
+export const mdxData = {
+  title: "Documentation",
+  description: "Welcome to the TechShip documentation.",
+  url: "/docs"
+}
+
+export const metadata = getMetadata(
+  getOgUrl(mdxData.description, "Documentation"),
+  mdxData
+)
+
+<Heading title={mdxData.title} description={mdxData.description} />
+
+I'm going to use this to document all the features of TechShip and how they are built. The documentation site is built using @next/MDX.
+
+<Callout>
+  This site is a work in progress. If you see dummy text on a page, it means I'm
+  still working on it.
+</Callout>
+
+## Features
+
+Select a feature below to learn more about it.
+
+<div className="grid sm:grid-cols-2 gap-4 pt-6">
+  <Card href="/docs/documentation">
+    ### Documentation
+
+    This documentation site built using @next/mdx.
+  </Card>
+
+  <Card href="/docs/marketing" disabled>
+    ### Marketing
+
+    The marketing site with landing pages.
+  </Card>
+
+  <Card href="/docs/app" disabled>
+    ### App
+
+    The dashboard with auth.
+  </Card>
+
+  <Card href="/docs/blog" disabled>
+    ### Blog
+
+    The blog built using MDX.
+  </Card>
+</div>
+
+<hr />
+
+<Pager url={mdxData.url} />

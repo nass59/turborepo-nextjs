@@ -1,34 +1,35 @@
 import Link from "next/link"
-import { type Post } from "@/.contentlayer/generated"
 
 import { Avatar, AvatarImage } from "@shared/ui"
 
-import { getAuthorsFromPost } from "../utilities/author"
-
-type Props = {
-  post: Post
+export type Author = {
+  name: string
+  twitter: string
+  avatar: string
 }
 
-export const Authors = ({ post }: Props) => {
-  const authors = getAuthorsFromPost(post)
+type Props = {
+  authors: Author[]
+}
 
+export const Authors = ({ authors }: Props) => {
   if (!authors?.length) return null
 
   return (
     <div className="flex space-x-4">
-      {authors.map((author) =>
+      {authors.map((author, index) =>
         author ? (
           <Link
-            key={author._id}
+            key={index}
             href={`https://twitter.com/${author.twitter}`}
             className="flex items-center space-x-2 text-sm"
           >
             <Avatar size="md">
-              <AvatarImage src={author.avatar} alt={author.title} />
+              <AvatarImage src={author.avatar} alt={author.name} />
             </Avatar>
 
             <div className="flex-1 text-left leading-tight">
-              <p className="font-medium">{author.title}</p>
+              <p className="font-medium">{author.name}</p>
               <p className="text-xs text-muted-foreground">@{author.twitter}</p>
             </div>
           </Link>

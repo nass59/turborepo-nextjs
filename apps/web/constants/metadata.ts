@@ -65,11 +65,6 @@ export const baseMetadata: Metadata = {
       },
     ],
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/shortcut-icon.png",
-    apple: "/apple-icon.png",
-  },
   manifest: absoluteUrl("/site.webmanifest"),
   applicationName: siteName,
   referrer: "origin-when-cross-origin",

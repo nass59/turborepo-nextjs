@@ -1,0 +1,55 @@
+import { siteConfig } from "@/config/site"
+import { getMetadata } from "@/lib/metadata"
+import { getOgUrl } from "@/lib/og"
+import { PostHeader } from "@/features/public/blog/ui/post-header"
+
+export const mdxData = {
+  authors: [
+    {
+      avatar: "/images/avatars/chris.jpg",
+      name: "Chris",
+      twitter: "nass190"
+    }
+  ],
+  date: "2022-03-04",
+  description: "For years, people have been reporting sightings of unidentified flying objects, or OVNIs.",
+  image: "/images/blog/post-8.png",
+  slug: "the-great-ovni-mystery-solved",
+  title: "The Great OVNI Mystery Solved!",
+  url: "/blog/the-great-ovni-mystery-solved"
+}
+
+export const metadata = getMetadata(getOgUrl(mdxData.title, siteConfig.name), mdxData)
+
+<PostHeader post={mdxData} />
+
+<img
+  src={mdxData.image}
+  alt={mdxData.title}
+  width={720}
+  height={720}
+  className="rounded-md border bg-slate-800 transition-colors"
+  priority="true"
+/>
+
+<Callout>
+  The text below is generated from ChatGPT. I copied it here to test the
+  markdown styles. I asked to ChatGPT: **"Write a funny blog post about the
+  OVNI"**
+</Callout>
+
+## The Great OVNI Mystery: Solved!
+
+For years, people have been reporting sightings of unidentified flying objects, or OVNIs (objetos voladores no identificados in Spanish). These mysterious objects have been seen all around the world, and have sparked countless conspiracy theories and debates about their origins.
+
+But fear not, dear reader, because I have finally solved the great OVNI mystery!
+
+You see, it turns out that the OVNIs are actually just a group of space chickens trying to escape their coop on the Moon. Yes, you read that right: SPACE CHICKENS.
+
+These clever birds have figured out how to build their own spacecraft and have been flying around the galaxy, causing all sorts of confusion and panic on Earth.
+
+But don't worry, these space chickens are actually quite friendly (and quite tasty, I might add). So the next time you see an OVNI, just know that it's probably just a group of space chickens trying to find their way home.
+
+And if you're feeling brave, you can even try to catch one and have a nice chicken dinner (just be sure to invite me).
+
+So there you have it, the great OVNI mystery has finally been solved. Now go out there and catch yourself a space chicken!

@@ -1,30 +1,35 @@
 import { type Metadata } from "next"
-import { type Doc, type Page, type Post } from "@/.contentlayer/generated"
 
 import { absoluteUrl } from "./utils"
 
-export const getMetadata = (ogUrl: URL, item: Post | Page | Doc): Metadata => {
+type mdxMetadata = {
+  title: string
+  description: string
+  url: string
+}
+
+export const getMetadata = (ogUrl: URL, mdxMetadata: mdxMetadata): Metadata => {
   return {
-    title: item.title,
-    description: item.description,
+    title: mdxMetadata.title,
+    description: mdxMetadata.description,
     openGraph: {
-      title: item.title,
-      description: item.description,
+      title: mdxMetadata.title,
+      description: mdxMetadata.description,
       type: "article",
-      url: absoluteUrl(item.url),
+      url: absoluteUrl(mdxMetadata.url),
       images: [
         {
           url: ogUrl.toString(),
           width: 1200,
           height: 630,
-          alt: item.title,
+          alt: mdxMetadata.title,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: item.title,
-      description: item.description,
+      title: mdxMetadata.title,
+      description: mdxMetadata.description,
       images: [ogUrl.toString()],
     },
   }
