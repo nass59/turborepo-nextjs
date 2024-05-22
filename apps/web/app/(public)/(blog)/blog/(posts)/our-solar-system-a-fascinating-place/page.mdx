@@ -1,0 +1,58 @@
+import { siteConfig } from "@/config/site"
+import { getMetadata } from "@/lib/metadata"
+import { getOgUrl } from "@/lib/og"
+import { PostHeader } from "@/features/public/blog/ui/post-header"
+
+export const mdxData = {
+  authors: [
+    {
+      avatar: "/images/avatars/clown.jpg",
+      name: "Marcus",
+      twitter: "nass190"
+    }
+  ],
+  date: "2022-04-22",
+  description: "Our solar system formed about 4.6 billion years ago from a cloud of gas and dust left over.",
+  image: "/images/blog/post-11.png",
+  slug: "our-solar-system-a-fascinating-place",
+  title: "Our Solar System, A Fascinating Place",
+  url: "/blog/our-solar-system-a-fascinating-place"
+}
+
+export const metadata = getMetadata(getOgUrl(mdxData.title, siteConfig.name), mdxData)
+
+<PostHeader post={mdxData} />
+
+<img
+  src={mdxData.image}
+  alt={mdxData.title}
+  width={720}
+  height={720}
+  className="rounded-md border bg-slate-800 transition-colors"
+  priority="true"
+/>
+
+<Callout>
+  The text below is generated from ChatGPT. I copied it here to test the
+  markdown styles. I asked to ChatGPT: **"Write a blog post in markdown about
+  Solar system"**
+</Callout>
+
+## Our Solar System: A Fascinating Place
+
+The solar system is the collection of celestial objects that orbit around the sun, including planets, dwarf planets, moons, asteroids, and comets. The solar system is home to eight planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune. In addition, there are five recognized dwarf planets: Ceres, Pluto, Haumea, Makemake, and Eris.
+
+Our solar system formed about 4.6 billion years ago from a cloud of gas and dust left over after the formation of the sun. As this cloud collapsed, it began to spin, and the excess material at the center of the cloud coalesced to form the sun. The remaining material formed the planets, moons, and other objects in the solar system.
+
+Each of the planets in the solar system has its own unique characteristics and features. For example:
+
+- Mercury is the smallest planet in the solar system and is also the closest to the sun. It has a surface that is covered in craters and is subjected to extreme temperatures, ranging from -280 to 840 degrees Fahrenheit.
+- Venus is the hottest planet in the solar system, with temperatures reaching up to 864 degrees Fahrenheit. It is also the brightest object in the sky after the sun and the moon.
+- Earth is the only planet in the solar system that is known to support life. It has an atmosphere that is composed of 78% nitrogen, 21% oxygen, and trace amounts of other gases.
+- Mars is the fourth planet from the sun and is known for its reddish appearance, which is caused by iron oxide (rust) on its surface. It has a thin atmosphere and is home to the largest volcano and the longest canyon in the solar system.
+- Jupiter is the largest planet in the solar system and is known for its distinctive red spot, which is a giant storm that has been raging for hundreds of years. It has at least 79 moons, the four largest of which are called the Galilean moons.
+- Saturn is known for its beautiful rings, which are made up of small particles of ice and rock. It has at least 62 moons, the largest of which is called Titan.
+- Uranus is an ice giant and is known for its blue-green color, which is caused by the presence of methane in its atmosphere. It has 27 known moons, the largest of which is called Titania.
+- Neptune is the eighth and final planet in the solar system and is known for its strong winds and dark spots on its surface. It has 13 known moons, the largest of which is called Triton.
+
+In conclusion, the solar system is a fascinating place that is filled with a wide variety of celestial objects. Each planet and moon has its own unique characteristics and features, making the solar system a truly amazing place to explore.

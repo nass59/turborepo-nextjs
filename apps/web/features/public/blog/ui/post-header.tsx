@@ -1,8 +1,7 @@
-import { type Post } from "@/.contentlayer/generated"
-
 import { formatDate } from "@/lib/utils"
 
 import { Authors } from "./authors"
+import { type Post } from "./post"
 
 type Props = {
   post: Post
@@ -24,7 +23,7 @@ export const PostHeader = ({ post }: Props) => {
         {post.title}
       </h1>
 
-      <Authors post={post} />
+      <Authors authors={post.authors} />
     </div>
   )
 }

@@ -1,10 +1,16 @@
-import Image from "next/image"
-import { type MDXComponents } from "mdx/types"
+import Image, { type ImageProps } from "next/image"
+import type { MDXComponents } from "mdx/types"
 
 import { Callout, Card, cn } from "@shared/ui"
 
+// This file allows you to provide custom React components
+// to be used in MDX files. You can import and use any
+// React component you want, including inline styles,
+// components from other libraries, and more.
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    // Allows customizing built-in components, e.g. to add styling.
     h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
       <h1
         className={cn(
@@ -126,14 +132,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     img: ({
       className,
-      alt,
       ...props
     }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
+      <Image
         className={cn("rounded-md border", className)}
-        alt={alt}
-        {...props}
+        {...(props as ImageProps)}
+        alt=""
       />
     ),
     blockquote: ({
@@ -167,17 +171,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       />
     ),
     hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
-    Image: ({ ...props }) => (
-      <Image
-        src={props.src}
-        alt={props.alt}
-        width={props.width}
-        height={props.height}
-        {...props}
-      />
-    ),
-    Callout,
     Card,
+    Callout,
     ...components,
   }
 }

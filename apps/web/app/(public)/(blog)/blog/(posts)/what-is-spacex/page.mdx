@@ -1,0 +1,51 @@
+import { siteConfig } from "@/config/site"
+import { getMetadata } from "@/lib/metadata"
+import { getOgUrl } from "@/lib/og"
+import { PostHeader } from "@/features/public/blog/ui/post-header"
+
+export const mdxData = {
+  authors: [
+    {
+      avatar: "/images/avatars/anim.jpg",
+      name: "Lewis",
+      twitter: "nass190"
+    }
+  ],
+  date: "2022-11-19",
+  description: "SpaceX is a private American aerospace manufacturer and space transport services company.",
+  image: "/images/blog/post-9.png",
+  slug: "what-is-spacex",
+  title: "What is SpaceX?",
+  url: "/blog/what-is-spacex"
+}
+
+export const metadata = getMetadata(getOgUrl(mdxData.title, siteConfig.name), mdxData)
+
+<PostHeader post={mdxData} />
+
+<img
+  src={mdxData.image}
+  alt={mdxData.title}
+  width={720}
+  height={720}
+  className="rounded-md border bg-slate-800 transition-colors"
+  priority="true"
+/>
+
+<Callout>
+  The text below is generated from ChatGPT. I copied it here to test the
+  markdown styles. I asked to ChatGPT: **"Write a blog post about "what is
+  SpaceX" in simple terms"**
+</Callout>
+
+SpaceX is a private American aerospace manufacturer and space transport services company founded in 2002 by Elon Musk. The company's goal is to reduce space transportation costs and enable the colonization of Mars.
+
+SpaceX has developed a reusable rocket called the Falcon 9, which has the ability to land vertically after launching into space. This is a significant achievement because it means that the rocket can be reused, which reduces the cost of space travel.
+
+In addition to the Falcon 9, SpaceX has also developed the Falcon Heavy, which is the most powerful operational rocket in the world. The Falcon Heavy has the ability to lift heavy payloads into orbit, making it ideal for launching satellites, cargo, and even humans into space.
+
+SpaceX has made history with its Crew Dragon spacecraft, which became the first commercial spacecraft to transport humans to the International Space Station (ISS) in 2020. The company has also signed a contract with NASA to provide transportation for astronauts to and from the ISS in the future.
+
+In addition to its work in space transportation, SpaceX is also developing a global satellite internet service called Starlink. This service aims to provide high-speed internet access to underserved and remote areas around the world.
+
+Overall, SpaceX is a pioneering company that is pushing the boundaries of what is possible in the field of space exploration and technology. Its innovative approach to space transportation and satellite internet service has the potential to revolutionize the way we live and work on Earth and beyond.

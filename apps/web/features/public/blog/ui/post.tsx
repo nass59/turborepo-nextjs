@@ -1,12 +1,23 @@
 import { type Route } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { type Post as TypePost } from "@/.contentlayer/generated"
 
 import { formatDate } from "@/lib/utils"
 
+import { type Author } from "./authors"
+
+export type Post = {
+  authors: Author[]
+  date: string
+  description: string
+  image: string
+  slug: string
+  title: string
+  url: string
+}
+
 type Props = {
-  post: TypePost
+  post: Post
   hasPriority?: boolean
 }
 

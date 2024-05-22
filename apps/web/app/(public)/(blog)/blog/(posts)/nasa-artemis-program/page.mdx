@@ -1,0 +1,52 @@
+import { siteConfig } from "@/config/site"
+import { getMetadata } from "@/lib/metadata"
+import { getOgUrl } from "@/lib/og"
+import { PostHeader } from "@/features/public/blog/ui/post-header"
+
+export const mdxData = {
+  authors: [
+    {
+      avatar: "/images/avatars/nass190.jpg",
+      name: "Nassim",
+      twitter: "nass190"
+    }
+  ],
+  date: "2022-12-15",
+  description: "The Artemis program is a NASA initiative to return humans to the Moon.",
+  image: "/images/blog/post-3.png",
+  slug: "nasa-artemis-program",
+  title: "NASA Artemis Program",
+  url: "/blog/nasa-artemis-program",
+}
+
+export const metadata = getMetadata(getOgUrl(mdxData.title, siteConfig.name), mdxData)
+
+<PostHeader post={mdxData} />
+
+<img
+  src={mdxData.image}
+  alt={mdxData.title}
+  width={720}
+  height={720}
+  className="rounded-md border bg-slate-800 transition-colors"
+  priority="true"
+/>
+
+<Callout>
+  The text below is generated from ChatGPT. I copied it here to test the
+  markdown styles. I asked to ChatGPT: **"Explain Artemis Program in simple
+  terms"**
+</Callout>
+
+The Artemis program is a NASA initiative to return humans to the Moon and establish a sustainable presence there. The program is named after Artemis, the Greek goddess of the Moon and the twin sister of Apollo.
+
+---
+The main goals of the Artemis program are to:
+
+- Land humans on the Moon by 2024
+- Establish a sustainable presence on the Moon by 2028
+- Use the Moon as a stepping stone for future missions to Mars and beyond
+
+To achieve these goals, NASA is working with a variety of partners, including international space agencies and private companies. The Artemis program will rely on a number of new technologies, including the Space Launch System (SLS) rocket and the Orion spacecraft. These will be used to transport astronauts to the Moon and back.
+
+The Artemis program represents a major step forward in our efforts to explore and understand the universe. It will allow us to learn more about the Moon, the solar system, and our place in the cosmos, and will pave the way for future exploration of other celestial bodies.
