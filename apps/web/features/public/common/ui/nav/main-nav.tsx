@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { Cross2Icon, RocketIcon } from "@radix-ui/react-icons"
 
 import { type MainNavItem as TypeMainNavItem } from "types"
+import { t } from "@/lib/i18n-next"
 import { Button } from "@shared/ui"
 import { Logo } from "@/components/logo"
 
@@ -17,7 +18,7 @@ type Props = PropsWithChildren & {
 
 export const MainNav = ({ items, children }: Props) => {
   const pathName = usePathname()
-  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
 
   const toggle = () => setShowMobileMenu(!showMobileMenu)
   const close = () => setShowMobileMenu(false)
@@ -43,7 +44,7 @@ export const MainNav = ({ items, children }: Props) => {
         ) : (
           <RocketIcon className="size-5" />
         )}
-        <span className="font-bold">Menu</span>
+        <span className="font-bold">{t("nav:menu")}</span>
       </Button>
 
       {showMobileMenu && items && (

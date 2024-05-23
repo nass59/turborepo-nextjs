@@ -9,7 +9,9 @@ type Props = {
 }
 
 export const MainNavItem = ({ item, isActive, ...props }: Props) => {
-  if (item.disabled) return null
+  if (item.disabled) {
+    return null
+  }
 
   return (
     <Link

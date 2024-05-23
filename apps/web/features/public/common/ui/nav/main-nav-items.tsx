@@ -15,7 +15,9 @@ export const MainNavItems = ({
   className,
   ...props
 }: Props) => {
-  if (!items?.length) return null
+  if (!items?.length) {
+    return null
+  }
 
   return (
     <nav className={className} {...props}>

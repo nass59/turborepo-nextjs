@@ -1,8 +1,6 @@
 import { type Route } from "next"
 import { type ObjectId } from "mongodb"
 
-import { type Icons } from "@/components/icons"
-
 export type NavItem = {
   title: string
   href: Route<string> | URL
