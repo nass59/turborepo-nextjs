@@ -1,8 +1,8 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "experimentalUI": true,
+  "globalEnv": ["NODE_ENV"],
   "globalDependencies": ["**/.env.*local"],
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": [
@@ -12,8 +12,12 @@
         "storybook-static/**"
       ]
     },
-    "lint": {},
-    "typecheck": {},
+    "lint": {
+      "persistent": true
+    },
+    "typecheck": {
+      "persistent": true
+    },
     "dev": {
       "cache": false,
       "persistent": true
@@ -22,6 +26,5 @@
       "cache": false,
       "persistent": true
     }
-  },
-  "globalEnv": ["NODE_ENV"]
+  }
 }
