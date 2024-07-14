@@ -1,6 +1,16 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "globalEnv": ["NODE_ENV", "CLERK_SECRET_KEY"],
+  "globalEnv": [
+    "NODE_ENV",
+    "CLERK_SECRET_KEY",
+    "GITHUB_ID",
+    "GITHUB_SECRET",
+    "GITHUB_ACCESS_TOKEN",
+    "MONGODB_DATABASE",
+    "MONGODB_URI",
+    "PREVIEW_URL_SECRET",
+    "SPACE_ID"
+  ],
   "globalDependencies": [".env", "**/.env.*local"],
   "tasks": {
     "build": {
