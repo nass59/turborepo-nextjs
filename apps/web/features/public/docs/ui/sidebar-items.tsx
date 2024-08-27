@@ -11,10 +11,6 @@ type Props = {
 }
 
 export const SidebarItems = ({ items }: Props) => {
-  /**
-   * You can use usePathname() to determine if a link is active
-   * @see https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#checking-active-links
-   */
   const pathname = usePathname()
 
   if (!items) {

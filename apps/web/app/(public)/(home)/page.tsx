@@ -16,9 +16,6 @@ import {
 import { FeatureItem } from "@/features/public/landing-page/ui/feature-item"
 import { getGithubStars } from "@/features/public/landing-page/utilities/github/stars"
 
-/**
- * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#pages
- */
 export default async function Page() {
   const stars = await getGithubStars()
 
@@ -27,7 +24,7 @@ export default async function Page() {
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-20">
         <div className="container flex max-w-5xl flex-col items-center gap-4 text-center">
           <h1 className="font-heading text-5xl sm:text-5xl md:text-6xl lg:text-7xl">
-            {t("title:hello")}
+            {t("title.hello")}
           </h1>
 
           <Space3 />
@@ -108,7 +105,7 @@ export default async function Page() {
               className={cn(buttonVariants({ size: "lg" }))}
             >
               <Github />
-              {t("brand:github")}
+              {t("brand.github")}
             </a>
             {stars && (
               <div className="flex items-center">

@@ -12,7 +12,7 @@
     "@shared/eslint-config": "workspace:*",
     "@shared/tailwind-config": "workspace:*",
     "@shared/ts-config": "workspace:*",
-    "@types/react": "^18.3.3",
+    "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
     "eslint": "^8.57.0",
     "react": "^18.3.1",
@@ -34,11 +34,11 @@
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-toast": "^1.2.1",
-    "@tanstack/react-table": "^8.20.1",
+    "@tanstack/react-table": "^8.20.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
-    "react-hook-form": "^7.52.2",
+    "react-hook-form": "^7.53.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"
   }

@@ -4,11 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@types/eslint": "^8.56.11",
-    "@typescript-eslint/eslint-plugin": "^8.1.0",
-    "@typescript-eslint/parser": "^8.1.0",
+    "@types/eslint": "^8.56.12",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-config-turbo": "^2.0.14",
+    "eslint-config-turbo": "^2.1.0",
     "eslint-plugin-react": "^7.35.0"
   },
   "publishConfig": {

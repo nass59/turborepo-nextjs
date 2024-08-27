@@ -28,11 +28,11 @@
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
     "@manypkg/cli": "^0.21.4",
     "@shared/eslint-config": "workspace:*",
-    "@turbo/gen": "^2.0.14",
-    "husky": "^9.1.4",
+    "@turbo/gen": "^2.1.0",
+    "husky": "^9.1.5",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
-    "turbo": "^2.0.14"
+    "turbo": "^2.1.0"
   },
   "manypkg": {
     "ignoredRules": [

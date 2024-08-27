@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, type PropsWithChildren } from "react"
-import { usePathname } from "next/navigation"
 import { Cross2Icon, RocketIcon } from "@radix-ui/react-icons"
 
 import { type MainNavItem as TypeMainNavItem } from "types"
@@ -17,7 +16,6 @@ type Props = PropsWithChildren & {
 }
 
 export const MainNav = ({ items, children }: Props) => {
-  const pathName = usePathname()
   const [showMobileMenu, setShowMobileMenu] = useState(false)
 
   const toggle = () => setShowMobileMenu(!showMobileMenu)
@@ -27,16 +25,12 @@ export const MainNav = ({ items, children }: Props) => {
     <div className="flex gap-6">
       <Logo />
 
-      <MainNavItems
-        items={items}
-        pathName={pathName}
-        className="hidden gap-2 md:flex"
-      />
+      <MainNavItems className="hidden gap-2 md:flex" items={items} />
 
       <Button
-        variant="ghost"
-        size="md"
         className="space-x-2 md:hidden"
+        size="md"
+        variant="ghost"
         onClick={toggle}
       >
         {showMobileMenu ? (
@@ -44,11 +38,11 @@ export const MainNav = ({ items, children }: Props) => {
         ) : (
           <RocketIcon className="size-5" />
         )}
-        <span className="font-bold">{t("nav:menu")}</span>
+        <span className="font-bold">{t("nav.menu")}</span>
       </Button>
 
       {showMobileMenu && items && (
-        <MobileNav items={items} close={close} pathName={pathName}>
+        <MobileNav close={close} items={items}>
           {children}
         </MobileNav>
       )}

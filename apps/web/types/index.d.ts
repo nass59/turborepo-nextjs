@@ -1,9 +1,8 @@
-import { type Route } from "next"
 import { type ObjectId } from "mongodb"
 
 export type NavItem = {
   title: string
-  href: Route<string> | URL
+  href: string
   disabled?: boolean
   external?: boolean
 }
