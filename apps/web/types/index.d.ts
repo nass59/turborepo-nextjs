@@ -1,8 +1,8 @@
 import { type ObjectId } from "mongodb"
 
 export type NavItem = {
-  title: string
   href: string
+  title: string
   disabled?: boolean
   external?: boolean
 }

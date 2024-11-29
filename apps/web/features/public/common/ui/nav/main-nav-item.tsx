@@ -23,7 +23,7 @@ export const MainNavItem = ({ isActive, item, ...props }: Props) => {
       asChild
       className={cn({
         "text-foreground": isActive,
-        "text-foreground/70": !isActive,
+        "text-muted-foreground": !isActive,
       })}
       size="xs"
       variant="ghost"

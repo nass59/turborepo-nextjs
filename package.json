@@ -10,7 +10,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "dev:turbo": "turbo run dev:turbo --parallel",
-    "lint": "turbo run lint",
+    "lint": "turbo run lint --affected",
     "lint:fix": "turbo lint -- --fix && manypkg fix",
     "manypkg:fix": "manypkg fix",
     "postinstall": "manypkg check",
@@ -32,7 +32,7 @@
     "husky": "^9.1.5",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
-    "turbo": "^2.1.0"
+    "turbo": "^2.1.1"
   },
   "manypkg": {
     "ignoredRules": [

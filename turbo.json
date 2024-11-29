@@ -11,6 +11,7 @@
     "PREVIEW_URL_SECRET",
     "SPACE_ID"
   ],
+  "ui": "tui",
   "globalDependencies": [".env", "**/.env.*local"],
   "tasks": {
     "build": {
