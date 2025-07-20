@@ -1,7 +1,7 @@
 import Image, { type ImageProps } from "next/image"
 import type { MDXComponents } from "mdx/types"
 
-import { Callout, Card, cn } from "@shared/ui"
+import { Callout, Card, cn } from "@workspace/ui"
 
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any

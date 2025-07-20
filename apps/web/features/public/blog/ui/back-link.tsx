@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { ChevronLeftIcon } from "@radix-ui/react-icons"
 
-import { buttonVariants, cn } from "@shared/ui"
+import { buttonVariants, cn } from "@workspace/ui"
 
 type Props = {
   className?: string

@@ -1,5 +1,5 @@
 import { type ItemModel } from "@/lib/database/models/Item"
-import { cn } from "@shared/ui"
+import { cn } from "@workspace/ui"
 
 import { NoResults } from "./no-results"
 import { PosterCard } from "./poster-card"

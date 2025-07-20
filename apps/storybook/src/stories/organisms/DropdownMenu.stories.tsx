@@ -14,7 +14,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@shared/ui"
+} from "@workspace/ui"
 
 const meta = {
   title: "Organisms/DropdownMenu",

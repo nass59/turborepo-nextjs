@@ -9,7 +9,7 @@ const nextConfig = {
   pageExtensions: ["mdx", "ts", "tsx"],
   reactStrictMode: true,
   swcMinify: true,
-  transpilePackages: ["@shared/tailwind-config", "@shared/ui"],
+  transpilePackages: ["@workspace/tailwind-config", "@workspace/ui"],
   images: {
     remotePatterns: [
       {

@@ -6,7 +6,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@shared/ui"
+} from "@workspace/ui"
 
 import { SPACE_LABELS } from "../constants/space"
 import { useSpaceModal } from "../hooks/use-space-modal"

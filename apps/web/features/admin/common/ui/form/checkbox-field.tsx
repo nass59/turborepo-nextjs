@@ -7,7 +7,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-} from "@shared/ui"
+} from "@workspace/ui"
 
 type Props = {
   labels: {

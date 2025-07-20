@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { type MDXComponents } from "mdx/types"
 
-import { Callout, Card, cn } from "@shared/ui"
+import { Callout, Card, cn } from "@workspace/ui"
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

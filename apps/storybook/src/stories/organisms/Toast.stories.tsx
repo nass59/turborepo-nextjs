@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { Button, Toast, Toaster, ToastStyle, useToast } from "@shared/ui"
+import { Button, Toast, Toaster, ToastStyle, useToast } from "@workspace/ui"
 
 type ToastVariants = keyof typeof ToastStyle.variants
 const variants = Object.keys(ToastStyle.variants) as ToastVariants[]

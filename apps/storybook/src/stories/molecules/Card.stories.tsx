@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardStyle,
   CardTitle,
-} from "@shared/ui"
+} from "@workspace/ui"
 
 type CardVariants = keyof typeof CardStyle.variants
 const variants = Object.keys(CardStyle.variants) as CardVariants[]

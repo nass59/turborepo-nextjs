@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form"
 
 import { routes } from "@/constants/routes"
 import { toastError } from "@/lib/api-response/api-responses"
-import { Button, Form, FormFooter } from "@shared/ui"
+import { Button, Form, FormFooter } from "@workspace/ui"
 import { apiRoutes } from "@/features/admin/common/constants/routes"
 import { InputField } from "@/features/admin/common/ui/form/input-field"
 

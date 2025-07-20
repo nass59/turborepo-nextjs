@@ -8,7 +8,7 @@ import {
 } from "@radix-ui/react-icons"
 import { type ColumnDef } from "@tanstack/react-table"
 
-import { Badge } from "@shared/ui"
+import { Badge } from "@workspace/ui"
 import { CellAction } from "@/features/admin/common/ui/cell-action"
 
 import { ITEM_LABELS } from "../constants/item"

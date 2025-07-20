@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { Tab } from "@headlessui/react"
 
-import { cn } from "@shared/ui"
+import { cn } from "@workspace/ui"
 
 type Props = {
   image: string

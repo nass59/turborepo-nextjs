@@ -1,5 +1,5 @@
 import { parseData } from "@/lib/utils"
-import { DataTable, Separator } from "@shared/ui"
+import { DataTable, Separator } from "@workspace/ui"
 import { CATEGORY_LABELS } from "@/features/admin/category/constants/category"
 import { columnsData } from "@/features/admin/category/ui/columns"
 import { getAllCategories } from "@/features/admin/category/utilities/category"

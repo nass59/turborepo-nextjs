@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useParams, usePathname } from "next/navigation"
 
 import { routes } from "@/constants/routes"
-import { buttonVariants, cn } from "@shared/ui"
+import { buttonVariants, cn } from "@workspace/ui"
 
 type Props = {
   label: string

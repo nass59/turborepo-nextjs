@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { Input } from "@shared/ui"
+import { Input } from "@workspace/ui"
 
 const meta = {
   title: "Atoms/Input",

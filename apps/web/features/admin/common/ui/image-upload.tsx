@@ -3,7 +3,7 @@ import Image from "next/image"
 import { ImageIcon, TrashIcon } from "@radix-ui/react-icons"
 import { CldUploadWidget } from "next-cloudinary"
 
-import { Button } from "@shared/ui"
+import { Button } from "@workspace/ui"
 
 type Props = {
   disabled?: boolean

@@ -17,7 +17,7 @@ module.exports = {
     "^@/constants/(.*)$",
     "^@/lib/(.*)$",
     "^@/hooks/(.*)$",
-    "^@shared/ui$",
+    "^@workspace/ui$",
     "^@/components/(.*)$",
     "^@/features/(.*)$",
     "^@/assets/styles/(.*)$",

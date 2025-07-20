@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { Button, Popover, PopoverContent, PopoverTrigger } from "@shared/ui"
+import { Button, Popover, PopoverContent, PopoverTrigger } from "@workspace/ui"
 
 const meta = {
   title: "Molecules/Popover",

@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@shared/ui"
+import { Card, CardContent, CardHeader, CardTitle } from "@workspace/ui"
 
 type CardOverviewProps = {
   title: string

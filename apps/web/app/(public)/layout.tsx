@@ -4,13 +4,13 @@ import localFont from "next/font/local"
 
 import { type LayoutProps } from "@/types/common"
 import { baseMetadata, baseViewport } from "@/constants/metadata"
-import { cn, Toaster } from "@shared/ui"
+import { cn, Toaster } from "@workspace/ui"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Help } from "@/features/public/common/ui/helper"
 
-import "@shared/ui/styles/global.css"
+import "@workspace/ui/styles/global.css"
 
 // Define the font styles
 const fontSans = Inter({

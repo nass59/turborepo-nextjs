@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form"
 
 import { routes } from "@/constants/routes"
 import { toastError } from "@/lib/api-response/api-responses"
-import { toast } from "@shared/ui"
+import { toast } from "@workspace/ui"
 import { apiRoutes } from "@/features/admin/common/constants/routes"
 import { FormContainer } from "@/features/admin/common/ui/form/form-container"
 import { ImageField } from "@/features/admin/common/ui/form/image-field"

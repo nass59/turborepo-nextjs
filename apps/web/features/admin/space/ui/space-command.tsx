@@ -15,7 +15,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@shared/ui"
+} from "@workspace/ui"
 import { type NavbarItem } from "@/features/admin/common/types/navbar"
 
 import { SPACE_LABELS } from "../constants/space"

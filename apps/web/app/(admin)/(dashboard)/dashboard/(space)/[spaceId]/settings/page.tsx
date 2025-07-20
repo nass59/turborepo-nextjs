@@ -2,7 +2,7 @@ import { redirect } from "next/navigation"
 
 import { routes } from "@/constants/routes"
 import { parseData } from "@/lib/utils"
-import { Heading, HeadingAction, Separator } from "@shared/ui"
+import { Heading, HeadingAction, Separator } from "@workspace/ui"
 import { apiRoutes } from "@/features/admin/common/constants/routes"
 import { Api } from "@/features/admin/common/ui/api"
 import { getCurrentUserId } from "@/features/admin/common/utilities/user"

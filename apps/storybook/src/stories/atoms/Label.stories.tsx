@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { Label } from "@shared/ui"
+import { Label } from "@workspace/ui"
 
 const meta = {
   title: "Atoms/Label",

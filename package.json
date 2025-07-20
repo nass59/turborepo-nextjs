@@ -1,42 +1,28 @@
 {
   "name": "turborepo-nextjs",
-  "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "dev:turbo": "turbo run dev:turbo --parallel",
-    "lint": "turbo run lint",
-    "lint:fix": "turbo lint -- --fix && manypkg fix",
-    "manypkg:fix": "manypkg fix",
-    "postinstall": "manypkg check",
-    "typecheck": "turbo typecheck",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "husky"
+    "dev": "turbo run dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md,mdx}\"",
+    "check-dependencies": "sherif",
+    "bump-deps": "npx npm-check-updates --deep -u -x geist && pnpm install",
+    "bump-ui": "pnpm dlx shadcn@canary add --all --overwrite -c packages/design-system",
+    "clean": "git clean -xdf node_modules"
   },
-  "engines": {
-    "node": ">=20.12.2"
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@workspace/eslint-config": "workspace:*",
+    "eslint": "^9.25.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "sherif": "^1.5.0",
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.3"
   },
-  "packageManager": "pnpm@9.1.0",
-  "dependencies": {
-    "@commitlint/cli": "^19.3.0",
-    "@commitlint/config-conventional": "^19.2.2",
-    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
-    "@manypkg/cli": "^0.21.4",
-    "@shared/eslint-config": "workspace:*",
-    "@turbo/gen": "^1.13.3",
-    "husky": "^9.0.11",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.14",
-    "turbo": "^1.13.3"
-  },
-  "manypkg": {
-    "ignoredRules": [
-      "INTERNAL_MISMATCH"
-    ]
+  "packageManager": "pnpm@10.13.1",
+  "volta": {
+    "node": "22.17.1"
   }
 }

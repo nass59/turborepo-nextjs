@@ -1,5 +1,5 @@
 import { parseData } from "@/lib/utils"
-import { DataTable, Separator } from "@shared/ui"
+import { DataTable, Separator } from "@workspace/ui"
 import { ApiList } from "@/features/admin/common/ui/api-list"
 import { ListHeading } from "@/features/admin/common/ui/list-heading"
 import { ITEM_LABELS } from "@/features/admin/item/constants/item"

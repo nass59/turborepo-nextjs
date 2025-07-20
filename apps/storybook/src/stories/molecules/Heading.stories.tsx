@@ -1,7 +1,7 @@
 import { Pencil1Icon } from "@radix-ui/react-icons"
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { Button, Heading, HeadingAction } from "@shared/ui"
+import { Button, Heading, HeadingAction } from "@workspace/ui"
 
 const meta = {
   title: "Molecules/Heading",

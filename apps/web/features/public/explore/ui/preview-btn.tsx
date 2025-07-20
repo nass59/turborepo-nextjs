@@ -4,7 +4,7 @@ import { type MouseEventHandler } from "react"
 import { EnterFullScreenIcon } from "@radix-ui/react-icons"
 
 import { type ItemModel } from "@/lib/database/models/Item"
-import { Button } from "@shared/ui"
+import { Button } from "@workspace/ui"
 import { usePreviewModal } from "@/features/public/explore/hooks/use-preview-modal"
 
 type Props = {

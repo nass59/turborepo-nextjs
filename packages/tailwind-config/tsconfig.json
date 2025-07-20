@@ -1,5 +1,5 @@
 {
-  "extends": "@shared/ts-config/react-library.json",
+  "extends": "@workspace/ts-config/react-library.json",
   "include": ["."],
   "exclude": ["node_modules"]
 }

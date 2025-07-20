@@ -1,5 +1,5 @@
 import { type ItemModel } from "@/lib/database/models/Item"
-import { buttonVariants } from "@shared/ui"
+import { buttonVariants } from "@workspace/ui"
 
 type Props = {
   data: ItemModel

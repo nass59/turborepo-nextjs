@@ -3,7 +3,7 @@
 import React from "react"
 import { CopyIcon } from "@radix-ui/react-icons"
 
-import { Button } from "@shared/ui"
+import { Button } from "@workspace/ui"
 
 import { onCopy } from "../utilities/copy"
 

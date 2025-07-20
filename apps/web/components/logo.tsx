@@ -2,7 +2,7 @@ import Link from "next/link"
 import { RocketIcon } from "@radix-ui/react-icons"
 
 import { siteConfig } from "@/config/site"
-import { buttonVariants, cn } from "@shared/ui"
+import { buttonVariants, cn } from "@workspace/ui"
 
 export const Logo = ({ ...props }) => {
   return (

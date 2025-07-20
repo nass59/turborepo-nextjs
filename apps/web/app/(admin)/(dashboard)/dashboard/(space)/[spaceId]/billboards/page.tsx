@@ -1,5 +1,5 @@
 import { parseData } from "@/lib/utils"
-import { DataTable, Separator } from "@shared/ui"
+import { DataTable, Separator } from "@workspace/ui"
 import { BILLBOARD_LABELS } from "@/features/admin/billboard/constants/billboard"
 import { columnsData } from "@/features/admin/billboard/ui/columns"
 import { getAllBillboards } from "@/features/admin/billboard/utilities/billboard"

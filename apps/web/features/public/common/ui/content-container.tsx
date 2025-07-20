@@ -1,6 +1,6 @@
 import { type PropsWithChildren } from "react"
 
-import { cn } from "@shared/ui"
+import { cn } from "@workspace/ui"
 
 type Props = PropsWithChildren & {
   className?: string

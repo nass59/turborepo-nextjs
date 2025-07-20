@@ -5,7 +5,7 @@ import { useParams } from "next/navigation"
 import { ChevronDownIcon, MixIcon } from "@radix-ui/react-icons"
 
 import { type SpaceModel } from "@/lib/database/models/Space"
-import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@shared/ui"
+import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@workspace/ui"
 import { type NavbarItem } from "@/features/admin/common/types/navbar"
 
 import { SPACE_LABELS } from "../constants/space"

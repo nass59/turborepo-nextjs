@@ -1,4 +1,4 @@
-import { Separator } from "@shared/ui"
+import { Separator } from "@workspace/ui"
 import { ApiList } from "@/features/admin/common/ui/api-list"
 import { ListHeading } from "@/features/admin/common/ui/list-heading"
 import { COURSE_LABELS } from "@/features/admin/course/constants/course"

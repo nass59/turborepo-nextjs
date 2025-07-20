@@ -5,7 +5,7 @@ import { BellIcon } from "@radix-ui/react-icons"
 import OgImage from "public/og-light.jpg"
 
 import { siteConfig } from "@/config/site"
-import { Popover, PopoverContent, PopoverTrigger } from "@shared/ui"
+import { Popover, PopoverContent, PopoverTrigger } from "@workspace/ui"
 
 export const Help = () => {
   return (

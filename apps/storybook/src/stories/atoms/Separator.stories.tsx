@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { Separator } from "@shared/ui"
+import { Separator } from "@workspace/ui"
 
 const meta = {
   title: "Atoms/Separator",

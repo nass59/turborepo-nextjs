@@ -2,7 +2,7 @@ import Link from "next/link"
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
 
 import { siteConfig } from "@/config/site"
-import { Button, buttonVariants, cn } from "@shared/ui"
+import { Button, buttonVariants, cn } from "@workspace/ui"
 
 export const HeaderActions = () => {
   return (

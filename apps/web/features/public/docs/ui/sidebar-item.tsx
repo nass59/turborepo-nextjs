@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { type NavItem } from "types"
-import { cn } from "@shared/ui"
+import { cn } from "@workspace/ui"
 
 type Props = {
   item: NavItem

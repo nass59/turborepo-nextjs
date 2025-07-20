@@ -11,7 +11,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@shared/ui"
+} from "@workspace/ui"
 
 type Props = {
   labels: {

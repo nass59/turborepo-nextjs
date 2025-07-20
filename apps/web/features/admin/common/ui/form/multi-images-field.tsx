@@ -6,7 +6,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@shared/ui"
+} from "@workspace/ui"
 
 import { ImageUpload } from "../image-upload"
 

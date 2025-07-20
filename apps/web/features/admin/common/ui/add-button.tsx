@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation"
 import { PlusIcon } from "@radix-ui/react-icons"
 
 import { routes } from "@/constants/routes"
-import { Button } from "@shared/ui"
+import { Button } from "@workspace/ui"
 
 type Props = {
   labels: {

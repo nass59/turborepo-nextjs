@@ -1,5 +1,5 @@
 import { siteConfig } from "@/config/site"
-import { buttonVariants, cn } from "@shared/ui"
+import { buttonVariants, cn } from "@workspace/ui"
 import { Space3 } from "@/features/public/landing-page/assets/icons/space3"
 import {
   Auth,

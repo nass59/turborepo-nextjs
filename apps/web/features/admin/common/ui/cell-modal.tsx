@@ -14,7 +14,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   toast,
-} from "@shared/ui"
+} from "@workspace/ui"
 
 import { apiRoutes } from "../constants/routes"
 

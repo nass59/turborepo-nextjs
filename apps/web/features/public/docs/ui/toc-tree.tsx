@@ -1,4 +1,4 @@
-import { cn } from "@shared/ui"
+import { cn } from "@workspace/ui"
 
 import { type TableOfContents } from "../utilities/toc"
 

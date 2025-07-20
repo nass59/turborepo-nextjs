@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import { Avatar, AvatarImage } from "@shared/ui"
+import { Avatar, AvatarImage } from "@workspace/ui"
 
 export type Author = {
   name: string

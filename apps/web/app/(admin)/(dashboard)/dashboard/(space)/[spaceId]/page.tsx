@@ -1,7 +1,7 @@
 import { BookmarkIcon, ImageIcon, RocketIcon } from "@radix-ui/react-icons"
 
 import { parseData } from "@/lib/utils"
-import { Heading } from "@shared/ui"
+import { Heading } from "@workspace/ui"
 import { getOverview } from "@/features/admin/common/utilities/overview"
 import { CardOverview } from "@/features/admin/home/ui/card-overview"
 import { Chart } from "@/features/admin/home/ui/chart"

@@ -17,7 +17,7 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@shared/ui"
+} from "@workspace/ui"
 import { type BillboardColumn } from "@/features/admin/billboard/ui/columns"
 import { type CategoryColumn } from "@/features/admin/category/ui/columns"
 import { type ItemColumn } from "@/features/admin/item/ui/columns"

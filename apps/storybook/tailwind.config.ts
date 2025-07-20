@@ -1,4 +1,4 @@
-import { shadcnPreset } from "@shared/tailwind-config/lib/shadcn-preset"
+import { shadcnPreset } from "@workspace/tailwind-config/lib/shadcn-preset"
 import type { Config } from "tailwindcss"
 
 const config = {

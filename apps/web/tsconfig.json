@@ -1,20 +1,18 @@
 {
-  "extends": "@shared/ts-config/nextjs.json",
+  "extends": "@workspace/ts-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-    },
-    "strictNullChecks": true
+      "@workspace/*": ["../../packages/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
+    "next.config.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.mdx",
-    ".next/types/**/*.ts",
+    ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

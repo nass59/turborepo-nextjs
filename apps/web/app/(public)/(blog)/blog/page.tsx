@@ -1,4 +1,4 @@
-import { Heading } from "@shared/ui"
+import { Heading } from "@workspace/ui"
 import { Post } from "@/features/public/blog/ui/post"
 import { ContentContainer } from "@/features/public/common/ui/content-container"
 

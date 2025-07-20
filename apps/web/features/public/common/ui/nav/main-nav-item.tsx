@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { type MainNavItem as TypeMainNavItem } from "@/types"
 
-import { buttonVariants, cn } from "@shared/ui"
+import { buttonVariants, cn } from "@workspace/ui"
 
 type Props = {
   item: TypeMainNavItem

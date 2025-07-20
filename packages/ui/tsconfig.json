@@ -1,5 +1,12 @@
 {
-  "extends": "@shared/ts-config/react-library.json",
-  "include": ["."],
-  "exclude": ["node_modules"]
+  "extends": "@workspace/ts-config/react-library.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@workspace/*": ["../*"],
+      "@workspace/design-system/*": ["./src/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "dist"]
 }

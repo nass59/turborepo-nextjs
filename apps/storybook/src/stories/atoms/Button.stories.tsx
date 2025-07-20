@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { Button, ButtonStyle } from "@shared/ui"
+import { Button, ButtonStyle } from "@workspace/ui"
 
 type ButtonVariants = keyof typeof ButtonStyle.variants
 type ButtonSizes = keyof typeof ButtonStyle.sizes

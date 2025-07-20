@@ -1,4 +1,4 @@
-import { Heading, HeadingAction } from "@shared/ui"
+import { Heading, HeadingAction } from "@workspace/ui"
 
 import { AddButton } from "./add-button"
 

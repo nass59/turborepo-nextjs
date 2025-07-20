@@ -3,10 +3,10 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@shared/ui/components/ui/alert"
+} from "@workspace/ui/components/ui/alert"
 
 import { env } from "@/env.mjs"
-import { Badge, type BadgeProps } from "@shared/ui"
+import { Badge, type BadgeProps } from "@workspace/ui"
 
 import { CopyButton } from "./copy-button"
 

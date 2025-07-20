@@ -5,13 +5,13 @@ import { ClerkProvider } from "@clerk/nextjs"
 
 import { type LayoutProps } from "@/types/common"
 import { baseMetadata, baseViewport } from "@/constants/metadata"
-import { cn, Toaster } from "@shared/ui"
+import { cn, Toaster } from "@workspace/ui"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 import { ModalProvider } from "@/features/admin/common/providers/modal-provider"
 
-import "@shared/ui/styles/global.css"
+import "@workspace/ui/styles/global.css"
 
 const fontSans = Inter({
   variable: "--font-sans",

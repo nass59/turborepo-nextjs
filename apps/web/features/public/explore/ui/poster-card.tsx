@@ -2,7 +2,7 @@ import Image from "next/image"
 
 import { type ItemModel } from "@/lib/database/models/Item"
 import { parseData } from "@/lib/utils"
-import { Badge, Card, CardContent, CardFooter, CardHeader } from "@shared/ui"
+import { Badge, Card, CardContent, CardFooter, CardHeader } from "@workspace/ui"
 import { AbsoluteLink } from "@/features/public/common/ui/absolute-link"
 
 import { PreviewBtn } from "./preview-btn"

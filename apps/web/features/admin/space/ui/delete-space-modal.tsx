@@ -19,7 +19,7 @@ import {
   AlertDialogTrigger,
   Button,
   toast,
-} from "@shared/ui"
+} from "@workspace/ui"
 import { apiRoutes } from "@/features/admin/common/constants/routes"
 
 export const DeleteSpaceModal = () => {

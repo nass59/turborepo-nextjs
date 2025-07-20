@@ -8,7 +8,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from "@shared/ui"
+} from "@workspace/ui"
 
 type Props = {
   labels: {
