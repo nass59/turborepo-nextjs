@@ -3,8 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "@workspace/*": ["../../packages/*"]
+      "@/*": ["./src/*"],
+      "@workspace/design-system/*": ["../../packages/design-system/src/*"]
     }
   },
   "include": [

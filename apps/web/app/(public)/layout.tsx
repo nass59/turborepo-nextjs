@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 
-
 import { Analytics } from "@/components/analytics";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -11,6 +10,7 @@ import { Help } from "@/features/public/common/ui/helper";
 import { type LayoutProps } from "@/types/common";
 
 import "@workspace/design-system/components/ui/styles/global.css";
+
 import { cn } from "@workspace/design-system/src/lib/utils";
 
 // Define the font styles
