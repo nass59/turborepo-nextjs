@@ -1,4 +1,4 @@
-import { DataTable, Separator } from "@workspace/ui";
+import { DataTable, Separator } from "@workspace/design-system/components/ui";
 
 import { BILLBOARD_LABELS } from "@/features/admin/billboard/constants/billboard";
 import { columnsData } from "@/features/admin/billboard/ui/columns";

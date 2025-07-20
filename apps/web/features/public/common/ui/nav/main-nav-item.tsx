@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { buttonVariants, cn } from "@workspace/ui";
+import { buttonVariants, cn } from "@workspace/design-system/components/ui";
 
 import { type MainNavItem as TypeMainNavItem } from "@/types";
 

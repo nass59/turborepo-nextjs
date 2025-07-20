@@ -1,6 +1,6 @@
 import { type PropsWithChildren } from "react";
 
-import { cn } from "@workspace/ui";
+import { cn } from "@workspace/design-system/components/ui";
 
 type Props = PropsWithChildren & {
   className?: string;

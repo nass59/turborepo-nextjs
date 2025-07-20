@@ -3,7 +3,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { PlusIcon } from "@radix-ui/react-icons";
 
-import { Button } from "@workspace/ui";
+import { Button } from "@workspace/design-system/components/ui/button";
 
 import { routes } from "@/constants/routes";
 

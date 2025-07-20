@@ -1,6 +1,6 @@
 "use client";
 
-import { Input, toast } from "@workspace/ui";
+import { Input, toast } from "@workspace/design-system/components/ui";
 
 export const Search = () => {
   const onSubmit = (event: React.SyntheticEvent) => {

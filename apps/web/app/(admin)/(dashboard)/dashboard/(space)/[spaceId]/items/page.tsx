@@ -1,4 +1,4 @@
-import { DataTable, Separator } from "@workspace/ui";
+import { DataTable, Separator } from "@workspace/design-system/components/ui";
 
 import { ApiList } from "@/features/admin/common/ui/api-list";
 import { ListHeading } from "@/features/admin/common/ui/list-heading";

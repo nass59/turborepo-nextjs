@@ -16,7 +16,7 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@workspace/ui";
+} from "@workspace/design-system/components/ui";
 
 import { routes } from "@/constants/routes";
 import { type BillboardColumn } from "@/features/admin/billboard/ui/columns";

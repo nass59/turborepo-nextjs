@@ -1,4 +1,9 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@workspace/ui";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@workspace/design-system/components/ui";
 
 type CardOverviewProps = {
   title: string;

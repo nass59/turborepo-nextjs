@@ -1,6 +1,10 @@
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
-import { Sheet, SheetContent, SheetTrigger } from "@workspace/ui";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@workspace/design-system/components/ui";
 
 import { Sidebar } from "./sidebar";
 

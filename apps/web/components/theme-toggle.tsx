@@ -9,7 +9,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@workspace/ui";
+} from "@workspace/design-system/components/ui";
 
 export const ThemeToggle = () => {
   const { setTheme } = useTheme();

@@ -1,4 +1,4 @@
-import { Separator } from "@workspace/ui";
+import { Separator } from "@workspace/design-system/components/ui/separator";
 
 import { ANALYTICS_LABELS } from "@/features/admin/analytics/constants/course";
 import { ApiList } from "@/features/admin/common/ui/api-list";

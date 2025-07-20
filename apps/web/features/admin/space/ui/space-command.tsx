@@ -14,7 +14,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@workspace/ui";
+} from "@workspace/design-system/components/ui";
 
 import { routes } from "@/constants/routes";
 import { type NavbarItem } from "@/features/admin/common/types/navbar";

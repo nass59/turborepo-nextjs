@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { ClerkProvider } from "@clerk/nextjs";
 
-import { cn, Toaster } from "@workspace/ui";
+import { cn, Toaster } from "@workspace/design-system/components/ui";
 
 import { Analytics } from "@/components/analytics";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
@@ -12,7 +12,7 @@ import { baseMetadata, baseViewport } from "@/constants/metadata";
 import { ModalProvider } from "@/features/admin/common/providers/modal-provider";
 import { type LayoutProps } from "@/types/common";
 
-import "@workspace/ui/styles/global.css";
+import "@workspace/design-system/components/ui/styles/global.css";
 
 const fontSans = Inter({
   variable: "--font-sans",

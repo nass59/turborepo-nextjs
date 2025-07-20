@@ -1,15 +1,25 @@
 import type { Preview } from "@storybook/react";
 
-import "./style.css";
-import "@workspace/ui/styles/global.css";
+import "@workspace/design-system/styles/globals.css";
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/,
+        date: /Date$/i,
+      },
+    },
+    chromatic: {
+      modes: {
+        light: {
+          theme: "light",
+          className: "light",
+        },
+        dark: {
+          theme: "dark",
+          className: "dark",
+        },
       },
     },
   },

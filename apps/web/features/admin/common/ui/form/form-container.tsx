@@ -1,6 +1,10 @@
 import { type UseFormReturn } from "react-hook-form";
 
-import { Button, Form, FormFooter } from "@workspace/ui";
+import {
+  Button,
+  Form,
+  FormFooter,
+} from "@workspace/design-system/components/ui";
 
 type Props = {
   form: UseFormReturn<any>;

@@ -6,7 +6,11 @@ import { UpdateIcon } from "@radix-ui/react-icons";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
-import { Button, Form, FormFooter } from "@workspace/ui";
+import {
+  Button,
+  Form,
+  FormFooter,
+} from "@workspace/design-system/components/ui";
 
 import { routes } from "@/constants/routes";
 import { apiRoutes } from "@/features/admin/common/constants/routes";

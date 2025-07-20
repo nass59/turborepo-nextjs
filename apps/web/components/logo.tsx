@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { RocketIcon } from "@radix-ui/react-icons";
 
-import { buttonVariants, cn } from "@workspace/ui";
+import { buttonVariants, cn } from "@workspace/design-system/components/ui";
 
 import { siteConfig } from "@/config/site";
 

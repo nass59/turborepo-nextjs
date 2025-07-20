@@ -3,7 +3,7 @@
 import { type MouseEventHandler } from "react";
 import { EnterFullScreenIcon } from "@radix-ui/react-icons";
 
-import { Button } from "@workspace/ui";
+import { Button } from "@workspace/design-system/components/ui";
 
 import { usePreviewModal } from "@/features/public/explore/hooks/use-preview-modal";
 import { type ItemModel } from "@/lib/database/models/Item";

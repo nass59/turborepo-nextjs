@@ -1,4 +1,5 @@
-import { buttonVariants, cn } from "@workspace/ui";
+import { buttonVariants } from "@workspace/design-system/src/components/ui/button";
+import { cn } from "@workspace/design-system/src/lib/utils";
 
 import { siteConfig } from "@/config/site";
 import { Space3 } from "@/features/public/landing-page/assets/icons/space3";

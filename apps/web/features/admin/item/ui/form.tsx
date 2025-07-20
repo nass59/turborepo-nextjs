@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
-import { Separator, toast } from "@workspace/ui";
+import { Separator, toast } from "@workspace/design-system/components/ui";
 
 import { routes } from "@/constants/routes";
 import { apiRoutes } from "@/features/admin/common/constants/routes";

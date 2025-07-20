@@ -1,0 +1,8 @@
+{
+  "onlyChanged": true,
+  "projectId": "Project:6751da8c5f5f5eb81622f72b",
+  "storybookBaseDir": "apps/storybook",
+  "buildCommand": "pnpm build",
+  "outputDir": "storybook-static",
+  "zip": true
+}

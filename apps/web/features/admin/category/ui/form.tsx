@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
-import { toast } from "@workspace/ui";
+import { toast } from "@workspace/design-system/components/ui";
 
 import { routes } from "@/constants/routes";
 import { type BillboardColumn } from "@/features/admin/billboard/ui/columns";

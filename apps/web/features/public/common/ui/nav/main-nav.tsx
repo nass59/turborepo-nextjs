@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Cross2Icon, RocketIcon } from "@radix-ui/react-icons";
 import { type MainNavItem as TypeMainNavItem } from "types";
 
-import { Button } from "@workspace/ui";
+import { Button } from "@workspace/design-system/components/ui";
 
 import { Logo } from "@/components/logo";
 

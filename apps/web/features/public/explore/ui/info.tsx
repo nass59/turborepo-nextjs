@@ -1,4 +1,4 @@
-import { buttonVariants } from "@workspace/ui";
+import { buttonVariants } from "@workspace/design-system/components/ui/button";
 
 import { type ItemModel } from "@/lib/database/models/Item";
 

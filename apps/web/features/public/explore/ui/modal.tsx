@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Cross2Icon } from "@radix-ui/react-icons";
 
-import { Button } from "@workspace/ui";
+import { Button } from "@workspace/design-system/components/ui";
 
 type Props = {
   open: boolean;

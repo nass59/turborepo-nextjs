@@ -1,4 +1,4 @@
-import { DataTable, Separator } from "@workspace/ui";
+import { Separator } from "@workspace/design-system/src/components/ui/separator";
 
 import { CATEGORY_LABELS } from "@/features/admin/category/constants/category";
 import { columnsData } from "@/features/admin/category/ui/columns";

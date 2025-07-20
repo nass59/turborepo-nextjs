@@ -7,7 +7,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-} from "@workspace/ui";
+} from "@workspace/design-system/components/ui";
 
 type Props = {
   labels: {

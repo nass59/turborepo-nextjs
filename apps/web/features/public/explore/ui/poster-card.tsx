@@ -6,7 +6,7 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
-} from "@workspace/ui";
+} from "@workspace/design-system/components/ui";
 
 import { AbsoluteLink } from "@/features/public/common/ui/absolute-link";
 import { type ItemModel } from "@/lib/database/models/Item";

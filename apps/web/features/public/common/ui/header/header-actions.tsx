@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
-import { Button, buttonVariants, cn } from "@workspace/ui";
+import {
+  Button,
+  buttonVariants,
+  cn,
+} from "@workspace/design-system/components/ui";
 
 import { siteConfig } from "@/config/site";
 

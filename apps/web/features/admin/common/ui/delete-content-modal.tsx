@@ -17,7 +17,7 @@ import {
   AlertDialogTrigger,
   Button,
   toast,
-} from "@workspace/ui";
+} from "@workspace/design-system/components/ui";
 
 import { routes } from "@/constants/routes";
 import { toastError } from "@/lib/api-response/api-responses";

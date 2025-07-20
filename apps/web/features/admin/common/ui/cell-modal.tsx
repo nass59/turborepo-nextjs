@@ -13,7 +13,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   toast,
-} from "@workspace/ui";
+} from "@workspace/design-system/components/ui";
 
 import { toastError } from "@/lib/api-response/api-responses";
 

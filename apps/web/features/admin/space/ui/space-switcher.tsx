@@ -10,7 +10,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@workspace/ui";
+} from "@workspace/design-system/components/ui";
 
 import { type NavbarItem } from "@/features/admin/common/types/navbar";
 import { type SpaceModel } from "@/lib/database/models/Space";

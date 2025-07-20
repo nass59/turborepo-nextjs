@@ -4,7 +4,11 @@ import Image from "next/image";
 import { BellIcon } from "@radix-ui/react-icons";
 import OgImage from "public/og-light.jpg";
 
-import { Popover, PopoverContent, PopoverTrigger } from "@workspace/ui";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@workspace/design-system/components/ui";
 
 import { siteConfig } from "@/config/site";
 

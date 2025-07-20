@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 
-import { cn, Toaster } from "@workspace/ui";
 
 import { Analytics } from "@/components/analytics";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
@@ -11,7 +10,8 @@ import { baseMetadata, baseViewport } from "@/constants/metadata";
 import { Help } from "@/features/public/common/ui/helper";
 import { type LayoutProps } from "@/types/common";
 
-import "@workspace/ui/styles/global.css";
+import "@workspace/design-system/components/ui/styles/global.css";
+import { cn } from "@workspace/design-system/src/lib/utils";
 
 // Define the font styles
 const fontSans = Inter({

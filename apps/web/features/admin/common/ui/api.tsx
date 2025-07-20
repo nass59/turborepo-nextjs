@@ -1,11 +1,11 @@
 import { CodeIcon } from "@radix-ui/react-icons";
 
-import { Badge, type BadgeProps } from "@workspace/ui";
+import { Badge, type BadgeProps } from "@workspace/design-system/components/ui";
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@workspace/ui/components/ui/alert";
+} from "@workspace/design-system/components/ui/components/ui/alert";
 
 import { env } from "@/env.mjs";
 
