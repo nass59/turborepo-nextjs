@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, Popover, PopoverContent, PopoverTrigger } from "@workspace/ui"
+import { Button, Popover, PopoverContent, PopoverTrigger } from "@workspace/ui";
 
 const meta = {
   title: "Molecules/Popover",
   component: Popover,
-} satisfies Meta<typeof Popover>
+} satisfies Meta<typeof Popover>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => {
@@ -21,6 +21,6 @@ export const Default: Story = {
           <p className="text-sm">Place content for the popover here.</p>
         </PopoverContent>
       </Popover>
-    )
+    );
   },
-}
+};

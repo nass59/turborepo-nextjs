@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Label } from "@workspace/ui"
+import { Label } from "@workspace/ui";
 
 const meta = {
   title: "Atoms/Label",
@@ -32,13 +32,13 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Label>
+} satisfies Meta<typeof Label>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
     children: "My label",
   },
-}
+};

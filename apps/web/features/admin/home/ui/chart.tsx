@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
-import { type MonthlyItem } from "../types/overview"
+import { type MonthlyItem } from "../types/overview";
 
 type Props = {
-  data: MonthlyItem[]
-}
+  data: MonthlyItem[];
+};
 
 export const Chart = ({ data }: Props) => {
   return (
@@ -28,5 +28,5 @@ export const Chart = ({ data }: Props) => {
         <Bar dataKey="total" fill="#3498db" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
-  )
-}
+  );
+};

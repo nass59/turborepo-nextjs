@@ -1,16 +1,17 @@
-import { Separator } from "@workspace/ui"
-import { ANALYTICS_LABELS } from "@/features/admin/analytics/constants/course"
-import { ApiList } from "@/features/admin/common/ui/api-list"
-import { ListHeading } from "@/features/admin/common/ui/list-heading"
+import { Separator } from "@workspace/ui";
+
+import { ANALYTICS_LABELS } from "@/features/admin/analytics/constants/course";
+import { ApiList } from "@/features/admin/common/ui/api-list";
+import { ListHeading } from "@/features/admin/common/ui/list-heading";
 
 type Props = {
   params: {
-    spaceId: string
-  }
-}
+    spaceId: string;
+  };
+};
 
 export default async function Page({ params }: Props) {
-  const { list: listLabels, api: apiLabels, resource } = ANALYTICS_LABELS
+  const { list: listLabels, api: apiLabels, resource } = ANALYTICS_LABELS;
   return (
     <>
       <ListHeading labels={listLabels} value={0} path={`/${resource}/new`} />
@@ -21,5 +22,5 @@ export default async function Page({ params }: Props) {
         spaceId={params.spaceId}
       />
     </>
-  )
+  );
 }

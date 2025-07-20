@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
 import {
   Table,
@@ -9,9 +9,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@workspace/ui"
+} from "@workspace/ui";
 
-import { invoices } from "../../data/invoices"
+import { invoices } from "../../data/invoices";
 
 const meta = {
   title: "Organisms/Table",
@@ -27,10 +27,10 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Table>
+} satisfies Meta<typeof Table>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => {
@@ -64,6 +64,6 @@ export const Default: Story = {
           </TableRow>
         </TableFooter>
       </Table>
-    )
+    );
   },
-}
+};

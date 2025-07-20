@@ -1,7 +1,7 @@
-import { Pencil1Icon } from "@radix-ui/react-icons"
-import type { Meta, StoryObj } from "@storybook/react"
+import { Pencil1Icon } from "@radix-ui/react-icons";
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, Heading, HeadingAction } from "@workspace/ui"
+import { Button, Heading, HeadingAction } from "@workspace/ui";
 
 const meta = {
   title: "Molecules/Heading",
@@ -41,10 +41,10 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Heading>
+} satisfies Meta<typeof Heading>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
@@ -60,6 +60,6 @@ export const Default: Story = {
           </Button>
         </HeadingAction>
       </Heading>
-    )
+    );
   },
-}
+};

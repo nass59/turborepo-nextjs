@@ -13,5 +13,5 @@ export const Auth = () => {
         ></path>
       </svg>
     </>
-  )
-}
+  );
+};

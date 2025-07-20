@@ -1,11 +1,11 @@
-import { RocketIcon } from "@radix-ui/react-icons"
-import type { Meta, StoryObj } from "@storybook/react"
+import { RocketIcon } from "@radix-ui/react-icons";
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Alert, AlertDescription, AlertStyle, AlertTitle } from "@workspace/ui"
+import { Alert, AlertDescription, AlertStyle, AlertTitle } from "@workspace/ui";
 
-type AlertVariants = keyof typeof AlertStyle.variants
+type AlertVariants = keyof typeof AlertStyle.variants;
 
-const variants = Object.keys(AlertStyle.variants) as AlertVariants[]
+const variants = Object.keys(AlertStyle.variants) as AlertVariants[];
 
 const meta = {
   title: "Molecules/Alert",
@@ -28,10 +28,10 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Alert>
+} satisfies Meta<typeof Alert>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: ({ ...args }) => {
@@ -43,6 +43,6 @@ export const Default: Story = {
           You can add components and dependencies to your app using the cli.
         </AlertDescription>
       </Alert>
-    )
+    );
   },
-}
+};

@@ -1,6 +1,6 @@
-import { RocketIcon } from "@radix-ui/react-icons"
+import { RocketIcon } from "@radix-ui/react-icons";
 
-import { BreadcrumbItems } from "./breadcrumb-items"
+import { BreadcrumbItems } from "./breadcrumb-items";
 
 export const Breadcrumb = () => {
   return (
@@ -15,5 +15,5 @@ export const Breadcrumb = () => {
         <BreadcrumbItems />
       </div>
     </div>
-  )
-}
+  );
+};

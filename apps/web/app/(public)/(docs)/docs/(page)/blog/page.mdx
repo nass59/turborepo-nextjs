@@ -1,23 +1,25 @@
-import { Heading } from "@workspace/ui"
-import { Pager } from "@/features/public/docs/ui/pager"
-import { getMetadata } from "@/lib/metadata"
-import { getOgUrl } from "@/lib/og"
+import { Heading } from "@workspace/ui";
+
+import { Pager } from "@/features/public/docs/ui/pager";
+import { getMetadata } from "@/lib/metadata";
+import { getOgUrl } from "@/lib/og";
 
 export const mdxData = {
   title: "Blog",
   description: "This page is in progress",
-  url: "/docs/blog"
-}
+  url: "/docs/blog",
+};
 
 export const metadata = getMetadata(
   getOgUrl(mdxData.description, "Documentation"),
   mdxData
-)
+);
 
 <Heading title={mdxData.title} description={mdxData.description} />
 
 <Callout>
-  This site is a work in progress. If you see dummy text on a page, it means I'm still working on it.
+  This site is a work in progress. If you see dummy text on a page, it means I'm
+  still working on it.
 </Callout>
 
 <Pager url={mdxData.url} />

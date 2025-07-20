@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
+import { useEffect } from "react";
 
-import { useSpaceModal } from "@/features/admin/space/hooks/use-space-modal"
+import { useSpaceModal } from "@/features/admin/space/hooks/use-space-modal";
 
 /**
  * Page is a Next.js page component that triggers the space modal to open on mount.
@@ -11,16 +11,16 @@ import { useSpaceModal } from "@/features/admin/space/hooks/use-space-modal"
  */
 export default function Page() {
   // Get the function to open the modal and its current state
-  const onOpen = useSpaceModal((state) => state.onOpen)
-  const isOpen = useSpaceModal((state) => state.isOpen)
+  const onOpen = useSpaceModal((state) => state.onOpen);
+  const isOpen = useSpaceModal((state) => state.isOpen);
 
   // If the modal is not open when the component mounts, open it
   useEffect(() => {
     if (!isOpen) {
-      onOpen()
+      onOpen();
     }
-  }, [isOpen, onOpen])
+  }, [isOpen, onOpen]);
 
   // This component does not render anything
-  return null
+  return null;
 }

@@ -1,23 +1,26 @@
-import { Heading } from "@workspace/ui"
-import { Pager } from "@/features/public/docs/ui/pager"
-import { getMetadata } from "@/lib/metadata"
-import { getOgUrl } from "@/lib/og"
+import { Heading } from "@workspace/ui";
+
+import { Pager } from "@/features/public/docs/ui/pager";
+import { getMetadata } from "@/lib/metadata";
+import { getOgUrl } from "@/lib/og";
 
 export const mdxData = {
   title: "Style Guide",
   description: "Testing the MDX style guide with Tailwind Typography",
-  url: "/docs/style-guide"
-}
+  url: "/docs/style-guide",
+};
 
 export const metadata = getMetadata(
   getOgUrl(mdxData.description, "Documentation"),
   mdxData
-)
+);
 
 <Heading title={mdxData.title} description={mdxData.description} />
 
 <Callout>
-  The text below is from the [Tailwind CSS](https://play.tailwindcss.com/uj1vGACRJA?layout=preview) docs. I copied it here to test the markdown styles. **Tailwind is awesome. You should use it.**
+  The text below is from the [Tailwind
+  CSS](https://play.tailwindcss.com/uj1vGACRJA?layout=preview) docs. I copied it
+  here to test the markdown styles. **Tailwind is awesome. You should use it.**
 </Callout>
 
 Until now, trying to style an article, document, or blog post with Tailwind has been a tedious task that required a keen eye for typography and a lot of complex custom CSS.
@@ -75,12 +78,7 @@ Something a wise person once told me about typography is:
 
 It's probably important that images look okay here by default as well:
 
-<img
-  src="/images/blog/post-11.png"
-  width="418"
-  height="418"
-  alt="Image"
-/>
+<img src="/images/blog/post-11.png" width="418" height="418" alt="Image" />
 
 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
 
@@ -132,7 +130,7 @@ module.exports = {
   },
   variants: {},
   plugins: [],
-}
+};
 ```
 
 Hopefully that looks good enough to you.
@@ -159,14 +157,12 @@ The most annoying thing about lists in Markdown is that `<li>` elements aren't g
 - **For example, here's another nested list.**
 
   But this time with a second paragraph.
-
   - These list items won't have `<p>` tags
   - Because they are only one line each
 
 - **But in this second top-level list item, they will.**
 
   This is especially annoying because of the spacing on this paragraph.
-
   - As you can see here, because I've added a second line, this list item now has a `<p>` tag.
 
     This is the second line I'm talking about by the way.

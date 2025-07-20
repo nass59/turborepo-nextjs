@@ -1,17 +1,18 @@
-import { type ItemModel } from "@/lib/database/models/Item"
-import { cn } from "@workspace/ui"
+import { cn } from "@workspace/ui";
 
-import { NoResults } from "./no-results"
-import { PosterCard } from "./poster-card"
+import { type ItemModel } from "@/lib/database/models/Item";
+
+import { NoResults } from "./no-results";
+import { PosterCard } from "./poster-card";
 
 type Props = {
-  title: string
-  items: ItemModel[]
-  nbCols?: 4 | 5
-}
+  title: string;
+  items: ItemModel[];
+  nbCols?: 4 | 5;
+};
 
 const Items = ({ items, nbCols }: Pick<Props, "items" | "nbCols">) => {
-  if (items.length === 0) return <NoResults />
+  if (items.length === 0) return <NoResults />;
 
   return (
     <div
@@ -26,8 +27,8 @@ const Items = ({ items, nbCols }: Pick<Props, "items" | "nbCols">) => {
         <PosterCard key={item._id.toString()} data={item} />
       ))}
     </div>
-  )
-}
+  );
+};
 
 export const List = ({ title, items, nbCols = 4 }: Props) => {
   return (
@@ -35,5 +36,5 @@ export const List = ({ title, items, nbCols = 4 }: Props) => {
       <h3 className="text-4xl font-bold">{title}</h3>
       <Items items={items} nbCols={nbCols} />
     </div>
-  )
-}
+  );
+};

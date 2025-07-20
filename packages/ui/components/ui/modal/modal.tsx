@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Dialog,
@@ -6,15 +6,15 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "../dialog"
+} from "../dialog";
 
 type Props = {
-  title: string
-  description: string
-  isOpen: boolean
-  onClose: () => void
-  children?: React.ReactNode
-}
+  title: string;
+  description: string;
+  isOpen: boolean;
+  onClose: () => void;
+  children?: React.ReactNode;
+};
 
 export const Modal = ({
   title,
@@ -25,9 +25,9 @@ export const Modal = ({
 }: Props) => {
   const onChange = (open: boolean) => {
     if (!open) {
-      onClose()
+      onClose();
     }
-  }
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={onChange}>
@@ -39,5 +39,5 @@ export const Modal = ({
         <div>{children}</div>
       </DialogContent>
     </Dialog>
-  )
-}
+  );
+};

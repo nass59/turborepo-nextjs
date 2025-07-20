@@ -1,25 +1,29 @@
-import { siteConfig } from "@/config/site"
-import { getMetadata } from "@/lib/metadata"
-import { getOgUrl } from "@/lib/og"
-import { PostHeader } from "@/features/public/blog/ui/post-header"
+import { siteConfig } from "@/config/site";
+import { PostHeader } from "@/features/public/blog/ui/post-header";
+import { getMetadata } from "@/lib/metadata";
+import { getOgUrl } from "@/lib/og";
 
 export const mdxData = {
   authors: [
     {
       avatar: "/images/avatars/chris.jpg",
       name: "Chris",
-      twitter: "nass190"
-    }
+      twitter: "nass190",
+    },
   ],
   date: "2022-03-04",
-  description: "For years, people have been reporting sightings of unidentified flying objects, or OVNIs.",
+  description:
+    "For years, people have been reporting sightings of unidentified flying objects, or OVNIs.",
   image: "/images/blog/post-8.png",
   slug: "the-great-ovni-mystery-solved",
   title: "The Great OVNI Mystery Solved!",
-  url: "/blog/the-great-ovni-mystery-solved"
-}
+  url: "/blog/the-great-ovni-mystery-solved",
+};
 
-export const metadata = getMetadata(getOgUrl(mdxData.title, siteConfig.name), mdxData)
+export const metadata = getMetadata(
+  getOgUrl(mdxData.title, siteConfig.name),
+  mdxData
+);
 
 <PostHeader post={mdxData} />
 

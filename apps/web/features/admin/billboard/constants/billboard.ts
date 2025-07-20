@@ -48,4 +48,4 @@ export const BILLBOARD_LABELS = {
     title: "Edit billboard",
     description: "Edit a billboard",
   },
-} as const
+} as const;

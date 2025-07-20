@@ -1,13 +1,13 @@
-import { Schema, model, models, type Types } from "mongoose"
+import { model, models, Schema, type Types } from "mongoose";
 
 export type BillboardModel = {
-  _id: Types.ObjectId
-  spaceId: string
-  label: string
-  imageUrl: string
-  createdAt: Date
-  updatedAt: Date
-}
+  _id: Types.ObjectId;
+  spaceId: string;
+  label: string;
+  imageUrl: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
 const BillboardSchema = new Schema<BillboardModel>({
   spaceId: {
@@ -31,7 +31,7 @@ const BillboardSchema = new Schema<BillboardModel>({
     type: Date,
     default: Date.now,
   },
-})
+});
 
 export default models.Billboard ||
-  model<BillboardModel>("Billboard", BillboardSchema)
+  model<BillboardModel>("Billboard", BillboardSchema);

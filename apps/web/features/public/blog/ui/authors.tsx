@@ -1,19 +1,19 @@
-import Link from "next/link"
+import Link from "next/link";
 
-import { Avatar, AvatarImage } from "@workspace/ui"
+import { Avatar, AvatarImage } from "@workspace/ui";
 
 export type Author = {
-  name: string
-  twitter: string
-  avatar: string
-}
+  name: string;
+  twitter: string;
+  avatar: string;
+};
 
 type Props = {
-  authors: Author[]
-}
+  authors: Author[];
+};
 
 export const Authors = ({ authors }: Props) => {
-  if (!authors?.length) return null
+  if (!authors?.length) return null;
 
   return (
     <div className="flex space-x-4">
@@ -30,11 +30,11 @@ export const Authors = ({ authors }: Props) => {
 
             <div className="flex-1 text-left leading-tight">
               <p className="font-medium">{author.name}</p>
-              <p className="text-xs text-muted-foreground">@{author.twitter}</p>
+              <p className="text-muted-foreground text-xs">@{author.twitter}</p>
             </div>
           </Link>
         ) : null
       )}
     </div>
-  )
-}
+  );
+};

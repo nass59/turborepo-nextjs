@@ -1,9 +1,9 @@
-import { redirect } from "next/navigation"
+import { redirect } from "next/navigation";
 
-import { type LayoutProps } from "@/types/common"
-import { routes } from "@/constants/routes"
-import { getCurrentUserId } from "@/features/admin/common/utilities/user"
-import { getCurrentSpace } from "@/features/admin/space/utilities/space"
+import { routes } from "@/constants/routes";
+import { getCurrentUserId } from "@/features/admin/common/utilities/user";
+import { getCurrentSpace } from "@/features/admin/space/utilities/space";
+import { type LayoutProps } from "@/types/common";
 
 /**
  * DashboardLayout is a layout component for the dashboard.
@@ -14,19 +14,19 @@ import { getCurrentSpace } from "@/features/admin/space/utilities/space"
  */
 export default async function Layout({ children }: LayoutProps) {
   // Get the current user's ID
-  const userId = getCurrentUserId()
+  const userId = getCurrentUserId();
 
   // Find the first space that belongs to the user
-  const space = await getCurrentSpace(userId)
+  const space = await getCurrentSpace(userId);
 
   // If the user has a space, redirect to the dashboard of the first space
   if (space) {
-    return redirect(`${routes.dashboard}/${String(space._id)}`)
+    return redirect(`${routes.dashboard}/${String(space._id)}`);
   }
 
   return (
     <main className="flex w-full flex-1 flex-col overflow-hidden">
       {children}
     </main>
-  )
+  );
 }

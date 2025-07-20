@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Input } from "@workspace/ui"
+import { Input } from "@workspace/ui";
 
 const meta = {
   title: "Atoms/Input",
@@ -33,13 +33,13 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Input>
+} satisfies Meta<typeof Input>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
     placeholder: "My input placeholder",
   },
-}
+};

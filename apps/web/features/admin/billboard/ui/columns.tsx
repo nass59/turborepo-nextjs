@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { type ColumnDef } from "@tanstack/react-table"
+import { type ColumnDef } from "@tanstack/react-table";
 
-import { CellAction } from "@/features/admin/common/ui/cell-action"
+import { CellAction } from "@/features/admin/common/ui/cell-action";
 
-import { BILLBOARD_LABELS } from "../constants/billboard"
+import { BILLBOARD_LABELS } from "../constants/billboard";
 
 export type BillboardColumn = {
-  id: string
-  label: string
-  createdAt: string
-}
+  id: string;
+  label: string;
+  createdAt: string;
+};
 
-const { columns, resource } = BILLBOARD_LABELS.list
+const { columns, resource } = BILLBOARD_LABELS.list;
 
 export const columnsData: ColumnDef<BillboardColumn>[] = [
   columns.label,
@@ -27,4 +27,4 @@ export const columnsData: ColumnDef<BillboardColumn>[] = [
       />
     ),
   },
-]
+];

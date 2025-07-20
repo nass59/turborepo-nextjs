@@ -1,11 +1,11 @@
-import { type ItemModel } from "@/lib/database/models/Item"
+import { type ItemModel } from "@/lib/database/models/Item";
 
-import { Gallery } from "./gallery"
-import { Info } from "./info"
+import { Gallery } from "./gallery";
+import { Info } from "./info";
 
 type Props = {
-  item: ItemModel
-}
+  item: ItemModel;
+};
 
 export const Item = ({ item }: Props) => {
   return (
@@ -17,5 +17,5 @@ export const Item = ({ item }: Props) => {
         <Info data={item} />
       </div>
     </div>
-  )
-}
+  );
+};

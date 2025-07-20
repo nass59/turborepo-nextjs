@@ -1,6 +1,7 @@
-import { Types } from "mongoose"
+import { Types } from "mongoose";
 
-import Item, { type ItemModel } from "@/lib/database/models/Item"
+import { type MonthlyItem } from "@/features/admin/home/types/overview";
+import Item, { type ItemModel } from "@/lib/database/models/Item";
 import {
   aggregate,
   count,
@@ -9,38 +10,37 @@ import {
   findAll,
   findOneById,
   updateOneById,
-} from "@/lib/database/queries"
-import { type MonthlyItem } from "@/features/admin/home/types/overview"
+} from "@/lib/database/queries";
 
 type ItemModelProps = Pick<
   ItemModel,
   "name" | "categoryId" | "images" | "isFeatured" | "isArchived" | "spaceId"
->
+>;
 
-type ItemModelUpdateProps = Omit<ItemModelProps, "spaceId">
+type ItemModelUpdateProps = Omit<ItemModelProps, "spaceId">;
 
-type ItemsAggregated = ItemModel & { category: string }
+type ItemsAggregated = ItemModel & { category: string };
 
 export async function countAllItemsBySpaceId(spaceId: string): Promise<number> {
-  return count(Item, { spaceId })
+  return count(Item, { spaceId });
 }
 
 export async function createItem(
   data: ItemModelProps
 ): Promise<ItemModel | null> {
-  return createOne(Item, data)
+  return createOne(Item, data);
 }
 
 export async function deleteOneItem(itemId: string): Promise<ItemModel | null> {
-  return deleteOneById(Item, itemId)
+  return deleteOneById(Item, itemId);
 }
 
 export async function findAllItems(query: object): Promise<ItemModel[] | []> {
-  return findAll(Item, query)
+  return findAll(Item, query);
 }
 
 export async function countAllItems(query: object): Promise<number> {
-  return count(Item, query)
+  return count(Item, query);
 }
 
 const addCategory = [
@@ -71,7 +71,7 @@ const addCategory = [
       fromCategories: 0,
     },
   },
-]
+];
 
 export async function findAllItemsBySpaceId(
   query: object
@@ -81,11 +81,11 @@ export async function findAllItemsBySpaceId(
       $match: query,
     },
     ...addCategory,
-  ])
+  ]);
 }
 
 export async function findOneItem(itemId: string): Promise<ItemModel | null> {
-  return findOneById(Item, itemId)
+  return findOneById(Item, itemId);
 }
 
 export async function findOneItemWithCategory(
@@ -105,16 +105,16 @@ export async function findOneItemWithCategory(
     {
       $limit: 1,
     },
-  ])
+  ]);
 
-  return result[0] || null
+  return result[0] || null;
 }
 
 export async function updateOneItem(
   itemId: string,
   data: ItemModelUpdateProps
 ): Promise<ItemModel | null> {
-  return updateOneById(Item, itemId, data)
+  return updateOneById(Item, itemId, data);
 }
 
 const itemsByMonth = [
@@ -174,14 +174,14 @@ const itemsByMonth = [
       _id: 0,
     },
   },
-]
+];
 
 type ItemsByMonth = {
   x: {
-    month: number
-  }
-  y: number
-}
+    month: number;
+  };
+  y: number;
+};
 
 const monthlyItems: MonthlyItem[] = [
   { name: "Jan", total: 0 },
@@ -196,7 +196,7 @@ const monthlyItems: MonthlyItem[] = [
   { name: "Oct", total: 0 },
   { name: "Nov", total: 0 },
   { name: "Dec", total: 0 },
-]
+];
 
 export async function countAllItemsByMonthBySpaceId(
   spaceId: string
@@ -216,16 +216,16 @@ export async function countAllItemsByMonthBySpaceId(
     {
       $limit: 5000,
     },
-  ])
+  ]);
 
   for (let i = 0; i < result.length; i++) {
-    const item = result[i]
+    const item = result[i];
 
     if (item?.x.month) {
-      const entry = monthlyItems[item.x.month] as MonthlyItem
-      entry.total = item.y
+      const entry = monthlyItems[item.x.month] as MonthlyItem;
+      entry.total = item.y;
     }
   }
 
-  return monthlyItems
+  return monthlyItems;
 }

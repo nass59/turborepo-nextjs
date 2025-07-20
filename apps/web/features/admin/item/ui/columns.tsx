@@ -1,44 +1,45 @@
-"use client"
+"use client";
 
 import {
   EyeClosedIcon,
   EyeOpenIcon,
   StarFilledIcon,
   StarIcon,
-} from "@radix-ui/react-icons"
-import { type ColumnDef } from "@tanstack/react-table"
+} from "@radix-ui/react-icons";
+import { type ColumnDef } from "@tanstack/react-table";
 
-import { Badge } from "@workspace/ui"
-import { CellAction } from "@/features/admin/common/ui/cell-action"
+import { Badge } from "@workspace/ui";
 
-import { ITEM_LABELS } from "../constants/item"
+import { CellAction } from "@/features/admin/common/ui/cell-action";
+
+import { ITEM_LABELS } from "../constants/item";
 
 export type ItemColumn = {
-  id: string
-  name: string
-  category: string
-  isFeatured: boolean
-  isArchived: boolean
-  createdAt: string
-}
+  id: string;
+  name: string;
+  category: string;
+  isFeatured: boolean;
+  isArchived: boolean;
+  createdAt: string;
+};
 
-const { columns, resource } = ITEM_LABELS.list
+const { columns, resource } = ITEM_LABELS.list;
 
 const getIsArchivedIcon = (isArchived: boolean) => {
   return isArchived ? (
     <EyeClosedIcon className="size-4 fill-slate-300 text-slate-500" />
   ) : (
     <EyeOpenIcon className="size-4 text-slate-500" />
-  )
-}
+  );
+};
 
 const getIsFeaturedIcon = (isFeatured: boolean) => {
   return isFeatured ? (
     <StarFilledIcon className="size-4 fill-yellow-300 text-yellow-500" />
   ) : (
     <StarIcon className="size-4 fill-slate-300 text-slate-500" />
-  )
-}
+  );
+};
 
 export const columnsData: ColumnDef<ItemColumn>[] = [
   columns.name,
@@ -67,4 +68,4 @@ export const columnsData: ColumnDef<ItemColumn>[] = [
       />
     ),
   },
-]
+];

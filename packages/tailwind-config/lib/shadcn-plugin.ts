@@ -1,5 +1,5 @@
-import { fontFamily } from "tailwindcss/defaultTheme"
-import plugin from "tailwindcss/plugin"
+import { fontFamily } from "tailwindcss/defaultTheme";
+import plugin from "tailwindcss/plugin";
 
 export const shadcnPlugin = plugin(
   // 1. Add CSS variable definitions to the base layer
@@ -48,7 +48,7 @@ export const shadcnPlugin = plugin(
         "--destructive-foreground": "0 85.7% 97.3%",
         "--ring": "217.2 32.6% 17.5%",
       },
-    })
+    });
 
     addBase({
       "*": {
@@ -57,7 +57,7 @@ export const shadcnPlugin = plugin(
       body: {
         "@apply bg-background text-foreground": {},
       },
-    })
+    });
   },
 
   // 2. Extend the Tailwind theme with "themable" utilities
@@ -141,4 +141,4 @@ export const shadcnPlugin = plugin(
       },
     },
   }
-)
+);

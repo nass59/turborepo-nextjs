@@ -1,5 +1,5 @@
 interface NextJSProps {
-  paint: string
+  paint: string;
 }
 
 export const NextJS = ({ paint }: NextJSProps) => {
@@ -35,5 +35,5 @@ export const NextJS = ({ paint }: NextJSProps) => {
         </defs>
       </svg>
     </>
-  )
-}
+  );
+};

@@ -1,6 +1,6 @@
-import { toast } from "@workspace/ui"
+import { toast } from "@workspace/ui";
 
 export const onCopy = (copyValue: string, toastMessage: string) => {
-  navigator.clipboard.writeText(copyValue)
-  toast({ title: toastMessage })
-}
+  navigator.clipboard.writeText(copyValue);
+  toast({ title: toastMessage });
+};

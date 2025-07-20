@@ -6,4 +6,4 @@ export const AvatarStyle = {
     sm: "size-8",
     xs: "size-6",
   },
-}
+};

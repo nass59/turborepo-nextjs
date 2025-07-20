@@ -1,44 +1,47 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { UpdateIcon } from "@radix-ui/react-icons"
-import axios from "axios"
-import { useForm } from "react-hook-form"
+import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { UpdateIcon } from "@radix-ui/react-icons";
+import axios from "axios";
+import { useForm } from "react-hook-form";
 
-import { routes } from "@/constants/routes"
-import { toastError } from "@/lib/api-response/api-responses"
-import { Button, Form, FormFooter } from "@workspace/ui"
-import { apiRoutes } from "@/features/admin/common/constants/routes"
-import { InputField } from "@/features/admin/common/ui/form/input-field"
+import { Button, Form, FormFooter } from "@workspace/ui";
 
-import { SPACE_LABELS } from "../constants/space"
-import { useSpaceModal } from "../hooks/use-space-modal"
-import { spaceSchema, type SpaceFormData } from "../schemas/space"
+import { routes } from "@/constants/routes";
+import { apiRoutes } from "@/features/admin/common/constants/routes";
+import { InputField } from "@/features/admin/common/ui/form/input-field";
+import { toastError } from "@/lib/api-response/api-responses";
+
+import { SPACE_LABELS } from "../constants/space";
+import { useSpaceModal } from "../hooks/use-space-modal";
+import { spaceSchema, type SpaceFormData } from "../schemas/space";
 
 export const SpaceForm = () => {
-  const spaceModal = useSpaceModal()
-  const [loading, setLoading] = useState<boolean>(false)
+  const spaceModal = useSpaceModal();
+  const [loading, setLoading] = useState<boolean>(false);
 
   const form = useForm<SpaceFormData>({
     resolver: zodResolver(spaceSchema),
     defaultValues: { name: "" },
-  })
+  });
 
   // TODO: Refactor using Server Actions
   const onSubmit = async (values: SpaceFormData) => {
     try {
-      setLoading(true)
-      const response = await axios.post(apiRoutes.spaces, values)
-      window.location.assign(`${routes.dashboard}/${String(response.data._id)}`)
+      setLoading(true);
+      const response = await axios.post(apiRoutes.spaces, values);
+      window.location.assign(
+        `${routes.dashboard}/${String(response.data._id)}`
+      );
     } catch (error) {
-      toastError(error, SPACE_LABELS.create.error)
+      toastError(error, SPACE_LABELS.create.error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
-  const formLabels = SPACE_LABELS.form
+  const formLabels = SPACE_LABELS.form;
 
   return (
     <Form {...form}>
@@ -66,5 +69,5 @@ export const SpaceForm = () => {
         </FormFooter>
       </form>
     </Form>
-  )
-}
+  );
+};

@@ -1,13 +1,13 @@
-import { type SidebarNavItem } from "types"
+import { type SidebarNavItem } from "types";
 
-import { SidebarItems } from "./sidebar-items"
+import { SidebarItems } from "./sidebar-items";
 
 type Props = {
-  items: SidebarNavItem[]
-}
+  items: SidebarNavItem[];
+};
 
 export const Sidebar = ({ items }: Props) => {
-  if (!items) return null
+  if (!items) return null;
 
   return (
     <aside className="fixed top-16 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 space-y-8 overflow-y-auto border-r py-6 pr-2 md:sticky md:block">
@@ -18,5 +18,5 @@ export const Sidebar = ({ items }: Props) => {
         </div>
       ))}
     </aside>
-  )
-}
+  );
+};

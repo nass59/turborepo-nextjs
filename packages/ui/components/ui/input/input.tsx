@@ -1,12 +1,12 @@
-import { forwardRef } from "react"
-import { cva } from "class-variance-authority"
+import { forwardRef } from "react";
+import { cva } from "class-variance-authority";
 
-import { cn } from "../../../lib/utils"
-import { InputStyle } from "./style"
+import { cn } from "../../../lib/utils";
+import { InputStyle } from "./style";
 
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement>
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
-const inputVariants = cva(InputStyle.base)
+const inputVariants = cva(InputStyle.base);
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
@@ -17,10 +17,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         {...props}
       />
-    )
+    );
   }
-)
+);
 
-Input.displayName = "Input"
+Input.displayName = "Input";
 
-export { Input }
+export { Input };

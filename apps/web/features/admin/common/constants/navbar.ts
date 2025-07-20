@@ -34,4 +34,4 @@ export const navRoutes = [
     key: "settings",
     label: "Settings",
   },
-] as const
+] as const;

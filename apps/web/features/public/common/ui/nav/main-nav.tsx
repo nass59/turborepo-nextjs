@@ -1,26 +1,27 @@
-"use client"
+"use client";
 
-import { useState, type PropsWithChildren } from "react"
-import { usePathname } from "next/navigation"
-import { Cross2Icon, RocketIcon } from "@radix-ui/react-icons"
+import { useState, type PropsWithChildren } from "react";
+import { usePathname } from "next/navigation";
+import { Cross2Icon, RocketIcon } from "@radix-ui/react-icons";
+import { type MainNavItem as TypeMainNavItem } from "types";
 
-import { type MainNavItem as TypeMainNavItem } from "types"
-import { Button } from "@workspace/ui"
-import { Logo } from "@/components/logo"
+import { Button } from "@workspace/ui";
 
-import { MainNavItems } from "./main-nav-items"
-import { MobileNav } from "./mobile-nav"
+import { Logo } from "@/components/logo";
+
+import { MainNavItems } from "./main-nav-items";
+import { MobileNav } from "./mobile-nav";
 
 type Props = PropsWithChildren & {
-  items?: TypeMainNavItem[]
-}
+  items?: TypeMainNavItem[];
+};
 
 export const MainNav = ({ items, children }: Props) => {
-  const pathName = usePathname()
-  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
+  const pathName = usePathname();
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
 
-  const toggle = () => setShowMobileMenu(!showMobileMenu)
-  const close = () => setShowMobileMenu(false)
+  const toggle = () => setShowMobileMenu(!showMobileMenu);
+  const close = () => setShowMobileMenu(false);
 
   return (
     <div className="flex gap-6">
@@ -52,5 +53,5 @@ export const MainNav = ({ items, children }: Props) => {
         </MobileNav>
       )}
     </div>
-  )
-}
+  );
+};

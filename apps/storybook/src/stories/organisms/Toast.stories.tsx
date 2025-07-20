@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, Toast, Toaster, ToastStyle, useToast } from "@workspace/ui"
+import { Button, Toast, Toaster, ToastStyle, useToast } from "@workspace/ui";
 
-type ToastVariants = keyof typeof ToastStyle.variants
-const variants = Object.keys(ToastStyle.variants) as ToastVariants[]
+type ToastVariants = keyof typeof ToastStyle.variants;
+const variants = Object.keys(ToastStyle.variants) as ToastVariants[];
 
 const meta = {
   title: "Organisms/Toast",
@@ -19,14 +19,14 @@ const meta = {
       options: variants,
     },
   },
-} satisfies Meta<typeof Toast>
+} satisfies Meta<typeof Toast>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: ({ ...args }) => {
-    const { toast } = useToast()
+    const { toast } = useToast();
 
     return (
       <div className="h-96">
@@ -38,12 +38,12 @@ export const Default: Story = {
               title: "Scheduled: Catch up ",
               description: "Friday, February 10, 2023 at 5:57 PM",
               variant: args.variant,
-            })
+            });
           }}
         >
           Add to calendar
         </Button>
       </div>
-    )
+    );
   },
-}
+};

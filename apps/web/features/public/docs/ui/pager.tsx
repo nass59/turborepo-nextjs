@@ -1,19 +1,19 @@
-import Link from "next/link"
-import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons"
+import Link from "next/link";
+import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 
-import { buttonVariants, cn } from "@workspace/ui"
+import { buttonVariants, cn } from "@workspace/ui";
 
-import { getPagerForDoc } from "../utilities/pager"
+import { getPagerForDoc } from "../utilities/pager";
 
 type Props = {
-  url: string
-}
+  url: string;
+};
 
 export const Pager = ({ url }: Props) => {
-  const pager = getPagerForDoc(url)
+  const pager = getPagerForDoc(url);
 
   if (!pager) {
-    return null
+    return null;
   }
 
   return (
@@ -40,5 +40,5 @@ export const Pager = ({ url }: Props) => {
         </Link>
       )}
     </div>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   content: [
@@ -8,6 +8,6 @@ const config = {
     "./content/**/*.{md,mdx}",
     "../../packages/ui/components/**/*.{ts,tsx}",
   ],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;

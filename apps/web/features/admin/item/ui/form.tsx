@@ -1,68 +1,69 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useParams, useRouter } from "next/navigation"
-import { zodResolver } from "@hookform/resolvers/zod"
-import axios from "axios"
-import { useForm } from "react-hook-form"
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
+import { useForm } from "react-hook-form";
 
-import { routes } from "@/constants/routes"
-import { toastError } from "@/lib/api-response/api-responses"
-import { type ItemModel } from "@/lib/database/models/Item"
-import { Separator, toast } from "@workspace/ui"
-import { apiRoutes } from "@/features/admin/common/constants/routes"
-import { CheckboxField } from "@/features/admin/common/ui/form/checkbox-field"
-import { FormContainer } from "@/features/admin/common/ui/form/form-container"
-import { InputField } from "@/features/admin/common/ui/form/input-field"
-import { MultiImagesField } from "@/features/admin/common/ui/form/multi-images-field"
-import { SelectField } from "@/features/admin/common/ui/form/select-field"
+import { Separator, toast } from "@workspace/ui";
 
-import { type CategoryColumn } from "../../category/ui/columns"
-import { ITEM_LABELS } from "../constants/item"
-import { defaultData, itemSchema, type ItemFormData } from "../schemas/item"
+import { routes } from "@/constants/routes";
+import { apiRoutes } from "@/features/admin/common/constants/routes";
+import { CheckboxField } from "@/features/admin/common/ui/form/checkbox-field";
+import { FormContainer } from "@/features/admin/common/ui/form/form-container";
+import { InputField } from "@/features/admin/common/ui/form/input-field";
+import { MultiImagesField } from "@/features/admin/common/ui/form/multi-images-field";
+import { SelectField } from "@/features/admin/common/ui/form/select-field";
+import { toastError } from "@/lib/api-response/api-responses";
+import { type ItemModel } from "@/lib/database/models/Item";
+
+import { type CategoryColumn } from "../../category/ui/columns";
+import { ITEM_LABELS } from "../constants/item";
+import { defaultData, itemSchema, type ItemFormData } from "../schemas/item";
 
 type Props = {
-  initialData: ItemModel | null
-  categories: CategoryColumn[]
-}
+  initialData: ItemModel | null;
+  categories: CategoryColumn[];
+};
 
 export const ItemForm = ({ initialData, categories }: Props) => {
-  const params = useParams()
-  const router = useRouter()
+  const params = useParams();
+  const router = useRouter();
 
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
 
   const form = useForm<ItemFormData>({
     resolver: zodResolver(itemSchema),
     defaultValues: initialData || defaultData,
-  })
+  });
 
-  const { form: formLabels, resource } = ITEM_LABELS
-  const { spaceId, itemId } = params
+  const { form: formLabels, resource } = ITEM_LABELS;
+  const { spaceId, itemId } = params;
 
   // TODO: Refactor using Server Actions
   const onSubmit = async (data: ItemFormData) => {
     try {
-      setLoading(true)
-      const path = `${spaceId}/${resource}`
-      const apiBaseUrl = `${apiRoutes.spaces}/${path}`
-      const resourceUrl = `${routes.dashboard}/${path}`
+      setLoading(true);
+      const path = `${spaceId}/${resource}`;
+      const apiBaseUrl = `${apiRoutes.spaces}/${path}`;
+      const resourceUrl = `${routes.dashboard}/${path}`;
 
       if (initialData) {
-        await axios.patch(`${apiBaseUrl}/${itemId}`, data)
+        await axios.patch(`${apiBaseUrl}/${itemId}`, data);
       } else {
-        await axios.post(apiBaseUrl, data)
+        await axios.post(apiBaseUrl, data);
       }
 
-      router.refresh()
-      router.push(resourceUrl)
-      toast({ title: `Resource ${initialData ? "updated" : "created"}.` })
+      router.refresh();
+      router.push(resourceUrl);
+      toast({ title: `Resource ${initialData ? "updated" : "created"}.` });
     } catch (error) {
-      toastError(error, "An error occurred while creating the resource.")
+      toastError(error, "An error occurred while creating the resource.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <FormContainer
@@ -103,5 +104,5 @@ export const ItemForm = ({ initialData, categories }: Props) => {
         <CheckboxField labels={formLabels.isArchived} control={form.control} />
       </div>
     </FormContainer>
-  )
-}
+  );
+};

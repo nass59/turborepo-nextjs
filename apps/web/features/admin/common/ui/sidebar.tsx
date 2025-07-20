@@ -1,19 +1,19 @@
-import { RocketIcon } from "@radix-ui/react-icons"
+import { RocketIcon } from "@radix-ui/react-icons";
 
-import { siteConfig } from "@/config/site"
-import { parseData } from "@/lib/utils"
-import { SpaceSwitcher } from "@/features/admin/space/ui/space-switcher"
-import { getAllSpaces } from "@/features/admin/space/utilities/space"
+import { siteConfig } from "@/config/site";
+import { SpaceSwitcher } from "@/features/admin/space/ui/space-switcher";
+import { getAllSpaces } from "@/features/admin/space/utilities/space";
+import { parseData } from "@/lib/utils";
 
-import { getCurrentUserId } from "../utilities/user"
-import { MainNav } from "./main-nav"
+import { getCurrentUserId } from "../utilities/user";
+import { MainNav } from "./main-nav";
 
 export const Sidebar = async () => {
-  const userId = getCurrentUserId()
-  const spaces = await getAllSpaces(userId)
+  const userId = getCurrentUserId();
+  const spaces = await getAllSpaces(userId);
 
   return (
-    <div className="flex h-full flex-col overflow-y-auto border-r bg-background shadow-sm">
+    <div className="bg-background flex h-full flex-col overflow-y-auto border-r shadow-sm">
       <div className="text-md flex gap-2 px-8 py-5 font-semibold">
         <RocketIcon className="size-6" />
         <span className="font-bold">{siteConfig.name}</span>
@@ -25,5 +25,5 @@ export const Sidebar = async () => {
 
       <MainNav />
     </div>
-  )
-}
+  );
+};

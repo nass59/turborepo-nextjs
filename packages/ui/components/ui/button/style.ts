@@ -21,4 +21,4 @@ export const ButtonStyle = {
     xs: "h-9 px-3 rounded-md",
     icon: "size-10 rounded-full",
   },
-}
+};

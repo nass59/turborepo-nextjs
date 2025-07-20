@@ -1,7 +1,7 @@
-import Image, { type ImageProps } from "next/image"
-import type { MDXComponents } from "mdx/types"
+import Image, { type ImageProps } from "next/image";
+import type { MDXComponents } from "mdx/types";
 
-import { Callout, Card, cn } from "@workspace/ui"
+import { Callout, Card, cn } from "@workspace/ui";
 
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any
@@ -23,7 +23,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
       <h2
         className={cn(
-          "mb-6 mt-10 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0",
+          "mt-10 mb-6 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0",
           className
         )}
         {...props}
@@ -102,7 +102,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       ...props
     }: React.HTMLAttributes<HTMLTableRowElement>) => (
       <tr
-        className={cn("m-0 border-t p-0 even:bg-muted", className)}
+        className={cn("even:bg-muted m-0 border-t p-0", className)}
         {...props}
       />
     ),
@@ -146,7 +146,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     }: React.HTMLAttributes<HTMLQuoteElement>) => (
       <blockquote
         className={cn(
-          "mt-6 border-l-2 pl-6 italic [&>*]:text-muted-foreground",
+          "[&>*]:text-muted-foreground mt-6 border-l-2 pl-6 italic",
           className
         )}
         {...props}
@@ -155,7 +155,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
       <pre
         className={cn(
-          "mb-4 mt-6 overflow-x-auto rounded-lg border bg-black p-4",
+          "mt-6 mb-4 overflow-x-auto rounded-lg border bg-black p-4",
           className
         )}
         {...props}
@@ -174,5 +174,5 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Card,
     Callout,
     ...components,
-  }
+  };
 }

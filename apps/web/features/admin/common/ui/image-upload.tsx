@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react"
-import Image from "next/image"
-import { ImageIcon, TrashIcon } from "@radix-ui/react-icons"
-import { CldUploadWidget } from "next-cloudinary"
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { ImageIcon, TrashIcon } from "@radix-ui/react-icons";
+import { CldUploadWidget } from "next-cloudinary";
 
-import { Button } from "@workspace/ui"
+import { Button } from "@workspace/ui";
 
 type Props = {
-  disabled?: boolean
-  onChange: (value: string) => void
-  onRemove: (value: string) => void
-  value: string[]
-  maxFiles: number
-}
+  disabled?: boolean;
+  onChange: (value: string) => void;
+  onRemove: (value: string) => void;
+  value: string[];
+  maxFiles: number;
+};
 
 export const ImageUpload = ({
   disabled,
@@ -20,17 +20,17 @@ export const ImageUpload = ({
   value,
   maxFiles,
 }: Props) => {
-  const [isMounted, setIsMounted] = useState<boolean>(false)
+  const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsMounted(true)
-  }, [])
+    setIsMounted(true);
+  }, []);
 
   const onUpload = (result: any) => {
-    onChange(result.info.secure_url)
-  }
+    onChange(result.info.secure_url);
+  };
 
-  if (!isMounted) return null
+  if (!isMounted) return null;
 
   return (
     <div>
@@ -40,7 +40,7 @@ export const ImageUpload = ({
             key={url}
             className="relative size-[280px] overflow-hidden rounded-md"
           >
-            <div className="absolute right-2 top-2 z-10">
+            <div className="absolute top-2 right-2 z-10">
               <Button
                 type="button"
                 onClick={() => onRemove(url)}
@@ -96,8 +96,8 @@ export const ImageUpload = ({
       >
         {({ open }) => {
           const onClick = () => {
-            open()
-          }
+            open();
+          };
 
           return (
             <Button
@@ -109,9 +109,9 @@ export const ImageUpload = ({
               <ImageIcon className="mr-2 size-4" />
               Upload an image
             </Button>
-          )
+          );
         }}
       </CldUploadWidget>
     </div>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
-import { type Control } from "react-hook-form"
+import { type Control } from "react-hook-form";
 
 import {
   FormControl,
@@ -8,18 +8,18 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from "@workspace/ui"
+} from "@workspace/ui";
 
 type Props = {
   labels: {
-    name: string
-    label: string
-    placeholder: string
-    description?: string
-  }
-  loading?: boolean
-  control: Control<any>
-}
+    name: string;
+    label: string;
+    placeholder: string;
+    description?: string;
+  };
+  loading?: boolean;
+  control: Control<any>;
+};
 
 export const InputField = ({ labels, loading, control }: Props) => {
   return (
@@ -43,5 +43,5 @@ export const InputField = ({ labels, loading, control }: Props) => {
         </FormItem>
       )}
     />
-  )
-}
+  );
+};

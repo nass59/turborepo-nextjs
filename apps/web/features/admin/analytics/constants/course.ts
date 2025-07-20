@@ -44,4 +44,4 @@ export const ANALYTICS_LABELS = {
     title: "Edit the analytic",
     description: "Edit a analytic",
   },
-} as const
+} as const;

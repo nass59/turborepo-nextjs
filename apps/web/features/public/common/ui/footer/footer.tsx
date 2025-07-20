@@ -1,8 +1,8 @@
-import { RocketIcon } from "@radix-ui/react-icons"
+import { RocketIcon } from "@radix-ui/react-icons";
 
-import { siteConfig } from "@/config/site"
+import { siteConfig } from "@/config/site";
 
-import { FooterLink } from "./footer-link"
+import { FooterLink } from "./footer-link";
 
 export const Footer = () => {
   return (
@@ -25,5 +25,5 @@ export const Footer = () => {
         </p>
       </div>
     </footer>
-  )
-}
+  );
+};

@@ -1,21 +1,30 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useParams } from "next/navigation"
-import { ChevronDownIcon, MixIcon } from "@radix-ui/react-icons"
+import { useState } from "react";
+import { useParams } from "next/navigation";
+import { ChevronDownIcon, MixIcon } from "@radix-ui/react-icons";
 
-import { type SpaceModel } from "@/lib/database/models/Space"
-import { Button, cn, Popover, PopoverContent, PopoverTrigger } from "@workspace/ui"
-import { type NavbarItem } from "@/features/admin/common/types/navbar"
+import {
+  Button,
+  cn,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@workspace/ui";
 
-import { SPACE_LABELS } from "../constants/space"
-import { SpaceCommand } from "./space-command"
+import { type NavbarItem } from "@/features/admin/common/types/navbar";
+import { type SpaceModel } from "@/lib/database/models/Space";
 
-type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
+import { SPACE_LABELS } from "../constants/space";
+import { SpaceCommand } from "./space-command";
+
+type PopoverTriggerProps = React.ComponentPropsWithoutRef<
+  typeof PopoverTrigger
+>;
 
 type Props = PopoverTriggerProps & {
-  items: SpaceModel[]
-}
+  items: SpaceModel[];
+};
 
 /**
  * This component allows users to switch between different spaces.
@@ -23,17 +32,17 @@ type Props = PopoverTriggerProps & {
  * When a space is selected, the user is redirected to the dashboard of the selected space.
  */
 export const SpaceSwitcher = ({ className, items = [] }: Props) => {
-  const [open, setOpen] = useState<boolean>(false)
-  const params = useParams()
+  const [open, setOpen] = useState<boolean>(false);
+  const params = useParams();
 
   const formattedItems: NavbarItem[] = items.map((item) => ({
     label: item.name,
     value: String(item._id),
-  }))
+  }));
 
   const currentSpace = formattedItems.find(
     (item) => item.value === params.spaceId
-  )
+  );
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -59,5 +68,5 @@ export const SpaceSwitcher = ({ className, items = [] }: Props) => {
         />
       </PopoverContent>
     </Popover>
-  )
-}
+  );
+};

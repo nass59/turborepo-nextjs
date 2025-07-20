@@ -1,15 +1,14 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useParams, useRouter } from "next/navigation"
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
 import {
   CopyIcon,
   DotsHorizontalIcon,
   Pencil2Icon,
   TrashIcon,
-} from "@radix-ui/react-icons"
+} from "@radix-ui/react-icons";
 
-import { routes } from "@/constants/routes"
 import {
   Button,
   DropdownMenu,
@@ -17,36 +16,38 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@workspace/ui"
-import { type BillboardColumn } from "@/features/admin/billboard/ui/columns"
-import { type CategoryColumn } from "@/features/admin/category/ui/columns"
-import { type ItemColumn } from "@/features/admin/item/ui/columns"
+} from "@workspace/ui";
 
-import { onCopy } from "../utilities/copy"
-import { CellModal } from "./cell-modal"
+import { routes } from "@/constants/routes";
+import { type BillboardColumn } from "@/features/admin/billboard/ui/columns";
+import { type CategoryColumn } from "@/features/admin/category/ui/columns";
+import { type ItemColumn } from "@/features/admin/item/ui/columns";
+
+import { onCopy } from "../utilities/copy";
+import { CellModal } from "./cell-modal";
 
 type Props = {
-  data: CategoryColumn | BillboardColumn | ItemColumn
-  resource: "categories" | "billboards" | "items"
+  data: CategoryColumn | BillboardColumn | ItemColumn;
+  resource: "categories" | "billboards" | "items";
   labels: {
-    copied: string
-    open: string
-    label: string
-    copy: string
-    update: string
-    delete: string
-  }
-}
+    copied: string;
+    open: string;
+    label: string;
+    copy: string;
+    update: string;
+    delete: string;
+  };
+};
 
 export const CellAction = ({ data, resource, labels }: Props) => {
-  const router = useRouter()
-  const params = useParams()
+  const router = useRouter();
+  const params = useParams();
 
-  const [open, setOpen] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false);
 
   const onClick = () => {
-    router.push(`${routes.dashboard}/${params.spaceId}/${resource}/${data.id}`)
-  }
+    router.push(`${routes.dashboard}/${params.spaceId}/${resource}/${data.id}`);
+  };
 
   return (
     <>
@@ -81,5 +82,5 @@ export const CellAction = ({ data, resource, labels }: Props) => {
         </DropdownMenuContent>
       </DropdownMenu>
     </>
-  )
-}
+  );
+};

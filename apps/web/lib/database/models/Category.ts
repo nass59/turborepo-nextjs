@@ -1,13 +1,13 @@
-import { Schema, model, models, type Types } from "mongoose"
+import { model, models, Schema, type Types } from "mongoose";
 
 export type CategoryModel = {
-  _id: Types.ObjectId
-  spaceId: string
-  billboardId: string
-  name: string
-  createdAt: Date
-  updatedAt: Date
-}
+  _id: Types.ObjectId;
+  spaceId: string;
+  billboardId: string;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
 const CategorySchema = new Schema<CategoryModel>({
   spaceId: {
@@ -31,7 +31,7 @@ const CategorySchema = new Schema<CategoryModel>({
     type: Date,
     default: Date.now,
   },
-})
+});
 
 export default models.Category ||
-  model<CategoryModel>("Category", CategorySchema)
+  model<CategoryModel>("Category", CategorySchema);

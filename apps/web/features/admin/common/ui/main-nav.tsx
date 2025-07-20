@@ -1,5 +1,5 @@
-import { navRoutes } from "../constants/navbar"
-import { MainNavItem } from "./main-nav-item"
+import { navRoutes } from "../constants/navbar";
+import { MainNavItem } from "./main-nav-item";
 
 export const MainNav = () => {
   return (
@@ -8,5 +8,5 @@ export const MainNav = () => {
         <MainNavItem key={key} label={label} path={path} />
       ))}
     </nav>
-  )
-}
+  );
+};

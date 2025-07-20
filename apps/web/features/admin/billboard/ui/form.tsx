@@ -1,65 +1,66 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useParams, useRouter } from "next/navigation"
-import { zodResolver } from "@hookform/resolvers/zod"
-import axios from "axios"
-import { useForm } from "react-hook-form"
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
+import { useForm } from "react-hook-form";
 
-import { routes } from "@/constants/routes"
-import { toastError } from "@/lib/api-response/api-responses"
-import { type BillboardModel } from "@/lib/database/models/Billboard"
-import { billboardSchema } from "@/lib/validation/billboard"
-import { toast } from "@workspace/ui"
-import { apiRoutes } from "@/features/admin/common/constants/routes"
-import { FormContainer } from "@/features/admin/common/ui/form/form-container"
-import { ImageField } from "@/features/admin/common/ui/form/image-field"
-import { InputField } from "@/features/admin/common/ui/form/input-field"
+import { toast } from "@workspace/ui";
 
-import { BILLBOARD_LABELS } from "../constants/billboard"
-import { defaultData, type BillboardFormData } from "../schemas/billboard"
+import { routes } from "@/constants/routes";
+import { apiRoutes } from "@/features/admin/common/constants/routes";
+import { FormContainer } from "@/features/admin/common/ui/form/form-container";
+import { ImageField } from "@/features/admin/common/ui/form/image-field";
+import { InputField } from "@/features/admin/common/ui/form/input-field";
+import { toastError } from "@/lib/api-response/api-responses";
+import { type BillboardModel } from "@/lib/database/models/Billboard";
+import { billboardSchema } from "@/lib/validation/billboard";
+
+import { BILLBOARD_LABELS } from "../constants/billboard";
+import { defaultData, type BillboardFormData } from "../schemas/billboard";
 
 type Props = {
-  initialData: BillboardModel | null
-}
+  initialData: BillboardModel | null;
+};
 
 export const BillboardForm = ({ initialData }: Props) => {
-  const params = useParams()
-  const router = useRouter()
+  const params = useParams();
+  const router = useRouter();
 
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
 
   const form = useForm<BillboardFormData>({
     resolver: zodResolver(billboardSchema),
     defaultValues: initialData || defaultData,
-  })
+  });
 
-  const { form: formLabels, resource } = BILLBOARD_LABELS
-  const { spaceId, billboardId } = params
+  const { form: formLabels, resource } = BILLBOARD_LABELS;
+  const { spaceId, billboardId } = params;
 
   // TODO: Refactor using Server Actions
   const onSubmit = async (data: BillboardFormData) => {
     try {
-      setLoading(true)
-      const path = `${spaceId}/${resource}`
-      const apiBaseUrl = `${apiRoutes.spaces}/${path}`
-      const resourceUrl = `${routes.dashboard}/${path}`
+      setLoading(true);
+      const path = `${spaceId}/${resource}`;
+      const apiBaseUrl = `${apiRoutes.spaces}/${path}`;
+      const resourceUrl = `${routes.dashboard}/${path}`;
 
       if (initialData) {
-        await axios.patch(`${apiBaseUrl}/${billboardId}`, data)
+        await axios.patch(`${apiBaseUrl}/${billboardId}`, data);
       } else {
-        await axios.post(apiBaseUrl, data)
+        await axios.post(apiBaseUrl, data);
       }
 
-      router.refresh()
-      router.push(resourceUrl)
-      toast({ title: `Resource ${initialData ? "updated" : "created"}.` })
+      router.refresh();
+      router.push(resourceUrl);
+      toast({ title: `Resource ${initialData ? "updated" : "created"}.` });
     } catch (error) {
-      toastError(error, "An error occurred while creating the resource.")
+      toastError(error, "An error occurred while creating the resource.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <FormContainer
@@ -82,5 +83,5 @@ export const BillboardForm = ({ initialData }: Props) => {
         loading={loading}
       />
     </FormContainer>
-  )
-}
+  );
+};

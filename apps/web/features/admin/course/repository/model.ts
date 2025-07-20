@@ -1,13 +1,13 @@
-import { model, models, Schema, type Types } from "mongoose"
+import { model, models, Schema, type Types } from "mongoose";
 
 export type CourseModel = {
-  _id: Types.ObjectId
-  spaceId: string
-  title: string
-  imageUrl: string
-  createdAt: Date
-  updatedAt: Date
-}
+  _id: Types.ObjectId;
+  spaceId: string;
+  title: string;
+  imageUrl: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
 const CourseSchema = new Schema<CourseModel>({
   spaceId: {
@@ -31,6 +31,6 @@ const CourseSchema = new Schema<CourseModel>({
     type: Date,
     default: Date.now,
   },
-})
+});
 
-export default models.Course || model<CourseModel>("Course", CourseSchema)
+export default models.Course || model<CourseModel>("Course", CourseSchema);

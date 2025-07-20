@@ -1,15 +1,15 @@
-import { cn } from "@workspace/ui"
+import { cn } from "@workspace/ui";
 
-import { type TableOfContents } from "../utilities/toc"
+import { type TableOfContents } from "../utilities/toc";
 
 type Props = {
-  tree: TableOfContents
-  level?: number
-  activeItem?: string | null
-}
+  tree: TableOfContents;
+  level?: number;
+  activeItem?: string | null;
+};
 
 export const Tree = ({ tree, level = 1, activeItem }: Props) => {
-  if (!tree?.items?.length || level >= 3) return null
+  if (!tree?.items?.length || level >= 3) return null;
 
   return (
     <ul className={cn("m-0 list-none", { "pl-4": level !== 1 })}>
@@ -20,8 +20,8 @@ export const Tree = ({ tree, level = 1, activeItem }: Props) => {
             className={cn(
               "inline-block no-underline",
               item.url === `#${activeItem}`
-                ? "font-bold text-primary"
-                : "text-sm text-muted-foreground hover:text-primary"
+                ? "text-primary font-bold"
+                : "text-muted-foreground hover:text-primary text-sm"
             )}
           >
             {item.title}
@@ -32,5 +32,5 @@ export const Tree = ({ tree, level = 1, activeItem }: Props) => {
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};

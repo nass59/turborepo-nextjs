@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Separator } from "@workspace/ui"
+import { Separator } from "@workspace/ui";
 
 const meta = {
   title: "Atoms/Separator",
@@ -49,32 +49,32 @@ const meta = {
       <div className="h-3">
         <Separator {...args} />
       </div>
-    )
+    );
   },
-} satisfies Meta<typeof Separator>
+} satisfies Meta<typeof Separator>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
     orientation: "horizontal",
   },
-}
+};
 
 export const Vertical: Story = {
   args: {
     orientation: "vertical",
   },
-}
+};
 
 export const Demo: Story = {
   render: () => {
     return (
       <div>
         <div className="space-y-1">
-          <h4 className="text-sm font-medium leading-none">Radix Primitives</h4>
-          <p className="text-sm text-muted-foreground">
+          <h4 className="text-sm leading-none font-medium">Radix Primitives</h4>
+          <p className="text-muted-foreground text-sm">
             An open-source UI component library.
           </p>
         </div>
@@ -87,6 +87,6 @@ export const Demo: Story = {
           <div>Source</div>
         </div>
       </div>
-    )
+    );
   },
-}
+};

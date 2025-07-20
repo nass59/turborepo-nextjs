@@ -1,4 +1,4 @@
 export type NavbarItem = {
-  label: string
-  value: string
-}
+  label: string;
+  value: string;
+};

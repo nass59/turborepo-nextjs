@@ -1,18 +1,19 @@
-import { Heading } from "@workspace/ui"
-import { Pager } from "@/features/public/docs/ui/pager"
-import { getMetadata } from "@/lib/metadata"
-import { getOgUrl } from "@/lib/og"
+import { Heading } from "@workspace/ui";
+
+import { Pager } from "@/features/public/docs/ui/pager";
+import { getMetadata } from "@/lib/metadata";
+import { getOgUrl } from "@/lib/og";
 
 export const mdxData = {
   title: "Documentation",
   description: "Build your documentation site using MDX.",
-  url: "/docs/documentation"
-}
+  url: "/docs/documentation",
+};
 
 export const metadata = getMetadata(
   getOgUrl(mdxData.description, "Documentation"),
   mdxData
-)
+);
 
 <Heading title={mdxData.title} description={mdxData.description} />
 
@@ -23,13 +24,13 @@ TechShip includes a documentation site built using [MDX](http://mdxjs.com).
 It comes with the following features out of the box:
 
 1. Write content using MDX.
-3. MDX components such as `<Callout />` and `<Card />`.
-4. Support for table of contents.
-5. Custom navigation with prev and next pager.
-6. Beautiful code blocks using `rehype-pretty-code`.
-7. Syntax highlighting using `shiki`.
-8. Built-in search (_in progress_).
-9. Dark mode (_in progress_).
+2. MDX components such as `<Callout />` and `<Card />`.
+3. Support for table of contents.
+4. Custom navigation with prev and next pager.
+5. Beautiful code blocks using `rehype-pretty-code`.
+6. Syntax highlighting using `shiki`.
+7. Built-in search (_in progress_).
+8. Dark mode (_in progress_).
 
 ## How is it built
 

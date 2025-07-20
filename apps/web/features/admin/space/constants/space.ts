@@ -27,4 +27,4 @@ export const SPACE_LABELS = {
     action: "Save changes",
     error: "Your space was not updated. Please try again.",
   },
-} as const
+} as const;

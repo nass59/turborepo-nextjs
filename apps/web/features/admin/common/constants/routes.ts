@@ -1,3 +1,3 @@
 export const apiRoutes = {
   spaces: "/api/spaces",
-} as const
+} as const;

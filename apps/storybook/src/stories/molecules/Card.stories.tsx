@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
 import {
   Badge,
@@ -9,10 +9,10 @@ import {
   CardHeader,
   CardStyle,
   CardTitle,
-} from "@workspace/ui"
+} from "@workspace/ui";
 
-type CardVariants = keyof typeof CardStyle.variants
-const variants = Object.keys(CardStyle.variants) as CardVariants[]
+type CardVariants = keyof typeof CardStyle.variants;
+const variants = Object.keys(CardStyle.variants) as CardVariants[];
 
 const meta = {
   title: "Molecules/Card",
@@ -46,10 +46,10 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Card>
+} satisfies Meta<typeof Card>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
@@ -72,9 +72,9 @@ export const Default: Story = {
           <CardFooter>Footer</CardFooter>
         </Card>
       </div>
-    )
+    );
   },
-}
+};
 
 export const Poster: Story = {
   args: {
@@ -96,6 +96,6 @@ export const Poster: Story = {
           </CardContent>
         </Card>
       </div>
-    )
+    );
   },
-}
+};

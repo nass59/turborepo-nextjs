@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { forwardRef } from "react"
-import * as PopoverPrimitive from "@radix-ui/react-popover"
-import { cva, type VariantProps } from "class-variance-authority"
+import { forwardRef } from "react";
+import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "../../../lib/utils"
-import { PopoverStyle } from "./style"
+import { cn } from "../../../lib/utils";
+import { PopoverStyle } from "./style";
 
-const Popover = PopoverPrimitive.Root
-const PopoverTrigger = PopoverPrimitive.Trigger
+const Popover = PopoverPrimitive.Root;
+const PopoverTrigger = PopoverPrimitive.Trigger;
 
-const popoverVariants = cva(PopoverStyle.base)
+const popoverVariants = cva(PopoverStyle.base);
 
 const PopoverContent = forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
@@ -26,8 +26,8 @@ const PopoverContent = forwardRef<
       {...props}
     />
   </PopoverPrimitive.Portal>
-))
+));
 
-PopoverContent.displayName = PopoverPrimitive.Content.displayName
+PopoverContent.displayName = PopoverPrimitive.Content.displayName;
 
-export { Popover, PopoverTrigger, PopoverContent }
+export { Popover, PopoverTrigger, PopoverContent };

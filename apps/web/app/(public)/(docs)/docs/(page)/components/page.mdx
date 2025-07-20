@@ -1,18 +1,19 @@
-import { Heading } from "@workspace/ui"
-import { Pager } from "@/features/public/docs/ui/pager"
-import { getMetadata } from "@/lib/metadata"
-import { getOgUrl } from "@/lib/og"
+import { Heading } from "@workspace/ui";
+
+import { Pager } from "@/features/public/docs/ui/pager";
+import { getMetadata } from "@/lib/metadata";
+import { getOgUrl } from "@/lib/og";
 
 export const mdxData = {
   title: "Components",
   description: "Use React components in Markdown using MDX.",
-  url: "/docs/components"
-}
+  url: "/docs/components",
+};
 
 export const metadata = getMetadata(
   getOgUrl(mdxData.description, "Documentation"),
   mdxData
-)
+);
 
 <Heading title={mdxData.title} description={mdxData.description} />
 
@@ -55,10 +56,7 @@ If you'd like to build and add your own custom components, see the [Custom Compo
 </CardT>
 ```
 
-<Card href="#">
-  #### Heading
-  You can use **markdown** inside cards.
-</Card>
+<Card href="#">#### Heading You can use **markdown** inside cards.</Card>
 
 You can also use HTML to embed cards in a grid.
 
@@ -95,22 +93,23 @@ You can also use HTML to embed cards in a grid.
 You can add your own custom components using the `components` props from `useMDXComponent`.
 
 ```tsx {2,6}
-import { Callout } from "@workspace/ui"
-import { CustomComponent } from "@/components/Custom"
+import { Callout } from "@workspace/ui";
+
+import { CustomComponent } from "@/components/Custom";
 
 const mdxComponents = {
   Callout,
   CustomComponent,
-}
+};
 
 export function Mdx({ code }) {
-  const MDXContent = useMDXComponent(code)
+  const MDXContent = useMDXComponent(code);
 
   return (
     <div className="mdx">
       <MDXContent components={mdxComponents} />
     </div>
-  )
+  );
 }
 ```
 
@@ -131,7 +130,7 @@ const components = {
   Callout,
   CustomComponent,
   hr: ({ ...props }) => <hr className="my-4 border-slate-200 md:my-6" />,
-}
+};
 ```
 
 This will overwrite the `<hr />` tag or `---` in Mardown with the HTML output above.
@@ -156,7 +155,7 @@ module.exports = {
     "./components/**/*.{ts,tsx}",
     "./content/**/*.{md,mdx}",
   ],
-}
+};
 ```
 
 <Pager url={mdxData.url} />

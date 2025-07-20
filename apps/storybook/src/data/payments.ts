@@ -1,9 +1,9 @@
 export type Payment = {
-  id: string
-  amount: number
-  status: "pending" | "processing" | "success" | "failed"
-  email: string
-}
+  id: string;
+  amount: number;
+  status: "pending" | "processing" | "success" | "failed";
+  email: string;
+};
 
 export const paymentsData: Payment[] = [
   {
@@ -36,4 +36,4 @@ export const paymentsData: Payment[] = [
     status: "failed",
     email: "carmella@hotmail.com",
   },
-]
+];

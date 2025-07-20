@@ -1,12 +1,12 @@
-import { Schema, model, models, type Types } from "mongoose"
+import { model, models, Schema, type Types } from "mongoose";
 
 export type SpaceModel = {
-  _id: Types.ObjectId
-  name: string
-  userId: string
-  createdAt: Date
-  updatedAt: Date
-}
+  _id: Types.ObjectId;
+  name: string;
+  userId: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
 const SpaceSchema = new Schema<SpaceModel>({
   name: {
@@ -26,6 +26,6 @@ const SpaceSchema = new Schema<SpaceModel>({
     type: Date,
     default: Date.now,
   },
-})
+});
 
-export default models.Space || model<SpaceModel>("Space", SpaceSchema)
+export default models.Space || model<SpaceModel>("Space", SpaceSchema);

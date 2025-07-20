@@ -1,12 +1,12 @@
-import { type Metadata } from "next"
+import { type Metadata } from "next";
 
-import { absoluteUrl } from "./utils"
+import { absoluteUrl } from "./utils";
 
 type mdxMetadata = {
-  title: string
-  description: string
-  url: string
-}
+  title: string;
+  description: string;
+  url: string;
+};
 
 export const getMetadata = (ogUrl: URL, mdxMetadata: mdxMetadata): Metadata => {
   return {
@@ -32,5 +32,5 @@ export const getMetadata = (ogUrl: URL, mdxMetadata: mdxMetadata): Metadata => {
       description: mdxMetadata.description,
       images: [ogUrl.toString()],
     },
-  }
-}
+  };
+};

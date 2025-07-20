@@ -1,18 +1,19 @@
-import { Heading } from "@workspace/ui"
-import { Pager } from "@/features/public/docs/ui/pager"
-import { getMetadata } from "@/lib/metadata"
-import { getOgUrl } from "@/lib/og"
+import { Heading } from "@workspace/ui";
+
+import { Pager } from "@/features/public/docs/ui/pager";
+import { getMetadata } from "@/lib/metadata";
+import { getOgUrl } from "@/lib/og";
 
 export const mdxData = {
   title: "Code Blocks",
   description: "Advanced code blocks with highlighting, file names and more.",
-  url: "/docs/code-blocks"
-}
+  url: "/docs/code-blocks",
+};
 
 export const metadata = getMetadata(
   getOgUrl(mdxData.description, "Documentation"),
   mdxData
-)
+);
 
 <Heading title={mdxData.title} description={mdxData.description} />
 
@@ -28,7 +29,8 @@ It has the following features:
 6. Show code block titles using meta strings.
 
 <Callout>
-  Thanks to Shiki, highlighting is done at build time. No JavaScript is sent to the client for runtime highlighting.
+  Thanks to Shiki, highlighting is done at build time. No JavaScript is sent to
+  the client for runtime highlighting.
 </Callout>
 
 ## Example
@@ -44,7 +46,7 @@ const nextConfig = {
     appDir: true,
     serverComponentsExternalPackages: ["@prisma/client"],
   },
-}
+};
 ```
 
 ## Title

@@ -1,20 +1,20 @@
-import { parseData } from "@/lib/utils"
-import { getAllCategories } from "@/features/admin/category/utilities/category"
-import { FormContentHeading } from "@/features/admin/common/ui/form-content-heading"
-import { ITEM_LABELS } from "@/features/admin/item/constants/item"
-import { ItemForm } from "@/features/admin/item/ui/form"
-import { getItem } from "@/features/admin/item/utilities/item"
+import { getAllCategories } from "@/features/admin/category/utilities/category";
+import { FormContentHeading } from "@/features/admin/common/ui/form-content-heading";
+import { ITEM_LABELS } from "@/features/admin/item/constants/item";
+import { ItemForm } from "@/features/admin/item/ui/form";
+import { getItem } from "@/features/admin/item/utilities/item";
+import { parseData } from "@/lib/utils";
 
 type Props = {
   params: {
-    spaceId: string
-    itemId: string
-  }
-}
+    spaceId: string;
+    itemId: string;
+  };
+};
 
 export default async function Page({ params }: Props) {
-  const item = await getItem(params.itemId)
-  const categories = await getAllCategories(params.spaceId)
+  const item = await getItem(params.itemId);
+  const categories = await getAllCategories(params.spaceId);
 
   return (
     <>
@@ -25,5 +25,5 @@ export default async function Page({ params }: Props) {
         categories={parseData(categories)}
       />
     </>
-  )
+  );
 }

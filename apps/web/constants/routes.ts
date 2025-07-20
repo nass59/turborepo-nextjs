@@ -4,4 +4,4 @@ export const routes = {
   dashboard: "/dashboard",
   dashboardExplore: "/dashboard/explore",
   dashboardELearning: "/dashboard/e-learning",
-} as const
+} as const;

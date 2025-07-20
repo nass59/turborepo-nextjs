@@ -1,6 +1,6 @@
-import { useState } from "react"
-import type { Meta, StoryObj } from "@storybook/react"
-import { useForm } from "react-hook-form"
+import { useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { useForm } from "react-hook-form";
 
 import {
   Form,
@@ -10,19 +10,19 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from "@workspace/ui"
+} from "@workspace/ui";
 
 const meta = {
   title: "Organisms/Form",
-} satisfies Meta<typeof Form>
+} satisfies Meta<typeof Form>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => {
-    const form = useForm()
-    const [value, setValue] = useState<string>("")
+    const form = useForm();
+    const [value, setValue] = useState<string>("");
 
     return (
       <Form {...form}>
@@ -47,6 +47,6 @@ export const Default: Story = {
           />
         </form>
       </Form>
-    )
+    );
   },
-}
+};

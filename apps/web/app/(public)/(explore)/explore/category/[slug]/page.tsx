@@ -1,36 +1,36 @@
-import { notFound } from "next/navigation"
+import { notFound } from "next/navigation";
 
+import { ContentContainer } from "@/features/public/common/ui/content-container";
+import { getCategoryPageMetadata } from "@/features/public/explore/metadata/metadata";
+import { Billboard } from "@/features/public/explore/ui/billboard";
+import { List } from "@/features/public/explore/ui/list";
+import {
+  getCategory,
+  getPageSlugs,
+} from "@/features/public/explore/utilities/category";
+import { getItemsByCategory } from "@/features/public/explore/utilities/item";
 import {
   type PageMetadata,
   type PageProps,
   type StaticParams,
-} from "@/types/common"
-import { ContentContainer } from "@/features/public/common/ui/content-container"
-import { getCategoryPageMetadata } from "@/features/public/explore/metadata/metadata"
-import { Billboard } from "@/features/public/explore/ui/billboard"
-import { List } from "@/features/public/explore/ui/list"
-import {
-  getCategory,
-  getPageSlugs,
-} from "@/features/public/explore/utilities/category"
-import { getItemsByCategory } from "@/features/public/explore/utilities/item"
+} from "@/types/common";
 
 export function generateMetadata({ params }: PageProps): PageMetadata {
-  return getCategoryPageMetadata(params.slug) || {}
+  return getCategoryPageMetadata(params.slug) || {};
 }
 
 export async function generateStaticParams(): Promise<StaticParams> {
-  return await getPageSlugs()
+  return await getPageSlugs();
 }
 
 export default async function Page({ params }: PageProps) {
-  const { slug } = params
+  const { slug } = params;
 
-  const items = await getItemsByCategory(slug)
-  const category = await getCategory(slug)
+  const items = await getItemsByCategory(slug);
+  const category = await getCategory(slug);
 
   if (!category) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -40,5 +40,5 @@ export default async function Page({ params }: PageProps) {
         <List title={`${category.name} Items`} items={items} />
       </ContentContainer>
     </>
-  )
+  );
 }

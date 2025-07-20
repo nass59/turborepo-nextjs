@@ -1,15 +1,16 @@
-import Link from "next/link"
-import { type MainNavItem as TypeMainNavItem } from "@/types"
+import Link from "next/link";
 
-import { buttonVariants, cn } from "@workspace/ui"
+import { buttonVariants, cn } from "@workspace/ui";
+
+import { type MainNavItem as TypeMainNavItem } from "@/types";
 
 type Props = {
-  item: TypeMainNavItem
-  isActive: boolean
-}
+  item: TypeMainNavItem;
+  isActive: boolean;
+};
 
 export const MainNavItem = ({ item, isActive, ...props }: Props) => {
-  if (item.disabled) return null
+  if (item.disabled) return null;
 
   return (
     <Link
@@ -22,5 +23,5 @@ export const MainNavItem = ({ item, isActive, ...props }: Props) => {
     >
       {item.title}
     </Link>
-  )
-}
+  );
+};

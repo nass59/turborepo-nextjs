@@ -1,12 +1,13 @@
-import { type PropsWithChildren } from "react"
-import { type MainNavItem } from "@/types"
+import { type PropsWithChildren } from "react";
 
-import { Footer } from "./footer/footer"
-import { Header } from "./header/header"
+import { type MainNavItem } from "@/types";
+
+import { Footer } from "./footer/footer";
+import { Header } from "./header/header";
 
 type Props = PropsWithChildren & {
-  mainNavItems: MainNavItem[]
-}
+  mainNavItems: MainNavItem[];
+};
 
 export const PageWrapper = ({ mainNavItems, children }: Props) => {
   return (
@@ -15,5 +16,5 @@ export const PageWrapper = ({ mainNavItems, children }: Props) => {
       <main className="flex-1">{children}</main>
       <Footer />
     </>
-  )
-}
+  );
+};

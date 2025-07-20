@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
 import {
   Button,
@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@workspace/ui"
+} from "@workspace/ui";
 
 const meta = {
   title: "Organisms/Dialog",
@@ -54,10 +54,10 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Dialog>
+} satisfies Meta<typeof Dialog>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: ({ ...args }) => {
@@ -82,6 +82,6 @@ export const Default: Story = {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    )
+    );
   },
-}
+};

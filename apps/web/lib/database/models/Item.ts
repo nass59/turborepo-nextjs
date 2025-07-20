@@ -1,17 +1,17 @@
-import { model, models, Schema, type Types } from "mongoose"
+import { model, models, Schema, type Types } from "mongoose";
 
 export type ItemModel = {
-  _id: Types.ObjectId
-  spaceId: string
-  name: string
-  categoryId: string
-  category: string
-  images: string[]
-  isFeatured: boolean
-  isArchived: boolean
-  createdAt: Date
-  updatedAt: Date
-}
+  _id: Types.ObjectId;
+  spaceId: string;
+  name: string;
+  categoryId: string;
+  category: string;
+  images: string[];
+  isFeatured: boolean;
+  isArchived: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
 const ItemSchema = new Schema<ItemModel>({
   spaceId: {
@@ -48,6 +48,6 @@ const ItemSchema = new Schema<ItemModel>({
     type: Date,
     default: Date.now,
   },
-})
+});
 
-export default models.Item || model<ItemModel>("Item", ItemSchema)
+export default models.Item || model<ItemModel>("Item", ItemSchema);

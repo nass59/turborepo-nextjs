@@ -1,8 +1,8 @@
-import { HamburgerMenuIcon } from "@radix-ui/react-icons"
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
-import { Sheet, SheetContent, SheetTrigger } from "@workspace/ui"
+import { Sheet, SheetContent, SheetTrigger } from "@workspace/ui";
 
-import { Sidebar } from "./sidebar"
+import { Sidebar } from "./sidebar";
 
 export const MobileNav = () => {
   return (
@@ -14,5 +14,5 @@ export const MobileNav = () => {
         <Sidebar />
       </SheetContent>
     </Sheet>
-  )
-}
+  );
+};

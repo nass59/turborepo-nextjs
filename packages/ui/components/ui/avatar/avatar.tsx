@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { forwardRef } from "react"
-import * as AvatarPrimitive from "@radix-ui/react-avatar"
-import { type AvatarProps } from "@radix-ui/react-avatar"
-import { cva, type VariantProps } from "class-variance-authority"
+import { forwardRef } from "react";
+import * as AvatarPrimitive from "@radix-ui/react-avatar";
+import { type AvatarProps } from "@radix-ui/react-avatar";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "../../../lib/utils"
-import { AvatarStyle } from "./style"
+import { cn } from "../../../lib/utils";
+import { AvatarStyle } from "./style";
 
 const avatarVariants = cva(AvatarStyle.base, {
   variants: {
@@ -15,7 +15,7 @@ const avatarVariants = cva(AvatarStyle.base, {
   defaultVariants: {
     size: "md",
   },
-})
+});
 
 const Avatar = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
@@ -27,9 +27,9 @@ const Avatar = forwardRef<
     className={cn(avatarVariants({ size, className }))}
     {...props}
   />
-))
+));
 
-Avatar.displayName = AvatarPrimitive.Root.displayName
+Avatar.displayName = AvatarPrimitive.Root.displayName;
 
 const AvatarImage = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Image>,
@@ -40,9 +40,9 @@ const AvatarImage = forwardRef<
     className={cn("aspect-square size-full", className)}
     {...props}
   />
-))
+));
 
-AvatarImage.displayName = AvatarPrimitive.Image.displayName
+AvatarImage.displayName = AvatarPrimitive.Image.displayName;
 
 const AvatarFallback = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Fallback>,
@@ -51,14 +51,14 @@ const AvatarFallback = forwardRef<
   <AvatarPrimitive.Fallback
     ref={ref}
     className={cn(
-      "flex size-full items-center justify-center rounded-full bg-muted",
+      "bg-muted flex size-full items-center justify-center rounded-full",
       className
     )}
     {...props}
   />
-))
+));
 
-AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
+AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
 
 export {
   Avatar,
@@ -67,4 +67,4 @@ export {
   AvatarProps,
   avatarVariants,
   AvatarStyle,
-}
+};

@@ -1,6 +1,6 @@
-import { Types } from "mongoose"
+import { Types } from "mongoose";
 
-import Category, { type CategoryModel } from "@/lib/database/models/Category"
+import Category, { type CategoryModel } from "@/lib/database/models/Category";
 import {
   aggregate,
   count,
@@ -9,48 +9,48 @@ import {
   findAll,
   findOneById,
   updateOneById,
-} from "@/lib/database/queries"
+} from "@/lib/database/queries";
 
-import { type BillboardModel } from "./models/Billboard"
+import { type BillboardModel } from "./models/Billboard";
 
 type CategoryModelProps = Pick<
   CategoryModel,
   "name" | "spaceId" | "billboardId"
->
+>;
 
-type CategoryModelUpdateProps = Pick<CategoryModel, "name" | "billboardId">
+type CategoryModelUpdateProps = Pick<CategoryModel, "name" | "billboardId">;
 
-type CategoriesAggregated = CategoryModel & { billboard: BillboardModel }
+type CategoriesAggregated = CategoryModel & { billboard: BillboardModel };
 
 export async function countAllCategoriesBySpaceId(
   spaceId: string
 ): Promise<number> {
-  return count(Category, { spaceId })
+  return count(Category, { spaceId });
 }
 
 export async function countAllCategoriesBySpaceIdAndBillboardId(
   spaceId: string,
   billboardId: string
 ): Promise<number> {
-  return count(Category, { spaceId, billboardId })
+  return count(Category, { spaceId, billboardId });
 }
 
 export async function createCategory(
   data: CategoryModelProps
 ): Promise<CategoryModel | null> {
-  return createOne(Category, data)
+  return createOne(Category, data);
 }
 
 export async function deleteOneCategory(
   categoryId: string
 ): Promise<CategoryModel | null> {
-  return deleteOneById(Category, categoryId)
+  return deleteOneById(Category, categoryId);
 }
 
 export async function findAllCategoriesBySpaceId(
   spaceId: string
 ): Promise<CategoryModel[] | []> {
-  return findAll(Category, { spaceId })
+  return findAll(Category, { spaceId });
 }
 
 const addBillboard = [
@@ -81,7 +81,7 @@ const addBillboard = [
       fromBillboards: 0,
     },
   },
-]
+];
 
 export async function findAllCategoriesWithDataBySpaceId(
   spaceId: string
@@ -93,7 +93,7 @@ export async function findAllCategoriesWithDataBySpaceId(
       },
     },
     ...addBillboard,
-  ])
+  ]);
 }
 
 export async function findOneCategoryWithData(
@@ -111,20 +111,20 @@ export async function findOneCategoryWithData(
       $limit: 1,
     },
     ...addBillboard,
-  ])
+  ]);
 
-  return category[0] || null
+  return category[0] || null;
 }
 
 export async function findOneCategory(
   categoryId: string
 ): Promise<CategoryModel | null> {
-  return findOneById(Category, categoryId)
+  return findOneById(Category, categoryId);
 }
 
 export async function updateOneCategory(
   categoryId: string,
   data: CategoryModelUpdateProps
 ): Promise<CategoryModel | null> {
-  return updateOneById(Category, categoryId, data)
+  return updateOneById(Category, categoryId, data);
 }

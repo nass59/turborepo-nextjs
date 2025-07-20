@@ -1,9 +1,10 @@
-import { type ItemModel } from "@/lib/database/models/Item"
-import { buttonVariants } from "@workspace/ui"
+import { buttonVariants } from "@workspace/ui";
+
+import { type ItemModel } from "@/lib/database/models/Item";
 
 type Props = {
-  data: ItemModel
-}
+  data: ItemModel;
+};
 
 export const Info = ({ data }: Props) => {
   return (
@@ -28,5 +29,5 @@ export const Info = ({ data }: Props) => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};

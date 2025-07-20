@@ -1,7 +1,3 @@
 packages:
   - apps/*
   - packages/*
-
-onlyBuiltDependencies:
-  - '@clerk/shared'
-  - sharp

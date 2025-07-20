@@ -1,8 +1,9 @@
-import Link from "next/link"
-import { ExitIcon } from "@radix-ui/react-icons"
+import Link from "next/link";
+import { ExitIcon } from "@radix-ui/react-icons";
 
-import { routes } from "@/constants/routes"
-import { buttonVariants, cn } from "@workspace/ui"
+import { buttonVariants, cn } from "@workspace/ui";
+
+import { routes } from "@/constants/routes";
 
 export const NavbarActions = () => {
   return (
@@ -15,5 +16,5 @@ export const NavbarActions = () => {
         Exit
       </Link>
     </div>
-  )
-}
+  );
+};

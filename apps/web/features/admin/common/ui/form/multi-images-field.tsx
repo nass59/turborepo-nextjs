@@ -1,4 +1,4 @@
-import { type Control } from "react-hook-form"
+import { type Control } from "react-hook-form";
 
 import {
   FormControl,
@@ -6,18 +6,18 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@workspace/ui"
+} from "@workspace/ui";
 
-import { ImageUpload } from "../image-upload"
+import { ImageUpload } from "../image-upload";
 
 type Props = {
   labels: {
-    name: string
-    label: string
-  }
-  loading?: boolean
-  control: Control<any>
-}
+    name: string;
+    label: string;
+  };
+  loading?: boolean;
+  control: Control<any>;
+};
 
 export const MultiImagesField = ({ labels, loading, control }: Props) => {
   return (
@@ -32,7 +32,7 @@ export const MultiImagesField = ({ labels, loading, control }: Props) => {
               value={field.value.map((image: string) => image)}
               disabled={loading}
               onChange={(url) => {
-                field.onChange([...field.value, url])
+                field.onChange([...field.value, url]);
               }}
               onRemove={(url) =>
                 field.onChange([
@@ -46,5 +46,5 @@ export const MultiImagesField = ({ labels, loading, control }: Props) => {
         </FormItem>
       )}
     />
-  )
-}
+  );
+};

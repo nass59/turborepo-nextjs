@@ -1,8 +1,9 @@
-import Link from "next/link"
-import { GitHubLogoIcon } from "@radix-ui/react-icons"
+import Link from "next/link";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
-import { siteConfig } from "@/config/site"
-import { Button, buttonVariants, cn } from "@workspace/ui"
+import { Button, buttonVariants, cn } from "@workspace/ui";
+
+import { siteConfig } from "@/config/site";
 
 export const HeaderActions = () => {
   return (
@@ -30,5 +31,5 @@ export const HeaderActions = () => {
         </Link>
       </nav>
     </div>
-  )
-}
+  );
+};

@@ -1,12 +1,12 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@workspace/ui"
+import { Card, CardContent, CardHeader, CardTitle } from "@workspace/ui";
 
 type CardOverviewProps = {
-  title: string
-  value?: number
-  icon?: React.ReactNode
-  className?: string
-  children?: React.ReactNode
-}
+  title: string;
+  value?: number;
+  icon?: React.ReactNode;
+  className?: string;
+  children?: React.ReactNode;
+};
 
 export const CardOverview = ({
   title,
@@ -25,5 +25,5 @@ export const CardOverview = ({
         {children || <div className="text-2xl font-bold">{value}</div>}
       </CardContent>
     </Card>
-  )
-}
+  );
+};

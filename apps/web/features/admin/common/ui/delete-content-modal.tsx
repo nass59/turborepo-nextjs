@@ -1,12 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useParams, useRouter } from "next/navigation"
-import { TrashIcon, UpdateIcon } from "@radix-ui/react-icons"
-import axios from "axios"
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { TrashIcon, UpdateIcon } from "@radix-ui/react-icons";
+import axios from "axios";
 
-import { routes } from "@/constants/routes"
-import { toastError } from "@/lib/api-response/api-responses"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,40 +17,43 @@ import {
   AlertDialogTrigger,
   Button,
   toast,
-} from "@workspace/ui"
+} from "@workspace/ui";
 
-import { apiRoutes } from "../constants/routes"
+import { routes } from "@/constants/routes";
+import { toastError } from "@/lib/api-response/api-responses";
+
+import { apiRoutes } from "../constants/routes";
 
 type Props = {
-  resource: string
-}
+  resource: string;
+};
 
 export const DeleteContentModal = ({ resource }: Props) => {
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const params = useParams()
-  const router = useRouter()
+  const params = useParams();
+  const router = useRouter();
 
   // TODO: Refactor using Server Actions
   const onDelete = async () => {
     try {
-      setLoading(true)
-      const baseUrl = `${apiRoutes.spaces}/${params.spaceId}/${resource}`
-      await axios.delete(`${baseUrl}/${params.categoryId}`)
+      setLoading(true);
+      const baseUrl = `${apiRoutes.spaces}/${params.spaceId}/${resource}`;
+      await axios.delete(`${baseUrl}/${params.categoryId}`);
 
-      router.refresh()
-      router.push(`${routes.dashboard}/${params.spaceId}/${resource}`)
+      router.refresh();
+      router.push(`${routes.dashboard}/${params.spaceId}/${resource}`);
 
-      toast({ title: "Resource deleted." })
+      toast({ title: "Resource deleted." });
     } catch (error) {
       toastError(
         error,
         "Sorry an error occurred.Your resource was not deleted."
-      )
+      );
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <AlertDialog>
@@ -80,5 +81,5 @@ export const DeleteContentModal = ({ resource }: Props) => {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
-}
+  );
+};

@@ -1,25 +1,29 @@
-import { siteConfig } from "@/config/site"
-import { getMetadata } from "@/lib/metadata"
-import { getOgUrl } from "@/lib/og"
-import { PostHeader } from "@/features/public/blog/ui/post-header"
+import { siteConfig } from "@/config/site";
+import { PostHeader } from "@/features/public/blog/ui/post-header";
+import { getMetadata } from "@/lib/metadata";
+import { getOgUrl } from "@/lib/og";
 
 export const mdxData = {
   authors: [
     {
       avatar: "/images/avatars/nass190.jpg",
       name: "Nassim",
-      twitter: "nass190"
-    }
+      twitter: "nass190",
+    },
   ],
   date: "2022-12-15",
-  description: "The Artemis program is a NASA initiative to return humans to the Moon.",
+  description:
+    "The Artemis program is a NASA initiative to return humans to the Moon.",
   image: "/images/blog/post-3.png",
   slug: "nasa-artemis-program",
   title: "NASA Artemis Program",
   url: "/blog/nasa-artemis-program",
-}
+};
 
-export const metadata = getMetadata(getOgUrl(mdxData.title, siteConfig.name), mdxData)
+export const metadata = getMetadata(
+  getOgUrl(mdxData.title, siteConfig.name),
+  mdxData
+);
 
 <PostHeader post={mdxData} />
 
@@ -41,6 +45,7 @@ export const metadata = getMetadata(getOgUrl(mdxData.title, siteConfig.name), md
 The Artemis program is a NASA initiative to return humans to the Moon and establish a sustainable presence there. The program is named after Artemis, the Greek goddess of the Moon and the twin sister of Apollo.
 
 ---
+
 The main goals of the Artemis program are to:
 
 - Land humans on the Moon by 2024

@@ -1,23 +1,23 @@
-import { Heading, HeadingAction } from "@workspace/ui"
+import { Heading, HeadingAction } from "@workspace/ui";
 
-import { DeleteContentModal } from "./delete-content-modal"
+import { DeleteContentModal } from "./delete-content-modal";
 
 type EditableProps = {
-  title: string
-  description: string
-}
+  title: string;
+  description: string;
+};
 
 type Props = {
   labels: {
-    resource: string
-    create: EditableProps
-    edit: EditableProps
-  }
-  isEdit?: boolean
-}
+    resource: string;
+    create: EditableProps;
+    edit: EditableProps;
+  };
+  isEdit?: boolean;
+};
 
 export const FormContentHeading = ({ labels, isEdit = false }: Props) => {
-  const contentLabels = isEdit ? labels.edit : labels.create
+  const contentLabels = isEdit ? labels.edit : labels.create;
 
   return (
     <Heading
@@ -30,5 +30,5 @@ export const FormContentHeading = ({ labels, isEdit = false }: Props) => {
         </HeadingAction>
       )}
     </Heading>
-  )
-}
+  );
+};

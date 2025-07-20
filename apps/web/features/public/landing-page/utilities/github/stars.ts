@@ -1,9 +1,9 @@
-import { env } from "@/env.mjs"
-import { siteConfig } from "@/config/site"
+import { siteConfig } from "@/config/site";
+import { env } from "@/env.mjs";
 
 type JsonResponse = {
-  stargazers_count: number
-}
+  stargazers_count: number;
+};
 
 const getResponse = async () => {
   try {
@@ -15,20 +15,20 @@ const getResponse = async () => {
       next: {
         revalidate: 3600,
       },
-    })
+    });
 
-    if (!response?.ok) return null
+    if (!response?.ok) return null;
 
-    return (await response.json()) as JsonResponse
+    return (await response.json()) as JsonResponse;
   } catch (error) {
-    return null
+    return null;
   }
-}
+};
 
 export const getGithubStars = async (): Promise<number | null> => {
-  const response = await getResponse()
+  const response = await getResponse();
 
-  if (!response?.stargazers_count) return null
+  if (!response?.stargazers_count) return null;
 
-  return response.stargazers_count
-}
+  return response.stargazers_count;
+};

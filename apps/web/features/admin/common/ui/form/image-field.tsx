@@ -1,4 +1,4 @@
-import { type Control } from "react-hook-form"
+import { type Control } from "react-hook-form";
 
 import {
   FormControl,
@@ -6,18 +6,18 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@workspace/ui"
+} from "@workspace/ui";
 
-import { ImageUpload } from "../image-upload"
+import { ImageUpload } from "../image-upload";
 
 type Props = {
   labels: {
-    name: string
-    label: string
-  }
-  loading?: boolean
-  control: Control<any>
-}
+    name: string;
+    label: string;
+  };
+  loading?: boolean;
+  control: Control<any>;
+};
 
 export const ImageField = ({ labels, loading, control }: Props) => {
   return (
@@ -40,5 +40,5 @@ export const ImageField = ({ labels, loading, control }: Props) => {
         </FormItem>
       )}
     />
-  )
-}
+  );
+};

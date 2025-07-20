@@ -1,4 +1,4 @@
-import { type SiteConfig } from "types"
+import { type SiteConfig } from "types";
 
 export const siteConfig: SiteConfig = {
   name: "TechShip",
@@ -14,4 +14,4 @@ export const siteConfig: SiteConfig = {
     terms: "/terms",
     privacy: "/privacy",
   },
-}
+};

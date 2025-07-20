@@ -1,13 +1,13 @@
-import { connect } from "mongoose"
+import { connect } from "mongoose";
 
-import { env } from "@/env.mjs"
+import { env } from "@/env.mjs";
 
-const MONGODB_URI = env.MONGODB_URI as string
+const MONGODB_URI = env.MONGODB_URI as string;
 
 if (!MONGODB_URI) {
   throw new Error(
     "Please define the MONGODB_URI environment variable inside .env.local"
-  )
+  );
 }
 
 /**
@@ -15,35 +15,35 @@ if (!MONGODB_URI) {
  * in development. This prevents connections from growing exponentially
  * during API Route usage.
  */
-let cached = global.mongoose
+let cached = global.mongoose;
 
 if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null }
+  cached = global.mongoose = { conn: null, promise: null };
 }
 
 async function dbConnect() {
   if (cached.conn) {
-    return cached.conn
+    return cached.conn;
   }
 
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
-    }
+    };
 
     cached.promise = connect(MONGODB_URI, opts).then((mongoose) => {
-      return mongoose
-    })
+      return mongoose;
+    });
   }
 
   try {
-    cached.conn = await cached.promise
+    cached.conn = await cached.promise;
   } catch (e) {
-    cached.promise = null
-    throw e
+    cached.promise = null;
+    throw e;
   }
 
-  return cached.conn
+  return cached.conn;
 }
 
-export default dbConnect
+export default dbConnect;

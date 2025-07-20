@@ -1,9 +1,8 @@
-import { useState } from "react"
-import { useParams, useRouter } from "next/navigation"
-import { UpdateIcon } from "@radix-ui/react-icons"
-import axios from "axios"
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { UpdateIcon } from "@radix-ui/react-icons";
+import axios from "axios";
 
-import { toastError } from "@/lib/api-response/api-responses"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -14,38 +13,40 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   toast,
-} from "@workspace/ui"
+} from "@workspace/ui";
 
-import { apiRoutes } from "../constants/routes"
+import { toastError } from "@/lib/api-response/api-responses";
+
+import { apiRoutes } from "../constants/routes";
 
 type Props = {
-  resource: string
-  resourceId: string
-  open: boolean
-  setOpen: (open: boolean) => void
-}
+  resource: string;
+  resourceId: string;
+  open: boolean;
+  setOpen: (open: boolean) => void;
+};
 
 export const CellModal = ({ resource, resourceId, open, setOpen }: Props) => {
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const params = useParams()
-  const router = useRouter()
+  const params = useParams();
+  const router = useRouter();
 
   // TODO: Refactor using Server Actions
   const onDelete = async () => {
     try {
-      setLoading(true)
-      const baseUrl = `${apiRoutes.spaces}/${params.spaceId}/${resource}`
-      await axios.delete(`${baseUrl}/${resourceId}`)
-      router.refresh()
-      toast({ title: "This resource has been successfully deleted" })
+      setLoading(true);
+      const baseUrl = `${apiRoutes.spaces}/${params.spaceId}/${resource}`;
+      await axios.delete(`${baseUrl}/${resourceId}`);
+      router.refresh();
+      toast({ title: "This resource has been successfully deleted" });
     } catch (error) {
-      toastError(error, "An error occurred while deleting the resource")
+      toastError(error, "An error occurred while deleting the resource");
     } finally {
-      setLoading(false)
-      setOpen(false)
+      setLoading(false);
+      setOpen(false);
     }
-  }
+  };
 
   return (
     <AlertDialog open={open}>
@@ -70,5 +71,5 @@ export const CellModal = ({ resource, resourceId, open, setOpen }: Props) => {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
-}
+  );
+};

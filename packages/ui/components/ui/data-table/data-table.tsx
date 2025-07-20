@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 import {
   flexRender,
   getCoreRowModel,
@@ -9,10 +9,10 @@ import {
   useReactTable,
   type ColumnDef,
   type ColumnFiltersState,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 
-import { Button } from "../button"
-import { Input } from "../input"
+import { Button } from "../button";
+import { Input } from "../input";
 import {
   Table,
   TableBody,
@@ -20,20 +20,20 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../table"
+} from "../table";
 
 type DataTableProps<TData, TValue> = {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
-  searchKey: string
-}
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
+  searchKey: string;
+};
 
 export function DataTable<TData, TValue>({
   columns,
   data,
   searchKey,
 }: DataTableProps<TData, TValue>) {
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const table = useReactTable({
     data,
@@ -45,7 +45,7 @@ export function DataTable<TData, TValue>({
     state: {
       columnFilters,
     },
-  })
+  });
 
   return (
     <div>
@@ -74,7 +74,7 @@ export function DataTable<TData, TValue>({
                             header.getContext()
                           )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
@@ -128,5 +128,5 @@ export function DataTable<TData, TValue>({
         </Button>
       </div>
     </div>
-  )
+  );
 }

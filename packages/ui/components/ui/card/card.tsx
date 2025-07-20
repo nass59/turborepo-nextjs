@@ -1,8 +1,8 @@
-import { forwardRef } from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+import { forwardRef } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "../../../lib/utils"
-import { CardStyle } from "./style"
+import { cn } from "../../../lib/utils";
+import { CardStyle } from "./style";
 
 const cardVariants = cva(CardStyle.base, {
   variants: {
@@ -11,12 +11,12 @@ const cardVariants = cva(CardStyle.base, {
   defaultVariants: {
     variant: "default",
   },
-})
+});
 
 export type CardProps = React.ButtonHTMLAttributes<HTMLDivElement> &
   VariantProps<typeof cardVariants> & {
-    asChild?: boolean
-  }
+    asChild?: boolean;
+  };
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ className, variant, ...props }, ref) => (
@@ -26,13 +26,13 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       {...props}
     />
   )
-)
+);
 
-Card.displayName = "Card"
+Card.displayName = "Card";
 
 export type CardHeaderProps = React.ButtonHTMLAttributes<HTMLDivElement> & {
-  isAbsolute?: boolean
-}
+  isAbsolute?: boolean;
+};
 
 const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ className, isAbsolute = false, ...props }, ref) => (
@@ -41,16 +41,16 @@ const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
       className={cn(
         "flex flex-col space-y-1.5",
         {
-          "absolute left-0 top-0 z-[1] p-3": isAbsolute,
+          "absolute top-0 left-0 z-[1] p-3": isAbsolute,
         },
         className
       )}
       {...props}
     />
   )
-)
+);
 
-CardHeader.displayName = "CardHeader"
+CardHeader.displayName = "CardHeader";
 
 const CardTitle = forwardRef<
   HTMLParagraphElement,
@@ -58,12 +58,12 @@ const CardTitle = forwardRef<
 >(({ className, ...props }, ref) => (
   <h3
     ref={ref}
-    className={cn("font-semibold leading-none tracking-tight", className)}
+    className={cn("leading-none font-semibold tracking-tight", className)}
     {...props}
   />
-))
+));
 
-CardTitle.displayName = "CardTitle"
+CardTitle.displayName = "CardTitle";
 
 const CardDescription = forwardRef<
   HTMLParagraphElement,
@@ -71,16 +71,16 @@ const CardDescription = forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("text-muted-foreground text-sm", className)}
     {...props}
   />
-))
+));
 
-CardDescription.displayName = "CardDescription"
+CardDescription.displayName = "CardDescription";
 
 export type CardContentProps = React.ButtonHTMLAttributes<HTMLDivElement> & {
-  isPoster?: boolean
-}
+  isPoster?: boolean;
+};
 
 const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
   ({ className, isPoster = false, ...props }, ref) => (
@@ -96,9 +96,9 @@ const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
       {...props}
     />
   )
-)
+);
 
-CardContent.displayName = "CardContent"
+CardContent.displayName = "CardContent";
 
 const CardFooter = forwardRef<
   HTMLDivElement,
@@ -109,9 +109,9 @@ const CardFooter = forwardRef<
     className={cn("flex items-center text-sm", className)}
     {...props}
   />
-))
+));
 
-CardFooter.displayName = "CardFooter"
+CardFooter.displayName = "CardFooter";
 
 const CardBackground = forwardRef<
   HTMLDivElement,
@@ -125,9 +125,9 @@ const CardBackground = forwardRef<
     )}
     {...props}
   ></div>
-))
+));
 
-CardBackground.displayName = "CardBackground"
+CardBackground.displayName = "CardBackground";
 
 export {
   Card,
@@ -138,4 +138,4 @@ export {
   CardContent,
   CardBackground,
   CardStyle,
-}
+};

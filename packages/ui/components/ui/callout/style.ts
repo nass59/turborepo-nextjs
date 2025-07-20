@@ -6,4 +6,4 @@ export const CalloutStyle = {
     destructive: "border-red-900 bg-red-50",
     warning: "border-yellow-900 bg-yellow-50",
   },
-}
+};

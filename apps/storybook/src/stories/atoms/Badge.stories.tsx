@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Badge, BadgeStyle } from "@workspace/ui"
+import { Badge, BadgeStyle } from "@workspace/ui";
 
-type BadgeVariants = keyof typeof BadgeStyle.variants
-const variants = Object.keys(BadgeStyle.variants) as BadgeVariants[]
+type BadgeVariants = keyof typeof BadgeStyle.variants;
+const variants = Object.keys(BadgeStyle.variants) as BadgeVariants[];
 
 const meta = {
   title: "Atoms/Badge",
@@ -35,38 +35,38 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Badge>
+} satisfies Meta<typeof Badge>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
     variant: "default",
     children: "My badge",
   },
-}
+};
 
 export const Secondary: Story = {
   args: {
     ...Primary.args,
     variant: "secondary",
   },
-}
+};
 
 export const Destructive: Story = {
   args: {
     ...Primary.args,
     variant: "destructive",
   },
-}
+};
 
 export const Outline: Story = {
   args: {
     ...Primary.args,
     variant: "outline",
   },
-}
+};
 
 export const All: Story = {
   render: () => {
@@ -81,6 +81,6 @@ export const All: Story = {
           </div>
         ))}
       </>
-    )
+    );
   },
-}
+};

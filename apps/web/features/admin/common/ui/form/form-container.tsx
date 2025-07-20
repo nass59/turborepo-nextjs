@@ -1,14 +1,14 @@
-import { type UseFormReturn } from "react-hook-form"
+import { type UseFormReturn } from "react-hook-form";
 
-import { Button, Form, FormFooter } from "@workspace/ui"
+import { Button, Form, FormFooter } from "@workspace/ui";
 
 type Props = {
-  form: UseFormReturn<any>
-  initialData: any
-  onSubmit: (data: any) => void
-  loading?: boolean
-  children: React.ReactNode
-}
+  form: UseFormReturn<any>;
+  initialData: any;
+  onSubmit: (data: any) => void;
+  loading?: boolean;
+  children: React.ReactNode;
+};
 
 export const FormContainer = ({
   form,
@@ -29,5 +29,5 @@ export const FormContainer = ({
         </FormFooter>
       </form>
     </Form>
-  )
-}
+  );
+};

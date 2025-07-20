@@ -1,12 +1,12 @@
-import Link from "next/link"
+import Link from "next/link";
+import { type NavItem } from "types";
 
-import { type NavItem } from "types"
-import { cn } from "@workspace/ui"
+import { cn } from "@workspace/ui";
 
 type Props = {
-  item: NavItem
-  isActive: boolean
-}
+  item: NavItem;
+  isActive: boolean;
+};
 
 export const SidebarItem = ({ item, isActive }: Props) => {
   if (item.disabled || !item.href) {
@@ -14,7 +14,7 @@ export const SidebarItem = ({ item, isActive }: Props) => {
       <span className="flex w-full items-center rounded-md p-2 opacity-60">
         {item.title}
       </span>
-    )
+    );
   }
 
   return (
@@ -23,7 +23,7 @@ export const SidebarItem = ({ item, isActive }: Props) => {
       target={item.external ? "_blank" : ""}
       rel={item.external ? "noreferrer" : ""}
       className={cn(
-        "flex w-full items-center rounded-md p-2 hover:underline focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2",
+        "flex w-full items-center rounded-md p-2 hover:underline focus:ring-2 focus:ring-slate-600 focus:ring-offset-2 focus:outline-none",
         {
           "bg-muted": isActive,
         }
@@ -31,5 +31,5 @@ export const SidebarItem = ({ item, isActive }: Props) => {
     >
       {item.title}
     </Link>
-  )
-}
+  );
+};

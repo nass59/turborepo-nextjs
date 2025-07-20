@@ -49,4 +49,4 @@ export const COURSE_LABELS = {
     title: "Edit the course",
     description: "Edit a course",
   },
-} as const
+} as const;

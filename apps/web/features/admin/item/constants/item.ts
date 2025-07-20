@@ -75,4 +75,4 @@ export const ITEM_LABELS = {
     title: "Edit item",
     description: "Edit a item",
   },
-} as const
+} as const;

@@ -1,16 +1,16 @@
-import { Heading, HeadingAction } from "@workspace/ui"
+import { Heading, HeadingAction } from "@workspace/ui";
 
-import { AddButton } from "./add-button"
+import { AddButton } from "./add-button";
 
 type Props = {
   labels: {
-    title: string
-    description: string
-    add: string
-  }
-  value: number
-  path: string
-}
+    title: string;
+    description: string;
+    add: string;
+  };
+  value: number;
+  path: string;
+};
 
 export const ListHeading = ({ labels, value, path }: Props) => {
   return (
@@ -23,5 +23,5 @@ export const ListHeading = ({ labels, value, path }: Props) => {
         <AddButton labels={labels} path={path} />
       </HeadingAction>
     </Heading>
-  )
-}
+  );
+};

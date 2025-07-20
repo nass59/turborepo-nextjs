@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Avatar, AvatarImage, AvatarStyle } from "@workspace/ui"
+import { Avatar, AvatarImage, AvatarStyle } from "@workspace/ui";
 
-type AvatarSizes = keyof typeof AvatarStyle.sizes
-const sizes = Object.keys(AvatarStyle.sizes) as AvatarSizes[]
+type AvatarSizes = keyof typeof AvatarStyle.sizes;
+const sizes = Object.keys(AvatarStyle.sizes) as AvatarSizes[];
 
 const meta = {
   title: "Atoms/Avatar",
@@ -45,30 +45,30 @@ const meta = {
           alt="Picture of the author"
         />
       </Avatar>
-    )
+    );
   },
-} satisfies Meta<typeof Avatar>
+} satisfies Meta<typeof Avatar>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Large: Story = {
   args: {
     size: "lg",
   },
-}
+};
 
 export const Medium: Story = {
   args: {
     size: "md",
   },
-}
+};
 
 export const Small: Story = {
   args: {
     size: "sm",
   },
-}
+};
 
 export const All: Story = {
   render: () => {
@@ -83,6 +83,6 @@ export const All: Story = {
           </Avatar>
         ))}
       </div>
-    )
+    );
   },
-}
+};

@@ -1,6 +1,6 @@
-import { useState } from "react"
-import { CaretSortIcon, ChevronDownIcon } from "@radix-ui/react-icons"
-import type { Meta, StoryObj } from "@storybook/react"
+import { useState } from "react";
+import { CaretSortIcon, ChevronDownIcon } from "@radix-ui/react-icons";
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   flexRender,
   getCoreRowModel,
@@ -10,7 +10,7 @@ import {
   type ColumnDef,
   type ColumnFiltersState,
   type SortingState,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 
 import {
   Button,
@@ -26,17 +26,17 @@ import {
   TableHeader,
   TableRow,
   type DataTable,
-} from "@workspace/ui"
+} from "@workspace/ui";
 
-import { paymentsData, type Payment } from "../../data/payments"
+import { paymentsData, type Payment } from "../../data/payments";
 
 const meta = {
   title: "Organisms/DataTable",
   argTypes: {},
-} satisfies Meta<typeof DataTable>
+} satisfies Meta<typeof DataTable>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const columns: ColumnDef<Payment>[] = [
   {
@@ -57,7 +57,7 @@ const columns: ColumnDef<Payment>[] = [
           Email
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
@@ -65,23 +65,23 @@ const columns: ColumnDef<Payment>[] = [
     accessorKey: "amount",
     header: () => <div className="text-right">Amount</div>,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"))
+      const amount = parseFloat(row.getValue("amount"));
 
       // Format the amount as a dollar amount
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
-      }).format(amount)
+      }).format(amount);
 
-      return <div className="text-right font-medium">{formatted}</div>
+      return <div className="text-right font-medium">{formatted}</div>;
     },
   },
-]
+];
 
 export const Default: Story = {
   render: () => {
-    const [sorting, setSorting] = useState<SortingState>([])
-    const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+    const [sorting, setSorting] = useState<SortingState>([]);
+    const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
     const table = useReactTable({
       data: paymentsData,
@@ -95,7 +95,7 @@ export const Default: Story = {
         sorting,
         columnFilters,
       },
-    })
+    });
 
     return (
       <div className="w-full">
@@ -130,7 +130,7 @@ export const Default: Story = {
                     >
                       {column.id}
                     </DropdownMenuCheckboxItem>
-                  )
+                  );
                 })}
             </DropdownMenuContent>
           </DropdownMenu>
@@ -150,7 +150,7 @@ export const Default: Story = {
                               header.getContext()
                             )}
                       </TableHead>
-                    )
+                    );
                   })}
                 </TableRow>
               ))}
@@ -186,6 +186,6 @@ export const Default: Story = {
           </Table>
         </div>
       </div>
-    )
+    );
   },
-}
+};

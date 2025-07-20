@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
 import {
   Command,
@@ -8,15 +8,15 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@workspace/ui"
+} from "@workspace/ui";
 
 const meta = {
   title: "Organisms/Command",
   component: Command,
-} satisfies Meta<typeof Command>
+} satisfies Meta<typeof Command>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => {
@@ -38,6 +38,6 @@ export const Default: Story = {
           </CommandGroup>
         </CommandList>
       </Command>
-    )
+    );
   },
-}
+};

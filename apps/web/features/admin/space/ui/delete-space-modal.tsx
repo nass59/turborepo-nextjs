@@ -1,12 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useParams, useRouter } from "next/navigation"
-import { TrashIcon, UpdateIcon } from "@radix-ui/react-icons"
-import axios from "axios"
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { TrashIcon, UpdateIcon } from "@radix-ui/react-icons";
+import axios from "axios";
 
-import { routes } from "@/constants/routes"
-import { toastError } from "@/lib/api-response/api-responses"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,32 +17,35 @@ import {
   AlertDialogTrigger,
   Button,
   toast,
-} from "@workspace/ui"
-import { apiRoutes } from "@/features/admin/common/constants/routes"
+} from "@workspace/ui";
+
+import { routes } from "@/constants/routes";
+import { apiRoutes } from "@/features/admin/common/constants/routes";
+import { toastError } from "@/lib/api-response/api-responses";
 
 export const DeleteSpaceModal = () => {
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const params = useParams()
-  const router = useRouter()
+  const params = useParams();
+  const router = useRouter();
 
   // TODO: Refactor using Server Actions
   const onDelete = async () => {
     try {
-      setLoading(true)
-      await axios.delete(`${apiRoutes.spaces}/${params.spaceId}`)
-      router.refresh()
-      router.push(routes.dashboard)
-      toast({ title: "Space deleted." })
+      setLoading(true);
+      await axios.delete(`${apiRoutes.spaces}/${params.spaceId}`);
+      router.refresh();
+      router.push(routes.dashboard);
+      toast({ title: "Space deleted." });
     } catch (error) {
       toastError(
         error,
         "Your Space was not deleted. Make sure you removed all categories first."
-      )
+      );
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <AlertDialog>
@@ -72,5 +73,5 @@ export const DeleteSpaceModal = () => {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
-}
+  );
+};

@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, ButtonStyle } from "@workspace/ui"
+import { Button, ButtonStyle } from "@workspace/ui";
 
-type ButtonVariants = keyof typeof ButtonStyle.variants
-type ButtonSizes = keyof typeof ButtonStyle.sizes
+type ButtonVariants = keyof typeof ButtonStyle.variants;
+type ButtonSizes = keyof typeof ButtonStyle.sizes;
 
-const variants = Object.keys(ButtonStyle.variants) as ButtonVariants[]
-const sizes = Object.keys(ButtonStyle.sizes) as ButtonSizes[]
+const variants = Object.keys(ButtonStyle.variants) as ButtonVariants[];
+const sizes = Object.keys(ButtonStyle.sizes) as ButtonSizes[];
 
 // @see https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
@@ -57,10 +57,10 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Button>
+} satisfies Meta<typeof Button>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 // @see https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
@@ -69,77 +69,77 @@ export const Primary: Story = {
     size: "md",
     children: "My button",
   },
-}
+};
 
 export const Secondary: Story = {
   args: {
     ...Primary.args,
     variant: "secondary",
   },
-}
+};
 
 export const Brand: Story = {
   args: {
     ...Primary.args,
     variant: "brand",
   },
-}
+};
 
 export const Destructive: Story = {
   args: {
     ...Primary.args,
     variant: "destructive",
   },
-}
+};
 
 export const Outline: Story = {
   args: {
     ...Primary.args,
     variant: "outline",
   },
-}
+};
 
 export const Ghost: Story = {
   args: {
     ...Primary.args,
     variant: "ghost",
   },
-}
+};
 
 export const Link: Story = {
   args: {
     ...Primary.args,
     variant: "link",
   },
-}
+};
 
 export const Large: Story = {
   args: {
     ...Primary.args,
     size: "lg",
   },
-}
+};
 
 export const Medium: Story = {
   args: {
     ...Primary.args,
     size: "md",
   },
-}
+};
 
 export const Small: Story = {
   args: {
     ...Primary.args,
     size: "sm",
   },
-}
+};
 
 export const ExtraSmall: Story = {
   args: {
     ...Primary.args,
     size: "xs",
   },
-}
+};
 
 export const Icon: Story = {
   args: {
@@ -147,7 +147,7 @@ export const Icon: Story = {
     size: "icon",
     children: "x",
   },
-}
+};
 
 export const All: Story = {
   render: () => {
@@ -170,6 +170,6 @@ export const All: Story = {
           </div>
         ))}
       </>
-    )
+    );
   },
-}
+};

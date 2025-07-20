@@ -5,4 +5,4 @@ export const AlertStyle = {
     destructive:
       "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
   },
-}
+};

@@ -1,14 +1,14 @@
-import { Fragment } from "react"
-import { Dialog, Transition } from "@headlessui/react"
-import { Cross2Icon } from "@radix-ui/react-icons"
+import { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { Cross2Icon } from "@radix-ui/react-icons";
 
-import { Button } from "@workspace/ui"
+import { Button } from "@workspace/ui";
 
 type Props = {
-  open: boolean
-  onClose: () => void
-  children: React.ReactNode
-}
+  open: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+};
 
 export const Modal = ({ open, onClose, children }: Props) => {
   return (
@@ -28,7 +28,7 @@ export const Modal = ({ open, onClose, children }: Props) => {
             >
               <Dialog.Panel className="w-full max-w-5xl overflow-hidden rounded-lg text-left align-middle">
                 <div className="relative flex w-full items-center overflow-hidden bg-white p-3 shadow-2xl">
-                  <div className="absolute right-4 top-4">
+                  <div className="absolute top-4 right-4">
                     <Button
                       onClick={onClose}
                       variant="outline"
@@ -46,5 +46,5 @@ export const Modal = ({ open, onClose, children }: Props) => {
         </div>
       </Dialog>
     </Transition>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
-import { type Control } from "react-hook-form"
+import { type Control } from "react-hook-form";
 
 import {
   FormControl,
@@ -11,21 +11,21 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@workspace/ui"
+} from "@workspace/ui";
 
 type Props = {
   labels: {
-    name: string
-    label: string
-    placeholder: string
-  }
-  loading?: boolean
-  control: Control<any>
+    name: string;
+    label: string;
+    placeholder: string;
+  };
+  loading?: boolean;
+  control: Control<any>;
   options: {
-    label: string
-    value: string
-  }[]
-}
+    label: string;
+    value: string;
+  }[];
+};
 
 export const SelectField = ({ labels, loading, control, options }: Props) => {
   return (
@@ -61,5 +61,5 @@ export const SelectField = ({ labels, loading, control, options }: Props) => {
         </FormItem>
       )}
     />
-  )
-}
+  );
+};

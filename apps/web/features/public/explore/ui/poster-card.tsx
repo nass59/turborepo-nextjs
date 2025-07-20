@@ -1,15 +1,22 @@
-import Image from "next/image"
+import Image from "next/image";
 
-import { type ItemModel } from "@/lib/database/models/Item"
-import { parseData } from "@/lib/utils"
-import { Badge, Card, CardContent, CardFooter, CardHeader } from "@workspace/ui"
-import { AbsoluteLink } from "@/features/public/common/ui/absolute-link"
+import {
+  Badge,
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@workspace/ui";
 
-import { PreviewBtn } from "./preview-btn"
+import { AbsoluteLink } from "@/features/public/common/ui/absolute-link";
+import { type ItemModel } from "@/lib/database/models/Item";
+import { parseData } from "@/lib/utils";
+
+import { PreviewBtn } from "./preview-btn";
 
 type Props = {
-  data: ItemModel
-}
+  data: ItemModel;
+};
 
 export const PosterCard = ({ data }: Props) => {
   return (
@@ -33,5 +40,5 @@ export const PosterCard = ({ data }: Props) => {
         <PreviewBtn data={parseData(data)} />
       </CardFooter>
     </Card>
-  )
-}
+  );
+};

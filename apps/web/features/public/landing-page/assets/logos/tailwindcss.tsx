@@ -12,5 +12,5 @@ export const TailwindCSS = () => {
         ></path>
       </svg>
     </>
-  )
-}
+  );
+};

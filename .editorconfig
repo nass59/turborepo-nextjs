@@ -1,6 +1,8 @@
-# editorconfig.org
+# EditorConfig helps developers define and maintain consistent coding styles between different editors and IDEs
+# For more information about the EditorConfig project, please visit http://editorconfig.org/
 root = true
 
+# All files
 [*]
 charset = utf-8
 end_of_line = lf

@@ -53,4 +53,4 @@ export const CATEGORY_LABELS = {
     title: "Edit the category",
     description: "Edit a category",
   },
-} as const
+} as const;

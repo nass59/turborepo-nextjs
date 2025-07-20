@@ -1,12 +1,12 @@
-import { type PropsWithChildren } from "react"
+import { type PropsWithChildren } from "react";
 
-import { cn } from "@workspace/ui"
+import { cn } from "@workspace/ui";
 
 type Props = PropsWithChildren & {
-  className?: string
-  centered?: boolean
-  withSpace?: boolean
-}
+  className?: string;
+  centered?: boolean;
+  withSpace?: boolean;
+};
 
 export const ContentContainer = ({
   className,
@@ -17,7 +17,7 @@ export const ContentContainer = ({
   return (
     <div
       className={cn(
-        "container relative py-6 lg:py-10",
+        "relative container py-6 lg:py-10",
         {
           "max-w-4xl": centered,
           "space-y-8": withSpace,
@@ -27,5 +27,5 @@ export const ContentContainer = ({
     >
       {children}
     </div>
-  )
-}
+  );
+};

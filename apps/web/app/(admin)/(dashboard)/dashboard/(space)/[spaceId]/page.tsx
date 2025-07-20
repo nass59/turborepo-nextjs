@@ -1,19 +1,20 @@
-import { BookmarkIcon, ImageIcon, RocketIcon } from "@radix-ui/react-icons"
+import { BookmarkIcon, ImageIcon, RocketIcon } from "@radix-ui/react-icons";
 
-import { parseData } from "@/lib/utils"
-import { Heading } from "@workspace/ui"
-import { getOverview } from "@/features/admin/common/utilities/overview"
-import { CardOverview } from "@/features/admin/home/ui/card-overview"
-import { Chart } from "@/features/admin/home/ui/chart"
+import { Heading } from "@workspace/ui";
+
+import { getOverview } from "@/features/admin/common/utilities/overview";
+import { CardOverview } from "@/features/admin/home/ui/card-overview";
+import { Chart } from "@/features/admin/home/ui/chart";
+import { parseData } from "@/lib/utils";
 
 type Props = {
   params: {
-    spaceId: string
-  }
-}
+    spaceId: string;
+  };
+};
 
 export default async function Page({ params }: Props) {
-  const overview = await getOverview(params.spaceId)
+  const overview = await getOverview(params.spaceId);
 
   return (
     <>
@@ -43,5 +44,5 @@ export default async function Page({ params }: Props) {
         </CardOverview>
       </div>
     </>
-  )
+  );
 }

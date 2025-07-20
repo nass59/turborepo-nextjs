@@ -1,13 +1,13 @@
-import type { Metadata, Viewport } from "next"
+import type { Metadata, Viewport } from "next";
 
-import { siteConfig } from "@/config/site"
-import { absoluteUrl } from "@/lib/utils"
+import { siteConfig } from "@/config/site";
+import { absoluteUrl } from "@/lib/utils";
 
-const siteName = siteConfig.name
-const siteDescription = siteConfig.description
-const siteUrl = siteConfig.url
-const siteAuthor = siteConfig.author
-const siteGithubLink = siteConfig.links.github
+const siteName = siteConfig.name;
+const siteDescription = siteConfig.description;
+const siteUrl = siteConfig.url;
+const siteAuthor = siteConfig.author;
+const siteGithubLink = siteConfig.links.github;
 
 /**
  * Define the metadata for the site
@@ -73,7 +73,7 @@ export const baseMetadata: Metadata = {
     address: false,
     telephone: false,
   },
-}
+};
 
 /**
  * Define the viewport for the site
@@ -82,4 +82,4 @@ export const baseMetadata: Metadata = {
 export const baseViewport: Viewport = {
   themeColor: "black",
   colorScheme: "dark",
-}
+};

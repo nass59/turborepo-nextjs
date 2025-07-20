@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import React from "react"
-import { CopyIcon } from "@radix-ui/react-icons"
+import React from "react";
+import { CopyIcon } from "@radix-ui/react-icons";
 
-import { Button } from "@workspace/ui"
+import { Button } from "@workspace/ui";
 
-import { onCopy } from "../utilities/copy"
+import { onCopy } from "../utilities/copy";
 
 type Props = {
-  description: string
-  message: string
-}
+  description: string;
+  message: string;
+};
 
 export const CopyButton = ({ description, message }: Props) => {
   return (
@@ -21,5 +21,5 @@ export const CopyButton = ({ description, message }: Props) => {
     >
       <CopyIcon className="size-4" />
     </Button>
-  )
-}
+  );
+};

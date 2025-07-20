@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { Tab } from "@headlessui/react"
+import Image from "next/image";
+import { Tab } from "@headlessui/react";
 
-import { GalleryTab } from "./gallery-tab"
+import { GalleryTab } from "./gallery-tab";
 
 type Props = {
-  images: string[]
-}
+  images: string[];
+};
 
 export const Gallery = ({ images }: Props) => {
   return (
@@ -15,7 +15,7 @@ export const Gallery = ({ images }: Props) => {
       <Tab.Panels>
         {images.map((image) => (
           <Tab.Panel key={image}>
-            <div className="relative aspect-poster size-full overflow-hidden rounded-lg">
+            <div className="aspect-poster relative size-full overflow-hidden rounded-lg">
               <Image
                 src={image}
                 fill
@@ -37,5 +37,5 @@ export const Gallery = ({ images }: Props) => {
         </div>
       )}
     </Tab.Group>
-  )
-}
+  );
+};

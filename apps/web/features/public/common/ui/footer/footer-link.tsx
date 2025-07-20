@@ -1,7 +1,7 @@
 type Props = {
-  href: string
-  title: string
-}
+  href: string;
+  title: string;
+};
 
 export const FooterLink = ({ href, title }: Props) => {
   return (
@@ -13,5 +13,5 @@ export const FooterLink = ({ href, title }: Props) => {
     >
       {title}
     </a>
-  )
-}
+  );
+};

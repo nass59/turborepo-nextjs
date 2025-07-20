@@ -1,20 +1,21 @@
-import { parseData } from "@/lib/utils"
-import { DataTable, Separator } from "@workspace/ui"
-import { BILLBOARD_LABELS } from "@/features/admin/billboard/constants/billboard"
-import { columnsData } from "@/features/admin/billboard/ui/columns"
-import { getAllBillboards } from "@/features/admin/billboard/utilities/billboard"
-import { ApiList } from "@/features/admin/common/ui/api-list"
-import { ListHeading } from "@/features/admin/common/ui/list-heading"
+import { DataTable, Separator } from "@workspace/ui";
+
+import { BILLBOARD_LABELS } from "@/features/admin/billboard/constants/billboard";
+import { columnsData } from "@/features/admin/billboard/ui/columns";
+import { getAllBillboards } from "@/features/admin/billboard/utilities/billboard";
+import { ApiList } from "@/features/admin/common/ui/api-list";
+import { ListHeading } from "@/features/admin/common/ui/list-heading";
+import { parseData } from "@/lib/utils";
 
 type Props = {
   params: {
-    spaceId: string
-  }
-}
+    spaceId: string;
+  };
+};
 
 export default async function Page({ params }: Props) {
-  const billboards = await getAllBillboards(params.spaceId)
-  const { list: listLabels, api: apiLabels, resource } = BILLBOARD_LABELS
+  const billboards = await getAllBillboards(params.spaceId);
+  const { list: listLabels, api: apiLabels, resource } = BILLBOARD_LABELS;
 
   return (
     <>
@@ -38,5 +39,5 @@ export default async function Page({ params }: Props) {
         spaceId={params.spaceId}
       />
     </>
-  )
+  );
 }

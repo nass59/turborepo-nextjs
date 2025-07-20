@@ -1,37 +1,37 @@
-import { ImageResponse } from "next/og"
+import { ImageResponse } from "next/og";
 
-import { ogImageSchema } from "@/lib/validation/og"
-import { Space2 } from "@/features/public/landing-page/assets/icons/space2"
-import { NextJS } from "@/features/public/landing-page/assets/logos/nextjs-13"
+import { Space2 } from "@/features/public/landing-page/assets/icons/space2";
+import { NextJS } from "@/features/public/landing-page/assets/logos/nextjs-13";
+import { ogImageSchema } from "@/lib/validation/og";
 
-export const runtime = "edge"
+export const runtime = "edge";
 
 const interRegular = fetch(
   new URL("../../../assets/fonts/Inter-Regular.ttf", import.meta.url)
-).then((res) => res.arrayBuffer())
+).then((res) => res.arrayBuffer());
 
 const interBold = fetch(
   new URL("../../../assets/fonts/CalSans-SemiBold.ttf", import.meta.url)
-).then((res) => res.arrayBuffer())
+).then((res) => res.arrayBuffer());
 
 // @see https://nextjs.org/docs/app/building-your-application/routing/router-handlers
 export async function GET(req: Request) {
   try {
-    const fontRegular = await interRegular
-    const fontBold = await interBold
+    const fontRegular = await interRegular;
+    const fontBold = await interBold;
 
-    const url = new URL(req.url)
-    const values = ogImageSchema.parse(Object.fromEntries(url.searchParams))
+    const url = new URL(req.url);
+    const values = ogImageSchema.parse(Object.fromEntries(url.searchParams));
 
     const heading =
       values.heading.length > 140
         ? `${values.heading.substring(0, 140)}...`
-        : values.heading
+        : values.heading;
 
-    const { mode } = values
+    const { mode } = values;
 
-    const paint = mode === "dark" ? "#fff" : "#000"
-    const fontSize = heading.length > 70 ? "50px" : "70px"
+    const paint = mode === "dark" ? "#fff" : "#000";
+    const fontSize = heading.length > 70 ? "50px" : "70px";
 
     return new ImageResponse(
       (
@@ -118,10 +118,10 @@ export async function GET(req: Request) {
           },
         ],
       }
-    )
+    );
   } catch {
     return new Response(`Failed to generate image`, {
       status: 500,
-    })
+    });
   }
 }

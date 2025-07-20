@@ -1,11 +1,11 @@
-import Link from "next/link"
-import { ChevronLeftIcon } from "@radix-ui/react-icons"
+import Link from "next/link";
+import { ChevronLeftIcon } from "@radix-ui/react-icons";
 
-import { buttonVariants, cn } from "@workspace/ui"
+import { buttonVariants, cn } from "@workspace/ui";
 
 type Props = {
-  className?: string
-}
+  className?: string;
+};
 
 export const BackLink = ({ className }: Props) => {
   return (
@@ -16,5 +16,5 @@ export const BackLink = ({ className }: Props) => {
       <ChevronLeftIcon className="mr-2 size-4" />
       See all posts
     </Link>
-  )
-}
+  );
+};

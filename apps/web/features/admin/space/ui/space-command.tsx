@@ -1,11 +1,10 @@
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation";
 import {
   CheckIcon,
   PlusCircledIcon,
   RadiobuttonIcon,
-} from "@radix-ui/react-icons"
+} from "@radix-ui/react-icons";
 
-import { routes } from "@/constants/routes"
 import {
   cn,
   Command,
@@ -15,33 +14,35 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@workspace/ui"
-import { type NavbarItem } from "@/features/admin/common/types/navbar"
+} from "@workspace/ui";
 
-import { SPACE_LABELS } from "../constants/space"
-import { useSpaceModal } from "../hooks/use-space-modal"
+import { routes } from "@/constants/routes";
+import { type NavbarItem } from "@/features/admin/common/types/navbar";
+
+import { SPACE_LABELS } from "../constants/space";
+import { useSpaceModal } from "../hooks/use-space-modal";
 
 type Props = {
-  items: NavbarItem[]
-  current?: NavbarItem
-  setOpen: (open: boolean) => void
-}
+  items: NavbarItem[];
+  current?: NavbarItem;
+  setOpen: (open: boolean) => void;
+};
 
 export const SpaceCommand = ({ items, current, setOpen }: Props) => {
-  const router = useRouter()
-  const spaceModal = useSpaceModal()
+  const router = useRouter();
+  const spaceModal = useSpaceModal();
 
   const onSelect = (space: NavbarItem) => {
-    setOpen(false)
-    router.push(`${routes.dashboard}/${space.value}`)
-  }
+    setOpen(false);
+    router.push(`${routes.dashboard}/${space.value}`);
+  };
 
   const onCreate = () => {
-    setOpen(false)
-    spaceModal.onOpen()
-  }
+    setOpen(false);
+    spaceModal.onOpen();
+  };
 
-  const labels = SPACE_LABELS.switcher
+  const labels = SPACE_LABELS.switcher;
 
   return (
     <Command>
@@ -77,5 +78,5 @@ export const SpaceCommand = ({ items, current, setOpen }: Props) => {
         </CommandGroup>
       </CommandList>
     </Command>
-  )
-}
+  );
+};
