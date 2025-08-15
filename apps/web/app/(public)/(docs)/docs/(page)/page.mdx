@@ -1,4 +1,4 @@
-import { Heading } from "@workspace/design-system/components/ui";
+import { Heading } from "@/components/heading";
 
 import { Pager } from "@/features/public/docs/ui/pager";
 import { getMetadata } from "@/lib/metadata";
@@ -28,33 +28,20 @@ I'm going to use this to document all the features of TechShip and how they are 
 
 Select a feature below to learn more about it.
 
-<div className="grid sm:grid-cols-2 gap-4 pt-6">
+<div className="grid gap-4 pt-6 sm:grid-cols-2">
   <Card href="/docs/documentation">
-    ### Documentation
-
-    This documentation site built using @next/mdx.
-
+    <CardHeader>
+      <CardTitle>Documentation</CardTitle>
+      <CardDescription>
+        This documentation site built using @next/mdx.
+      </CardDescription>
+    </CardHeader>
   </Card>
-
-  <Card href="/docs/marketing" disabled>
-    ### Marketing
-
-    The marketing site with landing pages.
-
-  </Card>
-
-  <Card href="/docs/app" disabled>
-    ### App
-
-    The dashboard with auth.
-
-  </Card>
-
-  <Card href="/docs/blog" disabled>
-    ### Blog
-
-    The blog built using MDX.
-
+  <Card href="/docs/marketing">
+    <CardHeader>
+      <CardTitle>Marketing</CardTitle>
+      <CardDescription>The marketing site with landing pages.</CardDescription>
+    </CardHeader>
   </Card>
 </div>
 

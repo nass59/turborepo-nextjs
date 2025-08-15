@@ -1,11 +1,11 @@
-import { CodeIcon } from "@radix-ui/react-icons";
+import { CodeIcon } from "lucide-react";
 
-import { Badge, type BadgeProps } from "@workspace/design-system/components/ui";
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@workspace/design-system/components/ui/components/ui/alert";
+} from "@workspace/design-system/components/ui/alert";
+import { Badge } from "@workspace/design-system/components/ui/badge";
 
 import { env } from "@/env.mjs";
 
@@ -22,7 +22,7 @@ const textMap: Record<Props["variant"], string> = {
   admin: "Admin",
 };
 
-const variantMap: Record<Props["variant"], BadgeProps["variant"]> = {
+const variantMap: Record<Props["variant"], "secondary" | "destructive"> = {
   public: "secondary",
   admin: "destructive",
 };

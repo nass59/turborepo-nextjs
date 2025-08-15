@@ -2,21 +2,16 @@
 
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import {
-  CopyIcon,
-  DotsHorizontalIcon,
-  Pencil2Icon,
-  TrashIcon,
-} from "@radix-ui/react-icons";
+import { CopyIcon, EllipsisIcon, PencilIcon, TrashIcon } from "lucide-react";
 
+import { Button } from "@workspace/design-system/components/ui/button";
 import {
-  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@workspace/design-system/components/ui";
+} from "@workspace/design-system/components/ui/dropdown-menu";
 
 import { routes } from "@/constants/routes";
 import { type BillboardColumn } from "@/features/admin/billboard/ui/columns";
@@ -62,7 +57,7 @@ export const CellAction = ({ data, resource, labels }: Props) => {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="size-8 p-0">
             <span className="sr-only">{labels.open}</span>
-            <DotsHorizontalIcon className="size-4" />
+            <EllipsisIcon className="size-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
@@ -72,7 +67,7 @@ export const CellAction = ({ data, resource, labels }: Props) => {
             {labels.copy}
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => onClick()}>
-            <Pencil2Icon className="mr-2 size-4" />
+            <PencilIcon className="mr-2 size-4" />
             {labels.update}
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>

@@ -1,4 +1,4 @@
-import { RocketIcon } from "@radix-ui/react-icons";
+import { RocketIcon } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 import { SpaceSwitcher } from "@/features/admin/space/ui/space-switcher";

@@ -1,13 +1,13 @@
 import { type Control } from "react-hook-form";
 
+import { Checkbox } from "@workspace/design-system/components/ui/checkbox";
 import {
-  Checkbox,
   FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormLabel,
-} from "@workspace/design-system/components/ui";
+} from "@workspace/design-system/components/ui/form";
 
 type Props = {
   labels: {

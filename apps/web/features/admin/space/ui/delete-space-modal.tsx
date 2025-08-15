@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { TrashIcon, UpdateIcon } from "@radix-ui/react-icons";
 import axios from "axios";
+import { PencilIcon, TrashIcon } from "lucide-react";
+import { toast } from "sonner";
 
 import {
   AlertDialog,
@@ -15,9 +16,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-  Button,
-  toast,
-} from "@workspace/design-system/components/ui";
+} from "@workspace/design-system/components/ui/alert-dialog";
+import { Button } from "@workspace/design-system/components/ui/button";
 
 import { routes } from "@/constants/routes";
 import { apiRoutes } from "@/features/admin/common/constants/routes";
@@ -36,7 +36,7 @@ export const DeleteSpaceModal = () => {
       await axios.delete(`${apiRoutes.spaces}/${params.spaceId}`);
       router.refresh();
       router.push(routes.dashboard);
-      toast({ title: "Space deleted." });
+      toast("Space deleted.");
     } catch (error) {
       toastError(
         error,
@@ -67,7 +67,7 @@ export const DeleteSpaceModal = () => {
         <AlertDialogFooter>
           <AlertDialogCancel disabled={loading}>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={onDelete} disabled={loading}>
-            {loading && <UpdateIcon className="mr-2 size-4 animate-spin" />}
+            {loading && <PencilIcon className="mr-2 size-4 animate-spin" />}
             <span>Delete</span>
           </AlertDialogAction>
         </AlertDialogFooter>

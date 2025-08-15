@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 
-import { buttonVariants, cn } from "@workspace/design-system/components/ui";
+import { buttonVariants } from "@workspace/design-system/components/ui/button";
+import { cn } from "@workspace/design-system/lib/utils";
 
 import { routes } from "@/constants/routes";
 

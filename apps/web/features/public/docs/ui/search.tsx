@@ -1,15 +1,13 @@
 "use client";
 
-import { Input, toast } from "@workspace/design-system/components/ui";
+import { toast } from "sonner";
+
+import { Input } from "@workspace/design-system/components/ui/input";
 
 export const Search = () => {
   const onSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-
-    toast({
-      title: "Not implemented",
-      description: "We're still working on the search.",
-    });
+    toast("Not implemented");
   };
 
   return (

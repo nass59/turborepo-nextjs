@@ -5,8 +5,9 @@ import { useParams, useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
-import { Separator, toast } from "@workspace/design-system/components/ui";
+import { Separator } from "@workspace/design-system/components/ui/separator";
 
 import { routes } from "@/constants/routes";
 import { apiRoutes } from "@/features/admin/common/constants/routes";

@@ -1,9 +1,9 @@
 "use client";
 
 import { type MouseEventHandler } from "react";
-import { EnterFullScreenIcon } from "@radix-ui/react-icons";
+import { FullscreenIcon } from "lucide-react";
 
-import { Button } from "@workspace/design-system/components/ui";
+import { Button } from "@workspace/design-system/components/ui/button";
 
 import { usePreviewModal } from "@/features/public/explore/hooks/use-preview-modal";
 import { type ItemModel } from "@/lib/database/models/Item";
@@ -29,7 +29,7 @@ export const PreviewBtn = ({ data }: Props) => {
           size="icon"
           className="bg-white text-black transition hover:scale-110"
         >
-          <EnterFullScreenIcon className="size-4" />
+          <FullscreenIcon className="size-4" />
         </Button>
       </div>
     </div>

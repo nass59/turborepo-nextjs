@@ -1,15 +1,15 @@
 "use client";
 
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 
+import { Button } from "@workspace/design-system/components/ui/button";
 import {
-  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@workspace/design-system/components/ui";
+} from "@workspace/design-system/components/ui/dropdown-menu";
 
 export const ThemeToggle = () => {
   const { setTheme } = useTheme();

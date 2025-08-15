@@ -17,7 +17,7 @@ export default function Layout({ children }: LayoutProps) {
         <Search />
       </Header>
 
-      <div className="container flex-1 md:grid md:grid-cols-[240px_1fr] md:gap-10">
+      <div className="container mx-auto flex-1 md:grid md:grid-cols-[240px_1fr] md:gap-10">
         <Sidebar items={docsConfig.sidebarNav} />
 
         <div className="space-y-4 py-4">

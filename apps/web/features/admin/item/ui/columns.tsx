@@ -1,14 +1,9 @@
 "use client";
 
-import {
-  EyeClosedIcon,
-  EyeOpenIcon,
-  StarFilledIcon,
-  StarIcon,
-} from "@radix-ui/react-icons";
-import { type ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef } from "@tanstack/react-table";
+import { EyeClosedIcon, EyeIcon, StarIcon, StarsIcon } from "lucide-react";
 
-import { Badge } from "@workspace/design-system/components/ui";
+import { Badge } from "@workspace/design-system/components/ui/badge";
 
 import { CellAction } from "@/features/admin/common/ui/cell-action";
 
@@ -29,13 +24,13 @@ const getIsArchivedIcon = (isArchived: boolean) => {
   return isArchived ? (
     <EyeClosedIcon className="size-4 fill-slate-300 text-slate-500" />
   ) : (
-    <EyeOpenIcon className="size-4 text-slate-500" />
+    <EyeIcon className="size-4 text-slate-500" />
   );
 };
 
 const getIsFeaturedIcon = (isFeatured: boolean) => {
   return isFeatured ? (
-    <StarFilledIcon className="size-4 fill-yellow-300 text-yellow-500" />
+    <StarsIcon className="size-4 fill-yellow-300 text-yellow-500" />
   ) : (
     <StarIcon className="size-4 fill-slate-300 text-slate-500" />
   );

@@ -19,14 +19,6 @@ export const docsConfig: DocsConfig = {
           href: "/docs/documentation",
         },
         {
-          title: "Components",
-          href: "/docs/components",
-        },
-        {
-          title: "Code Blocks",
-          href: "/docs/code-blocks",
-        },
-        {
           title: "Style Guide",
           href: "/docs/style-guide",
         },

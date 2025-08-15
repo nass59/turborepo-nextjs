@@ -1,28 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
+import { Geist, Geist_Mono } from "next/font/google";
+
+import { Toaster } from "@workspace/design-system/components/ui/sonner";
 
 import { Analytics } from "@/components/analytics";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { ThemeProvider } from "@/components/theme-provider";
 import { baseMetadata, baseViewport } from "@/constants/metadata";
 import { Help } from "@/features/public/common/ui/helper";
-import { type LayoutProps } from "@/types/common";
+import type { LayoutProps } from "@/types/common";
 
-import "@workspace/design-system/components/ui/styles/global.css";
+import "@workspace/design-system/styles/globals.css";
 
-import { cn } from "@workspace/design-system/src/lib/utils";
-
-// Define the font styles
-const fontSans = Inter({
-  variable: "--font-sans",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: "400",
 });
 
-const fontHeading = localFont({
-  src: "../../assets/fonts/CalSans-SemiBold.woff2",
-  variable: "--font-heading",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 /**
@@ -44,15 +41,12 @@ export const viewport: Viewport = baseViewport;
  */
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
-      <body
-        className={cn(
-          "bg-background min-h-screen scroll-smooth font-sans antialiased",
-          fontSans.variable,
-          fontHeading.variable
-        )}
-      >
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      suppressHydrationWarning
+    >
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

@@ -6,12 +6,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+} from "@workspace/design-system/components/ui/form";
+import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@workspace/design-system/components/ui";
+} from "@workspace/design-system/components/ui/select";
 
 type Props = {
   labels: {

@@ -1,4 +1,4 @@
-import { cn } from "@workspace/design-system/components/ui";
+import { cn } from "@workspace/design-system/lib/utils";
 
 import { type ItemModel } from "@/lib/database/models/Item";
 

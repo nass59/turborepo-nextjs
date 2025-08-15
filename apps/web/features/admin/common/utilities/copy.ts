@@ -1,4 +1,4 @@
-import { toast } from "@workspace/design-system/components/ui";
+import { toast } from "sonner";
 
 export const onCopy = (copyValue: string, toastMessage: string) => {
   navigator.clipboard.writeText(copyValue);

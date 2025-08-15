@@ -2,10 +2,10 @@
 
 import { useState, type PropsWithChildren } from "react";
 import { usePathname } from "next/navigation";
-import { Cross2Icon, RocketIcon } from "@radix-ui/react-icons";
+import { CrossIcon, RocketIcon } from "lucide-react";
 import { type MainNavItem as TypeMainNavItem } from "types";
 
-import { Button } from "@workspace/design-system/components/ui";
+import { Button } from "@workspace/design-system/components/ui/button";
 
 import { Logo } from "@/components/logo";
 
@@ -33,14 +33,9 @@ export const MainNav = ({ items, children }: Props) => {
         className="hidden gap-2 md:flex"
       />
 
-      <Button
-        variant="ghost"
-        size="md"
-        className="space-x-2 md:hidden"
-        onClick={toggle}
-      >
+      <Button variant="ghost" className="space-x-2 md:hidden" onClick={toggle}>
         {showMobileMenu ? (
-          <Cross2Icon className="size-5" />
+          <CrossIcon className="size-5" />
         ) : (
           <RocketIcon className="size-5" />
         )}

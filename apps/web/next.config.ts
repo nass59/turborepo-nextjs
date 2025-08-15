@@ -8,7 +8,6 @@ import remarkGfm from "remark-gfm";
 const nextConfig: NextConfig = {
   pageExtensions: ["mdx", "ts", "tsx"],
   reactStrictMode: true,
-  swcMinify: true,
   transpilePackages: [
     "@workspace/tailwind-config",
     "@workspace/design-system/components/ui",
@@ -30,7 +29,7 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
-    mdxRs: false,
+    mdxRs: true,
     optimizePackageImports: ["date-fns", "@headlessui/react"],
     typedRoutes: false,
   },

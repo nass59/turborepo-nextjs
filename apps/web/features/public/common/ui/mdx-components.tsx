@@ -1,7 +1,16 @@
 import Image from "next/image";
 import { type MDXComponents } from "mdx/types";
 
-import { Callout, Card, cn } from "@workspace/design-system/components/ui";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@workspace/design-system/components/ui/card";
+import { cn } from "@workspace/design-system/lib/utils";
+
+import { Callout } from "@/components/callout";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -178,6 +187,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     Callout,
     Card,
+    CardContent,
+    CardTitle,
+    CardDescription,
+    CardHeader,
     ...components,
   };
 }

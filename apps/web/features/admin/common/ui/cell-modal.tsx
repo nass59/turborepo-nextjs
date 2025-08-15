@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { UpdateIcon } from "@radix-ui/react-icons";
 import axios from "axios";
+import { Pencil } from "lucide-react";
+import { toast } from "sonner";
 
 import {
   AlertDialog,
@@ -12,8 +13,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  toast,
-} from "@workspace/design-system/components/ui";
+} from "@workspace/design-system/components/ui/alert-dialog";
 
 import { toastError } from "@/lib/api-response/api-responses";
 
@@ -39,7 +39,7 @@ export const CellModal = ({ resource, resourceId, open, setOpen }: Props) => {
       const baseUrl = `${apiRoutes.spaces}/${params.spaceId}/${resource}`;
       await axios.delete(`${baseUrl}/${resourceId}`);
       router.refresh();
-      toast({ title: "This resource has been successfully deleted" });
+      toast("This resource has been successfully deleted");
     } catch (error) {
       toastError(error, "An error occurred while deleting the resource");
     } finally {
@@ -65,7 +65,7 @@ export const CellModal = ({ resource, resourceId, open, setOpen }: Props) => {
             Cancel
           </AlertDialogCancel>
           <AlertDialogAction onClick={onDelete} disabled={loading}>
-            {loading && <UpdateIcon className="mr-2 size-4 animate-spin" />}
+            {loading && <Pencil className="mr-2 size-4 animate-spin" />}
             <span>Delete</span>
           </AlertDialogAction>
         </AlertDialogFooter>

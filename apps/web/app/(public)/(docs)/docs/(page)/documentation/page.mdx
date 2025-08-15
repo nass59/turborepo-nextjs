@@ -1,4 +1,4 @@
-import { Heading } from "@workspace/design-system/components/ui";
+import { Heading } from "@/components/heading";
 
 import { Pager } from "@/features/public/docs/ui/pager";
 import { getMetadata } from "@/lib/metadata";
@@ -36,32 +36,33 @@ It comes with the following features out of the box:
 
 Click on a section below to learn how the documentation site built.
 
-<div className="grid gap-4 mt-6">
+<div className="grid gap-4 pt-6 sm:grid-cols-2">
+  <Card>
+    <CardHeader>
+      <CardTitle>Components</CardTitle>
+      <CardDescription>
+        Using React components in Mardown.
+      </CardDescription>
+    </CardHeader>
+  </Card>
 
-<Card href="/docs/components">
-
-### Components
-
-Using React components in Mardown.
-
+<Card>
+  <CardHeader>
+    <CardTitle>Code Blocks</CardTitle>
+    <CardDescription>
+      Beautiful code blocks with syntax highlighting.
+    </CardDescription>
+  </CardHeader>
 </Card>
 
-<Card href="/docs/components">
-
-### Code Blocks
-
-Beautiful code blocks with syntax highlighting.
-
+<Card>
+  <CardHeader>
+    <CardTitle>Style Guide</CardTitle>
+    <CardDescription>
+      View a sample page with all the styles.
+    </CardDescription>
+  </CardHeader>
 </Card>
-
-<Card href="/docs/components">
-
-### Style Guide
-
-View a sample page with all the styles.
-
-</Card>
-
 </div>
 
 <Pager url={mdxData.url} />

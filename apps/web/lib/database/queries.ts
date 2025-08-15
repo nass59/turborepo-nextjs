@@ -11,6 +11,7 @@ const QUERY_LABELS = {
   createOne: "CREATE_ONE",
   deleteOne: "DELETE_ONE",
   deleteOneById: "DELETE_ONE_BY_ID",
+  findAll: "FIND_ALL",
   findOne: "FIND_ONE",
   findOneById: "FIND_ONE_BY_ID",
   updateOne: "UPDATE_ONE",
@@ -75,7 +76,12 @@ export async function findAll<T>(
 ): Promise<T[] | []> {
   await dbConnect();
 
-  return await collection.find(query).sort({ createdAt: -1 });
+  try {
+    return await collection.find(query).sort({ createdAt: -1 });
+  } catch (error: unknown) {
+    log(collection.name, QUERY_LABELS.findAll, error);
+    return [];
+  }
 }
 
 export async function findOne<T>(

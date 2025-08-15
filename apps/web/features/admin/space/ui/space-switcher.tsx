@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import { useParams } from "next/navigation";
-import { ChevronDownIcon, MixIcon } from "@radix-ui/react-icons";
+import { BlendIcon, ChevronDownIcon } from "lucide-react";
 
+import { Button } from "@workspace/design-system/components/ui/button";
 import {
-  Button,
-  cn,
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@workspace/design-system/components/ui";
+} from "@workspace/design-system/components/ui/popover";
+import { cn } from "@workspace/design-system/lib/utils";
 
 import { type NavbarItem } from "@/features/admin/common/types/navbar";
 import { type SpaceModel } from "@/lib/database/models/Space";
@@ -55,7 +55,7 @@ export const SpaceSwitcher = ({ className, items = [] }: Props) => {
           aria-label={SPACE_LABELS.switcher.label}
           className={cn("w-[200px] justify-between", className)}
         >
-          <MixIcon className="mr-2 size-4" />
+          <BlendIcon className="mr-2 size-4" />
           {currentSpace?.label}
           <ChevronDownIcon className="ml-auto size-4 shrink-0 opacity-50" />
         </Button>

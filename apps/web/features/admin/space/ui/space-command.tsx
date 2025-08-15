@@ -1,12 +1,7 @@
 import { useRouter } from "next/navigation";
-import {
-  CheckIcon,
-  PlusCircledIcon,
-  RadiobuttonIcon,
-} from "@radix-ui/react-icons";
+import { CheckIcon, CirclePlusIcon, RadiusIcon } from "lucide-react";
 
 import {
-  cn,
   Command,
   CommandEmpty,
   CommandGroup,
@@ -14,7 +9,8 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@workspace/design-system/components/ui";
+} from "@workspace/design-system/components/ui/command";
+import { cn } from "@workspace/design-system/lib/utils";
 
 import { routes } from "@/constants/routes";
 import { type NavbarItem } from "@/features/admin/common/types/navbar";
@@ -56,7 +52,7 @@ export const SpaceCommand = ({ items, current, setOpen }: Props) => {
               onSelect={() => onSelect(item)}
               className="cursor-pointer text-sm"
             >
-              <RadiobuttonIcon className="mr-2 size-4" />
+              <RadiusIcon className="mr-2 size-4" />
               {item.label}
               <CheckIcon
                 className={cn(
@@ -72,7 +68,7 @@ export const SpaceCommand = ({ items, current, setOpen }: Props) => {
       <CommandList>
         <CommandGroup>
           <CommandItem className="cursor-pointer" onSelect={() => onCreate()}>
-            <PlusCircledIcon className="mr-2 size-5" />
+            <CirclePlusIcon className="mr-2 size-5" />
             {labels.create}
           </CommandItem>
         </CommandGroup>

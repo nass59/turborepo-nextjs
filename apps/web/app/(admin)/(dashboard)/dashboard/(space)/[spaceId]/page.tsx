@@ -1,7 +1,6 @@
-import { BookmarkIcon, ImageIcon, RocketIcon } from "@radix-ui/react-icons";
+import { BookmarkIcon, ImageIcon, RocketIcon } from "lucide-react";
 
-import { Heading } from "@workspace/design-system/components/ui";
-
+import { Heading } from "@/components/heading";
 import { getOverview } from "@/features/admin/common/utilities/overview";
 import { CardOverview } from "@/features/admin/home/ui/card-overview";
 import { Chart } from "@/features/admin/home/ui/chart";

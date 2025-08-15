@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { ExitIcon } from "@radix-ui/react-icons";
+import { LogOutIcon } from "lucide-react";
 
-import { buttonVariants, cn } from "@workspace/design-system/components/ui";
+import { buttonVariants } from "@workspace/design-system/components/ui/button";
+import { cn } from "@workspace/design-system/lib/utils";
 
 import { routes } from "@/constants/routes";
 
@@ -12,7 +13,7 @@ export const NavbarActions = () => {
         href={routes.home}
         className={cn(buttonVariants({ variant: "brand", size: "xs" }))}
       >
-        <ExitIcon className="mr-2 size-5" />
+        <LogOutIcon className="mr-2 size-5" />
         Exit
       </Link>
     </div>

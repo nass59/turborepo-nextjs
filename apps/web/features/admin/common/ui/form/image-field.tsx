@@ -6,7 +6,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@workspace/design-system/components/ui";
+} from "@workspace/design-system/components/ui/form";
 
 import { ImageUpload } from "../image-upload";
 

@@ -43,7 +43,7 @@ export const baseMetadata: Metadata = {
     url: siteUrl,
     title: siteName,
     description: siteDescription,
-    siteName: siteName,
+    siteName,
     images: [
       {
         url: absoluteUrl("/og.jpg"),

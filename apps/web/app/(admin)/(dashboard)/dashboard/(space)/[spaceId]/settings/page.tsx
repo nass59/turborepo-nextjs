@@ -1,11 +1,8 @@
 import { redirect } from "next/navigation";
 
-import {
-  Heading,
-  HeadingAction,
-  Separator,
-} from "@workspace/design-system/components/ui";
+import { Separator } from "@workspace/design-system/components/ui/separator";
 
+import { Heading, HeadingAction } from "@/components/heading";
 import { routes } from "@/constants/routes";
 import { apiRoutes } from "@/features/admin/common/constants/routes";
 import { Api } from "@/features/admin/common/ui/api";

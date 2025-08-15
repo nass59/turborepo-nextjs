@@ -1,6 +1,9 @@
 import Link from "next/link";
 
-import { Avatar, AvatarImage } from "@workspace/design-system/components/ui";
+import {
+  Avatar,
+  AvatarImage,
+} from "@workspace/design-system/components/ui/avatar";
 
 export type Author = {
   name: string;

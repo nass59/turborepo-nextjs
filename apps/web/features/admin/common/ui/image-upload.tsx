@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { ImageIcon, TrashIcon } from "@radix-ui/react-icons";
+import { ImageIcon, TrashIcon } from "lucide-react";
 import { CldUploadWidget } from "next-cloudinary";
 
-import { Button } from "@workspace/design-system/components/ui";
+import { Button } from "@workspace/design-system/components/ui/button";
 
 type Props = {
   disabled?: boolean;
@@ -70,7 +70,7 @@ export const ImageUpload = ({
           sources: ["local", "unsplash"],
           defaultSource: "local",
           multiple: true,
-          maxFiles: maxFiles,
+          maxFiles,
           clientAllowedFormats: ["webp", "jpg", "jpeg", "png"],
           maxFileSize: 1500000,
           theme: "minimal",

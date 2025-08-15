@@ -3,7 +3,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@workspace/design-system/components/ui";
+} from "@workspace/design-system/components/ui/card";
 
 type CardOverviewProps = {
   title: string;

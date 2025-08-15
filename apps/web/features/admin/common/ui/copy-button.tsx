@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { CopyIcon } from "@radix-ui/react-icons";
+import { CopyIcon } from "lucide-react";
 
-import { Button } from "@workspace/design-system/components/ui";
+import { Button } from "@workspace/design-system/components/ui/button";
 
 import { onCopy } from "../utilities/copy";
 

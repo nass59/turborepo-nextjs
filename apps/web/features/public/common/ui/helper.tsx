@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { BellIcon } from "@radix-ui/react-icons";
+import { BellIcon } from "lucide-react";
 import OgImage from "public/og-light.jpg";
 
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@workspace/design-system/components/ui";
+} from "@workspace/design-system/components/ui/popover";
 
 import { siteConfig } from "@/config/site";
 

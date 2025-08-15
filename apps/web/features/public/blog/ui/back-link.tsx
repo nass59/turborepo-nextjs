@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { ChevronLeftIcon } from "@radix-ui/react-icons";
+import { ChevronLeftIcon } from "lucide-react";
 
-import { buttonVariants, cn } from "@workspace/design-system/components/ui";
+import { buttonVariants } from "@workspace/design-system/components/ui/button";
+import { cn } from "@workspace/design-system/lib/utils";
 
 type Props = {
   className?: string;

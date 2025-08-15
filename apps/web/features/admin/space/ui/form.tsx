@@ -2,15 +2,12 @@
 
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UpdateIcon } from "@radix-ui/react-icons";
 import axios from "axios";
+import { PencilIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 
-import {
-  Button,
-  Form,
-  FormFooter,
-} from "@workspace/design-system/components/ui";
+import { Button } from "@workspace/design-system/components/ui/button";
+import { Form } from "@workspace/design-system/components/ui/form";
 
 import { routes } from "@/constants/routes";
 import { apiRoutes } from "@/features/admin/common/constants/routes";
@@ -57,7 +54,7 @@ export const SpaceForm = () => {
           loading={loading}
         />
 
-        <FormFooter side="right">
+        <div side="right">
           <Button
             disabled={loading}
             variant="outline"
@@ -67,10 +64,10 @@ export const SpaceForm = () => {
             Cancel
           </Button>
           <Button disabled={loading} type="submit">
-            {loading && <UpdateIcon className="mr-2 size-4 animate-spin" />}
+            {loading && <PencilIcon className="mr-2 size-4 animate-spin" />}
             <span>Continue</span>
           </Button>
-        </FormFooter>
+        </div>
       </form>
     </Form>
   );

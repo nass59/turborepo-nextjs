@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Tab } from "@headlessui/react";
 
-import { cn } from "@workspace/design-system/components/ui";
+import { cn } from "@workspace/design-system/lib/utils";
 
 type Props = {
   image: string;

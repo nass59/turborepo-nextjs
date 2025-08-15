@@ -1,10 +1,10 @@
 import { type UseFormReturn } from "react-hook-form";
 
+import { Button } from "@workspace/design-system/components/ui/button";
 import {
-  Button,
   Form,
-  FormFooter,
-} from "@workspace/design-system/components/ui";
+  // FormFooter,
+} from "@workspace/design-system/components/ui/form";
 
 type Props = {
   form: UseFormReturn<any>;
@@ -26,11 +26,11 @@ export const FormContainer = ({
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-8">
         <div className="grid grid-cols-3 gap-8">{children}</div>
 
-        <FormFooter>
+        <div>
           <Button disabled={loading} type="submit">
             {initialData ? "Save changes" : "Create"}
           </Button>
-        </FormFooter>
+        </div>
       </form>
     </Form>
   );

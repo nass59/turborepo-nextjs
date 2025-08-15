@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-import { buttonVariants, cn } from "@workspace/design-system/components/ui";
+import { buttonVariants } from "@workspace/design-system/components/ui/button";
+import { cn } from "@workspace/design-system/lib/utils";
 
 import { type MainNavItem as TypeMainNavItem } from "@/types";
 
@@ -15,7 +16,7 @@ export const MainNavItem = ({ item, isActive, ...props }: Props) => {
   return (
     <Link
       href={item.href}
-      className={cn(buttonVariants({ variant: "ghost", size: "xs" }), {
+      className={cn(buttonVariants({ variant: "ghost" }), {
         "text-foreground": isActive,
         "text-foreground/70": !isActive,
       })}

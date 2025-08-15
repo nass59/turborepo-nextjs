@@ -1,7 +1,6 @@
 import { type AxiosError } from "axios";
+import { toast } from "sonner";
 import { z } from "zod";
-
-import { toast } from "@workspace/design-system/components/ui";
 
 const RESPONSE_OK = 200;
 const RESPONSE_ACCESS_DENIED = 403;

@@ -6,7 +6,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@workspace/design-system/components/ui";
+} from "@workspace/design-system/components/ui/dialog";
 
 import { SPACE_LABELS } from "../constants/space";
 import { useSpaceModal } from "../hooks/use-space-modal";

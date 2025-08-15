@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { TrashIcon, UpdateIcon } from "@radix-ui/react-icons";
 import axios from "axios";
+import { PenIcon, TrashIcon } from "lucide-react";
+import { toast } from "sonner";
 
 import {
   AlertDialog,
@@ -15,9 +16,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-  Button,
-  toast,
-} from "@workspace/design-system/components/ui";
+} from "@workspace/design-system/components/ui/alert-dialog";
+import { Button } from "@workspace/design-system/components/ui/button";
 
 import { routes } from "@/constants/routes";
 import { toastError } from "@/lib/api-response/api-responses";
@@ -44,7 +44,7 @@ export const DeleteContentModal = ({ resource }: Props) => {
       router.refresh();
       router.push(`${routes.dashboard}/${params.spaceId}/${resource}`);
 
-      toast({ title: "Resource deleted." });
+      toast("Resource deleted.");
     } catch (error) {
       toastError(
         error,
@@ -75,7 +75,7 @@ export const DeleteContentModal = ({ resource }: Props) => {
         <AlertDialogFooter>
           <AlertDialogCancel disabled={loading}>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={onDelete} disabled={loading}>
-            {loading && <UpdateIcon className="mr-2 size-4 animate-spin" />}
+            {loading && <PenIcon className="mr-2 size-4 animate-spin" />}
             <span>Delete</span>
           </AlertDialogAction>
         </AlertDialogFooter>

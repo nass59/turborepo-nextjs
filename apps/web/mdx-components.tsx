@@ -1,7 +1,16 @@
 import Image, { type ImageProps } from "next/image";
 import type { MDXComponents } from "mdx/types";
 
-import { Callout, Card, cn } from "@workspace/design-system/components/ui";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@workspace/design-system/components/ui/card";
+import { cn } from "@workspace/design-system/lib/utils";
+
+import { Callout } from "@/components/callout";
 
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any
@@ -172,6 +181,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
     Card,
+    CardContent,
+    CardTitle,
+    CardHeader,
+    CardDescription,
     Callout,
     ...components,
   };

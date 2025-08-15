@@ -10,7 +10,7 @@ export const Billboard = ({ data }: Props) => {
   return (
     <div className="relative block w-full overflow-hidden">
       <div className="flex py-44">
-        <div className="z-[1] container flex items-center">
+        <div className="z-[1] container mx-auto flex items-center">
           <div className="max-w-xs pl-2 text-white sm:max-w-2xl">
             <h2 className="font-heading pt-14 pb-7 text-4xl font-bold sm:text-5xl lg:text-8xl">
               {data?.label}

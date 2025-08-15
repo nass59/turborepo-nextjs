@@ -1,11 +1,12 @@
-import { DataTable, Separator } from "@workspace/design-system/components/ui";
+import { Separator } from "@workspace/design-system/components/ui/separator";
 
 import { ApiList } from "@/features/admin/common/ui/api-list";
 import { ListHeading } from "@/features/admin/common/ui/list-heading";
 import { ITEM_LABELS } from "@/features/admin/item/constants/item";
-import { columnsData } from "@/features/admin/item/ui/columns";
+// import { columnsData } from "@/features/admin/item/ui/columns";
 import { getAllItems } from "@/features/admin/item/utilities/item";
-import { parseData } from "@/lib/utils";
+
+// import { parseData } from "@/lib/utils";
 
 type Props = {
   params: {
@@ -25,11 +26,11 @@ export default async function Page({ params }: Props) {
         path={`/${resource}/new`}
       />
 
-      <DataTable
+      {/* <DataTable
         columns={columnsData}
         data={parseData(items)}
         searchKey="name"
-      />
+      /> */}
 
       <Separator />
 

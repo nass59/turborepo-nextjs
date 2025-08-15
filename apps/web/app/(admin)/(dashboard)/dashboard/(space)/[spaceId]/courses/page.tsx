@@ -1,4 +1,4 @@
-import { Separator } from "@workspace/design-system/components/ui";
+import { Separator } from "@workspace/design-system/components/ui/separator";
 
 import { ApiList } from "@/features/admin/common/ui/api-list";
 import { ListHeading } from "@/features/admin/common/ui/list-heading";

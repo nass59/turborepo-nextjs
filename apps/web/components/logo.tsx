@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { RocketIcon } from "@radix-ui/react-icons";
+import { RocketIcon } from "lucide-react";
 
-import { buttonVariants, cn } from "@workspace/design-system/components/ui";
+import { buttonVariants } from "@workspace/design-system/components/ui/button";
+import { cn } from "@workspace/design-system/lib/utils";
 
 import { siteConfig } from "@/config/site";
 
@@ -10,7 +11,7 @@ export const Logo = ({ ...props }) => {
     <Link
       href="/"
       className={cn(
-        buttonVariants({ variant: "ghost", size: "xs" }),
+        buttonVariants({ variant: "ghost" }),
         "hidden space-x-2 md:flex"
       )}
       {...props}

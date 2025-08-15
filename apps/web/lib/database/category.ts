@@ -89,7 +89,7 @@ export async function findAllCategoriesWithDataBySpaceId(
   return aggregate(Category, [
     {
       $match: {
-        spaceId: spaceId,
+        spaceId,
       },
     },
     ...addBillboard,
@@ -104,7 +104,7 @@ export async function findOneCategoryWithData(
     {
       $match: {
         _id: new Types.ObjectId(categoryId),
-        spaceId: spaceId,
+        spaceId,
       },
     },
     {

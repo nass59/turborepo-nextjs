@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { type NavItem } from "types";
 
-import { cn } from "@workspace/design-system/components/ui";
+import { cn } from "@workspace/design-system/lib/utils";
 
 type Props = {
   item: NavItem;

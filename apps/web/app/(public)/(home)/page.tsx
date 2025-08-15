@@ -1,5 +1,5 @@
-import { buttonVariants } from "@workspace/design-system/src/components/ui/button";
-import { cn } from "@workspace/design-system/src/lib/utils";
+import { buttonVariants } from "@workspace/design-system/components/ui/button";
+import { cn } from "@workspace/design-system/lib/utils";
 
 import { siteConfig } from "@/config/site";
 import { Space3 } from "@/features/public/landing-page/assets/icons/space3";
@@ -24,7 +24,7 @@ export default async function Page() {
   return (
     <>
       <section className="space-y-6 pt-6 pb-8 md:pt-10 md:pb-12 lg:py-20">
-        <div className="container flex max-w-5xl flex-col items-center gap-4 text-center">
+        <div className="container mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
           <h1 className="font-heading text-5xl sm:text-5xl md:text-6xl lg:text-7xl">
             Hello World !
           </h1>
@@ -92,8 +92,8 @@ export default async function Page() {
 
       <hr className="border-slate-200" />
 
-      <section id="open-source" className="container py-8 md:py-12 lg:py-24">
-        <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
+      <section id="open-source" className="py-8 md:py-12 lg:py-24">
+        <div className="container mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
             Proudly Open Source
           </h2>

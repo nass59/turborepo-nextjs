@@ -1,4 +1,4 @@
-import { RocketIcon } from "@radix-ui/react-icons";
+import { RocketIcon } from "lucide-react";
 
 import { BreadcrumbItems } from "./breadcrumb-items";
 

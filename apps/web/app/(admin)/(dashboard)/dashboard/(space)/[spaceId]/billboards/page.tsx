@@ -1,11 +1,12 @@
-import { DataTable, Separator } from "@workspace/design-system/components/ui";
+import { Separator } from "@workspace/design-system/components/ui/separator";
 
 import { BILLBOARD_LABELS } from "@/features/admin/billboard/constants/billboard";
-import { columnsData } from "@/features/admin/billboard/ui/columns";
+// import { columnsData } from "@/features/admin/billboard/ui/columns";
 import { getAllBillboards } from "@/features/admin/billboard/utilities/billboard";
 import { ApiList } from "@/features/admin/common/ui/api-list";
 import { ListHeading } from "@/features/admin/common/ui/list-heading";
-import { parseData } from "@/lib/utils";
+
+// import { parseData } from "@/lib/utils";
 
 type Props = {
   params: {
@@ -25,11 +26,11 @@ export default async function Page({ params }: Props) {
         path={`/${resource}/new`}
       />
 
-      <DataTable
+      {/* <DataTable
         columns={columnsData}
         data={parseData(billboards)}
         searchKey="label"
-      />
+      /> */}
 
       <Separator />
 

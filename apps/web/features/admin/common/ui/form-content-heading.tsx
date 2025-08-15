@@ -1,4 +1,4 @@
-import { Heading, HeadingAction } from "@workspace/design-system/components/ui";
+import { Heading, HeadingAction } from "@/components/heading";
 
 import { DeleteContentModal } from "./delete-content-modal";
 
