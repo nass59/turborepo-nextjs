@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Check, ChevronsUpDown, MoreHorizontal } from "lucide-react";
 
 import { Button } from "@workspace/design-system/components/ui/button";
@@ -234,7 +234,7 @@ export const WithDropdownMenu: Story = {
 
     return (
       <div className="flex w-full flex-col items-start justify-between rounded-md border px-4 py-3 sm:flex-row sm:items-center">
-        <p className="text-sm font-medium leading-none">
+        <p className="text-sm leading-none font-medium">
           <span className="bg-primary text-primary-foreground mr-2 rounded-lg px-2 py-1 text-xs">
             {label}
           </span>

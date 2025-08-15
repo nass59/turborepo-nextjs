@@ -1,3 +1,1 @@
-# Ignore all package.json files
-**/package.json
 storybook-static

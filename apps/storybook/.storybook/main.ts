@@ -10,12 +10,16 @@ const getAbsolutePath = (value: string): string => {
 };
 
 const config: StorybookConfig = {
-  stories: ["../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: [
+    "../stories/**/*.mdx",
+    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+  ],
 
   addons: [
-    getAbsolutePath("@storybook/addon-essentials"),
     getAbsolutePath("@chromatic-com/storybook"),
-    getAbsolutePath("@storybook/addon-interactions"),
+    getAbsolutePath("@storybook/addon-docs"),
+    getAbsolutePath("@storybook/addon-a11y"),
+    getAbsolutePath("@storybook/addon-vitest"),
   ],
 
   framework: {
@@ -24,12 +28,6 @@ const config: StorybookConfig = {
   },
 
   staticDirs: ["../public"],
-
-  docs: {},
-
-  typescript: {
-    reactDocgen: "react-docgen-typescript",
-  },
 };
 
 export default config;
