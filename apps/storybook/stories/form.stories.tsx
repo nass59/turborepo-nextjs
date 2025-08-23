@@ -52,6 +52,7 @@ const ProfileForm = (args: Story['args']) => {
 
   return (
     <Form {...args} {...form}>
+      {/** biome-ignore lint/suspicious/noEmptyBlockStatements: storybook */}
       <form className="space-y-4" onSubmit={form.handleSubmit(() => {})}>
         <FormField
           control={form.control}

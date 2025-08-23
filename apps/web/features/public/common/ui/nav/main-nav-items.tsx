@@ -1,8 +1,8 @@
-import { type PropsWithChildren } from "react";
+import type { PropsWithChildren } from 'react';
 
-import { type MainNavItem as TypeMainNavItem } from "@/types";
+import type { MainNavItem as TypeMainNavItem } from '@/types';
 
-import { MainNavItem } from "./main-nav-item";
+import { MainNavItem } from './main-nav-item';
 
 type Props = PropsWithChildren & {
   items?: TypeMainNavItem[];
@@ -16,18 +16,20 @@ export const MainNavItems = ({
   className,
   ...props
 }: Props) => {
-  if (!items?.length) return null;
+  if (!items?.length) {
+    return null;
+  }
 
   return (
     <nav className={className} {...props}>
-      {items.map((item, index) => {
-        const path = pathName?.split("/");
+      {items.map((item) => {
+        const path = pathName?.split('/');
         const isActive =
           path && path.length === 1
             ? item.href === pathName
             : String(pathName).startsWith(String(item.href));
 
-        return <MainNavItem key={index} item={item} isActive={isActive} />;
+        return <MainNavItem isActive={isActive} item={item} key={item.title} />;
       })}
     </nav>
   );

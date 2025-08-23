@@ -1,4 +1,4 @@
-import { model, models, Schema, type Types } from "mongoose";
+import { model, models, Schema, type Types } from 'mongoose';
 
 export type BillboardModel = {
   _id: Types.ObjectId;
@@ -9,19 +9,21 @@ export type BillboardModel = {
   updatedAt: Date;
 };
 
+const MAX_LABEL_LENGTH = 70;
+
 const BillboardSchema = new Schema<BillboardModel>({
   spaceId: {
     type: String,
-    required: [true, "Please provide a spaceId for this Billboard"],
+    required: [true, 'Please provide a spaceId for this Billboard'],
   },
   label: {
     type: String,
-    required: [true, "Please provide a label for this Billboard"],
-    maxlength: [70, "Label cannot be more than 70 characters"],
+    required: [true, 'Please provide a label for this Billboard'],
+    maxlength: [MAX_LABEL_LENGTH, 'Label cannot be more than 70 characters'],
   },
   imageUrl: {
     type: String,
-    required: [true, "Please provide an imageUrl for this Billboard"],
+    required: [true, 'Please provide an imageUrl for this Billboard'],
   },
   createdAt: {
     type: Date,
@@ -34,4 +36,4 @@ const BillboardSchema = new Schema<BillboardModel>({
 });
 
 export default models.Billboard ||
-  model<BillboardModel>("Billboard", BillboardSchema);
+  model<BillboardModel>('Billboard', BillboardSchema);

@@ -1,26 +1,30 @@
-import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
+import { auth } from '@clerk/nextjs/server';
+import { NextResponse } from 'next/server';
 
-import { createItem, findAllItemsBySpaceId } from "@/lib/database/items";
-import { findOneSpace } from "@/lib/database/space";
+import { createItem, findAllItemsBySpaceId } from '@/lib/database/items';
+import { findOneSpace } from '@/lib/database/space';
 
-interface PostProps {
+type PostProps = {
   params: Promise<{
     spaceId: string;
   }>;
-}
+};
 
-interface JsonResponse {
+type JsonResponse = {
   name: string | null;
   categoryId: string | null;
   images: [];
   isFeatured: boolean;
   isArchived: boolean;
-}
+};
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: default
 const removeUndefinedValuesFromObject = <T>(obj: any): T => {
-  Object.keys(obj).forEach((key) => obj[key] === undefined && delete obj[key]);
+  for (const key of Object.keys(obj)) {
+    if (obj[key] === undefined) {
+      delete obj[key];
+    }
+  }
   return obj;
 };
 
@@ -30,32 +34,32 @@ export async function POST(req: Request, { params }: PostProps) {
     const { spaceId } = await params;
 
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse('Unauthorized', { status: 401 });
     }
 
     const body = (await req.json()) as JsonResponse;
     const { name, categoryId, images, isFeatured, isArchived } = body;
 
     if (!name) {
-      return new NextResponse("Name is required", { status: 400 });
+      return new NextResponse('Name is required', { status: 400 });
     }
 
-    if (!images || !images.length) {
-      return new NextResponse("Images are required", { status: 400 });
+    if (!images?.length) {
+      return new NextResponse('Images are required', { status: 400 });
     }
 
     if (!categoryId) {
-      return new NextResponse("Category Id URL is required", { status: 400 });
+      return new NextResponse('Category Id URL is required', { status: 400 });
     }
 
     if (!spaceId) {
-      return new NextResponse("Space ID is required", { status: 400 });
+      return new NextResponse('Space ID is required', { status: 400 });
     }
 
     const spaceByUserId = await findOneSpace(spaceId, userId);
 
     if (!spaceByUserId) {
-      return new NextResponse("Unauthorized", { status: 403 });
+      return new NextResponse('Unauthorized', { status: 403 });
     }
 
     const item = await createItem({
@@ -68,9 +72,8 @@ export async function POST(req: Request, { params }: PostProps) {
     });
 
     return NextResponse.json(item);
-  } catch (error) {
-    console.log("[ITEMS_POST]", error);
-    return new NextResponse("Internal error", { status: 500 });
+  } catch {
+    return new NextResponse('Internal error', { status: 500 });
   }
 }
 
@@ -78,11 +81,11 @@ export async function GET(req: Request, { params }: PostProps) {
   try {
     const { spaceId } = await params;
     const { searchParams } = new URL(req.url);
-    const categoryId = searchParams.get("categoryId") || undefined;
-    const isFeatured = searchParams.get("isFeatured");
+    const categoryId = searchParams.get('categoryId') || undefined;
+    const isFeatured = searchParams.get('isFeatured');
 
     if (!spaceId) {
-      return new NextResponse("Space ID is required", { status: 400 });
+      return new NextResponse('Space ID is required', { status: 400 });
     }
 
     const items = await findAllItemsBySpaceId(
@@ -95,8 +98,7 @@ export async function GET(req: Request, { params }: PostProps) {
     );
 
     return NextResponse.json(items);
-  } catch (error) {
-    console.log("[ITEMS_GET]", error);
-    return new NextResponse("Internal error", { status: 500 });
+  } catch {
+    return new NextResponse('Internal error', { status: 500 });
   }
 }

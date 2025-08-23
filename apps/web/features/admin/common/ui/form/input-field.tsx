@@ -1,5 +1,4 @@
-import { type Control } from "react-hook-form";
-
+/** biome-ignore-all lint/suspicious/noExplicitAny: default */
 import {
   FormControl,
   FormDescription,
@@ -7,8 +6,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@workspace/design-system/components/ui/form";
-import { Input } from "@workspace/design-system/components/ui/input";
+} from '@workspace/design-system/components/ui/form';
+import { Input } from '@workspace/design-system/components/ui/input';
+import type { Control } from 'react-hook-form';
 
 type Props = {
   labels: {

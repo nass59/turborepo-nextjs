@@ -1,5 +1,5 @@
-import type _mongoose from "mongoose";
-import { type connect } from "mongoose";
+import type _mongoose from 'mongoose';
+import { type connect } from 'mongoose';
 
 declare global {
   var mongoose: {

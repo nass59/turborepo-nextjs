@@ -1,3 +1,3 @@
-declare module "*.mdx" {
+declare module '*.mdx' {
   export const mdxData: any;
 }

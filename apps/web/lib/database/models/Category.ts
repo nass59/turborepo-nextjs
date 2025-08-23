@@ -1,4 +1,4 @@
-import { model, models, Schema, type Types } from "mongoose";
+import { model, models, Schema, type Types } from 'mongoose';
 
 export type CategoryModel = {
   _id: Types.ObjectId;
@@ -9,27 +9,29 @@ export type CategoryModel = {
   updatedAt: Date;
 };
 
+const MAX_NAME_LENGTH = 70;
+
 const CategorySchema = new Schema<CategoryModel>(
   {
     spaceId: {
       type: String,
-      required: [true, "Please provide a spaceId for this Category"],
+      required: [true, 'Please provide a spaceId for this Category'],
       index: true,
     },
     billboardId: {
       type: String,
-      required: [true, "Please provide a billboardId for this Category"],
+      required: [true, 'Please provide a billboardId for this Category'],
       index: true,
     },
     name: {
       type: String,
-      required: [true, "Please provide a name for this Category"],
-      maxlength: [70, "Name cannot be more than 70 characters"],
+      required: [true, 'Please provide a name for this Category'],
+      maxlength: [MAX_NAME_LENGTH, 'Name cannot be more than 70 characters'],
       trim: true,
     },
   },
   {
-    collection: "categories",
+    collection: 'categories',
     timestamps: true,
   }
 );
@@ -38,4 +40,4 @@ const CategorySchema = new Schema<CategoryModel>(
 CategorySchema.index({ spaceId: 1, name: 1 }, { unique: true });
 
 export default models.Category ||
-  model<CategoryModel>("Category", CategorySchema);
+  model<CategoryModel>('Category', CategorySchema);

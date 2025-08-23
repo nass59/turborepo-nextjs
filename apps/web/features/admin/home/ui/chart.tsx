@@ -1,31 +1,37 @@
-"use client";
+'use client';
 
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
-import { type MonthlyItem } from "../types/overview";
+import type { MonthlyItem } from '../types/overview';
 
 type Props = {
   data: MonthlyItem[];
 };
 
+const RADIUS_POSITION = 4;
+
 export const Chart = ({ data }: Props) => {
   return (
-    <ResponsiveContainer width="100%" height={350}>
+    <ResponsiveContainer height={350} width="100%">
       <BarChart data={data}>
         <XAxis
-          dataKey="name"
-          stroke="#888888"
-          fontSize={12}
-          tickLine={false}
           axisLine={false}
+          dataKey="name"
+          fontSize={12}
+          stroke="#888888"
+          tickLine={false}
         />
         <YAxis
-          stroke="#888888"
-          fontSize={12}
-          tickLine={false}
           axisLine={false}
+          fontSize={12}
+          stroke="#888888"
+          tickLine={false}
         />
-        <Bar dataKey="total" fill="#3498db" radius={[4, 4, 0, 0]} />
+        <Bar
+          dataKey="total"
+          fill="#3498db"
+          radius={[RADIUS_POSITION, RADIUS_POSITION, 0, 0]}
+        />
       </BarChart>
     </ResponsiveContainer>
   );

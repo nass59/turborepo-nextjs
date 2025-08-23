@@ -1,6 +1,6 @@
-import { Types } from "mongoose";
+import { Types } from 'mongoose';
 
-import Category, { type CategoryModel } from "@/lib/database/models/Category";
+import Category, { type CategoryModel } from '@/lib/database/models/Category';
 import {
   aggregate,
   count,
@@ -9,45 +9,43 @@ import {
   findAll,
   findOneById,
   updateOneById,
-} from "@/lib/database/queries";
+} from '@/lib/database/queries';
 
-import { type BillboardModel } from "./models/Billboard";
+import type { BillboardModel } from './models/Billboard';
 
 type CategoryModelProps = Pick<
   CategoryModel,
-  "name" | "spaceId" | "billboardId"
+  'name' | 'spaceId' | 'billboardId'
 >;
 
-type CategoryModelUpdateProps = Pick<CategoryModel, "name" | "billboardId">;
+type CategoryModelUpdateProps = Pick<CategoryModel, 'name' | 'billboardId'>;
 
 type CategoriesAggregated = CategoryModel & { billboard: BillboardModel };
 
-export async function countAllCategoriesBySpaceId(
-  spaceId: string
-): Promise<number> {
+export function countAllCategoriesBySpaceId(spaceId: string): Promise<number> {
   return count(Category, { spaceId });
 }
 
-export async function countAllCategoriesBySpaceIdAndBillboardId(
+export function countAllCategoriesBySpaceIdAndBillboardId(
   spaceId: string,
   billboardId: string
 ): Promise<number> {
   return count(Category, { spaceId, billboardId });
 }
 
-export async function createCategory(
+export function createCategory(
   data: CategoryModelProps
 ): Promise<CategoryModel | null> {
   return createOne(Category, data);
 }
 
-export async function deleteOneCategory(
+export function deleteOneCategory(
   categoryId: string
 ): Promise<CategoryModel | null> {
   return deleteOneById(Category, categoryId);
 }
 
-export async function findAllCategoriesBySpaceId(
+export function findAllCategoriesBySpaceId(
   spaceId: string
 ): Promise<CategoryModel[] | []> {
   return findAll(Category, { spaceId });
@@ -57,22 +55,22 @@ const addBillboard = [
   {
     $addFields: {
       billboard: {
-        $toObjectId: "$billboardId",
+        $toObjectId: '$billboardId',
       },
     },
   },
   {
     $lookup: {
-      from: "billboards",
-      localField: "billboard",
-      foreignField: "_id",
-      as: "fromBillboards",
+      from: 'billboards',
+      localField: 'billboard',
+      foreignField: '_id',
+      as: 'fromBillboards',
     },
   },
   {
     $set: {
       billboard: {
-        $arrayElemAt: ["$fromBillboards", 0],
+        $arrayElemAt: ['$fromBillboards', 0],
       },
     },
   },
@@ -83,7 +81,7 @@ const addBillboard = [
   },
 ];
 
-export async function findAllCategoriesWithDataBySpaceId(
+export function findAllCategoriesWithDataBySpaceId(
   spaceId: string
 ): Promise<CategoriesAggregated[] | []> {
   return aggregate(Category, [
@@ -116,13 +114,13 @@ export async function findOneCategoryWithData(
   return category[0] || null;
 }
 
-export async function findOneCategory(
+export function findOneCategory(
   categoryId: string
 ): Promise<CategoryModel | null> {
   return findOneById(Category, categoryId);
 }
 
-export async function updateOneCategory(
+export function updateOneCategory(
   categoryId: string,
   data: CategoryModelUpdateProps
 ): Promise<CategoryModel | null> {

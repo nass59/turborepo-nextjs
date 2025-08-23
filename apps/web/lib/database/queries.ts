@@ -1,25 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/** biome-ignore-all lint/suspicious/noExplicitAny: default */
 import {
   isValidObjectId,
-  Types,
   type Model,
   type PipelineStage,
-} from "mongoose";
+  Types,
+} from 'mongoose';
 
-import dbConnect from "@/lib/database/mongodb";
+import dbConnect from '@/lib/database/mongodb';
 
 const QUERY_LABELS = {
-  createOne: "CREATE_ONE",
-  deleteOne: "DELETE_ONE",
-  deleteOneById: "DELETE_ONE_BY_ID",
-  findAll: "FIND_ALL",
-  findOne: "FIND_ONE",
-  findOneById: "FIND_ONE_BY_ID",
-  updateOne: "UPDATE_ONE",
-  updateOneById: "UPDATE_ONE_BY_ID",
+  createOne: 'CREATE_ONE',
+  deleteOne: 'DELETE_ONE',
+  deleteOneById: 'DELETE_ONE_BY_ID',
+  findAll: 'FIND_ALL',
+  findOne: 'FIND_ONE',
+  findOneById: 'FIND_ONE_BY_ID',
+  updateOne: 'UPDATE_ONE',
+  updateOneById: 'UPDATE_ONE_BY_ID',
 } as const;
 
 const log = (collectionName: string, queryType: string, error: unknown) => {
+  // biome-ignore lint/suspicious/noConsole: log
   console.log(`[${collectionName.toUpperCase()}_${queryType}]`, error);
 };
 

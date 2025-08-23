@@ -1,6 +1,6 @@
-import { cn } from "@workspace/design-system/lib/utils";
+import { cn } from '@workspace/design-system/lib/utils';
 
-import { type TableOfContents } from "../utilities/toc";
+import type { TableOfContents } from '../utilities/toc';
 
 type Props = {
   tree: TableOfContents;
@@ -8,26 +8,30 @@ type Props = {
   activeItem?: string | null;
 };
 
+const MAX_LEVEL = 3;
+
 export const Tree = ({ tree, level = 1, activeItem }: Props) => {
-  if (!tree?.items?.length || level >= 3) return null;
+  if (!tree?.items?.length || level >= MAX_LEVEL) {
+    return null;
+  }
 
   return (
-    <ul className={cn("m-0 list-none", { "pl-4": level !== 1 })}>
-      {tree.items.map((item, index) => (
-        <li key={index} className="pt-2">
+    <ul className={cn('m-0 list-none', { 'pl-4': level !== 1 })}>
+      {tree.items.map((item) => (
+        <li className="pt-2" key={item.url}>
           <a
-            href={item.url}
             className={cn(
-              "inline-block no-underline",
+              'inline-block no-underline',
               item.url === `#${activeItem}`
-                ? "text-primary font-bold"
-                : "text-muted-foreground hover:text-primary text-sm"
+                ? 'font-bold text-primary'
+                : 'text-muted-foreground text-sm hover:text-primary'
             )}
+            href={item.url}
           >
             {item.title}
           </a>
           {item.items?.length ? (
-            <Tree tree={item} level={level + 1} activeItem={activeItem} />
+            <Tree activeItem={activeItem} level={level + 1} tree={item} />
           ) : null}
         </li>
       ))}

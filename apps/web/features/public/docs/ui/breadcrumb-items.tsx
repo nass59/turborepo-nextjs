@@ -1,20 +1,22 @@
-"use client";
+'use client';
 
-import { Fragment } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname } from 'next/navigation';
+import { Fragment } from 'react';
 
 export const BreadcrumbItems = () => {
   const pathname = usePathname();
 
-  if (!pathname) return null;
+  if (!pathname) {
+    return null;
+  }
 
-  const segments = pathname.split("/").slice(2);
+  const segments = pathname.split('/').slice(2);
 
   return (
     <div className="flex space-x-2">
       {segments.map((segment) => (
         <Fragment key={segment}>
-          <span key={segment} className="rounded-full text-slate-900">
+          <span className="rounded-full text-slate-900" key={segment}>
             {segment}
           </span>
           <span className="text-slate-600">/</span>

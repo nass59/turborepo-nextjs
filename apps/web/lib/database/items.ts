@@ -1,7 +1,7 @@
-import { Types } from "mongoose";
+import { Types } from 'mongoose';
 
-import { type MonthlyItem } from "@/features/admin/home/types/overview";
-import Item, { type ItemModel } from "@/lib/database/models/Item";
+import type { MonthlyItem } from '@/features/admin/home/types/overview';
+import Item, { type ItemModel } from '@/lib/database/models/Item';
 import {
   aggregate,
   count,
@@ -10,36 +10,34 @@ import {
   findAll,
   findOneById,
   updateOneById,
-} from "@/lib/database/queries";
+} from '@/lib/database/queries';
 
 type ItemModelProps = Pick<
   ItemModel,
-  "name" | "categoryId" | "images" | "isFeatured" | "isArchived" | "spaceId"
+  'name' | 'categoryId' | 'images' | 'isFeatured' | 'isArchived' | 'spaceId'
 >;
 
-type ItemModelUpdateProps = Omit<ItemModelProps, "spaceId">;
+type ItemModelUpdateProps = Omit<ItemModelProps, 'spaceId'>;
 
 type ItemsAggregated = ItemModel & { category: string };
 
-export async function countAllItemsBySpaceId(spaceId: string): Promise<number> {
+export function countAllItemsBySpaceId(spaceId: string): Promise<number> {
   return count(Item, { spaceId });
 }
 
-export async function createItem(
-  data: ItemModelProps
-): Promise<ItemModel | null> {
+export function createItem(data: ItemModelProps): Promise<ItemModel | null> {
   return createOne(Item, data);
 }
 
-export async function deleteOneItem(itemId: string): Promise<ItemModel | null> {
+export function deleteOneItem(itemId: string): Promise<ItemModel | null> {
   return deleteOneById(Item, itemId);
 }
 
-export async function findAllItems(query: object): Promise<ItemModel[] | []> {
+export function findAllItems(query: object): Promise<ItemModel[] | []> {
   return findAll(Item, query);
 }
 
-export async function countAllItems(query: object): Promise<number> {
+export function countAllItems(query: object): Promise<number> {
   return count(Item, query);
 }
 
@@ -47,22 +45,22 @@ const addCategory = [
   {
     $addFields: {
       category: {
-        $toObjectId: "$categoryId",
+        $toObjectId: '$categoryId',
       },
     },
   },
   {
     $lookup: {
-      from: "categories",
-      localField: "category",
-      foreignField: "_id",
-      as: "fromCategories",
+      from: 'categories',
+      localField: 'category',
+      foreignField: '_id',
+      as: 'fromCategories',
     },
   },
   {
     $set: {
       category: {
-        $arrayElemAt: ["$fromCategories.name", 0],
+        $arrayElemAt: ['$fromCategories.name', 0],
       },
     },
   },
@@ -73,7 +71,7 @@ const addCategory = [
   },
 ];
 
-export async function findAllItemsBySpaceId(
+export function findAllItemsBySpaceId(
   query: object
 ): Promise<ItemsAggregated[] | []> {
   return aggregate(Item, [
@@ -84,7 +82,7 @@ export async function findAllItemsBySpaceId(
   ]);
 }
 
-export async function findOneItem(itemId: string): Promise<ItemModel | null> {
+export function findOneItem(itemId: string): Promise<ItemModel | null> {
   return findOneById(Item, itemId);
 }
 
@@ -110,7 +108,7 @@ export async function findOneItemWithCategory(
   return result[0] || null;
 }
 
-export async function updateOneItem(
+export function updateOneItem(
   itemId: string,
   data: ItemModelUpdateProps
 ): Promise<ItemModel | null> {
@@ -125,12 +123,13 @@ const itemsByMonth = [
           if: {
             $eq: [
               {
-                $type: "$createdAt",
+                $type: '$createdAt',
               },
-              "date",
+              'date',
             ],
           },
-          then: "$createdAt",
+          // biome-ignore lint/suspicious/noThenProperty: mongo
+          then: '$createdAt',
           else: null,
         },
       },
@@ -142,7 +141,7 @@ const itemsByMonth = [
         month: {
           $subtract: [
             {
-              $month: "$createdAt",
+              $month: '$createdAt',
             },
             1,
           ],
@@ -153,7 +152,7 @@ const itemsByMonth = [
   {
     $group: {
       _id: {
-        __alias_month: "$__alias_month",
+        __alias_month: '$__alias_month',
       },
       __alias_count: {
         $sum: 1,
@@ -163,14 +162,14 @@ const itemsByMonth = [
   {
     $project: {
       _id: 0,
-      __alias_month: "$_id.__alias_month",
+      __alias_month: '$_id.__alias_month',
       __alias_count: 1,
     },
   },
   {
     $project: {
-      x: "$__alias_month",
-      y: "$__alias_count",
+      x: '$__alias_month',
+      y: '$__alias_count',
       _id: 0,
     },
   },
@@ -184,18 +183,18 @@ type ItemsByMonth = {
 };
 
 const monthlyItems: MonthlyItem[] = [
-  { name: "Jan", total: 0 },
-  { name: "Feb", total: 0 },
-  { name: "Mar", total: 0 },
-  { name: "Apr", total: 0 },
-  { name: "May", total: 0 },
-  { name: "Jun", total: 0 },
-  { name: "Jul", total: 0 },
-  { name: "Aug", total: 0 },
-  { name: "Sep", total: 0 },
-  { name: "Oct", total: 0 },
-  { name: "Nov", total: 0 },
-  { name: "Dec", total: 0 },
+  { name: 'Jan', total: 0 },
+  { name: 'Feb', total: 0 },
+  { name: 'Mar', total: 0 },
+  { name: 'Apr', total: 0 },
+  { name: 'May', total: 0 },
+  { name: 'Jun', total: 0 },
+  { name: 'Jul', total: 0 },
+  { name: 'Aug', total: 0 },
+  { name: 'Sep', total: 0 },
+  { name: 'Oct', total: 0 },
+  { name: 'Nov', total: 0 },
+  { name: 'Dec', total: 0 },
 ];
 
 export async function countAllItemsByMonthBySpaceId(
@@ -210,7 +209,7 @@ export async function countAllItemsByMonthBySpaceId(
     ...itemsByMonth,
     {
       $sort: {
-        "x.month": 1,
+        'x.month': 1,
       },
     },
     {
@@ -218,9 +217,7 @@ export async function countAllItemsByMonthBySpaceId(
     },
   ]);
 
-  for (let i = 0; i < result.length; i++) {
-    const item = result[i];
-
+  for (const item of result) {
     if (item?.x.month) {
       const entry = monthlyItems[item.x.month] as MonthlyItem;
       entry.total = item.y;

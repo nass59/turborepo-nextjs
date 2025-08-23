@@ -1,13 +1,13 @@
-import { type Control } from "react-hook-form";
-
-import { Checkbox } from "@workspace/design-system/components/ui/checkbox";
+/** biome-ignore-all lint/suspicious/noExplicitAny: default */
+import { Checkbox } from '@workspace/design-system/components/ui/checkbox';
 import {
   FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormLabel,
-} from "@workspace/design-system/components/ui/form";
+} from '@workspace/design-system/components/ui/form';
+import type { Control } from 'react-hook-form';
 
 type Props = {
   labels: {
@@ -25,7 +25,7 @@ export const CheckboxField = ({ labels, control }: Props) => {
       control={control}
       name={labels.name}
       render={({ field }) => (
-        <FormItem className="flex flex-row items-start space-y-0 space-x-3 rounded-md border p-4">
+        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
           <FormControl>
             <Checkbox checked={field.value} onCheckedChange={field.onChange} />
           </FormControl>

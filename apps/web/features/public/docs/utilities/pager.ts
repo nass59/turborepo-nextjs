@@ -1,4 +1,5 @@
-import { docsConfig } from "@/config/docs";
+/** biome-ignore-all lint/suspicious/noExplicitAny: default */
+import { docsConfig } from '@/config/docs';
 
 const flatten = (links: { items?: any }[]): any => {
   return links.reduce((flat, link) => {
