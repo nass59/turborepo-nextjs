@@ -1,22 +1,21 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
-import { PencilIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Button } from '@workspace/design-system/components/ui/button';
+import { Form } from '@workspace/design-system/components/ui/form';
+import axios from 'axios';
+import { PencilIcon } from 'lucide-react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-import { Button } from "@workspace/design-system/components/ui/button";
-import { Form } from "@workspace/design-system/components/ui/form";
+import { routes } from '@/constants/routes';
+import { apiRoutes } from '@/features/admin/common/constants/routes';
+import { InputField } from '@/features/admin/common/ui/form/input-field';
+import { toastError } from '@/lib/api-response/api-responses';
 
-import { routes } from "@/constants/routes";
-import { apiRoutes } from "@/features/admin/common/constants/routes";
-import { InputField } from "@/features/admin/common/ui/form/input-field";
-import { toastError } from "@/lib/api-response/api-responses";
-
-import { SPACE_LABELS } from "../constants/space";
-import { useSpaceModal } from "../hooks/use-space-modal";
-import { spaceSchema, type SpaceFormData } from "../schemas/space";
+import { SPACE_LABELS } from '../constants/space';
+import { useSpaceModal } from '../hooks/use-space-modal';
+import { type SpaceFormData, spaceSchema } from '../schemas/space';
 
 export const SpaceForm = () => {
   const spaceModal = useSpaceModal();
@@ -24,7 +23,7 @@ export const SpaceForm = () => {
 
   const form = useForm<SpaceFormData>({
     resolver: zodResolver(spaceSchema),
-    defaultValues: { name: "" },
+    defaultValues: { name: '' },
   });
 
   // TODO: Refactor using Server Actions
@@ -46,20 +45,20 @@ export const SpaceForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
         {/* Name */}
         <InputField
-          labels={formLabels.name}
           control={form.control}
+          labels={formLabels.name}
           loading={loading}
         />
 
         <div>
           <Button
             disabled={loading}
-            variant="outline"
             onClick={spaceModal.onClose}
             type="button"
+            variant="outline"
           >
             Cancel
           </Button>

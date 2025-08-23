@@ -1,12 +1,12 @@
-import { connect } from "mongoose";
+import { connect } from 'mongoose';
 
-import { env } from "@/env.mjs";
+import { env } from '@/env.mjs';
 
 const MONGODB_URI = env.MONGODB_URI as string;
 
 if (!MONGODB_URI) {
   throw new Error(
-    "Please define the MONGODB_URI environment variable inside .env.local"
+    'Please define the MONGODB_URI environment variable inside .env.local'
   );
 }
 

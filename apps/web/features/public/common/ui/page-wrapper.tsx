@@ -1,9 +1,9 @@
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren } from 'react';
 
-import type { MainNavItem } from "@/types";
+import type { MainNavItem } from '@/types';
 
-import { Footer } from "./footer/footer";
-import { Header } from "./header/header";
+import { Footer } from './footer/footer';
+import { Header } from './header/header';
 
 type Props = PropsWithChildren & {
   mainNavItems: MainNavItem[];

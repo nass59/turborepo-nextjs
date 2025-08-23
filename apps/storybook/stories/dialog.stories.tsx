@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Button } from "@workspace/design-system/components/ui/button";
+import { Button } from '@workspace/design-system/components/ui/button';
 import {
   Dialog,
   DialogClose,
@@ -10,18 +10,18 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@workspace/design-system/components/ui/dialog";
+} from '@workspace/design-system/components/ui/dialog';
 
 /**
  * A window overlaid on either the primary window or another dialog window,
  * rendering the content underneath inert.
  */
 const meta = {
-  title: "ui/Dialog",
+  title: 'ui/Dialog',
   component: Dialog,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   render: (args) => (
     <Dialog {...args}>

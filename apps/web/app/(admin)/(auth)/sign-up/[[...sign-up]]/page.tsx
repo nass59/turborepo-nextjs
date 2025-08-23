@@ -1,4 +1,4 @@
-import { SignUp } from "@clerk/nextjs";
+import { SignUp } from '@clerk/nextjs';
 
 /**
  * Page is a Next.js page component that renders the SignUp component from Clerk.

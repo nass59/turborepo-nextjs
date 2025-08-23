@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Separator } from "@workspace/design-system/components/ui/separator";
+import { Separator } from '@workspace/design-system/components/ui/separator';
 
 /**
  * Visually or semantically separates content.
  */
 const meta = {
-  title: "ui/Separator",
+  title: 'ui/Separator',
   component: Separator,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof Separator>;
 
 export default meta;
@@ -22,7 +22,7 @@ export const Vertical: Story = {
   render: () => (
     <div className="flex gap-2">
       <div>Left</div>
-      <Separator orientation="vertical" className="h-auto" />
+      <Separator className="h-auto" orientation="vertical" />
       <div>Right</div>
     </div>
   ),

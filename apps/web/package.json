@@ -12,7 +12,7 @@
     "dev:all": "concurrently \"pnpm dev:webhook\" \"pnpm dev\"",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --max-warnings 0",
+    "lint": "next lint",
     "clean": "git clean -xdf .cache .turbo node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
@@ -53,7 +53,6 @@
     "@types/node": "^24.0.15",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "mdast-util-toc": "^7.1.0",
     "postcss": "^8.5.6",

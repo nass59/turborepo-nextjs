@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import {
   NavigationMenu,
@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@workspace/design-system/components/ui/navigation-menu";
+} from '@workspace/design-system/components/ui/navigation-menu';
 
 const navigationLinkStyle = navigationMenuTriggerStyle();
 
@@ -16,19 +16,19 @@ const navigationLinkStyle = navigationMenuTriggerStyle();
  * A collection of links for navigating websites.
  */
 const meta = {
-  title: "ui/NavigationMenu",
+  title: 'ui/NavigationMenu',
   component: NavigationMenu,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   render: (args) => (
     <NavigationMenu {...args}>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink
-            href="https://www.google.com"
             className={navigationLinkStyle}
+            href="https://www.google.com"
           >
             Overview
           </NavigationMenuLink>

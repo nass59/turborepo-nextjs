@@ -1,8 +1,7 @@
-import { Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { CrossIcon } from "lucide-react";
-
-import { Button } from "@workspace/design-system/components/ui/button";
+import { Dialog, Transition } from '@headlessui/react';
+import { Button } from '@workspace/design-system/components/ui/button';
+import { CrossIcon } from 'lucide-react';
+import { Fragment } from 'react';
 
 type Props = {
   open: boolean;
@@ -12,7 +11,7 @@ type Props = {
 
 export const Modal = ({ open, onClose, children }: Props) => {
   return (
-    <Transition show={open} appear as={Fragment}>
+    <Transition appear as={Fragment} show={open}>
       <Dialog as="div" className="relative z-10" onClose={onClose}>
         <div className="fixed inset-0 bg-black/50" />
         <div className="fixed inset-0 overflow-y-auto">
@@ -30,10 +29,10 @@ export const Modal = ({ open, onClose, children }: Props) => {
                 <div className="relative flex w-full items-center overflow-hidden bg-white p-3 shadow-2xl">
                   <div className="absolute top-4 right-4">
                     <Button
-                      onClick={onClose}
-                      variant="outline"
-                      size="icon"
                       className="transition hover:scale-110"
+                      onClick={onClose}
+                      size="icon"
+                      variant="outline"
                     >
                       <CrossIcon className="size-4" />
                     </Button>

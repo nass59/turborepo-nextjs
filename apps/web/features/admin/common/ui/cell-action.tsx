@@ -1,29 +1,28 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { CopyIcon, EllipsisIcon, PencilIcon, TrashIcon } from "lucide-react";
-
-import { Button } from "@workspace/design-system/components/ui/button";
+import { Button } from '@workspace/design-system/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@workspace/design-system/components/ui/dropdown-menu";
+} from '@workspace/design-system/components/ui/dropdown-menu';
+import { CopyIcon, EllipsisIcon, PencilIcon, TrashIcon } from 'lucide-react';
+import { useParams, useRouter } from 'next/navigation';
+import { useState } from 'react';
 
-import { routes } from "@/constants/routes";
-import { type BillboardColumn } from "@/features/admin/billboard/ui/columns";
-import { type CategoryColumn } from "@/features/admin/category/ui/columns";
-import { type ItemColumn } from "@/features/admin/item/ui/columns";
+import { routes } from '@/constants/routes';
+import type { BillboardColumn } from '@/features/admin/billboard/ui/columns';
+import type { CategoryColumn } from '@/features/admin/category/ui/columns';
+import type { ItemColumn } from '@/features/admin/item/ui/columns';
 
-import { onCopy } from "../utilities/copy";
-import { CellModal } from "./cell-modal";
+import { onCopy } from '../utilities/copy';
+import { CellModal } from './cell-modal';
 
 type Props = {
   data: CategoryColumn | BillboardColumn | ItemColumn;
-  resource: "categories" | "billboards" | "items";
+  resource: 'categories' | 'billboards' | 'items';
   labels: {
     copied: string;
     open: string;
@@ -47,15 +46,15 @@ export const CellAction = ({ data, resource, labels }: Props) => {
   return (
     <>
       <CellModal
+        open={open}
         resource={resource}
         resourceId={data.id}
-        open={open}
         setOpen={setOpen}
       />
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" className="size-8 p-0">
+          <Button className="size-8 p-0" variant="ghost">
             <span className="sr-only">{labels.open}</span>
             <EllipsisIcon className="size-4" />
           </Button>

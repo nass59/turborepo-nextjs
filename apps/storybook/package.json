@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=--disable-warning=ExperimentalWarning storybook dev -p 6006 --no-open",
     "build": "cross-env NODE_OPTIONS=--disable-warning=ExperimentalWarning storybook build",
-    "lint": "eslint . --max-warnings 0",
     "chromatic": "chromatic --exit-zero-on-changes --build-script-name=build",
     "clean": "git clean -xdf .cache .turbo node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
@@ -38,11 +37,9 @@
     "@vitejs/plugin-react-swc": "^3.11.0",
     "@vitest/browser": "^3.2.4",
     "@vitest/coverage-v8": "^3.2.4",
-    "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "chromatic": "^13.1.2",
     "cross-env": "^7.0.3",
-    "eslint-plugin-storybook": "9.1.2",
     "playwright": "^1.54.2",
     "postcss": "^8.5.6",
     "storybook": "^9.1.2",

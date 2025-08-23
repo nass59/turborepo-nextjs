@@ -1,6 +1,5 @@
-import { type PropsWithChildren } from "react";
-
-import { cn } from "@workspace/design-system/lib/utils";
+import { cn } from '@workspace/design-system/lib/utils';
+import type { PropsWithChildren } from 'react';
 
 type Props = PropsWithChildren & {
   className?: string;
@@ -17,10 +16,10 @@ export const ContentContainer = ({
   return (
     <div
       className={cn(
-        "relative container mx-auto py-6 lg:py-10",
+        'container relative mx-auto py-6 lg:py-10',
         {
-          "max-w-4xl": centered,
-          "space-y-8": withSpace,
+          'max-w-4xl': centered,
+          'space-y-8': withSpace,
         },
         className
       )}

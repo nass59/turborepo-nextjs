@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
+import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
+import { useParams, useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 
-import { routes } from "@/constants/routes";
-import { apiRoutes } from "@/features/admin/common/constants/routes";
-import { FormContainer } from "@/features/admin/common/ui/form/form-container";
-import { ImageField } from "@/features/admin/common/ui/form/image-field";
-import { InputField } from "@/features/admin/common/ui/form/input-field";
-import { toastError } from "@/lib/api-response/api-responses";
-import { type BillboardModel } from "@/lib/database/models/Billboard";
-import { billboardSchema } from "@/lib/validation/billboard";
+import { routes } from '@/constants/routes';
+import { apiRoutes } from '@/features/admin/common/constants/routes';
+import { FormContainer } from '@/features/admin/common/ui/form/form-container';
+import { ImageField } from '@/features/admin/common/ui/form/image-field';
+import { InputField } from '@/features/admin/common/ui/form/input-field';
+import { toastError } from '@/lib/api-response/api-responses';
+import type { BillboardModel } from '@/lib/database/models/Billboard';
+import { billboardSchema } from '@/lib/validation/billboard';
 
-import { BILLBOARD_LABELS } from "../constants/billboard";
-import { defaultData, type BillboardFormData } from "../schemas/billboard";
+import { BILLBOARD_LABELS } from '../constants/billboard';
+import { type BillboardFormData, defaultData } from '../schemas/billboard';
 
 type Props = {
   initialData: BillboardModel | null;
@@ -53,9 +53,9 @@ export const BillboardForm = ({ initialData }: Props) => {
 
       router.refresh();
       router.push(resourceUrl);
-      toast(`Resource ${initialData ? "updated" : "created"}.`);
+      toast(`Resource ${initialData ? 'updated' : 'created'}.`);
     } catch (error) {
-      toastError(error, "An error occurred while creating the resource.");
+      toastError(error, 'An error occurred while creating the resource.');
     } finally {
       setLoading(false);
     }
@@ -65,20 +65,20 @@ export const BillboardForm = ({ initialData }: Props) => {
     <FormContainer
       form={form}
       initialData={initialData}
-      onSubmit={onSubmit}
       loading={loading}
+      onSubmit={onSubmit}
     >
       {/* Images */}
       <ImageField
-        labels={formLabels.imageUrl}
         control={form.control}
+        labels={formLabels.imageUrl}
         loading={loading}
       />
 
       {/* Name */}
       <InputField
-        labels={formLabels.label}
         control={form.control}
+        labels={formLabels.label}
         loading={loading}
       />
     </FormContainer>

@@ -1,24 +1,23 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Info } from "lucide-react";
-
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@workspace/design-system/components/ui/collapsible";
+} from '@workspace/design-system/components/ui/collapsible';
+import { Info } from 'lucide-react';
 
 /**
  * An interactive component which expands/collapses a panel.
  */
 const meta = {
-  title: "ui/Collapsible",
+  title: 'ui/Collapsible',
   component: Collapsible,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   args: {
-    className: "w-96",
+    className: 'w-96',
     disabled: false,
   },
   render: (args) => (

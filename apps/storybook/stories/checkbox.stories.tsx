@@ -1,20 +1,20 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Checkbox } from "@workspace/design-system/components/ui/checkbox";
-import { Label } from "@workspace/design-system/components/ui/label";
+import { Checkbox } from '@workspace/design-system/components/ui/checkbox';
+import { Label } from '@workspace/design-system/components/ui/label';
 
 /**
  * A control that allows the user to toggle between checked and not checked.
  */
 const meta = {
-  title: "ui/Checkbox",
+  title: 'ui/Checkbox',
   component: Checkbox,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   args: {
-    id: "terms",
+    id: 'terms',
     disabled: false,
   },
   render: (args) => (
@@ -39,7 +39,7 @@ export const Default: Story = {};
  */
 export const Disabled: Story = {
   args: {
-    id: "disabled-terms",
+    id: 'disabled-terms',
     disabled: true,
   },
 };

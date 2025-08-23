@@ -1,19 +1,15 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import { ContentContainer } from "@/features/public/common/ui/content-container";
-import { getCategoryPageMetadata } from "@/features/public/explore/metadata/metadata";
-import { Billboard } from "@/features/public/explore/ui/billboard";
-import { List } from "@/features/public/explore/ui/list";
+import { ContentContainer } from '@/features/public/common/ui/content-container';
+import { getCategoryPageMetadata } from '@/features/public/explore/metadata/metadata';
+import { Billboard } from '@/features/public/explore/ui/billboard';
+import { List } from '@/features/public/explore/ui/list';
 import {
   getCategory,
   getPageSlugs,
-} from "@/features/public/explore/utilities/category";
-import { getItemsByCategory } from "@/features/public/explore/utilities/item";
-import {
-  type PageMetadata,
-  type PageProps,
-  type StaticParams,
-} from "@/types/common";
+} from '@/features/public/explore/utilities/category';
+import { getItemsByCategory } from '@/features/public/explore/utilities/item';
+import type { PageMetadata, PageProps, StaticParams } from '@/types/common';
 
 export async function generateMetadata({ params }: PageProps): PageMetadata {
   return getCategoryPageMetadata((await params).slug) || {};
@@ -37,7 +33,7 @@ export default async function Page({ params }: PageProps) {
     <>
       {category && <Billboard data={category.billboard} />}
       <ContentContainer>
-        <List title={`${category.name} Items`} items={items} />
+        <List items={items} title={`${category.name} Items`} />
       </ContentContainer>
     </>
   );

@@ -1,27 +1,26 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Separator } from '@workspace/design-system/components/ui/separator';
+import axios from 'axios';
+import { useParams, useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 
-import { Separator } from "@workspace/design-system/components/ui/separator";
+import { routes } from '@/constants/routes';
+import { apiRoutes } from '@/features/admin/common/constants/routes';
+import { CheckboxField } from '@/features/admin/common/ui/form/checkbox-field';
+import { FormContainer } from '@/features/admin/common/ui/form/form-container';
+import { InputField } from '@/features/admin/common/ui/form/input-field';
+import { MultiImagesField } from '@/features/admin/common/ui/form/multi-images-field';
+import { SelectField } from '@/features/admin/common/ui/form/select-field';
+import { toastError } from '@/lib/api-response/api-responses';
+import type { ItemModel } from '@/lib/database/models/Item';
 
-import { routes } from "@/constants/routes";
-import { apiRoutes } from "@/features/admin/common/constants/routes";
-import { CheckboxField } from "@/features/admin/common/ui/form/checkbox-field";
-import { FormContainer } from "@/features/admin/common/ui/form/form-container";
-import { InputField } from "@/features/admin/common/ui/form/input-field";
-import { MultiImagesField } from "@/features/admin/common/ui/form/multi-images-field";
-import { SelectField } from "@/features/admin/common/ui/form/select-field";
-import { toastError } from "@/lib/api-response/api-responses";
-import { type ItemModel } from "@/lib/database/models/Item";
-
-import { type CategoryColumn } from "../../category/ui/columns";
-import { ITEM_LABELS } from "../constants/item";
-import { defaultData, itemSchema, type ItemFormData } from "../schemas/item";
+import type { CategoryColumn } from '../../category/ui/columns';
+import { ITEM_LABELS } from '../constants/item';
+import { defaultData, type ItemFormData, itemSchema } from '../schemas/item';
 
 type Props = {
   initialData: ItemModel | null;
@@ -58,9 +57,9 @@ export const ItemForm = ({ initialData, categories }: Props) => {
 
       router.refresh();
       router.push(resourceUrl);
-      toast(`Resource ${initialData ? "updated" : "created"}.`);
+      toast(`Resource ${initialData ? 'updated' : 'created'}.`);
     } catch (error) {
-      toastError(error, "An error occurred while creating the resource.");
+      toastError(error, 'An error occurred while creating the resource.');
     } finally {
       setLoading(false);
     }
@@ -70,27 +69,27 @@ export const ItemForm = ({ initialData, categories }: Props) => {
     <FormContainer
       form={form}
       initialData={initialData}
-      onSubmit={onSubmit}
       loading={loading}
+      onSubmit={onSubmit}
     >
       {/* Images */}
       <MultiImagesField
-        labels={formLabels.images}
         control={form.control}
+        labels={formLabels.images}
         loading={loading}
       />
 
       {/* Name */}
       <InputField
-        labels={formLabels.name}
         control={form.control}
+        labels={formLabels.name}
         loading={loading}
       />
 
       {/* Category */}
       <SelectField
-        labels={formLabels.categoryId}
         control={form.control}
+        labels={formLabels.categoryId}
         loading={loading}
         options={categories.map((category) => ({
           label: category.name,
@@ -101,8 +100,8 @@ export const ItemForm = ({ initialData, categories }: Props) => {
       <Separator className="col-span-3 w-[675px]" />
 
       <div className="col-span-3 flex gap-5">
-        <CheckboxField labels={formLabels.isFeatured} control={form.control} />
-        <CheckboxField labels={formLabels.isArchived} control={form.control} />
+        <CheckboxField control={form.control} labels={formLabels.isFeatured} />
+        <CheckboxField control={form.control} labels={formLabels.isArchived} />
       </div>
     </FormContainer>
   );

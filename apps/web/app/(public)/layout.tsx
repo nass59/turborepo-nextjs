@@ -1,25 +1,24 @@
-import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Toaster } from '@workspace/design-system/components/ui/sonner';
+import type { Metadata, Viewport } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
 
-import { Toaster } from "@workspace/design-system/components/ui/sonner";
+import { Analytics } from '@/components/analytics';
+import { TailwindIndicator } from '@/components/tailwind-indicator';
+import { ThemeProvider } from '@/components/theme-provider';
+import { baseMetadata, baseViewport } from '@/constants/metadata';
+import { Help } from '@/features/public/common/ui/helper';
+import type { LayoutProps } from '@/types/common';
 
-import { Analytics } from "@/components/analytics";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
-import { ThemeProvider } from "@/components/theme-provider";
-import { baseMetadata, baseViewport } from "@/constants/metadata";
-import { Help } from "@/features/public/common/ui/helper";
-import type { LayoutProps } from "@/types/common";
-
-import "@workspace/design-system/styles/globals.css";
+import '@workspace/design-system/styles/globals.css';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 /**
@@ -42,8 +41,8 @@ export const viewport: Viewport = baseViewport;
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html
-      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      lang="en"
       suppressHydrationWarning
     >
       <body>

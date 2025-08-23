@@ -1,6 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ArrowRightSquare } from "lucide-react";
-
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,17 +6,18 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@workspace/design-system/components/ui/breadcrumb";
+} from '@workspace/design-system/components/ui/breadcrumb';
+import { ArrowRightSquare } from 'lucide-react';
 
 /**
  * Displays the path to the current resource using a hierarchy of links.
  */
 const meta = {
-  title: "ui/Breadcrumb",
+  title: 'ui/Breadcrumb',
   component: Breadcrumb,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   render: (args) => (
     <Breadcrumb {...args}>

@@ -1,10 +1,10 @@
-import { Types } from "mongoose";
+import { Types } from 'mongoose';
 
-import { env } from "@/env.mjs";
+import { env } from '@/env.mjs';
 import {
   findAllItemsBySpaceId,
   findOneItemWithCategory,
-} from "@/lib/database/items";
+} from '@/lib/database/items';
 
 export const getItem = async (itemId: string) => {
   return await findOneItemWithCategory(itemId, env.SPACE_ID, {
@@ -23,7 +23,7 @@ export const getFeaturedItems = async () => {
 export const getItemsByCategory = async (categoryId: string) => {
   return await findAllItemsBySpaceId({
     spaceId: env.SPACE_ID,
-    categoryId: categoryId,
+    categoryId,
     isArchived: false,
   });
 };
@@ -32,7 +32,7 @@ export const getSuggestedItems = async (itemId: string, categoryId: string) => {
   return await findAllItemsBySpaceId({
     spaceId: env.SPACE_ID,
     _id: { $ne: new Types.ObjectId(itemId) },
-    categoryId: categoryId,
+    categoryId,
     isArchived: false,
   });
 };

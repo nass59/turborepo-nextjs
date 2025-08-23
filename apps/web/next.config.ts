@@ -1,36 +1,36 @@
-import type { NextConfig } from "next";
-import createMDX from "@next/mdx";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeSlug from "rehype-slug";
-import remarkGfm from "remark-gfm";
+import createMDX from '@next/mdx';
+import type { NextConfig } from 'next';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 
 const nextConfig: NextConfig = {
-  pageExtensions: ["mdx", "ts", "tsx"],
+  pageExtensions: ['mdx', 'ts', 'tsx'],
   reactStrictMode: true,
   transpilePackages: [
-    "@workspace/tailwind-config",
-    "@workspace/design-system/components/ui",
+    '@workspace/tailwind-config',
+    '@workspace/design-system/components/ui',
   ],
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "turborepo-nextjs.vercel.app",
+        protocol: 'https',
+        hostname: 'turborepo-nextjs.vercel.app',
       },
       {
-        protocol: "https",
-        hostname: "avatars.githubusercontent.com",
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
       },
       {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
       },
     ],
   },
   experimental: {
     mdxRs: true,
-    optimizePackageImports: ["date-fns", "@headlessui/react"],
+    optimizePackageImports: ['date-fns', '@headlessui/react'],
     typedRoutes: false,
   },
 };
@@ -44,15 +44,15 @@ const withMDX = createMDX({
       [
         rehypePrettyCode,
         {
-          theme: "github-dark-default",
+          theme: 'github-dark-default',
         },
       ],
       [
         rehypeAutolinkHeadings,
         {
           properties: {
-            className: ["subheading-anchor"],
-            ariaLabel: "Link to section",
+            className: ['subheading-anchor'],
+            ariaLabel: 'Link to section',
           },
         },
       ],

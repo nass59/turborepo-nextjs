@@ -1,12 +1,12 @@
-import { DataTable } from "@workspace/design-system/components/ui/data-table";
-import { Separator } from "@workspace/design-system/components/ui/separator";
+import { DataTable } from '@workspace/design-system/components/ui/data-table';
+import { Separator } from '@workspace/design-system/components/ui/separator';
 
-import { BILLBOARD_LABELS } from "@/features/admin/billboard/constants/billboard";
-import { columnsData } from "@/features/admin/billboard/ui/columns";
-import { getAllBillboards } from "@/features/admin/billboard/utilities/billboard";
-import { ApiList } from "@/features/admin/common/ui/api-list";
-import { ListHeading } from "@/features/admin/common/ui/list-heading";
-import { parseData } from "@/lib/utils";
+import { BILLBOARD_LABELS } from '@/features/admin/billboard/constants/billboard';
+import { columnsData } from '@/features/admin/billboard/ui/columns';
+import { getAllBillboards } from '@/features/admin/billboard/utilities/billboard';
+import { ApiList } from '@/features/admin/common/ui/api-list';
+import { ListHeading } from '@/features/admin/common/ui/list-heading';
+import { parseData } from '@/lib/utils';
 
 type Props = {
   params: Promise<{
@@ -23,8 +23,8 @@ export default async function Page({ params }: Props) {
     <>
       <ListHeading
         labels={listLabels}
-        value={billboards.length}
         path={`/${resource}/new`}
+        value={billboards.length}
       />
 
       <DataTable columns={columnsData} data={parseData(billboards)} />

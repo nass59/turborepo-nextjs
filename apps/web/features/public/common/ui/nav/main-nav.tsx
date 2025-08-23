@@ -1,16 +1,15 @@
-"use client";
+'use client';
 
-import { useState, type PropsWithChildren } from "react";
-import { usePathname } from "next/navigation";
-import { CrossIcon, RocketIcon } from "lucide-react";
-import { type MainNavItem as TypeMainNavItem } from "types";
+import { Button } from '@workspace/design-system/components/ui/button';
+import { CrossIcon, RocketIcon } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { type PropsWithChildren, useState } from 'react';
+import type { MainNavItem as TypeMainNavItem } from 'types';
 
-import { Button } from "@workspace/design-system/components/ui/button";
+import { Logo } from '@/components/logo';
 
-import { Logo } from "@/components/logo";
-
-import { MainNavItems } from "./main-nav-items";
-import { MobileNav } from "./mobile-nav";
+import { MainNavItems } from './main-nav-items';
+import { MobileNav } from './mobile-nav';
 
 type Props = PropsWithChildren & {
   items?: TypeMainNavItem[];
@@ -28,12 +27,12 @@ export const MainNav = ({ items, children }: Props) => {
       <Logo />
 
       <MainNavItems
+        className="hidden gap-2 md:flex"
         items={items}
         pathName={pathName}
-        className="hidden gap-2 md:flex"
       />
 
-      <Button variant="ghost" className="space-x-2 md:hidden" onClick={toggle}>
+      <Button className="space-x-2 md:hidden" onClick={toggle} variant="ghost">
         {showMobileMenu ? (
           <CrossIcon className="size-5" />
         ) : (
@@ -43,7 +42,7 @@ export const MainNav = ({ items, children }: Props) => {
       </Button>
 
       {showMobileMenu && items && (
-        <MobileNav items={items} close={close} pathName={pathName}>
+        <MobileNav close={close} items={items} pathName={pathName}>
           {children}
         </MobileNav>
       )}

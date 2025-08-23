@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Button } from "@workspace/design-system/components/ui/button";
+import { Button } from '@workspace/design-system/components/ui/button';
 import {
   Sheet,
   SheetClose,
@@ -10,29 +10,29 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@workspace/design-system/components/ui/sheet";
+} from '@workspace/design-system/components/ui/sheet';
 
 /**
  * Extends the Dialog component to display content that complements the main
  * content of the screen.
  */
 const meta: Meta<typeof SheetContent> = {
-  title: "ui/Sheet",
+  title: 'ui/Sheet',
   component: Sheet,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   argTypes: {
     side: {
-      options: ["top", "bottom", "left", "right"],
+      options: ['top', 'bottom', 'left', 'right'],
       control: {
-        type: "radio",
+        type: 'radio',
       },
     },
   },
   args: {
-    side: "right",
+    side: 'right',
   },
   render: (args) => (
     <Sheet>

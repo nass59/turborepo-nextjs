@@ -1,7 +1,6 @@
-import Image from "next/image";
-import { Tab } from "@headlessui/react";
-
-import { cn } from "@workspace/design-system/lib/utils";
+import { Tab } from '@headlessui/react';
+import { cn } from '@workspace/design-system/lib/utils';
+import Image from 'next/image';
 
 type Props = {
   image: string;
@@ -9,23 +8,23 @@ type Props = {
 
 export const GalleryTab = ({ image }: Props) => {
   return (
-    <Tab className="aspect-poster relative flex cursor-pointer items-center justify-center rounded-md bg-white">
+    <Tab className="relative flex aspect-poster cursor-pointer items-center justify-center rounded-md bg-white">
       {({ selected }) => (
         <div>
           <span className="size-full overflow-hidden rounded-md">
             <Image
-              src={image}
-              fill
               alt="Image"
               className="object-cover object-center"
+              fill
+              src={image}
             />
           </span>
           <span
             className={cn(
-              "absolute inset-0 rounded-md ring-2 ring-offset-2",
-              selected ? "ring-black" : "ring-transparent"
+              'absolute inset-0 rounded-md ring-2 ring-offset-2',
+              selected ? 'ring-black' : 'ring-transparent'
             )}
-          ></span>
+          />
         </div>
       )}
     </Tab>

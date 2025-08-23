@@ -1,7 +1,7 @@
-import { formatDate } from "@/lib/utils";
+import { formatDate } from '@/lib/utils';
 
-import { Authors } from "./authors";
-import { type Post } from "./post";
+import { Authors } from './authors';
+import type { Post } from './post';
 
 type Props = {
   post: Post;
@@ -12,8 +12,8 @@ export const PostHeader = ({ post }: Props) => {
     <div className="space-y-2">
       {post.date && (
         <time
+          className="block text-muted-foreground text-sm"
           dateTime={post.date}
-          className="text-muted-foreground block text-sm"
         >
           Published on {formatDate(post.date)}
         </time>

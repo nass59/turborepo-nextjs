@@ -1,26 +1,26 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@workspace/design-system/components/ui/resizable";
+} from '@workspace/design-system/components/ui/resizable';
 
 /**
  * Accessible resizable panel groups and layouts with keyboard support.
  */
 const meta: Meta<typeof ResizablePanelGroup> = {
-  title: "ui/ResizablePanelGroup",
+  title: 'ui/ResizablePanelGroup',
   component: ResizablePanelGroup,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     onLayout: {
       control: false,
     },
   },
   args: {
-    className: "w-full rounded-lg border",
-    direction: "horizontal",
+    className: 'w-full rounded-lg border',
+    direction: 'horizontal',
   },
   render: (args) => (
     <ResizablePanelGroup {...args}>

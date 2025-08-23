@@ -1,14 +1,13 @@
-import Image from "next/image";
-
-import { Badge } from "@workspace/design-system/components/ui/badge";
+import { Badge } from '@workspace/design-system/components/ui/badge';
 import {
   Card,
   CardContent,
   CardHeader,
-} from "@workspace/design-system/components/ui/card";
+} from '@workspace/design-system/components/ui/card';
+import Image from 'next/image';
 
-import { AbsoluteLink } from "@/features/public/common/ui/absolute-link";
-import { type ItemModel } from "@/lib/database/models/Item";
+import { AbsoluteLink } from '@/features/public/common/ui/absolute-link';
+import type { ItemModel } from '@/lib/database/models/Item';
 
 type Props = {
   data: ItemModel;
@@ -22,14 +21,14 @@ export const PosterCard = ({ data }: Props) => {
       </CardHeader>
       <CardContent isPoster>
         <Image
-          src={data?.images?.[0] || ""}
           alt="Image"
-          fill
           className="rounded-sm object-cover"
+          fill
+          src={data?.images?.[0] || ''}
         />
         <AbsoluteLink
-          href={`/explore/${data._id}`}
           accessibleTitle={data.name}
+          href={`/explore/${data._id}`}
         />
       </CardContent>
       {/* <CardFooter>

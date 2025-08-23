@@ -1,37 +1,36 @@
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-
-import { cn } from "@workspace/design-system/lib/utils";
+import { cn } from '@workspace/design-system/lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
+import type * as React from 'react';
 
 const cardVariants = cva(
-  "bg-card relative text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
+  'relative flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm',
   {
     variants: {
       variant: {
-        default: "rounded-xl border py-6 shadow-sm",
-        poster: "p-0 rounded-sm aspect-poster bg-slate-800 text-slate-100",
+        default: 'rounded-xl border py-6 shadow-sm',
+        poster: 'aspect-poster rounded-sm bg-slate-800 p-0 text-slate-100',
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: 'default',
     },
   }
 );
 
-type CardProps = React.ComponentProps<"div"> &
+type CardProps = React.ComponentProps<'div'> &
   VariantProps<typeof cardVariants>;
 
 function Card({ className, variant, ...props }: CardProps) {
   return (
     <div
-      data-slot="card"
       className={cn(cardVariants({ variant, className }))}
+      data-slot="card"
       {...props}
     />
   );
 }
 
-type CardHeaderProps = React.ComponentProps<"div"> & {
+type CardHeaderProps = React.ComponentProps<'div'> & {
   isAbsolute?: boolean;
 };
 
@@ -42,78 +41,78 @@ function CardHeader({
 }: CardHeaderProps) {
   return (
     <div
-      data-slot="card-header"
       className={cn(
-        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
+        '@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6',
         {
-          "absolute top-0 left-0 z-[1] p-3": isAbsolute,
+          'absolute top-0 left-0 z-[1] p-3': isAbsolute,
         },
         className
       )}
+      data-slot="card-header"
       {...props}
     />
   );
 }
 
-function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+function CardTitle({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
+      className={cn('font-semibold leading-none', className)}
       data-slot="card-title"
-      className={cn("leading-none font-semibold", className)}
       {...props}
     />
   );
 }
 
-function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
+function CardDescription({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
+      className={cn('text-muted-foreground text-sm', className)}
       data-slot="card-description"
-      className={cn("text-muted-foreground text-sm", className)}
       {...props}
     />
   );
 }
 
-function CardAction({ className, ...props }: React.ComponentProps<"div">) {
+function CardAction({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
-      data-slot="card-action"
       className={cn(
-        "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
+        'col-start-2 row-span-2 row-start-1 self-start justify-self-end',
         className
       )}
+      data-slot="card-action"
       {...props}
     />
   );
 }
 
-type CardContentProps = React.ComponentProps<"div"> & { isPoster?: boolean };
+type CardContentProps = React.ComponentProps<'div'> & { isPoster?: boolean };
 
 function CardContent({ className, isPoster, ...props }: CardContentProps) {
   return (
     <div
-      data-slot="card-content"
       className={cn(
-        "relative px-6",
+        'relative px-6',
         {
-          "aspect-poster": isPoster,
+          'aspect-poster': isPoster,
         },
         className
       )}
+      data-slot="card-content"
       {...props}
     />
   );
 }
 
-function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
+function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
-      data-slot="card-footer"
       className={cn(
-        "relative flex items-center px-6 [.border-t]:pt-6",
+        'relative flex items-center px-6 [.border-t]:pt-6',
         className
       )}
+      data-slot="card-footer"
       {...props}
     />
   );

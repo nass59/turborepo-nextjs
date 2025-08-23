@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Progress } from "@workspace/design-system/components/ui/progress";
+import { Progress } from '@workspace/design-system/components/ui/progress';
 
 /**
  * Displays an indicator showing the completion progress of a task, typically
  * displayed as a progress bar.
  */
 const meta = {
-  title: "ui/Progress",
+  title: 'ui/Progress',
   component: Progress,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   args: {
     value: 30,
     max: 100,

@@ -1,22 +1,21 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { REGEXP_ONLY_DIGITS } from "input-otp";
-
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@workspace/design-system/components/ui/input-otp";
+} from '@workspace/design-system/components/ui/input-otp';
+import { REGEXP_ONLY_DIGITS } from 'input-otp';
 
 /**
  * Accessible one-time password component with copy paste functionality.
  */
 const meta = {
-  title: "ui/InputOTP",
+  title: 'ui/InputOTP',
   component: InputOTP,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   args: {
     maxLength: 6,

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import {
   Command,
@@ -8,20 +8,20 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@workspace/design-system/components/ui/command";
+} from '@workspace/design-system/components/ui/command';
 
 /**
  * Fast, composable, unstyled command menu for React.
  */
 const meta = {
-  title: "ui/Command",
+  title: 'ui/Command',
   component: Command,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   args: {
-    className: "rounded-lg w-96 border shadow-md",
+    className: 'rounded-lg w-96 border shadow-md',
   },
   render: (args) => (
     <Command {...args}>

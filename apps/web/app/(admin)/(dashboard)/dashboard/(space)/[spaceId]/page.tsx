@@ -1,10 +1,10 @@
-import { BookmarkIcon, ImageIcon, RocketIcon } from "lucide-react";
+import { BookmarkIcon, ImageIcon, RocketIcon } from 'lucide-react';
 
-import { Heading } from "@/components/heading";
-import { getOverview } from "@/features/admin/common/utilities/overview";
-import { CardOverview } from "@/features/admin/home/ui/card-overview";
-import { Chart } from "@/features/admin/home/ui/chart";
-import { parseData } from "@/lib/utils";
+import { Heading } from '@/components/heading';
+import { getOverview } from '@/features/admin/common/utilities/overview';
+import { CardOverview } from '@/features/admin/home/ui/card-overview';
+import { Chart } from '@/features/admin/home/ui/chart';
+import { parseData } from '@/lib/utils';
 
 type Props = {
   params: Promise<{
@@ -18,24 +18,24 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      <Heading title="Dashboard" description="Overview of your space" />
+      <Heading description="Overview of your space" title="Dashboard" />
 
       <div className="grid grid-cols-3 gap-4">
         <CardOverview
-          title="Total Billboards"
           icon={<RocketIcon className="size-6" />}
+          title="Total Billboards"
           value={overview.totalBillboards}
         />
 
         <CardOverview
-          title="Total Categories"
           icon={<BookmarkIcon className="size-6" />}
+          title="Total Categories"
           value={overview.totalCategories}
         />
 
         <CardOverview
-          title="Total Items"
           icon={<ImageIcon className="size-6" />}
+          title="Total Items"
           value={overview.totalItems}
         />
 

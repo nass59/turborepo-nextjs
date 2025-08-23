@@ -1,30 +1,29 @@
-import { CodeIcon } from "lucide-react";
-
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@workspace/design-system/components/ui/alert";
-import { Badge } from "@workspace/design-system/components/ui/badge";
+} from '@workspace/design-system/components/ui/alert';
+import { Badge } from '@workspace/design-system/components/ui/badge';
+import { CodeIcon } from 'lucide-react';
 
-import { env } from "@/env.mjs";
+import { env } from '@/env.mjs';
 
-import { CopyButton } from "./copy-button";
+import { CopyButton } from './copy-button';
 
 type Props = {
   title: string;
   path: string;
-  variant: "public" | "admin";
+  variant: 'public' | 'admin';
 };
 
-const textMap: Record<Props["variant"], string> = {
-  public: "Public",
-  admin: "Admin",
+const textMap: Record<Props['variant'], string> = {
+  public: 'Public',
+  admin: 'Admin',
 };
 
-const variantMap: Record<Props["variant"], "secondary" | "destructive"> = {
-  public: "secondary",
-  admin: "destructive",
+const variantMap: Record<Props['variant'], 'secondary' | 'destructive'> = {
+  public: 'secondary',
+  admin: 'destructive',
 };
 
 export const Api = ({ title, path, variant }: Props) => {
@@ -38,7 +37,7 @@ export const Api = ({ title, path, variant }: Props) => {
         <Badge variant={variantMap[variant]}>{textMap[variant]}</Badge>
       </AlertTitle>
       <AlertDescription className="flex items-center justify-between">
-        <code className="bg-muted relative rounded-md px-2 py-1 font-mono text-sm font-semibold">
+        <code className="relative rounded-md bg-muted px-2 py-1 font-mono font-semibold text-sm">
           {url}
         </code>
         <CopyButton

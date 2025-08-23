@@ -1,22 +1,21 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useParams } from "next/navigation";
-import { BlendIcon, ChevronDownIcon } from "lucide-react";
-
-import { Button } from "@workspace/design-system/components/ui/button";
+import { Button } from '@workspace/design-system/components/ui/button';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@workspace/design-system/components/ui/popover";
-import { cn } from "@workspace/design-system/lib/utils";
+} from '@workspace/design-system/components/ui/popover';
+import { cn } from '@workspace/design-system/lib/utils';
+import { BlendIcon, ChevronDownIcon } from 'lucide-react';
+import { useParams } from 'next/navigation';
+import { useState } from 'react';
 
-import { type NavbarItem } from "@/features/admin/common/types/navbar";
-import { type SpaceModel } from "@/lib/database/models/Space";
+import type { NavbarItem } from '@/features/admin/common/types/navbar';
+import type { SpaceModel } from '@/lib/database/models/Space';
 
-import { SPACE_LABELS } from "../constants/space";
-import { SpaceCommand } from "./space-command";
+import { SPACE_LABELS } from '../constants/space';
+import { SpaceCommand } from './space-command';
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
   typeof PopoverTrigger
@@ -45,15 +44,15 @@ export const SpaceSwitcher = ({ className, items = [] }: Props) => {
   );
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover onOpenChange={setOpen} open={open}>
       <PopoverTrigger asChild>
         <Button
-          variant="outline"
-          size="sm"
-          role="combobox"
           aria-expanded={open}
           aria-label={SPACE_LABELS.switcher.label}
-          className={cn("w-[200px] justify-between", className)}
+          className={cn('w-[200px] justify-between', className)}
+          role="combobox"
+          size="sm"
+          variant="outline"
         >
           <BlendIcon className="mr-2 size-4" />
           {currentSpace?.label}
@@ -62,8 +61,8 @@ export const SpaceSwitcher = ({ className, items = [] }: Props) => {
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <SpaceCommand
-          items={formattedItems}
           current={currentSpace}
+          items={formattedItems}
           setOpen={setOpen}
         />
       </PopoverContent>

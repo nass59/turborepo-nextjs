@@ -1,13 +1,13 @@
-import { UserButton } from "@clerk/nextjs";
+import { UserButton } from '@clerk/nextjs';
 
-import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeToggle } from '@/components/theme-toggle';
 
-import { MobileNav } from "./mobile-nav";
-import { NavbarActions } from "./navbar-actions";
+import { MobileNav } from './mobile-nav';
+import { NavbarActions } from './navbar-actions';
 
 export const Navbar = () => {
   return (
-    <header className="bg-background sticky top-0 z-10 w-full border-b md:pl-56">
+    <header className="sticky top-0 z-10 w-full border-b bg-background md:pl-56">
       <div className="flex h-16 items-center justify-between px-8">
         <MobileNav />
 

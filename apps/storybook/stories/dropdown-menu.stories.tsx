@@ -1,6 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Mail, Plus, PlusCircle, Search, UserPlus } from "lucide-react";
-
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -17,18 +15,19 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@workspace/design-system/components/ui/dropdown-menu";
+} from '@workspace/design-system/components/ui/dropdown-menu';
+import { Mail, Plus, PlusCircle, Search, UserPlus } from 'lucide-react';
 
 /**
  * Displays a menu to the user — such as a set of actions or functions —
  * triggered by a button.
  */
 const meta = {
-  title: "ui/DropdownMenu",
+  title: 'ui/DropdownMenu',
   component: DropdownMenu,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   render: (args) => (
     <DropdownMenu {...args}>

@@ -1,4 +1,4 @@
-import { toast } from "sonner";
+import { toast } from 'sonner';
 
 export const onCopy = (copyValue: string, toastMessage: string) => {
   navigator.clipboard.writeText(copyValue);

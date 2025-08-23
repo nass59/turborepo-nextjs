@@ -1,20 +1,20 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@workspace/design-system/components/ui/hover-card";
+} from '@workspace/design-system/components/ui/hover-card';
 
 /**
  * For sighted users to preview content available behind a link.
  */
 const meta = {
-  title: "ui/HoverCard",
+  title: 'ui/HoverCard',
   component: HoverCard,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   render: (args) => (
     <HoverCard {...args}>

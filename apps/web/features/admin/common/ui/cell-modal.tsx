@@ -1,9 +1,3 @@
-import { useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import axios from "axios";
-import { Pencil } from "lucide-react";
-import { toast } from "sonner";
-
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,11 +7,16 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@workspace/design-system/components/ui/alert-dialog";
+} from '@workspace/design-system/components/ui/alert-dialog';
+import axios from 'axios';
+import { Pencil } from 'lucide-react';
+import { useParams, useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
-import { toastError } from "@/lib/api-response/api-responses";
+import { toastError } from '@/lib/api-response/api-responses';
 
-import { apiRoutes } from "../constants/routes";
+import { apiRoutes } from '../constants/routes';
 
 type Props = {
   resource: string;
@@ -39,9 +38,9 @@ export const CellModal = ({ resource, resourceId, open, setOpen }: Props) => {
       const baseUrl = `${apiRoutes.spaces}/${params.spaceId}/${resource}`;
       await axios.delete(`${baseUrl}/${resourceId}`);
       router.refresh();
-      toast("This resource has been successfully deleted");
+      toast('This resource has been successfully deleted');
     } catch (error) {
-      toastError(error, "An error occurred while deleting the resource");
+      toastError(error, 'An error occurred while deleting the resource');
     } finally {
       setLoading(false);
       setOpen(false);
@@ -61,10 +60,10 @@ export const CellModal = ({ resource, resourceId, open, setOpen }: Props) => {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel onClick={() => setOpen(false)} disabled={loading}>
+          <AlertDialogCancel disabled={loading} onClick={() => setOpen(false)}>
             Cancel
           </AlertDialogCancel>
-          <AlertDialogAction onClick={onDelete} disabled={loading}>
+          <AlertDialogAction disabled={loading} onClick={onDelete}>
             {loading && <Pencil className="mr-2 size-4 animate-spin" />}
             <span>Delete</span>
           </AlertDialogAction>
