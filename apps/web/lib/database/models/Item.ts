@@ -1,4 +1,4 @@
-import { model, models, Schema, type Types } from "mongoose";
+import { model, models, Schema, type Types } from 'mongoose';
 
 export type ItemModel = {
   _id: Types.ObjectId;
@@ -13,24 +13,26 @@ export type ItemModel = {
   updatedAt: Date;
 };
 
+const MAX_NAME_LENGTH = 70;
+
 const ItemSchema = new Schema<ItemModel>({
   spaceId: {
     type: String,
-    required: [true, "Please provide a spaceId for this Item"],
+    required: [true, 'Please provide a spaceId for this Item'],
   },
   name: {
     type: String,
-    required: [true, "Please provide a name for this Item"],
-    maxlength: [70, "Name cannot be more than 70 characters"],
+    required: [true, 'Please provide a name for this Item'],
+    maxlength: [MAX_NAME_LENGTH, 'Name cannot be more than 70 characters'],
   },
   categoryId: {
     type: String,
-    required: [true, "Please provide a category for this Item"],
+    required: [true, 'Please provide a category for this Item'],
   },
   images: {
     type: [String],
     default: [],
-    required: [true, "Please provide one or multiple images for this Item"],
+    required: [true, 'Please provide one or multiple images for this Item'],
   },
   isFeatured: {
     type: Boolean,
@@ -50,4 +52,4 @@ const ItemSchema = new Schema<ItemModel>({
   },
 });
 
-export default models.Item || model<ItemModel>("Item", ItemSchema);
+export default models.Item || model<ItemModel>('Item', ItemSchema);

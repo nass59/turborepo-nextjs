@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { toc } from "mdast-util-toc";
-import { remark } from "remark";
-import { visit } from "unist-util-visit";
+/** biome-ignore-all lint/suspicious/noExplicitAny: default */
+import { toc } from 'mdast-util-toc';
+import { remark } from 'remark';
+import { visit } from 'unist-util-visit';
 
 type Item = {
   title: string;
@@ -15,17 +16,19 @@ type Items = {
 
 export type TableOfContents = Items;
 
-const textTypes = ["text", "emphasis", "strong", "inlineCode"];
+const textTypes = ['text', 'emphasis', 'strong', 'inlineCode'];
 
 const flattenNode = (node: any) => {
   const p: any = [];
 
-  visit(node, (node) => {
-    if (!textTypes.includes(node.type)) return;
-    p.push(node.value);
+  visit(node, (visitedNode: any) => {
+    if (!textTypes.includes(visitedNode.type)) {
+      return;
+    }
+    p.push(visitedNode.value);
   });
 
-  return p.join(``);
+  return p.join('');
 };
 
 const getItems = (node: any, current: Item | any): Items => {
@@ -33,14 +36,14 @@ const getItems = (node: any, current: Item | any): Items => {
     return {};
   }
 
-  if (node.type === "paragraph") {
+  if (node.type === 'paragraph') {
     visit(node, (item) => {
-      if (item.type === "link") {
+      if (item.type === 'link') {
         current.url = item.url;
         current.title = flattenNode(node);
       }
 
-      if (item.type === "text") {
+      if (item.type === 'text') {
         current.title = flattenNode(node);
       }
     });
@@ -48,12 +51,12 @@ const getItems = (node: any, current: Item | any): Items => {
     return current;
   }
 
-  if (node.type === "list") {
+  if (node.type === 'list') {
     current.items = node.children.map((i: any) => getItems(i, {}));
     return current;
   }
 
-  if (node.type === "listItem") {
+  if (node.type === 'listItem') {
     const heading = getItems(node.children[0], {});
 
     if (node.children.length > 1) {

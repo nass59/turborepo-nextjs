@@ -1,14 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+/** biome-ignore-all lint/style/noMagicNumbers: storybook */
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Slider } from "@workspace/design-system/components/ui/slider";
+import { Slider } from '@workspace/design-system/components/ui/slider';
 
 /**
  * An input where the user selects a value from within a given range.
  */
 const meta = {
-  title: "ui/Slider",
+  title: 'ui/Slider',
   component: Slider,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   args: {
     defaultValue: [33],
     max: 100,

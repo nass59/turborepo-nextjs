@@ -1,13 +1,13 @@
-import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
+import { auth } from '@clerk/nextjs/server';
+import { NextResponse } from 'next/server';
 
 import {
   deleteOneBillboard,
   findOneBillboard,
   updateOneBillboard,
-} from "@/lib/database/billboard";
-import { countAllCategoriesBySpaceIdAndBillboardId } from "@/lib/database/category";
-import { findOneSpace } from "@/lib/database/space";
+} from '@/lib/database/billboard';
+import { countAllCategoriesBySpaceIdAndBillboardId } from '@/lib/database/category';
+import { findOneSpace } from '@/lib/database/space';
 
 type ApiProps = {
   params: Promise<{
@@ -25,25 +25,24 @@ type GetProps = {
   }>;
 };
 
-interface JsonResponse {
+type JsonResponse = {
   label: string | null;
   imageUrl: string | null;
-}
+};
 
-export async function GET(req: Request, { params }: GetProps) {
+export async function GET(_: Request, { params }: GetProps) {
   try {
     const { billboardId } = await params;
 
     if (!billboardId) {
-      return new NextResponse("Billboard Id is required", { status: 400 });
+      return new NextResponse('Billboard Id is required', { status: 400 });
     }
 
     const billboard = await findOneBillboard(billboardId);
 
     return NextResponse.json(billboard);
-  } catch (error) {
-    console.log("[BILLBOARDS_GET]", error);
-    return new NextResponse("Internal error", { status: 500 });
+  } catch {
+    return new NextResponse('Internal error', { status: 500 });
   }
 }
 
@@ -53,28 +52,28 @@ export async function PATCH(req: Request, { params }: PatchProps) {
     const { spaceId, billboardId } = await params;
 
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse('Unauthorized', { status: 401 });
     }
 
     const body = (await req.json()) as JsonResponse;
     const { label, imageUrl } = body;
 
     if (!label) {
-      return new NextResponse("Label is required", { status: 400 });
+      return new NextResponse('Label is required', { status: 400 });
     }
 
     if (!imageUrl) {
-      return new NextResponse("Image URL is required", { status: 400 });
+      return new NextResponse('Image URL is required', { status: 400 });
     }
 
     if (!billboardId) {
-      return new NextResponse("Billboard Id is required", { status: 400 });
+      return new NextResponse('Billboard Id is required', { status: 400 });
     }
 
     const spaceByUserId = await findOneSpace(spaceId, userId);
 
     if (!spaceByUserId) {
-      return new NextResponse("Unauthorized", { status: 403 });
+      return new NextResponse('Unauthorized', { status: 403 });
     }
 
     const billboard = await updateOneBillboard(billboardId, {
@@ -83,29 +82,28 @@ export async function PATCH(req: Request, { params }: PatchProps) {
     });
 
     return NextResponse.json(billboard);
-  } catch (error) {
-    console.log("[BILLBOARDS_PATCH]", error);
-    return new NextResponse("Internal error", { status: 500 });
+  } catch {
+    return new NextResponse('Internal error', { status: 500 });
   }
 }
 
-export async function DELETE(req: Request, { params }: DeleteProps) {
+export async function DELETE(_: Request, { params }: DeleteProps) {
   try {
     const { userId } = await auth();
     const { spaceId, billboardId } = await params;
 
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse('Unauthorized', { status: 401 });
     }
 
     if (!billboardId) {
-      return new NextResponse("Billboard Id is required", { status: 400 });
+      return new NextResponse('Billboard Id is required', { status: 400 });
     }
 
     const spaceByUserId = await findOneSpace(spaceId, userId);
 
     if (!spaceByUserId) {
-      return new NextResponse("Unauthorized", { status: 403 });
+      return new NextResponse('Unauthorized', { status: 403 });
     }
 
     const categoriesWithBillboard =
@@ -121,8 +119,7 @@ export async function DELETE(req: Request, { params }: DeleteProps) {
     const billboard = await deleteOneBillboard(billboardId);
 
     return NextResponse.json(billboard);
-  } catch (error) {
-    console.log("[BILLBOARDS_DELETE]", error);
-    return new NextResponse("Internal error", { status: 500 });
+  } catch {
+    return new NextResponse('Internal error', { status: 500 });
   }
 }

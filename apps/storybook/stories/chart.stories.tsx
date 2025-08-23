@@ -1,4 +1,4 @@
-/** biome-ignore-all lint/style/noMagicNumbers: <explanation> */
+/** biome-ignore-all lint/style/noMagicNumbers: storybook */
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   type ChartConfig,

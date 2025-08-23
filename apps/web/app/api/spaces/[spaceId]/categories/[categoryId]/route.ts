@@ -1,13 +1,13 @@
-import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
+import { auth } from '@clerk/nextjs/server';
+import { NextResponse } from 'next/server';
 
 import {
   deleteOneCategory,
   findOneCategory,
   updateOneCategory,
-} from "@/lib/database/category";
-import { countAllItems } from "@/lib/database/items";
-import { findOneSpace } from "@/lib/database/space";
+} from '@/lib/database/category';
+import { countAllItems } from '@/lib/database/items';
+import { findOneSpace } from '@/lib/database/space';
 
 type ApiProps = {
   params: Promise<{
@@ -25,25 +25,24 @@ type GetProps = {
   }>;
 };
 
-interface JsonResponse {
+type JsonResponse = {
   name: string | null;
   billboardId: string | null;
-}
+};
 
-export async function GET(req: Request, { params }: GetProps) {
+export async function GET(_: Request, { params }: GetProps) {
   const { categoryId } = await params;
 
   try {
     if (!categoryId) {
-      return new NextResponse("Category Id is required", { status: 400 });
+      return new NextResponse('Category Id is required', { status: 400 });
     }
 
     const category = await findOneCategory(categoryId);
 
     return NextResponse.json(category);
-  } catch (error) {
-    console.log("[CATEGORIES_DELETE]", error);
-    return new NextResponse("Internal error", { status: 500 });
+  } catch {
+    return new NextResponse('Internal error', { status: 500 });
   }
 }
 
@@ -52,30 +51,30 @@ export async function PATCH(req: Request, { params }: PatchProps) {
     const { userId } = await auth();
 
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse('Unauthorized', { status: 401 });
     }
 
     const body = (await req.json()) as JsonResponse;
     const { name, billboardId } = body;
 
     if (!name) {
-      return new NextResponse("Name is required", { status: 400 });
+      return new NextResponse('Name is required', { status: 400 });
     }
 
     if (!billboardId) {
-      return new NextResponse("Billboard Id is required", { status: 400 });
+      return new NextResponse('Billboard Id is required', { status: 400 });
     }
 
     const { spaceId, categoryId } = await params;
 
     if (!categoryId) {
-      return new NextResponse("CategoryId Id is required", { status: 400 });
+      return new NextResponse('CategoryId Id is required', { status: 400 });
     }
 
     const spaceByUserId = await findOneSpace(spaceId, userId);
 
     if (!spaceByUserId) {
-      return new NextResponse("Unauthorized", { status: 403 });
+      return new NextResponse('Unauthorized', { status: 403 });
     }
 
     const category = await updateOneCategory(categoryId, {
@@ -84,30 +83,29 @@ export async function PATCH(req: Request, { params }: PatchProps) {
     });
 
     return NextResponse.json(category);
-  } catch (error) {
-    console.log("[CATEGORIES_PATCH]", error);
-    return new NextResponse("Internal error", { status: 500 });
+  } catch {
+    return new NextResponse('Internal error', { status: 500 });
   }
 }
 
-export async function DELETE(req: Request, { params }: DeleteProps) {
+export async function DELETE(_: Request, { params }: DeleteProps) {
   try {
     const { userId } = await auth();
 
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse('Unauthorized', { status: 401 });
     }
 
     const { spaceId, categoryId } = await params;
 
     if (!categoryId) {
-      return new NextResponse("Category Id is required", { status: 400 });
+      return new NextResponse('Category Id is required', { status: 400 });
     }
 
     const spaceByUserId = await findOneSpace(spaceId, userId);
 
     if (!spaceByUserId) {
-      return new NextResponse("Unauthorized", { status: 403 });
+      return new NextResponse('Unauthorized', { status: 403 });
     }
 
     const itemsByCategory = await countAllItems({
@@ -125,8 +123,7 @@ export async function DELETE(req: Request, { params }: DeleteProps) {
     const category = await deleteOneCategory(categoryId);
 
     return NextResponse.json(category);
-  } catch (error) {
-    console.log("[CATEGORIES_DELETE]", error);
-    return new NextResponse("Internal error", { status: 500 });
+  } catch {
+    return new NextResponse('Internal error', { status: 500 });
   }
 }

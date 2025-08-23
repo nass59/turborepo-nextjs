@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/suspicious/noUnknownAtRules: design */
+/** biome-ignore-all lint/correctness/noInvalidPositionAtImportRule: design */
 @source "../";
 
 @import "tailwindcss";

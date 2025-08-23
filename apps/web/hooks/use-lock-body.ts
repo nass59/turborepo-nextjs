@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect } from 'react';
 
 export function useLockBody() {
   useLayoutEffect((): (() => void) => {
@@ -6,8 +6,10 @@ export function useLockBody() {
       document.body
     ).overflow;
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
 
-    return () => (document.body.style.overflow = originalStyle);
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
   }, []);
 }

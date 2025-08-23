@@ -1,10 +1,10 @@
-import { format } from "date-fns";
+import { format } from 'date-fns';
 
-import { findAllCategoriesWithDataBySpaceId } from "@/lib/database/category";
-import Category, { type CategoryModel } from "@/lib/database/models/Category";
-import { findOneById } from "@/lib/database/queries";
+import { findAllCategoriesWithDataBySpaceId } from '@/lib/database/category';
+import Category, { type CategoryModel } from '@/lib/database/models/Category';
+import { findOneById } from '@/lib/database/queries';
 
-import { type CategoryColumn } from "../ui/columns";
+import type { CategoryColumn } from '../ui/columns';
 
 export const getAllCategories = async (
   spaceId: string
@@ -15,11 +15,11 @@ export const getAllCategories = async (
     id: String(item._id),
     name: item.name,
     billboardLabel: item.billboard.label,
-    createdAt: format(item.createdAt, "MMMM do, yyyy"),
+    createdAt: format(item.createdAt, 'MMMM do, yyyy'),
   }));
 };
 
-export const getCategory = async (
+export const getCategory = (
   categoryId: string
 ): Promise<CategoryModel | null> => {
   return findOneById(Category, categoryId);

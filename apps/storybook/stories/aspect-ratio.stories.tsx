@@ -1,27 +1,31 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+/** biome-ignore-all lint/style/noMagicNumbers: storybook */
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { AspectRatio } from "@workspace/design-system/components/ui/aspect-ratio";
+import { AspectRatio } from '@workspace/design-system/components/ui/aspect-ratio';
 
 /**
  * Displays content within a desired ratio.
  */
 const meta: Meta<typeof AspectRatio> = {
-  title: "ui/AspectRatio",
+  title: 'ui/AspectRatio',
   component: AspectRatio,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   decorators: [
-    (Story) => (
+    (StoryComponent) => (
       <div className="w-1/2">
-        <Story />
+        <StoryComponent />
       </div>
     ),
   ],
   render: (args) => (
     <AspectRatio {...args} className="bg-slate-50 dark:bg-slate-800">
+      {/** biome-ignore lint/performance/noImgElement: storybook */}
       <img
-        src="https://images.unsplash.com/photo-1710104434410-9d56414deade?w=800&dpr=2&q=80"
         alt="Alvaro Pinot"
         className="h-full w-full rounded-md object-cover"
+        height="1200"
+        src="https://images.unsplash.com/photo-1710104434410-9d56414deade?w=800&dpr=2&q=80"
+        width="1600"
       />
     </AspectRatio>
   ),

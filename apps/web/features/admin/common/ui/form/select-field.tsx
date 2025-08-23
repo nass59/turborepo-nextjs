@@ -1,19 +1,19 @@
-import { type Control } from "react-hook-form";
-
+/** biome-ignore-all lint/suspicious/noExplicitAny: default */
 import {
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@workspace/design-system/components/ui/form";
+} from '@workspace/design-system/components/ui/form';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@workspace/design-system/components/ui/select";
+} from '@workspace/design-system/components/ui/select';
+import type { Control } from 'react-hook-form';
 
 type Props = {
   labels: {
@@ -38,10 +38,10 @@ export const SelectField = ({ labels, loading, control, options }: Props) => {
         <FormItem>
           <FormLabel>{labels.label}</FormLabel>
           <Select
+            defaultValue={field.value}
             disabled={loading}
             onValueChange={field.onChange}
             value={field.value}
-            defaultValue={field.value}
           >
             <FormControl>
               <SelectTrigger>

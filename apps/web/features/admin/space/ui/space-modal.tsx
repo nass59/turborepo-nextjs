@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Dialog,
@@ -6,22 +6,24 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@workspace/design-system/components/ui/dialog";
+} from '@workspace/design-system/components/ui/dialog';
 
-import { SPACE_LABELS } from "../constants/space";
-import { useSpaceModal } from "../hooks/use-space-modal";
-import { SpaceForm } from "./form";
+import { SPACE_LABELS } from '../constants/space';
+import { useSpaceModal } from '../hooks/use-space-modal';
+import { SpaceForm } from './form';
 
 export const SpaceModal = () => {
   const spaceModal = useSpaceModal();
   const { title, description } = SPACE_LABELS.create;
 
   const onChange = (open: boolean) => {
-    if (!open) spaceModal.onClose();
+    if (!open) {
+      spaceModal.onClose();
+    }
   };
 
   return (
-    <Dialog open={spaceModal.isOpen} onOpenChange={onChange}>
+    <Dialog onOpenChange={onChange} open={spaceModal.isOpen}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>

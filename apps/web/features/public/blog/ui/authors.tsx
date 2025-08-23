@@ -1,9 +1,8 @@
-import Link from "next/link";
-
 import {
   Avatar,
   AvatarImage,
-} from "@workspace/design-system/components/ui/avatar";
+} from '@workspace/design-system/components/ui/avatar';
+import Link from 'next/link';
 
 export type Author = {
   name: string;
@@ -16,19 +15,21 @@ type Props = {
 };
 
 export const Authors = ({ authors }: Props) => {
-  if (!authors?.length) return null;
+  if (!authors?.length) {
+    return null;
+  }
 
   return (
     <div className="flex space-x-4">
-      {authors.map((author, index) =>
+      {authors.map((author) =>
         author ? (
           <Link
-            key={index}
-            href={`https://twitter.com/${author.twitter}`}
             className="flex items-center space-x-2 text-sm"
+            href={`https://twitter.com/${author.twitter}`}
+            key={author.name}
           >
             <Avatar>
-              <AvatarImage src={author.avatar} alt={author.name} />
+              <AvatarImage alt={author.name} src={author.avatar} />
             </Avatar>
 
             <div className="flex-1 text-left leading-tight">

@@ -1,14 +1,14 @@
-import { type Control } from "react-hook-form";
-
+/** biome-ignore-all lint/suspicious/noExplicitAny: default */
 import {
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@workspace/design-system/components/ui/form";
+} from '@workspace/design-system/components/ui/form';
+import type { Control } from 'react-hook-form';
 
-import { ImageUpload } from "../image-upload";
+import { ImageUpload } from '../image-upload';
 
 type Props = {
   labels: {
@@ -29,11 +29,11 @@ export const ImageField = ({ labels, loading, control }: Props) => {
           <FormLabel>{labels.label}</FormLabel>
           <FormControl>
             <ImageUpload
-              value={field.value ? [field.value] : []}
               disabled={loading}
-              onChange={(url) => field.onChange(url)}
-              onRemove={() => field.onChange("")}
               maxFiles={1}
+              onChange={(url) => field.onChange(url)}
+              onRemove={() => field.onChange('')}
+              value={field.value ? [field.value] : []}
             />
           </FormControl>
           <FormMessage />
