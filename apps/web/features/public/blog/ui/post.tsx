@@ -1,10 +1,10 @@
-import { type Route } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import type { Route } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { formatDate } from "@/lib/utils";
+import { formatDate } from '@/lib/utils';
 
-import { type Author } from "./authors";
+import type { Author } from './authors';
 
 export type Post = {
   authors: Author[];
@@ -26,16 +26,16 @@ export const Post = ({ post, hasPriority = false }: Props) => {
     <article className="group relative flex flex-col space-y-2">
       {post.image && (
         <Image
-          src={post.image}
           alt={post.title}
-          width={587}
+          className="rounded-md border bg-slate-800 transition-colors"
           height={587}
           priority={hasPriority}
-          className="rounded-md border bg-slate-800 transition-colors"
+          src={post.image}
+          width={587}
         />
       )}
 
-      <h2 className="text-2xl font-extrabold">{post.title}</h2>
+      <h2 className="font-extrabold text-2xl">{post.title}</h2>
 
       {post.description && (
         <p className="text-muted-foreground">{post.description}</p>
@@ -46,8 +46,8 @@ export const Post = ({ post, hasPriority = false }: Props) => {
       )}
 
       <Link
+        className="-top-2 absolute inset-0 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2"
         href={post.url as Route}
-        className="absolute inset-0 -top-2 rounded-md focus:ring-2 focus:ring-slate-600 focus:ring-offset-2 focus:outline-none"
       >
         <span className="sr-only">View Post</span>
       </Link>

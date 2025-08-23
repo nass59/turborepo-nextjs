@@ -1,5 +1,5 @@
-import { apiRoutes } from "../constants/routes";
-import { Api } from "./api";
+import { apiRoutes } from '../constants/routes';
+import { Api } from './api';
 
 type Props = {
   resource: string;
@@ -8,15 +8,15 @@ type Props = {
 };
 
 const METHODS = {
-  get: "GET",
-  post: "POST",
-  patch: "PATCH",
-  delete: "DELETE",
+  get: 'GET',
+  post: 'POST',
+  patch: 'PATCH',
+  delete: 'DELETE',
 } as const;
 
 const VISIBILITY = {
-  public: "public",
-  admin: "admin",
+  public: 'public',
+  admin: 'admin',
 } as const;
 
 export const ApiList = ({ resource, resourceId, spaceId }: Props) => {
@@ -25,29 +25,29 @@ export const ApiList = ({ resource, resourceId, spaceId }: Props) => {
   return (
     <>
       <Api
-        title={METHODS.get}
-        variant={VISIBILITY.public}
         path={`${baseUrl}/${resource}`}
-      />
-      <Api
         title={METHODS.get}
         variant={VISIBILITY.public}
-        path={`${baseUrl}/${resource}/{${resourceId}}`}
       />
       <Api
+        path={`${baseUrl}/${resource}/{${resourceId}}`}
+        title={METHODS.get}
+        variant={VISIBILITY.public}
+      />
+      <Api
+        path={`${baseUrl}/${resource}`}
         title={METHODS.post}
         variant={VISIBILITY.admin}
-        path={`${baseUrl}/${resource}`}
       />
       <Api
+        path={`${baseUrl}/${resource}/{${resourceId}}`}
         title={METHODS.patch}
         variant={VISIBILITY.admin}
-        path={`${baseUrl}/${resource}/{${resourceId}}`}
       />
       <Api
+        path={`${baseUrl}/${resource}/{${resourceId}}`}
         title={METHODS.delete}
         variant={VISIBILITY.admin}
-        path={`${baseUrl}/${resource}/{${resourceId}}`}
       />
     </>
   );

@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Button } from "@workspace/design-system/components/ui/button";
+import { Button } from '@workspace/design-system/components/ui/button';
 import {
   Drawer,
   DrawerClose,
@@ -10,17 +10,17 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@workspace/design-system/components/ui/drawer";
+} from '@workspace/design-system/components/ui/drawer';
 
 /**
  * A drawer component for React.
  */
 const meta = {
-  title: "ui/Drawer",
+  title: 'ui/Drawer',
   component: Drawer,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   render: (args) => (
     <Drawer {...args}>

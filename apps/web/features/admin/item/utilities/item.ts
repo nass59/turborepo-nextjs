@@ -1,9 +1,9 @@
-import { format } from "date-fns";
+import { format } from 'date-fns';
 
-import { findAllItemsBySpaceId, findOneItem } from "@/lib/database/items";
-import { type ItemModel } from "@/lib/database/models/Item";
+import { findAllItemsBySpaceId, findOneItem } from '@/lib/database/items';
+import type { ItemModel } from '@/lib/database/models/Item';
 
-import { type ItemColumn } from "../ui/columns";
+import type { ItemColumn } from '../ui/columns';
 
 export const getAllItems = async (spaceId: string): Promise<ItemColumn[]> => {
   const items = await findAllItemsBySpaceId({ spaceId });
@@ -14,7 +14,7 @@ export const getAllItems = async (spaceId: string): Promise<ItemColumn[]> => {
     category: item.category,
     isFeatured: item.isFeatured,
     isArchived: item.isArchived,
-    createdAt: format(item.createdAt, "MMMM do, yyyy"),
+    createdAt: format(item.createdAt, 'MMMM do, yyyy'),
   }));
 };
 

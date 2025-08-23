@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const itemSchema = z.object({
   name: z.string().min(1),
@@ -9,9 +9,9 @@ export const itemSchema = z.object({
 });
 
 export const defaultData = {
-  name: "",
+  name: '',
   images: [],
-  categoryId: "",
+  categoryId: '',
   isFeatured: false,
   isArchived: false,
 };

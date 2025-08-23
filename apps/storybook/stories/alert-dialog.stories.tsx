@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import {
   AlertDialog,
@@ -10,18 +10,18 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@workspace/design-system/components/ui/alert-dialog";
+} from '@workspace/design-system/components/ui/alert-dialog';
 
 /**
  * A modal dialog that interrupts the user with important content and expects
  * a response.
  */
 const meta = {
-  title: "ui/AlertDialog",
+  title: 'ui/AlertDialog',
   component: AlertDialog,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   render: (args) => (
     <AlertDialog {...args}>

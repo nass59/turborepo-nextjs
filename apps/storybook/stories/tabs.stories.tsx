@@ -1,26 +1,26 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@workspace/design-system/components/ui/tabs";
+} from '@workspace/design-system/components/ui/tabs';
 
 /**
  * A set of layered sections of content—known as tab panels—that are displayed
  * one at a time.
  */
 const meta = {
-  title: "ui/Tabs",
+  title: 'ui/Tabs',
   component: Tabs,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   args: {
-    defaultValue: "account",
-    className: "w-96",
+    defaultValue: 'account',
+    className: 'w-96',
   },
   render: (args) => (
     <Tabs {...args}>

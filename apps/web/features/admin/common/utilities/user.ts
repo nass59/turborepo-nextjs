@@ -1,7 +1,7 @@
-import { redirect } from "next/navigation";
-import { auth } from "@clerk/nextjs/server";
+import { auth } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
 
-import { routes } from "@/constants/routes";
+import { routes } from '@/constants/routes';
 
 export const getCurrentUserId = async () => {
   // Get the current user's ID

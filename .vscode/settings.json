@@ -11,13 +11,9 @@
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
 
-  // ESLint Configuration
-  "eslint.workingDirectories": [{ "mode": "auto" }],
-  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
-
-  // Prettier Configuration
-  "prettier.enable": true,
-  "prettier.requireConfig": true,
+  // ESLint / Prettier Configuration
+  "eslint.enable": false,
+  "prettier.enable": false,
 
   // Vitest Configuration
   "vitest.disableWorkspaceWarning": true,
@@ -35,6 +31,31 @@
 
   // Copilot Configuration
   "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+
+  "[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[graphql]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
 
   // TailwindCSS Configuration
   "tailwindCSS.experimental.classRegex": [

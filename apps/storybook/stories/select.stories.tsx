@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import {
   Select,
@@ -9,17 +9,17 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@workspace/design-system/components/ui/select";
+} from '@workspace/design-system/components/ui/select';
 
 /**
  * Displays a list of options for the user to pick from—triggered by a button.
  */
 const meta: Meta<typeof Select> = {
-  title: "ui/Select",
+  title: 'ui/Select',
   component: Select,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   render: (args) => (
     <Select {...args}>
@@ -40,7 +40,7 @@ const meta: Meta<typeof Select> = {
           <SelectLabel>Vegetables</SelectLabel>
           <SelectItem value="aubergine">Aubergine</SelectItem>
           <SelectItem value="broccoli">Broccoli</SelectItem>
-          <SelectItem value="carrot" disabled>
+          <SelectItem disabled value="carrot">
             Carrot
           </SelectItem>
           <SelectItem value="courgette">Courgette</SelectItem>

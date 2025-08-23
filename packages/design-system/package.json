@@ -11,7 +11,6 @@
     "./hooks/*": "./src/hooks/*.ts"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
     "clean": "git clean -xdf .cache .turbo node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
@@ -67,7 +66,6 @@
     "@tailwindcss/postcss": "^4.1.11",
     "@types/node": "^24.0.15",
     "@types/react": "^19.1.8",
-    "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",

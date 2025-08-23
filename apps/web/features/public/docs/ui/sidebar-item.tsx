@@ -1,7 +1,6 @@
-import Link from "next/link";
-import { type NavItem } from "types";
-
-import { cn } from "@workspace/design-system/lib/utils";
+import { cn } from '@workspace/design-system/lib/utils';
+import Link from 'next/link';
+import type { NavItem } from 'types';
 
 type Props = {
   item: NavItem;
@@ -19,15 +18,15 @@ export const SidebarItem = ({ item, isActive }: Props) => {
 
   return (
     <Link
-      href={item.href}
-      target={item.external ? "_blank" : ""}
-      rel={item.external ? "noreferrer" : ""}
       className={cn(
-        "flex w-full items-center rounded-md p-2 hover:underline focus:ring-2 focus:ring-slate-600 focus:ring-offset-2 focus:outline-none",
+        'flex w-full items-center rounded-md p-2 hover:underline focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2',
         {
-          "bg-muted": isActive,
+          'bg-muted': isActive,
         }
       )}
+      href={item.href}
+      rel={item.external ? 'noreferrer' : ''}
+      target={item.external ? '_blank' : ''}
     >
       {item.title}
     </Link>

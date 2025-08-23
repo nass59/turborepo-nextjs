@@ -1,10 +1,9 @@
-import Link from "next/link";
-import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
+import { buttonVariants } from '@workspace/design-system/components/ui/button';
+import { cn } from '@workspace/design-system/lib/utils';
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
+import Link from 'next/link';
 
-import { buttonVariants } from "@workspace/design-system/components/ui/button";
-import { cn } from "@workspace/design-system/lib/utils";
-
-import { getPagerForDoc } from "../utilities/pager";
+import { getPagerForDoc } from '../utilities/pager';
 
 type Props = {
   url: string;
@@ -22,8 +21,8 @@ export const Pager = ({ url }: Props) => {
       {/* Prev */}
       {pager?.prev && (
         <Link
+          className={buttonVariants({ variant: 'ghost' })}
           href={pager.prev.href}
-          className={buttonVariants({ variant: "ghost" })}
         >
           <ArrowLeftIcon className="mr-2 size-4" />
           {pager.prev.title}
@@ -33,8 +32,8 @@ export const Pager = ({ url }: Props) => {
       {/* Next */}
       {pager?.next && (
         <Link
+          className={cn(buttonVariants({ variant: 'ghost' }), 'ml-auto')}
           href={pager.next.href}
-          className={cn(buttonVariants({ variant: "ghost" }), "ml-auto")}
         >
           {pager.next.title}
           <ArrowRightIcon className="ml-2 size-4" />

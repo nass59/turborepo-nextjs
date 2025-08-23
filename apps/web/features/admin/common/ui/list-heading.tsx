@@ -1,6 +1,6 @@
-import { Heading, HeadingAction } from "@/components/heading";
+import { Heading, HeadingAction } from '@/components/heading';
 
-import { AddButton } from "./add-button";
+import { AddButton } from './add-button';
 
 type Props = {
   labels: {
@@ -15,9 +15,9 @@ type Props = {
 export const ListHeading = ({ labels, value, path }: Props) => {
   return (
     <Heading
-      title={labels.title}
-      suffixTitle={`(${value})`}
       description={labels.description}
+      suffixTitle={`(${value})`}
+      title={labels.title}
     >
       <HeadingAction>
         <AddButton labels={labels} path={path} />

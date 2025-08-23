@@ -1,17 +1,16 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Bold, Italic } from "lucide-react";
-
-import { Toggle } from "@workspace/design-system/components/ui/toggle";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Toggle } from '@workspace/design-system/components/ui/toggle';
+import { Bold, Italic } from 'lucide-react';
 
 /**
  * A two-state button that can be either on or off.
  */
 const meta: Meta<typeof Toggle> = {
-  title: "ui/Toggle",
+  title: 'ui/Toggle',
   component: Toggle,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   argTypes: {
     children: {
@@ -20,7 +19,7 @@ const meta: Meta<typeof Toggle> = {
   },
   args: {
     children: <Bold className="h-4 w-4" />,
-    "aria-label": "Toggle bold",
+    'aria-label': 'Toggle bold',
   },
 };
 export default meta;
@@ -38,9 +37,9 @@ export const Default: Story = {};
  */
 export const Outline: Story = {
   args: {
-    variant: "outline",
+    variant: 'outline',
     children: <Italic className="h-4 w-4" />,
-    "aria-label": "Toggle italic",
+    'aria-label': 'Toggle italic',
   },
 };
 
@@ -63,7 +62,7 @@ export const WithText: Story = {
  */
 export const Small: Story = {
   args: {
-    size: "sm",
+    size: 'sm',
   },
 };
 
@@ -73,7 +72,7 @@ export const Small: Story = {
  */
 export const Large: Story = {
   args: {
-    size: "lg",
+    size: 'lg',
   },
 };
 

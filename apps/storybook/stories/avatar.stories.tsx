@@ -1,20 +1,20 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@workspace/design-system/components/ui/avatar";
+} from '@workspace/design-system/components/ui/avatar';
 
 /**
  * An image element with a fallback for representing the user.
  */
 const meta = {
-  title: "ui/Avatar",
+  title: 'ui/Avatar',
   component: Avatar,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   render: (args) => (
     <Avatar {...args}>

@@ -1,13 +1,12 @@
-"use client";
+'use client';
 
-import type { ColumnDef } from "@tanstack/react-table";
-import { EyeClosedIcon, EyeIcon, StarIcon, StarsIcon } from "lucide-react";
+import type { ColumnDef } from '@tanstack/react-table';
+import { Badge } from '@workspace/design-system/components/ui/badge';
+import { EyeClosedIcon, EyeIcon, StarIcon, StarsIcon } from 'lucide-react';
 
-import { Badge } from "@workspace/design-system/components/ui/badge";
+import { CellAction } from '@/features/admin/common/ui/cell-action';
 
-import { CellAction } from "@/features/admin/common/ui/cell-action";
-
-import { ITEM_LABELS } from "../constants/item";
+import { ITEM_LABELS } from '../constants/item';
 
 export type ItemColumn = {
   id: string;
@@ -54,12 +53,12 @@ export const columnsData: ColumnDef<ItemColumn>[] = [
   },
   columns.createdAt,
   {
-    id: "actions",
+    id: 'actions',
     cell: ({ row }) => (
       <CellAction
         data={row.original}
-        resource={resource}
         labels={columns.actions}
+        resource={resource}
       />
     ),
   },

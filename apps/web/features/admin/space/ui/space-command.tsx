@@ -1,6 +1,3 @@
-import { useRouter } from "next/navigation";
-import { CheckIcon, CirclePlusIcon, RadiusIcon } from "lucide-react";
-
 import {
   Command,
   CommandEmpty,
@@ -9,14 +6,16 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@workspace/design-system/components/ui/command";
-import { cn } from "@workspace/design-system/lib/utils";
+} from '@workspace/design-system/components/ui/command';
+import { cn } from '@workspace/design-system/lib/utils';
+import { CheckIcon, CirclePlusIcon, RadiusIcon } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
-import { routes } from "@/constants/routes";
-import { type NavbarItem } from "@/features/admin/common/types/navbar";
+import { routes } from '@/constants/routes';
+import type { NavbarItem } from '@/features/admin/common/types/navbar';
 
-import { SPACE_LABELS } from "../constants/space";
-import { useSpaceModal } from "../hooks/use-space-modal";
+import { SPACE_LABELS } from '../constants/space';
+import { useSpaceModal } from '../hooks/use-space-modal';
 
 type Props = {
   items: NavbarItem[];
@@ -48,16 +47,16 @@ export const SpaceCommand = ({ items, current, setOpen }: Props) => {
         <CommandGroup heading={labels.heading}>
           {items.map((item) => (
             <CommandItem
+              className="cursor-pointer text-sm"
               key={item.value}
               onSelect={() => onSelect(item)}
-              className="cursor-pointer text-sm"
             >
               <RadiusIcon className="mr-2 size-4" />
               {item.label}
               <CheckIcon
                 className={cn(
-                  "ml-auto size-4",
-                  current?.value === item.value ? "opacity-100" : "opacity-0"
+                  'ml-auto size-4',
+                  current?.value === item.value ? 'opacity-100' : 'opacity-0'
                 )}
               />
             </CommandItem>

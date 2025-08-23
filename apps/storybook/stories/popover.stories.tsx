@@ -1,20 +1,20 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@workspace/design-system/components/ui/popover";
+} from '@workspace/design-system/components/ui/popover';
 
 /**
  * Displays rich content in a portal, triggered by a button.
  */
 const meta = {
-  title: "ui/Popover",
+  title: 'ui/Popover',
   component: Popover,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   render: (args) => (
     <Popover {...args}>

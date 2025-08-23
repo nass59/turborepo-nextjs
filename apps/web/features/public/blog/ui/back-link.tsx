@@ -1,8 +1,7 @@
-import Link from "next/link";
-import { ChevronLeftIcon } from "lucide-react";
-
-import { buttonVariants } from "@workspace/design-system/components/ui/button";
-import { cn } from "@workspace/design-system/lib/utils";
+import { buttonVariants } from '@workspace/design-system/components/ui/button';
+import { cn } from '@workspace/design-system/lib/utils';
+import { ChevronLeftIcon } from 'lucide-react';
+import Link from 'next/link';
 
 type Props = {
   className?: string;
@@ -11,8 +10,8 @@ type Props = {
 export const BackLink = ({ className }: Props) => {
   return (
     <Link
+      className={cn(buttonVariants({ variant: 'ghost' }), className)}
       href="/blog"
-      className={cn(buttonVariants({ variant: "ghost" }), className)}
     >
       <ChevronLeftIcon className="mr-2 size-4" />
       See all posts

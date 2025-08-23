@@ -1,10 +1,4 @@
-"use client";
-
-import { useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import axios from "axios";
-import { PencilIcon, TrashIcon } from "lucide-react";
-import { toast } from "sonner";
+'use client';
 
 import {
   AlertDialog,
@@ -16,12 +10,17 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@workspace/design-system/components/ui/alert-dialog";
-import { Button } from "@workspace/design-system/components/ui/button";
+} from '@workspace/design-system/components/ui/alert-dialog';
+import { Button } from '@workspace/design-system/components/ui/button';
+import axios from 'axios';
+import { PencilIcon, TrashIcon } from 'lucide-react';
+import { useParams, useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
-import { routes } from "@/constants/routes";
-import { apiRoutes } from "@/features/admin/common/constants/routes";
-import { toastError } from "@/lib/api-response/api-responses";
+import { routes } from '@/constants/routes';
+import { apiRoutes } from '@/features/admin/common/constants/routes';
+import { toastError } from '@/lib/api-response/api-responses';
 
 export const DeleteSpaceModal = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -36,11 +35,11 @@ export const DeleteSpaceModal = () => {
       await axios.delete(`${apiRoutes.spaces}/${params.spaceId}`);
       router.refresh();
       router.push(routes.dashboard);
-      toast("Space deleted.");
+      toast('Space deleted.');
     } catch (error) {
       toastError(
         error,
-        "Your Space was not deleted. Make sure you removed all categories first."
+        'Your Space was not deleted. Make sure you removed all categories first.'
       );
     } finally {
       setLoading(false);
@@ -50,7 +49,7 @@ export const DeleteSpaceModal = () => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="destructive" size="icon">
+        <Button size="icon" variant="destructive">
           <TrashIcon className="size-4" />
         </Button>
       </AlertDialogTrigger>
@@ -66,7 +65,7 @@ export const DeleteSpaceModal = () => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel disabled={loading}>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={onDelete} disabled={loading}>
+          <AlertDialogAction disabled={loading} onClick={onDelete}>
             {loading && <PencilIcon className="mr-2 size-4 animate-spin" />}
             <span>Delete</span>
           </AlertDialogAction>

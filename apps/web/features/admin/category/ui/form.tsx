@@ -1,27 +1,27 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
+import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
+import { useParams, useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 
-import { routes } from "@/constants/routes";
-import { type BillboardColumn } from "@/features/admin/billboard/ui/columns";
-import { apiRoutes } from "@/features/admin/common/constants/routes";
-import { FormContainer } from "@/features/admin/common/ui/form/form-container";
-import { InputField } from "@/features/admin/common/ui/form/input-field";
-import { SelectField } from "@/features/admin/common/ui/form/select-field";
-import { toastError } from "@/lib/api-response/api-responses";
-import { type CategoryModel } from "@/lib/database/models/Category";
+import { routes } from '@/constants/routes';
+import type { BillboardColumn } from '@/features/admin/billboard/ui/columns';
+import { apiRoutes } from '@/features/admin/common/constants/routes';
+import { FormContainer } from '@/features/admin/common/ui/form/form-container';
+import { InputField } from '@/features/admin/common/ui/form/input-field';
+import { SelectField } from '@/features/admin/common/ui/form/select-field';
+import { toastError } from '@/lib/api-response/api-responses';
+import type { CategoryModel } from '@/lib/database/models/Category';
 
-import { CATEGORY_LABELS } from "../constants/category";
+import { CATEGORY_LABELS } from '../constants/category';
 import {
+  type CategoryFormData,
   categorySchema,
   defaultData,
-  type CategoryFormData,
-} from "../schemas/category";
+} from '../schemas/category';
 
 type Props = {
   initialData: CategoryModel | null;
@@ -58,9 +58,9 @@ export const CategoryForm = ({ initialData, billboards }: Props) => {
 
       router.refresh();
       router.push(resourceUrl);
-      toast(`Resource ${initialData ? "updated" : "created"}.`);
+      toast(`Resource ${initialData ? 'updated' : 'created'}.`);
     } catch (error) {
-      toastError(error, "An error occurred while creating the resource.");
+      toastError(error, 'An error occurred while creating the resource.');
     } finally {
       setLoading(false);
     }
@@ -70,20 +70,20 @@ export const CategoryForm = ({ initialData, billboards }: Props) => {
     <FormContainer
       form={form}
       initialData={initialData}
-      onSubmit={onSubmit}
       loading={loading}
+      onSubmit={onSubmit}
     >
       {/* Name */}
       <InputField
-        labels={formLabels.name}
         control={form.control}
+        labels={formLabels.name}
         loading={loading}
       />
 
       {/* Billboard */}
       <SelectField
-        labels={formLabels.billboardId}
         control={form.control}
+        labels={formLabels.billboardId}
         loading={loading}
         options={billboards.map((billboard) => ({
           label: billboard.label,

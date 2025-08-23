@@ -1,60 +1,60 @@
-import { type DocsConfig } from "types";
+import type { DocsConfig } from 'types';
 
 export const docsConfig: DocsConfig = {
   sidebarNav: [
     {
-      title: "Getting Started",
+      title: 'Getting Started',
       items: [
         {
-          title: "Introduction",
-          href: "/docs",
+          title: 'Introduction',
+          href: '/docs',
         },
       ],
     },
     {
-      title: "Documentation",
+      title: 'Documentation',
       items: [
         {
-          title: "Introduction",
-          href: "/docs/documentation",
+          title: 'Introduction',
+          href: '/docs/documentation',
         },
         {
-          title: "Style Guide",
-          href: "/docs/style-guide",
+          title: 'Style Guide',
+          href: '/docs/style-guide',
         },
         {
-          title: "Search",
-          href: "/docs/search",
-          disabled: true,
-        },
-      ],
-    },
-    {
-      title: "Blog",
-      items: [
-        {
-          title: "Introduction",
-          href: "/docs/blog",
+          title: 'Search',
+          href: '/docs/search',
           disabled: true,
         },
       ],
     },
     {
-      title: "Dashboard",
+      title: 'Blog',
       items: [
         {
-          title: "Introduction",
-          href: "/docs/dashboard",
+          title: 'Introduction',
+          href: '/docs/blog',
+          disabled: true,
+        },
+      ],
+    },
+    {
+      title: 'Dashboard',
+      items: [
+        {
+          title: 'Introduction',
+          href: '/docs/dashboard',
           disabled: true,
         },
         {
-          title: "Authentication",
-          href: "/docs/auth",
+          title: 'Authentication',
+          href: '/docs/auth',
           disabled: true,
         },
         {
-          title: "Database with MongoDB",
-          href: "/docs/database",
+          title: 'Database with MongoDB',
+          href: '/docs/database',
           disabled: true,
         },
       ],

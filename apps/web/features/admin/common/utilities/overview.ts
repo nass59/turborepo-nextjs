@@ -1,9 +1,9 @@
-import { countAllBillboardsBySpaceId } from "@/lib/database/billboard";
-import { countAllCategoriesBySpaceId } from "@/lib/database/category";
+import { countAllBillboardsBySpaceId } from '@/lib/database/billboard';
+import { countAllCategoriesBySpaceId } from '@/lib/database/category';
 import {
   countAllItemsByMonthBySpaceId,
   countAllItemsBySpaceId,
-} from "@/lib/database/items";
+} from '@/lib/database/items';
 
 export const getOverview = async (spaceId: string) => {
   const totalBillboards = await countAllBillboardsBySpaceId(spaceId);

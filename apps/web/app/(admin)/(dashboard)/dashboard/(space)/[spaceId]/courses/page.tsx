@@ -1,8 +1,8 @@
-import { Separator } from "@workspace/design-system/components/ui/separator";
+import { Separator } from '@workspace/design-system/components/ui/separator';
 
-import { ApiList } from "@/features/admin/common/ui/api-list";
-import { ListHeading } from "@/features/admin/common/ui/list-heading";
-import { COURSE_LABELS } from "@/features/admin/course/constants/course";
+import { ApiList } from '@/features/admin/common/ui/api-list';
+import { ListHeading } from '@/features/admin/common/ui/list-heading';
+import { COURSE_LABELS } from '@/features/admin/course/constants/course';
 
 type Props = {
   params: Promise<{
@@ -16,7 +16,7 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      <ListHeading labels={listLabels} value={0} path={`/${resource}/new`} />
+      <ListHeading labels={listLabels} path={`/${resource}/new`} value={0} />
       <Separator />
       <ApiList
         resource={resource}

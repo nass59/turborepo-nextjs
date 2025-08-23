@@ -1,6 +1,6 @@
-import { buttonVariants } from "@workspace/design-system/components/ui/button";
+import { buttonVariants } from '@workspace/design-system/components/ui/button';
 
-import { type ItemModel } from "@/lib/database/models/Item";
+import type { ItemModel } from '@/lib/database/models/Item';
 
 type Props = {
   data: ItemModel;
@@ -9,7 +9,7 @@ type Props = {
 export const Info = ({ data }: Props) => {
   return (
     <div className="space-y-3">
-      <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
+      <h1 className="font-bold text-3xl text-gray-900">{data.name}</h1>
       <div className="flex">
         <span className={buttonVariants()}>{data.category}</span>
       </div>

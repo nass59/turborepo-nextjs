@@ -1,6 +1,6 @@
-import { type LayoutProps } from "@/types/common";
+import type { LayoutProps } from '@/types/common';
 
-import "@/assets/styles/mdx.css";
+import '@/assets/styles/mdx.css';
 
 export default function Layout({ children }: LayoutProps) {
   return (

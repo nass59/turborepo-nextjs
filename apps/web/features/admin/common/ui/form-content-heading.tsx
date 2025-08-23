@@ -1,6 +1,6 @@
-import { Heading, HeadingAction } from "@/components/heading";
+import { Heading, HeadingAction } from '@/components/heading';
 
-import { DeleteContentModal } from "./delete-content-modal";
+import { DeleteContentModal } from './delete-content-modal';
 
 type EditableProps = {
   title: string;
@@ -21,8 +21,8 @@ export const FormContentHeading = ({ labels, isEdit = false }: Props) => {
 
   return (
     <Heading
-      title={contentLabels.title}
       description={contentLabels.description}
+      title={contentLabels.title}
     >
       {isEdit && (
         <HeadingAction>

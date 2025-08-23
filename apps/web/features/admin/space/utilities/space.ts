@@ -2,7 +2,7 @@ import {
   findAllSpacesByUserId,
   findFirstSpaceByUserId,
   findOneSpace,
-} from "@/lib/database/space";
+} from '@/lib/database/space';
 
 export const getCurrentSpace = async (userId: string) => {
   return await findFirstSpaceByUserId(userId);

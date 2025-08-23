@@ -1,8 +1,5 @@
-import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Check, ChevronsUpDown, MoreHorizontal } from "lucide-react";
-
-import { Button } from "@workspace/design-system/components/ui/button";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Button } from '@workspace/design-system/components/ui/button';
 import {
   Command,
   CommandEmpty,
@@ -10,12 +7,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@workspace/design-system/components/ui/command";
+} from '@workspace/design-system/components/ui/command';
 import {
   Drawer,
   DrawerContent,
   DrawerTrigger,
-} from "@workspace/design-system/components/ui/drawer";
+} from '@workspace/design-system/components/ui/drawer';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,24 +25,26 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@workspace/design-system/components/ui/dropdown-menu";
+} from '@workspace/design-system/components/ui/dropdown-menu';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@workspace/design-system/components/ui/popover";
-import { TooltipContent } from "@workspace/design-system/components/ui/tooltip";
-import { useIsMobile } from "@workspace/design-system/hooks/use-mobile";
-import { cn } from "@workspace/design-system/lib/utils";
+} from '@workspace/design-system/components/ui/popover';
+import { TooltipContent } from '@workspace/design-system/components/ui/tooltip';
+import { useIsMobile } from '@workspace/design-system/hooks/use-mobile';
+import { cn } from '@workspace/design-system/lib/utils';
+import { Check, ChevronsUpDown, MoreHorizontal } from 'lucide-react';
+import { useState } from 'react';
 
 /**
  * A popup that displays information related to an element when the element
  * receives keyboard focus or the mouse hovers over it.
  */
 const meta = {
-  title: "ui/Combobox",
+  title: 'ui/Combobox',
   component: TooltipContent,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof TooltipContent>;
 
 export default meta;
@@ -59,24 +58,24 @@ type Framework = {
 
 const frameworks: Framework[] = [
   {
-    value: "next.js",
-    label: "Next.js",
+    value: 'next.js',
+    label: 'Next.js',
   },
   {
-    value: "sveltekit",
-    label: "SvelteKit",
+    value: 'sveltekit',
+    label: 'SvelteKit',
   },
   {
-    value: "nuxt.js",
-    label: "Nuxt.js",
+    value: 'nuxt.js',
+    label: 'Nuxt.js',
   },
   {
-    value: "remix",
-    label: "Remix",
+    value: 'remix',
+    label: 'Remix',
   },
   {
-    value: "astro",
-    label: "Astro",
+    value: 'astro',
+    label: 'Astro',
   },
 ];
 
@@ -87,35 +86,35 @@ type Status = {
 
 const statuses: Status[] = [
   {
-    value: "backlog",
-    label: "Backlog",
+    value: 'backlog',
+    label: 'Backlog',
   },
   {
-    value: "todo",
-    label: "Todo",
+    value: 'todo',
+    label: 'Todo',
   },
   {
-    value: "in progress",
-    label: "In Progress",
+    value: 'in progress',
+    label: 'In Progress',
   },
   {
-    value: "done",
-    label: "Done",
+    value: 'done',
+    label: 'Done',
   },
   {
-    value: "canceled",
-    label: "Canceled",
+    value: 'canceled',
+    label: 'Canceled',
   },
 ];
 
 const labels = [
-  "feature",
-  "bug",
-  "enhancement",
-  "documentation",
-  "design",
-  "question",
-  "maintenance",
+  'feature',
+  'bug',
+  'enhancement',
+  'documentation',
+  'design',
+  'question',
+  'maintenance',
 ];
 
 /**
@@ -124,20 +123,20 @@ const labels = [
 export const Default: Story = {
   render: () => {
     const [open, setOpen] = useState<boolean>(false);
-    const [value, setValue] = useState<string>("");
+    const [value, setValue] = useState<string>('');
 
     return (
-      <Popover open={open} onOpenChange={setOpen}>
+      <Popover onOpenChange={setOpen} open={open}>
         <PopoverTrigger asChild>
           <Button
-            variant="outline"
-            role="combobox"
             aria-expanded={open}
             className="w-[200px] justify-between"
+            role="combobox"
+            variant="outline"
           >
             {value
               ? frameworks.find((framework) => framework.value === value)?.label
-              : "Select framework..."}
+              : 'Select framework...'}
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
@@ -150,16 +149,16 @@ export const Default: Story = {
                 {frameworks.map((framework) => (
                   <CommandItem
                     key={framework.value}
-                    value={framework.value}
                     onSelect={(currentValue) => {
-                      setValue(currentValue === value ? "" : currentValue);
+                      setValue(currentValue === value ? '' : currentValue);
                       setOpen(false);
                     }}
+                    value={framework.value}
                   >
                     <Check
                       className={cn(
-                        "mr-2 h-4 w-4",
-                        value === framework.value ? "opacity-100" : "opacity-0"
+                        'mr-2 h-4 w-4',
+                        value === framework.value ? 'opacity-100' : 'opacity-0'
                       )}
                     />
                     {framework.label}
@@ -185,13 +184,13 @@ export const WithPopover: Story = {
     return (
       <div className="flex items-center space-x-4">
         <p className="text-muted-foreground text-sm">Status</p>
-        <Popover open={open} onOpenChange={setOpen}>
+        <Popover onOpenChange={setOpen} open={open}>
           <PopoverTrigger asChild>
-            <Button variant="outline" className="w-[150px] justify-start">
-              {selectedStatus ? <>{selectedStatus.label}</> : <>+ Set status</>}
+            <Button className="w-[150px] justify-start" variant="outline">
+              {selectedStatus ? selectedStatus.label : '+ Set status'}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="p-0" side="right" align="start">
+          <PopoverContent align="start" className="p-0" side="right">
             <Command>
               <CommandInput placeholder="Change status..." />
               <CommandList>
@@ -200,7 +199,6 @@ export const WithPopover: Story = {
                   {statuses.map((status) => (
                     <CommandItem
                       key={status.value}
-                      value={status.value}
                       onSelect={(value) => {
                         setSelectedStatus(
                           statuses.find(
@@ -209,6 +207,7 @@ export const WithPopover: Story = {
                         );
                         setOpen(false);
                       }}
+                      value={status.value}
                     >
                       {status.label}
                     </CommandItem>
@@ -228,20 +227,20 @@ export const WithPopover: Story = {
  */
 export const WithDropdownMenu: Story = {
   render: () => {
-    const [label, setLabel] = useState("feature");
+    const [label, setLabel] = useState('feature');
     const [open, setOpen] = useState(false);
 
     return (
       <div className="flex w-full flex-col items-start justify-between rounded-md border px-4 py-3 sm:flex-row sm:items-center">
-        <p className="text-sm leading-none font-medium">
-          <span className="bg-primary text-primary-foreground mr-2 rounded-lg px-2 py-1 text-xs">
+        <p className="font-medium text-sm leading-none">
+          <span className="mr-2 rounded-lg bg-primary px-2 py-1 text-primary-foreground text-xs">
             {label}
           </span>
           <span className="text-muted-foreground">Create a new project</span>
         </p>
-        <DropdownMenu open={open} onOpenChange={setOpen}>
+        <DropdownMenu onOpenChange={setOpen} open={open}>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="sm">
+            <Button size="sm" variant="ghost">
               <MoreHorizontal />
             </Button>
           </DropdownMenuTrigger>
@@ -256,9 +255,9 @@ export const WithDropdownMenu: Story = {
                 <DropdownMenuSubContent className="p-0">
                   <Command>
                     <CommandInput
-                      placeholder="Filter label..."
                       autoFocus={true}
                       className="h-9"
+                      placeholder="Filter label..."
                     />
                     <CommandList>
                       <CommandEmpty>No label found.</CommandEmpty>
@@ -266,11 +265,11 @@ export const WithDropdownMenu: Story = {
                         {labels.map((labelItem) => (
                           <CommandItem
                             key={labelItem}
-                            value={labelItem}
                             onSelect={(value) => {
                               setLabel(value);
                               setOpen(false);
                             }}
+                            value={labelItem}
                           >
                             {labelItem}
                           </CommandItem>
@@ -308,13 +307,13 @@ const StatusList = ({ setOpen, setSelectedStatus }: StatusListProps) => {
           {statuses.map((status) => (
             <CommandItem
               key={status.value}
-              value={status.value}
               onSelect={(value) => {
                 setSelectedStatus(
                   statuses.find((priority) => priority.value === value) || null
                 );
                 setOpen(false);
               }}
+              value={status.value}
             >
               {status.label}
             </CommandItem>
@@ -336,13 +335,13 @@ export const Responsive: Story = {
 
     if (!isMobile) {
       return (
-        <Popover open={open} onOpenChange={setOpen}>
+        <Popover onOpenChange={setOpen} open={open}>
           <PopoverTrigger asChild>
-            <Button variant="outline" className="w-[150px] justify-start">
-              {selectedStatus ? <>{selectedStatus.label}</> : <>+ Set status</>}
+            <Button className="w-[150px] justify-start" variant="outline">
+              {selectedStatus ? selectedStatus.label : '+ Set status'}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-[200px] p-0" align="start">
+          <PopoverContent align="start" className="w-[200px] p-0">
             <StatusList
               setOpen={setOpen}
               setSelectedStatus={setSelectedStatus}
@@ -353,10 +352,10 @@ export const Responsive: Story = {
     }
 
     return (
-      <Drawer open={open} onOpenChange={setOpen}>
+      <Drawer onOpenChange={setOpen} open={open}>
         <DrawerTrigger asChild>
-          <Button variant="outline" className="w-[150px] justify-start">
-            {selectedStatus ? <>{selectedStatus.label}</> : <>+ Set status</>}
+          <Button className="w-[150px] justify-start" variant="outline">
+            {selectedStatus ? selectedStatus.label : '+ Set status'}
           </Button>
         </DrawerTrigger>
         <DrawerContent>

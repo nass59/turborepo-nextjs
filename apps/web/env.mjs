@@ -1,5 +1,5 @@
-import { createEnv } from "@t3-oss/env-nextjs"
-import { z } from "zod"
+import { createEnv } from '@t3-oss/env-nextjs';
+import { z } from 'zod';
 
 export const env = createEnv({
   server: {
@@ -39,4 +39,4 @@ export const env = createEnv({
     PREVIEW_URL_SECRET: process.env.PREVIEW_URL_SECRET,
     SPACE_ID: process.env.SPACE_ID,
   },
-})
+});

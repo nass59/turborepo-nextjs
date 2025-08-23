@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import {
   Pagination,
@@ -8,17 +8,17 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@workspace/design-system/components/ui/pagination";
+} from '@workspace/design-system/components/ui/pagination';
 
 /**
  * Pagination with page navigation, next and previous links.
  */
 const meta = {
-  title: "ui/Pagination",
+  title: 'ui/Pagination',
   component: Pagination,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   render: (args) => (
     <Pagination {...args}>

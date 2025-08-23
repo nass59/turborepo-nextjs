@@ -1,7 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { BellRing } from "lucide-react";
-
-import { Button } from "@workspace/design-system/components/ui/button";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Button } from '@workspace/design-system/components/ui/button';
 import {
   Card,
   CardContent,
@@ -9,23 +7,24 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@workspace/design-system/components/ui/card";
+} from '@workspace/design-system/components/ui/card';
+import { BellRing } from 'lucide-react';
 
 const notifications = [
   {
     id: 1,
-    title: "Your call has been confirmed.",
-    description: "1 hour ago",
+    title: 'Your call has been confirmed.',
+    description: '1 hour ago',
   },
   {
     id: 2,
-    title: "You have a new message!",
-    description: "1 hour ago",
+    title: 'You have a new message!',
+    description: '1 hour ago',
   },
   {
     id: 3,
-    title: "Your subscription is expiring soon!",
-    description: "2 hours ago",
+    title: 'Your subscription is expiring soon!',
+    description: '2 hours ago',
   },
 ];
 
@@ -33,14 +32,14 @@ const notifications = [
  * Displays a card with header, content, and footer.
  */
 const meta = {
-  title: "ui/Card",
+  title: 'ui/Card',
   component: Card,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   args: {
-    className: "w-96",
+    className: 'w-96',
   },
   render: (args) => (
     <Card {...args}>
@@ -50,7 +49,7 @@ const meta = {
       </CardHeader>
       <CardContent className="grid gap-4">
         {notifications.map((notification) => (
-          <div key={notification.id} className="flex items-center gap-4">
+          <div className="flex items-center gap-4" key={notification.id}>
             <BellRing className="size-5" />
             <div>
               <p>{notification.title}</p>

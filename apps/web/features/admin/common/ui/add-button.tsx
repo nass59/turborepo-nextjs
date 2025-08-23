@@ -1,11 +1,10 @@
-"use client";
+'use client';
 
-import { useParams, useRouter } from "next/navigation";
-import { PlusIcon } from "lucide-react";
+import { Button } from '@workspace/design-system/components/ui/button';
+import { PlusIcon } from 'lucide-react';
+import { useParams, useRouter } from 'next/navigation';
 
-import { Button } from "@workspace/design-system/components/ui/button";
-
-import { routes } from "@/constants/routes";
+import { routes } from '@/constants/routes';
 
 type Props = {
   labels: {

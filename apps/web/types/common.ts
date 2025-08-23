@@ -1,4 +1,4 @@
-import { type Metadata } from "next";
+import type { Metadata } from 'next';
 
 export type LayoutProps = {
   children: React.ReactNode;

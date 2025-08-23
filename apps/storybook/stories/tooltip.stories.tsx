@@ -1,38 +1,37 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Plus } from "lucide-react";
-
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@workspace/design-system/components/ui/tooltip";
+} from '@workspace/design-system/components/ui/tooltip';
+import { Plus } from 'lucide-react';
 
 /**
  * A popup that displays information related to an element when the element
  * receives keyboard focus or the mouse hovers over it.
  */
 const meta = {
-  title: "ui/Tooltip",
+  title: 'ui/Tooltip',
   component: TooltipContent,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   argTypes: {
     side: {
-      options: ["top", "bottom", "left", "right"],
+      options: ['top', 'bottom', 'left', 'right'],
       control: {
-        type: "radio",
+        type: 'radio',
       },
     },
     children: {
-      control: "text",
+      control: 'text',
     },
   },
   args: {
-    side: "top",
-    children: "Add to library",
+    side: 'top',
+    children: 'Add to library',
   },
   render: (args) => (
     <TooltipProvider>
@@ -61,7 +60,7 @@ export const Default: Story = {};
  */
 export const Bottom: Story = {
   args: {
-    side: "bottom",
+    side: 'bottom',
   },
 };
 
@@ -70,7 +69,7 @@ export const Bottom: Story = {
  */
 export const Left: Story = {
   args: {
-    side: "left",
+    side: 'left',
   },
 };
 
@@ -79,6 +78,6 @@ export const Left: Story = {
  */
 export const Right: Story = {
   args: {
-    side: "right",
+    side: 'right',
   },
 };
