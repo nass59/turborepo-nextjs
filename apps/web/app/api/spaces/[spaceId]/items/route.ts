@@ -5,9 +5,9 @@ import { createItem, findAllItemsBySpaceId } from "@/lib/database/items";
 import { findOneSpace } from "@/lib/database/space";
 
 interface PostProps {
-  params: {
+  params: Promise<{
     spaceId: string;
-  };
+  }>;
 }
 
 interface JsonResponse {
@@ -18,6 +18,7 @@ interface JsonResponse {
   isArchived: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const removeUndefinedValuesFromObject = <T>(obj: any): T => {
   Object.keys(obj).forEach((key) => obj[key] === undefined && delete obj[key]);
   return obj;
@@ -25,7 +26,8 @@ const removeUndefinedValuesFromObject = <T>(obj: any): T => {
 
 export async function POST(req: Request, { params }: PostProps) {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
+    const { spaceId } = await params;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -46,11 +48,11 @@ export async function POST(req: Request, { params }: PostProps) {
       return new NextResponse("Category Id URL is required", { status: 400 });
     }
 
-    if (!params.spaceId) {
+    if (!spaceId) {
       return new NextResponse("Space ID is required", { status: 400 });
     }
 
-    const spaceByUserId = await findOneSpace(params.spaceId, userId);
+    const spaceByUserId = await findOneSpace(spaceId, userId);
 
     if (!spaceByUserId) {
       return new NextResponse("Unauthorized", { status: 403 });
@@ -62,7 +64,7 @@ export async function POST(req: Request, { params }: PostProps) {
       isFeatured,
       isArchived,
       images,
-      spaceId: params.spaceId,
+      spaceId,
     });
 
     return NextResponse.json(item);
@@ -74,17 +76,18 @@ export async function POST(req: Request, { params }: PostProps) {
 
 export async function GET(req: Request, { params }: PostProps) {
   try {
+    const { spaceId } = await params;
     const { searchParams } = new URL(req.url);
     const categoryId = searchParams.get("categoryId") || undefined;
     const isFeatured = searchParams.get("isFeatured");
 
-    if (!params.spaceId) {
+    if (!spaceId) {
       return new NextResponse("Space ID is required", { status: 400 });
     }
 
     const items = await findAllItemsBySpaceId(
       removeUndefinedValuesFromObject({
-        spaceId: params.spaceId,
+        spaceId,
         categoryId,
         isFeatured: isFeatured ? true : undefined,
         isArchived: false,

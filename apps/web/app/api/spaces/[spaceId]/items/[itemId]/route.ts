@@ -9,19 +9,19 @@ import {
 import { findOneSpace } from "@/lib/database/space";
 
 type ApiProps = {
-  params: {
+  params: Promise<{
     spaceId: string;
     itemId: string;
-  };
+  }>;
 };
 
 type PatchProps = ApiProps;
 type DeleteProps = ApiProps;
 
 type GetProps = {
-  params: {
+  params: Promise<{
     itemId: string;
-  };
+  }>;
 };
 
 interface JsonResponse {
@@ -33,12 +33,14 @@ interface JsonResponse {
 }
 
 export async function GET(req: Request, { params }: GetProps) {
+  const { itemId } = await params;
+
   try {
-    if (!params.itemId) {
+    if (!itemId) {
       return new NextResponse("Item Id is required", { status: 400 });
     }
 
-    const item = await findOneItem(params.itemId);
+    const item = await findOneItem(itemId);
 
     return NextResponse.json(item);
   } catch (error) {
@@ -49,7 +51,7 @@ export async function GET(req: Request, { params }: GetProps) {
 
 export async function PATCH(req: Request, { params }: PatchProps) {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -70,13 +72,14 @@ export async function PATCH(req: Request, { params }: PatchProps) {
       return new NextResponse("Category Id URL is required", { status: 400 });
     }
 
-    const spaceByUserId = await findOneSpace(params.spaceId, userId);
+    const { spaceId, itemId } = await params;
+    const spaceByUserId = await findOneSpace(spaceId, userId);
 
     if (!spaceByUserId) {
       return new NextResponse("Unauthorized", { status: 403 });
     }
 
-    const item = await updateOneItem(params.itemId, {
+    const item = await updateOneItem(itemId, {
       name,
       categoryId,
       images,
@@ -93,23 +96,24 @@ export async function PATCH(req: Request, { params }: PatchProps) {
 
 export async function DELETE(req: Request, { params }: DeleteProps) {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
+    const { spaceId, itemId } = await params;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    if (!params.itemId) {
+    if (!itemId) {
       return new NextResponse("Item Id is required", { status: 400 });
     }
 
-    const spaceByUserId = await findOneSpace(params.spaceId, userId);
+    const spaceByUserId = await findOneSpace(spaceId, userId);
 
     if (!spaceByUserId) {
       return new NextResponse("Unauthorized", { status: 403 });
     }
 
-    const item = await deleteOneItem(params.itemId);
+    const item = await deleteOneItem(itemId);
 
     return NextResponse.json(item);
   } catch (error) {

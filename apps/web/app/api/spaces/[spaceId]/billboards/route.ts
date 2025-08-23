@@ -8,9 +8,9 @@ import {
 import { findOneSpace } from "@/lib/database/space";
 
 type PostProps = {
-  params: {
+  params: Promise<{
     spaceId: string;
-  };
+  }>;
 };
 
 interface JsonResponse {
@@ -20,7 +20,8 @@ interface JsonResponse {
 
 export async function POST(req: Request, { params }: PostProps) {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
+    const { spaceId } = await params;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -37,11 +38,11 @@ export async function POST(req: Request, { params }: PostProps) {
       return new NextResponse("Image URL is required", { status: 400 });
     }
 
-    if (!params.spaceId) {
+    if (!spaceId) {
       return new NextResponse("Space ID is required", { status: 400 });
     }
 
-    const spaceByUserId = await findOneSpace(params.spaceId, userId);
+    const spaceByUserId = await findOneSpace(spaceId, userId);
 
     if (!spaceByUserId) {
       return new NextResponse("Unauthorized", { status: 403 });
@@ -50,7 +51,7 @@ export async function POST(req: Request, { params }: PostProps) {
     const billboard = await createBillboard({
       label,
       imageUrl,
-      spaceId: params.spaceId,
+      spaceId,
     });
 
     return NextResponse.json(billboard);
@@ -62,11 +63,13 @@ export async function POST(req: Request, { params }: PostProps) {
 
 export async function GET(req: Request, { params }: PostProps) {
   try {
-    if (!params.spaceId) {
+    const { spaceId } = await params;
+
+    if (!spaceId) {
       return new NextResponse("Space ID is required", { status: 400 });
     }
 
-    const billboards = await findAllBillboardsBySpaceId(params.spaceId);
+    const billboards = await findAllBillboardsBySpaceId(spaceId);
 
     return NextResponse.json(billboards);
   } catch (error) {

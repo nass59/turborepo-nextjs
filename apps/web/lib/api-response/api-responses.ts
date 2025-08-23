@@ -38,9 +38,7 @@ export const toastError = (error: unknown, defaultMessage: string) => {
   const axiosError = error as AxiosError<ErrorResponse>;
   const errorMessage = axiosError.response?.data?.message || defaultMessage;
 
-  toast({
-    title: "Something went wrong.",
-    variant: "destructive",
+  toast("Something went wrong.", {
     description: errorMessage,
   });
 };

@@ -7,13 +7,14 @@ import { Chart } from "@/features/admin/home/ui/chart";
 import { parseData } from "@/lib/utils";
 
 type Props = {
-  params: {
+  params: Promise<{
     spaceId: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
-  const overview = await getOverview(params.spaceId);
+  const { spaceId } = await params;
+  const overview = await getOverview(spaceId);
 
   return (
     <>

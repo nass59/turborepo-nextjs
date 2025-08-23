@@ -8,9 +8,9 @@ import {
 } from "@/lib/database/space";
 
 interface ApiProps {
-  params: {
+  params: Promise<{
     spaceId: string;
-  };
+  }>;
 }
 
 interface JsonResponse {
@@ -19,7 +19,8 @@ interface JsonResponse {
 
 export async function PATCH(req: Request, { params }: ApiProps) {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
+    const { spaceId } = await params;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -32,11 +33,11 @@ export async function PATCH(req: Request, { params }: ApiProps) {
       return new NextResponse("Name is required", { status: 400 });
     }
 
-    if (!params.spaceId) {
+    if (!spaceId) {
       return new NextResponse("Space Id is required", { status: 400 });
     }
 
-    const space = await updateOneSpace(params.spaceId, userId, { name });
+    const space = await updateOneSpace(spaceId, userId, { name });
 
     return NextResponse.json(space);
   } catch (error) {
@@ -47,17 +48,18 @@ export async function PATCH(req: Request, { params }: ApiProps) {
 
 export async function DELETE(req: Request, { params }: ApiProps) {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
+    const { spaceId } = await params;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    if (!params.spaceId) {
+    if (!spaceId) {
       return new NextResponse("Space Id is required", { status: 400 });
     }
 
-    const space = await deleteOneSpace(params.spaceId, userId);
+    const space = await deleteOneSpace(spaceId, userId);
 
     return NextResponse.json(space);
   } catch (error) {
@@ -68,11 +70,13 @@ export async function DELETE(req: Request, { params }: ApiProps) {
 
 export async function GET(req: Request, { params }: ApiProps) {
   try {
-    if (!params.spaceId) {
+    const { spaceId } = await params;
+
+    if (!spaceId) {
       return new NextResponse("Space Id is required", { status: 400 });
     }
 
-    const space = await findFirstBySpaceId(params.spaceId);
+    const space = await findFirstBySpaceId(spaceId);
 
     return NextResponse.json(space);
   } catch (error) {

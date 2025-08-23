@@ -6,15 +6,17 @@ import { FormContentHeading } from "@/features/admin/common/ui/form-content-head
 import { parseData } from "@/lib/utils";
 
 type Props = {
-  params: {
+  params: Promise<{
     spaceId: string;
     categoryId: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
-  const category = await getCategory(params.categoryId);
-  const billboards = await getAllBillboards(params.spaceId);
+  const { spaceId, categoryId } = await params;
+
+  const category = await getCategory(categoryId);
+  const billboards = await getAllBillboards(spaceId);
 
   return (
     <>

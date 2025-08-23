@@ -10,19 +10,19 @@ import { countAllCategoriesBySpaceIdAndBillboardId } from "@/lib/database/catego
 import { findOneSpace } from "@/lib/database/space";
 
 type ApiProps = {
-  params: {
+  params: Promise<{
     spaceId: string;
     billboardId: string;
-  };
+  }>;
 };
 
 type PatchProps = ApiProps;
 type DeleteProps = ApiProps;
 
 type GetProps = {
-  params: {
+  params: Promise<{
     billboardId: string;
-  };
+  }>;
 };
 
 interface JsonResponse {
@@ -32,11 +32,13 @@ interface JsonResponse {
 
 export async function GET(req: Request, { params }: GetProps) {
   try {
-    if (!params.billboardId) {
+    const { billboardId } = await params;
+
+    if (!billboardId) {
       return new NextResponse("Billboard Id is required", { status: 400 });
     }
 
-    const billboard = await findOneBillboard(params.billboardId);
+    const billboard = await findOneBillboard(billboardId);
 
     return NextResponse.json(billboard);
   } catch (error) {
@@ -47,7 +49,8 @@ export async function GET(req: Request, { params }: GetProps) {
 
 export async function PATCH(req: Request, { params }: PatchProps) {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
+    const { spaceId, billboardId } = await params;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -64,17 +67,17 @@ export async function PATCH(req: Request, { params }: PatchProps) {
       return new NextResponse("Image URL is required", { status: 400 });
     }
 
-    if (!params.billboardId) {
+    if (!billboardId) {
       return new NextResponse("Billboard Id is required", { status: 400 });
     }
 
-    const spaceByUserId = await findOneSpace(params.spaceId, userId);
+    const spaceByUserId = await findOneSpace(spaceId, userId);
 
     if (!spaceByUserId) {
       return new NextResponse("Unauthorized", { status: 403 });
     }
 
-    const billboard = await updateOneBillboard(params.billboardId, {
+    const billboard = await updateOneBillboard(billboardId, {
       label,
       imageUrl,
     });
@@ -88,27 +91,25 @@ export async function PATCH(req: Request, { params }: PatchProps) {
 
 export async function DELETE(req: Request, { params }: DeleteProps) {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
+    const { spaceId, billboardId } = await params;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    if (!params.billboardId) {
+    if (!billboardId) {
       return new NextResponse("Billboard Id is required", { status: 400 });
     }
 
-    const spaceByUserId = await findOneSpace(params.spaceId, userId);
+    const spaceByUserId = await findOneSpace(spaceId, userId);
 
     if (!spaceByUserId) {
       return new NextResponse("Unauthorized", { status: 403 });
     }
 
     const categoriesWithBillboard =
-      await countAllCategoriesBySpaceIdAndBillboardId(
-        params.spaceId,
-        params.billboardId
-      );
+      await countAllCategoriesBySpaceIdAndBillboardId(spaceId, billboardId);
 
     if (categoriesWithBillboard > 0) {
       return new NextResponse(
@@ -117,7 +118,7 @@ export async function DELETE(req: Request, { params }: DeleteProps) {
       );
     }
 
-    const billboard = await deleteOneBillboard(params.billboardId);
+    const billboard = await deleteOneBillboard(billboardId);
 
     return NextResponse.json(billboard);
   } catch (error) {

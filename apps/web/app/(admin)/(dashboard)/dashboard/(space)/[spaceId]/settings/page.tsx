@@ -14,14 +14,15 @@ import { getSpace } from "@/features/admin/space/utilities/space";
 import { parseData } from "@/lib/utils";
 
 type Props = {
-  params: {
+  params: Promise<{
     spaceId: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
-  const userId = getCurrentUserId();
-  const space = await getSpace(params.spaceId, userId);
+  const userId = await getCurrentUserId();
+  const { spaceId } = await params;
+  const space = await getSpace(spaceId, userId);
 
   if (!space) {
     redirect(routes.dashboard);
@@ -43,7 +44,7 @@ export default async function Page({ params }: Props) {
 
       <Api
         title="API - Space"
-        path={`${apiRoutes.spaces}/${params.spaceId}`}
+        path={`${apiRoutes.spaces}/${spaceId}`}
         variant="public"
       />
     </>

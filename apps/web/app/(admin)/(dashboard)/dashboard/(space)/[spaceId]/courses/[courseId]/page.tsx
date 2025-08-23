@@ -5,13 +5,13 @@ import { CourseForm } from "@/features/admin/course/ui/form";
 import { parseData } from "@/lib/utils";
 
 type Props = {
-  params: {
+  params: Promise<{
     courseId: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
-  const course = await findOneCourse(params.courseId);
+  const course = await findOneCourse((await params).courseId);
 
   return (
     <>

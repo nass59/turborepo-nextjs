@@ -6,6 +6,7 @@
     "dev": "turbo run dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx}\"",
+    "typecheck": "turbo run typecheck",
     "check-dependencies": "sherif",
     "bump-deps": "npx npm-check-updates --deep -u -x geist && pnpm install",
     "bump-ui": "pnpm dlx shadcn@canary add --all --overwrite -c packages/design-system",

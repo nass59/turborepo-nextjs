@@ -56,7 +56,7 @@ export const CourseForm = ({ initialData }: Props) => {
 
       router.refresh();
       router.push(resourceUrl);
-      toast({ title: `Resource ${initialData ? "updated" : "created"}.` });
+      toast(`Resource ${initialData ? "updated" : "created"}.`);
     } catch (error) {
       toastError(error, "An error occurred while creating the resource.");
     } finally {

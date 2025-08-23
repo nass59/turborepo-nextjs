@@ -9,16 +9,16 @@ import { getSpace } from "@/features/admin/space/utilities/space";
 import { type LayoutProps } from "@/types/common";
 
 type SpaceLayoutProps = LayoutProps & {
-  params: {
+  params: Promise<{
     spaceId: string;
-  };
+  }>;
 };
 
 export const revalidate = 0;
 
 export default async function Layout({ children, params }: SpaceLayoutProps) {
-  const userId = getCurrentUserId();
-  const space = await getSpace(params.spaceId, userId);
+  const userId = await getCurrentUserId();
+  const space = await getSpace((await params).spaceId, userId);
 
   if (!space) {
     redirect(routes.dashboard);

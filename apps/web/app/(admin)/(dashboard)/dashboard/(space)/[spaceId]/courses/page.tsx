@@ -5,13 +5,15 @@ import { ListHeading } from "@/features/admin/common/ui/list-heading";
 import { COURSE_LABELS } from "@/features/admin/course/constants/course";
 
 type Props = {
-  params: {
+  params: Promise<{
     spaceId: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
+  const { spaceId } = await params;
   const { list: listLabels, api: apiLabels, resource } = COURSE_LABELS;
+
   return (
     <>
       <ListHeading labels={listLabels} value={0} path={`/${resource}/new`} />
@@ -19,7 +21,7 @@ export default async function Page({ params }: Props) {
       <ApiList
         resource={resource}
         resourceId={apiLabels.resourceId}
-        spaceId={params.spaceId}
+        spaceId={spaceId}
       />
     </>
   );

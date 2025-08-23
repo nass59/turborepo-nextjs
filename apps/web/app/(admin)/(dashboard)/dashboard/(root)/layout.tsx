@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { routes } from "@/constants/routes";
 import { getCurrentUserId } from "@/features/admin/common/utilities/user";
 import { getCurrentSpace } from "@/features/admin/space/utilities/space";
-import { type LayoutProps } from "@/types/common";
+import type { LayoutProps } from "@/types/common";
 
 /**
  * DashboardLayout is a layout component for the dashboard.
@@ -14,7 +14,7 @@ import { type LayoutProps } from "@/types/common";
  */
 export default async function Layout({ children }: LayoutProps) {
   // Get the current user's ID
-  const userId = getCurrentUserId();
+  const userId = await getCurrentUserId();
 
   // Find the first space that belongs to the user
   const space = await getCurrentSpace(userId);

@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { toc } from "mdast-util-toc";
-import { type Nodes } from "mdast-util-toc/lib";
 import { remark } from "remark";
 import { visit } from "unist-util-visit";
 
@@ -66,7 +66,7 @@ const getItems = (node: any, current: Item | any): Items => {
   return {};
 };
 
-const getToc = () => (node: Nodes, file: any) => {
+const getToc = () => (node: any, file: any) => {
   const table = toc(node);
   file.data = getItems(table.map, {});
 };

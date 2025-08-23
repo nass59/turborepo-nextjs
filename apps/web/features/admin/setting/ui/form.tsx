@@ -38,7 +38,7 @@ export const SettingsForm = ({ initialData }: Props) => {
       setLoading(true);
       await axios.patch(`${apiRoutes.spaces}/${params.spaceId}`, data);
       router.refresh();
-      toast({ title: SPACE_LABELS.edit.toastMessage });
+      toast(SPACE_LABELS.edit.toastMessage);
     } catch (error) {
       toastError(error, SPACE_LABELS.edit.error);
     } finally {

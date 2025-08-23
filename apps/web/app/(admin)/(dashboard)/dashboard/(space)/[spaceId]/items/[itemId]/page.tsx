@@ -6,15 +6,17 @@ import { getItem } from "@/features/admin/item/utilities/item";
 import { parseData } from "@/lib/utils";
 
 type Props = {
-  params: {
+  params: Promise<{
     spaceId: string;
     itemId: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
-  const item = await getItem(params.itemId);
-  const categories = await getAllCategories(params.spaceId);
+  const { spaceId, itemId } = await params;
+
+  const item = await getItem(itemId);
+  const categories = await getAllCategories(spaceId);
 
   return (
     <>

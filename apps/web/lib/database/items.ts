@@ -97,7 +97,7 @@ export async function findOneItemWithCategory(
     {
       $match: {
         _id: new Types.ObjectId(itemId),
-        spaceId: spaceId,
+        spaceId,
         ...query,
       },
     },
@@ -204,7 +204,7 @@ export async function countAllItemsByMonthBySpaceId(
   const result = await aggregate<ItemsByMonth[]>(Item, [
     {
       $match: {
-        spaceId: spaceId,
+        spaceId,
       },
     },
     ...itemsByMonth,

@@ -15,8 +15,8 @@ import {
   type StaticParams,
 } from "@/types/common";
 
-export function generateMetadata({ params }: PageProps): PageMetadata {
-  return getItemPageMetadata(params.slug) || {};
+export async function generateMetadata({ params }: PageProps): PageMetadata {
+  return getItemPageMetadata((await params).slug) || {};
 }
 
 export async function generateStaticParams(): Promise<StaticParams> {
@@ -24,7 +24,7 @@ export async function generateStaticParams(): Promise<StaticParams> {
 }
 
 export default async function Page({ params }: PageProps) {
-  const item = await getItem(params.slug);
+  const item = await getItem((await params).slug);
 
   if (!item) {
     notFound();

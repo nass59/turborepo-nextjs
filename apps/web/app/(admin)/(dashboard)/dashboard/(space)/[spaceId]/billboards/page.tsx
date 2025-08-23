@@ -1,21 +1,22 @@
+import { DataTable } from "@workspace/design-system/components/ui/data-table";
 import { Separator } from "@workspace/design-system/components/ui/separator";
 
 import { BILLBOARD_LABELS } from "@/features/admin/billboard/constants/billboard";
-// import { columnsData } from "@/features/admin/billboard/ui/columns";
+import { columnsData } from "@/features/admin/billboard/ui/columns";
 import { getAllBillboards } from "@/features/admin/billboard/utilities/billboard";
 import { ApiList } from "@/features/admin/common/ui/api-list";
 import { ListHeading } from "@/features/admin/common/ui/list-heading";
-
-// import { parseData } from "@/lib/utils";
+import { parseData } from "@/lib/utils";
 
 type Props = {
-  params: {
+  params: Promise<{
     spaceId: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
-  const billboards = await getAllBillboards(params.spaceId);
+  const { spaceId } = await params;
+  const billboards = await getAllBillboards(spaceId);
   const { list: listLabels, api: apiLabels, resource } = BILLBOARD_LABELS;
 
   return (
@@ -26,18 +27,14 @@ export default async function Page({ params }: Props) {
         path={`/${resource}/new`}
       />
 
-      {/* <DataTable
-        columns={columnsData}
-        data={parseData(billboards)}
-        searchKey="label"
-      /> */}
+      <DataTable columns={columnsData} data={parseData(billboards)} />
 
       <Separator />
 
       <ApiList
         resource={resource}
         resourceId={apiLabels.resourceId}
-        spaceId={params.spaceId}
+        spaceId={spaceId}
       />
     </>
   );

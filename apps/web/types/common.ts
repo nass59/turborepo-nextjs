@@ -5,19 +5,19 @@ export type LayoutProps = {
 };
 
 export type PageProps<T = string> = {
-  params: {
+  params: Promise<{
     slug: T;
-  };
+  }>;
 };
 
 export type ArrayPageProps<T = string> = {
-  params: {
+  params: Promise<{
     slug: T[];
-  };
+  }>;
 };
 
 export type StaticParams<T = string> = Array<{ slug: T }>;
 
 export type StaticArrayParams<T = string[]> = Array<{ slug: T }>;
 
-export type PageMetadata = Promise<Metadata> | object;
+export type PageMetadata = Promise<Metadata | null | object>;

@@ -11,7 +11,7 @@ export const Info = ({ data }: Props) => {
     <div className="space-y-3">
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
       <div className="flex">
-        <span className={buttonVariants({ size: "xs" })}>{data.category}</span>
+        <span className={buttonVariants()}>{data.category}</span>
       </div>
       <hr />
       <div className="flex flex-col gap-4">

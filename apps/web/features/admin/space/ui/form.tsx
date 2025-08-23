@@ -54,7 +54,7 @@ export const SpaceForm = () => {
           loading={loading}
         />
 
-        <div side="right">
+        <div>
           <Button
             disabled={loading}
             variant="outline"

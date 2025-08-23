@@ -9,7 +9,7 @@ import { getCurrentUserId } from "../utilities/user";
 import { MainNav } from "./main-nav";
 
 export const Sidebar = async () => {
-  const userId = getCurrentUserId();
+  const userId = await getCurrentUserId();
   const spaces = await getAllSpaces(userId);
 
   return (

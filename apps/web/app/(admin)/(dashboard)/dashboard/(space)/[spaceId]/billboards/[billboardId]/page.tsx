@@ -5,13 +5,13 @@ import { FormContentHeading } from "@/features/admin/common/ui/form-content-head
 import { parseData } from "@/lib/utils";
 
 type Props = {
-  params: {
+  params: Promise<{
     billboardId: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
-  const billboard = await getBillboard(params.billboardId);
+  const billboard = await getBillboard((await params).billboardId);
 
   return (
     <>

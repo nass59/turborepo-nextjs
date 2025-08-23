@@ -27,7 +27,7 @@ export const Authors = ({ authors }: Props) => {
             href={`https://twitter.com/${author.twitter}`}
             className="flex items-center space-x-2 text-sm"
           >
-            <Avatar size="md">
+            <Avatar>
               <AvatarImage src={author.avatar} alt={author.name} />
             </Avatar>
 

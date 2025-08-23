@@ -10,19 +10,19 @@ import { countAllItems } from "@/lib/database/items";
 import { findOneSpace } from "@/lib/database/space";
 
 type ApiProps = {
-  params: {
+  params: Promise<{
     spaceId: string;
     categoryId: string;
-  };
+  }>;
 };
 
 type PatchProps = ApiProps;
 type DeleteProps = ApiProps;
 
 type GetProps = {
-  params: {
+  params: Promise<{
     categoryId: string;
-  };
+  }>;
 };
 
 interface JsonResponse {
@@ -31,12 +31,14 @@ interface JsonResponse {
 }
 
 export async function GET(req: Request, { params }: GetProps) {
+  const { categoryId } = await params;
+
   try {
-    if (!params.categoryId) {
+    if (!categoryId) {
       return new NextResponse("Category Id is required", { status: 400 });
     }
 
-    const category = await findOneCategory(params.categoryId);
+    const category = await findOneCategory(categoryId);
 
     return NextResponse.json(category);
   } catch (error) {
@@ -47,7 +49,7 @@ export async function GET(req: Request, { params }: GetProps) {
 
 export async function PATCH(req: Request, { params }: PatchProps) {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -64,17 +66,19 @@ export async function PATCH(req: Request, { params }: PatchProps) {
       return new NextResponse("Billboard Id is required", { status: 400 });
     }
 
-    if (!params.categoryId) {
+    const { spaceId, categoryId } = await params;
+
+    if (!categoryId) {
       return new NextResponse("CategoryId Id is required", { status: 400 });
     }
 
-    const spaceByUserId = await findOneSpace(params.spaceId, userId);
+    const spaceByUserId = await findOneSpace(spaceId, userId);
 
     if (!spaceByUserId) {
       return new NextResponse("Unauthorized", { status: 403 });
     }
 
-    const category = await updateOneCategory(params.categoryId, {
+    const category = await updateOneCategory(categoryId, {
       name,
       billboardId,
     });
@@ -88,25 +92,27 @@ export async function PATCH(req: Request, { params }: PatchProps) {
 
 export async function DELETE(req: Request, { params }: DeleteProps) {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    if (!params.categoryId) {
+    const { spaceId, categoryId } = await params;
+
+    if (!categoryId) {
       return new NextResponse("Category Id is required", { status: 400 });
     }
 
-    const spaceByUserId = await findOneSpace(params.spaceId, userId);
+    const spaceByUserId = await findOneSpace(spaceId, userId);
 
     if (!spaceByUserId) {
       return new NextResponse("Unauthorized", { status: 403 });
     }
 
     const itemsByCategory = await countAllItems({
-      spaceId: params.spaceId,
-      categoryId: params.categoryId,
+      spaceId,
+      categoryId,
     });
 
     if (itemsByCategory > 0) {
@@ -116,7 +122,7 @@ export async function DELETE(req: Request, { params }: DeleteProps) {
       );
     }
 
-    const category = await deleteOneCategory(params.categoryId);
+    const category = await deleteOneCategory(categoryId);
 
     return NextResponse.json(category);
   } catch (error) {
