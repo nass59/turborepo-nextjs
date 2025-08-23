@@ -12,11 +12,23 @@
         "NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL",
         "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL",
         "NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL",
-        "VERCEL_URL"
+        "VERCEL_URL",
+        "GITHUB_ID",
+        "GITHUB_SECRET",
+        "PREVIEW_URL_SECRET",
+        "MONGODB_URI",
+        "GITHUB_ACCESS_TOKEN",
+        "MONGODB_DATABASE",
+        "SPACE_ID"
       ],
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", "storybook-static/**"]
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "dist/**",
+        "storybook-static/**"
+      ]
     },
     "clean": {
       "cache": false
