@@ -1,6 +1,14 @@
 You are an expert in TypeScript, Node.js, Next.js App Router, React, Shadcn UI, Radix UI and Tailwind.
 
-Code Style and Structure
+## 🎯 Project Context
+
+This is a modern Next.js 15 Turborepo monorepo with:
+- **Apps**: web (Next.js app), storybook (component documentation)
+- **Packages**: design-system (shared UI components), typescript-config (shared TS configs)
+- **Architecture**: Strict TypeScript, React Server Components, Tailwind CSS 4
+- **Tools**: Biome (linting/formatting), Turbo (build system), pnpm (package manager)
+
+## 📝 Code Style and Structure
 
 - Write concise, technical TypeScript code with accurate examples.
 - Use functional and declarative programming patterns; avoid classes.
@@ -8,49 +16,122 @@ Code Style and Structure
 - Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
 - Structure files: exported component, subcomponents, helpers, static content, types.
 
-Naming Conventions
+## 🏗️ Naming Conventions
 
 - Use lowercase with dashes for directories (e.g., components/auth-wizard).
 - Favor named exports for components.
+- Use PascalCase for components, camelCase for functions and variables.
+- Use UPPER_SNAKE_CASE for constants.
 
-TypeScript Usage
+## 🔧 TypeScript Usage
 
 - Use TypeScript for all code; prefer types over interfaces.
-- Avoid enums; use maps instead.
+- Avoid enums; use union types or const assertions instead.
 - Use functional components with TypeScript types.
+- Implement strict null checks and prefer unknown over any.
+- Use type guards for runtime type checking.
+- Add JSDoc comments for all public functions and components.
 
-Syntax and Formatting
+## ⚛️ React Best Practices
 
-- Use the arrow function for pure functions.
-- Use concise syntax for simple statements.
-- Use declarative JSX.
+- Use React Server Components by default for server-side logic.
+- Use Client Components only when necessary (user interactions, browser APIs).
+- Prefer composition over prop drilling.
+- Use React 19 features: use(), startTransition(), useOptimistic().
+- Implement proper error boundaries and loading states.
 
-UI and Styling
+## 🎨 UI Development
 
-- Use Shadcn UI, Radix, and Tailwind for components and styling.
-- Implement responsive design with Tailwind CSS; use a mobile-first approach.
+- Use the design system from `@workspace/design-system`.
+- Follow Tailwind CSS 4 conventions with design tokens.
+- Implement responsive design with mobile-first approach.
+- Use Radix UI primitives for accessible components.
+- Prefer compound components for complex UI patterns.
 
-Performance Optimization
+## 📊 Performance & Optimization
 
-- Minimize 'use client', 'useEffect', and 'setState'; favor React Server Components (RSC).
-- Wrap client components in Suspense with fallback.
-- Use dynamic loading for non-critical components.
-- Optimize images: use WebP format, include size data, implement lazy loading.
+- Use dynamic imports for code splitting.
+- Implement proper image optimization with Next.js Image.
+- Use React.memo() sparingly and only for expensive components.
+- Prefer server-side data fetching when possible.
+- Implement proper caching strategies.
 
-Next.js Specifics
+## 🧪 Testing Approach
 
-- Use next-safe-action for all server actions:
-- Implement type-safe server actions with proper validation.
-- Define input schemas using Zod for robust type checking and validation.
-- Handle errors gracefully and return appropriate responses.
-- Implement consistent error handling and success responses
+- Write tests for business logic and critical user flows.
+- Use React Testing Library for component tests.
+- Implement integration tests for API routes.
+- Mock external dependencies appropriately.
 
-Key Conventions
+## 📖 Documentation Standards
 
-- Optimize Web Vitals (LCP, CLS, FID).
-- Limit 'use client':
-  - Favor server components and Next.js SSR.
-  - Use only for Web API access in small components.
-  - Avoid for data fetching or state management.
+- Add comprehensive JSDoc comments:
+  ```typescript
+  /**
+   * Brief description of the function
+   *
+   * @param param1 - Description of parameter
+   * @returns Description of return value
+   *
+   * @example
+   * ```typescript
+   * const result = myFunction('example');
+   * ```
+   */
+  ```
+- Document component props and usage examples.
+- Create ADRs for architectural decisions.
+- Update documentation when making changes.
 
-Follow Next.js docs for Data Fetching, Rendering, and Routing.
+## 🔍 Debugging Guidelines
+
+- Use TypeScript strict mode to catch errors early.
+- Implement proper error handling with try/catch.
+- Use console.error() for error logging, console.warn() for warnings.
+- Leverage React DevTools and Next.js debugging features.
+- Use the debug configurations in `.vscode/launch.json`.
+
+## 🚀 AI-Optimized Patterns
+
+- Write self-documenting code with clear intent.
+- Use consistent patterns across the codebase.
+- Implement proper separation of concerns.
+- Create reusable utilities and hooks.
+- Follow the established project architecture.
+
+## 🛠️ Monorepo Considerations
+
+- Use workspace protocol for internal dependencies.
+- Share common configurations through packages.
+- Maintain consistent tooling across all apps.
+- Use Turborepo for efficient builds and caching.
+
+## 📁 File Organization
+
+```
+app/
+├── (public)/          # Public routes
+├── (admin)/           # Admin routes
+├── api/               # API routes
+└── globals.css        # Global styles
+
+components/
+├── ui/                # Basic UI components
+├── forms/             # Form components
+└── layout/            # Layout components
+
+lib/
+├── utils.ts           # Utility functions
+├── constants.ts       # App constants
+└── types.ts           # Type definitions
+```
+
+## 🎯 When Making Changes
+
+1. Run type checking: `pnpm typecheck`
+2. Run linting: `pnpm lint`
+3. Test locally: `pnpm dev`
+4. Update documentation if needed
+5. Consider creating ADR for significant changes
+
+Remember: This project prioritizes type safety, developer experience, and AI-assisted development. Always consider the maintainability and clarity of your code.

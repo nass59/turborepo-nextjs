@@ -28,6 +28,9 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
 
   "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "typescript.suggest.includeCompletionsForModuleExports": true,
+  "typescript.suggest.includeCompletionsWithInsertText": true,
+  "typescript.preferences.includePackageJsonAutoImports": "on",
 
   "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome"

@@ -2,33 +2,43 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Next.js: debug server-side",
-      "type": "node-terminal",
-      "request": "launch",
-      "command": "turbo web#dev",
-      "cwd": "${workspaceFolder}/apps/web"
-    },
-    {
-      "name": "Next.js: debug client-side (app)",
-      "type": "chrome",
-      "request": "launch",
-      "url": "http://localhost:3000"
-    },
-    {
-      "name": "Next.js: debug full stack",
+      "name": "Debug Next.js App",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/node_modules/.bin/next",
+      "program": "${workspaceFolder}/apps/web/node_modules/.bin/next",
+      "args": ["dev", "--turbopack"],
       "cwd": "${workspaceFolder}/apps/web",
-      "runtimeArgs": ["--inspect"],
-      "skipFiles": ["<node_internals>/**"],
-      "serverReadyAction": {
-        "action": "debugWithEdge",
-        "killOnServerStop": true,
-        "pattern": "- Local:.+(https?://.+)",
-        "uriFormat": "%s",
-        "webRoot": "${workspaceFolder}"
+      "env": {
+        "NODE_OPTIONS": "--inspect"
+      },
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Debug Next.js Client",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/apps/web",
+      "sourceMapPathOverrides": {
+        "webpack://_N_E/*": "${workspaceFolder}/apps/web/*"
       }
+    },
+    {
+      "name": "Debug Storybook",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/apps/storybook/node_modules/.bin/storybook",
+      "args": ["dev", "-p", "6006"],
+      "cwd": "${workspaceFolder}/apps/storybook",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug Full Stack",
+      "configurations": ["Debug Next.js App", "Debug Next.js Client"]
     }
   ]
 }

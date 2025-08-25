@@ -31,6 +31,9 @@ A modern, production-ready monorepo built with Next.js 15, React 19, and the lat
 - 🧪 **Vitest** for unit testing
 - 🎭 **Playwright** for end-to-end testing
 - 📱 **Responsive design** with mobile-first approach
+- 🤖 **AI-optimized** with comprehensive TypeScript, JSDoc, and debugging tools
+- 🚀 **Enhanced VSCode** configuration for optimal development experience
+- 📖 **Comprehensive documentation** with Architecture Decision Records (ADRs)
 
 ### 🔐 **Authentication & Data**
 - �‍♂️ **Clerk** for complete authentication solution
@@ -146,6 +149,54 @@ Each package and app is 100% **TypeScript** with strict type checking enabled.
 
 4. **Start the development servers:**
    ```bash
+   # Start all development servers
+   pnpm dev
+
+   # Or start individual services
+   pnpm --filter=web dev        # Next.js app (localhost:3000)
+   pnpm --filter=storybook dev  # Storybook (localhost:6006)
+   ```
+
+### 🤖 AI Development Setup
+
+This project is optimized for AI-assisted development. For the best experience:
+
+1. **Install recommended VSCode extensions:**
+   ```bash
+   # Extensions are automatically suggested when you open the project
+   # Or install manually from .vscode/extensions.json
+   ```
+
+2. **Use AI analysis tools:**
+   ```bash
+   # Generate comprehensive project analysis
+   ./scripts/ai-analysis.sh
+
+   # Debug assistance
+   ./scripts/debug-helper.sh status
+   ```
+
+3. **Follow documentation standards:**
+   - Read `docs/AI-DEVELOPMENT-GUIDE.md` for comprehensive guidelines
+   - Use JSDoc comments for all public functions
+   - Create ADRs for architectural decisions
+   - Follow TypeScript strict mode patterns
+
+4. **Quick development commands:**
+   ```bash
+   pnpm typecheck    # TypeScript validation
+   pnpm lint         # Code quality checks
+   pnpm format       # Auto-format code
+   pnpm ai:analyze   # Run AI analysis
+   pnpm build        # Production build
+   ```
+
+5. **Debugging:**
+   - Use VSCode debug configurations in `.vscode/launch.json`
+   - Debug Next.js app, Storybook, or tests
+   - Comprehensive debugging tools available
+
+## 📋 Available Scripts
    pnpm dev
    ```
 

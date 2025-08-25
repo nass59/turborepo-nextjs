@@ -12,7 +12,6 @@
     "dev:all": "concurrently \"pnpm dev:webhook\" \"pnpm dev\"",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "clean": "git clean -xdf .cache .turbo node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
@@ -39,7 +38,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.60.0",
-    "recharts": "^3.1.0",
+    "recharts": "^2.15.4",
     "sharp": "^0.34.3",
     "shiki": "^3.8.1",
     "tailwindcss": "^4.1.11",
