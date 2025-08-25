@@ -1,6 +1,6 @@
 import { buttonVariants } from '@workspace/design-system/components/ui/button';
 
-import type { ItemModel } from '@/lib/database/models/Item';
+import type { ItemModel } from '@/lib/database/models/item';
 
 type Props = {
   data: ItemModel;

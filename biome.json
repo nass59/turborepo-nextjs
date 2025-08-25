@@ -9,9 +9,9 @@
       "!**/.turbo",
       "!**/.vscode",
       "!**/.source",
-      "!design-system/src/components/ui",
-      "!design-system/src/hooks",
-      "!design-system/src/lib"
+      "!**/design-system/src/components/ui/*",
+      "!**/design-system/src/hooks/*",
+      "!**/design-system/src/lib/*"
     ]
   },
   "extends": ["ultracite"]

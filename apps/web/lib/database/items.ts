@@ -1,7 +1,7 @@
 import { Types } from 'mongoose';
 
 import type { MonthlyItem } from '@/features/admin/home/types/overview';
-import Item, { type ItemModel } from '@/lib/database/models/Item';
+import Item, { type ItemModel } from '@/lib/database/models/item';
 import {
   aggregate,
   count,

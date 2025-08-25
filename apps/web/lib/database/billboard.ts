@@ -1,6 +1,6 @@
 import Billboard, {
   type BillboardModel,
-} from '@/lib/database/models/Billboard';
+} from '@/lib/database/models/billboard';
 import {
   count,
   createOne,

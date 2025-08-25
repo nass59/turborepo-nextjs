@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 
 import { findAllItemsBySpaceId, findOneItem } from '@/lib/database/items';
-import type { ItemModel } from '@/lib/database/models/Item';
+import type { ItemModel } from '@/lib/database/models/item';
 
 import type { ItemColumn } from '../ui/columns';
 

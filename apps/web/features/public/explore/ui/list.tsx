@@ -1,6 +1,6 @@
 import { cn } from '@workspace/design-system/lib/utils';
 
-import type { ItemModel } from '@/lib/database/models/Item';
+import type { ItemModel } from '@/lib/database/models/item';
 
 import { NoResults } from './no-results';
 import { PosterCard } from './poster-card';

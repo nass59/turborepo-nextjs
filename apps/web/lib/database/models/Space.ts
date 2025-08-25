@@ -8,11 +8,13 @@ export type SpaceModel = {
   updatedAt: Date;
 };
 
+const MAX_NAME_LENGTH = 30;
+
 const SpaceSchema = new Schema<SpaceModel>({
   name: {
     type: String,
     required: [true, 'Please provide a name for this space'],
-    maxlength: [30, 'Name cannot be more than 30 characters'],
+    maxlength: [MAX_NAME_LENGTH, 'Name cannot be more than 30 characters'],
   },
   userId: {
     type: String,

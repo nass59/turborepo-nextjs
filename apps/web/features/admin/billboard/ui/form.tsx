@@ -13,7 +13,7 @@ import { FormContainer } from '@/features/admin/common/ui/form/form-container';
 import { ImageField } from '@/features/admin/common/ui/form/image-field';
 import { InputField } from '@/features/admin/common/ui/form/input-field';
 import { toastError } from '@/lib/api-response/api-responses';
-import type { BillboardModel } from '@/lib/database/models/Billboard';
+import type { BillboardModel } from '@/lib/database/models/billboard';
 import { billboardSchema } from '@/lib/validation/billboard';
 
 import { BILLBOARD_LABELS } from '../constants/billboard';

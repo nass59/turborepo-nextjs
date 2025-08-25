@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 
 import { absoluteUrl } from './utils';
 
-type mdxMetadata = {
+type MdxMetadata = {
   title: string;
   description: string;
   url: string;
 };
 
-export const getMetadata = (ogUrl: URL, mdxMetadata: mdxMetadata): Metadata => {
+export const getMetadata = (ogUrl: URL, mdxMetadata: MdxMetadata): Metadata => {
   return {
     title: mdxMetadata.title,
     description: mdxMetadata.description,

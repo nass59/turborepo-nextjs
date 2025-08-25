@@ -5,7 +5,7 @@ import { FullscreenIcon } from 'lucide-react';
 import type { MouseEventHandler } from 'react';
 
 import { usePreviewModal } from '@/features/public/explore/hooks/use-preview-modal';
-import type { ItemModel } from '@/lib/database/models/Item';
+import type { ItemModel } from '@/lib/database/models/item';
 
 type Props = {
   data: ItemModel;

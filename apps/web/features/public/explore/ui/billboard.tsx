@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import type { BillboardModel } from '@/lib/database/models/Billboard';
+import type { BillboardModel } from '@/lib/database/models/billboard';
 
 type Props = {
   data: BillboardModel;

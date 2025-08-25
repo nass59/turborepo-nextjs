@@ -1,6 +1,6 @@
 import { Types } from 'mongoose';
 
-import Space, { type SpaceModel } from '@/lib/database/models/Space';
+import Space, { type SpaceModel } from '@/lib/database/models/space';
 import {
   createOne,
   deleteOne,

@@ -14,7 +14,7 @@ import { FormContainer } from '@/features/admin/common/ui/form/form-container';
 import { InputField } from '@/features/admin/common/ui/form/input-field';
 import { SelectField } from '@/features/admin/common/ui/form/select-field';
 import { toastError } from '@/lib/api-response/api-responses';
-import type { CategoryModel } from '@/lib/database/models/Category';
+import type { CategoryModel } from '@/lib/database/models/category';
 
 import { CATEGORY_LABELS } from '../constants/category';
 import {

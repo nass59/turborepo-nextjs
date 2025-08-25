@@ -7,7 +7,7 @@ import {
 import Image from 'next/image';
 
 import { AbsoluteLink } from '@/features/public/common/ui/absolute-link';
-import type { ItemModel } from '@/lib/database/models/Item';
+import type { ItemModel } from '@/lib/database/models/item';
 
 type Props = {
   data: ItemModel;

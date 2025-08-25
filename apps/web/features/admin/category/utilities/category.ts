@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 
 import { findAllCategoriesWithDataBySpaceId } from '@/lib/database/category';
-import Category, { type CategoryModel } from '@/lib/database/models/Category';
+import Category, { type CategoryModel } from '@/lib/database/models/category';
 import { findOneById } from '@/lib/database/queries';
 
 import type { CategoryColumn } from '../ui/columns';
