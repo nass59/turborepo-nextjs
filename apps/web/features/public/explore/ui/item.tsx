@@ -1,4 +1,4 @@
-import type { ItemModel } from '@/lib/database/models/Item';
+import type { ItemModel } from '@/lib/database/models/item';
 
 import { Gallery } from './gallery';
 import { Info } from './info';

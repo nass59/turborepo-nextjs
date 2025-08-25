@@ -16,7 +16,7 @@ import { InputField } from '@/features/admin/common/ui/form/input-field';
 import { MultiImagesField } from '@/features/admin/common/ui/form/multi-images-field';
 import { SelectField } from '@/features/admin/common/ui/form/select-field';
 import { toastError } from '@/lib/api-response/api-responses';
-import type { ItemModel } from '@/lib/database/models/Item';
+import type { ItemModel } from '@/lib/database/models/item';
 
 import type { CategoryColumn } from '../../category/ui/columns';
 import { ITEM_LABELS } from '../constants/item';

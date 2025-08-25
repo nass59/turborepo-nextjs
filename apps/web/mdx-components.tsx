@@ -8,7 +8,7 @@ import {
 import { cn } from '@workspace/design-system/lib/utils';
 import type { MDXComponents } from 'mdx/types';
 import Image, { type ImageProps } from 'next/image';
-
+import type { ComponentProps } from 'react';
 import { Callout } from '@/components/callout';
 
 // This file allows you to provide custom React components
@@ -73,9 +73,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...props}
       />
     ),
-    a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
+    a: ({ className, href, ...props }: ComponentProps<'a'>) => (
       <a
         className={cn('font-medium underline underline-offset-4', className)}
+        href={href}
         {...props}
       />
     ),

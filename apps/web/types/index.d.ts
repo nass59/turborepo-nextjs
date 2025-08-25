@@ -1,7 +1,5 @@
-import { type Route } from 'next';
-import { type ObjectId } from 'mongodb';
-
-import { type Icons } from '@/components/icons';
+import type { ObjectId } from 'mongodb';
+import type { Route } from 'next';
 
 export type NavItem = {
   title: string;
@@ -49,9 +47,9 @@ export type Post = {
   createdAt?: string;
 };
 
-export interface PostProps {
+export type PostProps = {
   post: Post;
-}
+};
 
 export type User = {
   _id: string | ObjectId;

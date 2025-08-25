@@ -4,7 +4,7 @@ import {
   findAllBillboardsBySpaceId,
   findOneBillboard,
 } from '@/lib/database/billboard';
-import type { BillboardModel } from '@/lib/database/models/Billboard';
+import type { BillboardModel } from '@/lib/database/models/billboard';
 
 import type { BillboardColumn } from '../ui/columns';
 

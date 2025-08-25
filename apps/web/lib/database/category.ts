@@ -1,6 +1,6 @@
 import { Types } from 'mongoose';
 
-import Category, { type CategoryModel } from '@/lib/database/models/Category';
+import Category, { type CategoryModel } from '@/lib/database/models/category';
 import {
   aggregate,
   count,
@@ -11,7 +11,7 @@ import {
   updateOneById,
 } from '@/lib/database/queries';
 
-import type { BillboardModel } from './models/Billboard';
+import type { BillboardModel } from './models/billboard';
 
 type CategoryModelProps = Pick<
   CategoryModel,

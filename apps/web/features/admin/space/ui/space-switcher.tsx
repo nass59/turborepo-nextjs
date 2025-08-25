@@ -12,7 +12,7 @@ import { useParams } from 'next/navigation';
 import { useState } from 'react';
 
 import type { NavbarItem } from '@/features/admin/common/types/navbar';
-import type { SpaceModel } from '@/lib/database/models/Space';
+import type { SpaceModel } from '@/lib/database/models/space';
 
 import { SPACE_LABELS } from '../constants/space';
 import { SpaceCommand } from './space-command';

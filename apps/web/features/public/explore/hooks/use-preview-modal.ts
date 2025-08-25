@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import type { ItemModel } from '@/lib/database/models/Item';
+import type { ItemModel } from '@/lib/database/models/item';
 
 type PreviewModalStore = {
   isOpen: boolean;
