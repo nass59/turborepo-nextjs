@@ -8,7 +8,6 @@ import {
 import { BellIcon } from 'lucide-react';
 import Image from 'next/image';
 import OgImage from 'public/og-light.jpg';
-
 import { siteConfig } from '@/config/site';
 
 export const Help = () => {

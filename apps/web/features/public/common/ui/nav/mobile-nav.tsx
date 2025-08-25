@@ -9,7 +9,7 @@ import { MainNavItems } from './main-nav-items';
 type Props = PropsWithChildren & {
   items?: MainNavItem[];
   pathName: string | null;
-  close: () => false | undefined;
+  close: () => void;
 };
 
 export function MobileNav({ items, pathName, close, children }: Props) {

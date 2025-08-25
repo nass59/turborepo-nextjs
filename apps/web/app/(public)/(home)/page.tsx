@@ -3,15 +3,13 @@ import { cn } from '@workspace/design-system/lib/utils';
 
 import { siteConfig } from '@/config/site';
 import { Space3 } from '@/features/public/landing-page/assets/icons/space3';
-import {
-  Auth,
-  Github,
-  MongoDB,
-  NextJS,
-  ReactJS,
-  Storybook,
-  TailwindCSS,
-} from '@/features/public/landing-page/assets/logos';
+import { Auth } from '@/features/public/landing-page/assets/logos/auth';
+import { Github } from '@/features/public/landing-page/assets/logos/github';
+import { MongoDB } from '@/features/public/landing-page/assets/logos/mongodb';
+import { NextJS } from '@/features/public/landing-page/assets/logos/nextjs';
+import { ReactJS } from '@/features/public/landing-page/assets/logos/reactjs';
+import { Storybook } from '@/features/public/landing-page/assets/logos/storybook';
+import { TailwindCSS } from '@/features/public/landing-page/assets/logos/tailwindcss';
 import { FeatureItem } from '@/features/public/landing-page/ui/feature-item';
 import { getGithubStars } from '@/features/public/landing-page/utilities/github/stars';
 
