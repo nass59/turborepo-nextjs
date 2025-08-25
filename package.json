@@ -10,7 +10,10 @@
     "check-dependencies": "sherif",
     "bump-deps": "npx npm-check-updates --deep -u -x geist && pnpm install",
     "bump-ui": "pnpm dlx shadcn@canary add --all --overwrite -c packages/design-system",
-    "clean": "git clean -xdf node_modules"
+    "clean": "git clean -xdf node_modules",
+    "ai:analyze": "pnpm run typecheck && pnpm run lint && echo 'AI Analysis Complete'",
+    "debug:next": "NODE_OPTIONS='--inspect' pnpm --filter=web dev",
+    "debug:storybook": "NODE_OPTIONS='--inspect' pnpm --filter=storybook dev"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.2",
