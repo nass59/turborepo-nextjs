@@ -2,7 +2,7 @@
   "editor.defaultFormatter": "biomejs.biome",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
-  "emmet.showExpandedAbbreviation": "never",
+  "emmet.showExpandedAbbreviation": "always",
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",
     "source.organizeImports.biome": "explicit"
@@ -32,6 +32,25 @@
   "typescript.suggest.includeCompletionsWithInsertText": true,
   "typescript.preferences.includePackageJsonAutoImports": "on",
 
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx",
+    "typescript": "jsx"
+  },
+  "emmet.variables": {
+    "lang": "en",
+    "charset": "UTF-8"
+  },
+  "typescript.suggest.completeFunctionCalls": true,
+  "typescript.suggest.includeCompletionsForImportStatements": true,
+  "typescript.preferences.jsxAttributeCompletionStyle": "auto",
+  "typescript.suggest.enabled": true,
+
   "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
@@ -48,7 +67,15 @@
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "biomejs.biome",
+    "emmet.showExpandedAbbreviation": "always",
+    "emmet.includeLanguages": {
+      "typescriptreact": "javascriptreact"
+    }
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "emmet.showExpandedAbbreviation": "always"
   },
 
   "tailwindCSS.experimental.classRegex": [
