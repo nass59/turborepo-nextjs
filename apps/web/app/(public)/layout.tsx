@@ -1,6 +1,6 @@
 import { Toaster } from '@workspace/design-system/components/ui/sonner';
 import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Pacifico } from 'next/font/google';
 
 import { Analytics } from '@/components/analytics';
 import { TailwindIndicator } from '@/components/tailwind-indicator';
@@ -16,9 +16,10 @@ const geistSans = Geist({
   subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({
+const geistMono = Pacifico({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+  weight: '400',
 });
 
 /**
@@ -48,9 +49,9 @@ export default function RootLayout({ children }: LayoutProps) {
       <body>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem
-          forcedTheme="light"
+          forcedTheme="dark"
         >
           <div className="flex min-h-screen flex-col">{children}</div>
           <Analytics />

@@ -1,127 +1,67 @@
-import { buttonVariants } from '@workspace/design-system/components/ui/button';
-import { cn } from '@workspace/design-system/lib/utils';
+import { Button } from '@workspace/design-system/components/ui/button';
 
-import { siteConfig } from '@/config/site';
-import { Space3 } from '@/features/public/landing-page/assets/icons/space3';
-import { Auth } from '@/features/public/landing-page/assets/logos/auth';
-import { Github } from '@/features/public/landing-page/assets/logos/github';
-import { MongoDB } from '@/features/public/landing-page/assets/logos/mongodb';
-import { NextJS } from '@/features/public/landing-page/assets/logos/nextjs';
-import { ReactJS } from '@/features/public/landing-page/assets/logos/reactjs';
-import { Storybook } from '@/features/public/landing-page/assets/logos/storybook';
-import { TailwindCSS } from '@/features/public/landing-page/assets/logos/tailwindcss';
-import { FeatureItem } from '@/features/public/landing-page/ui/feature-item';
-import { getGithubStars } from '@/features/public/landing-page/utilities/github/stars';
+import { DotIcon } from 'lucide-react';
 
 /**
  * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#pages
  */
-export default async function Page() {
-  const stars = await getGithubStars();
-
+export default function Page() {
   return (
-    <>
-      <section className="space-y-6 pt-6 pb-8 md:pt-10 md:pb-12 lg:py-20">
-        <div className="container mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
-          <h1 className="font-heading text-5xl sm:text-5xl md:text-6xl lg:text-7xl">
-            Hello World !
-          </h1>
-
-          <Space3 />
-
-          <p className="max-w-2xl text-muted-foreground leading-normal sm:text-xl sm:leading-8">
-            I&apos;m building a web app with Next.js 14 and open sourcing
-            everything. Follow along as we figure this out together.
-          </p>
+    <div className="relative flex min-h-screen flex-col bg-[#030303]">
+      <div className="items-start md:grid md:grid-cols-2">
+        <div className="relative block bg-gradient-to-br from-transparent via-purple-900/5 to-orange-950/20 px-12 py-24 md:h-dvh">
+          <div className="mx-auto flex h-full max-w-2xl flex-col gap-2 md:justify-center">
+            <h1 className="bg-clip-text font-bold text-4xl text-slate-200 tracking-tighter sm:text-3xl md:text-6xl lg:text-8xl">
+              Tech Blog
+            </h1>
+            <p className="bg-gradient-to-r from-indigo-300 via-white/90 to-rose-300 bg-clip-text text-2xl text-transparent leading-10 tracking-tighter sm:text-xl">
+              Latest updates, articles, and insights about NextJS, React,
+              Typescript, and more.
+            </p>
+            <hr className="mt-5 h-px bg-gray-300" />
+            <div className="mt-3 flex flex-wrap gap-4 text-gray-600">
+              <Button
+                className="gap-0 rounded-2xl border border-indigo-950 bg-[#0d0d0d] px-6 font-semibold text-sm tracking-tighter"
+                variant="secondary"
+              >
+                <DotIcon className="inline size-8 animate-pulse text-[#d2d2d2]" />
+                NextJS{' '}
+                <span className="ml-2 font-bold text-[#d2d2d2] text-xs">
+                  v15.5.2
+                </span>
+              </Button>
+              <Button
+                className="gap-0 rounded-2xl border border-indigo-950 bg-[#0d0d0d] px-6 font-semibold text-sm tracking-tighter"
+                variant="secondary"
+              >
+                <DotIcon className="inline size-8 animate-pulse text-[#6bd6ef]" />
+                React{' '}
+                <span className="ml-2 font-bold text-[#6bd6ef] text-xs">
+                  v19.1.1
+                </span>
+              </Button>
+              <Button
+                className="gap-0 rounded-2xl border border-indigo-950 bg-[#0d0d0d] font-semibold text-sm tracking-tighter"
+                variant="secondary"
+              >
+                <DotIcon className="inline size-8 animate-pulse text-[#5aa6f7]" />
+                Typescript{' '}
+                <span className="ml-2 font-bold text-[#5aa6f7] text-xs">
+                  v5.9.2
+                </span>
+              </Button>
+            </div>
+          </div>
+          <div className="absolute inset-x-0 right-0 bottom-0 h-px bg-slate-100/100 mix-blend-overlay lg:top-0 lg:left-auto lg:h-auto lg:w-px" />
         </div>
-      </section>
-
-      <hr className="border-slate-200" />
-
-      <section
-        className="space-y-12 bg-slate-50 px-5 py-8 md:py-12 lg:py-24 dark:bg-transparent"
-        id="features"
-      >
-        <div className="container mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            Features
-          </h2>
-          <p className="max-w-[85%] text-muted-foreground leading-normal sm:text-lg sm:leading-7">
-            This project is an experiment to see how a modern app, with features
-            like auth, API routes, and static pages would work in Next.js 14 app
-            dir.
-          </p>
-        </div>
-
-        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[58rem] md:grid-cols-3">
-          <FeatureItem
-            description="App dir, Routing, Layouts UI and API Routes."
-            logo={<NextJS />}
-            title="Next.js 14"
-          />
-          <FeatureItem
-            description="Server and Client Components. Use hooks."
-            logo={<ReactJS />}
-            title="React 18"
-          />
-          <FeatureItem
-            description="MongoDB and deployed on Atlas Cluster"
-            logo={<MongoDB />}
-            title="Database"
-          />
-          <FeatureItem
-            description="Authentication using Clerk and middlewares."
-            logo={<Auth />}
-            title="Authentication"
-          />
-          <FeatureItem
-            description="UI components built using Radix UI and styled with Tailwind
-            CSS."
-            logo={<TailwindCSS />}
-            title="Components"
-          />
-          <FeatureItem
-            description="Components Library with Storybook."
-            logo={<Storybook />}
-            title="Storybook"
-          />
-        </div>
-      </section>
-
-      <hr className="border-slate-200" />
-
-      <section className="py-8 md:py-12 lg:py-24" id="open-source">
-        <div className="container mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
-          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            Proudly Open Source
-          </h2>
-
-          <p className="mb-6 max-w-[85%] text-muted-foreground leading-normal sm:text-lg sm:leading-7">
-            This project is open source and powered by open source software. The
-            code is available on GitHub.
-          </p>
-
-          <div className="flex">
-            <a
-              className={cn(buttonVariants({ size: 'lg' }))}
-              href={siteConfig.links.github}
-              rel="noreferrer"
-              target="_blank"
-            >
-              <Github />
-              Github
-            </a>
-            {stars && (
-              <div className="flex items-center">
-                <div className="h-4 w-3 border-y-8 border-y-transparent border-r-8 border-r-slate-800 border-l-0 border-solid" />
-                <div className="flex h-10 items-center rounded-md border border-slate-800 bg-slate-800 px-4 font-medium text-white">
-                  {stars} stars
-                </div>
-              </div>
-            )}
+        <div className="relative block bg-gradient-to-br from-transparent via-purple-900/5 to-orange-950/20 px-12 py-24 md:h-dvh">
+          <div className="mx-auto flex h-full max-w-2xl flex-col gap-2 md:justify-center">
+            <h3 className="bg-clip-text font-bold text-slate-200 text-xl tracking-tighter">
+              In construction
+            </h3>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }
