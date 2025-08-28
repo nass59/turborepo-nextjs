@@ -12,7 +12,7 @@ export const StackButtons = () => (
   <div className="mt-3 flex flex-wrap gap-4 text-gray-600">
     {STACKS.map((stack) => (
       <ShimmerButton
-        className="px-3 py-1"
+        className="py-1 pr-3 pl-0"
         key={stack.name}
         shimmerColor={stack.color}
         shimmerDuration="3.2s"
