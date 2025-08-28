@@ -9,6 +9,7 @@
       "!**/.turbo",
       "!**/.vscode",
       "!**/.source",
+      "!**/design-system/src/components/magicui/*",
       "!**/design-system/src/components/ui/*",
       "!**/design-system/src/hooks/*",
       "!**/design-system/src/lib/*"
