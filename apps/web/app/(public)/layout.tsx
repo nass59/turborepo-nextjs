@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist } from 'next/font/google';
-import { Ay11SkipLink } from '@/components/a11y-skip-link';
+import { A11ySkipLink } from '@/components/a11y-skip-link';
 import { RootProviders } from '@/components/providers/root-providers';
 import { baseMetadata, baseViewport } from '@/constants/metadata';
 import { Header } from '@/modules/home/ui/home-header';
@@ -36,9 +36,9 @@ export default function RootLayout({ children }: LayoutProps) {
       lang="en"
       suppressHydrationWarning
     >
-      <body className="flex min-h-screen flex-col">
+      <body className="flex min-h-screen flex-col" data-a11y="app-root">
         {/* Skip link placed as the first focusable element inside body for accessibility */}
-        <Ay11SkipLink />
+        <A11ySkipLink />
         {/* Wrap the application in global providers */}
         <RootProviders>
           <Header />
