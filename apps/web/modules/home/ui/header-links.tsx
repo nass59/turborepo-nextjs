@@ -1,5 +1,5 @@
 import { GithubIcon } from 'lucide-react';
-import { HeaderLinkHover } from '@/app/modules/home/ui/header-link-hover';
+import { HeaderLinkHover } from '@/modules/home/ui/header-link-hover';
 
 const DATA = [
   {

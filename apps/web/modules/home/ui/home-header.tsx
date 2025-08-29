@@ -1,5 +1,5 @@
 import { ShipWheelIcon } from 'lucide-react';
-import { HeaderLinks } from '@/app/modules/home/ui/header-links';
+import { HeaderLinks } from '@/modules/home/ui/header-links';
 
 const DATA = {
   title: 'TechShip',

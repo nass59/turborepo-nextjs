@@ -1,14 +1,14 @@
-import { Header } from '@/app/modules/home/ui/home-header';
 import type { LayoutProps } from '@/types/common';
 
 /**
- * @see https://nextjs.org/docs/app/api-reference/file-conventions/layout
+ * Home page layout component providing the structure for the landing page.
+ *
+ * @param children - The page content to be rendered within the main section
  */
-export default function Layout({ children }: LayoutProps) {
+export default function HomeLayout({ children }: LayoutProps) {
   return (
-    <>
-      <Header />
-      <main className="flex-1">{children}</main>
-    </>
+    <main aria-label="Main content" className="flex-1" id="main-content">
+      {children}
+    </main>
   );
 }

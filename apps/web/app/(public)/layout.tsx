@@ -1,14 +1,14 @@
 import { Toaster } from '@workspace/design-system/components/ui/sonner';
 import type { Metadata, Viewport } from 'next';
 import { Geist, Pacifico } from 'next/font/google';
-
+import { Ay11SkipLink } from '@/components/a11y-skip-link';
 import { Analytics } from '@/components/analytics';
 import { TailwindIndicator } from '@/components/tailwind-indicator';
 import { ThemeProvider } from '@/components/theme-provider';
 import { baseMetadata, baseViewport } from '@/constants/metadata';
 import { Help } from '@/features/public/common/ui/helper';
+import { Header } from '@/modules/home/ui/home-header';
 import type { LayoutProps } from '@/types/common';
-
 import '@workspace/design-system/styles/globals.css';
 
 const geistSans = Geist({
@@ -53,7 +53,11 @@ export default function RootLayout({ children }: LayoutProps) {
           enableSystem
           forcedTheme="dark"
         >
-          <div className="flex min-h-screen flex-col">{children}</div>
+          <div className="flex min-h-screen flex-col">
+            <Ay11SkipLink />
+            <Header />
+            {children}
+          </div>
           <Analytics />
           <Help />
           <Toaster />
