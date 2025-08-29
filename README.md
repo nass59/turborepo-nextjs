@@ -118,6 +118,8 @@ turborepo-nextjs/
 
 Each package and app is 100% **TypeScript** with strict type checking enabled.
 
+See also: [Accessibility Data Attributes](docs/a11y-data-attributes.md) for the `data-a11y` semantic instrumentation taxonomy used across the UI for testing, analytics, and accessibility audits.
+
 ## 🚀 Getting Started
 
 ### Prerequisites
