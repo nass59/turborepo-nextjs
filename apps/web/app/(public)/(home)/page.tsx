@@ -1,10 +1,10 @@
 import { AnimatedGridPattern } from '@workspace/design-system/components/magicui/animated-grid-pattern';
 import { Separator } from '@workspace/design-system/components/ui/separator';
 import { cn } from '@workspace/design-system/lib/utils';
-import { Block } from '@/app/modules/home/ui/home-block';
-import { BlockSeparator } from '@/app/modules/home/ui/home-block-separator';
-import { Heading } from '@/app/modules/home/ui/home-heading';
-import { StackButtons } from '@/app/modules/home/ui/home-stack-buttons';
+import { Block } from '@/modules/home/ui/home-block';
+import { BlockSeparator } from '@/modules/home/ui/home-block-separator';
+import { Heading } from '@/modules/home/ui/home-heading';
+import { StackButtons } from '@/modules/home/ui/home-stack-buttons';
 
 /**
  * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#pages
