@@ -1,28 +1,51 @@
 import { ShipWheelIcon } from 'lucide-react';
+import { routes } from '@/constants/routes';
 import { HeaderLinks } from '@/modules/home/ui/header-links';
 
 const DATA = {
   title: 'TechShip',
-  href: '/',
+  href: routes.home,
 };
 
-export const Header = () => {
-  return (
-    <div className="fixed top-0 z-30 flex w-full flex-col bg-gradient-to-b from-transparent via-gray-900/5 to-gray-950/20 backdrop-blur-md">
-      <nav className="grid grid-cols-12 items-center justify-between border-orange-300/12 border-b mix-blend-overlay">
-        <a
-          className="col-span-2 flex w-[268px] shrink-0 items-center gap-2 border-orange-300/12 border-r p-4 md:p-4"
-          href={DATA.href}
+/**
+ * Site header containing primary navigation.
+ * Uses semantic <header> and <nav> landmarks for improved accessibility.
+ */
+export const Header = () => (
+  <header
+    className="fixed top-0 z-30 w-full bg-gradient-to-b from-transparent via-gray-900/5 to-gray-950/20 backdrop-blur-md"
+    data-a11y="site-header"
+    id="site-header"
+  >
+    <nav
+      aria-label="Primary"
+      className="grid grid-cols-12 items-center justify-between border-orange-300/12 border-b mix-blend-overlay"
+      data-a11y="primary-nav"
+    >
+      <a
+        aria-labelledby="site-title"
+        className="focus-outline col-span-2 flex w-[268px] shrink-0 items-center gap-2 border-orange-300/12 border-r border-b p-4 md:p-4"
+        data-a11y="home-link"
+        href={DATA.href}
+        rel="noopener noreferrer"
+      >
+        <ShipWheelIcon
+          aria-hidden="true"
+          className="inline size-5 text-primary"
+        />
+        <h1
+          className="bg-clip-text font-bold text-lg text-slate-200 tracking-tighter"
+          id="site-title"
         >
-          <ShipWheelIcon className="inline size-5 text-primary" />
-          <span className="bg-clip-text font-bold text-lg text-slate-200 tracking-tighter">
-            {DATA.title}
-          </span>
-        </a>
-        <div className="relative col-span-10 flex items-center justify-end">
-          <HeaderLinks />
-        </div>
-      </nav>
-    </div>
-  );
-};
+          {DATA.title}
+        </h1>
+      </a>
+      <div
+        className="relative col-span-10 flex items-center justify-end"
+        data-a11y="header-links-wrapper"
+      >
+        <HeaderLinks />
+      </div>
+    </nav>
+  </header>
+);

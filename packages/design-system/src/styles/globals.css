@@ -10,7 +10,6 @@
 
 @theme {
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 :root {
@@ -178,5 +177,12 @@
   }
   .aspect-poster {
     aspect-ratio: 3 / 4;
+  }
+}
+
+@layer utilities {
+  /* Shared keyboard focus outline utility to ensure consistent accessible focus styling */
+  .focus-outline {
+    @apply focus:outline-none focus-visible:ring-1 focus-visible:ring-ring;
   }
 }
