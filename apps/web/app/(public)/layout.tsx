@@ -1,12 +1,8 @@
-import { Toaster } from '@workspace/design-system/components/ui/sonner';
 import type { Metadata, Viewport } from 'next';
-import { Geist, Pacifico } from 'next/font/google';
+import { Geist } from 'next/font/google';
 import { Ay11SkipLink } from '@/components/a11y-skip-link';
-import { Analytics } from '@/components/analytics';
-import { TailwindIndicator } from '@/components/tailwind-indicator';
-import { ThemeProvider } from '@/components/theme-provider';
+import { RootProviders } from '@/components/providers/root-providers';
 import { baseMetadata, baseViewport } from '@/constants/metadata';
-import { Help } from '@/features/public/common/ui/helper';
 import { Header } from '@/modules/home/ui/home-header';
 import type { LayoutProps } from '@/types/common';
 import '@workspace/design-system/styles/globals.css';
@@ -14,12 +10,6 @@ import '@workspace/design-system/styles/globals.css';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
-});
-
-const geistMono = Pacifico({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-  weight: '400',
 });
 
 /**
@@ -42,30 +32,26 @@ export const viewport: Viewport = baseViewport;
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`${geistSans.variable} antialiased`}
       lang="en"
       suppressHydrationWarning
     >
-      <body>
+      <body className="flex min-h-screen flex-col">
         {/* Skip link placed as the first focusable element inside body for accessibility */}
         <Ay11SkipLink />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          forcedTheme="dark"
-        >
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1" id="main-content">
-              {children}
-            </main>
-          </div>
-          <Analytics />
-          <Help />
-          <Toaster />
-          <TailwindIndicator />
-        </ThemeProvider>
+        {/* Wrap the application in global providers */}
+        <RootProviders>
+          <Header />
+          <main
+            aria-labelledby="site-title"
+            className="flex-1"
+            data-a11y="main"
+            id="main-content"
+            tabIndex={-1}
+          >
+            {children}
+          </main>
+        </RootProviders>
       </body>
     </html>
   );
