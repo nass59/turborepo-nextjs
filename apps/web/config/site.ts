@@ -1,9 +1,9 @@
 import type { SiteConfig } from 'types';
 
 export const siteConfig: SiteConfig = {
-  name: 'TechShip',
+  name: 'TechShip - Next.js & React Tech Blog',
   description:
-    'Open source app built using the new router, server components, TailwindCSS, Radix UI, Storybook, MongoDB and everything new in Next.js 14.',
+    'Latest updates, articles, and insights about NextJS, React, TypeScript, and modern web development.',
   url: 'https://turborepo-nextjs.vercel.app',
   ogImage: 'https://turborepo-nextjs.vercel.app/og.jpg',
   author: '@nass190',
