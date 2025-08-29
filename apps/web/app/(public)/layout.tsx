@@ -47,6 +47,8 @@ export default function RootLayout({ children }: LayoutProps) {
       suppressHydrationWarning
     >
       <body>
+        {/* Skip link placed as the first focusable element inside body for accessibility */}
+        <Ay11SkipLink />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -54,9 +56,10 @@ export default function RootLayout({ children }: LayoutProps) {
           forcedTheme="dark"
         >
           <div className="flex min-h-screen flex-col">
-            <Ay11SkipLink />
             <Header />
-            {children}
+            <main className="flex-1" id="main-content">
+              {children}
+            </main>
           </div>
           <Analytics />
           <Help />
