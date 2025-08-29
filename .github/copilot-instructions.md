@@ -135,3 +135,24 @@ lib/
 5. Consider creating ADR for significant changes
 
 Remember: This project prioritizes type safety, developer experience, and AI-assisted development. Always consider the maintainability and clarity of your code.
+
+## 🧹 Biome Class Sorting (Tailwind)
+
+If you see the lint error:
+
+> These CSS classes should be sorted (biomelint/nursery/useSortedClasses)
+
+Quick fix workflow:
+1. Run auto-format: `pnpm format` (this applies Biome's class reordering where safe).
+2. If still failing, manually reorder the `className` tokens deterministically:
+  - Custom utility (e.g. `focus-outline`) first
+  - Layout & box model (flex / grid / sizing / spacing / border)
+  - Visual (background, shadow, ring, text, effects)
+  - State variants (`hover:`, `focus:` / `focus-visible:` / `group-hover:`)
+  - Responsive (`sm:` → `md:` → `lg:` → `xl:`)
+3. Re-run lint: `pnpm lint`.
+4. Only if Biome repeatedly churns an already intentional grouping, keep Biome order and add a brief comment if the order has semantic meaning (rare).
+
+Avoid disabling the rule; consistency improves diff quality and reduces merge noise.
+
+Tip: Prefer promoting frequently repeated focus styles to a shared utility (like `.focus-outline`) to minimize reordering churn.
