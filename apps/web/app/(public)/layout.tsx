@@ -3,7 +3,7 @@ import { Geist } from 'next/font/google';
 import { A11ySkipLink } from '@/components/a11y-skip-link';
 import { RootProviders } from '@/components/providers/root-providers';
 import { baseMetadata, baseViewport } from '@/constants/metadata';
-import { Header } from '@/modules/home/ui/home-header';
+import { SiteHeader } from '@/modules/layout/ui/site-header';
 import type { LayoutProps } from '@/types/common';
 import '@workspace/design-system/styles/globals.css';
 
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps) {
         <A11ySkipLink />
         {/* Wrap the application in global providers */}
         <RootProviders>
-          <Header />
+          <SiteHeader />
           <main
             aria-labelledby="site-title"
             className="flex-1"
