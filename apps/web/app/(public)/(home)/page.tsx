@@ -14,7 +14,7 @@ const ANIM_OPTIONS = {
 
 export default function Page() {
   return (
-    <section className="relative flex min-h-screen flex-col bg-neutral-950">
+    <section className="relative flex min-h-screen flex-col bg-[#030303]">
       <div className="items-start md:grid md:grid-cols-2">
         {/* Hero section */}
         <HomeBlock className="overflow-hidden">
