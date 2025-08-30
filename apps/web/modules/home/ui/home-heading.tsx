@@ -4,7 +4,7 @@ const DATA = {
     'Latest updates, articles, and insights about NextJS, React, Typescript, and more.',
 } as const;
 
-export const Heading = () => (
+export const HomeHeading = () => (
   <>
     <h1 className="bg-clip-text font-bold text-4xl text-slate-200 tracking-tighter sm:text-3xl md:text-6xl lg:text-8xl">
       {DATA.title}

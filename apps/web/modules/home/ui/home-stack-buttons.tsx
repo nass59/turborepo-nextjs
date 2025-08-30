@@ -8,7 +8,7 @@ const STACKS = [
   { name: 'Typescript', version: 'v5.9.2', color: '#5aa6f7' },
 ] as const;
 
-export const StackButtons = () => (
+export const HomeStackButtons = () => (
   <div className="mt-3 flex flex-wrap gap-4 text-gray-600">
     {STACKS.map((stack) => (
       <ShimmerButton
