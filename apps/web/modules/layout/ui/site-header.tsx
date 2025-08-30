@@ -1,6 +1,6 @@
 import { ShipWheelIcon } from 'lucide-react';
 import { routes } from '@/constants/routes';
-import { HeaderLinks } from '@/modules/home/ui/header-links';
+import { SiteHeaderLinks } from '@/modules/layout/ui/site-header-links';
 
 const DATA = {
   title: 'TechShip',
@@ -8,10 +8,10 @@ const DATA = {
 };
 
 /**
- * Site header containing primary navigation.
- * Uses semantic <header> and <nav> landmarks for improved accessibility.
+ * Global site header containing primary navigation.
+ * Server component (no client interactivity here).
  */
-export const Header = () => (
+export const SiteHeader = () => (
   <header
     className="fixed top-0 z-30 w-full bg-gradient-to-b from-transparent via-gray-900/5 to-gray-950/20 backdrop-blur-md"
     data-a11y="site-header"
@@ -44,7 +44,7 @@ export const Header = () => (
         className="relative col-span-10 flex items-center justify-end"
         data-a11y="header-links-wrapper"
       >
-        <HeaderLinks />
+        <SiteHeaderLinks />
       </div>
     </nav>
   </header>
