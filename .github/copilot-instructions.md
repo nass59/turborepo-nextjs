@@ -1,158 +1,46 @@
-You are an expert in TypeScript, Node.js, Next.js App Router, React, Shadcn UI, Radix UI and Tailwind.
+You are an expert AI pair‑programmer for this Turborepo (Next.js 15 + React 19 + Tailwind 4). Prefer precision, project conventions, and minimal diff changes.
 
-## 🎯 Project Context
+## 1. Architecture & Boundaries
+Apps: `apps/web` (App Router) & `apps/storybook` (component docs). Shared UI & utilities live in `packages/design-system` (exports via path sub-entries) and TS configs in `packages/typescript-config`. Feature code in `apps/web` is grouped by route segment (e.g. `app/(public)/(home)`) and domain modules under `modules/` & `features/`—keep business logic out of leaf pages. Auth enforced centrally via `apps/web/middleware.ts` (Clerk route guard) – don't duplicate per-route auth.
 
-This is a modern Next.js 15 Turborepo monorepo with:
-- **Apps**: web (Next.js app), storybook (component documentation)
-- **Packages**: design-system (shared UI components), typescript-config (shared TS configs)
-- **Architecture**: Strict TypeScript, React Server Components, Tailwind CSS 4
-- **Tools**: Biome (linting/formatting), Turbo (build system), pnpm (package manager)
+## 2. Data, Env, Auth
+Env schema validated in `apps/web/env.mjs` with `@t3-oss/env-nextjs` + zod; always import from `@/env` (or relative) instead of `process.env`. Planned persistence: MongoDB + Mongoose (see ADR 0005). Authentication: Clerk (ADR 0006) + GitHub OAuth keys; use server helpers from `@clerk/nextjs/server` inside Server Components / route handlers, and client hooks only in `'use client'` components that need session state.
 
-## 📝 Code Style and Structure
+## 3. Rendering Patterns
+Default to Server Components. Add `'use client'` only for interactivity (forms, animations, theme toggles, Zustand stores). Co-locate interactive child component instead of promoting page to client. Example: `app/(public)/(home)/page.tsx` stays server; interactive buttons come from `modules/home/ui/*` (client if needed). MDX pipeline configured in `next.config.ts` + custom mapping in `mdx-components.tsx`—extend there, not ad hoc in pages.
 
-- Write concise, technical TypeScript code with accurate examples.
-- Use functional and declarative programming patterns; avoid classes.
-- Prefer iteration and modularization over code duplication.
-- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
-- Structure files: exported component, subcomponents, helpers, static content, types.
+## 4. Styling & Design System
+Import primitives from `@workspace/design-system/components/ui/*`, utilities from `@workspace/design-system/lib/utils` (`cn`). Prefer existing tokens/utilities; add new variants via class-variance-authority patterns used in DS components. Tailwind class order must satisfy Biome sorting; run `pnpm format` first. If manual, order: custom utilities → layout/sizing/spacing → visual (bg/text/border/shadow) → state variants → responsive breakpoints.
 
-## 🏗️ Naming Conventions
+## 5. Type & Code Conventions
+Strict TS: use `type` aliases, unions, const assertions; avoid `any` & `enum`. Narrow unknown with type guards. Export named symbols; no default exports in shared packages (exceptions: Next.js page/layout components). Keep files lean: component first, then local helpers, types at bottom or separate `types.ts` when reused.
 
-- Use lowercase with dashes for directories (e.g., components/auth-wizard).
-- Favor named exports for components.
-- Use PascalCase for components, camelCase for functions and variables.
-- Use UPPER_SNAKE_CASE for constants.
+## 6. Performance Choices
+Leverage RSC data fetching; avoid client data fetching unless necessary. Use `next/image` for remote hosts (see `next.config.ts images.remotePatterns`). Apply dynamic `import()` only for heavy, client-only pieces (charts, animations). Avoid premature `React.memo`; prefer deriving lightweight props upstream.
 
-## 🔧 TypeScript Usage
+## 7. Build & Tasks
+Key commands: `pnpm dev` (all), `pnpm --filter=web dev`, `pnpm --filter=storybook dev`, `pnpm typecheck`, `pnpm lint`, `pnpm format`, `pnpm build`. Turbo config (`turbo.json`) declares environment passthrough—add new required env vars there when build-time required. Use `debug:next` / `debug:storybook` scripts for inspector debugging.
 
-- Use TypeScript for all code; prefer types over interfaces.
-- Avoid enums; use union types or const assertions instead.
-- Use functional components with TypeScript types.
-- Implement strict null checks and prefer unknown over any.
-- Use type guards for runtime type checking.
-- Add JSDoc comments for all public functions and components.
+## 8. Adding / Updating UI
+Add or sync DS components via `pnpm bump-ui` (shadcn bulk add into design-system). Stories live in `apps/storybook/stories/*`; mirror component folder names for discoverability. When extending design-system, expose new entry through `package.json` exports pattern before consumption.
 
-## ⚛️ React Best Practices
+## 9. Error & Loading Strategy
+Follow ADR 0007: central error boundaries + future Sentry integration. For route segment errors, add `error.tsx` and `loading.tsx` beside `page.tsx`. Surface user-safe messages; log details server-side (`console.error`). Avoid duplicating generic catch blocks—centralize transformation utilities in a future `lib/errors.ts`.
 
-- Use React Server Components by default for server-side logic.
-- Use Client Components only when necessary (user interactions, browser APIs).
-- Prefer composition over prop drilling.
-- Use React 19 features: use(), startTransition(), useOptimistic().
-- Implement proper error boundaries and loading states.
+## 10. Commit & Documentation
+Commit messages: conventional commits (see `commitlint.config.js`). Significant structural / tech decisions require an ADR in `docs/adr/` (copy `template.md`). For new public utilities/components: add JSDoc and (if non-trivial) a Storybook story.
 
-## 🎨 UI Development
+## 11. Common Pitfalls
+Do NOT import DS internal file paths not exported in `package.json` (breaks future refactors). Do NOT access `process.env` directly in components—use validated `env`. Keep route groups `(public)` / `(admin)` semantics: put shared layout logic in parent segment. Avoid marking entire page client for a single button. Ensure new env vars added to both schema and `turbo.json` build `env` array if needed at build.
 
-- Use the design system from `@workspace/design-system`.
-- Follow Tailwind CSS 4 conventions with design tokens.
-- Implement responsive design with mobile-first approach.
-- Use Radix UI primitives for accessible components.
-- Prefer compound components for complex UI patterns.
+## 12. Quick Example (Home Section)
+`page.tsx` (server) imports UI building blocks: animated pattern (`AnimatedGridPattern`), structural `Block`/`Heading` from module UI; heavy visual effect isolated and can stay server since it's pure. Pattern: page orchestrates layout; module folder owns presentation + client logic.
 
-## 📊 Performance & Optimization
+## 13. Fast Checklist Before PR
+1. `pnpm typecheck && pnpm lint` clean
+2. Tailwind classes sorted (Biome passes)
+3. No unintended client component promotion
+4. Exports surfaced correctly for shared code
+5. Updated ADR/docs if architecture affected
 
-- Use dynamic imports for code splitting.
-- Implement proper image optimization with Next.js Image.
-- Use React.memo() sparingly and only for expensive components.
-- Prefer server-side data fetching when possible.
-- Implement proper caching strategies.
-
-## 🧪 Testing Approach
-
-- Write tests for business logic and critical user flows.
-- Use React Testing Library for component tests.
-- Implement integration tests for API routes.
-- Mock external dependencies appropriately.
-
-## 📖 Documentation Standards
-
-- Add comprehensive JSDoc comments:
-  ```typescript
-  /**
-   * Brief description of the function
-   *
-   * @param param1 - Description of parameter
-   * @returns Description of return value
-   *
-   * @example
-   * ```typescript
-   * const result = myFunction('example');
-   * ```
-   */
-  ```
-- Document component props and usage examples.
-- Create ADRs for architectural decisions.
-- Update documentation when making changes.
-
-## 🔍 Debugging Guidelines
-
-- Use TypeScript strict mode to catch errors early.
-- Implement proper error handling with try/catch.
-- Use console.error() for error logging, console.warn() for warnings.
-- Leverage React DevTools and Next.js debugging features.
-- Use the debug configurations in `.vscode/launch.json`.
-
-## 🚀 AI-Optimized Patterns
-
-- Write self-documenting code with clear intent.
-- Use consistent patterns across the codebase.
-- Implement proper separation of concerns.
-- Create reusable utilities and hooks.
-- Follow the established project architecture.
-
-## 🛠️ Monorepo Considerations
-
-- Use workspace protocol for internal dependencies.
-- Share common configurations through packages.
-- Maintain consistent tooling across all apps.
-- Use Turborepo for efficient builds and caching.
-
-## 📁 File Organization
-
-```
-app/
-├── (public)/          # Public routes
-├── (admin)/           # Admin routes
-├── api/               # API routes
-└── globals.css        # Global styles
-
-components/
-├── ui/                # Basic UI components
-├── forms/             # Form components
-└── layout/            # Layout components
-
-lib/
-├── utils.ts           # Utility functions
-├── constants.ts       # App constants
-└── types.ts           # Type definitions
-```
-
-## 🎯 When Making Changes
-
-1. Run type checking: `pnpm typecheck`
-2. Run linting: `pnpm lint`
-3. Test locally: `pnpm dev`
-4. Update documentation if needed
-5. Consider creating ADR for significant changes
-
-Remember: This project prioritizes type safety, developer experience, and AI-assisted development. Always consider the maintainability and clarity of your code.
-
-## 🧹 Biome Class Sorting (Tailwind)
-
-If you see the lint error:
-
-> These CSS classes should be sorted (biomelint/nursery/useSortedClasses)
-
-Quick fix workflow:
-1. Run auto-format: `pnpm format` (this applies Biome's class reordering where safe).
-2. If still failing, manually reorder the `className` tokens deterministically:
-  - Custom utility (e.g. `focus-outline`) first
-  - Layout & box model (flex / grid / sizing / spacing / border)
-  - Visual (background, shadow, ring, text, effects)
-  - State variants (`hover:`, `focus:` / `focus-visible:` / `group-hover:`)
-  - Responsive (`sm:` → `md:` → `lg:` → `xl:`)
-3. Re-run lint: `pnpm lint`.
-4. Only if Biome repeatedly churns an already intentional grouping, keep Biome order and add a brief comment if the order has semantic meaning (rare).
-
-Avoid disabling the rule; consistency improves diff quality and reduces merge noise.
-
-Tip: Prefer promoting frequently repeated focus styles to a shared utility (like `.focus-outline`) to minimize reordering churn.
+Feedback welcome: if any section is unclear or a recurring pattern isn't captured, point it out so we can refine this guide.
