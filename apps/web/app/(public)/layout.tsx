@@ -28,14 +28,12 @@ export const viewport: Viewport = baseViewport;
  */
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          geistSans.variable,
-          'flex min-h-screen flex-col antialiased'
-        )}
-        data-a11y="app-root"
-      >
+    <html
+      className={cn(geistSans.variable, 'antialiased')}
+      lang="en"
+      suppressHydrationWarning
+    >
+      <body className="flex min-h-screen flex-col" data-a11y="app-root">
         {/* Skip link placed as the first focusable element inside body for accessibility */}
         <A11ySkipLink />
         {/* Wrap the application in global providers */}
