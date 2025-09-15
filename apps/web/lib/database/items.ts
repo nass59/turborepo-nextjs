@@ -7,7 +7,6 @@ import {
   count,
   createOne,
   deleteOneById,
-  findAll,
   findOneById,
   updateOneById,
 } from '@/lib/database/queries';
@@ -31,10 +30,6 @@ export function createItem(data: ItemModelProps): Promise<ItemModel | null> {
 
 export function deleteOneItem(itemId: string): Promise<ItemModel | null> {
   return deleteOneById(Item, itemId);
-}
-
-export function findAllItems(query: object): Promise<ItemModel[] | []> {
-  return findAll(Item, query);
 }
 
 export function countAllItems(query: object): Promise<number> {

@@ -10,14 +10,6 @@ export type PageProps<T = string> = {
   }>;
 };
 
-export type ArrayPageProps<T = string> = {
-  params: Promise<{
-    slug: T[];
-  }>;
-};
-
 export type StaticParams<T = string> = Array<{ slug: T }>;
-
-export type StaticArrayParams<T = string[]> = Array<{ slug: T }>;
 
 export type PageMetadata = Promise<Metadata | null | object>;

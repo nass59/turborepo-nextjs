@@ -31,9 +31,6 @@ export const PosterCard = ({ data }: Props) => {
           href={`/explore/${data._id}`}
         />
       </CardContent>
-      {/* <CardFooter>
-        <PreviewBtn data={parseData(data)} />
-      </CardFooter> */}
     </Card>
   );
 };
