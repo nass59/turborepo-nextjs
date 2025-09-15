@@ -46,6 +46,7 @@
     "server-only": "^0.0.1",
     "sharp": "^0.34.3",
     "shiki": "^3.8.1",
+    "superjson": "^2.2.2",
     "tailwindcss": "^4.1.11",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^4.0.5",
