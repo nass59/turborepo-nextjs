@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
-import { Space2 } from '@/features/public/landing-page/assets/icons/space2';
-import { NextJS } from '@/features/public/landing-page/assets/logos/nextjs-13';
+import { Space2 } from '@/assets/icons/space2';
+import { NextJS } from '@/assets/logos/nextjs-13';
 import { ogImageSchema } from '@/lib/validation/og';
 
 export const runtime = 'edge';
