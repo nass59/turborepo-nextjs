@@ -4,6 +4,8 @@ import { z } from 'zod';
 export const env = createEnv({
   server: {
     CLERK_SECRET_KEY: z.string().min(1),
+    DATABASE_URL: z.string().min(1),
+    OPENAI_API_KEY: z.string().min(1),
     GITHUB_ID: z.string().min(1),
     GITHUB_SECRET: z.string().min(1),
     GITHUB_ACCESS_TOKEN: z.string().min(1),
@@ -23,6 +25,8 @@ export const env = createEnv({
   },
   runtimeEnv: {
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
+    DATABASE_URL: process.env.DATABASE_URL,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
     GITHUB_ID: process.env.GITHUB_ID,
     GITHUB_SECRET: process.env.GITHUB_SECRET,
     GITHUB_ACCESS_TOKEN: process.env.GITHUB_ACCESS_TOKEN,
