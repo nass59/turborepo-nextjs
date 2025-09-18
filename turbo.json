@@ -19,7 +19,9 @@
         "MONGODB_URI",
         "GITHUB_ACCESS_TOKEN",
         "MONGODB_DATABASE",
-        "SPACE_ID"
+        "SPACE_ID",
+        "OPENAI_API_KEY",
+        "E2B_API_KEY"
       ],
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
