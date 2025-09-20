@@ -21,7 +21,7 @@
     "react-hook-form": "^7.62.0",
     "recharts": "^2.15.4",
     "sonner": "^2.0.6",
-    "zod": "^4.0.5"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.0",
