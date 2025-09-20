@@ -37,7 +37,7 @@
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "import-in-the-middle": "^1.14.2",
-    "inngest": "^3.40.3",
+    "inngest": "3.40.1",
     "lucide-react": "^0.525.0",
     "mongoose": "^8.16.4",
     "next": "^15.4.2",
@@ -55,7 +55,7 @@
     "superjson": "^2.2.2",
     "tailwindcss": "^4.1.11",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^4.0.5",
+    "zod": "^3.25.76",
     "zustand": "^5.0.6"
   },
   "devDependencies": {
