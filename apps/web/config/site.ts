@@ -1,6 +1,4 @@
-import type { SiteConfig } from 'types';
-
-export const siteConfig: SiteConfig = {
+export const siteConfig = {
   name: 'TechShip - Next.js & React Tech Blog',
   description:
     'Latest updates, articles, and insights about NextJS, React, TypeScript, and modern web development.',

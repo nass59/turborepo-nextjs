@@ -5,7 +5,6 @@ import type { PropsWithChildren } from 'react';
 import { Analytics } from '@/components/analytics';
 import { TailwindIndicator } from '@/components/tailwind-indicator';
 import { ThemeProvider } from '@/components/theme-provider';
-import { Help } from '@/features/public/common/ui/helper';
 import { isProd } from '@/lib/env';
 
 /**
@@ -16,7 +15,6 @@ export const RootProviders = ({ children }: PropsWithChildren) => (
   <ThemeProvider attribute="class" defaultTheme="dark">
     {children}
     <Analytics />
-    <Help />
     <Toaster />
     {!isProd && <TailwindIndicator />}
   </ThemeProvider>

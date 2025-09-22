@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import { A11ySkipLink } from '@/components/a11y-skip-link';
 import { RootProviders } from '@/components/providers/root-providers';
 import { geistSans } from '@/config/fonts';
-import { baseMetadata, baseViewport } from '@/constants/metadata';
+import { baseMetadata, baseViewport } from '@/config/metadata';
 import { SiteHeader } from '@/modules/layout/ui/site-header';
 import { TRPCReactProvider } from '@/trpc/client';
 import type { LayoutProps } from '@/types/common';
