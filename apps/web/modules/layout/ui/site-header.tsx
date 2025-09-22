@@ -1,5 +1,5 @@
 import { ShipWheelIcon } from 'lucide-react';
-import { routes } from '@/constants/routes';
+import { routes } from '@/config/routes';
 import { SiteHeaderLinks } from '@/modules/layout/ui/site-header-links';
 
 const DATA = {
