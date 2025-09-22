@@ -1,4 +1,4 @@
-import z from 'zod';
+import { z } from 'zod';
 import { inngest } from '@/inngest/client';
 import { prisma } from '@/lib/database-sql/db';
 import { baseProcedure, createTRPCRouter } from '@/trpc/init';
