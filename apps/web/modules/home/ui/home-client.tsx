@@ -1,6 +1,6 @@
 'use client';
 
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { Button } from '@workspace/design-system/components/ui/button';
 import { Input } from '@workspace/design-system/components/ui/input';
 import { toast } from '@workspace/design-system/components/ui/sonner';
@@ -11,10 +11,12 @@ export const HomeClient = () => {
   const [value, setValue] = useState('');
 
   const trpc = useTRPC();
-  const invoke = useMutation(
-    trpc.invoke.mutationOptions({
+  const { data: messages } = useQuery(trpc.messages.getMany.queryOptions());
+
+  const createMessage = useMutation(
+    trpc.messages.create.mutationOptions({
       onSuccess: () => {
-        toast.success('Inngest function invoked successfully!');
+        toast.success('Message created!');
       },
     })
   );
@@ -23,11 +25,12 @@ export const HomeClient = () => {
     <div className="max-w-7xl p-4">
       <Input onChange={(e) => setValue(e.target.value)} value={value} />
       <Button
-        disabled={invoke.isPending}
-        onClick={() => invoke.mutate({ value })}
+        disabled={createMessage.isPending}
+        onClick={() => createMessage.mutate({ value })}
       >
         Invoke Inngest
       </Button>
+      {JSON.stringify(messages, null, 2)}
     </div>
   );
 };
