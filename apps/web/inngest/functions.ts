@@ -11,6 +11,9 @@ import { inngest } from './client';
 import { getSandbox, lastAssistantMessageContent } from './utils';
 
 const SANDBOX_PORT = 3000;
+const SANDBOX_TIMEOUT = 120_000; // 2 minutes
+const BLOCKED_COMMANDS_REGEX =
+  /\b(npm\s+run\s+(dev|build|start)|next\s+(dev|build|start))\b/i;
 
 export const helloWorld = inngest.createFunction(
   { id: 'hello-world' },
@@ -42,6 +45,11 @@ export const helloWorld = inngest.createFunction(
 
               try {
                 const sandbox = await getSandbox(sandboxId);
+
+                if (BLOCKED_COMMANDS_REGEX.test(command)) {
+                  return 'Command blocked by policy: dev/build/start commands are not allowed.';
+                }
+
                 const result = await sandbox.commands.run(command, {
                   onStdout: (data: string) => {
                     buffers.stdout += data;
@@ -49,6 +57,7 @@ export const helloWorld = inngest.createFunction(
                   onStderr: (data: string) => {
                     buffers.stderr += data;
                   },
+                  timeoutMs: SANDBOX_TIMEOUT,
                 });
 
                 return result.stdout;
