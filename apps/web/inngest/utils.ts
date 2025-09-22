@@ -6,10 +6,17 @@ export const getSandbox = async (sandboxId: string) => {
   return sandbox;
 };
 
-export const lastAssistantMessageContent = (result: AgentResult) => {
-  const lastAssistantMessageIndex = result.output.findIndex(
-    (outputMessage) => outputMessage.role === 'assistant'
-  );
+export const lastAssistantMessageContent = (
+  result: AgentResult
+): string | undefined => {
+  let lastAssistantMessageIndex = -1;
+
+  for (let i = result.output.length - 1; i >= 0; i--) {
+    if ((result.output[i] as TextMessage).role === 'assistant') {
+      lastAssistantMessageIndex = i;
+      break;
+    }
+  }
 
   const message = result.output[lastAssistantMessageIndex] as
     | TextMessage
