@@ -15,5 +15,12 @@
       "!**/design-system/src/lib/*"
     ]
   },
-  "extends": ["ultracite"]
+  "extends": ["ultracite"],
+  "linter": {
+    "rules": {
+      "complexity": {
+        "noVoid": "off"
+      }
+    }
+  }
 }
