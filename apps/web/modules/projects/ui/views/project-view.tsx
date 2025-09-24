@@ -1,6 +1,5 @@
 'use client';
 
-import { useSuspenseQuery } from '@tanstack/react-query';
 import {
   ResizableHandle,
   ResizablePanel,
@@ -8,21 +7,14 @@ import {
 } from '@workspace/design-system/components/ui/resizable';
 import { Suspense } from 'react';
 import { MessagesContainer } from '@/modules/projects/ui/components/messages-container';
-import { useTRPC } from '@/trpc/client';
 
 type Props = {
   projectId: string;
 };
 
 export const ProjectView = ({ projectId }: Props) => {
-  const trpc = useTRPC();
-
-  const { data } = useSuspenseQuery(
-    trpc.projects.getOne.queryOptions({ id: projectId })
-  );
-
   return (
-    <div className="h-screen">
+    <div className="h-[calc(100vh-80px)]">
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel
           className="flex min-h-0 flex-col"
