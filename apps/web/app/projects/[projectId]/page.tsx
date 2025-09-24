@@ -20,7 +20,7 @@ export default async function Page({ params }: Props) {
   );
 
   return (
-    <div className="pt-20">
+    <div className="pt-18">
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Suspense fallback={<div>Loading project...</div>}>
           <ProjectView projectId={projectId} />
