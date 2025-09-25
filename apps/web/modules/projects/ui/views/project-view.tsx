@@ -5,14 +5,18 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from '@workspace/design-system/components/ui/resizable';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
+import type { Fragment } from '@/generated/prisma';
 import { MessagesContainer } from '@/modules/projects/ui/components/messages-container';
+import { ProjectHeader } from '@/modules/projects/ui/components/project-header';
 
 type Props = {
   projectId: string;
 };
 
 export const ProjectView = ({ projectId }: Props) => {
+  const [activeFragment, setActiveFragment] = useState<Fragment | null>(null);
+
   return (
     <div className="h-[calc(100vh-80px)]">
       <ResizablePanelGroup direction="horizontal">
@@ -21,8 +25,16 @@ export const ProjectView = ({ projectId }: Props) => {
           defaultSize={35}
           minSize={20}
         >
+          <Suspense fallback={<div>Loading project...</div>}>
+            <ProjectHeader projectId={projectId} />
+          </Suspense>
+
           <Suspense fallback={<div>Loading messages...</div>}>
-            <MessagesContainer projectId={projectId} />
+            <MessagesContainer
+              activeFragment={activeFragment}
+              projectId={projectId}
+              setActiveFragment={setActiveFragment}
+            />
           </Suspense>
         </ResizablePanel>
         <ResizableHandle withHandle />
