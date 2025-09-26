@@ -1,9 +1,10 @@
+'use client';
+
 import { Button } from '@workspace/design-system/components/ui/button';
 import { ExternalLinkIcon, RefreshCcwIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Hint } from '@/components/hint';
 import type { Fragment } from '@/generated/prisma';
-
 type Props = {
   data: Fragment;
 };
