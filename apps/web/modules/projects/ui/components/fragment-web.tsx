@@ -2,9 +2,10 @@
 
 import { Button } from '@workspace/design-system/components/ui/button';
 import { ExternalLinkIcon, RefreshCcwIcon } from 'lucide-react';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Hint } from '@/components/hint';
 import type { Fragment } from '@/generated/prisma';
+
 type Props = {
   data: Fragment;
 };
@@ -19,11 +20,11 @@ export const FragmentWeb = ({ data }: Props) => {
     setFragmentKey((prev) => prev + 1);
   };
 
-  const handleCopy = () => {
+  const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(data.sandboxUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), COPIED_TIMEOUT);
-  };
+  }, [data.sandboxUrl]);
 
   return (
     <div className="flex h-full w-full flex-col">
