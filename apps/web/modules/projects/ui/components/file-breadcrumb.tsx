@@ -41,7 +41,7 @@ const ShortBreadcrumb = ({ pathSegments }: BreadcrumbProps) => {
     const isLast = index === pathSegments.length - 1;
 
     return (
-      <Fragment key={segment}>
+      <Fragment key={`${segment}-${index}`}>
         <BreadcrumbItem>
           {isLast ? (
             <BreadcrumbPage className="font-medium">{segment}</BreadcrumbPage>
@@ -51,7 +51,6 @@ const ShortBreadcrumb = ({ pathSegments }: BreadcrumbProps) => {
         </BreadcrumbItem>
         {!isLast && <BreadcrumbSeparator />}
       </Fragment>
-    );
   });
 };
 
