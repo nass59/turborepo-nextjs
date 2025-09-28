@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: key */
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -51,6 +52,7 @@ const ShortBreadcrumb = ({ pathSegments }: BreadcrumbProps) => {
         </BreadcrumbItem>
         {!isLast && <BreadcrumbSeparator />}
       </Fragment>
+    );
   });
 };
 
