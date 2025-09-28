@@ -15,8 +15,8 @@ import {
 import { CodeIcon, CrownIcon, EyeIcon } from 'lucide-react';
 import Link from 'next/link';
 import { Suspense, useState } from 'react';
-import { FileExplorer } from '@/modules/projects/ui/components/file-explorer';
 import type { Fragment } from '@/generated/prisma';
+import { FileExplorer } from '@/modules/projects/ui/components/file-explorer';
 import { FragmentWeb } from '@/modules/projects/ui/components/fragment-web';
 import { MessagesContainer } from '@/modules/projects/ui/components/messages-container';
 import { ProjectHeader } from '@/modules/projects/ui/components/project-header';
@@ -49,7 +49,7 @@ export const ProjectView = ({ projectId }: Props) => {
             />
           </Suspense>
         </ResizablePanel>
-        <ResizableHandle withHandle />
+        <ResizableHandle className="transition-colors hover:bg-primary" />
         <ResizablePanel
           className="flex min-h-0 flex-col"
           defaultSize={65}
