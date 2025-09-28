@@ -1,10 +1,10 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { useEffect, useRef } from 'react';
 import type { Fragment } from '@/generated/prisma';
-import { MessageCard } from '@/modules/projects/ui/components/message-card';
-import { MessageForm } from '@/modules/projects/ui/components/message-form';
-import { MessageLoading } from '@/modules/projects/ui/components/message-loading';
 import { useTRPC } from '@/trpc/client';
+import { MessageCard } from './message-card';
+import { MessageForm } from './message-form';
+import { MessageLoading } from './message-loading';
 
 type Props = {
   projectId: string;
@@ -21,10 +21,7 @@ export const MessagesContainer = ({
   const trpc = useTRPC();
 
   const { data: messages } = useSuspenseQuery(
-    trpc.messages.getMany.queryOptions(
-      { projectId }
-      // { refetchInterval: 5000 }
-    )
+    trpc.messages.getMany.queryOptions({ projectId })
   );
 
   useEffect(() => {

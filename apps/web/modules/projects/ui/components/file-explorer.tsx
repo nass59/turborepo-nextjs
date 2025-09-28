@@ -1,13 +1,5 @@
 'use client';
 
-import {
-  Breadcrumb,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@workspace/design-system/components/ui/breadcrumb';
 import { Button } from '@workspace/design-system/components/ui/button';
 import {
   ResizableHandle,
@@ -15,77 +7,17 @@ import {
   ResizablePanelGroup,
 } from '@workspace/design-system/components/ui/resizable';
 import { CopyCheckIcon, CopyIcon } from 'lucide-react';
-import { Fragment, useCallback, useMemo, useState } from 'react';
-import { CodeView } from '@/components/code-view';
+import { useCallback, useMemo, useState } from 'react';
 import { Hint } from '@/components/hint';
-import { TreeView } from '@/components/tree-view';
 import { convertFilesToTreeItems } from '@/lib/utils';
-
-const COPIED_TIMEOUT = 2000; // 2 seconds
+import { COPIED_TIMEOUT } from '../../constants';
+import { getLanguageFromExtension } from '../../utils/lang';
+import { CodeView } from './code-view';
+import { FileBreadcrumb } from './file-breadcrumb';
+import { TreeView } from './tree-view';
 
 type FileCollection = {
   [path: string]: string;
-};
-
-const getLanguageFromExtension = (fileName: string): string => {
-  const extension = fileName.split('.').pop()?.toLowerCase();
-  return extension || 'text';
-};
-
-type FileBreadcrumbProps = {
-  filePath: string;
-};
-
-const FileBreadcrumb = ({ filePath }: FileBreadcrumbProps) => {
-  const pathSegments = filePath.split('/');
-  const maxSegments = 4; // Maximum number of segments to display
-
-  const renderBreadcrumbItems = () => {
-    if (pathSegments.length <= maxSegments) {
-      // Show all segments if within limit
-      return pathSegments.map((segment, index) => {
-        const isLast = index === pathSegments.length - 1;
-
-        return (
-          <Fragment key={segment}>
-            <BreadcrumbItem>
-              {isLast ? (
-                <BreadcrumbPage className="font-medium">
-                  {segment}
-                </BreadcrumbPage>
-              ) : (
-                <span className="text-muted-foreground">{segment}</span>
-              )}
-            </BreadcrumbItem>
-            {!isLast && <BreadcrumbSeparator />}
-          </Fragment>
-        );
-      });
-    }
-
-    const firstSegment = pathSegments[0];
-    const lastSegment = pathSegments.at(-1);
-
-    return (
-      <BreadcrumbItem>
-        <span className="text-muted-foreground">{firstSegment}</span>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbEllipsis />
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbPage className="font-medium">{lastSegment}</BreadcrumbPage>
-        </BreadcrumbItem>
-      </BreadcrumbItem>
-    );
-  };
-
-  return (
-    <Breadcrumb>
-      <BreadcrumbList>{renderBreadcrumbItems()}</BreadcrumbList>
-    </Breadcrumb>
-  );
 };
 
 type FileExplorerProps = {
