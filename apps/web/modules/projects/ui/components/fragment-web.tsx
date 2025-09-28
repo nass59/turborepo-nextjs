@@ -5,12 +5,11 @@ import { ExternalLinkIcon, RefreshCcwIcon } from 'lucide-react';
 import { useCallback, useState } from 'react';
 import { Hint } from '@/components/hint';
 import type { Fragment } from '@/generated/prisma';
+import { COPIED_TIMEOUT } from '../../constants';
 
 type Props = {
   data: Fragment;
 };
-
-const COPIED_TIMEOUT = 2000; // 2 seconds
 
 export const FragmentWeb = ({ data }: Props) => {
   const [copied, setCopied] = useState(false);

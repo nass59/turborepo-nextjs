@@ -7,7 +7,7 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-typescript';
 import { useEffect } from 'react';
 
-import './code-theme.css';
+import '../styles/code-theme.css';
 
 type Props = {
   code: string;

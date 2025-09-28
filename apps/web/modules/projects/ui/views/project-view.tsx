@@ -15,7 +15,7 @@ import {
 import { CodeIcon, CrownIcon, EyeIcon } from 'lucide-react';
 import Link from 'next/link';
 import { Suspense, useState } from 'react';
-import { FileExplorer } from '@/components/file-explorer';
+import { FileExplorer } from '@/modules/projects/ui/components/file-explorer';
 import type { Fragment } from '@/generated/prisma';
 import { FragmentWeb } from '@/modules/projects/ui/components/fragment-web';
 import { MessagesContainer } from '@/modules/projects/ui/components/messages-container';
