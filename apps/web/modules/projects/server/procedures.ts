@@ -1,6 +1,7 @@
 import { TRPCError } from '@trpc/server';
 import { generateSlug } from 'random-word-slugs';
 import { z } from 'zod';
+import { env } from '@/env.mjs';
 import { inngest } from '@/inngest/client';
 import { prisma } from '@/lib/database-sql/db';
 import { baseProcedure, createTRPCRouter } from '@/trpc/init';
@@ -48,6 +49,10 @@ export const projectsRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ input }) => {
+      if (env.IS_DEMO) {
+        throw new Error('Feature disabled for demo');
+      }
+
       const createdProject = await prisma.project.create({
         data: {
           name: generateSlug(2, { format: 'kebab' }),

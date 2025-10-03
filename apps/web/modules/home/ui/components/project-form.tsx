@@ -1,20 +1,20 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-// import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@workspace/design-system/components/ui/button';
 import { Form, FormField } from '@workspace/design-system/components/ui/form';
 import { toast } from '@workspace/design-system/components/ui/sonner';
 import { cn } from '@workspace/design-system/lib/utils';
 import { ArrowUpIcon, Loader2Icon } from 'lucide-react';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import TextareaAutoSize from 'react-textarea-autosize';
 import { z } from 'zod';
 import { PROJECT_TEMPLATES } from '@/modules/home/constants';
 
-// import { useTRPC } from '@/trpc/client';
+import { useTRPC } from '@/trpc/client';
 
 const MAX_VALUE_LENGTH = 10_000;
 
@@ -28,36 +28,32 @@ const formSchema = z.object({
 export const ProjectForm = () => {
   const [isFocused, setIsFocused] = useState(false);
 
-  // const router = useRouter();
-  // const trpc = useTRPC();
-  // const queryClient = useQueryClient();
+  const router = useRouter();
+  const trpc = useTRPC();
+  const queryClient = useQueryClient();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: { value: '' },
   });
 
-  // const createProject = useMutation(
-  //   trpc.projects.create.mutationOptions({
-  //     onSuccess: (data) => {
-  //       queryClient.invalidateQueries(trpc.projects.getMany.queryOptions());
-  //       router.push(`/projects/${data.id}`);
-  //     },
-  //     onError: (error) => {
-  //       toast.error(error.message);
-  //     },
-  //   })
-  // );
+  const createProject = useMutation(
+    trpc.projects.create.mutationOptions({
+      onSuccess: (data) => {
+        queryClient.invalidateQueries(trpc.projects.getMany.queryOptions());
+        router.push(`/projects/${data.id}`);
+      },
+      onError: (error) => {
+        toast.error(error.message);
+      },
+    })
+  );
 
-  const onSubmit = () => {
-    toast.info('Feature disabled for demo');
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    await createProject.mutateAsync({
+      value: values.value,
+    });
   };
-
-  // const onSubmit = async (values: z.infer<typeof formSchema>) => {
-  //   await createProject.mutateAsync({
-  //     value: values.value,
-  //   });
-  // };
 
   const onSelectTemplate = (value: string) => {
     form.setValue('value', value, {
@@ -67,8 +63,7 @@ export const ProjectForm = () => {
     });
   };
 
-  // const isPending = createProject.isPending;
-  const isPending = false;
+  const isPending = createProject.isPending;
   const isButtonDisabled = isPending || !form.formState.isValid;
 
   return (
