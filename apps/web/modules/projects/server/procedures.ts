@@ -50,7 +50,10 @@ export const projectsRouter = createTRPCRouter({
     )
     .mutation(async ({ input }) => {
       if (env.IS_DEMO) {
-        throw new Error('Feature disabled for demo');
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
+          message: 'Feature disabled for demo',
+        });
       }
 
       const createdProject = await prisma.project.create({

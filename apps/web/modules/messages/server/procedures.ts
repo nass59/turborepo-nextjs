@@ -1,3 +1,4 @@
+import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
 import { env } from '@/env.mjs';
 import { inngest } from '@/inngest/client';
@@ -32,7 +33,10 @@ export const messagesRouter = createTRPCRouter({
     )
     .mutation(async ({ input }) => {
       if (env.IS_DEMO) {
-        throw new Error('Feature disabled for demo');
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
+          message: 'Feature disabled for demo',
+        });
       }
 
       const createdMessage = await prisma.message.create({
