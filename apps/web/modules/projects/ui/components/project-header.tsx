@@ -42,7 +42,7 @@ export const ProjectHeader = ({ projectId }: Props) => {
             type="button"
             variant="ghost"
           >
-            <Image alt="Vibe" height={18} src="/logo2.svg" width={18} />
+            <Image alt="Vibe" height={18} src="/logo.svg" width={18} />
             <span className="font-medium text-sm">{project.name}</span>
             <ChevronDownIcon />
           </Button>

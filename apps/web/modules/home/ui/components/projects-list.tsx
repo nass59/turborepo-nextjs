@@ -12,7 +12,7 @@ export const ProjectsList = () => {
   const { data: projects } = useQuery(trpc.projects.getMany.queryOptions());
 
   return (
-    <div className="flex w-full flex-col gap-y-6 rounded-xl border bg-white p-8 sm:gap-y-4 dark:bg-sidebar">
+    <div className="z-1 flex w-full flex-col gap-y-6 rounded-xl border bg-white p-8 sm:gap-y-4 dark:bg-sidebar">
       <h2 className="font-semibold text-2xl">Saved Vibes</h2>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
         {projects?.length === 0 && (
@@ -35,7 +35,7 @@ export const ProjectsList = () => {
                   alt="Vibe"
                   className="object-contain"
                   height={32}
-                  src="/logo2.svg"
+                  src="/logo.svg"
                   width={32}
                 />
                 <div className="flex flex-col">

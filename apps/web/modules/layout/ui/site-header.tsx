@@ -1,5 +1,7 @@
-import { ShipWheelIcon } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { routes } from '@/config/routes';
+import { SiteHeaderAuth } from '@/modules/layout/ui/site-header-auth';
 import { SiteHeaderLinks } from '@/modules/layout/ui/site-header-links';
 
 const DATA = {
@@ -22,28 +24,26 @@ export const SiteHeader = () => (
       className="grid grid-cols-12 items-center justify-between border-orange-300/12 border-b mix-blend-overlay"
       data-a11y="primary-nav"
     >
-      <a
+      <Link
         aria-labelledby="site-title"
-        className="focus-outline col-span-2 flex w-[268px] shrink-0 items-center gap-2 border-orange-300/12 border-r border-b p-4 md:p-4"
+        className="focus-outline col-span-2 flex w-[168px] shrink-0 items-center gap-2 p-4 md:w-[268px] md:border-orange-300/12 md:border-r md:p-4"
         data-a11y="home-link"
         href={DATA.href}
         rel="noopener noreferrer"
       >
-        <ShipWheelIcon
-          aria-hidden="true"
-          className="inline size-5 text-primary"
-        />
+        <Image alt="Vibe" height={24} src="/logo.svg" width={24} />
         <h1
           className="bg-clip-text font-bold text-lg text-slate-200 tracking-tighter"
           id="site-title"
         >
           {DATA.title}
         </h1>
-      </a>
+      </Link>
       <div
         className="relative col-span-10 flex items-center justify-end"
         data-a11y="header-links-wrapper"
       >
+        <SiteHeaderAuth />
         <SiteHeaderLinks />
       </div>
     </nav>
