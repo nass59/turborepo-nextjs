@@ -17,7 +17,7 @@ const DATA: LinkItem[] = [
 export const SiteHeaderLinks = () => (
   <ul
     aria-label="External links"
-    className="flex w-max shrink-0 items-center divide-x"
+    className="flex w-max shrink-0 items-center divide-x border-orange-300/12 border-l"
     data-a11y="external-links"
   >
     {DATA.map((item) => (
