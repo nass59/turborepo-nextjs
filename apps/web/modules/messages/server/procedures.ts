@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { env } from '@/env.mjs';
 import { inngest } from '@/inngest/client';
 import { prisma } from '@/lib/database-sql/db';
 import { baseProcedure, createTRPCRouter } from '@/trpc/init';
@@ -30,6 +31,10 @@ export const messagesRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ input }) => {
+      if (env.IS_DEMO) {
+        throw new Error('Feature disabled for demo');
+      }
+
       const createdMessage = await prisma.message.create({
         data: {
           projectId: input.projectId,

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { ProjectForm } from '@/modules/home/ui/components/project-form';
+import { ProjectsList } from '@/modules/home/ui/components/projects-list';
 
 export default function Page() {
   return (
@@ -24,6 +25,7 @@ export default function Page() {
           <ProjectForm />
         </div>
       </section>
+      <ProjectsList />
     </div>
   );
 }
