@@ -104,7 +104,7 @@ importers:
         version: link:../../packages/typescript-config
       chromatic:
         specifier: ^13.1.2
-        version: 13.1.2
+        version: 13.3.0
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -3360,8 +3360,8 @@ packages:
       '@chromatic-com/playwright':
         optional: true
 
-  chromatic@13.1.2:
-    resolution: {integrity: sha512-jgVptQabJHOnzmmvLjbtfutREkWGhDDk2gVqMH6N+V7z56oIy4Sd2/U7ZxNvnVFPinZQMSjSdUce4b6JIP64Dg==}
+  chromatic@13.3.0:
+    resolution: {integrity: sha512-OtXVKSFqGS1x6E6xYzmYX2iImSknbvo5CfTxP3ztFvXQhIAwhJzJuA3XpnIewER9gtWUNnV2DDi8/f9JyZJSfg==}
     hasBin: true
     peerDependencies:
       '@chromatic-com/cypress': ^0.*.* || ^1.0.0
@@ -8627,7 +8627,7 @@ snapshots:
 
   chromatic@12.2.0: {}
 
-  chromatic@13.1.2: {}
+  chromatic@13.3.0: {}
 
   citty@0.1.6:
     dependencies:
