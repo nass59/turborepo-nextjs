@@ -4,20 +4,23 @@ import { z } from 'zod';
 import { env } from '@/env.mjs';
 import { inngest } from '@/inngest/client';
 import { prisma } from '@/lib/database-sql/db';
-import { baseProcedure, createTRPCRouter } from '@/trpc/init';
+import { createTRPCRouter, protectedProcedure } from '@/trpc/init';
 
 const MAX_VALUE_LENGTH = 10_000;
 
 export const projectsRouter = createTRPCRouter({
-  getOne: baseProcedure
+  getOne: protectedProcedure
     .input(
       z.object({
         id: z.string().min(1, { message: 'Id is required' }),
       })
     )
-    .query(async ({ input }) => {
+    .query(async ({ input, ctx }) => {
       const existingProject = await prisma.project.findUnique({
-        where: { id: input.id },
+        where: {
+          id: input.id,
+          userId: ctx.auth.userId,
+        },
       });
 
       if (!existingProject) {
@@ -29,17 +32,19 @@ export const projectsRouter = createTRPCRouter({
 
       return existingProject;
     }),
-  getAll: baseProcedure.query(async () => {
+  getAll: protectedProcedure.query(async ({ ctx }) => {
     return await prisma.project.findMany({
+      where: { userId: ctx.auth.userId },
       orderBy: { updatedAt: 'desc' },
     });
   }),
-  getMany: baseProcedure.query(async () => {
+  getMany: protectedProcedure.query(async ({ ctx }) => {
     return await prisma.project.findMany({
+      where: { userId: ctx.auth.userId },
       orderBy: { updatedAt: 'desc' },
     });
   }),
-  create: baseProcedure
+  create: protectedProcedure
     .input(
       z.object({
         value: z
@@ -48,7 +53,7 @@ export const projectsRouter = createTRPCRouter({
           .max(MAX_VALUE_LENGTH, { message: 'Value is too long' }),
       })
     )
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input, ctx }) => {
       if (env.IS_DEMO) {
         throw new TRPCError({
           code: 'BAD_REQUEST',
@@ -58,6 +63,7 @@ export const projectsRouter = createTRPCRouter({
 
       const createdProject = await prisma.project.create({
         data: {
+          userId: ctx.auth.userId,
           name: generateSlug(2, { format: 'kebab' }),
           messages: {
             create: {
