@@ -1,5 +1,6 @@
 'use client';
 
+import { useClerk } from '@clerk/nextjs';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@workspace/design-system/components/ui/button';
@@ -13,7 +14,6 @@ import { useForm } from 'react-hook-form';
 import TextareaAutoSize from 'react-textarea-autosize';
 import { z } from 'zod';
 import { PROJECT_TEMPLATES } from '@/modules/home/constants';
-
 import { useTRPC } from '@/trpc/client';
 
 const MAX_VALUE_LENGTH = 10_000;
@@ -30,6 +30,7 @@ export const ProjectForm = () => {
 
   const router = useRouter();
   const trpc = useTRPC();
+  const clerk = useClerk();
   const queryClient = useQueryClient();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -44,6 +45,11 @@ export const ProjectForm = () => {
         router.push(`/projects/${data.id}`);
       },
       onError: (error) => {
+        if (error.data?.code === 'UNAUTHORIZED') {
+          clerk.openSignIn();
+          return;
+        }
+
         toast.error(error.message);
       },
     })

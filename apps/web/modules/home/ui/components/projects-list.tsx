@@ -1,5 +1,6 @@
 'use client';
 
+import { useUser } from '@clerk/nextjs';
 import { useQuery } from '@tanstack/react-query';
 import { Button } from '@workspace/design-system/components/ui/button';
 import { formatDistanceToNow } from 'date-fns';
@@ -9,7 +10,12 @@ import { useTRPC } from '@/trpc/client';
 
 export const ProjectsList = () => {
   const trpc = useTRPC();
+  const { user } = useUser();
   const { data: projects } = useQuery(trpc.projects.getMany.queryOptions());
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <div className="z-1 flex w-full flex-col gap-y-6 rounded-xl border bg-white p-8 sm:gap-y-4 dark:bg-sidebar">

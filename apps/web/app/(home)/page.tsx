@@ -25,7 +25,7 @@ export default function Page() {
       <AnimatedGridPattern
         className={cn(
           '[mask-image:radial-gradient(1000px_circle_at_center,orange,transparent)]',
-          'fixed inset-x-0 inset-y-0 h-[200%] skew-y-12'
+          'fixed inset-x-0 inset-y-0 h-[300%] skew-y-12 md:h-[200%]'
         )}
         duration={3}
         maxOpacity={0.1}
