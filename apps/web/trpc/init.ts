@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/suspicious/useAwait: setup */
 import { auth } from '@clerk/nextjs/server';
 import { initTRPC, TRPCError } from '@trpc/server';
 import { cache } from 'react';
