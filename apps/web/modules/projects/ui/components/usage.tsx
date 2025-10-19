@@ -1,3 +1,5 @@
+'use client';
+
 import { useAuth } from '@clerk/nextjs';
 import { Button } from '@workspace/design-system/components/ui/button';
 import { formatDuration, intervalToDuration } from 'date-fns';
