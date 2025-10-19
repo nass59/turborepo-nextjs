@@ -30,7 +30,13 @@ export const viewport: Viewport = baseViewport;
  */
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        variables: {
+          colorPrimary: '#9c7b5b',
+        },
+      }}
+    >
       <TRPCReactProvider>
         <html
           className={cn(geistSans.variable, 'antialiased')}

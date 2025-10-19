@@ -14,9 +14,9 @@ import { isProd } from '@/lib/env';
 export const RootProviders = ({ children }: PropsWithChildren) => (
   <ThemeProvider
     attribute="class"
-    defaultTheme="system"
+    defaultTheme="dark"
     disableTransitionOnChange
-    enableSystem
+    forcedTheme="dark"
   >
     {children}
     <Analytics />

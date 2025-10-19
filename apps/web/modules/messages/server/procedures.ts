@@ -1,8 +1,8 @@
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
-import { env } from '@/env.mjs';
 import { inngest } from '@/inngest/client';
 import { prisma } from '@/lib/database-sql/db';
+import { consumeCredits } from '@/modules/usage/utils/usage';
 import { createTRPCRouter, protectedProcedure } from '@/trpc/init';
 
 const MAX_VALUE_LENGTH = 10_000;
@@ -35,13 +35,6 @@ export const messagesRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ input, ctx }) => {
-      if (env.IS_DEMO) {
-        throw new TRPCError({
-          code: 'BAD_REQUEST',
-          message: 'Feature disabled for demo',
-        });
-      }
-
       const existingProject = await prisma.project.findUnique({
         where: {
           id: input.projectId,
@@ -53,6 +46,22 @@ export const messagesRouter = createTRPCRouter({
         throw new TRPCError({
           code: 'NOT_FOUND',
           message: 'Project not found',
+        });
+      }
+
+      try {
+        await consumeCredits();
+      } catch (error) {
+        if (error instanceof Error) {
+          throw new TRPCError({
+            code: 'BAD_REQUEST',
+            message: 'Something went wrong',
+          });
+        }
+
+        throw new TRPCError({
+          code: 'TOO_MANY_REQUESTS',
+          message: 'You have exceeded your usage limits.',
         });
       }
 

@@ -1,5 +1,6 @@
 'use client';
 
+import { useAuth } from '@clerk/nextjs';
 import { Button } from '@workspace/design-system/components/ui/button';
 import {
   ResizableHandle,
@@ -26,6 +27,9 @@ type Props = {
 };
 
 export const ProjectView = ({ projectId }: Props) => {
+  const { has } = useAuth();
+  const hasProAccess = has?.({ plan: 'pro' });
+
   const [activeFragment, setActiveFragment] = useState<Fragment | null>(null);
   const [tabState, setTabState] = useState<'code' | 'preview'>('preview');
 
@@ -71,11 +75,13 @@ export const ProjectView = ({ projectId }: Props) => {
                 </TabsTrigger>
               </TabsList>
               <div className="ml-auto flex items-center gap-x-2">
-                <Button asChild size="sm" variant="default">
-                  <Link href="/pricing">
-                    <CrownIcon /> Upgrade
-                  </Link>
-                </Button>
+                {!hasProAccess && (
+                  <Button asChild size="sm" variant="tertiary">
+                    <Link href="/pricing">
+                      <CrownIcon /> Upgrade
+                    </Link>
+                  </Button>
+                )}
               </div>
             </div>
             <TabsContent value="preview">

@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@workspace/design-system/components/ui/button';
 import { Form, FormField } from '@workspace/design-system/components/ui/form';
 import { toast } from '@workspace/design-system/components/ui/sonner';
@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import TextareaAutoSize from 'react-textarea-autosize';
 import { z } from 'zod';
 import { useTRPC } from '@/trpc/client';
+import { Usage } from './usage';
 
 type Props = {
   projectId: string;
@@ -30,6 +31,8 @@ export const MessageForm = ({ projectId }: Props) => {
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
+  const { data: usage } = useQuery(trpc.usage.status.queryOptions());
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: { value: '' },
@@ -42,6 +45,7 @@ export const MessageForm = ({ projectId }: Props) => {
         queryClient.invalidateQueries(
           trpc.messages.getMany.queryOptions({ projectId })
         );
+        queryClient.invalidateQueries(trpc.usage.status.queryOptions());
       },
       onError: (error) => {
         toast.error(error.message);
@@ -58,9 +62,16 @@ export const MessageForm = ({ projectId }: Props) => {
 
   const isPending = createMessage.isPending;
   const isButtonDisabled = isPending || !form.formState.isValid;
+  const showUsage = !!usage;
 
   return (
     <Form {...form}>
+      {showUsage && (
+        <Usage
+          msBeforeNext={usage.msBeforeNext}
+          points={usage.remainingPoints}
+        />
+      )}
       <form
         className={cn(
           'relative rounded-xl border bg-sidebar p-4 pt-1 transition-all dark:bg-sidebar',

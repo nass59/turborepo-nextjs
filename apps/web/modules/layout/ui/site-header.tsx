@@ -15,7 +15,7 @@ const DATA = {
  */
 export const SiteHeader = () => (
   <header
-    className="fixed top-0 z-30 w-full bg-gradient-to-b from-transparent via-gray-900/5 to-gray-950/20 backdrop-blur-md"
+    className="fixed top-0 w-full bg-gradient-to-b from-transparent via-gray-900/5 to-gray-950/20 backdrop-blur-md"
     data-a11y="site-header"
     id="site-header"
   >
