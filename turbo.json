@@ -21,7 +21,9 @@
         "MONGODB_DATABASE",
         "SPACE_ID",
         "OPENAI_API_KEY",
-        "E2B_API_KEY"
+        "E2B_API_KEY",
+        "INNGEST_EVENT_KEY",
+        "INNGEST_SIGNING_KEY"
       ],
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
