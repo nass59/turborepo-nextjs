@@ -16,6 +16,7 @@ import {
 import { CodeIcon, CrownIcon, EyeIcon } from 'lucide-react';
 import Link from 'next/link';
 import { Suspense, useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import type { Fragment } from '@/generated/prisma';
 import { FileExplorer } from '@/modules/projects/ui/components/file-explorer';
 import { FragmentWeb } from '@/modules/projects/ui/components/fragment-web';
@@ -41,17 +42,25 @@ export const ProjectView = ({ projectId }: Props) => {
           defaultSize={35}
           minSize={20}
         >
-          <Suspense fallback={<div>Loading project...</div>}>
-            <ProjectHeader projectId={projectId} />
-          </Suspense>
+          <ErrorBoundary
+            fallback={<div className="pt-18">Error loading project header</div>}
+          >
+            <Suspense fallback={<div>Loading project...</div>}>
+              <ProjectHeader projectId={projectId} />
+            </Suspense>
+          </ErrorBoundary>
 
-          <Suspense fallback={<div>Loading messages...</div>}>
-            <MessagesContainer
-              activeFragment={activeFragment}
-              projectId={projectId}
-              setActiveFragment={setActiveFragment}
-            />
-          </Suspense>
+          <ErrorBoundary
+            fallback={<div className="pt-18">Error loading messages</div>}
+          >
+            <Suspense fallback={<div>Loading messages...</div>}>
+              <MessagesContainer
+                activeFragment={activeFragment}
+                projectId={projectId}
+                setActiveFragment={setActiveFragment}
+              />
+            </Suspense>
+          </ErrorBoundary>
         </ResizablePanel>
         <ResizableHandle className="transition-colors hover:bg-primary" />
         <ResizablePanel
