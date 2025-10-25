@@ -1,8 +1,8 @@
 # 0005: Database Selection for User Data
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2025-08-25
-**Deciders:** [List of people involved]
+**Deciders:** Project Team
 
 ## Context and Problem Statement
 
@@ -19,112 +19,119 @@ The application needs a robust database solution to store and manage user data, 
 * Real-time capabilities for collaborative features
 * Backup and disaster recovery options
 * Security and compliance requirements
+* Need for relational data modeling
+* Strong type safety from database to application
 
 ## Considered Options
 
-* **MongoDB** - Document database with flexible schema
-* **PostgreSQL** - Relational database with JSON support
+* **PostgreSQL + Prisma** - Relational database with type-safe ORM
+* **MongoDB + Mongoose** - Document database with flexible schema
 * **PlanetScale** - Serverless MySQL platform
-* **Supabase** - Open source Firebase alternative
+* **Supabase** - Open source Firebase alternative (PostgreSQL-based)
 * **Firebase Firestore** - Google's NoSQL document database
-* **Prisma + PostgreSQL** - Type-safe database toolkit
 * **Drizzle + PostgreSQL** - Lightweight TypeScript ORM
 
 ## Decision Outcome
 
-**Status: Proposed**
+**Status: Accepted**
 
-Proposed option: "MongoDB with Mongoose", because it provides excellent flexibility for evolving user data schemas, integrates well with our JavaScript/TypeScript stack, and offers good scalability options.
+Chosen option: "PostgreSQL with Prisma ORM, hosted on NeonDB", because it provides:
+- **End-to-end type safety** from database schema to application code
+- **Relational data modeling** for complex relationships between entities
+- **ACID compliance** ensuring data consistency and integrity
+- **Excellent developer experience** with Prisma's intuitive API and migrations
+- **Serverless PostgreSQL** via NeonDB with auto-scaling and branching
+- **Modern TypeScript-first** tooling that aligns with our stack
 
 ### Positive Consequences
 
-* Flexible schema allows for rapid feature development
-* Excellent integration with Node.js/TypeScript ecosystem
-* Strong community and extensive documentation
-* Good performance for read-heavy workloads
-* Easy horizontal scaling with replica sets
-* JSON-like documents align with JavaScript objects
-* Rich query capabilities and aggregation framework
+* Full type safety from database to frontend via Prisma + tRPC
+* Excellent developer experience with Prisma Studio and migrations
+* Strong ACID guarantees for data consistency
+* Relational modeling for complex data relationships
+* Auto-generated TypeScript types from schema
+* Built-in migration system for schema evolution
+* NeonDB provides serverless scaling and database branching for development
+* Great ecosystem and community support
+* Easy to test with Prisma's testing utilities
+* Vercel integration for optimal performance
 
 ### Negative Consequences
 
-* Less ACID compliance compared to relational databases
-* Potential for data inconsistency if not carefully managed
-* Learning curve for developers familiar with SQL
-* More complex for relationships between entities
-* May require more careful schema design planning
+* Less flexible schema compared to document databases (but more predictable)
+* Requires careful migration planning for schema changes
+* Learning curve for SQL if team is unfamiliar
+* NeonDB costs scale with usage (though competitive pricing)
+* Migration away from Prisma would require significant refactoring
 
 ## Implementation
 
 ### Code Changes Required
-- [ ] Install MongoDB driver and Mongoose ODM
-- [ ] Set up database connection configuration
-- [ ] Create user data models and schemas
-- [ ] Implement data access layer with proper TypeScript types
-- [ ] Set up database migrations and seeding
-- [ ] Configure connection pooling and optimization
-- [ ] Add database error handling and logging
+- [x] Install Prisma and PostgreSQL dependencies
+- [x] Set up Prisma schema and connection
+- [x] Configure DATABASE_URL environment variable
+- [x] Create database models and relationships
+- [x] Implement data access layer with tRPC procedures
+- [x] Set up Prisma migrations workflow
+- [x] Configure NeonDB project and connection pooling
+- [x] Add Prisma Client to application bootstrapping
+- [x] Implement database seeding for development
 
 ### Migration Strategy
-- [ ] Start with user authentication data
-- [ ] Gradually migrate from any existing storage
-- [ ] Implement proper backup and restore procedures
-- [ ] Set up monitoring and alerting
-- [ ] Plan for data migration tools if needed
+- [x] Set up NeonDB PostgreSQL instance
+- [x] Define initial schema in Prisma
+- [x] Run initial migration
+- [x] Set up CI/CD for automatic migrations
+- [x] Configure backup and monitoring
+- [ ] Document database conventions in team docs
+
+## Technical Details
+
+### Database Setup
+**Provider:** NeonDB (Serverless Postgres)
+**ORM:** Prisma v6.x
+**Connection:** Direct connection via DATABASE_URL with SSL
+
+### Schema Location
+`apps/web/prisma/schema.prisma` - Single source of truth for database structure
+
+### Key Commands
+```bash
+pnpm prisma generate        # Generate Prisma Client
+pnpm prisma db push         # Push schema changes (development)
+pnpm prisma migrate dev     # Create and apply migrations
+pnpm prisma studio          # Open Prisma Studio GUI
+```
 
 ## AI Context
 
 ### Complexity Assessment
 - **Technical Complexity**: Medium
 - **Business Impact**: High
-- **Maintenance Burden**: Medium
+- **Maintenance Burden**: Low (Prisma handles migrations and type generation)
 
 ### Related Patterns
-- Repository pattern for data access
+- Repository pattern for data access (via tRPC procedures)
 - Domain-driven design for data modeling
-- Command Query Responsibility Segregation (CQRS)
-- Event sourcing for audit trails
+- Type-safe API layer (Prisma → tRPC → Frontend)
+- Database-per-branch for development (NeonDB feature)
 
 ### Future Considerations
-- Potential migration to PostgreSQL for complex relationships
-- Implementation of caching layer (Redis)
-- Data analytics and reporting requirements
-- Compliance with data protection regulations (GDPR, CCPA)
-- Integration with third-party services
-- Performance optimization and indexing strategies
+- Implement read replicas for scaling reads
+- Add database connection pooling optimization
+- Consider caching layer (Redis) for frequently accessed data
+- Monitor query performance and add indexes
+- Implement soft deletes for audit trails
+- Add database backup automation
+- Consider multi-region deployment for global users
 
 ## Links
 
-* [MongoDB Documentation](https://docs.mongodb.com/)
-* [Mongoose ODM](https://mongoosejs.com/)
-* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+* [Prisma Documentation](https://www.prisma.io/docs)
+* [NeonDB Documentation](https://neon.tech/docs)
+* [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+* [ADR-0010: API Design Standards (tRPC)](0010-api-design-standards.md) - Related API decision
 
 ## Notes
 
-This decision focuses on user data storage requirements. The choice should be reevaluated as the application grows and requirements become more complex. Consider starting with MongoDB for rapid development and potentially adding PostgreSQL for complex relational data later.
-
-## AI Context
-
-### Complexity Assessment
-- **Technical Complexity**: [Low/Medium/High]
-- **Business Impact**: [Low/Medium/High]
-- **Maintenance Burden**: [Low/Medium/High]
-
-### Related Patterns
-- Design patterns used
-- Architectural patterns affected
-- Anti-patterns avoided
-
-### Future Considerations
-- Scalability implications
-- Performance impact
-- Security considerations
-
-## Links
-
-* [Link type](link to adr) <!-- example: Refined by [ADR-0005](0005-example.md) -->
-* [...]
-
-## Notes
-
-Additional context, references, or implementation notes that would help AI understand the decision better.
+This decision represents a shift to a more structured, type-safe database approach. PostgreSQL's relational model combined with Prisma's excellent TypeScript integration provides the foundation for scalable, maintainable data management. NeonDB's serverless architecture eliminates operational overhead while providing modern features like database branching for development workflows.
