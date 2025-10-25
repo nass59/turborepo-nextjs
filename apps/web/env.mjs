@@ -12,8 +12,6 @@ export const env = createEnv({
     GITHUB_ACCESS_TOKEN: z.string().min(1),
     INNGEST_EVENT_KEY: z.string().min(1),
     INNGEST_SIGNING_KEY: z.string().min(1),
-    MONGODB_DATABASE: z.string().min(1),
-    MONGODB_URI: z.string().min(1),
     NEXT_PUBLIC_APP_URL: z.string().min(1),
     NODE_ENV: z.string().min(1),
     PREVIEW_URL_SECRET: z.string().min(1),
@@ -38,8 +36,6 @@ export const env = createEnv({
     GITHUB_ACCESS_TOKEN: process.env.GITHUB_ACCESS_TOKEN,
     INNGEST_EVENT_KEY: process.env.INNGEST_EVENT_KEY,
     INNGEST_SIGNING_KEY: process.env.INNGEST_SIGNING_KEY,
-    MONGODB_DATABASE: process.env.MONGODB_DATABASE,
-    MONGODB_URI: process.env.MONGODB_URI,
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
       process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     NEXT_PUBLIC_CLERK_SIGN_IN_URL: process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL,

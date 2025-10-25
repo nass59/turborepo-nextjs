@@ -73,7 +73,7 @@ Create an ADR when making decisions about:
 ## Future ADRs to Consider
 
 ### Immediate Needs (Created ✅)
-- [x] **Database Strategy**: Choose between MongoDB, PostgreSQL, or other options → [ADR-0005](0005-database-selection-for-user-data.md)
+- [x] **Database Strategy**: PostgreSQL with Prisma on NeonDB → [ADR-0005](0005-database-selection-for-user-data.md)
 - [x] **Authentication System**: Detailed Clerk integration decisions → [ADR-0006](0006-authentication-flow-implementation.md)
 - [x] **State Management**: Zustand vs other solutions for complex state → [ADR-0008](0008-state-management-strategy.md)
 - [x] **Error Handling**: Comprehensive error handling strategy → [ADR-0007](0007-error-handling-strategy.md)

@@ -40,9 +40,9 @@ Rationale for no barrels:
 If a future need for grouped exports emerges (e.g., IDE ergonomics), prefer generating typed import snippets or using path aliases over barrels.
 
 ## 3. Data, Env, Auth
-**Env:** Schema validated in `apps/web/env.mjs` with `@t3-oss/env-nextjs` + zod; always import from `@/env` instead of `process.env`. Server vars: `CLERK_SECRET_KEY`, `MONGODB_URI`, `OPENAI_API_KEY`, `E2B_API_KEY`, `GITHUB_ACCESS_TOKEN`. Client vars (prefixed `NEXT_PUBLIC_`): Clerk keys, `APP_URL`, Cloudinary. When adding new env vars: (1) add to `env.mjs` schema + `runtimeEnv`, (2) if build-time required, add to `turbo.json` `build.env` array.
+**Env:** Schema validated in `apps/web/env.mjs` with `@t3-oss/env-nextjs` + zod; always import from `@/env` instead of `process.env`. Server vars: `CLERK_SECRET_KEY`, `DATABASE_URL`, `OPENAI_API_KEY`, `E2B_API_KEY`, `GITHUB_ACCESS_TOKEN`. Client vars (prefixed `NEXT_PUBLIC_`): Clerk keys, `APP_URL`, Cloudinary. When adding new env vars: (1) add to `env.mjs` schema + `runtimeEnv`, (2) if build-time required, add to `turbo.json` `build.env` array.
 
-**Database:** MongoDB + Mongoose (ADR 0005). Models in `apps/web/prisma/` (legacy naming, migrating from Prisma). Connection string from `env.MONGODB_URI`.
+**Database:** PostgreSQL + Prisma (ADR 0005). Hosted on NeonDB (serverless Postgres). Schema in `apps/web/prisma/schema.prisma`. Connection string from `env.DATABASE_URL`. Use `prisma generate` to update client, `prisma db push` for schema sync, `prisma migrate dev` for migrations.
 
 **Auth:** Clerk (ADR 0006) with GitHub OAuth. Server-side: use `auth()` from `@clerk/nextjs/server` (returns `{ userId }`). Client: Clerk hooks in `'use client'` components. Middleware in `apps/web/middleware.ts` protects non-public routes; public routes defined via `createRouteMatcher(['/'])`. tRPC context automatically includes `clerkUserId`.
 
