@@ -16,6 +16,7 @@ import {
   RESPONSE_PROMPT,
 } from '@/prompts/prompts';
 import { inngest } from './client';
+import { SANDBOX_TIMEOUT } from './constants';
 import {
   getSandbox,
   lastAssistantMessageContent,
@@ -23,7 +24,7 @@ import {
 } from './utils';
 
 const SANDBOX_PORT = 3000;
-const SANDBOX_TIMEOUT = 120_000; // 2 minutes
+const MAX_MESSAGES_PER_QUERY = 10;
 const BLOCKED_COMMANDS_REGEX =
   /\b(npm\s+run\s+(dev|build|start)|next\s+(dev|build|start))\b/i;
 
@@ -38,6 +39,7 @@ export const codeAgentFunction = inngest.createFunction(
   async ({ event, step }) => {
     const sandboxId = await step.run('get-sandbox-id', async () => {
       const sandbox = await Sandbox.create('techship-vibe-nextjs-test-2');
+      await sandbox.setTimeout(SANDBOX_TIMEOUT);
       return sandbox.sandboxId;
     });
 
@@ -48,7 +50,8 @@ export const codeAgentFunction = inngest.createFunction(
 
         const messages = await prisma.message.findMany({
           where: { projectId: event.data.projectId },
-          orderBy: { createdAt: 'asc' },
+          orderBy: { createdAt: 'desc' },
+          take: MAX_MESSAGES_PER_QUERY,
         });
 
         for (const message of messages) {
@@ -59,7 +62,7 @@ export const codeAgentFunction = inngest.createFunction(
           });
         }
 
-        return formattedMessages;
+        return formattedMessages.reverse();
       }
     );
 
