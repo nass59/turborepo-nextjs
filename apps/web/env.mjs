@@ -15,7 +15,6 @@ export const env = createEnv({
     NEXT_PUBLIC_APP_URL: z.string().min(1),
     NODE_ENV: z.string().min(1),
     PREVIEW_URL_SECRET: z.string().min(1),
-    SPACE_ID: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_APP_URL: z.string().min(1),
@@ -49,6 +48,5 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
     NODE_ENV: process.env.NODE_ENV,
     PREVIEW_URL_SECRET: process.env.PREVIEW_URL_SECRET,
-    SPACE_ID: process.env.SPACE_ID,
   },
 });
