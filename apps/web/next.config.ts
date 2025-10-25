@@ -32,9 +32,7 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
-    mdxRs: true,
     optimizePackageImports: ['date-fns', '@headlessui/react'],
-    typedRoutes: false,
   },
 };
 
