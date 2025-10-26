@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/style/noMagicNumbers: storybook */
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Calendar } from "@workspace/design-system/components/ui/calendar";
 import { addDays } from "date-fns";

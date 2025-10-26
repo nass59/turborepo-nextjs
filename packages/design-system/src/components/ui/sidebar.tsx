@@ -1,4 +1,4 @@
-/** biome-ignore-all lint/style/noMagicNumbers: default */
+
 'use client';
 
 import { Slot } from '@radix-ui/react-slot';
