@@ -1,38 +1,38 @@
-import { auth } from '@clerk/nextjs/server';
-import { initTRPC, TRPCError } from '@trpc/server';
-import { cache } from 'react';
-import superjson from 'superjson';
+import { auth } from "@clerk/nextjs/server";
+import { initTRPC, TRPCError } from "@trpc/server";
+import { cache } from "react";
+import superjson from "superjson";
 
 export const createTRPCContext = cache(async () => {
-  const { userId } = await auth();
+	const { userId } = await auth();
 
-  return { clerkUserId: userId };
+	return { clerkUserId: userId };
 });
 
 export type Context = Awaited<ReturnType<typeof createTRPCContext>>;
 
 const t = initTRPC.context<Context>().create({
-  /**
-   * @see https://trpc.io/docs/server/data-transformers
-   */
-  transformer: superjson,
+	/**
+	 * @see https://trpc.io/docs/server/data-transformers
+	 */
+	transformer: superjson,
 });
 
 const isAuthed = t.middleware(({ next, ctx }) => {
-  if (!ctx.clerkUserId) {
-    throw new TRPCError({
-      code: 'UNAUTHORIZED',
-      message: 'User is not authenticated',
-    });
-  }
+	if (!ctx.clerkUserId) {
+		throw new TRPCError({
+			code: "UNAUTHORIZED",
+			message: "User is not authenticated",
+		});
+	}
 
-  return next({
-    ctx: {
-      auth: {
-        userId: ctx.clerkUserId,
-      },
-    },
-  });
+	return next({
+		ctx: {
+			auth: {
+				userId: ctx.clerkUserId,
+			},
+		},
+	});
 });
 
 // Base router and procedure helpers

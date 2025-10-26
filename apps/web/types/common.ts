@@ -1,13 +1,13 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 
 export type LayoutProps = {
-  children: React.ReactNode;
+	children: React.ReactNode;
 };
 
 export type PageProps<T = string> = {
-  params: Promise<{
-    slug: T;
-  }>;
+	params: Promise<{
+		slug: T;
+	}>;
 };
 
 export type StaticParams<T = string> = Array<{ slug: T }>;

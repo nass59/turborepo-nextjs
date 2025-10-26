@@ -1,28 +1,28 @@
-import type { Preview } from '@storybook/react-vite';
+import type { Preview } from "@storybook/react-vite";
 
-import '@workspace/design-system/styles/globals.css';
+import "@workspace/design-system/styles/globals.css";
 
 const preview: Preview = {
-  parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
-    chromatic: {
-      modes: {
-        light: {
-          theme: 'light',
-          className: 'light',
-        },
-        dark: {
-          theme: 'dark',
-          className: 'dark',
-        },
-      },
-    },
-  },
+	parameters: {
+		controls: {
+			matchers: {
+				color: /(background|color)$/i,
+				date: /Date$/i,
+			},
+		},
+		chromatic: {
+			modes: {
+				light: {
+					theme: "light",
+					className: "light",
+				},
+				dark: {
+					theme: "dark",
+					className: "dark",
+				},
+			},
+		},
+	},
 };
 
 export default preview;

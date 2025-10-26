@@ -1,26 +1,26 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Toggle } from '@workspace/design-system/components/ui/toggle';
-import { Bold, Italic } from 'lucide-react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Toggle } from "@workspace/design-system/components/ui/toggle";
+import { Bold, Italic } from "lucide-react";
 
 /**
  * A two-state button that can be either on or off.
  */
 const meta: Meta<typeof Toggle> = {
-  title: 'ui/Toggle',
-  component: Toggle,
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-  },
-  argTypes: {
-    children: {
-      control: { disable: true },
-    },
-  },
-  args: {
-    children: <Bold className="h-4 w-4" />,
-    'aria-label': 'Toggle bold',
-  },
+	title: "ui/Toggle",
+	component: Toggle,
+	tags: ["autodocs"],
+	parameters: {
+		layout: "centered",
+	},
+	argTypes: {
+		children: {
+			control: { disable: true },
+		},
+	},
+	args: {
+		children: <Bold className="h-4 w-4" />,
+		"aria-label": "Toggle bold",
+	},
 };
 export default meta;
 
@@ -36,24 +36,24 @@ export const Default: Story = {};
  * of the selection circle for clearer visibility
  */
 export const Outline: Story = {
-  args: {
-    variant: 'outline',
-    children: <Italic className="h-4 w-4" />,
-    'aria-label': 'Toggle italic',
-  },
+	args: {
+		variant: "outline",
+		children: <Italic className="h-4 w-4" />,
+		"aria-label": "Toggle italic",
+	},
 };
 
 /**
  * Use the text element to add a label to the toggle.
  */
 export const WithText: Story = {
-  args: { ...Outline.args },
-  render: (args) => (
-    <Toggle {...args}>
-      <Italic className="mr-2 h-4 w-4" />
-      Italic
-    </Toggle>
-  ),
+	args: { ...Outline.args },
+	render: (args) => (
+		<Toggle {...args}>
+			<Italic className="mr-2 h-4 w-4" />
+			Italic
+		</Toggle>
+	),
 };
 
 /**
@@ -61,9 +61,9 @@ export const WithText: Story = {
  * compact elements without sacrificing usability.
  */
 export const Small: Story = {
-  args: {
-    size: 'sm',
-  },
+	args: {
+		size: "sm",
+	},
 };
 
 /**
@@ -71,16 +71,16 @@ export const Small: Story = {
  * easier interaction for users.
  */
 export const Large: Story = {
-  args: {
-    size: 'lg',
-  },
+	args: {
+		size: "lg",
+	},
 };
 
 /**
  * Add the `disabled` prop to prevent interactions with the toggle.
  */
 export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
+	args: {
+		disabled: true,
+	},
 };

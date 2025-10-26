@@ -1,25 +1,25 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Badge } from '@workspace/design-system/components/ui/badge';
+import { Badge } from "@workspace/design-system/components/ui/badge";
 
 /**
  * Displays a badge or a component that looks like a badge.
  */
 const meta = {
-  title: 'ui/Badge',
-  component: Badge,
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-  },
-  argTypes: {
-    children: {
-      control: 'text',
-    },
-  },
-  args: {
-    children: 'Badge',
-  },
+	title: "ui/Badge",
+	component: Badge,
+	tags: ["autodocs"],
+	parameters: {
+		layout: "centered",
+	},
+	argTypes: {
+		children: {
+			control: "text",
+		},
+	},
+	args: {
+		children: "Badge",
+	},
 } satisfies Meta<typeof Badge>;
 
 export default meta;
@@ -36,9 +36,9 @@ export const Default: Story = {};
  * into the interface while still signaling minor updates or statuses.
  */
 export const Secondary: Story = {
-  args: {
-    variant: 'secondary',
-  },
+	args: {
+		variant: "secondary",
+	},
 };
 
 /**
@@ -46,9 +46,9 @@ export const Secondary: Story = {
  * immediate attention.
  */
 export const Destructive: Story = {
-  args: {
-    variant: 'destructive',
-  },
+	args: {
+		variant: "destructive",
+	},
 };
 
 /**
@@ -56,7 +56,7 @@ export const Destructive: Story = {
  * emphasizing clarity and subtlety..
  */
 export const Outline: Story = {
-  args: {
-    variant: 'outline',
-  },
+	args: {
+		variant: "outline",
+	},
 };

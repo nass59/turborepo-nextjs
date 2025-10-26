@@ -1,20 +1,20 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Button } from '@workspace/design-system/components/ui/button';
-import { Label } from '@workspace/design-system/components/ui/label';
-import { Textarea } from '@workspace/design-system/components/ui/textarea';
+import { Button } from "@workspace/design-system/components/ui/button";
+import { Label } from "@workspace/design-system/components/ui/label";
+import { Textarea } from "@workspace/design-system/components/ui/textarea";
 
 /**
  * Displays a form textarea or a component that looks like a textarea.
  */
 const meta = {
-  title: 'ui/Textarea',
-  component: Textarea,
-  tags: ['autodocs'],
-  args: {
-    placeholder: 'Type your message here.',
-    disabled: false,
-  },
+	title: "ui/Textarea",
+	component: Textarea,
+	tags: ["autodocs"],
+	args: {
+		placeholder: "Type your message here.",
+		disabled: false,
+	},
 } satisfies Meta<typeof Textarea>;
 
 export default meta;
@@ -30,9 +30,9 @@ export const Default: Story = {};
  * Use the `disabled` prop to disable the textarea.
  */
 export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
+	args: {
+		disabled: true,
+	},
 };
 
 /**
@@ -40,12 +40,12 @@ export const Disabled: Story = {
  * alongside the text area to guide users.
  */
 export const WithLabel: Story = {
-  render: (args) => (
-    <div className="grid w-full gap-1.5">
-      <Label htmlFor="message">Your message</Label>
-      <Textarea {...args} id="message" />
-    </div>
-  ),
+	render: (args) => (
+		<div className="grid w-full gap-1.5">
+			<Label htmlFor="message">Your message</Label>
+			<Textarea {...args} id="message" />
+		</div>
+	),
 };
 
 /**
@@ -53,15 +53,15 @@ export const WithLabel: Story = {
  * or information to users.
  */
 export const WithText: Story = {
-  render: (args) => (
-    <div className="grid w-full gap-1.5">
-      <Label htmlFor="message-2">Your Message</Label>
-      <Textarea {...args} id="message-2" />
-      <p className="text-slate-500 text-sm">
-        Your message will be copied to the support team.
-      </p>
-    </div>
-  ),
+	render: (args) => (
+		<div className="grid w-full gap-1.5">
+			<Label htmlFor="message-2">Your Message</Label>
+			<Textarea {...args} id="message-2" />
+			<p className="text-slate-500 text-sm">
+				Your message will be copied to the support team.
+			</p>
+		</div>
+	),
 };
 
 /**
@@ -69,10 +69,10 @@ export const WithText: Story = {
  * or used to trigger an action.
  */
 export const WithButton: Story = {
-  render: (args) => (
-    <div className="grid w-full gap-2">
-      <Textarea {...args} />
-      <Button type="submit">Send Message</Button>
-    </div>
-  ),
+	render: (args) => (
+		<div className="grid w-full gap-2">
+			<Textarea {...args} />
+			<Button type="submit">Send Message</Button>
+		</div>
+	),
 };

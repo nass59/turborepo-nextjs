@@ -1,26 +1,32 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
-  "files": {
-    "ignoreUnknown": false,
-    "includes": [
-      "**",
-      "!**/.next",
-      "!**/dist",
-      "!**/.turbo",
-      "!**/.vscode",
-      "!**/.source",
-      "!**/design-system/src/components/magicui/*",
-      "!**/design-system/src/components/ui/*",
-      "!**/design-system/src/hooks/*",
-      "!**/design-system/src/lib/*"
-    ]
-  },
-  "extends": ["ultracite"],
-  "linter": {
-    "rules": {
-      "complexity": {
-        "noVoid": "off"
-      }
-    }
-  }
+	"$schema": "https://biomejs.dev/schemas/2.3.0/schema.json",
+	"files": {
+		"ignoreUnknown": false,
+		"includes": [
+			"**",
+			"!**/.next",
+			"!**/dist",
+			"!**/.turbo",
+			"!**/.vscode",
+			"!**/.source",
+			"!**/design-system/src/components/magicui/*",
+			"!**/design-system/src/components/ui/*",
+			"!**/design-system/src/hooks/*",
+			"!**/design-system/src/lib/*",
+			"!**/generated/prisma/*"
+		]
+	},
+	"extends": ["ultracite"],
+	"linter": {
+		"rules": {
+			"complexity": {
+				"noVoid": "off"
+			}
+		}
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	}
 }
