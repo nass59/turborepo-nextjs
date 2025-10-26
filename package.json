@@ -1,29 +1,29 @@
 {
-  "name": "turborepo-nextjs",
-  "private": true,
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "biome check .",
-    "format": "biome check --write .",
-    "typecheck": "turbo run typecheck",
-    "check-dependencies": "sherif",
-    "bump-deps": "npx npm-check-updates --deep -u -x geist && pnpm install",
-    "bump-ui": "pnpm dlx shadcn@canary add --all --overwrite -c packages/design-system",
-    "clean": "git clean -xdf node_modules",
-    "ai:analyze": "pnpm run typecheck && pnpm run lint && echo 'AI Analysis Complete'",
-    "debug:next": "NODE_OPTIONS='--inspect' pnpm --filter=web dev",
-    "debug:storybook": "NODE_OPTIONS='--inspect' pnpm --filter=storybook dev"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.2.2",
-    "sherif": "^1.6.1",
-    "turbo": "^2.5.8",
-    "typescript": "^5.8.3",
-    "ultracite": "^5.2.5"
-  },
-  "packageManager": "pnpm@10.14.0",
-  "volta": {
-    "node": "24.8.0"
-  }
+	"name": "turborepo-nextjs",
+	"private": true,
+	"scripts": {
+		"build": "turbo run build",
+		"dev": "turbo run dev",
+		"lint": "biome check .",
+		"format": "biome check --write .",
+		"typecheck": "turbo run typecheck",
+		"check-dependencies": "sherif",
+		"bump-deps": "npx npm-check-updates --deep -u -x geist && pnpm install",
+		"bump-ui": "pnpm dlx shadcn@canary add --all --overwrite -c packages/design-system",
+		"clean": "git clean -xdf node_modules",
+		"ai:analyze": "pnpm run typecheck && pnpm run lint && echo 'AI Analysis Complete'",
+		"debug:next": "NODE_OPTIONS='--inspect' pnpm --filter=web dev",
+		"debug:storybook": "NODE_OPTIONS='--inspect' pnpm --filter=storybook dev"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.3.0",
+		"sherif": "^1.6.1",
+		"turbo": "^2.5.8",
+		"typescript": "^5.8.3",
+		"ultracite": "^6.0.1"
+	},
+	"packageManager": "pnpm@10.14.0",
+	"volta": {
+		"node": "24.8.0"
+	}
 }

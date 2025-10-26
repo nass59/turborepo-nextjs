@@ -1,20 +1,20 @@
 /** biome-ignore-all lint/style/noMagicNumbers: storybook */
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Slider } from '@workspace/design-system/components/ui/slider';
+import { Slider } from "@workspace/design-system/components/ui/slider";
 
 /**
  * An input where the user selects a value from within a given range.
  */
 const meta = {
-  title: 'ui/Slider',
-  component: Slider,
-  tags: ['autodocs'],
-  args: {
-    defaultValue: [33],
-    max: 100,
-    step: 1,
-  },
+	title: "ui/Slider",
+	component: Slider,
+	tags: ["autodocs"],
+	args: {
+		defaultValue: [33],
+		max: 100,
+		step: 1,
+	},
 } satisfies Meta<typeof Slider>;
 
 export default meta;
@@ -30,16 +30,16 @@ export const Default: Story = {};
  * Use the `inverted` prop to have the slider fill from right to left.
  */
 export const Inverted: Story = {
-  args: {
-    inverted: true,
-  },
+	args: {
+		inverted: true,
+	},
 };
 
 /**
  * Use the `disabled` prop to disable the slider.
  */
 export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
+	args: {
+		disabled: true,
+	},
 };

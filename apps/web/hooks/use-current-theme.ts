@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useTheme } from 'next-themes';
+import { useTheme } from "next-themes";
 
 export const useCurrentTheme = () => {
-  const { theme, systemTheme } = useTheme();
+	const { theme, systemTheme } = useTheme();
 
-  if (theme === 'dark' || theme === 'light') {
-    return theme;
-  }
+	if (theme === "dark" || theme === "light") {
+		return theme;
+	}
 
-  return systemTheme;
+	return systemTheme;
 };

@@ -1,27 +1,27 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Button } from '@workspace/design-system/components/ui/button';
-import { Loader2, Mail } from 'lucide-react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Button } from "@workspace/design-system/components/ui/button";
+import { Loader2, Mail } from "lucide-react";
 
 /**
  * Displays a button or a component that looks like a button.
  */
 const meta = {
-  title: 'ui/Button',
-  component: Button,
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-  },
-  argTypes: {
-    children: {
-      control: 'text',
-    },
-  },
-  args: {
-    variant: 'default',
-    size: 'default',
-    children: 'Button',
-  },
+	title: "ui/Button",
+	component: Button,
+	tags: ["autodocs"],
+	parameters: {
+		layout: "centered",
+	},
+	argTypes: {
+		children: {
+			control: "text",
+		},
+	},
+	args: {
+		variant: "default",
+		size: "default",
+		children: "Button",
+	},
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -38,9 +38,9 @@ export const Default: Story = {};
  * canceling or dismissing a dialog.
  */
 export const Outline: Story = {
-  args: {
-    variant: 'outline',
-  },
+	args: {
+		variant: "outline",
+	},
 };
 
 /**
@@ -48,9 +48,9 @@ export const Outline: Story = {
  * actions.
  */
 export const Ghost: Story = {
-  args: {
-    variant: 'ghost',
-  },
+	args: {
+		variant: "ghost",
+	},
 };
 
 /**
@@ -58,9 +58,9 @@ export const Ghost: Story = {
  * complement the primary button while being less conspicuous.
  */
 export const Secondary: Story = {
-  args: {
-    variant: 'secondary',
-  },
+	args: {
+		variant: "secondary",
+	},
 };
 
 /**
@@ -68,9 +68,9 @@ export const Secondary: Story = {
  * immediate attention.
  */
 export const Destructive: Story = {
-  args: {
-    variant: 'destructive',
-  },
+	args: {
+		variant: "destructive",
+	},
 };
 
 /**
@@ -78,9 +78,9 @@ export const Destructive: Story = {
  * hyperlink or navigation, providing a text-only interactive element.
  */
 export const Link: Story = {
-  args: {
-    variant: 'link',
-  },
+	args: {
+		variant: "link",
+	},
 };
 
 /**
@@ -88,16 +88,16 @@ export const Link: Story = {
  * loading indicator, such as a spinner, to signify an in-progress action.
  */
 export const Loading: Story = {
-  args: {
-    ...Outline.args,
-    disabled: true,
-  },
-  render: (args) => (
-    <Button {...args}>
-      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-      Button
-    </Button>
-  ),
+	args: {
+		...Outline.args,
+		disabled: true,
+	},
+	render: (args) => (
+		<Button {...args}>
+			<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+			Button
+		</Button>
+	),
 };
 
 /**
@@ -105,14 +105,14 @@ export const Loading: Story = {
  * providing additional context for the action.
  */
 export const WithIcon: Story = {
-  args: {
-    ...Secondary.args,
-  },
-  render: (args) => (
-    <Button {...args}>
-      <Mail className="mr-2 h-4 w-4" /> Login with Email Button
-    </Button>
-  ),
+	args: {
+		...Secondary.args,
+	},
+	render: (args) => (
+		<Button {...args}>
+			<Mail className="mr-2 h-4 w-4" /> Login with Email Button
+		</Button>
+	),
 };
 
 /**
@@ -120,9 +120,9 @@ export const WithIcon: Story = {
  * compact elements without sacrificing usability.
  */
 export const Small: Story = {
-  args: {
-    size: 'sm',
-  },
+	args: {
+		size: "sm",
+	},
 };
 
 /**
@@ -130,27 +130,27 @@ export const Small: Story = {
  * easier interaction for users.
  */
 export const Large: Story = {
-  args: {
-    size: 'lg',
-  },
+	args: {
+		size: "lg",
+	},
 };
 
 /**
  * Use the "icon" size for a button with only an icon.
  */
 export const Icon: Story = {
-  args: {
-    ...Secondary.args,
-    size: 'icon',
-    children: <Mail />,
-  },
+	args: {
+		...Secondary.args,
+		size: "icon",
+		children: <Mail />,
+	},
 };
 
 /**
  * Add the `disabled` prop to prevent interactions with the button.
  */
 export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
+	args: {
+		disabled: true,
+	},
 };
