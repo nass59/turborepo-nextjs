@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
+import { playwright } from "@vitest/browser-playwright";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
@@ -30,7 +31,7 @@ export default defineConfig({
 					browser: {
 						enabled: true,
 						headless: true,
-						provider: "playwright",
+						provider: playwright(),
 						instances: [
 							{
 								browser: "chromium",
