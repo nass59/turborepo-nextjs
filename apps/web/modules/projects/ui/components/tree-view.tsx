@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/suspicious/noArrayIndexKey: tree */
 import {
 	Collapsible,
 	CollapsibleContent,
