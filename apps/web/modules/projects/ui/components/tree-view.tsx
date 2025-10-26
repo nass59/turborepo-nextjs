@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: key */
 import {
 	Collapsible,
 	CollapsibleContent,
