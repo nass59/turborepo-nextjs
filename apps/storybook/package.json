@@ -34,9 +34,9 @@
 		"@types/node": "^24.9.1",
 		"@types/react": "^19.1.8",
 		"@types/react-dom": "^19.1.6",
-		"@vitejs/plugin-react-swc": "^3.11.0",
-		"@vitest/browser": "^3.2.4",
-		"@vitest/coverage-v8": "^3.2.4",
+		"@vitejs/plugin-react-swc": "^4.2.0",
+		"@vitest/browser": "^4.0.3",
+		"@vitest/coverage-v8": "^4.0.3",
 		"@workspace/typescript-config": "workspace:*",
 		"chromatic": "^13.3.2",
 		"cross-env": "^7.0.3",
@@ -44,9 +44,9 @@
 		"postcss": "^8.5.6",
 		"storybook": "^9.1.15",
 		"tailwindcss": "^4.1.16",
-		"typescript": "^5.8.3",
-		"vite": "^7.0.5",
+		"typescript": "^5.9.3",
+		"vite": "^7.1.12",
 		"vite-tsconfig-paths": "^5.1.4",
-		"vitest": "^3.2.4"
+		"vitest": "^4.0.3"
 	}
 }

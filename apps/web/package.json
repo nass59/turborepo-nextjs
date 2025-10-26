@@ -51,8 +51,8 @@
 		"recharts": "^2.15.4",
 		"require-in-the-middle": "^7.5.2",
 		"server-only": "^0.0.1",
-		"sharp": "^0.34.3",
-		"shiki": "^3.8.1",
+		"sharp": "^0.34.4",
+		"shiki": "^3.14.0",
 		"superjson": "^2.2.3",
 		"tailwindcss": "^4.1.16",
 		"tailwindcss-animate": "^1.0.7",
@@ -69,6 +69,6 @@
 		"postcss": "^8.5.6",
 		"prisma": "^6.16.1",
 		"tsx": "^4.20.6",
-		"typescript": "^5.8.3"
+		"typescript": "^5.9.3"
 	}
 }
