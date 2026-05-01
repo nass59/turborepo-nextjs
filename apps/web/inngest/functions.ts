@@ -51,7 +51,6 @@ export const codeAgentFunction = inngest.createFunction(
 				const messages = await prisma.message.findMany({
 					where: { projectId: event.data.projectId },
 					orderBy: { createdAt: "desc" },
-					take: MAX_MESSAGES_PER_QUERY,
 				});
 
 				for (const message of messages) {

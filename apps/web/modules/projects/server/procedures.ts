@@ -12,7 +12,7 @@ export const projectsRouter = createTRPCRouter({
 	getOne: protectedProcedure
 		.input(
 			z.object({
-				id: z.string().min(1, { message: "Id is required" }),
+				id: z.string(),
 			}),
 		)
 		.query(async ({ input, ctx }) => {
@@ -33,10 +33,23 @@ export const projectsRouter = createTRPCRouter({
 			return existingProject;
 		}),
 	getAll: protectedProcedure.query(async ({ ctx }) => {
-		return await prisma.project.findMany({
+		const projects = await prisma.project.findMany({
 			where: { userId: ctx.auth.userId },
 			orderBy: { updatedAt: "desc" },
 		});
+
+		const projectsWithMessages = await Promise.all(
+			projects.map(async (project) => {
+				const messages = await prisma.message.findMany({
+					where: { projectId: project.id },
+					orderBy: { createdAt: "desc" },
+					take: 1,
+				});
+				return { ...project, latestMessage: messages[0] ?? null };
+			}),
+		);
+
+		return projectsWithMessages;
 	}),
 	getMany: protectedProcedure.query(async ({ ctx }) => {
 		return await prisma.project.findMany({
