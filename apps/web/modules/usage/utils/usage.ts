@@ -29,6 +29,8 @@ export const consumeCredits = async () => {
 		throw new Error("User not authenticated");
 	}
 
+	console.log(`[usage] consuming credits for user: ${userId}`);
+
 	const usageTracker = await getUsageTracker();
 	const result = await usageTracker.consume(userId, GENERATION_COST);
 

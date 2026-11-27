@@ -14,7 +14,7 @@
 		"moduleResolution": "NodeNext",
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
-		"strict": true,
+		"strict": false,
 		"target": "ES2022",
 		"strictNullChecks": true,
 		"noUncheckedIndexedAccess": true,

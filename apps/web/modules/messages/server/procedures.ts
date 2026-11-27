@@ -1,8 +1,8 @@
-import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { inngest } from "@/inngest/client";
 import { prisma } from "@/lib/database-sql/db";
 import { consumeCredits } from "@/modules/usage/utils/usage";
+import { TRPCError } from "@trpc/server";
 import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
 
 const MAX_VALUE_LENGTH = 10_000;
@@ -49,21 +49,7 @@ export const messagesRouter = createTRPCRouter({
 				});
 			}
 
-			try {
-				await consumeCredits();
-			} catch (error) {
-				if (error instanceof Error) {
-					throw new TRPCError({
-						code: "BAD_REQUEST",
-						message: "Something went wrong",
-					});
-				}
-
-				throw new TRPCError({
-					code: "TOO_MANY_REQUESTS",
-					message: "You have exceeded your usage limits.",
-				});
-			}
+			await consumeCredits();
 
 			const createdMessage = await prisma.message.create({
 				data: {
