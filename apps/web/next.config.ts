@@ -3,10 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
 	pageExtensions: ["ts", "tsx"],
 	reactStrictMode: true,
-	transpilePackages: [
-		"@workspace/tailwind-config",
-		"@workspace/design-system/components/ui",
-	],
+	transpilePackages: ["@workspace/tailwind-config", "@workspace/design-system/components/ui"],
 	images: {
 		remotePatterns: [
 			{

@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Label } from "@workspace/design-system/components/ui/label";
-import {
-	RadioGroup,
-	RadioGroupItem,
-} from "@workspace/design-system/components/ui/radio-group";
+import { RadioGroup, RadioGroupItem } from "@workspace/design-system/components/ui/radio-group";
 
 /**
  * A set of checkable buttons—known as radio buttons—where no more than one of

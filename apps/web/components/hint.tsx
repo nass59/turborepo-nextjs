@@ -14,12 +14,7 @@ type Props = {
 	align?: "start" | "center" | "end";
 };
 
-export const Hint = ({
-	children,
-	text,
-	side = "top",
-	align = "center",
-}: Props) => {
+export const Hint = ({ children, text, side = "top", align = "center" }: Props) => {
 	return (
 		<TooltipProvider>
 			<Tooltip>

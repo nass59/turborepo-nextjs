@@ -10,23 +10,14 @@ import {
 } from "@inngest/agent-kit";
 import { z } from "zod";
 import { prisma } from "@/lib/database-sql/db";
-import {
-	FRAGMENT_TITLE_PROMPT,
-	PROMPT,
-	RESPONSE_PROMPT,
-} from "@/prompts/prompts";
+import { FRAGMENT_TITLE_PROMPT, PROMPT, RESPONSE_PROMPT } from "@/prompts/prompts";
 import { inngest } from "./client";
 import { SANDBOX_TIMEOUT } from "./constants";
-import {
-	getSandbox,
-	lastAssistantMessageContent,
-	parseAgentOutput,
-} from "./utils";
+import { getSandbox, lastAssistantMessageContent, parseAgentOutput } from "./utils";
 
 const SANDBOX_PORT = 3000;
 const MAX_MESSAGES_PER_QUERY = 10;
-const BLOCKED_COMMANDS_REGEX =
-	/\b(npm\s+run\s+(dev|build|start)|next\s+(dev|build|start))\b/i;
+const BLOCKED_COMMANDS_REGEX = /\b(npm\s+run\s+(dev|build|start)|next\s+(dev|build|start))\b/i;
 
 type AgentState = {
 	summary: string;
@@ -43,28 +34,25 @@ export const codeAgentFunction = inngest.createFunction(
 			return sandbox.sandboxId;
 		});
 
-		const previousMessages = await step.run(
-			"get-previous-messages",
-			async () => {
-				const formattedMessages: Message[] = [];
+		const previousMessages = await step.run("get-previous-messages", async () => {
+			const formattedMessages: Message[] = [];
 
-				const messages = await prisma.message.findMany({
-					where: { projectId: event.data.projectId },
-					orderBy: { createdAt: "desc" },
-					take: MAX_MESSAGES_PER_QUERY,
+			const messages = await prisma.message.findMany({
+				where: { projectId: event.data.projectId },
+				orderBy: { createdAt: "desc" },
+				take: MAX_MESSAGES_PER_QUERY,
+			});
+
+			for (const message of messages) {
+				formattedMessages.push({
+					type: "text",
+					role: message.role === "ASSISTANT" ? "assistant" : "user",
+					content: message.content,
 				});
+			}
 
-				for (const message of messages) {
-					formattedMessages.push({
-						type: "text",
-						role: message.role === "ASSISTANT" ? "assistant" : "user",
-						content: message.content,
-					});
-				}
-
-				return formattedMessages.reverse();
-			},
-		);
+			return formattedMessages.reverse();
+		});
 
 		const state = createState<AgentState>(
 			{
@@ -135,29 +123,23 @@ export const codeAgentFunction = inngest.createFunction(
 					}),
 					handler: async (
 						{ files },
-						{
-							step: stepTool,
-							network: handlerNetwork,
-						}: Tool.Options<AgentState>,
+						{ step: stepTool, network: handlerNetwork }: Tool.Options<AgentState>,
 					) => {
-						const newFiles = await stepTool?.run(
-							"createOrUpdateFiles",
-							async () => {
-								try {
-									const updatedFiles = handlerNetwork.state.data.files || {};
-									const sandbox = await getSandbox(sandboxId);
+						const newFiles = await stepTool?.run("createOrUpdateFiles", async () => {
+							try {
+								const updatedFiles = handlerNetwork.state.data.files || {};
+								const sandbox = await getSandbox(sandboxId);
 
-									for (const file of files) {
-										await sandbox.files.write(file.path, file.content);
-										updatedFiles[file.path] = file.content;
-									}
-
-									return updatedFiles;
-								} catch (error) {
-									return `Error ${error}`;
+								for (const file of files) {
+									await sandbox.files.write(file.path, file.content);
+									updatedFiles[file.path] = file.content;
 								}
-							},
-						);
+
+								return updatedFiles;
+							} catch (error) {
+								return `Error ${error}`;
+							}
+						});
 
 						if (typeof newFiles === "object") {
 							handlerNetwork.state.data.files = newFiles;
@@ -190,12 +172,8 @@ export const codeAgentFunction = inngest.createFunction(
 				}),
 			],
 			lifecycle: {
-				onResponse: ({
-					result: onResponseResult,
-					network: onResponseNetwork,
-				}) => {
-					const lastAssistantMessage =
-						lastAssistantMessageContent(onResponseResult);
+				onResponse: ({ result: onResponseResult, network: onResponseNetwork }) => {
+					const lastAssistantMessage = lastAssistantMessageContent(onResponseResult);
 
 					if (
 						lastAssistantMessage &&
@@ -250,13 +228,10 @@ export const codeAgentFunction = inngest.createFunction(
 			result.state.data.summary,
 		);
 
-		const { output: responseOutput } = await responseGenerator.run(
-			result.state.data.summary,
-		);
+		const { output: responseOutput } = await responseGenerator.run(result.state.data.summary);
 
 		const isError =
-			!result.state.data.summary ||
-			Object.keys(result.state.data.files || {}).length === 0;
+			!result.state.data.summary || Object.keys(result.state.data.files || {}).length === 0;
 
 		const sandboxUrl = await step.run("get-sandbox-url", async () => {
 			const sandbox = await getSandbox(sandboxId);

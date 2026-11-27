@@ -26,10 +26,7 @@ const meta = {
 		<NavigationMenu {...args}>
 			<NavigationMenuList>
 				<NavigationMenuItem>
-					<NavigationMenuLink
-						className={navigationLinkStyle}
-						href="https://www.google.com"
-					>
+					<NavigationMenuLink className={navigationLinkStyle} href="https://www.google.com">
 						Overview
 					</NavigationMenuLink>
 				</NavigationMenuItem>
@@ -51,9 +48,7 @@ const meta = {
 									</NavigationMenuLink>
 								</li>
 								<li>
-									<NavigationMenuLink className={navigationLinkStyle}>
-										Guides
-									</NavigationMenuLink>
+									<NavigationMenuLink className={navigationLinkStyle}>Guides</NavigationMenuLink>
 								</li>
 							</ul>
 						</NavigationMenuContent>

@@ -13,8 +13,7 @@ export const HomeGridPosts = () => {
 		{
 			id: 2,
 			title: "Typescript Tips and Tricks",
-			description:
-				"Understanding advanced Typescript features for better coding.",
+			description: "Understanding advanced Typescript features for better coding.",
 			imageUrl:
 				"https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		},
@@ -33,12 +32,8 @@ export const HomeGridPosts = () => {
 					/>
 
 					<div className="flex flex-col gap-1 p-2">
-						<h3 className="font-bold text-gray-100 text-md tracking-tighter">
-							{post.title}
-						</h3>
-						<p className="text-gray-300 text-sm tracking-tight">
-							{post.description}
-						</p>
+						<h3 className="font-bold text-gray-100 text-md tracking-tighter">{post.title}</h3>
+						<p className="text-gray-300 text-sm tracking-tight">{post.description}</p>
 					</div>
 				</MagicCard>
 			))}

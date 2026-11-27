@@ -37,22 +37,14 @@ export const ProjectView = ({ projectId }: Props) => {
 	return (
 		<div className="h-[calc(100vh-80px)]">
 			<ResizablePanelGroup direction="horizontal">
-				<ResizablePanel
-					className="flex min-h-0 flex-col"
-					defaultSize={35}
-					minSize={20}
-				>
-					<ErrorBoundary
-						fallback={<div className="pt-18">Error loading project header</div>}
-					>
+				<ResizablePanel className="flex min-h-0 flex-col" defaultSize={35} minSize={20}>
+					<ErrorBoundary fallback={<div className="pt-18">Error loading project header</div>}>
 						<Suspense fallback={<div>Loading project...</div>}>
 							<ProjectHeader projectId={projectId} />
 						</Suspense>
 					</ErrorBoundary>
 
-					<ErrorBoundary
-						fallback={<div className="pt-18">Error loading messages</div>}
-					>
+					<ErrorBoundary fallback={<div className="pt-18">Error loading messages</div>}>
 						<Suspense fallback={<div>Loading messages...</div>}>
 							<MessagesContainer
 								activeFragment={activeFragment}
@@ -63,11 +55,7 @@ export const ProjectView = ({ projectId }: Props) => {
 					</ErrorBoundary>
 				</ResizablePanel>
 				<ResizableHandle className="transition-colors hover:bg-primary" />
-				<ResizablePanel
-					className="flex min-h-0 flex-col"
-					defaultSize={65}
-					minSize={50}
-				>
+				<ResizablePanel className="flex min-h-0 flex-col" defaultSize={65} minSize={50}>
 					<Tabs
 						className="h-full gap-y-0"
 						defaultValue="preview"
@@ -98,9 +86,7 @@ export const ProjectView = ({ projectId }: Props) => {
 						</TabsContent>
 						<TabsContent className="min-h-0" value="code">
 							{!!activeFragment?.files && (
-								<FileExplorer
-									files={activeFragment.files as { [path: string]: string }}
-								/>
+								<FileExplorer files={activeFragment.files as { [path: string]: string }} />
 							)}
 						</TabsContent>
 					</Tabs>

@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-	ToggleGroup,
-	ToggleGroupItem,
-} from "@workspace/design-system/components/ui/toggle-group";
+import { ToggleGroup, ToggleGroupItem } from "@workspace/design-system/components/ui/toggle-group";
 import { Bold, Italic, Underline } from "lucide-react";
 
 /**

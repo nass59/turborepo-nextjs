@@ -8,9 +8,7 @@ export const getSandbox = async (sandboxId: string) => {
 	return sandbox;
 };
 
-export const lastAssistantMessageContent = (
-	result: AgentResult,
-): string | undefined => {
+export const lastAssistantMessageContent = (result: AgentResult): string | undefined => {
 	let lastAssistantMessageIndex = -1;
 
 	for (let i = result.output.length - 1; i >= 0; i--) {
@@ -20,9 +18,7 @@ export const lastAssistantMessageContent = (
 		}
 	}
 
-	const message = result.output[lastAssistantMessageIndex] as
-		| TextMessage
-		| undefined;
+	const message = result.output[lastAssistantMessageIndex] as TextMessage | undefined;
 
 	if (!message?.content) {
 		return;
@@ -35,10 +31,7 @@ export const lastAssistantMessageContent = (
 	return message.content.map((content) => content.text).join("");
 };
 
-export const parseAgentOutput = (
-	messages: Message[],
-	fallbackValue: string,
-) => {
+export const parseAgentOutput = (messages: Message[], fallbackValue: string) => {
 	if (!messages || messages.length === 0) {
 		return fallbackValue;
 	}

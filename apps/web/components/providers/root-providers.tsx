@@ -12,12 +12,7 @@ import { isProd } from "@/lib/env";
  * Keeps the root layout lean and enables reuse across different app shells.
  */
 export const RootProviders = ({ children }: PropsWithChildren) => (
-	<ThemeProvider
-		attribute="class"
-		defaultTheme="dark"
-		disableTransitionOnChange
-		forcedTheme="dark"
-	>
+	<ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange forcedTheme="dark">
 		{children}
 		<Analytics />
 		<Toaster />

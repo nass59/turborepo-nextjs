@@ -26,12 +26,10 @@ type FileExplorerProps = {
 
 export const FileExplorer = ({ files }: FileExplorerProps) => {
 	const [copied, setCopied] = useState(false);
-	const [selectedFile, setSelectedFile] = useState<string | null | undefined>(
-		() => {
-			const fileKeys = Object.keys(files);
-			return fileKeys.length > 0 ? fileKeys[0] : null;
-		},
-	);
+	const [selectedFile, setSelectedFile] = useState<string | null | undefined>(() => {
+		const fileKeys = Object.keys(files);
+		return fileKeys.length > 0 ? fileKeys[0] : null;
+	});
 
 	const treeData = useMemo(() => {
 		return convertFilesToTreeItems(files);
@@ -57,11 +55,7 @@ export const FileExplorer = ({ files }: FileExplorerProps) => {
 	return (
 		<ResizablePanelGroup direction="horizontal">
 			<ResizablePanel className="bg-sidebar" defaultSize={30} minSize={30}>
-				<TreeView
-					data={treeData}
-					onSelect={handleFileSelect}
-					value={selectedFile}
-				/>
+				<TreeView data={treeData} onSelect={handleFileSelect} value={selectedFile} />
 			</ResizablePanel>
 			<ResizableHandle className="transition-colors hover:bg-primary" />
 			<ResizablePanel defaultSize={70} minSize={50}>
@@ -82,10 +76,7 @@ export const FileExplorer = ({ files }: FileExplorerProps) => {
 							</Hint>
 						</div>
 						<div className="flex-1 overflow-auto">
-							<CodeView
-								code={files[selectedFile]}
-								lang={getLanguageFromExtension(selectedFile)}
-							/>
+							<CodeView code={files[selectedFile]} lang={getLanguageFromExtension(selectedFile)} />
 						</div>
 					</div>
 				) : (

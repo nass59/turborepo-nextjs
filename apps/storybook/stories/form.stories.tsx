@@ -12,11 +12,7 @@ import {
 } from "@workspace/design-system/components/ui/form";
 import { Input } from "@workspace/design-system/components/ui/input";
 import { useForm } from "react-hook-form";
-import {
-	type infer as zInfer,
-	object as zObject,
-	string as zString,
-} from "zod";
+import { type infer as zInfer, object as zObject, string as zString } from "zod";
 
 /**
  * Building forms with React Hook Form and Zod.
@@ -62,9 +58,7 @@ const ProfileForm = (args: Story["args"]) => {
 							<FormControl>
 								<Input placeholder="username" {...field} />
 							</FormControl>
-							<FormDescription>
-								This is your public display name.
-							</FormDescription>
+							<FormDescription>This is your public display name.</FormDescription>
 							<FormMessage />
 						</FormItem>
 					)}

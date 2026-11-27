@@ -1,9 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-	Avatar,
-	AvatarFallback,
-	AvatarImage,
-} from "@workspace/design-system/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@workspace/design-system/components/ui/avatar";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -243,9 +239,7 @@ const TeamSwitcher = ({ teams }: TeamSwitcherProps) => {
 									<activeTeam.logo className="size-4" />
 								</div>
 								<div className="grid flex-1 text-left text-sm leading-tight">
-									<span className="truncate font-semibold">
-										{activeTeam.name}
-									</span>
+									<span className="truncate font-semibold">{activeTeam.name}</span>
 									<span className="truncate text-xs">{activeTeam.plan}</span>
 								</div>
 								<ChevronsUpDown className="ml-auto" />
@@ -258,9 +252,7 @@ const TeamSwitcher = ({ teams }: TeamSwitcherProps) => {
 						side="bottom"
 						sideOffset={4}
 					>
-						<DropdownMenuLabel className="text-muted-foreground text-xs">
-							Teams
-						</DropdownMenuLabel>
+						<DropdownMenuLabel className="text-muted-foreground text-xs">Teams</DropdownMenuLabel>
 						{teams.map((team, index) => (
 							<DropdownMenuItem
 								className="gap-2 p-2"
@@ -370,11 +362,7 @@ const NavProjects = ({ projects }: NavProjectsProps) => {
 									<span className="sr-only">More</span>
 								</SidebarMenuAction>
 							</DropdownMenuTrigger>
-							<DropdownMenuContent
-								align="end"
-								className="w-48 rounded-lg"
-								side="bottom"
-							>
+							<DropdownMenuContent align="end" className="w-48 rounded-lg" side="bottom">
 								<DropdownMenuItem>
 									<Folder className="text-muted-foreground" />
 									<span>View Project</span>
@@ -514,9 +502,7 @@ export const Default: Story = {
 							<Breadcrumb>
 								<BreadcrumbList>
 									<BreadcrumbItem className="hidden md:block">
-										<BreadcrumbLink href="#">
-											Building Your Application
-										</BreadcrumbLink>
+										<BreadcrumbLink href="#">Building Your Application</BreadcrumbLink>
 									</BreadcrumbItem>
 									<BreadcrumbSeparator className="hidden md:block" />
 									<BreadcrumbItem>

@@ -71,9 +71,7 @@ export const baseMetadata: Metadata = {
 		title: siteName,
 		description: siteDescription,
 		creator: siteAuthor,
-		site: siteTwitter
-			? `@${siteTwitter.split("twitter.com/").pop()}`
-			: undefined,
+		site: siteTwitter ? `@${siteTwitter.split("twitter.com/").pop()}` : undefined,
 		images: [
 			{
 				url: siteOgImage,

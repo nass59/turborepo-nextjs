@@ -27,8 +27,7 @@ const meta = {
 				<Info className="size-6" />
 			</CollapsibleTrigger>
 			<CollapsibleContent>
-				Yes. Free to use for personal and commercial projects. No attribution
-				required.
+				Yes. Free to use for personal and commercial projects. No attribution required.
 			</CollapsibleContent>
 		</Collapsible>
 	),

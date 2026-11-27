@@ -1,8 +1,8 @@
 {
 	"name": "@workspace/design-system",
 	"version": "0.0.0",
-	"type": "module",
 	"private": true,
+	"type": "module",
 	"exports": {
 		"./styles/globals.css": "./src/styles/globals.css",
 		"./postcss.config": "./postcss.config.mjs",

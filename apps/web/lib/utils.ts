@@ -9,9 +9,7 @@ export function parseData<T>(data: T) {
 	return JSON.parse(JSON.stringify(data)) as T;
 }
 
-export const convertFilesToTreeItems = (files: {
-	[path: string]: string;
-}): TreeItem[] => {
+export const convertFilesToTreeItems = (files: { [path: string]: string }): TreeItem[] => {
 	// Build the tree structure
 	const tree: TreeNode = {};
 
@@ -46,10 +44,7 @@ export const convertFilesToTreeItems = (files: {
 	}
 
 	// Convert the tree structure to TreeItem format
-	const convertNode = (
-		node: TreeNode,
-		name?: string,
-	): TreeItem[] | TreeItem => {
+	const convertNode = (node: TreeNode, name?: string): TreeItem[] | TreeItem => {
 		const entries = Object.entries(node);
 
 		if (entries.length === 0) {

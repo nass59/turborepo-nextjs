@@ -45,7 +45,7 @@ Includes authentication (Clerk), background jobs (Inngest), database (PostgreSQL
 - **[Lucide Icons](https://lucide.dev/)** — Beautiful, consistent iconography
 
 ### **Developer Experience**
-- **[Biome](https://biomejs.dev/)** — Blazing fast linting & formatting (replaces ESLint + Prettier)
+- **[Vite+](https://viteplus.dev/)** — Unified toolchain: Oxlint + Oxfmt via `vp check` (replaces Biome)
 - **[Sherif](https://github.com/QuiiBz/sherif)** — Validates monorepo dependencies
 - **[Storybook](https://storybook.js.org/)** — Component documentation & visual testing
 
@@ -142,8 +142,8 @@ pnpm dev
 pnpm dev              # Start all apps (web + storybook)
 pnpm build            # Build all packages & apps for production
 pnpm typecheck        # Run TypeScript checks across workspace
-pnpm lint             # Lint all code with Biome
-pnpm format           # Auto-format code with Biome
+pnpm lint             # Lint all code with Vite+ (`vp check`)
+pnpm format           # Auto-format code with Vite+
 
 # Dependencies
 pnpm check-dependencies  # Validate with Sherif
@@ -345,7 +345,7 @@ Built with amazing open source tools:
 - **[Shadcn](https://twitter.com/shadcn)** — UI component design
 - **[Turborepo Team](https://turbo.build)** — Monorepo tooling
 - **[Next.js Team](https://nextjs.org)** — The React framework
-- **[Biome](https://biomejs.dev)** — Fast, unified toolchain
+- **[Vite+](https://viteplus.dev)** — Fast, unified toolchain
 - **[tRPC](https://trpc.io)** — End-to-end type safety
 - **[Clerk](https://clerk.com)** — Beautiful authentication
 

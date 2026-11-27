@@ -1,12 +1,12 @@
 {
 	"name": "web",
 	"version": "0.1.0",
-	"type": "module",
 	"private": true,
 	"author": {
 		"name": "nass190",
 		"url": "https://twitter.com/nass190"
 	},
+	"type": "module",
 	"scripts": {
 		"dev": "next dev --turbopack",
 		"dev:all": "concurrently \"pnpm dev:webhook\" \"pnpm dev\"",

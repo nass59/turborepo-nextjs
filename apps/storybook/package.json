@@ -1,8 +1,8 @@
 {
 	"name": "storybook",
 	"version": "0.1.0",
-	"type": "module",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"dev": "cross-env NODE_OPTIONS=--disable-warning=ExperimentalWarning storybook dev -p 6006 --no-open",
 		"build": "cross-env NODE_OPTIONS=--disable-warning=ExperimentalWarning storybook build",

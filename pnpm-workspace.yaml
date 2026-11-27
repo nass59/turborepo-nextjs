@@ -3,8 +3,8 @@ packages:
   - packages/*
 
 onlyBuiltDependencies:
-  - '@clerk/shared'
-  - '@swc/core'
-  - '@tailwindcss/oxide'
+  - "@clerk/shared"
+  - "@swc/core"
+  - "@tailwindcss/oxide"
   - esbuild
   - sharp

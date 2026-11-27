@@ -41,11 +41,13 @@
 	--sidebar-border: oklch(0.9401 0 0);
 	--sidebar-ring: oklch(0.7731 0 0);
 	--font-sans:
-		ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+		"Segoe UI Symbol", "Noto Color Emoji";
 	--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 	--font-mono:
-		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-		"Courier New", monospace;
+		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+		monospace;
 	--radius: 0.5rem;
 	--shadow-x: 0;
 	--shadow-y: 1px;
@@ -55,15 +57,11 @@
 	--shadow-color: oklch(0 0 0);
 	--shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
 	--shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-	--shadow-sm:
-		0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+	--shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
 	--shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-	--shadow-md:
-		0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-	--shadow-lg:
-		0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-	--shadow-xl:
-		0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+	--shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+	--shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+	--shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
 	--shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
 	--tracking-normal: 0em;
 	--spacing: 0.25rem;
@@ -103,11 +101,13 @@
 	--sidebar-border: oklch(0.2739 0.0055 286.0326);
 	--sidebar-ring: oklch(0.8711 0.0055 286.286);
 	--font-sans:
-		ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+		"Segoe UI Symbol", "Noto Color Emoji";
 	--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 	--font-mono:
-		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-		"Courier New", monospace;
+		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+		monospace;
 	--radius: 0.5rem;
 	--shadow-x: 0;
 	--shadow-y: 1px;
@@ -117,15 +117,11 @@
 	--shadow-color: oklch(0 0 0);
 	--shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
 	--shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-	--shadow-sm:
-		0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+	--shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
 	--shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-	--shadow-md:
-		0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-	--shadow-lg:
-		0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-	--shadow-xl:
-		0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+	--shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+	--shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+	--shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
 	--shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
 }
 
@@ -212,8 +208,7 @@
 	--animate-fourth: moveHorizontal 40s ease infinite;
 	--animate-fifth: moveInCircle 20s ease infinite;
 
-	--animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite
-		alternate;
+	--animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
 	--animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
 
 	@keyframes moveHorizontal {

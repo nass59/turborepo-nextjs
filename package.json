@@ -4,8 +4,8 @@
 	"scripts": {
 		"build": "turbo run build",
 		"dev": "turbo run dev",
-		"lint": "biome check .",
-		"format": "biome check --write .",
+		"lint": "vp check",
+		"format": "vp check --fix",
 		"typecheck": "turbo run typecheck",
 		"check-dependencies": "sherif",
 		"bump-deps": "npx npm-check-updates --deep -u -x geist && pnpm install",
@@ -16,14 +16,13 @@
 		"debug:storybook": "NODE_OPTIONS='--inspect' pnpm --filter=storybook dev"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.3.0",
 		"sherif": "^1.6.1",
-		"turbo": "^2.5.8",
+		"turbo": "^2.11.13",
 		"typescript": "^5.8.3",
-		"ultracite": "^6.0.1"
+		"vite-plus": "^1.8.0"
 	},
-	"packageManager": "pnpm@10.14.0",
-	"volta": {
-		"node": "24.8.0"
-	}
+	"engines": {
+		"node": ">=26"
+	},
+	"packageManager": "pnpm@10.34.9"
 }
