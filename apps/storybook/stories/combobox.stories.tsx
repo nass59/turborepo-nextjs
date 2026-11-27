@@ -201,9 +201,7 @@ export const WithPopover: Story = {
 											key={status.value}
 											onSelect={(value) => {
 												setSelectedStatus(
-													statuses.find(
-														(priority) => priority.value === value,
-													) || null,
+													statuses.find((priority) => priority.value === value) || null,
 												);
 												setOpen(false);
 											}}
@@ -254,11 +252,7 @@ export const WithDropdownMenu: Story = {
 								<DropdownMenuSubTrigger>Apply label</DropdownMenuSubTrigger>
 								<DropdownMenuSubContent className="p-0">
 									<Command>
-										<CommandInput
-											autoFocus={true}
-											className="h-9"
-											placeholder="Filter label..."
-										/>
+										<CommandInput autoFocus={true} className="h-9" placeholder="Filter label..." />
 										<CommandList>
 											<CommandEmpty>No label found.</CommandEmpty>
 											<CommandGroup>
@@ -308,9 +302,7 @@ const StatusList = ({ setOpen, setSelectedStatus }: StatusListProps) => {
 						<CommandItem
 							key={status.value}
 							onSelect={(value) => {
-								setSelectedStatus(
-									statuses.find((priority) => priority.value === value) || null,
-								);
+								setSelectedStatus(statuses.find((priority) => priority.value === value) || null);
 								setOpen(false);
 							}}
 							value={status.value}
@@ -342,10 +334,7 @@ export const Responsive: Story = {
 						</Button>
 					</PopoverTrigger>
 					<PopoverContent align="start" className="w-[200px] p-0">
-						<StatusList
-							setOpen={setOpen}
-							setSelectedStatus={setSelectedStatus}
-						/>
+						<StatusList setOpen={setOpen} setSelectedStatus={setSelectedStatus} />
 					</PopoverContent>
 				</Popover>
 			);
@@ -360,10 +349,7 @@ export const Responsive: Story = {
 				</DrawerTrigger>
 				<DrawerContent>
 					<div className="mt-4 border-t">
-						<StatusList
-							setOpen={setOpen}
-							setSelectedStatus={setSelectedStatus}
-						/>
+						<StatusList setOpen={setOpen} setSelectedStatus={setSelectedStatus} />
 					</div>
 				</DrawerContent>
 			</Drawer>

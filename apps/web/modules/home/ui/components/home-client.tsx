@@ -28,10 +28,7 @@ export const HomeClient = () => {
 		<div className="flex max-w-7xl items-center justify-center">
 			<div className="mx-auto flex flex-col items-center justify-center gap-y-4">
 				<Input onChange={(e) => setValue(e.target.value)} value={value} />
-				<Button
-					disabled={createProject.isPending}
-					onClick={() => createProject.mutate({ value })}
-				>
+				<Button disabled={createProject.isPending} onClick={() => createProject.mutate({ value })}>
 					Submit
 				</Button>
 			</div>

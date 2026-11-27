@@ -18,9 +18,7 @@ type Props = {
 export const ProjectHeader = ({ projectId }: Props) => {
 	const trpc = useTRPC();
 
-	const { data: project } = useSuspenseQuery(
-		trpc.projects.getOne.queryOptions({ id: projectId }),
-	);
+	const { data: project } = useSuspenseQuery(trpc.projects.getOne.queryOptions({ id: projectId }));
 
 	return (
 		<header className="flex items-center justify-between border-b p-2">

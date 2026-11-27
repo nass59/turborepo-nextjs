@@ -17,13 +17,8 @@ export const HomeStackButtons = () => (
 				shimmerColor={stack.color}
 				shimmerDuration="3.2s"
 			>
-				<DotIcon
-					className="inline size-8 animate-pulse"
-					style={{ color: stack.color }}
-				/>
-				<span className="font-semibold text-slate-50 text-sm tracking-tighter">
-					{stack.name}
-				</span>
+				<DotIcon className="inline size-8 animate-pulse" style={{ color: stack.color }} />
+				<span className="font-semibold text-slate-50 text-sm tracking-tighter">{stack.name}</span>
 				<span className="ml-2 font-bold text-xs" style={{ color: stack.color }}>
 					{stack.version}
 				</span>

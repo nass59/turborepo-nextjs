@@ -123,11 +123,7 @@ export const ProjectForm = () => {
 							)}
 							disabled={isButtonDisabled}
 						>
-							{isPending ? (
-								<Loader2Icon className="size-4 animate-spin" />
-							) : (
-								<ArrowUpIcon />
-							)}
+							{isPending ? <Loader2Icon className="size-4 animate-spin" /> : <ArrowUpIcon />}
 						</Button>
 					</div>
 				</form>

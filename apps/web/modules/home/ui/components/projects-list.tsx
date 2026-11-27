@@ -23,9 +23,7 @@ export const ProjectsList = () => {
 			<div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
 				{projects?.length === 0 && (
 					<div className="col-span-full text-center">
-						<p className="text-muted-foreground text-sm">
-							No projects yet. Create one above!
-						</p>
+						<p className="text-muted-foreground text-sm">No projects yet. Create one above!</p>
 					</div>
 				)}
 				{projects?.map((project) => (

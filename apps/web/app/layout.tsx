@@ -38,11 +38,7 @@ export default function RootLayout({ children }: LayoutProps) {
 			}}
 		>
 			<TRPCReactProvider>
-				<html
-					className={cn(geistSans.variable, "antialiased")}
-					lang="en"
-					suppressHydrationWarning
-				>
+				<html className={cn(geistSans.variable, "antialiased")} lang="en" suppressHydrationWarning>
 					<body className="flex min-h-screen flex-col" data-a11y="app-root">
 						{/* Skip link placed as the first focusable element inside body for accessibility */}
 						<A11ySkipLink />

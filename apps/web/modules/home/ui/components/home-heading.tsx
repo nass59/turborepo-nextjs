@@ -1,7 +1,6 @@
 const DATA = {
 	title: "Tech Blog",
-	description:
-		"Latest updates, articles, and insights about NextJS, React, Typescript, and more.",
+	description: "Latest updates, articles, and insights about NextJS, React, Typescript, and more.",
 } as const;
 
 export const HomeHeading = () => (

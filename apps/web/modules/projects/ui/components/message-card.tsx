@@ -35,26 +35,19 @@ type FragmentCardProps = {
 	onFragmentClick: (fragment: Fragment) => void;
 };
 
-const FragmentCard = ({
-	fragment,
-	isActiveFragment,
-	onFragmentClick,
-}: FragmentCardProps) => {
+const FragmentCard = ({ fragment, isActiveFragment, onFragmentClick }: FragmentCardProps) => {
 	return (
 		<button
 			className={cn(
 				"flex w-fit items-start gap-2 rounded-lg border bg-muted p-3 text-start transition-colors hover:bg-secondary",
-				isActiveFragment &&
-					"border-primary bg-primary text-primary-foreground hover:bg-primary",
+				isActiveFragment && "border-primary bg-primary text-primary-foreground hover:bg-primary",
 			)}
 			onClick={() => onFragmentClick(fragment)}
 			type="button"
 		>
 			<Code2Icon className="mt-0.5 size-4" />
 			<div className="flex flex-1 flex-col">
-				<span className="line-clamp-1 font-medium text-sm">
-					{fragment.title}
-				</span>
+				<span className="line-clamp-1 font-medium text-sm">{fragment.title}</span>
 				<span className="text-sm">Preview</span>
 			</div>
 			<div className="mt-0.5 flex items-center justify-center">
@@ -82,13 +75,7 @@ const AssistantMessage = ({
 			)}
 		>
 			<div className="mb-2 flex items-center gap-2 pl-2">
-				<Image
-					alt="Vibe"
-					className="shrink-0"
-					height={18}
-					src="/logo.svg"
-					width={18}
-				/>
+				<Image alt="Vibe" className="shrink-0" height={18} src="/logo.svg" width={18} />
 				<span className="font-medium text-sm">Vibe</span>
 				<span className="text-muted-foreground text-xs opacity-0 transition-opacity group-hover:opacity-100">
 					{format(createdAt, "HH:mm 'on' MMM dd, yyyy")}

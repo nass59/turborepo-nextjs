@@ -42,9 +42,7 @@ export const MessageForm = ({ projectId }: Props) => {
 		trpc.messages.create.mutationOptions({
 			onSuccess: () => {
 				form.reset();
-				queryClient.invalidateQueries(
-					trpc.messages.getMany.queryOptions({ projectId }),
-				);
+				queryClient.invalidateQueries(trpc.messages.getMany.queryOptions({ projectId }));
 				queryClient.invalidateQueries(trpc.usage.status.queryOptions());
 			},
 			onError: (error) => {
@@ -66,12 +64,7 @@ export const MessageForm = ({ projectId }: Props) => {
 
 	return (
 		<Form {...form}>
-			{showUsage && (
-				<Usage
-					msBeforeNext={usage.msBeforeNext}
-					points={usage.remainingPoints}
-				/>
-			)}
+			{showUsage && <Usage msBeforeNext={usage.msBeforeNext} points={usage.remainingPoints} />}
 			<form
 				className={cn(
 					"relative rounded-xl border bg-sidebar p-4 pt-1 transition-all dark:bg-sidebar",
@@ -109,17 +102,10 @@ export const MessageForm = ({ projectId }: Props) => {
 						&nbsp;to submit
 					</div>
 					<Button
-						className={cn(
-							"size-8 rounded-full",
-							isButtonDisabled && "border bg-muted-foreground",
-						)}
+						className={cn("size-8 rounded-full", isButtonDisabled && "border bg-muted-foreground")}
 						disabled={isButtonDisabled}
 					>
-						{isPending ? (
-							<Loader2Icon className="size-4 animate-spin" />
-						) : (
-							<ArrowUpIcon />
-						)}
+						{isPending ? <Loader2Icon className="size-4 animate-spin" /> : <ArrowUpIcon />}
 					</Button>
 				</div>
 			</form>

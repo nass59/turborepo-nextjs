@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import {
-	Avatar,
-	AvatarFallback,
-	AvatarImage,
-} from "@workspace/design-system/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@workspace/design-system/components/ui/avatar";
 
 /**
  * An image element with a fallback for representing the user.
